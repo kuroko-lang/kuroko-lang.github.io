@@ -51,19 +51,28 @@ function runCode(editor) {
   editor.container.remove();
   editor.destroy();
   document.getElementById("container").appendChild(frozenEditor);
+  var spinner = document.createElement("div");
+  spinner.style = "text-align: center;";
+  var spinnerInner = document.createElement("div");
+  spinnerInner.className = 'spinner-grow text-danger';
+  spinner.appendChild(spinnerInner);
+  document.getElementById("container").appendChild(spinner);
 
-  result = krk_call(value);
+  window.setTimeout(function() {
+    result = krk_call(value);
 
-  if (result != "") {
-    /* If krk_call gave us a result that wasn't empty, add new repl output node. */
-    let newOutput = document.createElement("pre");
-    newOutput.className = "repl";
-    newOutput.appendChild(document.createTextNode(' => ' + result));
-    document.getElementById("container").appendChild(newOutput);
-  }
-  /* stop using this editor but leave it in the document for visual history */
-  currentEditor = createEditor();
+    spinner.remove();
 
+    if (result != "") {
+      /* If krk_call gave us a result that wasn't empty, add new repl output node. */
+      let newOutput = document.createElement("pre");
+      newOutput.className = "repl";
+      newOutput.appendChild(document.createTextNode(' => ' + result));
+      document.getElementById("container").appendChild(newOutput);
+    }
+    /* stop using this editor but leave it in the document for visual history */
+    currentEditor = createEditor();
+  }, 50);
 }
 
 /**
@@ -136,6 +145,7 @@ function createEditor() {
   editor.focus();
   scrollToBottom = editor.renderer.on('afterRender', function() {
     newDiv.scrollIntoView();
+    editor.renderer.off("afterRender", scrollToBottom);
   });
   return editor;
 }
