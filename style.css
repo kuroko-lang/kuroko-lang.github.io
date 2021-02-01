@@ -25,6 +25,7 @@ body {
   white-space: pre-wrap;
   counter-reset: line-no;
   line-height: normal;
+  overflow: visible;
 }
 #container > .repl {
   color: rgb(100,100,100);
