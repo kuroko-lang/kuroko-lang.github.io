@@ -16,22 +16,26 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ms-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link codelink active" href="#" onclick="insertCode('tutorial()')">Tutorial</a>
+              <a class="nav-link force-cursor" onclick="insertCode('tutorial()')">Tutorial</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link codelink" href="#" onclick="insertCode('license()')">License</a>
+              <a class="nav-link force-cursor" onclick="insertCode('license()')">License</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Samples
+                Examples
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><h6 class="dropdown-header">Getting Started</h6></li>
                 <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.helloworld)">Hello, world!</a></li>
-                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.variables)">Variable declarations</a></li>
+                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.variables)">Variable Declarations</a></li>
                 <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.classes)">Classes</a></li>
                 <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.comprehensions)">Iterable Comprehensions</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.tutorialsource)">Tutorial source</a></li>
+                <li><h6 class="dropdown-header">Web REPL Tricks</h6></li>
+                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.tutorialsource)">Tutorial Source</a></li>
+                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.loadgist)">Load from a Gist</a></li>
+                <li><a class="dropdown-item force-cursor" onclick="insertCode(codeSamples.clear)">Clear Terminal</a></li>
               </ul>
             </li>
           </ul>
