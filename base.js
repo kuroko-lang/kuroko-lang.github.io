@@ -125,7 +125,7 @@ function historyForwardIfOneLine(editor) {
 /**
  * Builds an Ace editor and configures it for Kuroko.
  */
-function createEditor() {
+function createEditor(initial=false) {
   let newDiv = document.createElement("div");
   newDiv.className = "editor";
   document.getElementById("container").appendChild(newDiv);
@@ -144,11 +144,13 @@ function createEditor() {
   editor.commands.bindKey("Return", enterCallback);
   editor.commands.bindKey("Up", historyBackIfOneLine);
   editor.commands.bindKey("Down", historyForwardIfOneLine);
-  editor.focus();
-  scrollToBottom = editor.renderer.on('afterRender', function() {
-    newDiv.scrollIntoView();
-    editor.renderer.off("afterRender", scrollToBottom);
-  });
+  if (!initial) {
+    editor.focus();
+    scrollToBottom = editor.renderer.on('afterRender', function() {
+      newDiv.scrollIntoView();
+      editor.renderer.off("afterRender", scrollToBottom);
+    });
+  }
   return editor;
 }
 
@@ -207,7 +209,7 @@ var Module = {
     krk_call("def tutorial(n=0):\n from web import tutorial as actual\n actual(n)\n");
 
     /* Start the first repl line editor */
-    currentEditor = createEditor();
+    currentEditor = createEditor(true);
     const urlParams = new URLSearchParams(window.location.search);
     const codeParam = urlParams.get('c');
     if (codeParam) {
