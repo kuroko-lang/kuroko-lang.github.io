@@ -42,6 +42,9 @@ footer a {
 #container > .error {
   color: #de3535;
 }
+#container > .lines > .ace_line {
+  overflow: hidden;
+}
 #container > .lines > .ace_line > a {
   padding-right: 2px;
 }

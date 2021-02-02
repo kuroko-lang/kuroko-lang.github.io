@@ -45,6 +45,7 @@ function runCode(editor) {
     var child = lines[0];
     var lineNumber = document.createElement("a");
     lineNumber.href = "#_" + blockCounter + "_" + (i + 1);
+    child.style = '';
     child.id = "_" + blockCounter + "_" + (i + 1);
     child.prepend(lineNumber);
     frozenEditor.appendChild(child);
@@ -136,7 +137,7 @@ function createEditor(initial=false) {
     showPrintMargin: false,
     useSoftTabs: true,
     indentedSoftWrap: false,
-    wrap: true
+    wrap: false
   });
   editor.setTheme("ace/theme/sunsmoke");
   editor.setBehavioursEnabled(false);
