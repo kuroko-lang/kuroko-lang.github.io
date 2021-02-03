@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Docs | Kuroko</title>
+    <script src="src-min/ace.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+    h1 { font-size: 24px; margin-bottom: 1rem; }
+    h2 { font-size: 22px; margin-bottom: 1rem; scroll-margin-top: 4rem; }
+    h3 { font-size: 20px; margin-bottom: 1rem; scroll-margin-top: 4rem; }
+    h4 { font-size: 18px; margin-bottom: 1rem; }
+    aside > nav.sticky-top { top: 5rem; }
+    aside > nav { width: 250px; }
+    #main-content code span.ace_keyword { color: #33a2e6; }
+    #main-content code span.ace_string  { color: #48b048; }
+    #main-content code span.ace_comment { color: #9e9981; font-style: oblique; }
+    #main-content code span.ace_numeric { color: #e62b7f; }
+    #main-content code span.ace_escape  { color: #71cbad; }
+    #main-content code span.ace_constant.ace_language.ace_escape  { color: #71cbad; }
+    #main-content code span.ace_storage { color: #e6ce6e; }
+    #main-content code span.ace_support.ace_function { color: #e6ce6e; }
+    #main-content code span.ace_selection { background-color: #e6ce6e; color: #1f1f1f; }
+    #main-content code span.ace_constant.ace_language { color: #e62b7f; }
+    #main-content code {
+      background-color: #1f1f1f;
+      color: #e6e6e6;
+      border-radius: 3px;
+      padding: 2px;
+      font-size: 17px;
+      font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+      white-space: pre-wrap;
+      line-height: 19px;
+    }
+    #main-content code.multiline { display: inline-block; width: 100%; }
+    aside.sidebar { grid-area: sidebar; }
+    div.base-layout {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr 5fr;
+      grid-template-areas: 'sidebar main'
+    }
+    .targeted { background-color: #f1aeb5 !important; }
+    .accordion-header > .accordion-button { font-weight: bold; }
+    .accordion-body { padding: 0 !important; }
+    .accordion-button:not(.collapsed) {
+      color: white !important;
+      background-color: #e35d6a !important;
+    }
+    .accordion-button:not(.collapsed)::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    }
+    @media (max-width: 991.98px) {
+      #toc { margin: 2rem; }
+      div.base-layout { display: block; }
+      aside > nav { width: 100%; }
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link force-cursor" href="/?r=y&c=tutorial()">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link force-cursor" href="/?r=y&c=license()">License</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown">
+                Examples
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="mx-auto order-0" style="padding-left: 2rem; padding-right: 2rem">
+          <a class="navbar-brand" href="/">
+            <img src="logo.png" style="height: 2rem; padding-right: 0.5rem;">
+            Kuroko
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/kuroko-lang/kuroko">Github</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/kuroko-lang/kuroko/releases">Downloads</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/docs.html">Docs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-xxl base-layout">
+      <aside class="sidebar collapse show">
+        <nav class="sticky-top">
+          <div class="accordion" id="toc">
+          </div>
+        </nav>
+      </aside>
+      <main class="order-1 container" id="main-content">
+        <div class="alert alert-warning">
+          This documentation is a work-in-progress. It is intended to be more detailed than the interactive tutorial and provide a static reference for all language features.
+          Please note that headings and organization may change as the documentation is drafted.
+        </div>
+        <h1>Kuroko 1.0.1</h1>
+        <!-- Getting Started -->
+        <h2 id="getting-started">Getting Started</h2>
+        <h3 id="features">Language Features Overview</h3>
+        <h4 id="features-syntax">Familiar, Indentation-Driven Syntax</h4>
+        <p>
+          Kuroko is a dialect of Python, which means that Kuroko's syntax is derived from Python and features the same indentation-driven block semantics.
+          As in its big brother, Kuroko's compiler prohibits mixed indentation within lines and spaces are preferred by our style guide.
+          Kuroko's collection of keywords is also largely compatible with Python.
+        </p>
+        <h4 id="features-scoping">Traditional Block Scoping</h4>
+        <p>
+          Scoping in Kuroko follows common rules from languages like C and Java, with explicit variable declarations and block-centric lifetime, providing the <code>let</code> keyword to declare variables at the statement level.
+          References to unbound names are resolved at runtime through the global namespace of their enclosing scope. Assignment operations can be used as expressions.
+        </p>
+        <h4 id="features-collections">Integrated Collections</h4>
+        <p>
+          Kuroko includes equivalents of Python's common sequence types - <code>list</code>, <code>tuple</code>, <code>dict</code> - as well as compiler support for literal and comprehension expressions.
+        </p>
+        <h4 id="features-unicode-strings">Unicode Strings</h4>
+        <p>
+          Strings in Kuroko are immutable sequences of Unicode codepoints, as they are in Python, with efficient internal representation and general string interning.
+          Kuroko's Unicode support also covers identifiers, so classes, functions, and variables can also include Unicode characters.
+        </p>
+        <h4 id="features-iteration">Iteration Loops</h4>
+        <p>
+          Kuroko borrows both Python's <code>for foo in bar</code> syntax for iterator loops as well as C-style <code>for foo = 1; foo &lt; bar; foo++</code> initializer / condition / increment loops.
+        </p>
+        <h3 id="installing">Installing Kuroko</h3>
+        <p>
+          Binary builds of Kuroko are available for x86-64 Debian/Ubuntu as well as Windows from our <a href="https://github.com/kuroko-lang/kuroko/releases">Github Releases page</a>.
+        </p>
+        <h4 id="shared-library">Building as a Shared Library</h4>
+        <p>
+          Kuroko builds for most Unix-like platforms with GNU Make. As of writing, the Makefile should be used only to build and not to install Kuroko.
+          Kuroko has a small libc footprint and no required external dependencies — even <code>libm</code> is only linked by the <code>math</code> module.
+          Support for runtime loading of C extensions requires <code>dlopen</code>, but is optional; C extensions can be linked at compile-time.
+          The default build configuration assumes a shared library for the interpreter is desired, as well as separate libraries for the standard set of extension modules.
+          The standard interpreter REPL will be built as its own binary and will include <code>rline</code>, a rich line editor with syntax highlighting, by default.
+          Support for <code>rline</code> can be disabled by passing <code>KRK_DISABLE_RLINE=1</code> to Make, which may be desirable if your target platform does not support the required terminal escape sequences.
+        </p>
+        <h4 id="static-binary">Building as a Single Static Binary</h4>
+        <p>
+          Supply <code>KRK_ENABLE_STATIC=1</code> to build a single static binary.
+          When built as a single static library, note that runtime loading of C extensions will not be available.
+          This will build only a "kuroko" binary with the interpreter and repl. If you would like to include the standard C extensions, pass <code>KRK_ENABLE_BUNDLE=1</code> as well.
+          The rich line editor will also be included by default, and as with the shared library build can be disabled with <code>KRK_DISABLE_RLINE=1</code>.
+        <h4 id="wasm-build">Building for WASM</h4>
+        <p>
+          Kuroko can be built for WASM. Generally, this requires a number of options for the resulting library to be useful.
+          Please see <a href="https://github.com/kuroko-lang/kuroko-wasm-repl">github.com/kuroko-lang/kuroko-wasm-repl</a> for more information.
+        </p>
+        <h4 id="windows-build">Building for Windows with MingW</h4>
+        <p>
+          Kuroko can built for Windows with <code>CC=x86_64-w64-mingw32-gcc</code> if you have a mingw32 toolchain available.
+        <div class="alert alert-secondary">
+          Windows is not a primary target for Kuroko development and not all features of the interpreter, REPL, or extension modules may be available when building for Windows.
+        </div>
+        </p>
+        <h3 id="changelog">Changelog</h3>
+        <h4>Version 1.0.1 - 2021-01-31</h4>
+        <ul>
+          <li>Fix an issue with <code>tupleiterator.__init__</code> that prevented tuples from being iterated></li>
+          <li>Add build script for Debian packages</li>
+        </ul>
+        <h4>Version 1.0.0 - 2021-01-30</h4>
+        <ul>
+          <li>Initial release.</li>
+        </ul>
+        <!-- Language Reference -->
+        <h1 id="language-reference">Language Reference</h1>
+        <h2 id="general-syntax">General Syntax</h2>
+        <h3 id="syntax-keywords">Keywords</h3>
+        <p>
+          Kuroko shares many keywords with Python, such as the keywords for defining control flow structures:
+          <code>and</code>, <code>as</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>,
+          <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>export</code>, <code>for</code>,
+          <code>from</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>,
+          <code>let</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>raise</code>, <code>return</code>,
+          <code>try</code>, <code>while</code>, and <code>with</code>.
+        </p>
+        <div class="alert alert-secondary">Note the addition of the keyword <code>let</code>, which signifies variable declarations.</div>
+        <p>
+          Additionally, <code>self</code> is reserved for instance references in methods, where it is an implicit argument, <code>super</code> is reserved for references to superclasses, and
+          <code>True</code>, <code>False</code> and <code>None</code> are all keywords referencing their respective values, and can not be reassigned or used as names in other contexts.
+        </p>
+        <p>
+          Some identifiers are bound as <i>builtins</i>. These are not reserved and may be reassigned or used in other contexts, but will generally be marked as special by syntax highlighters:
+          <code>len</code>, <code>str</code>, <code>int</code>, <code>float</code>, <code>dir</code>, <code>repr</code>, <code>list</code>, <code>dict</code>, <code>range</code>,
+          <code>object</code>, <code>exception</code>, <code>isinstance</code>, <code>type</code>, <code>print</code>, <code>tuple</code>, <code>bool</code>, <code>any</code>, <code>all</code>,
+          <code>hex</code>, <code>ord</code>, and <code>chr</code>.
+        </p>
+        <h3 id="syntax-comments">Comments</h3>
+        <p>
+          A <code>#</code> outside of a string literal marks the remainder of a line as a comment. Kuroko does not recognize any "magic" comment strings.
+        </p>
+        <h3 id="syntax-line-endings">Line Endings</h3>
+        <p>
+          As in Python, line feeds in Kuroko generally mark the end of statements. If it is desirable to have a statement span multiple lines, a <code>\</code> character must appear as the last character in the line.
+          The <code>\</code> character can not be part of a comment. If it is part of a string literal, the string literal will continue onto the next line. Some syntax structures, such as parentheses and braces,
+          will implicitly continue onto the next line if not closed, and in these cases the <code>\</code> character is not required.
+        </p>
+        <h3 id="syntax-indentation">Indentation</h3>
+        <p>
+          Indentation — spaces and tabs at the beginning of a line — are the fundamental basis of control flow structuring in Kuroko.
+          It is highly recommended that indentation be restricted to spaces. Tabs are supported only for the sake of REPLs, and are
+          always classified as equivalent to 8 spaces. Spaces and tabs can not appear together in an indentation sequence.
+          Indentation in blocks must be consistent, and the indentation of nested blocks must be strictly greater than that of their enclosing block.
+        </p>
+        <div class="alert alert-secondary">Indentation characters that appear at the start of a continuation line are treated as regular whitespace and will be ignored by the compiler.</div>
+        <h3 id="syntax-identifiers">Identifiers</h3>
+        <p>
+          Outside of the keywords identified above, identifiers must begin with a lowercase or uppercase ASCII letter (a-z, A-Z) or an underscore.
+          Further characters in identifiers can include digits (0-9) or any Unicode codepoint above U+007F.
+        </p>
+        <h3 id="syntax-numerals">Numerals</h3>
+        <p>
+          Two numeric literals are supported: integers (<code>int</code>) and floating point values (<code>float</code>).
+          Integers may be represented either as sequences of decimal digits or through binary, octal, and hexadecimal sequences through the use of appropriate prefixes
+          (<code>0b</code>, <code>0o</code>, and <code>0x</code> repsectively, or their uppercase forms).
+          Floating point values are represented as decimal digits with a leading whole part, a dot, and a fractical part with zero or more decimal digits.
+        </p>
+        <div class="alert alert-secondary">As of writing, Kuroko does not support extended floating point literal syntaxes. The <code>float</code> built-in may be capable of parsing these formats depending on the platform.</div>
+        <h3 id="syntax-strings">Strings</h3>
+        <p>
+          Strings in Kuroko may be designated by either <code>'single'</code> or <code>"double"</code> quotation marks.
+          Both of these literal forms must be explicitly continued as described above if they are to span multiple lines.
+          There is no syntactic difference between single or double quotes beyond which of the two needs to be escaped if it appears in the string.
+          Additionally, <code>'''triple'''</code> <code>"""quotations"""</code> are also supported.
+          Triple quotation strings can implicitly span multiple lines.
+        </p>
+        <h4>String Prefixes</h4>
+        <p>
+          Kuroko also supports string literals with two prefixes: <code>b''</code> indicates a <i>byte string</i> (a <code>bytes</code> object) and <code>f''</code> indicates a <i>format string</i>.
+        </p>
+        <h4>Escape Sequences</h4>
+        <p>
+          String literals may include the following escape sequences: <code>'\\'</code> (a literal backslash character), <code>'\''</code> (a literal single quotation mark),
+          <code>"\""</code> (a literal double quotation mark), <code>'\a\b\f\n\r\t\v'</code> for the ASCII bell, backspace, formfeed, linefeed, carriage return, horizontal tab, and vertical tab respectively,
+          and <code>'\x00'</code> with <code>00</code> being two hexadecimal digits representing a byte in a byte string or a codepoint below U+100 in a normal string.
+          Normal strings can also include <code>'\u1234'</code> to represent codepoints below U+10000 and <code>'\U12345678'</code> to represent any valid codepoint.
+        </p>
+        <div class="alert alert-secondary">
+          If a <code>\</code> character is followed by a character which does not form an escape sequence, it will appear as a literal backslash character in the string.
+          This behavior matches with Python, but may be surprising for those familiar with other languages.
+        </div>
+        <h2 id="data-model">Data Model</h2>
+        <p>
+          As in other dialects of Python, all data in Kuroko exists as dynamically-typed objects with operations such as passing values as function arguments or assigning them to names being restricted to <i>references</i>.
+          Kuroko also has a concept of <i>primitive values</i> — trivial types (specifically, <code>int</code>, <code>bool</code>, <code>float</code>, the special value <code>None</code>, and some values used internally by the compiler)
+          which do not exist as objects and live only as references.
+        </p>
+        <h3 id="data-model-objects">Objects</h3>
+      </main>
+    </div>
+    <footer class="container text-center mb-3">
+      <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
+      <p class="mb-0">Powered by <a href="https://emscripten.org">emscripten</a>, <a href="https://ace.c9.io/">Ace</a>, and <a href="https://getbootstrap.com/">Bootstrap</a>.</p>
+    </footer>
+    <script type="text/javascript" src="embed.js"></script>
+    <script async type="text/javascript" src="index.js"></script>
+    <script type="text/x-kuroko" src="docs.krk"></script>
+    <script type="text/javascript" src="toc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
