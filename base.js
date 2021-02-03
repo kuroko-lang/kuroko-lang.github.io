@@ -35,6 +35,7 @@ function runCode(editor) {
   /* Freeze the editor. */
   editor.renderer.off("afterRender", scrollToBottom);
   editor.setReadOnly(true);
+  editor.getSession().setUseWrapMode(false);
   editor.renderer.$cursorLayer.element.style.display = "none";
   var frozenEditor = document.createElement("pre");
   frozenEditor.className = "lines";
@@ -137,7 +138,7 @@ function createEditor(initial=false) {
     showPrintMargin: false,
     useSoftTabs: true,
     indentedSoftWrap: false,
-    wrap: false
+    wrap: true
   });
   editor.setTheme("ace/theme/sunsmoke");
   editor.setBehavioursEnabled(false);
