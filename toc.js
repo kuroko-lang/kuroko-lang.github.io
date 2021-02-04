@@ -1,5 +1,9 @@
 var previous = null;
 var mainCategory = null;
+var onFinishScroll = null;
+function finishScrolling() {
+	document.querySelectorAll(".accordion-collapse").forEach( item => { if (item != mainCategory) { item.bsCollapse.hide(); } } );
+}
 function markSection(entries) {
 	entries.forEach((entry) => {
 		if (entry.isIntersecting) {
@@ -18,10 +22,12 @@ function markSection(entries) {
 	if (first) {
 		first.classList.add('targeted');
 		mainCategory = first.closest('.accordion-collapse');
-		mainCategory.bsCollapse.show();
+		if (!('show' in mainCategory.classList)) {
+			mainCategory.bsCollapse.show();
+		}
 	}
-	document.querySelectorAll(".accordion-collapse").forEach( item => { if (item != mainCategory) { item.bsCollapse.hide(); } } );
 }
+
 
 function afterToc() {
 	document.querySelectorAll(".accordion-collapse.collapse").forEach( item => {
@@ -31,4 +37,8 @@ function afterToc() {
 		var tocObserver = new IntersectionObserver(markSection, {threshold: 1});
 		document.querySelectorAll("h3").forEach((h3) => tocObserver.observe(h3));
 	}
+	window.addEventListener('scroll', function (event) {
+		window.clearTimeout(onFinishScroll);
+		onFinishScroll = setTimeout(finishScrolling, 100);
+	}, false);
 }
