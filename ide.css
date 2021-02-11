@@ -1,0 +1,71 @@
+body {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+main.grid-container {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: #1f1f1f;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  grid-template-rows: max-content 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "navbar navbar navbar"
+    "left-pane splitter right-pane";
+}
+.navbar { grid-area: navbar; height: 30px; }
+.nav-link { padding-bottom: 0; padding-top: 0; }
+.left-pane { grid-area: left-pane; }
+.left-pane { grid-area: left-pane; overflow-y: auto; scroll-behavior: smooth; }
+.right-pane { grid-area: right-pane; overflow-y: auto; scroll-behavior: smooth; }
+.splitter {
+  grid-area: splitter;
+  background-color: #555;
+  height: 100%;
+}
+.terminal-container {
+  padding: 0px;
+  border-radius: 0px;
+  border: 0;
+}
+div.editor {
+  font-size: 17px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  line-height: normal;
+}
+.dropdown-menu {
+  border: 1px solid #2e2e2e;
+  border-top: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: #1c1c1c;
+  padding: 0.125rem 0;
+  margin-top: 3px;
+}
+.dropdown-item {
+  color: #fff;
+  padding: 0.125rem 0.5rem;
+}
+.dropdown-header {
+  text-align: center;
+}
+input[type=file] {
+  margin: 0;
+  opacity: 0;
+}
+input[type=file] + span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.file-picker {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
