@@ -80,19 +80,31 @@
         display: inline-block;
         cursor: pointer;
       }
+      @media (orientation: portrait) {
+        main.grid-container {
+          grid-template-columns: 1fr;
+          grid-template-rows: max-content 1fr 1px 1fr;
+          gap: 0px 0px;
+          grid-template-areas:
+            "navbar"
+            "left-pane"
+            "splitter"
+            "right-pane";
+        }
+        .navbar-nav {
+          margin-top: 8px;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="grid-container">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
           <div class="order-0" style="padding-left: 0.25rem;">
             <a class="navbar-brand" href="/">
               <img src="/logo.png" style="height: 1.5rem;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
           </div>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
