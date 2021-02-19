@@ -97,46 +97,31 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4eeb864c4eec08c7d6b9d3b0352cfdde.html">tools</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">kuroko.h</div>  </div>
+<div class="title">demo.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="kuroko_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#if defined(__EMSCRIPTEN__)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> krk_integer_type;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"># define PRIkrk_int &quot;%lld&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"># define PRIkrk_hex &quot;%llx&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"># define parseStrInt strtoll</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#elif defined(_WIN32)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> krk_integer_type;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"># define PRIkrk_int &quot;%I64d&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"># define PRIkrk_hex &quot;%I64x&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"># define parseStrInt strtoll</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"># else</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span> krk_integer_type;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"># define PRIkrk_int &quot;%ld&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"># define PRIkrk_hex &quot;%lx&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"># define parseStrInt strtol</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"># define ENABLE_THREADING</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define ENABLE_DISASSEMBLY</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define ENABLE_TRACING</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define ENABLE_SCAN_TRACING</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define ENABLE_STRESS_GC</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;kuroko/kuroko.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;kuroko/vm.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(0);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="vm_8h.html#a63bd18638ab233f1af689422493ea99c">krk_interpret</a>(<span class="stringliteral">&quot;import kuroko\nprint(&#39;Kuroko&#39;,kuroko.version)\n&quot;</span>, 1, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>,<span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="avm_8h_html_a63bd18638ab233f1af689422493ea99c"><div class="ttname"><a href="vm_8h.html#a63bd18638ab233f1af689422493ea99c">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, int newScope, char *fromName, char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02409">vm.c:2409</a></div></div>
+<div class="ttc" id="astructKrkVM_html_a3dced9904f6a128032a729078ba16555"><div class="ttname"><a href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">KrkVM::krk_freeVM</a></div><div class="ttdeci">void krk_freeVM(void)</div><div class="ttdoc">Release resources from the VM.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01265">vm.c:1265</a></div></div>
+<div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01116">vm.c:1116</a></div></div>
+<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02401">vm.c:2401</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>
