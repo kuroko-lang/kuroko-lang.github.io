@@ -1,0 +1,13 @@
+<map id="src/compiler.h" name="src/compiler.h">
+<area shape="rect" id="node1" title="Exported methods for the source compiler." alt="" coords="68,5,183,32"/>
+<area shape="rect" id="node2" href="$src_2object_8h.html" title="Struct definitions for core object types." alt="" coords="88,80,163,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,304,72,331"/>
+<area shape="rect" id="node4" href="$src_2kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="161,304,239,331"/>
+<area shape="rect" id="node8" href="$src_2value_8h.html" title="Definitions for primitive stack references." alt="" coords="41,229,111,256"/>
+<area shape="rect" id="node9" href="$src_2chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="89,155,162,181"/>
+<area shape="rect" id="node10" href="$src_2table_8h.html" title="Implementation of a generic hash table." alt="" coords="237,155,304,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="214,379,285,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="115,379,189,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="341,379,411,405"/>
+<area shape="rect" id="node11" href="$src_2threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="288,229,371,256"/>
+</map>

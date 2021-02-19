@@ -1,0 +1,9 @@
+<map id="KrkChunk" name="KrkChunk">
+<area shape="rect" id="node1" title="Opcode chunk of a code object." alt="" coords="149,273,235,300"/>
+<area shape="rect" id="node2" href="$structKrkValueArray.html" title="Flexible vector of stack references." alt="" coords="134,184,250,211"/>
+<area shape="rect" id="node3" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="151,95,233,121"/>
+<area shape="rect" id="node4" href="$structKrkObj.html" title="The most basic object type." alt="" coords="32,5,99,32"/>
+<area shape="rect" id="node7" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="5,95,88,121"/>
+<area shape="rect" id="node5" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="180,5,297,32"/>
+<area shape="rect" id="node6" href="$structKrkLineMap.html" title="Map entry of instruction offsets to line numbers." alt="" coords="275,184,373,211"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="tools/kuroko/object.h" name="tools/kuroko/object.h">
+<area shape="rect" id="node1" title="Struct definitions for core object types." alt="" coords="46,5,205,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,72,256"/>
+<area shape="rect" id="node3" href="$tools_2kuroko_2kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="161,229,239,256"/>
+<area shape="rect" id="node7" href="$tools_2kuroko_2value_8h.html" title="Definitions for primitive stack references." alt="" coords="41,155,111,181"/>
+<area shape="rect" id="node8" href="$tools_2kuroko_2chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="89,80,162,107"/>
+<area shape="rect" id="node9" href="$tools_2kuroko_2table_8h.html" title="Implementation of a generic hash table." alt="" coords="237,80,304,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="214,304,285,331"/>
+<area shape="rect" id="node5" title=" " alt="" coords="115,304,189,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="341,304,411,331"/>
+<area shape="rect" id="node10" href="$tools_2kuroko_2threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="288,155,371,181"/>
+</map>

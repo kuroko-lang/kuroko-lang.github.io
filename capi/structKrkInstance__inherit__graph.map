@@ -1,0 +1,13 @@
+<map id="KrkInstance" name="KrkInstance">
+<area shape="rect" id="node1" title="An object of a class." alt="" coords="344,80,443,107"/>
+<area shape="rect" id="node3" href="$structDirectory.html" title="OBject for a C DIR* stream." alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node4" href="$structFile.html" title="Object for a C FILE* stream." alt="" coords="113,155,157,181"/>
+<area shape="rect" id="node5" href="$structKrkDict.html" title="Flexible mapping type." alt="" coords="181,155,251,181"/>
+<area shape="rect" id="node6" href="$structKrkList.html" title="Mutable array of values." alt="" coords="276,155,343,181"/>
+<area shape="rect" id="node7" href="$structLock.html" title="Simple atomic structure for waiting." alt="" coords="367,155,419,181"/>
+<area shape="rect" id="node8" href="$structRange.html" title="range object." alt="" coords="443,155,506,181"/>
+<area shape="rect" id="node9" href="$structSet.html" title="Mutable unordered set of values." alt="" coords="531,155,573,181"/>
+<area shape="rect" id="node10" href="$structSetIterator.html" title="Iterator over the values in a set." alt="" coords="597,155,688,181"/>
+<area shape="rect" id="node11" href="$structThread.html" title="Object representation of a system thread." alt="" coords="712,155,779,181"/>
+<area shape="rect" id="node2" href="$structKrkObj.html" title="The most basic object type." alt="" coords="360,5,427,32"/>
+</map>

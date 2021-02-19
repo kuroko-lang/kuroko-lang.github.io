@@ -1,0 +1,15 @@
+<map id="KrkFunction" name="KrkFunction">
+<area shape="rect" id="node1" title="Code object." alt="" coords="204,645,303,672"/>
+<area shape="rect" id="node2" href="$structKrkObj.html" title="The most basic object type." alt="" coords="532,5,599,32"/>
+<area shape="rect" id="node3" href="$structKrkInstance.html" title="An object of a class." alt="" coords="740,533,839,559"/>
+<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="794,645,873,672"/>
+<area shape="rect" id="node5" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="272,435,355,461"/>
+<area shape="rect" id="node8" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="677,95,758,121"/>
+<area shape="rect" id="node10" href="$structKrkLocalEntry.html" title="Metadata on a local variable name in a function." alt="" coords="93,533,205,559"/>
+<area shape="rect" id="node12" href="$structKrkChunk.html" title="Opcode chunk of a code object." alt="" coords="343,533,428,559"/>
+<area shape="rect" id="node6" href="$structKrkTable.html" title="Simple hash table of arbitrary keys to values." alt="" coords="779,435,858,461"/>
+<area shape="rect" id="node7" href="$structKrkTableEntry.html" title="One (key,value) pair in a table." alt="" coords="763,199,875,225"/>
+<area shape="rect" id="node11" href="$structKrkValueArray.html" title="Flexible vector of stack references." alt="" coords="519,435,635,461"/>
+<area shape="rect" id="node9" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="680,5,797,32"/>
+<area shape="rect" id="node13" href="$structKrkLineMap.html" title="Map entry of instruction offsets to line numbers." alt="" coords="385,435,484,461"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Range" name="Range">
+<area shape="rect" id="node1" title="range object." alt="" coords="5,648,68,675"/>
+<area shape="rect" id="node2" href="$structKrkInstance.html" title="An object of a class." alt="" coords="55,543,154,569"/>
+<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="287,648,365,675"/>
+<area shape="rect" id="node3" href="$structKrkObj.html" title="The most basic object type." alt="" coords="334,5,401,32"/>
+<area shape="rect" id="node5" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="455,95,538,121"/>
+<area shape="rect" id="node8" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="229,95,311,121"/>
+<area shape="rect" id="node6" href="$structKrkTable.html" title="Simple hash table of arbitrary keys to values." alt="" coords="231,443,309,470"/>
+<area shape="rect" id="node7" href="$structKrkTableEntry.html" title="One (key,value) pair in a table." alt="" coords="214,199,326,225"/>
+<area shape="rect" id="node9" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="73,5,190,32"/>
+</map>

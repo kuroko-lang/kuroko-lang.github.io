@@ -1,0 +1,13 @@
+<map id="tools/kuroko/memory.h" name="tools/kuroko/memory.h">
+<area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="91,5,261,32"/>
+<area shape="rect" id="node2" href="$tools_2kuroko_2kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="51,304,130,331"/>
+<area shape="rect" id="node6" href="$tools_2kuroko_2object_8h.html" title="Struct definitions for core object types." alt="" coords="139,80,213,107"/>
+<area shape="rect" id="node10" href="$tools_2kuroko_2table_8h.html" title="Implementation of a generic hash table." alt="" coords="288,155,355,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="105,379,175,405"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,379,80,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="286,379,357,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="185,304,252,331"/>
+<area shape="rect" id="node8" href="$tools_2kuroko_2value_8h.html" title="Definitions for primitive stack references." alt="" coords="91,229,162,256"/>
+<area shape="rect" id="node9" href="$tools_2kuroko_2chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="65,155,138,181"/>
+<area shape="rect" id="node11" href="$tools_2kuroko_2threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="288,229,371,256"/>
+</map>

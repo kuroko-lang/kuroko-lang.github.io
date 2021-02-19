@@ -1,0 +1,5 @@
+<map id="KrkValue" name="KrkValue">
+<area shape="rect" id="node1" title="Stack reference or primative value." alt="" coords="127,95,209,121"/>
+<area shape="rect" id="node2" href="$structKrkObj.html" title="The most basic object type." alt="" coords="5,5,72,32"/>
+<area shape="rect" id="node3" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="153,5,271,32"/>
+</map>

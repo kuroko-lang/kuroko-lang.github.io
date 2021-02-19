@@ -1,0 +1,21 @@
+<map id="src/exceptions.c" name="src/exceptions.c">
+<area shape="rect" id="node1" title="Definitions and native method bindings for error types." alt="" coords="440,5,567,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="329,80,400,107"/>
+<area shape="rect" id="node3" href="$vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="541,155,596,181"/>
+<area shape="rect" id="node10" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="483,379,553,405"/>
+<area shape="rect" id="node18" href="$memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="379,155,465,181"/>
+<area shape="rect" id="node19" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="476,80,531,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="777,229,851,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="657,229,753,256"/>
+<area shape="rect" id="node6" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="336,453,415,480"/>
+<area shape="rect" id="node12" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="265,304,331,331"/>
+<area shape="rect" id="node16" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="406,229,481,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="325,528,396,555"/>
+<area shape="rect" id="node8" title=" " alt="" coords="421,528,495,555"/>
+<area shape="rect" id="node9" title=" " alt="" coords="203,528,273,555"/>
+<area shape="rect" id="node11" title=" " alt="" coords="695,453,762,480"/>
+<area shape="rect" id="node13" href="$threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="103,379,186,405"/>
+<area shape="rect" id="node14" title=" " alt="" coords="5,453,89,480"/>
+<area shape="rect" id="node15" title=" " alt="" coords="114,453,186,480"/>
+<area shape="rect" id="node17" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="407,304,480,331"/>
+</map>

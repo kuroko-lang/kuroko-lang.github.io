@@ -1,0 +1,11 @@
+<map id="DictKeys" name="DictKeys">
+<area shape="rect" id="node1" title=" " alt="" coords="15,648,94,675"/>
+<area shape="rect" id="node2" href="$structKrkInstance.html" title="An object of a class." alt="" coords="169,543,268,569"/>
+<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="335,648,414,675"/>
+<area shape="rect" id="node3" href="$structKrkObj.html" title="The most basic object type." alt="" coords="389,5,456,32"/>
+<area shape="rect" id="node5" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="511,95,593,121"/>
+<area shape="rect" id="node8" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="51,95,133,121"/>
+<area shape="rect" id="node6" href="$structKrkTable.html" title="Simple hash table of arbitrary keys to values." alt="" coords="245,443,323,470"/>
+<area shape="rect" id="node7" href="$structKrkTableEntry.html" title="One (key,value) pair in a table." alt="" coords="64,199,176,225"/>
+<area shape="rect" id="node9" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="5,5,123,32"/>
+</map>

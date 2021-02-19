@@ -1,0 +1,19 @@
+<map id="ThreadState" name="ThreadState">
+<area shape="rect" id="node1" title="Execution state of a VM thread." alt="" coords="1333,677,1435,704"/>
+<area shape="rect" id="node10" href="$structKrkUpvalue.html" title="Storage for values referenced from nested functions." alt="" coords="1245,767,1344,793"/>
+<area shape="rect" id="node2" href="$structKrkInstance.html" title="An object of a class." alt="" coords="937,565,1036,591"/>
+<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="1018,677,1097,704"/>
+<area shape="rect" id="node13" href="$structKrkFunction.html" title="Code object." alt="" coords="329,677,428,704"/>
+<area shape="rect" id="node3" href="$structKrkObj.html" title="The most basic object type." alt="" coords="832,5,899,32"/>
+<area shape="rect" id="node5" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="232,451,315,477"/>
+<area shape="rect" id="node8" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="1247,95,1329,121"/>
+<area shape="rect" id="node12" href="$structKrkClosure.html" title="Function object." alt="" coords="619,856,712,883"/>
+<area shape="rect" id="node14" href="$structKrkLocalEntry.html" title="Metadata on a local variable name in a function." alt="" coords="207,565,319,591"/>
+<area shape="rect" id="node16" href="$structKrkChunk.html" title="Opcode chunk of a code object." alt="" coords="393,565,479,591"/>
+<area shape="rect" id="node6" href="$structKrkTable.html" title="Simple hash table of arbitrary keys to values." alt="" coords="1213,451,1291,477"/>
+<area shape="rect" id="node11" href="$structKrkCallFrame.html" title="Represents a managed call state in a VM thread." alt="" coords="1454,945,1565,972"/>
+<area shape="rect" id="node7" href="$structKrkTableEntry.html" title="One (key,value) pair in a table." alt="" coords="1232,199,1344,225"/>
+<area shape="rect" id="node15" href="$structKrkValueArray.html" title="Flexible vector of stack references." alt="" coords="590,451,706,477"/>
+<area shape="rect" id="node9" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="1229,5,1347,32"/>
+<area shape="rect" id="node17" href="$structKrkLineMap.html" title="Map entry of instruction offsets to line numbers." alt="" coords="444,451,543,477"/>
+</map>
