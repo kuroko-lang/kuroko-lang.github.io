@@ -98,32 +98,49 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">threading </div>  </div>
+<div class="title">tools.gendoc </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Methods for dealing with threads.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<div class="textblock"><p>Tool for dynamically generating documentation files through introspection.</p>
+<p>Imports modules and scans through members to generate Markdown files to feed into Doxygen. Uses dynamic introspection to obtain member lists and look up function arguments, docstrings, etc.</p>
+<p>Markdown output is aided by a set of macros defined in the Kuroko API Documentation Doxyfile. The output should be suitable for use with a normal Doxygen build, but some additional customization is available.</p>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Classes</h2>
-<p> <h3 class="memtitle classDef" id="Lock"><span class="permalink"><a href="#Lock">_</a></span><i>class</i> <b>Lock</b>(object)</h3><div class="memitem"><div class="memdoc">  <h4 class="memtitle methodDef" id="Lock.__init__"><span class="permalink"><a href="#Lock.__init__">_</a></span>Lock(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> <h3 class="memtitle classDef" id="Pair"><span class="permalink"><a href="#Pair">_</a></span><i>class</i> <b>Pair</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Makes a silly sortable pair that can be expanded like a two-tuple.</p>
+<p> <h4 class="memtitle methodDef" id="Pair.__init__"><span class="permalink"><a href="#Pair.__init__">_</a></span>Pair(<i>left,right</i>)</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
-<p> <h4 class="memtitle methodDef" id="Lock.__enter__"><span class="permalink"><a href="#Lock.__enter__">_</a></span>Lock.<b>__enter__</b>(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> <h4 class="memtitle methodDef" id="Pair.__gt__"><span class="permalink"><a href="#Pair.__gt__">_</a></span>Pair.<b>__gt__</b>(<i>other</i>)</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
-<p> <h4 class="memtitle methodDef" id="Lock.__exit__"><span class="permalink"><a href="#Lock.__exit__">_</a></span>Lock.<b>__exit__</b>(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> <h4 class="memtitle methodDef" id="Pair.__iter__"><span class="permalink"><a href="#Pair.__iter__">_</a></span>Pair.<b>__iter__</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
-<p> </div></div>  <h3 class="memtitle classDef" id="Thread"><span class="permalink"><a href="#Thread">_</a></span><i>class</i> <b>Thread</b>(object)</h3><div class="memitem"><div class="memdoc">  <h4 class="memtitle methodDef" id="Thread.is_alive"><span class="permalink"><a href="#Thread.is_alive">_</a></span>Thread.<b>is_alive</b>(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div></p>
-<p> <h4 class="memtitle methodDef" id="Thread.join"><span class="permalink"><a href="#Thread.join">_</a></span>Thread.<b>join</b>(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div></p>
-<p> <h4 class="memtitle methodDef" id="Thread.start"><span class="permalink"><a href="#Thread.start">_</a></span>Thread.<b>start</b>(<i>...</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> <h4 class="memtitle methodDef" id="Pair.__lt__"><span class="permalink"><a href="#Pair.__lt__">_</a></span>Pair.<b>__lt__</b>(<i>other</i>)</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Functions</h2>
-<p> <h3 class="memtitle functionDef" id="current_thread"><span class="permalink"><a href="#current_thread">_</a></span><b>current_thread</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> <h3 class="memtitle functionDef" id="fixup"><span class="permalink"><a href="#fixup">_</a></span><b>fixup</b>(<i>mod</i>)</h3><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md24"></a>
-Exceptions</h2>
-<p> <h3 class="memtitle exceptionDef" id="ThreadError"><span class="permalink"><a href="#ThreadError">_</a></span><i>class</i> <b>ThreadError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> </p>
+<p> <h3 class="memtitle functionDef" id="fixupDoc"><span class="permalink"><a href="#fixupDoc">_</a></span><b>fixupDoc</b>(<i>doc</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="functionDoc"><span class="permalink"><a href="#functionDoc">_</a></span><b>functionDoc</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="getArgs"><span class="permalink"><a href="#getArgs">_</a></span><b>getArgs</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="isExceptionType"><span class="permalink"><a href="#isExceptionType">_</a></span><b>isExceptionType</b>(<i>cls</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="processModules"><span class="permalink"><a href="#processModules">_</a></span><b>processModules</b>(<i>modules</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="realPrint"><span class="permalink"><a href="#realPrint">_</a></span><b>realPrint</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"> Print values to the standard output descriptor.</p>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="truncateString"><span class="permalink"><a href="#truncateString">_</a></span><b>truncateString</b>(<i>s</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Other Members</h2>
+<h3 class="letDef"><em>let</em> <b>blacklistedMethods</b> = <em>list</em></h3>
+<h3 class="letDef"><em>let</em> <b>docString</b> = <em>dict</em></h3>
+<h3 class="letDef"><em>let</em> <b>modules</b> = <em>list</em></h3>
+<h3 class="letDef"><em>let</em> <b>specialMethods</b> = <em>dict</em></h3>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">

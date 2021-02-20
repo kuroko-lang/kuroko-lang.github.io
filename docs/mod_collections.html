@@ -102,32 +102,53 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Useful collection types not found in the core interpreter.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Classes</h2>
 <p> <h3 class="memtitle classDef" id="defaultdict"><span class="permalink"><a href="#defaultdict">_</a></span><i>class</i> <b>defaultdict</b>(dict)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Extended mapping type that automatically populates missing keys with values from a factory. </p>
+<p> <h4 class="memtitle methodDef" id="defaultdict.__init__"><span class="permalink"><a href="#defaultdict.__init__">_</a></span>defaultdict(<i>default_factory=,*args,**kwargs</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p> <h4 class="memtitle methodDef" id="defaultdict.__get__"><span class="permalink"><a href="#defaultdict.__get__">_</a></span>defaultdict[<i>key</i>]</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="defaultdict.__init__"><span class="permalink"><a href="#defaultdict.__init__">_</a></span>defaultdict(<i>default_factory</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="defaultdict.__missing__"><span class="permalink"><a href="#defaultdict.__missing__">_</a></span>defaultdict.<b>__missing__</b>(<i>key</i>)</h4><div class="memitem"><div class="memdoc"> Automatically called to create default values when <code>key</code> is not found.  </div></div>  </div></div>  <h3 class="memtitle classDef" id="deque"><span class="permalink"><a href="#deque">_</a></span><i>class</i> <b>deque</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="defaultdict.__missing__"><span class="permalink"><a href="#defaultdict.__missing__">_</a></span>defaultdict.<b>__missing__</b>(<i>key</i>)</h4><div class="memitem"><div class="memdoc"> Automatically called to create default values when <code>key</code> is not found.</p>
+<p> </div></div></p>
+<p> </div></div>  <h3 class="memtitle classDef" id="deque"><span class="permalink"><a href="#deque">_</a></span><i>class</i> <b>deque</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Linked list with fast push/pop/enque/deque operations but slow lookup. </p>
+<p> <h4 class="memtitle methodDef" id="deque.__init__"><span class="permalink"><a href="#deque.__init__">_</a></span>deque(<i>iterable=,maxlen=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p> <h4 class="memtitle methodDef" id="deque.__contains__"><span class="permalink"><a href="#deque.__contains__">_</a></span><i>value</i> in deque</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.__get__"><span class="permalink"><a href="#deque.__get__">_</a></span>deque[<i>index</i>]</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.__init__"><span class="permalink"><a href="#deque.__init__">_</a></span>deque(<i>iterable,maxlen</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.__iter__"><span class="permalink"><a href="#deque.__iter__">_</a></span>deque.<b>__iter__</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.__len__"><span class="permalink"><a href="#deque.__len__">_</a></span>deque.<b>__len__</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.append"><span class="permalink"><a href="#deque.append">_</a></span>deque.<b>append</b>(<i>item</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.appendleft"><span class="permalink"><a href="#deque.appendleft">_</a></span>deque.<b>appendleft</b>(<i>item</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.count"><span class="permalink"><a href="#deque.count">_</a></span>deque.<b>count</b>(<i>x</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.extend"><span class="permalink"><a href="#deque.extend">_</a></span>deque.<b>extend</b>(<i>iterable</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.extendleft"><span class="permalink"><a href="#deque.extendleft">_</a></span>deque.<b>extendleft</b>(<i>iterable</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.index"><span class="permalink"><a href="#deque.index">_</a></span>deque.<b>index</b>(<i>x,start,stop</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.insert"><span class="permalink"><a href="#deque.insert">_</a></span>deque.<b>insert</b>(<i>i,x</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.pop"><span class="permalink"><a href="#deque.pop">_</a></span>deque.<b>pop</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.popleft"><span class="permalink"><a href="#deque.popleft">_</a></span>deque.<b>popleft</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.remove"><span class="permalink"><a href="#deque.remove">_</a></span>deque.<b>remove</b>(<i>value</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.reverse"><span class="permalink"><a href="#deque.reverse">_</a></span>deque.<b>reverse</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h4 class="memtitle methodDef" id="deque.rotate"><span class="permalink"><a href="#deque.rotate">_</a></span>deque.<b>rotate</b>(<i>n</i>)</h4><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  </div></div> </p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.__get__"><span class="permalink"><a href="#deque.__get__">_</a></span>deque[<i>index</i>]</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.__iter__"><span class="permalink"><a href="#deque.__iter__">_</a></span>deque.<b>__iter__</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.__len__"><span class="permalink"><a href="#deque.__len__">_</a></span>deque.<b>__len__</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.append"><span class="permalink"><a href="#deque.append">_</a></span>deque.<b>append</b>(<i>item</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.appendleft"><span class="permalink"><a href="#deque.appendleft">_</a></span>deque.<b>appendleft</b>(<i>item</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.count"><span class="permalink"><a href="#deque.count">_</a></span>deque.<b>count</b>(<i>x</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.extend"><span class="permalink"><a href="#deque.extend">_</a></span>deque.<b>extend</b>(<i>iterable</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.extendleft"><span class="permalink"><a href="#deque.extendleft">_</a></span>deque.<b>extendleft</b>(<i>iterable</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.index"><span class="permalink"><a href="#deque.index">_</a></span>deque.<b>index</b>(<i>x,start=,stop=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.insert"><span class="permalink"><a href="#deque.insert">_</a></span>deque.<b>insert</b>(<i>i,x</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.pop"><span class="permalink"><a href="#deque.pop">_</a></span>deque.<b>pop</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.popleft"><span class="permalink"><a href="#deque.popleft">_</a></span>deque.<b>popleft</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.remove"><span class="permalink"><a href="#deque.remove">_</a></span>deque.<b>remove</b>(<i>value</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.reverse"><span class="permalink"><a href="#deque.reverse">_</a></span>deque.<b>reverse</b>(<i></i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> <h4 class="memtitle methodDef" id="deque.rotate"><span class="permalink"><a href="#deque.rotate">_</a></span>deque.<b>rotate</b>(<i>n=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p> </div></div> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">

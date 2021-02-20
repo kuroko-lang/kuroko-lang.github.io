@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['krkclass_452',['KrkClass',['../object_8h.html#a13fdd0ddeb36ce367df82eb6d7d3cbb3',1,'object.h']]],
-  ['krkinstance_453',['KrkInstance',['../object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f',1,'object.h']]],
-  ['krkobj_454',['KrkObj',['../object_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;object.h'],['../value_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;value.h']]],
-  ['krkstring_455',['KrkString',['../object_8h.html#a1dcb7cb75b9af1ecfbf0440c7cc770d8',1,'object.h']]],
-  ['krkthreadstate_456',['KrkThreadState',['../vm_8h.html#ad845f3a8058abb66385dfbb6d31a8dfc',1,'vm.h']]],
-  ['krkupvalue_457',['KrkUpvalue',['../object_8h.html#a89babf164e8d82c97ecd1131a33089df',1,'object.h']]],
-  ['krkvm_458',['KrkVM',['../vm_8h.html#ab24d03c0b5b25d5ddfa9f902f1d2c97a',1,'vm.h']]]
+  ['krkclass_453',['KrkClass',['../object_8h.html#a13fdd0ddeb36ce367df82eb6d7d3cbb3',1,'object.h']]],
+  ['krkinstance_454',['KrkInstance',['../object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f',1,'object.h']]],
+  ['krkobj_455',['KrkObj',['../object_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;object.h'],['../value_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;value.h']]],
+  ['krkstring_456',['KrkString',['../object_8h.html#a1dcb7cb75b9af1ecfbf0440c7cc770d8',1,'object.h']]],
+  ['krkthreadstate_457',['KrkThreadState',['../vm_8h.html#ad845f3a8058abb66385dfbb6d31a8dfc',1,'vm.h']]],
+  ['krkupvalue_458',['KrkUpvalue',['../object_8h.html#a89babf164e8d82c97ecd1131a33089df',1,'object.h']]],
+  ['krkvm_459',['KrkVM',['../vm_8h.html#ab24d03c0b5b25d5ddfa9f902f1d2c97a',1,'vm.h']]]
 ];

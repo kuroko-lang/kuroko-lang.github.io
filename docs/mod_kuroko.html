@@ -101,22 +101,62 @@ $(function() {
 <div class="title">kuroko </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><ul>
-<li>argv</li>
-<li>module_paths </li>
-</ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<div class="textblock"><p>System module.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Classes</h2>
+<p> <h3 class="memtitle classDef" id="module"><span class="permalink"><a href="#module">_</a></span><i>class</i> <b>module</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Type of imported modules and packages.</p>
+<p> </div></div></p>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Functions</h2>
-<p> <h3 class="memtitle functionDef" id="getsizeof"><span class="permalink"><a href="#getsizeof">_</a></span><b>getsizeof</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h3 class="memtitle functionDef" id="importmodule"><span class="permalink"><a href="#importmodule">_</a></span><b>importmodule</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"> Import a module by string name  </div></div>  <h3 class="memtitle functionDef" id="set_clean_output"><span class="permalink"><a href="#set_clean_output">_</a></span><b>set_clean_output</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p> </div></div>  <h3 class="memtitle functionDef" id="set_tracing"><span class="permalink"><a href="#set_tracing">_</a></span><b>set_tracing</b>(<i>...</i>)</h3><div class="memitem"><div class="memdoc"> Toggle debugging modes.  </div></div> </p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<p> <h3 class="memtitle functionDef" id="getsizeof"><span class="permalink"><a href="#getsizeof">_</a></span><b>getsizeof</b>(<i>value</i>)</h3><div class="memitem"><div class="memdoc"> Calculate the approximate size of an object in bytes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to examine.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="importmodule"><span class="permalink"><a href="#importmodule">_</a></span><b>importmodule</b>(<i>module</i>)</h3><div class="memitem"><div class="memdoc"> Import a module by string name</p>
+<p>Imports the dot-separated module <code>module</code> as if it were imported by the <code>import</code> statement and returns the resulting module object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">module</td><td>A string with a dot-separated package or module name</td></tr>
+  </table>
+  </dd>
+</dl>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="set_clean_output"><span class="permalink"><a href="#set_clean_output">_</a></span><b>set_clean_output</b>(<i>clean=True</i>)</h3><div class="memitem"><div class="memdoc"> Disables terminal escapes in some output from the VM.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clean</td><td>Whether to remove escapes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p> </div></div></p>
+<p> <h3 class="memtitle functionDef" id="set_tracing"><span class="permalink"><a href="#set_tracing">_</a></span><b>set_tracing</b>(<i>tracing=None,disassembly=None,scantracing=None,stressgc=None</i>)</h3><div class="memitem"><div class="memdoc"> Toggle debugging modes.</p>
+<p>Enables or disables tracing options for the current thread.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tracing</td><td>Enables instruction tracing. </td></tr>
+    <tr><td class="paramname">disassembly</td><td>Prints bytecode disassembly after compilation. </td></tr>
+    <tr><td class="paramname">scantracing</td><td>Prints debug output from the token scanner during compilation. </td></tr>
+    <tr><td class="paramname">stressgc</td><td>Forces a garbage collection cycle on each heap allocation.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p> </div></div></p>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Constants</h2>
-<h3 class="letDef"><em>let</em> <b>builddate</b> = <code> 'Feb 19 2021 at 21:03:05' </code></h3>
+<h3 class="letDef"><em>let</em> <b>builddate</b> = <code> 'Feb 20 2021 at 14:09:42' </code></h3>
 <h3 class="letDef"><em>let</em> <b>buildenv</b> = <code> 'GCC 9.3.0' </code></h3>
 <h3 class="letDef"><em>let</em> <b>executable_path</b> = <code> '/home/klange/Projects/kuroko/kuroko' </code></h3>
 <h3 class="letDef"><em>let</em> <b>path_sep</b> = <code> '/' </code></h3>
 <h3 class="letDef"><em>let</em> <b>version</b> = <code> '1.1.0-preview' </code></h3>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Other Members</h2>
+<h3 class="letDef"><em>let</em> <b>argv</b> = <em>list</em></h3>
+<h3 class="letDef"><em>let</em> <b>module_paths</b> = <em>list</em></h3>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">
