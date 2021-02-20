@@ -1,7 +1,0 @@
-<map id="KrkTuple" name="KrkTuple">
-<area shape="rect" id="node1" title="Immutable sequence of arbitrary values." alt="" coords="26,273,105,300"/>
-<area shape="rect" id="node2" href="$structKrkObj.html" title="The most basic object type." alt="" coords="5,5,72,32"/>
-<area shape="rect" id="node4" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="121,95,202,121"/>
-<area shape="rect" id="node3" href="$structKrkValueArray.html" title="Flexible vector of stack references." alt="" coords="103,184,219,211"/>
-<area shape="rect" id="node5" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="153,5,271,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="KrkTable" name="KrkTable">
-<area shape="rect" id="node1" title="Simple hash table of arbitrary keys to values." alt="" coords="129,288,207,315"/>
-<area shape="rect" id="node2" href="$structKrkTableEntry.html" title="One (key,value) pair in a table." alt="" coords="112,199,224,225"/>
-<area shape="rect" id="node3" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="127,95,209,121"/>
-<area shape="rect" id="node4" href="$structKrkObj.html" title="The most basic object type." alt="" coords="5,5,72,32"/>
-<area shape="rect" id="node5" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="153,5,271,32"/>
-</map>

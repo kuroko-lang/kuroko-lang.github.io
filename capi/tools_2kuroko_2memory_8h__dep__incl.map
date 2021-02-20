@@ -1,6 +1,0 @@
-<map id="tools/kuroko/memory.h" name="tools/kuroko/memory.h">
-<area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="54,5,225,32"/>
-<area shape="rect" id="node2" href="$tools_2kuroko_2util_8h.html" title="Utilities for creating native bindings." alt="" coords="70,80,209,107"/>
-<area shape="rect" id="node3" href="$compile_8c_source.html" title=" " alt="" coords="5,155,127,181"/>
-<area shape="rect" id="node4" href="$sandbox_8c_source.html" title=" " alt="" coords="151,155,275,181"/>
-</map>

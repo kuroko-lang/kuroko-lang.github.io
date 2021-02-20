@@ -1,6 +1,0 @@
-<map id="KrkBoundMethod" name="KrkBoundMethod">
-<area shape="rect" id="node1" title="A function that has been attached to an object to serve as a method." alt="" coords="5,187,140,213"/>
-<area shape="rect" id="node2" href="$structKrkObj.html" title="The most basic object type." alt="" coords="26,5,93,32"/>
-<area shape="rect" id="node3" href="$structKrkValue.html" title="Stack reference or primative value." alt="" coords="148,96,229,123"/>
-<area shape="rect" id="node4" href="$structKrkJumpTarget.html" title="Stack value representation of a &#39;with&#39; or &#39;try&#39; block." alt="" coords="174,5,291,32"/>
-</map>
