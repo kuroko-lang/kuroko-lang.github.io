@@ -86,4 +86,6 @@ var menudata={children:[
 {text:"Enumerations",url:"globals_enum.html"},
 {text:"Macros",url:"globals_defs.html"}]}]},
 {text:"Modules",url:"usergroup0.html",children:[
-{text:"Module List",url:"modulelist.html"}]}]}
+{text:"Module List",url:"modulelist.html"},
+{text:"Class Index",url:"classindex.html"},
+{text:"Function Index",url:"functionindex.html"}]}]}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fileio_472',['fileio',['../mod_fileio.html',1,'']]]
+  ['function_20index_475',['Function Index',['../functionindex.html',1,'']]],
+  ['fileio_476',['fileio',['../mod_fileio.html',1,'']]]
 ];
