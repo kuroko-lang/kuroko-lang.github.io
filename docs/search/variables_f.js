@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['threads_444',['threads',['../structKrkVM.html#a3d11d3f68fdef079c201f447eb7df4a8',1,'KrkVM']]],
-  ['tupleclass_445',['tupleClass',['../structBaseClasses.html#a835a48d30cb8696086de6e96d5dabfa3',1,'BaseClasses']]],
-  ['tupleiteratorclass_446',['tupleiteratorClass',['../structBaseClasses.html#a9f82e91110a110a6133c82f7303d9f13',1,'BaseClasses']]],
-  ['typeclass_447',['typeClass',['../structBaseClasses.html#a6b9bac910c9a0b246809784df2201546',1,'BaseClasses']]],
-  ['typeerror_448',['typeError',['../structExceptions.html#a10b8b8c7b0ae879c754374941e97d05b',1,'Exceptions']]]
+  ['scratchspace_435',['scratchSpace',['../structKrkThreadState.html#aeea61d72564ae8c9c992fb0a1ea65a0c',1,'KrkThreadState']]],
+  ['slots_436',['slots',['../structKrkCallFrame.html#a3cc7860ec6a998fdefa39af7325b7afb',1,'KrkCallFrame']]],
+  ['specialmethodnames_437',['specialMethodNames',['../structKrkVM.html#a4795f738845ec3b97afe5f1e376a0750',1,'KrkVM']]],
+  ['stack_438',['stack',['../structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0',1,'KrkThreadState']]],
+  ['stacksize_439',['stackSize',['../structKrkThreadState.html#a53337b6e6a5c2efb2709b833c33c7e07',1,'KrkThreadState']]],
+  ['stacktop_440',['stackTop',['../structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99',1,'KrkThreadState']]],
+  ['strclass_441',['strClass',['../structBaseClasses.html#afd27a0893081ae3fad829836071a6472',1,'BaseClasses']]],
+  ['strings_442',['strings',['../structKrkVM.html#a1b6fd5bfd1074dea35f084a3e89d1f9d',1,'KrkVM']]],
+  ['striteratorclass_443',['striteratorClass',['../structBaseClasses.html#a2110e243d3496aa18cd04219ee889488',1,'BaseClasses']]],
+  ['syntaxerror_444',['syntaxError',['../structExceptions.html#ada8bb5fea1676a52102d51d6fad7a033',1,'Exceptions']]],
+  ['system_445',['system',['../structKrkVM.html#ab40c4db7513a82bb3badf1d6d47cc500',1,'KrkVM']]]
 ];

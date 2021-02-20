@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rangeclass_431',['rangeClass',['../structBaseClasses.html#a88baf0b4eb1d9643a5edaa2808fb10de',1,'BaseClasses']]],
-  ['rangeiteratorclass_432',['rangeiteratorClass',['../structBaseClasses.html#a8ffc602590bf17fd4408e1fe6daed1c4',1,'BaseClasses']]]
+  ['propertyclass_432',['propertyClass',['../structBaseClasses.html#a445ef3ece807d413aa1d553d47d639c4',1,'BaseClasses']]]
 ];
