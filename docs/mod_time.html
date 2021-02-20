@@ -104,9 +104,13 @@ $(function() {
 <div class="textblock"><p>Provides timekeeping functions.</p>
 <h2><a class="anchor" id="autotoc_md25"></a>
 Functions</h2>
-<p><a class="anchor" id="sleep"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sleep">_</a></span><b>sleep</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="sleep"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sleep">_</a></span><b>sleep</b>(<i>secs</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Pause execution of the current thread.</p>
+<p>Uses the system <code>usleep()</code> function to sleep for <code>secs</code> seconds, which may be a <a class="el" href="mod___builtins__.html#float">float</a> or <a class="el" href="mod___builtins__.html#int">int</a>. The available precision is platform-dependent.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="time"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#time">_</a></span><b>time</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Return the elapsed seconds since the system epoch.</p>
+<p>Returns a <a class="el" href="mod___builtins__.html#float">float</a> representation of the number of seconds since the platform's epoch date. On POSIX platforms, this is the number of seconds since 1 January 1970. The precision of the return value is platform-dependent.</p>
 <p> </div></div> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
