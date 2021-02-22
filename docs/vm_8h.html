@@ -637,7 +637,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02513">2513</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02522">2522</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -811,7 +811,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>When newScope is non-zero, an object representing the globals of the new scope; otherwise, the returned result of the execution of this code. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02455">2455</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02464">2464</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1047,7 +1047,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02487">2487</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02496">2496</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1072,7 +1072,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02439">2439</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02448">2448</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1151,7 +1151,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02447">2447</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02456">2456</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

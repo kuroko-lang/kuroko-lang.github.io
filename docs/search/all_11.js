@@ -14,6 +14,7 @@ var searchData=
   ['stringbuilder_215',['StringBuilder',['../structStringBuilder.html',1,'']]],
   ['strings_216',['strings',['../structKrkVM.html#a1b6fd5bfd1074dea35f084a3e89d1f9d',1,'KrkVM']]],
   ['striteratorclass_217',['striteratorClass',['../structBaseClasses.html#a2110e243d3496aa18cd04219ee889488',1,'BaseClasses']]],
-  ['syntaxerror_218',['syntaxError',['../structExceptions.html#ada8bb5fea1676a52102d51d6fad7a033',1,'Exceptions']]],
-  ['system_219',['system',['../structKrkVM.html#ab40c4db7513a82bb3badf1d6d47cc500',1,'KrkVM']]]
+  ['syntax_20reference_218',['Syntax Reference',['../syntax.html',1,'']]],
+  ['syntaxerror_219',['syntaxError',['../structExceptions.html#ada8bb5fea1676a52102d51d6fad7a033',1,'Exceptions']]],
+  ['system_220',['system',['../structKrkVM.html#ab40c4db7513a82bb3badf1d6d47cc500',1,'KrkVM']]]
 ];
