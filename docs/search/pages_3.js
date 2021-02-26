@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['function_20index_476',['Function Index',['../functionindex.html',1,'']]],
-  ['fileio_477',['fileio',['../mod_fileio.html',1,'']]]
+  ['expressions_484',['Expressions',['../lang_expressions.html',1,'']]]
 ];

@@ -300,6 +300,7 @@ Enumerations</h2></td></tr>
 <b>METHOD_SETSLICE</b>, 
 <br />
 &#160;&#160;<b>METHOD_DELSLICE</b>, 
+<b>METHOD_CONTAINS</b>, 
 <b>METHOD__MAX</b>
 <br />
  }</td></tr>
@@ -311,15 +312,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a27e346ab67b34940df32c51fcd850419"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a> (void)</td></tr>
 <tr class="memdesc:a27e346ab67b34940df32c51fcd850419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the current thread's stack state to the top level.  <a href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">More...</a><br /></td></tr>
 <tr class="separator:a27e346ab67b34940df32c51fcd850419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63bd18638ab233f1af689422493ea99c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a63bd18638ab233f1af689422493ea99c">krk_interpret</a> (const char *src, int newScope, char *fromName, char *fromFile)</td></tr>
-<tr class="memdesc:a63bd18638ab233f1af689422493ea99c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile and execute a source code input.  <a href="vm_8h.html#a63bd18638ab233f1af689422493ea99c">More...</a><br /></td></tr>
-<tr class="separator:a63bd18638ab233f1af689422493ea99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d66c7c869f5a5836df9f19920d7d462"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a5d66c7c869f5a5836df9f19920d7d462">krk_runfile</a> (const char *fileName, int newScope, char *fromName, char *fromFile)</td></tr>
-<tr class="memdesc:a5d66c7c869f5a5836df9f19920d7d462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and run a source file and return when execution completes.  <a href="vm_8h.html#a5d66c7c869f5a5836df9f19920d7d462">More...</a><br /></td></tr>
-<tr class="separator:a5d66c7c869f5a5836df9f19920d7d462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae41080a3fbe06e3a692c109d0146c54e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#ae41080a3fbe06e3a692c109d0146c54e">krk_callfile</a> (const char *fileName, char *fromName, char *fromFile)</td></tr>
-<tr class="memdesc:ae41080a3fbe06e3a692c109d0146c54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and run a file as a module.  <a href="vm_8h.html#ae41080a3fbe06e3a692c109d0146c54e">More...</a><br /></td></tr>
-<tr class="separator:ae41080a3fbe06e3a692c109d0146c54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa956022075e59caef32f51e9b48d00c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a> (const char *src, char *fromFile)</td></tr>
+<tr class="memdesc:afa956022075e59caef32f51e9b48d00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile and execute a source code input.  <a href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">More...</a><br /></td></tr>
+<tr class="separator:afa956022075e59caef32f51e9b48d00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99cc264b2e561baa3bc7ec2514de19a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">krk_runfile</a> (const char *fileName, char *fromFile)</td></tr>
+<tr class="memdesc:a99cc264b2e561baa3bc7ec2514de19a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and run a source file and return when execution completes.  <a href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">More...</a><br /></td></tr>
+<tr class="separator:a99cc264b2e561baa3bc7ec2514de19a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e088692f7a0c84155023c8b06caedd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a52e088692f7a0c84155023c8b06caedd">krk_callfile</a> (const char *fileName, char *fromFile)</td></tr>
+<tr class="memdesc:a52e088692f7a0c84155023c8b06caedd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and run a file as a module.  <a href="vm_8h.html#a52e088692f7a0c84155023c8b06caedd">More...</a><br /></td></tr>
+<tr class="separator:a52e088692f7a0c84155023c8b06caedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbad085e3268a31810c61b4eba9c5e13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
 <tr class="memdesc:acbad085e3268a31810c61b4eba9c5e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push a stack value.  <a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">More...</a><br /></td></tr>
 <tr class="separator:acbad085e3268a31810c61b4eba9c5e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,11 +349,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:aecb9d121ec1eee51596b271695a75072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a list of properties for an object.  <a href="vm_8h.html#aecb9d121ec1eee51596b271695a75072">More...</a><br /></td></tr>
 <tr class="separator:aecb9d121ec1eee51596b271695a75072"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa40a950fdc2439bd080b4560830d1ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#aaa40a950fdc2439bd080b4560830d1ea">krk_loadModule</a> (<a class="el" href="structKrkString.html">KrkString</a> *path, <a class="el" href="structKrkValue.html">KrkValue</a> *moduleOut, <a class="el" href="structKrkString.html">KrkString</a> *runAs)</td></tr>
-<tr class="memdesc:aaa40a950fdc2439bd080b4560830d1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module by name.  <a href="vm_8h.html#aaa40a950fdc2439bd080b4560830d1ea">More...</a><br /></td></tr>
+<tr class="memdesc:aaa40a950fdc2439bd080b4560830d1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module from a file with a specified name.  <a href="vm_8h.html#aaa40a950fdc2439bd080b4560830d1ea">More...</a><br /></td></tr>
 <tr class="separator:aaa40a950fdc2439bd080b4560830d1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a546937bd02ff16f521d4b7675b41cfd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a546937bd02ff16f521d4b7675b41cfd9">krk_doRecursiveModuleLoad</a> (<a class="el" href="structKrkString.html">KrkString</a> *name)</td></tr>
-<tr class="memdesc:a546937bd02ff16f521d4b7675b41cfd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module from a package.  <a href="vm_8h.html#a546937bd02ff16f521d4b7675b41cfd9">More...</a><br /></td></tr>
+<tr class="memdesc:a546937bd02ff16f521d4b7675b41cfd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module by a dotted name.  <a href="vm_8h.html#a546937bd02ff16f521d4b7675b41cfd9">More...</a><br /></td></tr>
 <tr class="separator:a546937bd02ff16f521d4b7675b41cfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22918dd9c5fe8e3e7d274da3e45fc0ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce">krk_importModule</a> (<a class="el" href="structKrkString.html">KrkString</a> *name, <a class="el" href="structKrkString.html">KrkString</a> *runAs)</td></tr>
+<tr class="memdesc:a22918dd9c5fe8e3e7d274da3e45fc0ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the dotted name <code>name</code> with the final element as <code>runAs</code>.  <a href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce">More...</a><br /></td></tr>
+<tr class="separator:a22918dd9c5fe8e3e7d274da3e45fc0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd4be90c3c58b55439bb59bb63559c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#abd4be90c3c58b55439bb59bb63559c8e">krk_addObjects</a> (void)</td></tr>
 <tr class="memdesc:abd4be90c3c58b55439bb59bb63559c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate two strings.  <a href="vm_8h.html#abd4be90c3c58b55439bb59bb63559c8e">More...</a><br /></td></tr>
 <tr class="separator:abd4be90c3c58b55439bb59bb63559c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -430,9 +434,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_thread
 <tr class="memitem:ae7095dc680592ce473a69eecc10e77ca"><td class="memItemLeft" align="right" valign="top"><a id="ae7095dc680592ce473a69eecc10e77ca"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_operator_gt</b> (<a class="el" href="structKrkValue.html">KrkValue</a>, <a class="el" href="structKrkValue.html">KrkValue</a>)</td></tr>
 <tr class="separator:ae7095dc680592ce473a69eecc10e77ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5581905a34dc5420e3cd580303fab2e"><td class="memItemLeft" align="right" valign="top"><a id="ab5581905a34dc5420e3cd580303fab2e"></a>
-<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_valueGetAttribute</b> (<a class="el" href="structKrkValue.html">KrkValue</a> value, char *name)</td></tr>
-<tr class="separator:ab5581905a34dc5420e3cd580303fab2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -593,8 +594,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae41080a3fbe06e3a692c109d0146c54e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae41080a3fbe06e3a692c109d0146c54e">&#9670;&nbsp;</a></span>krk_callfile()</h2>
+<a id="a52e088692f7a0c84155023c8b06caedd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e088692f7a0c84155023c8b06caedd">&#9670;&nbsp;</a></span>krk_callfile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -604,12 +605,6 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fileName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>fromName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -630,14 +625,13 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Path to the source file to read and execute. </td></tr>
-    <tr><td class="paramname">fromName</td><td>Value to assign to <code>__name__</code> </td></tr>
     <tr><td class="paramname">fromFile</td><td>Value to assign to <code>__file__</code> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02522">2522</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02559">2559</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -696,22 +690,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load a module from a package. </p>
-<p>Given a package identifier, attempt to the load module into the module table.</p>
+<p>Load a module by a dotted name. </p>
+<p>Given a package identifier, attempt to the load module into the module table. This is a thin wrapper around <code><a class="el" href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce" title="Load the dotted name name with the final element as runAs.">krk_importModule()</a></code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>String object of the dot-separated package path to import. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <code>ImportError</code> occurred. </dd></dl>
-<p>To import foo.bar.baz</p><ul>
-<li>import foo as foo</li>
-<li>import foo/bar as foo.bar</li>
-<li>import foo/bar/baz as foo.bar.baz</li>
-</ul>
+<dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01599">1599</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01727">1727</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -731,7 +720,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>If there is an active exception, print a traceback to <code>stderr</code>. </p>
-<p>This function is exposed as a convenience for repl developers. Normally, the VM will call <code>krk_dumpTraceback</code> itself if an exception is unhandled and no exit trigger is current set. The traceback is obtained from the exception object. If the exception object does not have a traceback, only the exception itself will be printed. The traceback printer will attempt to open source files to print faulting lines and may call into the VM if the exception object has a managed implementation of <code>__str__</code>.</p>
+<p>This function is exposed as a convenience for repl developers. Normally, the VM will call <code><a class="el" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> itself if an exception is unhandled and no exit trigger is current set. The traceback is obtained from the exception object. If the exception object does not have a traceback, only the exception itself will be printed. The traceback printer will attempt to open source files to print faulting lines and may call into the VM if the exception object has a managed implementation of <code>__str__</code>.</p>
 <p>Display a traceback by scanning up the stack / call frames. The format of the output here is modeled after the output given by CPython, so we display the outermost call first and then move inwards; on each call frame we try to open the source file and print the corresponding line. </p>
 
 <p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00169">169</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
@@ -760,8 +749,54 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a63bd18638ab233f1af689422493ea99c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63bd18638ab233f1af689422493ea99c">&#9670;&nbsp;</a></span>krk_interpret()</h2>
+<a id="a22918dd9c5fe8e3e7d274da3e45fc0ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22918dd9c5fe8e3e7d274da3e45fc0ce">&#9670;&nbsp;</a></span>krk_importModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_importModule </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td>
+          <td class="paramname"><em>runAs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load the dotted name <code>name</code> with the final element as <code>runAs</code>. </p>
+<p>If <code>name</code> was imported previously with a name different from <code>runAs</code>, it will be imported again with the new name; this may result in unexpected behaviour. Generally, <code>runAs</code> is used to specify that the module should be run as <code>__main__</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Dotted path name of a module. </td></tr>
+    <tr><td class="paramname">runAs</td><td>Alternative name to attach to <code>__name__</code> for the module. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, 0 on failure. </dd></dl>
+<p>To import foo.bar.baz</p><ul>
+<li>import foo as foo</li>
+<li>import foo/bar as foo.bar</li>
+<li>import foo/bar/baz as foo.bar.baz</li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01631">1631</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+
+</div>
+</div>
+<a id="afa956022075e59caef32f51e9b48d00c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa956022075e59caef32f51e9b48d00c">&#9670;&nbsp;</a></span>krk_interpret()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -771,18 +806,6 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newScope</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>fromName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -803,15 +826,13 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">src</td><td>Source code to compile and run. </td></tr>
-    <tr><td class="paramname">newScope</td><td>Whether this code should be interpreted in the context of a new module. </td></tr>
-    <tr><td class="paramname">fromName</td><td>Name of the function or module being interpreted. </td></tr>
     <tr><td class="paramname">fromFile</td><td>Path to the source file, or a representative string like "&lt;stdin&gt;". </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>When newScope is non-zero, an object representing the globals of the new scope; otherwise, the returned result of the execution of this code. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02464">2464</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02511">2511</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -847,8 +868,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load a module by name. </p>
-<p>This is generally called by the import mechanisms to load a single module.</p>
+<p>Load a module from a file with a specified name. </p>
+<p>This is generally called by the import mechanisms to load a single module and will establish a module context internally to load the new module into, return a <a class="el" href="structKrkValue.html" title="Stack reference or primative value.">KrkValue</a> representing that module context through the <code>moduleOut</code> parameter.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Dotted path of the module, used for file lookup. </td></tr>
@@ -857,11 +878,11 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <code>ImportError</code> occurred.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred.</dd></dl>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01448">1448</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01480">1480</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -989,15 +1010,15 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reset the current thread's stack state to the top level. </p>
-<p>In a repl, this can be called before or after each iteration to clean up any remnant stack entries from an uncaught exception. It should not be called during normal execution by C extensions. Values on the stack may be lost to garbage collection after a call to <code>krk_resetStack</code> .</p>
+<p>In a repl, this should be called before or after each iteration to clean up any remnant stack entries from an uncaught exception. It should not be called during normal execution by C extensions. Values on the stack may be lost to garbage collection after a call to <code>krk_resetStack</code> .</p>
 <p>Reset the stack pointers, frame, upvalue list, clear the exception flag and current exception; happens on startup (twice) and after an exception. </p>
 
 <p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00099">99</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
-<a id="a5d66c7c869f5a5836df9f19920d7d462"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d66c7c869f5a5836df9f19920d7d462">&#9670;&nbsp;</a></span>krk_runfile()</h2>
+<a id="a99cc264b2e561baa3bc7ec2514de19a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99cc264b2e561baa3bc7ec2514de19a1">&#9670;&nbsp;</a></span>krk_runfile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1007,18 +1028,6 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fileName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newScope</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>fromName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1039,15 +1048,13 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Path to the source file to read and execute. </td></tr>
-    <tr><td class="paramname">newScope</td><td>Whether this file should be run in the context of a new module. </td></tr>
-    <tr><td class="paramname">fromName</td><td>Value to assign to <code>__name__</code> </td></tr>
     <tr><td class="paramname">fromFile</td><td>Value to assign to <code>__file__</code> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02496">2496</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02535">2535</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1072,7 +1079,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02448">2448</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02494">2494</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1151,7 +1158,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02456">2456</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02502">2502</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

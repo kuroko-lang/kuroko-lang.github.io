@@ -136,10 +136,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="compiler_8h__dep__incl.png" border="0" usemap="#src_2compiler_8hdep" alt=""/></div>
 <map name="src_2compiler_8hdep" id="src_2compiler_8hdep">
-<area shape="rect" title="Exported methods for the source compiler." alt="" coords="141,5,255,32"/>
+<area shape="rect" title="Exported methods for the source compiler." alt="" coords="199,5,314,32"/>
 <area shape="rect" href="compiler_8c_source.html" title=" " alt="" coords="5,80,119,107"/>
-<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="143,80,253,107"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="277,80,354,107"/>
+<area shape="rect" href="kuroko_8c_source.html" title=" " alt="" coords="143,80,243,107"/>
+<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="267,80,377,107"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="401,80,478,107"/>
 </map>
 </div>
 </div>
@@ -147,9 +148,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae16a3606b7d471c6d70e943507fcbde8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.html#ae16a3606b7d471c6d70e943507fcbde8">krk_compile</a> (const char *src, int newScope, char *fileName)</td></tr>
-<tr class="memdesc:ae16a3606b7d471c6d70e943507fcbde8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a string to a code object.  <a href="compiler_8h.html#ae16a3606b7d471c6d70e943507fcbde8">More...</a><br /></td></tr>
-<tr class="separator:ae16a3606b7d471c6d70e943507fcbde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a590a95e683d0220ad8d9f67a28e127fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.html#a590a95e683d0220ad8d9f67a28e127fd">krk_compile</a> (const char *src, char *fileName)</td></tr>
+<tr class="memdesc:a590a95e683d0220ad8d9f67a28e127fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a string to a code object.  <a href="compiler_8h.html#a590a95e683d0220ad8d9f67a28e127fd">More...</a><br /></td></tr>
+<tr class="separator:a590a95e683d0220ad8d9f67a28e127fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2e06d106cd8c8eba1d5eb2b8ec96d78"><td class="memItemLeft" align="right" valign="top"><a id="ae2e06d106cd8c8eba1d5eb2b8ec96d78"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8h.html#ae2e06d106cd8c8eba1d5eb2b8ec96d78">krk_markCompilerRoots</a> (void)</td></tr>
 <tr class="memdesc:ae2e06d106cd8c8eba1d5eb2b8ec96d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark objects owned by the compiler as in use. <br /></td></tr>
@@ -160,8 +161,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp
 
 <p class="definition">Definition in file <a class="el" href="compiler_8h_source.html">compiler.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae16a3606b7d471c6d70e943507fcbde8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae16a3606b7d471c6d70e943507fcbde8">&#9670;&nbsp;</a></span>krk_compile()</h2>
+<a id="a590a95e683d0220ad8d9f67a28e127fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a590a95e683d0220ad8d9f67a28e127fd">&#9670;&nbsp;</a></span>krk_compile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,12 +172,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newScope</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -197,14 +192,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">src</td><td>Source code string to compile. </td></tr>
-    <tr><td class="paramname">newScope</td><td>Whether the compiler should treat the source as a new module. </td></tr>
     <tr><td class="paramname">fileName</td><td>Path name of the source file or a representative string like "&lt;stdin&gt;" </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The code object resulting from the compilation, or NULL if compilation failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02623">2623</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02666">2666</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>

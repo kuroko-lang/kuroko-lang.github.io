@@ -143,7 +143,7 @@ Data Fields</h2></td></tr>
 <p>Each thread in the VM has its own local thread state, which contains the thread's stack, stack pointer, call frame stack, a thread-specific VM flags bitarray, and an exception state.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee" title="Thread-local VM state.">krk_currentThread</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00171">171</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00172">172</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a3e1c5c6a26f58def1f898dfb168dfa13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e1c5c6a26f58def1f898dfb168dfa13">&#9670;&nbsp;</a></span>currentException</h2>
@@ -158,7 +158,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>When an exception is thrown, it is stored here. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00183">183</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00184">184</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -175,7 +175,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>When called in a nested context, the frame offset to exit the VM dispatch loop on. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00180">180</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00181">181</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Thread-local VM flags; each thread inherits the low byte of the global VM flags. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00184">184</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00185">185</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -209,7 +209,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of active call frames. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00175">175</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00176">176</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Call frame stack for this thread, max KRK_CALL_FRAMES_MAX </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00174">174</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00175">175</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -243,7 +243,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>The current module execution context. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00182">182</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00183">183</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +260,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Invasive list pointer to next thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00172">172</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00173">173</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +277,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Flexible array of unclosed upvalues. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00179">179</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00180">180</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -294,7 +294,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>A place to store a few values to keep them from being prematurely GC'd. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00187">187</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00188">188</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Pointer to the bottom of the stack for this thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00177">177</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00178">178</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +328,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Size of the allocated stack space for this thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00176">176</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00177">177</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -345,7 +345,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Pointer to the top of the stack. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00178">178</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00179">179</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +362,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Decrementing watchdog timer for embedding. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00185">185</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00186">186</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>

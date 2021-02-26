@@ -8,7 +8,7 @@ var indexSectionsWithContent =
   5: "k",
   6: "k",
   7: "akv",
-  8: "_cdfgjkmost"
+  8: "_cdefgjklmost"
 };
 
 var indexSectionNames =

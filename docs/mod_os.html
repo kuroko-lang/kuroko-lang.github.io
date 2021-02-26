@@ -102,7 +102,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Provides access to low-level system operations.</p>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
+Classes</h2>
+<p><a class="anchor" id="stat_result"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#stat_result">_</a></span><i>class</i> <b>stat_result</b>(object)</h3><div class="memitem"><div class="memdoc">  </div></div></p>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Functions</h2>
 <p><a class="anchor" id="abort"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#abort">_</a></span><b>abort</b>()</h3><div class="memitem"><div class="memdoc"></p>
 <p>Abort the current process.</p>
@@ -169,6 +172,10 @@ Functions</h2>
 <p>Seek an open file descriptor.</p>
 <p>Seeks the open file descriptor <code>fd</code> by <code>pos</code> bytes as specified in <code>how</code>. Use the values <code>SEEK_SET</code>, <code>SEEK_CUR</code>, and <code>SEEK_END</code> for <code>how</code>.</p>
 <p> </div></div></p>
+<p><a class="anchor" id="mkdir"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#mkdir">_</a></span><b>mkdir</b>(<i>path,mode=0o777</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Create a directory.</p>
+<p>Creates a directory at <code>path</code>.</p>
+<p> </div></div></p>
 <p><a class="anchor" id="open"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#open">_</a></span><b>open</b>(<i>path,flags,mode=0o777</i>)</h3><div class="memitem"><div class="memdoc"></p>
 <p>Open a file.</p>
 <p>Opens the file at <code>path</code> with the specified <code>flags</code> and <code>mode</code>. Returns a file descriptor.</p>
@@ -185,6 +192,10 @@ Functions</h2>
 <p><a class="anchor" id="remove"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#remove">_</a></span><b>remove</b>(<i>path</i>)</h3><div class="memitem"><div class="memdoc"></p>
 <p>Delete a file.</p>
 <p>Attempts to delete the file at <code>path</code>.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="stat"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#stat">_</a></span><b>stat</b>(<i>path</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Get the status of a file</p>
+<p>Runs the <code>stat</code> system call on <code>path</code>. Returns a <a class="el" href="mod_os.html#stat_result">stat_result</a>.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="strerror"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#strerror">_</a></span><b>strerror</b>(<i>errorno</i>)</h3><div class="memitem"><div class="memdoc"></p>
 <p>Convert an integer error code to a string.</p>
@@ -225,12 +236,12 @@ Functions</h2>
 <p>Write to an open file descriptor.</p>
 <p>Writes the <a class="el" href="mod___builtins__.html#bytes">bytes</a> object <code>data</code> to the open file descriptor <code>fd</code>.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Exceptions</h2>
 <p><a class="anchor" id="OSError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#OSError">_</a></span><i>class</i> <b>OSError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Raised when system functions return a failure code. <code>Exception.arg</code> will provide a textual description of the error.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 Constants</h2>
 <h3 class="letDef"><em>let</em> <b>F_OK</b> = <code> 0 </code></h3>
 <h3 class="letDef"><em>let</em> <b>O_APPEND</b> = <code> 1024 </code></h3>
@@ -259,7 +270,7 @@ Constants</h2>
 <h3 class="letDef"><em>let</em> <b>pardir</b> = <code> '..' </code></h3>
 <h3 class="letDef"><em>let</em> <b>pathsep</b> = <code> ':' </code></h3>
 <h3 class="letDef"><em>let</em> <b>sep</b> = <code> '/' </code></h3>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>environ</b> = <em>_Environ</em></h3>
 </div></div><!-- contents -->

@@ -145,6 +145,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ade554b36ef7d3c8789db59062001fa07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
 <tr class="memdesc:ade554b36ef7d3c8789db59062001fa07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine the truth of a value.  <a href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">More...</a><br /></td></tr>
 <tr class="separator:ade554b36ef7d3c8789db59062001fa07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5581905a34dc5420e3cd580303fab2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#ab5581905a34dc5420e3cd580303fab2e">krk_valueGetAttribute</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value, char *name)</td></tr>
+<tr class="memdesc:ab5581905a34dc5420e3cd580303fab2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a property of an object by name.  <a href="structKrkValue.html#ab5581905a34dc5420e3cd580303fab2e">More...</a><br /></td></tr>
+<tr class="separator:ab5581905a34dc5420e3cd580303fab2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -222,7 +225,7 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The return value of the function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00921">921</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00926">926</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -270,7 +273,7 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An indicator of how the result should be obtained: 1: The VM must be resumed to run managed code. 2: The callable was a native function and result should be popped now. Else: The call failed. An exception may have already been set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00836">836</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00841">841</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -300,7 +303,7 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the value's type's class object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00500">500</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00505">505</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -360,7 +363,7 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if falsey, 0 if truthy </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01024">1024</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01029">1029</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -391,7 +394,7 @@ union {</td></tr>
 </div><div class="memdoc">
 
 <p>Determine if a class is an instance or subclass of a given type. </p>
-<p>Searches the class hierarchy of the given value to determine if it is a subtype of <code>type</code>. As this chains through the inheritence tree, the more deeply subclassed <code>obj</code> is, the longer it may take to determine if it is a subtype of <code>type</code>. All types should eventually be subtypes of the <code>object</code> type, so this condition should not be checked. For some types, convenience macros are available. If you need to check if <code>obj</code> is a specific type, exclusive of subtypes, compare <code>krk_getType</code> instead of using this function.</p>
+<p>Searches the class hierarchy of the given value to determine if it is a subtype of <code>type</code>. As this chains through the inheritence tree, the more deeply subclassed <code>obj</code> is, the longer it may take to determine if it is a subtype of <code>type</code>. All types should eventually be subtypes of the <a class="el" href="mod___builtins__.html#object">object</a> type, so this condition should not be checked. For some types, convenience macros are available. If you need to check if <code>obj</code> is a specific type, exclusive of subtypes, look at <code><a class="el" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015" title="Get the class representing a value.">krk_getType()</a></code> instead of using this function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>Value to examine. </td></tr>
@@ -401,7 +404,7 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if <code>obj</code> is an instance of <code>type</code> or of a subclass of <code>type</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00546">546</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00551">551</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -513,7 +516,48 @@ union {</td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01305">1305</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01332">1332</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+
+</div>
+</div>
+<a id="ab5581905a34dc5420e3cd580303fab2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5581905a34dc5420e3cd580303fab2e">&#9670;&nbsp;</a></span>krk_valueGetAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> krk_valueGetAttribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain a property of an object by name. </p>
+<p>This is a convenience function that works in essentially the same way as the OP_GET_PROPERTY instruction.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to examine. </td></tr>
+    <tr><td class="paramname">name</td><td>C-string of the property name to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01784">1784</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

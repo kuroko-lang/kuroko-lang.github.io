@@ -159,7 +159,7 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(<a class="code" href="structKrkValue.html">KrkValue</a> a, <a class="code" href="structKrkValue.html">KrkValue</a> b);</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue){VAL_BOOLEAN, {.boolean = value}})</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue){VAL_BOOLEAN, {.integer = value}})</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#define NONE_VAL(value)     ((KrkValue){VAL_NONE,    {.integer = 0}})</span></div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#define INTEGER_VAL(value)  ((KrkValue){VAL_INTEGER, {.integer = value}})</span></div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define FLOATING_VAL(value) ((KrkValue){VAL_FLOATING,{.floating = value}})</span></div>
@@ -167,7 +167,7 @@ $(function() {
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#define OBJECT_VAL(value)   ((KrkValue){VAL_OBJECT,  {.object = (KrkObj*)value}})</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define KWARGS_VAL(value)   ((KrkValue){VAL_KWARGS,  {.integer = value}})</span></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define AS_BOOLEAN(value)   ((value).as.boolean)</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define AS_BOOLEAN(value)   ((value).as.integer)</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#define AS_INTEGER(value)   ((value).as.integer)</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#define AS_FLOATING(value)  ((value).as.floating)</span></div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define AS_HANDLER(value)   ((value).as.handler)</span></div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#define IS_BOOLEAN(value)   ((value).type == VAL_BOOLEAN)</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define IS_NONE(value)      ((value).type == VAL_NONE)</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   ((value).type == VAL_INTEGER)</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   (((value).type == VAL_INTEGER) || ((value.type) == VAL_BOOLEAN))</span></div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define IS_FLOATING(value)  ((value).type == VAL_FLOATING)</span></div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define IS_HANDLER(value)   ((value).type == VAL_HANDLER)</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#define IS_OBJECT(value)    ((value).type == VAL_OBJECT)</span></div>

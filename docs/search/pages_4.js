@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gc_478',['gc',['../mod_gc.html',1,'']]]
+  ['function_20index_485',['Function Index',['../functionindex.html',1,'']]],
+  ['fileio_486',['fileio',['../mod_fileio.html',1,'']]]
 ];
