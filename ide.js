@@ -248,10 +248,15 @@ function addText(mode, text) {
 }
 
 function insertCode(code, runIt=true) {
-  currentEditor().setValue(code,1);
-  if (runIt) {
-    window.setTimeout(function() { runCode(currentEditor()); }, 100);
-  }
+  showSpinner();
+  window.setTimeout(function() {
+    krk_call('emscripten.newEditorTab("sample.krk")');
+    currentEditor().setValue(code,1);
+    dismissSpinner();
+    if (runIt) {
+      window.setTimeout(function() { runCode(currentEditor()); }, 100);
+    }
+  }, 100);
   return false;
 }
 
