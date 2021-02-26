@@ -90,8 +90,7 @@ function createEditor(containerId="editor") {
     useSoftTabs: true,
     wrap: true,
     enableBasicAutocompletion: true,
-    enableLiveAutocompletion: true,
-    maxLines: Infinity
+    enableLiveAutocompletion: true
   });
   editor.setTheme("ace/theme/sunsmoke");
   /* You may want to disable this? */

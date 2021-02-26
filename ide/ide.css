@@ -70,6 +70,7 @@ div.editor {
   font-size: 17px;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
   line-height: normal;
+  height: 100%;
 }
 .dropdown-menu {
   border-radius: 0 0 0.5rem 0.5rem;
