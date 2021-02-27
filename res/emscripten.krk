@@ -2,7 +2,7 @@ import os
 import stat
 import fileio
 import time
-from js import exec
+from js import exec, run_worker, destroy_worker
 
 let home = os.environ.get('HOME','/')
 
@@ -200,6 +200,25 @@ def rm(args):
         except as e:
             print(f"rm: {arg}: {e}")
 
+@shellCommand
+def kuroko(args):
+  args.pop(0)
+  if not args:
+    print("Interactive shell not available, sorry.")
+  else:
+    executeFile(args[0])
+
+@shellCommand
+def open(args):
+  args.pop(0)
+  if not args:
+    fileio.stderr.write('open: expected argument\n')
+  else:
+    let path = args[0]
+    if not path.startswith('/'):
+      path = os.getcwd() + '/' + path
+    openFile(path)
+
 class FileNode(object):
     def __init__(self, path, fileType, children=[]):
         let filename = path.split('/')[-1]
@@ -265,7 +284,7 @@ def setupContextMenu(path):
     debug("Setting up context menu for", path)
     cMP = path
     let role
-    if '/' not in path:
+    if '/' not in path.replace(home + '/',''):
         # Assume it's a project.
         role = 'project'
     else:
@@ -276,7 +295,10 @@ def setupContextMenu(path):
             role = 'file'
     exec(f'document.getElementById("file-context-menu").setAttribute("role","{role}");')
 
+let runningCode = False
 def shell_prompt():
+    if runningCode:
+      return '''<svg class="icon-sm run-button run-pulse" viewBox="0 0 24 24"><use href="#icon-play"></use></svg> $&nbsp;'''
     let cwd = os.getcwd()
     if cwd == home: cwd = '~'
     else if cwd.startswith(home + '/'): cwd = cwd.replace(home,'~',1)
@@ -398,6 +420,12 @@ def reportSaved(editorId):
         if tabId in tabs and isinstance(tabs[tabId], EditorTab):
             tabs[tabId].unsetModified()
 
+def hasUnsaved():
+  for k,v in editorTabs.items():
+    if v.modified:
+      return True
+  return False
+
 def openFile(path):
     # Is this file already open?
     if path in editorTabs:
@@ -415,12 +443,43 @@ def openFile(path):
     newTab.activate()
     editorTabs[path] = newTab
 
-def newEditorTab(file):
-    let path = '/tmp/' + file
+def newEditorTab(path):
     let newTab = EditorTab(path)
     newTab.realize()
     newTab.activate()
     editorTabs[path] = newTab
+
+let currentWorker = None
+let cleanupWorkers = []
+
+def finishRunning():
+  exec('dismissSpinner();')
+  runningCode = False
+  updatePrompt()
+  cleanupWorkers.append(currentWorker)
+  currentWorker = None
+
+def executeFile(path):
+  def _callback(data):
+    debug('Received final callback from worker for', path, '=>', data)
+    finishRunning()
+  if currentWorker:
+    fileio.stderr.write('Please wait until the currently running worker has finished.\n')
+    return
+  while cleanupWorkers:
+    destroy_worker(cleanupWorkers.pop(0))
+  debug('Calling worker to run', path)
+  runningCode = True
+  updatePrompt()
+  currentWorker = run_worker('/kuroko.js', path, _callback)
+
+def stopWorker():
+  if currentWorker is None:
+    fileio.stderr.write('No worker is runner.\n')
+    return
+  debug('Destroying worker #' + str(currentWorker))
+  destroy_worker(currentWorker)
+  finishRunning()
 
 # Startup stuff
 def __main__():
@@ -441,16 +500,14 @@ def __main__():
         <div class="p-3">
             <h1>Welcome!</h1>
             <p>This is a fully-client-side in-browser IDE for <a href="/">Kuroko</a>. All files are stored in your browser and persisted through IndexedDB.</p>
-            <div class="mb-3">
-              <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#newProject">
-                <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-package"></use></svg>
-                Create a New Project
-              </button>
-              <button type="button" class="btn btn-secondary">
-                <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
-                See a Sample Project
-              </button>
-            </div>
+            <button type="button" class="btn btn-success me-2 mb-3" data-bs-toggle="modal" data-bs-target="#newProject">
+              <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-package"></use></svg>
+              Create a New Project
+            </button>
+            <button type="button" class="btn btn-secondary me-2 mb-3">
+              <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
+              See a Sample Project
+            </button>
         </div>''')
     welcomeTab.realize()
     welcomeTab.activate()

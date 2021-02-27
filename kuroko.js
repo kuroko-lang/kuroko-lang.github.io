@@ -17,7 +17,73 @@ var Module = typeof Module !== 'undefined' ? Module : {};
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// {{PRE_JSES}}
+function _craftMessage(data) {
+  var buf = new Uint8Array(lengthBytesUTF8(data)+1);
+  var actualNumBytes = stringToUTF8Array(data, buf, 0, buf.length);
+  var transferObject = {
+    'callbackId': workerCallbackId,
+    'finalResponse': false,
+    'data': buf
+  };
+  postMessage(transferObject, [transferObject.data.buffer]);
+}
+var _idbfsSuccess = false;
+var Module = {
+  preRun: [function() {
+    /* Load IDBFS */
+    FS.mount(IDBFS, {}, '/home/web_user');
+    FS.mkdir('/scratch');
+    FS.mount(IDBFS, {}, '/scratch');
+    FS.syncfs(true, function (err) {
+      if (err) {
+        _craftMessage('E(debug) Error loading filesystem.');
+      } else {
+        _idbfsSuccess = true;
+      }
+    });
+    /* Create directories for runtime */
+    FS.mkdir('/usr');
+    FS.mkdir('/usr/local');
+    FS.mkdir('/usr/local/lib');
+    FS.mkdir('/usr/local/lib/kuroko');
+    FS.mkdir('/usr/local/lib/kuroko/syntax');
+    FS.mkdir('/usr/local/lib/kuroko/foo');
+    FS.mkdir('/usr/local/lib/kuroko/foo/bar');
+    /* Load source modules from web server */
+    const modules = ["help.krk","collections.krk","json.krk","string.krk","web.krk","dummy.krk","emscripten.krk"];
+    for (const i in modules) {
+      FS.createPreloadedFile('/usr/local/lib/kuroko', modules[i], "/res/" + modules[i], 1, 0)
+    }
+    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', '__init__.krk', '/res/init.krk', 1, 0)
+    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', 'highlighter.krk', '/res/highlighter.krk', 1, 0)
+    FS.createPreloadedFile('/usr/local/lib/kuroko/foo', '__init__.krk', '/res/init.krk', 1, 0)
+    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', '__init__.krk', '/res/init.krk', 1, 0)
+    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', 'baz.krk', '/res/baz.krk', 1, 0)
+    /* Go to home directory */
+    FS.chdir('/home/web_user');
+  }],
+  postRun: [function() {
+    if (_idbfsSuccess) {
+      FS.syncfs(function (err) {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+  }],
+
+  print: function(text) {
+    if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+    _craftMessage('O' + text);
+  },
+  printErr: function(text) {
+    if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+    _craftMessage('E' + text);
+  }
+}
+
+
+
 
 // Sometimes an existing Module object exists with properties
 // meant to overwrite the default module functionality. Here
@@ -1283,7 +1349,7 @@ function isFileURI(filename) {
 }
 
 // end include: URIUtils.js
-var wasmBinaryFile = 'index.wasm';
+var wasmBinaryFile = 'kuroko.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }
@@ -1429,15 +1495,9 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  2445: function($0) {Module.krkb[$0]();}
+  
 };
-function krk_getKey(obj,key){ var output = Object.keys(Module.krkb[obj])[key]; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_getKeyCount(i){ console.log('Getting key count for object: ' + i); if (typeof Module.krkb[i] === 'object' && Module.krkb[i] !== null) return Object.keys(Module.krkb[i]).length; return 0; }
-function krk_jsAsFloat(obj){ return Module.krkb[obj]; }
-function krk_jsAsInt(obj){ return Module.krkb[obj]; }
-function krk_jsAsString(obj){ var output = Module.krkb[obj]; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_jsErr(){ var output = Module.krkerr.name; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module.krkb[i] === 'string') return 1; if (typeof Module.krkb[i] === 'boolean') return 2; if (typeof Module.krkb[i] === 'number') return 3; if (typeof Module.krkb[i] === 'function') return 4; if (Array.isArray(Module.krkb[i])) return 5; return 0; }
+
 
 
 
@@ -5404,93 +5464,12 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
       abort();
     }
 
-  function _atexit(func, arg) {
-    }
-
   function _dlopen(filename, flag) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
     }
 
   function _dlsym(handle, symbol) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
-    }
-
-  function _emscripten_asm_const_int(code, sigPtr, argbuf) {
-      var args = readAsmConstArgs(sigPtr, argbuf);
-      return ASM_CONSTS[code].apply(null, args);
-    }
-
-  function _emscripten_call_worker(id, funcName, data, size, callback, arg) {
-      noExitRuntime = true; // should we only do this if there is a callback?
-  
-      funcName = UTF8ToString(funcName);
-      var info = Browser.workers[id];
-      var callbackId = -1;
-      if (callback) {
-        callbackId = info.callbacks.length;
-        info.callbacks.push({
-          func: wasmTable.get(callback),
-          arg: arg
-        });
-        info.awaited++;
-      }
-      var transferObject = {
-        'funcName': funcName,
-        'callbackId': callbackId,
-        'data': data ? new Uint8Array(HEAPU8.subarray((data), (data + size))) : 0
-      };
-      if (data) {
-        info.worker.postMessage(transferObject, [transferObject.data.buffer]);
-      } else {
-        info.worker.postMessage(transferObject);
-      }
-    }
-
-  function _emscripten_create_worker(url) {
-      url = UTF8ToString(url);
-      var id = Browser.workers.length;
-      var info = {
-        worker: new Worker(url),
-        callbacks: [],
-        awaited: 0,
-        buffer: 0,
-        bufferSize: 0
-      };
-      info.worker.onmessage = function info_worker_onmessage(msg) {
-        if (ABORT) return;
-        var info = Browser.workers[id];
-        if (!info) return; // worker was destroyed meanwhile
-        var callbackId = msg.data['callbackId'];
-        var callbackInfo = info.callbacks[callbackId];
-        if (!callbackInfo) return; // no callback or callback removed meanwhile
-        // Don't trash our callback state if we expect additional calls.
-        if (msg.data['finalResponse']) {
-          info.awaited--;
-          info.callbacks[callbackId] = null; // TODO: reuse callbackIds, compress this
-        }
-        var data = msg.data['data'];
-        if (data) {
-          if (!data.byteLength) data = new Uint8Array(data);
-          if (!info.buffer || info.bufferSize < data.length) {
-            if (info.buffer) _free(info.buffer);
-            info.bufferSize = data.length;
-            info.buffer = _malloc(data.length);
-          }
-          HEAPU8.set(data, info.buffer);
-          callbackInfo.func(info.buffer, data.length, callbackInfo.arg);
-        } else {
-          callbackInfo.func(0, 0, callbackInfo.arg);
-        }
-      };
-      Browser.workers.push(info);
-      return id;
-    }
-
-  function _emscripten_destroy_worker(id) {
-      var info = Browser.workers[id];
-      info.worker.terminate();
-      if (info.buffer) _free(info.buffer);
-      Browser.workers[id] = null;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -5555,19 +5534,39 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
       return false;
     }
 
-  function _emscripten_run_script(ptr) {
-      eval(UTF8ToString(ptr));
-    }
-
-  /** @suppress{checkTypes} */
-  function _emscripten_run_script_int(ptr) {
-      return eval(UTF8ToString(ptr))|0;
-    }
-
   function _emscripten_thread_sleep(msecs) {
       var start = _emscripten_get_now();
       while (_emscripten_get_now() - start < msecs) {
         // Do nothing.
+      }
+    }
+
+  function _emscripten_worker_respond(data, size) {
+      if (workerResponded) throw 'already responded with final response!';
+      workerResponded = true;
+      var transferObject = {
+        'callbackId': workerCallbackId,
+        'finalResponse': true,
+        'data': data ? new Uint8Array(HEAPU8.subarray((data), (data + size))) : 0
+      };
+      if (data) {
+        postMessage(transferObject, [transferObject.data.buffer]);
+      } else {
+        postMessage(transferObject);
+      }
+    }
+
+  function _emscripten_worker_respond_provisionally(data, size) {
+      if (workerResponded) throw 'already responded with final response!';
+      var transferObject = {
+        'callbackId': workerCallbackId,
+        'finalResponse': false,
+        'data': data ? new Uint8Array(HEAPU8.subarray((data), (data + size))) : 0
+      };
+      if (data) {
+        postMessage(transferObject, [transferObject.data.buffer]);
+      } else {
+        postMessage(transferObject);
       }
     }
 
@@ -5799,24 +5798,6 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
       return ret;
     }
 
-  var readAsmConstArgsArray=[];
-  function readAsmConstArgs(sigPtr, buf) {
-      readAsmConstArgsArray.length = 0;
-      var ch;
-      // Most arguments are i32s, so shift the buffer pointer so it is a plain
-      // index into HEAP32.
-      buf >>= 2;
-      while (ch = HEAPU8[sigPtr++]) {
-        // A double takes two 32-bit slots, and must also be aligned - the backend
-        // will emit padding to avoid that.
-        var double = ch < 105;
-        if (double && (buf & 1)) buf++;
-        readAsmConstArgsArray.push(double ? HEAPF64[buf++ >> 1] : HEAP32[buf]);
-        ++buf;
-      }
-      return readAsmConstArgsArray;
-    }
-
 Module["requestFullscreen"] = function Module_requestFullscreen(lockPointer, resizeCanvas) { Browser.requestFullscreen(lockPointer, resizeCanvas) };
   Module["requestAnimationFrame"] = function Module_requestAnimationFrame(func) { Browser.requestAnimationFrame(func) };
   Module["setCanvasSize"] = function Module_setCanvasSize(width, height, noUpdates) { Browser.setCanvasSize(width, height, noUpdates) };
@@ -5922,18 +5903,13 @@ var asmLibraryArg = {
   "__sys_uname": ___sys_uname,
   "__sys_unlink": ___sys_unlink,
   "abort": _abort,
-  "atexit": _atexit,
   "dlopen": _dlopen,
   "dlsym": _dlsym,
-  "emscripten_asm_const_int": _emscripten_asm_const_int,
-  "emscripten_call_worker": _emscripten_call_worker,
-  "emscripten_create_worker": _emscripten_create_worker,
-  "emscripten_destroy_worker": _emscripten_destroy_worker,
   "emscripten_memcpy_big": _emscripten_memcpy_big,
   "emscripten_resize_heap": _emscripten_resize_heap,
-  "emscripten_run_script": _emscripten_run_script,
-  "emscripten_run_script_int": _emscripten_run_script_int,
   "emscripten_thread_sleep": _emscripten_thread_sleep,
+  "emscripten_worker_respond": _emscripten_worker_respond,
+  "emscripten_worker_respond_provisionally": _emscripten_worker_respond_provisionally,
   "environ_get": _environ_get,
   "environ_sizes_get": _environ_sizes_get,
   "execve": _execve,
@@ -5945,13 +5921,6 @@ var asmLibraryArg = {
   "fd_write": _fd_write,
   "fork": _fork,
   "kill": _kill,
-  "krk_getKey": krk_getKey,
-  "krk_getKeyCount": krk_getKeyCount,
-  "krk_jsAsFloat": krk_jsAsFloat,
-  "krk_jsAsInt": krk_jsAsInt,
-  "krk_jsAsString": krk_jsAsString,
-  "krk_jsErr": krk_jsErr,
-  "krk_jsType": krk_jsType,
   "setTempRet0": _setTempRet0,
   "system": _system,
   "time": _time
@@ -5963,6 +5932,11 @@ var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
 };
 
 /** @type {function(...*):?} */
+var _krk_run_worker = Module["_krk_run_worker"] = function() {
+  return (_krk_run_worker = Module["_krk_run_worker"] = Module["asm"]["krk_run_worker"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
 var _malloc = Module["_malloc"] = function() {
   return (_malloc = Module["_malloc"] = Module["asm"]["malloc"]).apply(null, arguments);
 };
@@ -5970,16 +5944,6 @@ var _malloc = Module["_malloc"] = function() {
 /** @type {function(...*):?} */
 var _free = Module["_free"] = function() {
   return (_free = Module["_free"] = Module["asm"]["free"]).apply(null, arguments);
-};
-
-/** @type {function(...*):?} */
-var _krk_call = Module["_krk_call"] = function() {
-  return (_krk_call = Module["_krk_call"] = Module["asm"]["krk_call"]).apply(null, arguments);
-};
-
-/** @type {function(...*):?} */
-var _main = Module["_main"] = function() {
-  return (_main = Module["_main"] = Module["asm"]["main"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
@@ -6013,8 +5977,6 @@ var dynCall_jiji = Module["dynCall_jiji"] = function() {
 
 // === Auto-generated postamble setup entry stuff ===
 
-Module["ccall"] = ccall;
-Module["cwrap"] = cwrap;
 Module["addRunDependency"] = addRunDependency;
 Module["removeRunDependency"] = removeRunDependency;
 Module["FS_createPath"] = FS.createPath;
@@ -6043,45 +6005,6 @@ dependenciesFulfilled = function runCaller() {
   if (!calledRun) run();
   if (!calledRun) dependenciesFulfilled = runCaller; // try this again later, after new deps are fulfilled
 };
-
-function callMain(args) {
-
-  var entryFunction = Module['_main'];
-
-  var argc = 0;
-  var argv = 0;
-
-  try {
-
-    var ret = entryFunction(argc, argv);
-
-    // In PROXY_TO_PTHREAD builds, we should never exit the runtime below, as
-    // execution is asynchronously handed off to a pthread.
-      // if we're not running an evented main loop, it's time to exit
-      exit(ret, /* implicit = */ true);
-  }
-  catch(e) {
-    if (e instanceof ExitStatus) {
-      // exit() throws this once it's done to make sure execution
-      // has been stopped completely
-      return;
-    } else if (e == 'unwind') {
-      // running an evented main loop, don't immediately exit
-      noExitRuntime = true;
-      return;
-    } else {
-      var toLog = e;
-      if (e && typeof e === 'object' && e.stack) {
-        toLog = [e, e.stack];
-      }
-      err('exception thrown: ' + toLog);
-      quit_(1, e);
-    }
-  } finally {
-    calledMain = true;
-
-  }
-}
 
 /** @type {function(Array=)} */
 function run(args) {
@@ -6112,8 +6035,6 @@ function run(args) {
     preMain();
 
     if (Module['onRuntimeInitialized']) Module['onRuntimeInitialized']();
-
-    if (shouldRunNow) callMain(args);
 
     postRun();
   }
@@ -6166,14 +6087,67 @@ if (Module['preInit']) {
   }
 }
 
-// shouldRunNow refers to calling main(), not run().
-var shouldRunNow = true;
-
-if (Module['noInitialRun']) shouldRunNow = false;
-
 noExitRuntime = true;
 
 run();
+
+var workerResponded = false, workerCallbackId = -1;
+
+(function() {
+  var messageBuffer = null, buffer = 0, bufferSize = 0;
+
+  function flushMessages() {
+    if (!messageBuffer) return;
+    if (runtimeInitialized) {
+      var temp = messageBuffer;
+      messageBuffer = null;
+      temp.forEach(function(message) {
+        onmessage(message);
+      });
+    }
+  }
+
+  function messageResender() {
+    flushMessages();
+    if (messageBuffer) {
+      setTimeout(messageResender, 100); // still more to do
+    }
+  }
+
+  onmessage = function onmessage(msg) {
+    // if main has not yet been called (mem init file, other async things), buffer messages
+    if (!runtimeInitialized) {
+      if (!messageBuffer) {
+        messageBuffer = [];
+        setTimeout(messageResender, 100);
+      }
+      messageBuffer.push(msg);
+      return;
+    }
+    flushMessages();
+
+    var func = Module['_' + msg.data['funcName']];
+    if (!func) throw 'invalid worker function to call: ' + msg.data['funcName'];
+    var data = msg.data['data'];
+    if (data) {
+      if (!data.byteLength) data = new Uint8Array(data);
+      if (!buffer || bufferSize < data.length) {
+        if (buffer) _free(buffer);
+        bufferSize = data.length;
+        buffer = _malloc(data.length);
+      }
+      HEAPU8.set(data, buffer);
+    }
+
+    workerResponded = false;
+    workerCallbackId = msg.data['callbackId'];
+    if (data) {
+      func(buffer, data.length);
+    } else {
+      func(0, 0);
+    }
+  }
+})();
 
 
 

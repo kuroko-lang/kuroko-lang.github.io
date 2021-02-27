@@ -4,36 +4,37 @@ var consoleEnabled = false;
 var consoleState = {};
 var debugState = {};
 var codeSamples = {
-  helloworld: "print('Hello, world!')",
-  variables: "let a, b, c = 1, 2.0, 'three'\nprint(a,b,c)",
-  classes: "class Foo(object):\n  def __init__(self):\n    self.bar = 'baz'\n  def frob(self):\n    print(self.bar)\n\nlet foo = Foo()\nfoo.frob()",
-  comprehensions: "let lst = [x * 5 for x in range(10)]\nlet dct = {str(x): x for x in lst}\nprint(lst)\nprint(dct)",
-  tutorialsource: "import js; js.exec(\"fetch('/res/web.krk').then(r=>{return r.text();}).then(t=>{currentEditor().setValue(t,1);});\")",
-  loadgist: "import js; js.exec(\"fetch('https://gist.githubusercontent.com/klange/396982d00e8fbff80fe6529d47e31e35/raw/').then(r=>{return r.text();}).then(t=>{currentEditor().setValue(t,1);});\")",
-  clear: "import js; js.exec('document.getElementById(\"container\").innerHTML = \"\";')"
+  helloworld: ['helloworld.krk', "print('Hello, world!')"],
+  variables:  ['vars.krk', "let a, b, c = 1, 2.0, 'three'\nprint(a,b,c)"],
+  classes:    ['classes.krk', "class Foo(object):\n  def __init__(self):\n    self.bar = 'baz'\n  def frob(self):\n    print(self.bar)\n\nlet foo = Foo()\nfoo.frob()"],
+  comprehensions: ['comprehensions.krk', "let lst = [x * 5 for x in range(10)]\nlet dct = {str(x): x for x in lst}\nprint(lst)\nprint(dct)"],
 };
 var termColors = ['#000000','#CC0000','#4E9A06','#C4A000','#3465A4','#75507B','#06989A','#D3D7CF'];
 var termColorsBright = ['#555753','#EF2929','#8AE234','#FCE94F','#729FCF','#AD7FA8','#34E2E2','#EEEEEC'];
 
-function runInternal(code) {
+function runInternal(path) {
   showSpinner();
   window.setTimeout(function() {
-    result = krk_call(code);
+    result = krk_call('emscripten.executeFile("' + path + '")');
+    /*
     dismissSpinner();
     if (result != "") {
-      /* If krk_call gave us a result that wasn't empty, add new repl output node. */
       let newOutput = document.createElement("pre");
       newOutput.className = "repl";
       newOutput.appendChild(document.createTextNode(' => ' + result));
       document.getElementById("container").appendChild(newOutput);
       document.getElementById("extra-editor").scrollIntoView(false);
-    }
+    } */
   }, 50);
+}
+
+function stopWorker() {
+  krk_call('emscripten.stopWorker()');
 }
 
 document.getElementById("container").innerText = "";
 function runCode(editor) {
-  runInternal(editor.getValue());
+  runInternal(editor._filepath);
 }
 
 function currentEditor() {
@@ -51,13 +52,15 @@ function saveFile(editor) {
 }
 
 function showSpinner() {
-  document.getElementById('spinnyboi').classList.add('show-spinner');
+  //document.getElementById('spinnyboi').classList.add('show-spinner');
   document.getElementById('run-button').classList.add('run-pulse');
+  document.getElementById('stop-button').classList.add('running');
 }
 
 function dismissSpinner() {
-  document.getElementById('spinnyboi').classList.remove('show-spinner');
+  //document.getElementById('spinnyboi').classList.remove('show-spinner');
   document.getElementById('run-button').classList.remove('run-pulse');
+  document.getElementById('stop-button').classList.remove('running');
 }
 
 function openFile(fromInput) {
@@ -66,8 +69,9 @@ function openFile(fromInput) {
     var reader = new FileReader();
     reader.onload = function(e) {
       /* Need to make a tab */
-      FS.writeFile('/tmp/' + file.name, reader.result);
-      openEmscriptenFile('/tmp/' + file.name);
+      FS.writeFile('/scratch/' + file.name, reader.result);
+      FS.syncfs(function(err){});
+      openEmscriptenFile('/scratch/' + file.name);
     };
     reader.readAsText(file);
   }, 100);
@@ -104,6 +108,7 @@ function createEditor(containerId="editor",filePath=null) {
   editor.session.setMode("ace/mode/kuroko");
   editor.commands.bindKey("Shift-Return", function (editor) { runCode(editor); });
   editor.commands.bindKey("Ctrl-S", function (editor) { saveEditor(editor); });
+  editor.commands.bindKey("Ctrl-W", function (editor) { });
   editor.getSelection().on('changeCursor', function () {
     let position = editor.getCursorPosition();
     document.getElementById(containerId).parentNode.querySelector('.status-line').innerText = position.row + 1;
@@ -273,10 +278,13 @@ function addText(stateVar, mode, text, divId) {
   container.parentNode.querySelector('.marker').scrollIntoView(false);
 }
 
-function insertCode(code, runIt=true) {
+function insertCode(obj, runIt=true) {
+  let name = obj[0];
+  let code = obj[1];
   window.setTimeout(function() {
-    krk_call('emscripten.newEditorTab("sample.krk")');
-    currentEditor().setValue(code,1);
+    FS.writeFile('/scratch/' + name, code);
+    FS.syncfs(function(err){});
+    openEmscriptenFile('/scratch/' + name);
     if (runIt) {
       window.setTimeout(function() { runCode(currentEditor()); }, 100);
     }
@@ -353,7 +361,7 @@ function showContextMenu(path) {
 }
 
 function runFromContextMenu() {
-  runInternal(FS.readFile(contextMenuPath,{ encoding: 'utf8' }));
+  runInternal(contextMenuPath);
 }
 
 function createProject() {
@@ -363,9 +371,16 @@ function createProject() {
   /* Clear form */
   document.getElementById("project-name").value = "";
   /* Create directory */
-  FS.mkdir('/home/web_user/' + projectName);
+  let path = '/home/web_user/' + projectName;
+  try {
+    FS.mkdir(path);
+  } catch (error) {
+    return;
+  }
+  FS.writeFile(path + '/main.krk','# main.krk\n');
   FS.syncfs(function (err) {});
   krk_call('emscripten.filesystemReady()')
+  openEmscriptenFile(path + '/main.krk');
 }
 
 function makeFolder(elem) {
@@ -412,10 +427,25 @@ function newFile() {
   ul.appendChild(newLi);
 }
 
+window.addEventListener("beforeunload", function(e) {
+  /* Ask if there are any unsaved files */
+  if (krk_call('emscripten.hasUnsaved()') == 'True') {
+    if (!confirm('Some files are not saved. Are you sure you want to close the editor?')) {
+      e.preventDefault();
+    }
+  }
+});
+
+if (! /iPhone|Android/i.test(navigator.userAgent)) {
+  document.getElementById('main-container').className = 'layout-normal';
+}
+
 var Module = {
   preRun: [function() {
     /* Make the homedir persistent */
     FS.mount(IDBFS, {}, '/home/web_user');
+    FS.mkdir('/scratch');
+    FS.mount(IDBFS, {}, '/scratch');
     FS.mkdir('/usr');
     FS.mkdir('/usr/local');
     FS.mkdir('/usr/local/lib');
