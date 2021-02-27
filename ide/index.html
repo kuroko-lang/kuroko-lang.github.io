@@ -28,9 +28,10 @@
                   File
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown-file">
-                  <li><a class="dropdown-item" onclick="">New Project...</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newProject">New Project...</a></li>
                   <li><a class="dropdown-item" onclick="">Export Project...</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" onclick="saveEditor(currentEditor())">Save</a></li>
                   <li><a class="dropdown-item" onclick="runCode(currentEditor())">Run</a></li>
                   <li><a class="dropdown-item" onclick="saveFile(currentEditor())">Export...</a></li>
                   <li><label class="file-picker"><input type="file" id="open-file" class="dropdown-item" accept=".krk, .txt, .py" onchange="openFile(this)"><span class="dropdown-item">Import...</span></label></li>
@@ -78,6 +79,7 @@
             Files
           </div>
           <div class="panel-contents">
+            <p><i>No projects are open.</i></p>
             <!-- File browser goes here -->
           </div>
         </div>
@@ -165,6 +167,10 @@
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
             Output
           </div>
+          <div class="tab" id="right-pane-internal-debug-tab" data-bs-toggle="tab" data-bs-target="#right-pane-internal-debug" role="tab" aria-controls="right-pane-internal-debug" aria-selected="false">
+            <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
+            IDE Debug
+          </div>
           <div class="tab tab-add">
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
           </div>
@@ -173,9 +179,14 @@
           <div class="tab-pane active" role="tabpanel" id="right-pane-terminal" aria-labelledby="right-pane-terminal-tab">
             <div id="container" class="terminal-container"></div>
             <div id="extra-editor" class="extra"><div id="shell-prompt">$&nbsp;</div></div>
+            <span class="marker"></span>
           </div>
           <div class="under-tabbar tab-pane" role="tabpanel" id="right-pane-output" aria-labelledby="right-pane-output-tab">
             <div class="output-content terminal-container">Hi, I'm the output tab.</div>
+          </div>
+          <div class="under-tabbar tab-pane" role="tabpanel" id="right-pane-internal-debug" aria-labelledby="right-pane-internal-debug-tab">
+            <div id="ide-debug" class="terminal-container"></div>
+            <span class="marker"></span>
           </div>
         </div>
       </div>
@@ -248,6 +259,53 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="newProject" tabindex="-1" aria-labelledby="newProjectLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newProjectLabel">
+              <svg class="icon-md" viewBox="0 0 24 24"><use href="#icon-package"></use></svg>
+              New Project
+            </h5>
+            <a data-bs-dismiss="modal" aria-label="Close">
+              <svg class="icon-sm close-button" viewBox="0 0 24 24"><use href="#icon-x"></use></svg>
+            </a>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label" for="project-name">Project Name</label>
+                <input class="form-control" id="project-name" placeholder="my-new-project">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="project-enable-thing">
+                <label class="form-check-label" for="project-enable-thing">Create skeleton files</label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-x"></use></svg>
+              Cancel
+            </button>
+            <button type="button" class="btn btn-success" onclick="createProject();" data-bs-dismiss="modal">
+              <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-check"></use></svg>
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="dropdown-menu context-menu" id="file-context-menu" role="context-project">
+      <li class="context-item-file context-item-project context-item-directory"><a class="dropdown-item" onclick="runFromContextMenu();">Run</a></li>
+      <li class="context-item-file"><a class="dropdown-item" onclick="krk_call('emscripten.openFile(emscripten.cMP)');">Open</a></li>
+      <li class="context-item-project context-item-directory"><hr class="dropdown-divider"></li>
+      <li class="context-item-project context-item-directory"><a class="dropdown-item" onclick="newFolder();">New folder...</a></li>
+      <li class="context-item-project context-item-directory"><a class="dropdown-item" onclick="newFile();">New file...</a></li>
+      <li class="context-item-file context-item-project context-item-directory"><hr class="dropdown-divider"></li>
+      <li class="context-item-file context-item-project context-item-directory"><a class="dropdown-item disabled" onclick="">Properties</a></li>
+      <!--<li><hr class="dropdown-divider"></li>-->
+    </ul>
     <script type="text/javascript" src="/ide.js"></script>
     <script async type="text/javascript" src="/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

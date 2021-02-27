@@ -79,6 +79,9 @@ div.editor {
   padding: 0;
   margin: 0;
 }
+.context-menu.dropdown-menu {
+  border-radius: 0.5rem;
+}
 .dropdown-item {
   cursor: default;
   color: #fff;
@@ -87,6 +90,9 @@ div.editor {
 }
 .dropdown-menu>li:last-child>.dropdown-item {
   border-radius: 0 0 0.5rem 0.5rem;
+}
+.context-menu.dropdown-menu>li:first-child>.dropdown-item {
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 .dropdown-header {
   cursor: default;
@@ -340,14 +346,6 @@ svg.icon-md {
   padding-right: 18px;
 }
 #panel-breakpoints { grid-area: panel-breakpoints; }
-.modal-dialog {
-  margin-left: 28px;
-  margin-right: 28px;
-  max-width: unset;
-}
-.modal-title>svg {
-  padding-bottom: 4px;
-}
 .tab-pane {
   color: #ddd;
 }
@@ -397,7 +395,6 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 .modal-body {
   background-color: #222;
   overflow-y: auto;
-  height: calc(100vh - 200px);
 }
 .modal-header {
   border-bottom: 1px solid #111;
@@ -405,6 +402,22 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 .ace_print-margin {
   background-color: #282828;
   width: 10000px; /* wiiiide */
+}
+
+#settingsPanel .modal-dialog {
+  margin-left: 28px;
+  margin-right: 28px;
+  max-width: unset;
+}
+.modal-title>svg {
+  padding-bottom: 4px;
+}
+#settingsPanel .modal-body {
+  height: calc(100vh - 200px);
+}
+
+.modal .form-floating label {
+  color: #000;
 }
 
 .ace_active-line {
@@ -483,4 +496,46 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 #spinnyboi.show-spinner {
   z-index: 10000;
   opacity: 1;
+}
+main a:not(:hover) {
+  text-decoration: none;
+}
+
+#ide-debug > pre {
+  color: #e6e6e6;
+  width: auto;
+  margin: 0px;
+  font-size: 17px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  white-space: pre-wrap;
+  line-height: normal;
+  overflow: visible;
+}
+
+ul[role=project] li:not(.context-item-project) {
+  display: none;
+}
+ul[role=directory] li:not(.context-item-directory) {
+  display: none;
+}
+ul[role=file] li:not(.context-item-file) {
+  display: none;
+}
+
+.file-browser li>input {
+  display: inline-block;
+  color: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  line-height: inherit;
+  padding: 2px;
+  margin: 0 3px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  min-width: 0;
+  width: 100px;
+}
+.file-browser li>input:focus {
+  border: 1px solid #fff;
+  outline: none;
 }

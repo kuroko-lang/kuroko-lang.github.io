@@ -1,15 +1,30 @@
 import os
 import stat
 import fileio
+import time
 from js import exec
 
 let home = os.environ.get('HOME','/')
 
+def debug(*args):
+    let argString = ' '.join([str(x) for x in args])
+    let out = f'[{int(time.time())}] {argString}'
+    exec(f'ideDebug(`{out}`);')
+
 let iconColors = {
     'code': 'red', # Actually that works just fine
+    'text': 'white',
     'project': '#48b048', # string green
-    'folder': '#e6ce6e', # builtin yellow
+    'directory': '#e6ce6e', # builtin yellow
     'info': '#33a2e6', # keyword blue
+}
+
+let iconNames = {
+    'code': 'code',
+    'text': 'text',
+    'project': 'package',
+    'directory': 'folder',
+    'info': 'info',
 }
 
 let shell_commands = {}
@@ -165,22 +180,54 @@ def touch(args):
 def clear(args):
     exec('document.getElementById("container").innerHTML = "";')
 
+@shellCommand
+def sync(args):
+    exec('FS.syncfs(function (err) { console.log(err); });')
+
+@shellCommand
+def rm(args):
+    let removeDir = False
+    args.pop(0)
+    if args and args[0] == '-r':
+        removeDir = True
+        args.pop(0)
+    for arg in args:
+        try:
+            let result = os.stat(arg)
+            if not removeDir and stat.S_ISDIR(result.st_mode):
+                raise os.OSError(f"is a directory and -r was not specified")
+            os.remove(arg)
+        except as e:
+            print(f"rm: {arg}: {e}")
+
 class FileNode(object):
-    def __init__(self, path, children=[]):
+    def __init__(self, path, fileType, children=[]):
         let filename = path.split('/')[-1]
         self.path  = path
         self.name  = filename
-        self.color = iconColors['code'] if filename.endswith('.krk') else iconColors['project'] if filename == 'Project' else iconColors['folder'] if children else 'white'
-        self.icon  = 'code' if filename.endswith('.krk') else 'package' if filename == 'Project' else 'folder' if children else 'text'
-        self.children = children
+        self.type  = fileType
+        self.color = iconColors.get(fileType, 'white')
+        self.icon  = iconNames.get(fileType, 'alert-triangle')
+        self.children = sorted(children)
+    def __lt__(self, other):
+        if not isinstance(other,FileNode): return NotImplementedError()
+        if self.type == 'directory' and other.type != 'directory': return True
+        else if self.type == other.type: return self.name < other.name
+        return False
+    def __gt__(self, other):
+        if not isinstance(other,FileNode): return NotImplementedError()
+        if other.type == 'directory' and self.type != 'directory': return True
+        else if self.type == other.type: return self.name > other.name
+        return False
 
 def createListEntry(obj):
-    let children = ('<ul>' + ''.join([createListEntry(c) for c in obj.children]) + '</ul>') if obj.children else ''
-    let onclick = f'toggleDirectory(this)' if obj.children else f'openEmscriptenFile(\'{obj.path}\')'
-    return f'<li><a class="file-item" ondblclick="{onclick}"><svg class="icon-sm" viewBox="0 0 24 24" style="color: {obj.color}"><use href="#icon-{obj.icon}"></use></svg> <span class="tab-title">{obj.name}</a>{children}</li>'
+    let children = ('<ul>' + ''.join([createListEntry(c) for c in obj.children]) + '</ul>') if obj.type in ('project','directory') else ''
+    let onclick = f'toggleDirectory(this)' if obj.type in ('project','directory') else f'openEmscriptenFile(\'{obj.path}\')'
+    return f'<li><a class="file-item" ondblclick="{onclick}" oncontextmenu="showContextMenu(\'{obj.path}\');" em-path="{obj.path}"><svg class="icon-sm" viewBox="0 0 24 24" style="color: {obj.color}"><use href="#icon-{obj.icon}"></use></svg> <span class="tab-title">{obj.name}</a>{children}</li>'
 
-def setFiles(root):
-    exec(f'document.getElementById("panel-files").querySelector(".panel-contents").innerHTML = `<ul>{createListEntry(root)}</ul>`;')
+def setFiles(roots):
+    let rootEntries = ''.join([createListEntry(root) for root in roots])
+    exec(f'document.getElementById("panel-files").querySelector(".panel-contents").innerHTML = `<ul>{rootEntries}</ul>`;')
 
 def discoverFiles(path):
     let out = []
@@ -192,14 +239,42 @@ def discoverFiles(path):
                 try:
                     let statResult = os.stat(filepath)
                     if stat.S_ISDIR(statResult.st_mode):
-                        out.append(FileNode(filepath,discoverFiles(filepath)))
+                        out.append(FileNode(filepath,'directory',discoverFiles(filepath)))
                     else:
-                        out.append(FileNode(filepath))
+                        out.append(FileNode(filepath,'code' if filepath.endswith('.krk') else 'text'))
     return out
 
-def realFiles():
-    let root = FileNode('Project',discoverFiles('/usr/local/lib/kuroko'))
-    setFiles(root)
+def realFiles(projects):
+    let roots = [FileNode(project,'project',discoverFiles(project)) for project in projects]
+    setFiles(roots)
+
+def filesystemReady():
+    debug("Filesystem is ready, loading project list.")
+    let projects = []
+    with fileio.opendir(home) as homeDir:
+        for entry in homeDir:
+            if entry['name'].startswith('.'): continue
+            let statResult = os.stat(home + '/' + entry['name'])
+            if stat.S_ISDIR(statResult.st_mode):
+                debug(f"{entry['name']} looks like a project")
+                projects.append(home + '/' + entry['name'])
+    realFiles(projects)
+
+let cMP = None
+def setupContextMenu(path):
+    debug("Setting up context menu for", path)
+    cMP = path
+    let role
+    if '/' not in path:
+        # Assume it's a project.
+        role = 'project'
+    else:
+        let statResult = os.stat(path)
+        if stat.S_ISDIR(statResult.st_mode):
+            role = 'directory'
+        else:
+            role = 'file'
+    exec(f'document.getElementById("file-context-menu").setAttribute("role","{role}");')
 
 def shell_prompt():
     let cwd = os.getcwd()
@@ -260,19 +335,11 @@ class Tab():
         exec(f'addTab(`{self.renderTab()}`,`{self.renderContent()}`);')
 
 class EditorTab(Tab):
-    def __init__(self, path, code=''):
+    def __init__(self, path):
         super().__init__(path.split('/')[-1], icon='code', iconColor='code')
         self.path = path
         self.hint = path
-        self.code = code
-    def escapeCode(self):
-        let escapes = {
-            #'<': '&lt;',
-            #'>': '&gt;',
-            '\\': '\\\\',
-            '`': '\\`',
-        }
-        return ''.join([(escapes[c] if c in escapes else c) for c in self.code])
+        self.modified = None
     def renderContent(self):
         return f'''
           <div class="tab-pane has-statusbar" role="tabpanel" id="{self.id}" aria-labelledby="{self.id}-tab">
@@ -298,14 +365,38 @@ class EditorTab(Tab):
         '''
     def realize(self):
         super().realize()
-        exec(f'let myNewEditor = createEditor("{self.id}-editor"); myNewEditor.setValue(`{self.escapeCode()}`,1);')
+        exec(f'let myNewEditor = createEditor("{self.id}-editor",`{self.path}`);')
+    def setModified(self):
+        if self.modified is None:
+            self.modified = False
+            return
+        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = "{self.name}*";')
+        self.modified = True
+    def unsetModified(self):
+        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = "{self.name}";')
+        self.modified = False
 
-def tabClosed(tabId):
-    print(f"[debug] js reports tab {tabId} has closed")
+def tabClosed(tabId,force=False):
+    debug(f"js reports tab {tabId} wants to close")
     if tabId in tabs:
         if isinstance(tabs[tabId],EditorTab) and tabs[tabId].path in editorTabs:
+            if tabs[tabId].modified and not force:
+                return False
             del editorTabs[tabs[tabId].path]
         del tabs[tabId]
+
+def reportChange(editorId):
+    if editorId.endswith('-editor'):
+        let tabId = editorId[:-7]
+        if tabId in tabs and isinstance(tabs[tabId], EditorTab) and not tabs[tabId].modified:
+            tabs[tabId].setModified()
+
+def reportSaved(editorId):
+    debug(f'JS says {editorId} was saved, ensuring it is not marked modified')
+    if editorId.endswith('-editor'):
+        let tabId = editorId[:-7]
+        if tabId in tabs and isinstance(tabs[tabId], EditorTab):
+            tabs[tabId].unsetModified()
 
 def openFile(path):
     # Is this file already open?
@@ -313,17 +404,16 @@ def openFile(path):
         editorTabs[path].activate()
         return
 
-    let contents = None
-    with fileio.open(path,'r') as f:
-        try:
-            contents = f.read()
-    if contents is not None:
-        let newTab = EditorTab(path,contents)
-        newTab.realize()
-        newTab.activate()
-        editorTabs[path] = newTab
-    else:
-        fileio.stderr.write(f'Error opening file "{path}"\n')
+    try:
+        let f = fileio.open(path,'r')
+    except:
+        fileio.stderr.write("failed to open file\n")
+        return
+
+    let newTab = EditorTab(path)
+    newTab.realize()
+    newTab.activate()
+    editorTabs[path] = newTab
 
 def newEditorTab(file):
     let path = '/tmp/' + file
@@ -341,8 +431,6 @@ def __main__():
     uname([None,'-a'])
     # Move to home directory
     os.chdir(home)
-    # Populate file panel
-    realFiles()
     # Update shell prompt
     updatePrompt()
     # Set terminal tab colors
@@ -352,8 +440,17 @@ def __main__():
     let welcomeTab = Tab('Welcome','''
         <div class="p-3">
             <h1>Welcome!</h1>
-            <p>This is the dynamically-generated welcome tab!</p>
-            <div class="alert alert-warning"><b>Warning:</b> This IDE is a work in progress.</div>
+            <p>This is a fully-client-side in-browser IDE for <a href="/">Kuroko</a>. All files are stored in your browser and persisted through IndexedDB.</p>
+            <div class="mb-3">
+              <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#newProject">
+                <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-package"></use></svg>
+                Create a New Project
+              </button>
+              <button type="button" class="btn btn-secondary">
+                <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
+                See a Sample Project
+              </button>
+            </div>
         </div>''')
     welcomeTab.realize()
     welcomeTab.activate()

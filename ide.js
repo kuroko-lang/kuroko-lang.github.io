@@ -1,7 +1,8 @@
 var krk_call;
 var extraEditor;
 var consoleEnabled = false;
-var lastMode = {};
+var consoleState = {};
+var debugState = {};
 var codeSamples = {
   helloworld: "print('Hello, world!')",
   variables: "let a, b, c = 1, 2.0, 'three'\nprint(a,b,c)",
@@ -14,12 +15,9 @@ var codeSamples = {
 var termColors = ['#000000','#CC0000','#4E9A06','#C4A000','#3465A4','#75507B','#06989A','#D3D7CF'];
 var termColorsBright = ['#555753','#EF2929','#8AE234','#FCE94F','#729FCF','#AD7FA8','#34E2E2','#EEEEEC'];
 
-document.getElementById("container").innerText = "";
-function runCode(editor) {
-  document.getElementById('run-button').classList.add('run-pulse');
-  var value = editor.getValue();
+function runInternal(code) {
   window.setTimeout(function() {
-    result = krk_call(value);
+    result = krk_call(code);
     document.getElementById('run-button').classList.remove('run-pulse');
     if (result != "") {
       /* If krk_call gave us a result that wasn't empty, add new repl output node. */
@@ -30,6 +28,12 @@ function runCode(editor) {
       document.getElementById("extra-editor").scrollIntoView(false);
     }
   }, 50);
+}
+
+document.getElementById("container").innerText = "";
+function runCode(editor) {
+  document.getElementById('run-button').classList.add('run-pulse');
+  runInternal(editor.getValue());
 }
 
 function currentEditor() {
@@ -79,7 +83,7 @@ function addTab(tabHtml, bodyHtml) {
   document.getElementById("left-pane-tabContent").appendChild(newDiv.firstChild);
 }
 
-function createEditor(containerId="editor") {
+function createEditor(containerId="editor",filePath=null) {
   let newDiv = document.createElement("div");
   newDiv.className = "editor";
   document.getElementById(containerId).appendChild(newDiv);
@@ -98,12 +102,23 @@ function createEditor(containerId="editor") {
   editor.setOption('enableBasicAutocompletion', true);
   editor.session.setMode("ace/mode/kuroko");
   editor.commands.bindKey("Shift-Return", function (editor) { runCode(editor); });
+  editor.commands.bindKey("Ctrl-S", function (editor) { saveEditor(editor); });
   editor.getSelection().on('changeCursor', function () {
     let position = editor.getCursorPosition();
     document.getElementById(containerId).parentNode.querySelector('.status-line').innerText = position.row + 1;
     document.getElementById(containerId).parentNode.querySelector('.status-column').innerText = position.column + 1;
   });
+  editor.session.getDocument().on("change", function() {
+    krk_call('emscripten.reportChange("' + containerId + '")');
+  });
   document.getElementById(containerId)._aceInstance = editor;
+  editor._filepath = filePath;
+  if (filePath != null) {
+    window.setTimeout(function() {
+      editor.setValue(FS.readFile(filePath,{ encoding: 'utf8' }), 1);
+    }, 100);
+  }
+
   return editor;
 }
 
@@ -174,7 +189,14 @@ function createTerminalPrompt() {
   return editor;
 }
 
-function addText(mode, text) {
+function saveEditor(editor) {
+  let editorId = editor.renderer.getContainerElement().parentNode.id;
+  FS.writeFile(editor._filepath, editor.getValue());
+  FS.syncfs(function(err){});
+  krk_call('emscripten.reportSaved("' + editorId + '")');
+}
+
+function addText(stateVar, mode, text, divId) {
   let newOutput = document.createElement("pre");
   newOutput.className = mode;
 
@@ -182,8 +204,8 @@ function addText(mode, text) {
   function addSpan() {
     let subSpan = document.createElement("span");
     let cssText = '';
-    for (const prop in lastMode) {
-      cssText += prop + ': ' + lastMode[prop] + ';\n';
+    for (const prop in stateVar) {
+      cssText += prop + ': ' + stateVar[prop] + ';\n';
     }
     subSpan.style.cssText = cssText;
     subSpan.appendChild(document.createTextNode(currentText));
@@ -215,21 +237,23 @@ function addText(mode, text) {
         if (c == 'm') {
           for (const arg of buf.split(';')) {
             if (arg == '0') {
-              lastMode = {};
+              for (const prop in stateVar) {
+                delete stateVar[prop];
+              }
             } else if (arg == '1') {
-              lastMode['font-weight'] = 'bold';
+              stateVar['font-weight'] = 'bold';
             } else if (arg == '22') {
-              if ('font-weight' in lastMode) {
-                delete lastMode['font-weight'];
+              if ('font-weight' in stateVar) {
+                delete stateVar['font-weight'];
               }
             } else if (parseInt(arg) >= 30 && parseInt(arg) <= 37) {
-              lastMode['color'] = termColors[parseInt(arg)-30];
+              stateVar['color'] = termColors[parseInt(arg)-30];
             } else if (parseInt(arg) >= 90 && parseInt(arg) <= 97) {
-              lastMode['color'] = termColorsBright[parseInt(arg)-90];
+              stateVar['color'] = termColorsBright[parseInt(arg)-90];
             } else if (parseInt(arg) >= 40 && parseInt(arg) <= 47) {
-              lastMode['background-color'] = termColors[parseInt(arg)-40];
+              stateVar['background-color'] = termColors[parseInt(arg)-40];
             } else if (parseInt(arg) >= 100 && parseInt(arg) <= 107) {
-              lastMode['background-color'] = termColorsBright[parseInt(arg)-100];
+              stateVar['background-color'] = termColorsBright[parseInt(arg)-100];
             }
           }
         }
@@ -243,8 +267,9 @@ function addText(mode, text) {
   if (currentText) addSpan();
 
   if (!text.length) newOutput.appendChild(document.createElement("wbr"));
-  document.getElementById("container").appendChild(newOutput);
-  document.getElementById("extra-editor").scrollIntoView(false);
+  let container = document.getElementById(divId);
+  container.appendChild(newOutput);
+  container.parentNode.querySelector('.marker').scrollIntoView(false);
 }
 
 function insertCode(code, runIt=true) {
@@ -264,7 +289,10 @@ function closeTab(tabId) {
   let tabContents = document.getElementById(tabId);
   let tabHeader   = document.getElementById(tabId + '-tab');
 
-  krk_call('emscripten.tabClosed("' + tabId + '")')
+  if (krk_call('emscripten.tabClosed("' + tabId + '")') == 'False') {
+    if (!confirm("File is modified, close anyway? (Unsaved changes will be lost.)")) return;
+    krk_call('emscripten.tabClosed("' + tabId + '", True)');
+  }
 
   tabContents.remove();
   if (tabHeader.classList.contains('active')) {
@@ -302,8 +330,97 @@ function openEmscriptenFile(path) {
   }, 100);
 }
 
+function ideDebug(s) {
+  addText(debugState, 'printed', s, 'ide-debug');
+}
+
+function hideContextMenu(e) {
+  window.removeEventListener("click", hideContextMenu);
+  let dropdown = document.getElementById('file-context-menu');
+  dropdown.classList.remove('show');
+}
+
+var contextMenuPath = null;
+function showContextMenu(path) {
+  krk_call('emscripten.setupContextMenu("' + path + '")');
+  contextMenuPath = path;
+  let e = window.event;
+  let dropdown = document.getElementById('file-context-menu');
+  dropdown.classList.add('show');
+  dropdown.style.position = 'absolute';
+  dropdown.style.left = e.pageX + 'px';
+  dropdown.style.top = e.pageY + 'px';
+
+  window.addEventListener("click", hideContextMenu);
+
+  e.preventDefault();
+  return false;
+}
+
+function runFromContextMenu() {
+  runInternal(FS.readFile(contextMenuPath,{ encoding: 'utf8' }));
+}
+
+function createProject() {
+  /* Get project name from form */
+  let projectName = document.getElementById("project-name").value;
+  /* TODO validate */
+  /* Clear form */
+  document.getElementById("project-name").value = "";
+  /* Create directory */
+  FS.mkdir('/home/web_user/' + projectName);
+  FS.syncfs(function (err) {});
+  krk_call('emscripten.filesystemReady()')
+}
+
+function makeFolder(elem) {
+  let dirName = elem.parentNode.querySelector('input').value;
+  let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
+  FS.mkdir(source + '/' + dirName);
+  FS.syncfs(function (err) {});
+  krk_call('emscripten.filesystemReady()')
+}
+
+function makeFile(elem) {
+  let pathName = elem.parentNode.querySelector('input').value;
+  let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
+  FS.writeFile(source + '/' + pathName, '');
+  FS.syncfs(function (err) {});
+  krk_call('emscripten.filesystemReady()')
+}
+
+function newFolder() {
+  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + contextMenuPath + '"]');
+  let ul = panelElem.parentNode.querySelector('ul');
+  let newLi = document.createElement('li');
+  /* This is temporary, so we don't need to strictly file the same layout, but the svg element would be nice... */
+  newLi.innerHTML = `
+    <svg class="icon-sm" viewBox="0 0 24 24" style="color: #e6ce6e"><use href="#icon-folder"></use></svg>
+    <input></input>
+    <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFolder(this)"><use href="#icon-check"></use></svg>
+    <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.filesystemReady()');"><use href="#icon-x"></use></svg>
+  `;
+  ul.appendChild(newLi);
+}
+
+function newFile() {
+  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + contextMenuPath + '"]');
+  let ul = panelElem.parentNode.querySelector('ul');
+  let newLi = document.createElement('li');
+  /* This is temporary, so we don't need to strictly file the same layout, but the svg element would be nice... */
+  newLi.innerHTML = `
+    <svg class="icon-sm" viewBox="0 0 24 24" style="color: red;"><use href="#icon-code"></use></svg>
+    <input></input>
+    <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFile(this)"><use href="#icon-check"></use></svg>
+    <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.filesystemReady()');"><use href="#icon-x"></use></svg>
+  `;
+  ul.appendChild(newLi);
+}
+
 var Module = {
   preRun: [function() {
+    /* Make the homedir persistent */
+    FS.mount(IDBFS, {}, '/home/web_user');
     FS.mkdir('/usr');
     FS.mkdir('/usr/local');
     FS.mkdir('/usr/local/lib');
@@ -333,6 +450,14 @@ var Module = {
       "    import emscripten\n" +
       "    __builtins__.emscripten = emscripten\n");
 
+    FS.syncfs(true, function (err) {
+      if (!err) {
+        krk_call("emscripten.filesystemReady()");
+      } else {
+        console.log(err);
+      }
+    });
+
     /* Start up Ace instances */
     //createEditor();
     //createEditor('editor-1');
@@ -342,12 +467,12 @@ var Module = {
   print: function(text) {
     if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
     if (consoleEnabled) console.log(text);
-    addText('printed', text);
+    addText(consoleState, 'printed', text, 'container');
   },
   printErr: function(text) {
     if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
     if (consoleEnabled) console.error(text);
-    addText('error', text);
+    addText(consoleState, 'error', text, 'container');
   }
 }
 
