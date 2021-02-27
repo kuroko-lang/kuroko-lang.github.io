@@ -103,9 +103,6 @@ main.layout-just-output>div:not(.right-pane) { display: none; }
   background-color: #22303f; /* --color-menu-background */
   border-bottom: 2px solid rgba(255,255,255,0) !important;
 }
-.nav-link>svg {
-  padding-bottom: 3px;
-}
 .dropdown-toggle::after {
   display: none;
 }
@@ -199,7 +196,6 @@ input[type=file] + span {
 }
 .panel-pane .panel-heading svg.icon-sm {
   transition: transform 200ms;
-  margin-bottom: 4px;
 }
 .panel-pane.collapsed .panel-heading svg.icon-sm {
   transform: rotate(-180deg);
@@ -253,12 +249,14 @@ svg.icon-sm {
   fill: none;
   width: 18px;
   height: 18px;
+  margin-top: -3px;
 }
 
 svg.icon-md {
   fill: none;
   width: 22px;
   height: 22px;
+  margin-top: -3px;
 }
 
 .file-browser {
@@ -463,9 +461,6 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
   margin-left: 28px;
   margin-right: 28px;
   max-width: unset;
-}
-.modal-title>svg {
-  padding-bottom: 4px;
 }
 #settingsPanel .modal-body {
   height: calc(100vh - 200px);
