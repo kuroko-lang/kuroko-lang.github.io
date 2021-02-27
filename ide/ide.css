@@ -461,7 +461,7 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
   height: 100%;
   opacity: 0;
   transition: opacity 300ms !important;
-  transition-delay: 0.5s !important;
+  transition-delay: 2s !important;
   z-index: -100;
   display: block;
 }

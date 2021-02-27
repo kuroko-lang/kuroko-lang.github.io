@@ -16,9 +16,10 @@ var termColors = ['#000000','#CC0000','#4E9A06','#C4A000','#3465A4','#75507B','#
 var termColorsBright = ['#555753','#EF2929','#8AE234','#FCE94F','#729FCF','#AD7FA8','#34E2E2','#EEEEEC'];
 
 function runInternal(code) {
+  showSpinner();
   window.setTimeout(function() {
     result = krk_call(code);
-    document.getElementById('run-button').classList.remove('run-pulse');
+    dismissSpinner();
     if (result != "") {
       /* If krk_call gave us a result that wasn't empty, add new repl output node. */
       let newOutput = document.createElement("pre");
@@ -32,7 +33,6 @@ function runInternal(code) {
 
 document.getElementById("container").innerText = "";
 function runCode(editor) {
-  document.getElementById('run-button').classList.add('run-pulse');
   runInternal(editor.getValue());
 }
 
@@ -52,21 +52,22 @@ function saveFile(editor) {
 
 function showSpinner() {
   document.getElementById('spinnyboi').classList.add('show-spinner');
+  document.getElementById('run-button').classList.add('run-pulse');
 }
+
 function dismissSpinner() {
   document.getElementById('spinnyboi').classList.remove('show-spinner');
+  document.getElementById('run-button').classList.remove('run-pulse');
 }
 
 function openFile(fromInput) {
-  showSpinner();
   window.setTimeout(function() {
     var file = fromInput.files[0];
     var reader = new FileReader();
     reader.onload = function(e) {
       /* Need to make a tab */
-      krk_call('emscripten.newEditorTab("' + file.name + '")');
-      currentEditor().setValue(reader.result,1);
-      dismissSpinner();
+      FS.writeFile('/tmp/' + file.name, reader.result);
+      openEmscriptenFile('/tmp/' + file.name);
     };
     reader.readAsText(file);
   }, 100);
@@ -273,11 +274,9 @@ function addText(stateVar, mode, text, divId) {
 }
 
 function insertCode(code, runIt=true) {
-  showSpinner();
   window.setTimeout(function() {
     krk_call('emscripten.newEditorTab("sample.krk")');
     currentEditor().setValue(code,1);
-    dismissSpinner();
     if (runIt) {
       window.setTimeout(function() { runCode(currentEditor()); }, 100);
     }
@@ -323,11 +322,7 @@ function toggleDirectory(element) {
 }
 
 function openEmscriptenFile(path) {
-  showSpinner();
-  window.setTimeout(function() {
-    krk_call('emscripten.openFile("' + path + '")')
-    dismissSpinner();
-  }, 100);
+  krk_call('emscripten.openFile("' + path + '")')
 }
 
 function ideDebug(s) {

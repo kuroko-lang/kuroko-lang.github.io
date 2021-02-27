@@ -417,7 +417,7 @@ def openFile(path):
 
 def newEditorTab(file):
     let path = '/tmp/' + file
-    let newTab = EditorTab(path,'')
+    let newTab = EditorTab(path)
     newTab.realize()
     newTab.activate()
     editorTabs[path] = newTab
