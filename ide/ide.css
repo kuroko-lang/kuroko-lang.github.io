@@ -403,6 +403,9 @@ svg.icon-md {
   color: #ddd;
 }
 
+.file-browser {
+  max-width: 250px;
+}
 .file-browser li.collapsed ul {
   min-height: 0px;
   max-height: 0px;
@@ -486,6 +489,14 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 }
 .ace-sunsmoke.ace_editor.ace_autocomplete .ace_completion-highlight {
   color: #33a2e6;
+}
+.ace_gutter-cell.ace_error {
+  background-color: red;
+  color: white;
+}
+.ace_gutter-cell.ace_warning {
+  background-color: orange;
+  color: black;
 }
 #run-button,.run-button {
   fill: currentColor !important;

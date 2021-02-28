@@ -80,6 +80,11 @@ function openFile(fromInput) {
 function addTab(tabHtml, bodyHtml) {
   let newDiv = document.createElement("div");
   newDiv.innerHTML = tabHtml.trim();
+  newDiv.firstChild.addEventListener('shown.bs.tab', function (e) {
+    window.setTimeout(function() {
+      krk_call('emscripten.reportShown("' + e.target.id + '")')
+    }, 200);
+  });
   let tabbar = document.getElementById("left-pane-tab");
   let sentinel = tabbar.querySelector(".tab-add")
   tabbar.insertBefore(newDiv.firstChild, sentinel);
@@ -473,7 +478,8 @@ var Module = {
     krk_call(
       "if True:\n" +
       "    import emscripten\n" +
-      "    __builtins__.emscripten = emscripten\n");
+      "    __builtins__.emscripten = emscripten\n" +
+      "    emscripten.__main__()\n");
 
     FS.syncfs(true, function (err) {
       if (!err) {

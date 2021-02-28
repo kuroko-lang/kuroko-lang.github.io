@@ -1,3 +1,4 @@
+import dis
 import os
 import stat
 import fileio
@@ -392,11 +393,55 @@ class EditorTab(Tab):
         if self.modified is None:
             self.modified = False
             return
-        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = "{self.name}*";')
+        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = `{self.name}*`;')
         self.modified = True
     def unsetModified(self):
-        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = "{self.name}";')
+        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = `{self.name}`;')
         self.modified = False
+        self.updateOutline()
+    def updateOutline(self):
+        let c
+        try:
+            with fileio.open(self.path,'r') as f:
+                c = CodeObject.fromCode(f.read())
+        except:
+            exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = "";')
+            return
+        if isinstance(c,CodeObject):
+            let t = makeOutline(c.makeTree()[2])
+            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "unset";')
+            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "0";')
+            exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = `{t}`;')
+            let annotations = '[]'
+            let undef = c.checkReferences()
+            if undef:
+                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "orange";')
+                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "{len(undef)}";')
+                annotations = '[' + ','.join([makeAnnotations(x) for x in undef]) + ']'
+            else:
+                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "unset";')
+                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "0";')
+            exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+        else:
+            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "red";')
+            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "1";')
+            let annotation = '{' + f'row: {c[0]-1}, column: {c[1]-1}, text: "{c[2]}", type: "error"' + '}'
+            exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations([{annotation}]);')
+
+def makeAnnotations(undefined):
+    let var, lines = undefined
+    return ','.join(['{' + f'''row: {l-1}, column: 0, text: "Global '{var}' is never declared.", type: "warning"''' + '}' for l in lines])
+
+def makeOutline(children):
+    return '<ul>' + ''.join([f'''
+        <li>
+            <a class="file-item" ondblclick="toggleDirectory(this)">
+                <svg style="color: {d[2]};" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-{d[1]}"></use></svg>
+                {d[0]}
+            </a>
+            {makeOutline(c)}
+        </li>
+    ''' for d,l,c in children]) + '</ul>' if children else ''
 
 def tabClosed(tabId,force=False):
     debug(f"js reports tab {tabId} wants to close")
@@ -420,6 +465,11 @@ def reportSaved(editorId):
         if tabId in tabs and isinstance(tabs[tabId], EditorTab):
             tabs[tabId].unsetModified()
 
+def reportShown(tabIdTab):
+    let tabId = tabIdTab[:-4]
+    if tabId in tabs and isinstance(tabs[tabId],EditorTab):
+        tabs[tabId].updateOutline()
+
 def hasUnsaved():
   for k,v in editorTabs.items():
     if v.modified:
@@ -439,15 +489,9 @@ def openFile(path):
         return
 
     let newTab = EditorTab(path)
+    editorTabs[path] = newTab
     newTab.realize()
     newTab.activate()
-    editorTabs[path] = newTab
-
-def newEditorTab(path):
-    let newTab = EditorTab(path)
-    newTab.realize()
-    newTab.activate()
-    editorTabs[path] = newTab
 
 let currentWorker = None
 let cleanupWorkers = []
@@ -481,6 +525,84 @@ def stopWorker():
   destroy_worker(currentWorker)
   finishRunning()
 
+class CodeObject():
+    _opcodeCache = {}
+    def __init__(self, real, code):
+        self.func = real
+        self.code = code
+
+    @classmethod
+    def fromCode(cls, code):
+        let func
+        try:
+            func = dis.build(code)
+        except SyntaxError as e:
+            return (e.lineno, e.colno, e.arg)
+        return cls(func,code)
+
+    def makeTree(self, func=self.func):
+        let instructions = dis.examine(func)
+        let line = func._ip_to_line(0)
+        let description
+        if instructions and instructions[0][0] == dis.OP_CLASS:
+            description = ('class <b>' + func.__name__ + '</b>()','layers','#33a2e6',func.__name__)
+        else if func.__name__ == '<lambda>':
+            description = ('lambda (' + str(line) + ')','chevron-up','#e62b7f', None)
+        else if func.__name__ == 'for':
+            description = ('comprehension (' + str(line) + ')','filter','#e62b7f', None)
+        else:
+            description = ('def <b>' + func.__name__ + '</b>()','box','#e62b7f',func.__name__)
+        let children = []
+        for instruction in dis.examine(func):
+            if isinstance(instruction[2],codeobject):
+                children.append(self.makeTree(instruction[2]))
+            else if instruction[0] in (dis.OP_IMPORT,dis.OP_IMPORT_LONG):
+                children.append( (('import <b>' + instruction[2] + '</b>', 'package', '#48b048', instruction[2]), 0, []) )
+            else if instruction[0] in (dis.OP_DEFINE_GLOBAL,dis.OP_DEFINE_GLOBAL_LONG) and (instruction[2] not in ([d[3] for d,l,c in children])):
+                children.append( (('let <b>' + instruction[2] + '</b>', 'square', '#e6ce6e', instruction[2]), 0, []) )
+        return (description, line, children)
+
+    def checkReferences(self):
+        let defined = set()
+        let referenced = set()
+        let references = {}
+        def recursor(func):
+            let instructions = dis.examine(func)
+            let offset = 0
+            for instruction in instructions:
+                if isinstance(instruction[2],codeobject):
+                    recursor(instruction[2])
+                else if instruction[0] in (dis.OP_DEFINE_GLOBAL,dis.OP_DEFINE_GLOBAL_LONG):
+                    defined.add(instruction[2])
+                else if instruction[0] in (dis.OP_SET_GLOBAL, dis.OP_SET_GLOBAL_LONG, dis.OP_GET_GLOBAL, dis.OP_GET_GLOBAL_LONG):
+                    if instruction[2] in referenced:
+                    else:
+                        referenced.add(instruction[2])
+                        references[instruction[2]] = [func._ip_to_line(offset)]
+                offset += instruction[1]
+        recursor(self.func)
+        let undefined = {(x,references[x]) for x in referenced if x not in defined and x not in dir(__builtins__)}
+        return list(undefined)
+
+    @classmethod
+    def _findOpcodeName(cls, i):
+        # Okay, so I did a dumb with this, but let's work around it.
+        if not cls._opcodeCache:
+            for attr in dir(dis):
+                if attr.startswith('OP_'):
+                    cls._opcodeCache[getattr(dis,attr)] = attr
+        return cls._opcodeCache[i]
+
+    def _truncateCode(self):
+        if len(self.code) > 20: return repr(self.code[:20] + '...')
+        else: return repr(self.code)
+
+    def __repr__(self):
+        return f'<CodeObject for {self.func.__name__} from {self._truncateCode()}>'
+
+    def __str__(self):
+        return self.__repr__()
+
 # Startup stuff
 def __main__():
     # Disable automatic traceback dumping
@@ -512,4 +634,3 @@ def __main__():
     welcomeTab.realize()
     welcomeTab.activate()
 
-__main__()
