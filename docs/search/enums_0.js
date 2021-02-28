@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['krkopcode_473',['KrkOpCode',['../chunk_8h.html#a4b1e2a0b02e76696b8ecf261cf105d28',1,'chunk.h']]],
-  ['krkspecialmethods_474',['KrkSpecialMethods',['../vm_8h.html#a62180e29e93500068869ad4a459be927',1,'vm.h']]],
-  ['krkvaluetype_475',['KrkValueType',['../value_8h.html#a50e8074e590357d82386d513c5272575',1,'value.h']]]
+  ['krkopcode_475',['KrkOpCode',['../chunk_8h.html#a4b1e2a0b02e76696b8ecf261cf105d28',1,'chunk.h']]],
+  ['krkspecialmethods_476',['KrkSpecialMethods',['../vm_8h.html#a62180e29e93500068869ad4a459be927',1,'vm.h']]],
+  ['krkvaluetype_477',['KrkValueType',['../value_8h.html#a50e8074e590357d82386d513c5272575',1,'value.h']]]
 ];

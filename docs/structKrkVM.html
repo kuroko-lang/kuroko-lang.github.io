@@ -29,7 +29,7 @@
               <a class="nav-link force-cursor" href="/?r=y&c=tutorial()">Tutorial</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link force-cursor" href="/?r=y&c=license()">License</a>
+              <a class="nav-link force-cursor" href="/ide/">IDE</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown">
@@ -158,7 +158,7 @@ Data Fields</h2></td></tr>
 <div class="textblock"><p>Global VM state. </p>
 <p>This state is shared by all VM threads and stores the path to the VM binary, global execution flags, the string and module tables, tables of builtin types, and the state of the (shared) garbage collector. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00199">199</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00200">200</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3dced9904f6a128032a729078ba16555"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dced9904f6a128032a729078ba16555">&#9670;&nbsp;</a></span>krk_freeVM()</h2>
@@ -179,7 +179,7 @@ Data Fields</h2></td></tr>
 <p>Release resources from the VM. </p>
 <p>Generally, it is desirable to call this once before the hosting program exits. If a fresh VM state is needed, krk_freeVM should be called before a further call to krk_initVM is made. The resources released here can include allocated heap memory, FILE pointers or descriptors, or various other things which were initialized by C extension modules. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01318">1318</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01319">1319</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -208,7 +208,7 @@ Data Fields</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01150">1150</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01151">1151</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Pointer to a (static) namespacing struct for the KrkClass*'s of built-in object types </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00207">207</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00208">208</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -243,7 +243,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>A string representing the name of the interpreter binary. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00201">201</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00202">202</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +260,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>'__builtins__' module </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00204">204</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00205">205</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +277,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Running total of bytes allocated </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00212">212</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00213">213</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -294,7 +294,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Pointer to a (static) namespacing struct for the KrkClass*'s of basic exception types </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00208">208</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00209">209</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Global VM state flags </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00200">200</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00201">201</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +328,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>How many objects we can fit in the scan list. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00215">215</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00216">216</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -345,7 +345,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Count of objects marked by scan. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00214">214</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00215">215</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +362,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Scan list </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00216">216</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00217">217</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -379,7 +379,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Module cache </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00203">203</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00204">204</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +396,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Point at which we should sweep again </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00213">213</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00214">214</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -413,7 +413,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Linked list of all objects in the GC </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00211">211</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00212">212</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +430,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Cached strings of important method and function names </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00206">206</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00207">207</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -447,7 +447,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Strings table </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00202">202</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00203">203</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +464,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>'kuroko' module </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00205">205</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00206">206</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +481,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Invasive linked list of all VM threads. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00218">218</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00219">219</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
