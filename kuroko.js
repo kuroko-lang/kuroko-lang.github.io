@@ -17,12 +17,12 @@ var Module = typeof Module !== 'undefined' ? Module : {};
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-function _craftMessage(data) {
+function _craftMessage(data,finalResponse=false) {
   var buf = new Uint8Array(lengthBytesUTF8(data)+1);
   var actualNumBytes = stringToUTF8Array(data, buf, 0, buf.length);
   var transferObject = {
     'callbackId': workerCallbackId,
-    'finalResponse': false,
+    'finalResponse': finalResponse,
     'data': buf
   };
   postMessage(transferObject, [transferObject.data.buffer]);
@@ -1495,7 +1495,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  
+  1114: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
 };
 
 
@@ -5472,6 +5472,11 @@ var ASM_CONSTS = {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
     }
 
+  function _emscripten_asm_const_int(code, sigPtr, argbuf) {
+      var args = readAsmConstArgs(sigPtr, argbuf);
+      return ASM_CONSTS[code].apply(null, args);
+    }
+
   function _emscripten_memcpy_big(dest, src, num) {
       HEAPU8.copyWithin(dest, src, src + num);
     }
@@ -5538,21 +5543,6 @@ var ASM_CONSTS = {
       var start = _emscripten_get_now();
       while (_emscripten_get_now() - start < msecs) {
         // Do nothing.
-      }
-    }
-
-  function _emscripten_worker_respond(data, size) {
-      if (workerResponded) throw 'already responded with final response!';
-      workerResponded = true;
-      var transferObject = {
-        'callbackId': workerCallbackId,
-        'finalResponse': true,
-        'data': data ? new Uint8Array(HEAPU8.subarray((data), (data + size))) : 0
-      };
-      if (data) {
-        postMessage(transferObject, [transferObject.data.buffer]);
-      } else {
-        postMessage(transferObject);
       }
     }
 
@@ -5798,6 +5788,24 @@ var ASM_CONSTS = {
       return ret;
     }
 
+  var readAsmConstArgsArray=[];
+  function readAsmConstArgs(sigPtr, buf) {
+      readAsmConstArgsArray.length = 0;
+      var ch;
+      // Most arguments are i32s, so shift the buffer pointer so it is a plain
+      // index into HEAP32.
+      buf >>= 2;
+      while (ch = HEAPU8[sigPtr++]) {
+        // A double takes two 32-bit slots, and must also be aligned - the backend
+        // will emit padding to avoid that.
+        var double = ch < 105;
+        if (double && (buf & 1)) buf++;
+        readAsmConstArgsArray.push(double ? HEAPF64[buf++ >> 1] : HEAP32[buf]);
+        ++buf;
+      }
+      return readAsmConstArgsArray;
+    }
+
 Module["requestFullscreen"] = function Module_requestFullscreen(lockPointer, resizeCanvas) { Browser.requestFullscreen(lockPointer, resizeCanvas) };
   Module["requestAnimationFrame"] = function Module_requestAnimationFrame(func) { Browser.requestAnimationFrame(func) };
   Module["setCanvasSize"] = function Module_setCanvasSize(width, height, noUpdates) { Browser.setCanvasSize(width, height, noUpdates) };
@@ -5905,10 +5913,10 @@ var asmLibraryArg = {
   "abort": _abort,
   "dlopen": _dlopen,
   "dlsym": _dlsym,
+  "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_memcpy_big": _emscripten_memcpy_big,
   "emscripten_resize_heap": _emscripten_resize_heap,
   "emscripten_thread_sleep": _emscripten_thread_sleep,
-  "emscripten_worker_respond": _emscripten_worker_respond,
   "emscripten_worker_respond_provisionally": _emscripten_worker_respond_provisionally,
   "environ_get": _environ_get,
   "environ_sizes_get": _environ_sizes_get,

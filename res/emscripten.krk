@@ -310,7 +310,7 @@ def updatePrompt():
 
 def em_shell(s):
     print(shell_prompt(), s)
-    let lex = s.strip().split(' ')
+    let lex = [x for x in s.strip().split(' ') if x]
     if lex and lex[0] in shell_commands:
         try:
             shell_commands[lex[0]](lex)
@@ -519,7 +519,6 @@ def finishRunning():
     runningCode = False
     updatePrompt()
     cleanupWorkers.append(currentWorker)
-    exec('FS.syncfs(true, function (err) { console.log(err); });')
     currentWorker = None
 
 def executeFile(path):
