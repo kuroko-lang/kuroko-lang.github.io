@@ -3,6 +3,7 @@ var extraEditor;
 var consoleEnabled = false;
 var consoleState = {};
 var debugState = {};
+var ideConfig;
 var codeSamples = {
   helloworld: ['helloworld.krk', "print('Hello, world!')"],
   variables:  ['vars.krk', "let a, b, c = 1, 2.0, 'three'\nprint(a,b,c)"],
@@ -480,6 +481,8 @@ var Module = {
       "    import emscripten\n" +
       "    __builtins__.emscripten = emscripten\n" +
       "    emscripten.__main__()\n");
+
+    ideConfig = localStorage.getItem("ideconfig");
 
     FS.syncfs(true, function (err) {
       if (!err) {

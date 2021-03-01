@@ -3,7 +3,8 @@ import os
 import stat
 import fileio
 import time
-from js import exec, run_worker, destroy_worker
+import json
+from js import exec, run_worker, destroy_worker, JSObject
 
 let home = os.environ.get('HOME','/')
 
@@ -268,7 +269,34 @@ def realFiles(projects):
     let roots = [FileNode(project,'project',discoverFiles(project)) for project in projects]
     setFiles(roots)
 
+
+def jsonFilter(c):
+    let mapping = {
+        '"': '\\"',
+        '\\': '\\\\',
+        '\b': '\\b',
+        '\f': '\\f',
+        '\n': '\\n',
+        '\r': '\\r',
+        '\t': '\\t',
+    }
+    return mapping[c] if c in mapping else c
+
+def dumpJson(o):
+    if isinstance(o,list):
+        return '[' + ','.join([dumpJson(i) for i in o]) + ']'
+    else if isinstance(o,int):
+        return repr(o)
+    else if isinstance(o,str):
+        return '"' + ''.join([jsonFilter(c) for c in o]) + '"'
+    else if isinstance(o,dict):
+        return '{' + ','.join([dumpJson(k) + ':' + dumpJson(v) for k, v in o.items()]) + '}'
+    else:
+        return dumpJson(str(o))
+
 def filesystemReady():
+    '''Called from JS after the IDBFS has been initialized.'''
+    # Load project list.
     debug("Filesystem is ready, loading project list.")
     let projects = []
     with fileio.opendir(home) as homeDir:
@@ -279,6 +307,24 @@ def filesystemReady():
                 debug(f"{entry['name']} looks like a project")
                 projects.append(home + '/' + entry['name'])
     realFiles(projects)
+    # Get configuration data
+    let configData = JSObject('ideConfig')
+    if not configData:
+        # Add welcome tab.
+        showWelcomeTab()
+    else:
+        try:
+            let config = json.loads(configData)
+            if 'tabs' in config:
+                for tab in config['tabs']:
+                    openFile(tab)
+            if 'active' in config:
+                if config['active'] in editorTabs:
+                    editorTabs[config['active']].activate()
+                else if config['active'] == 'WELCOME':
+                    showWelcomeTab()
+        except as e:
+            debug("Config looks bad...", str(e))
 
 let cMP = None
 def setupContextMenu(path):
@@ -487,6 +533,11 @@ def reportShown(tabIdTab):
         tabs[tabId].updateOutline()
     else:
         setRunnableState(False)
+    # Update tab data
+    let tabIds = sorted([tab.id for key, tab in editorTabs.items()])
+    let tabPaths = [tabs[tabId].path for tabId in tabIds]
+    let ideConfig = dumpJson({'tabs': tabPaths, 'active': tabs[tabId].path if isinstance(tabs[tabId],EditorTab) else 'WELCOME'})
+    exec(f'''localStorage.setItem("ideconfig",`{ideConfig}`);''')
 
 def hasUnsaved():
   for k,v in editorTabs.items():
@@ -624,20 +675,7 @@ class CodeObject():
     def __str__(self):
         return self.__repr__()
 
-# Startup stuff
-def __main__():
-    # Disable automatic traceback dumping
-    import kuroko
-    kuroko.set_clean_output(True)
-    # Print emscripten version info
-    uname([None,'-a'])
-    # Move to home directory
-    os.chdir(home)
-    # Update shell prompt
-    updatePrompt()
-    # Set terminal tab colors
-    exec(f'document.getElementById("right-pane-terminal-tab").querySelector("svg").style.color = "{iconColors["project"]}";')
-    exec(f'document.getElementById("right-pane-output-tab").querySelector("svg").style.color = "{iconColors["info"]}";')
+def showWelcomeTab():
     # Add a new welcome tab.
     let welcomeTab = Tab('Welcome','''
         <div class="p-3">
@@ -656,4 +694,19 @@ def __main__():
         </div>''')
     welcomeTab.realize()
     welcomeTab.activate()
+
+# Startup stuff
+def __main__():
+    # Disable automatic traceback dumping
+    import kuroko
+    kuroko.set_clean_output(True)
+    # Print emscripten version info
+    uname([None,'-a'])
+    # Move to home directory
+    os.chdir(home)
+    # Update shell prompt
+    updatePrompt()
+    # Set terminal tab colors
+    exec(f'document.getElementById("right-pane-terminal-tab").querySelector("svg").style.color = "{iconColors["project"]}";')
+    exec(f'document.getElementById("right-pane-output-tab").querySelector("svg").style.color = "{iconColors["info"]}";')
 
