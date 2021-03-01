@@ -504,6 +504,10 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
   background-color: orange;
   color: black;
 }
+.ace_gutter-cell.ace_info {
+  background-color: #33a2e6;
+  color: white;
+}
 #run-button,.run-button {
   fill: currentColor !important;
   fill-opacity: 0;
@@ -616,4 +620,23 @@ svg#stop-button {
 svg#stop-button.running {
   color: red;
   fill: currentColor;
+}
+
+.debugging svg#stop-button {
+  color: red;
+}
+
+#nav-run.debugging {
+  display: none;
+}
+
+#nav-continue:not(.debugging) {
+  display: none;
+}
+#nav-step:not(.debugging) {
+  display: none;
+}
+
+svg#continue-button {
+  color: #33a2e6;
 }

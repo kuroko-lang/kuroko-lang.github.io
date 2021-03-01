@@ -54,14 +54,39 @@ function saveFile(editor) {
 
 function showSpinner() {
   //document.getElementById('spinnyboi').classList.add('show-spinner');
+  document.getElementById('nav-run').classList.remove('debugging');
+  document.getElementById('nav-stop').classList.remove('debugging');
+  document.getElementById('nav-continue').classList.remove('debugging');
+  document.getElementById('nav-step').classList.remove('debugging');
+
   document.getElementById('run-button').classList.add('run-pulse');
   document.getElementById('stop-button').classList.add('running');
 }
 
 function dismissSpinner() {
   //document.getElementById('spinnyboi').classList.remove('show-spinner');
+  document.getElementById('nav-run').classList.remove('debugging');
+  document.getElementById('nav-stop').classList.remove('debugging');
+  document.getElementById('nav-continue').classList.remove('debugging');
+  document.getElementById('nav-step').classList.remove('debugging');
+
   document.getElementById('run-button').classList.remove('run-pulse');
   document.getElementById('stop-button').classList.remove('running');
+}
+
+function showDebugger() {
+  document.getElementById('nav-run').classList.add('debugging');
+  document.getElementById('nav-stop').classList.add('debugging');
+  document.getElementById('nav-continue').classList.add('debugging');
+  document.getElementById('nav-step').classList.add('debugging');
+}
+
+function stepDebugger() {
+  krk_call('emscripten.postDebuggerMessage("step")');
+}
+
+function continueDebugger() {
+  krk_call('emscripten.postDebuggerMessage("continue")');
 }
 
 function openFile(fromInput) {
@@ -380,6 +405,16 @@ function createProject() {
   /* Get project name from form */
   let projectName = document.getElementById("project-name").value;
   /* TODO validate */
+  if (projectName.length < 1 ||
+      projectName.includes('/') ||
+      projectName.includes('"') ||
+      projectName.includes("'") ||
+      projectName.includes(' ') ||
+      projectName.includes('.') ||
+      projectName.includes('`')) {
+    alert("Sorry, that project name may cause problems.");
+    return;
+  }
   /* Clear form */
   document.getElementById("project-name").value = "";
   /* Create directory */
@@ -387,11 +422,12 @@ function createProject() {
   try {
     FS.mkdir(path);
   } catch (error) {
+    alert("It looks like you already have a project with that name?");
     return;
   }
   FS.writeFile(path + '/main.krk','# main.krk\n');
   FS.syncfs(function (err) {});
-  krk_call('emscripten.filesystemReady()')
+  krk_call('emscripten.syncProjectList()')
   openEmscriptenFile(path + '/main.krk');
 }
 
@@ -400,7 +436,7 @@ function makeFolder(elem) {
   let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
   FS.mkdir(source + '/' + dirName);
   FS.syncfs(function (err) {});
-  krk_call('emscripten.filesystemReady()')
+  krk_call('emscripten.syncProjectList()')
 }
 
 function makeFile(elem) {
@@ -408,7 +444,7 @@ function makeFile(elem) {
   let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
   FS.writeFile(source + '/' + pathName, '');
   FS.syncfs(function (err) {});
-  krk_call('emscripten.filesystemReady()')
+  krk_call('emscripten.syncProjectList()')
 }
 
 function newFolder() {

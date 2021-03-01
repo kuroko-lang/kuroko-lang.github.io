@@ -185,6 +185,7 @@ def clear(args):
 @shellCommand
 def sync(args):
     exec('FS.syncfs(function (err) { console.log(err); });')
+    syncProjectList()
 
 @shellCommand
 def rm(args):
@@ -294,10 +295,7 @@ def dumpJson(o):
     else:
         return dumpJson(str(o))
 
-def filesystemReady():
-    '''Called from JS after the IDBFS has been initialized.'''
-    # Load project list.
-    debug("Filesystem is ready, loading project list.")
+def syncProjectList():
     let projects = []
     with fileio.opendir(home) as homeDir:
         for entry in homeDir:
@@ -307,6 +305,12 @@ def filesystemReady():
                 debug(f"{entry['name']} looks like a project")
                 projects.append(home + '/' + entry['name'])
     realFiles(projects)
+
+def filesystemReady():
+    '''Called from JS after the IDBFS has been initialized.'''
+    # Load project list.
+    debug("Filesystem is ready, loading project list.")
+    syncProjectList()
     # Get configuration data
     let configData = JSObject('ideConfig')
     if not configData:
@@ -343,13 +347,13 @@ def setupContextMenu(path):
     exec(f'document.getElementById("file-context-menu").setAttribute("role","{role}");')
 
 let runningCode = False
+let debuggerActive = 0
 def shell_prompt():
-    if runningCode:
-      return '''<svg class="icon-sm run-button run-pulse" viewBox="0 0 24 24"><use href="#icon-play"></use></svg> $&nbsp;'''
     let cwd = os.getcwd()
     if cwd == home: cwd = '~'
     else if cwd.startswith(home + '/'): cwd = cwd.replace(home,'~',1)
-    return f'{cwd} $'
+    let status = '(paused) ' if debuggerActive else '(executing) ' if runningCode else ''
+    return f'{status}{cwd} $'
 
 def updatePrompt():
     exec(f"document.getElementById('shell-prompt').innerHTML = `{shell_prompt()}&nbsp;`")
@@ -449,6 +453,7 @@ class EditorTab(Tab):
     def updateOutline(self):
         if self.icon != 'code':
             setRunnableState(False)
+            setOutline('')
             return
         let c
         try:
@@ -456,7 +461,7 @@ class EditorTab(Tab):
                 c = CodeObject.fromCode(f.read())
         except:
             setRunnableState(False)
-            exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = "";')
+            setOutline('')
             return
         let annotations = '[]'
         let errorColor, errorCount = 'unset', 0
@@ -465,7 +470,7 @@ class EditorTab(Tab):
         let runnableState = True
         if isinstance(c,CodeObject):
             let t = makeOutline(c.makeTree()[2])
-            exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = `{t}`;')
+            setOutline(t)
             let undef = c.checkReferences()
             if undef:
                 warningColor = 'orange'
@@ -490,6 +495,9 @@ class EditorTab(Tab):
         exec(f'document.getElementById("{self.id}").querySelector(".status-info").innerText = "{infoCount}";')
         # Editor annotations
         exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+
+def setOutline(t):
+    exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = `{t}`;')
 
 def setRunnableState(runnableState):
     exec(f'document.getElementById("run-button").classList.{"add" if runnableState else "remove"}("runnable");')
@@ -569,11 +577,12 @@ def openFile(path):
 let currentWorker = None
 let cleanupWorkers = []
 
-def finishRunning():
+def finishRunning(cleanup=True):
     exec('dismissSpinner();')
     runningCode = False
+    debuggerActive = False
     updatePrompt()
-    cleanupWorkers.append(currentWorker)
+    if cleanup: cleanupWorkers.append(currentWorker)
     currentWorker = None
 
 def executeFile(path):
@@ -587,8 +596,29 @@ def executeFile(path):
         destroy_worker(cleanupWorkers.pop(0))
     debug('Calling worker to run', path)
     runningCode = True
+    debuggerActive = False
     updatePrompt()
     currentWorker = run_worker('/kuroko.js', path, _callback)
+    debug("Started worker", currentWorker)
+
+def postDebuggerMessage(msg):
+    exec(f'Browser.workers[{currentWorker}].worker.postMessage(`{msg}`);')
+    exec('showSpinner();')
+
+def debuggerCallback(data):
+    let sOffset, func, filename, sLine = data.split(',')
+
+    if filename in editorTabs:
+        let id = editorTabs[filename].id
+        let annotations = '[{' + f'row: {int(sLine)-1}, column: 0, text: "breakpoint", type: "info"' + '}]'
+        exec(f'document.getElementById("{id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+    else:
+        debug("not found?",filename)
+    
+    exec('dismissSpinner();')
+    exec('showDebugger();')
+    debuggerActive = True
+    updatePrompt()
 
 def stopWorker():
     if currentWorker is None:
@@ -596,7 +626,7 @@ def stopWorker():
         return
     debug('Destroying worker #' + str(currentWorker))
     destroy_worker(currentWorker)
-    finishRunning()
+    finishRunning(False)
 
 class CodeObject():
     _opcodeCache = {}
@@ -712,5 +742,5 @@ def __main__():
     updatePrompt()
     # Set terminal tab colors
     exec(f'document.getElementById("right-pane-terminal-tab").querySelector("svg").style.color = "{iconColors["project"]}";')
-    exec(f'document.getElementById("right-pane-output-tab").querySelector("svg").style.color = "{iconColors["info"]}";')
+    exec(f'document.getElementById("right-pane-internal-debug-tab").querySelector("svg").style.color = "{iconColors["info"]}";')
 

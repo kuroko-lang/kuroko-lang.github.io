@@ -106,6 +106,18 @@
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
+              <li class="nav-item" id="nav-continue">
+                <a class="nav-link" onclick="continueDebugger();">
+                  <svg id="continue-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-play"></use></svg>
+                  <div class="tooltiptext tooltip-right">Continue</div>
+                </a>
+              </li>
+              <li class="nav-item" id="nav-step">
+                <a class="nav-link" onclick="stepDebugger();">
+                  <svg id="step-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-skip-forward"></use></svg>
+                  <div class="tooltiptext tooltip-right">Step</div>
+                </a>
+              </li>
               <li class="nav-item" id="nav-run">
                 <a class="nav-link" onclick="runCode(currentEditor())">
                   <svg id="run-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-play"></use></svg>
@@ -169,10 +181,12 @@
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-terminal"></use></svg>
             Terminal
           </div>
+          <!--
           <div class="tab" id="right-pane-output-tab" data-bs-toggle="tab" data-bs-target="#right-pane-output" role="tab" aria-controls="right-pane-output" aria-selected="false">
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
             Output
           </div>
+          -->
           <div class="tab" id="right-pane-internal-debug-tab" data-bs-toggle="tab" data-bs-target="#right-pane-internal-debug" role="tab" aria-controls="right-pane-internal-debug" aria-selected="false">
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
             IDE Debug
@@ -284,10 +298,12 @@
                 <label class="form-label" for="project-name">Project Name</label>
                 <input class="form-control" id="project-name" placeholder="my-new-project">
               </div>
+              <!--
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="project-enable-thing">
                 <label class="form-check-label" for="project-enable-thing">Create skeleton files</label>
               </div>
+              -->
             </form>
           </div>
           <div class="modal-footer">
@@ -338,6 +354,8 @@
       <svg id="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
       <svg id="icon-corner-up-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
       <svg id="icon-filter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+      <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      <svg id="icon-skip-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-skip-forward"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
     </div>
   </body>
 </html>
