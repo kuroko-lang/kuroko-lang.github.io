@@ -405,7 +405,8 @@ class Tab():
 
 class EditorTab(Tab):
     def __init__(self, path):
-        super().__init__(path.split('/')[-1], icon='code', iconColor='code')
+        let icon = 'code' if path.endswith('.krk') else 'text'
+        super().__init__(path.split('/')[-1], icon=icon, iconColor=icon)
         self.path = path
         self.hint = path
         self.modified = None
@@ -446,6 +447,9 @@ class EditorTab(Tab):
         self.modified = False
         self.updateOutline()
     def updateOutline(self):
+        if self.icon != 'code':
+            setRunnableState(False)
+            return
         let c
         try:
             with fileio.open(self.path,'r') as f:

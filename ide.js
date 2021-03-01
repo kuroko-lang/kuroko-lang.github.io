@@ -111,7 +111,13 @@ function createEditor(containerId="editor",filePath=null) {
   /* You may want to disable this? */
   editor.setBehavioursEnabled(false);
   editor.setOption('enableBasicAutocompletion', true);
-  editor.session.setMode("ace/mode/kuroko");
+  if (filePath) {
+    if (filePath.endsWith('.krk')) {
+      editor.session.setMode("ace/mode/kuroko");
+    } else if (filePath.endsWith('.md')) {
+      editor.session.setMode("ace/mode/markdown");
+    }
+  }
   editor.commands.bindKey("Shift-Return", function (editor) { runCode(editor); });
   editor.commands.bindKey("Ctrl-S", function (editor) { saveEditor(editor); });
   editor.commands.bindKey("Ctrl-W", function (editor) { });

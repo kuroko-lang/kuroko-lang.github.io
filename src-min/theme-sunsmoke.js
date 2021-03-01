@@ -16,6 +16,7 @@ define("ace/theme/sunsmoke",["require","exports","module","ace/lib/dom"],functio
         .ace_support.ace_function { color: #e6ce6e; }\
         .ace_selection { background-color: #666; }\
         .ace_constant.ace_language { color: #e62b7f; }\
+        .ace_heading { font-weight: bold; }\
     ";
     var r=e("../lib/dom");
     r.importCssString(t.cssText,t.cssClass)

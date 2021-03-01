@@ -86,7 +86,11 @@ main.layout-just-output {
 main.layout-just-output .layout-check.layout-option-just-output { visibility: visible; }
 main.layout-just-output>div:not(.right-pane) { display: none; }
 
-.navbar { grid-area: navbar; height: 30px; }
+.navbar {
+  user-select: none;
+  grid-area: navbar;
+  height: 30px;
+}
 .nav-link {
   cursor: default;
   padding: 0;
@@ -356,6 +360,7 @@ svg.icon-md {
   scroll-behavior: smooth;
 }
 .status-bar {
+  user-select: none;
   grid-area: status-bar;
   background-color: #2f2f2f;
   display: flex;
