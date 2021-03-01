@@ -156,7 +156,7 @@
       <div class="left-pane">
         <div class="nav tab-bar" role="tablist" id="left-pane-tab">
           <div class="tab tab-add">
-            <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
+            <!--<svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>-->
           </div>
         </div>
         <div id="left-pane-tabContent" class="tab-content under-tabbar">
@@ -178,7 +178,7 @@
             IDE Debug
           </div>
           <div class="tab tab-add">
-            <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
+            <!--<svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>-->
           </div>
         </div>
         <div id="right-pane-tabContent" class="tab-content under-tabbar">
@@ -306,7 +306,7 @@
     <ul class="dropdown-menu context-menu" id="file-context-menu" role="context-project">
       <li class="context-item-file context-item-project context-item-directory"><a class="dropdown-item" onclick="runFromContextMenu();">Run</a></li>
       <li class="context-item-file"><a class="dropdown-item" onclick="krk_call('emscripten.openFile(emscripten.cMP)');">Open</a></li>
-      <li class="context-item-project"><a class="dropdown-item" onclick="">Export Project...</a></li>
+      <li class="context-item-project"><a class="dropdown-item disabled" onclick="">Export Project...</a></li>
       <li class="context-item-project context-item-directory"><hr class="dropdown-divider"></li>
       <li class="context-item-project context-item-directory"><a class="dropdown-item" onclick="newFolder();">New folder...</a></li>
       <li class="context-item-project context-item-directory"><a class="dropdown-item" onclick="newFile();">New file...</a></li>

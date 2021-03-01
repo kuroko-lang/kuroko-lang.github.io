@@ -405,28 +405,44 @@ class EditorTab(Tab):
             with fileio.open(self.path,'r') as f:
                 c = CodeObject.fromCode(f.read())
         except:
+            setRunnableState(False)
             exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = "";')
             return
+        let annotations = '[]'
+        let errorColor, errorCount = 'unset', 0
+        let warningColor, warningCount = 'unset', 0
+        let infoColor, infoCount = 'unset', 0
+        let runnableState = True
         if isinstance(c,CodeObject):
             let t = makeOutline(c.makeTree()[2])
-            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "unset";')
-            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "0";')
             exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = `{t}`;')
-            let annotations = '[]'
             let undef = c.checkReferences()
             if undef:
-                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "orange";')
-                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "{len(undef)}";')
+                warningColor = 'orange'
+                warningCount = len(undef)
                 annotations = '[' + ','.join([makeAnnotations(x) for x in undef]) + ']'
-            else:
-                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "unset";')
-                exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "0";')
-            exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
         else:
-            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "red";')
-            exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "1";')
-            let annotation = '{' + f'row: {c[0]-1}, column: {c[1]-1}, text: "{c[2]}", type: "error"' + '}'
-            exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations([{annotation}]);')
+            errorColor = 'red'
+            errorCount = 1
+            annotations = '[{' + f'row: {c[0]-1}, column: {c[1]-1}, text: "{c[2]}", type: "error"' + '}]'
+            runnableState = False
+
+        # Play button state
+        setRunnableState(runnableState)
+        # Errors
+        exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "{errorColor}";')
+        exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "{errorCount}";')
+        # Warnings
+        exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "{warningColor}";')
+        exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "{warningCount}";')
+        # Info
+        exec(f'document.getElementById("{self.id}").querySelector(".status-info").parentNode.style.color = "{infoColor}";')
+        exec(f'document.getElementById("{self.id}").querySelector(".status-info").innerText = "{infoCount}";')
+        # Editor annotations
+        exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+
+def setRunnableState(runnableState):
+    exec(f'document.getElementById("run-button").classList.{"add" if runnableState else "remove"}("runnable");')
 
 def makeAnnotations(undefined):
     let var, lines = undefined
@@ -435,7 +451,7 @@ def makeAnnotations(undefined):
 def makeOutline(children):
     return '<ul>' + ''.join([f'''
         <li>
-            <a class="file-item" ondblclick="toggleDirectory(this)">
+            <a class="file-item" ondblclick="currentEditor().gotoLine({l},1,1);">
                 <svg style="color: {d[2]};" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-{d[1]}"></use></svg>
                 {d[0]}
             </a>
@@ -469,6 +485,8 @@ def reportShown(tabIdTab):
     let tabId = tabIdTab[:-4]
     if tabId in tabs and isinstance(tabs[tabId],EditorTab):
         tabs[tabId].updateOutline()
+    else:
+        setRunnableState(False)
 
 def hasUnsaved():
   for k,v in editorTabs.items():
@@ -497,33 +515,34 @@ let currentWorker = None
 let cleanupWorkers = []
 
 def finishRunning():
-  exec('dismissSpinner();')
-  runningCode = False
-  updatePrompt()
-  cleanupWorkers.append(currentWorker)
-  currentWorker = None
+    exec('dismissSpinner();')
+    runningCode = False
+    updatePrompt()
+    cleanupWorkers.append(currentWorker)
+    exec('FS.syncfs(true, function (err) { console.log(err); });')
+    currentWorker = None
 
 def executeFile(path):
-  def _callback(data):
-    debug('Received final callback from worker for', path, '=>', data)
-    finishRunning()
-  if currentWorker:
-    fileio.stderr.write('Please wait until the currently running worker has finished.\n')
-    return
-  while cleanupWorkers:
-    destroy_worker(cleanupWorkers.pop(0))
-  debug('Calling worker to run', path)
-  runningCode = True
-  updatePrompt()
-  currentWorker = run_worker('/kuroko.js', path, _callback)
+    def _callback(data):
+        debug('Received final callback from worker for', path, '=>', data)
+        finishRunning()
+    if currentWorker:
+        fileio.stderr.write('Please wait until the currently running worker has finished.\n')
+        return
+    while cleanupWorkers:
+        destroy_worker(cleanupWorkers.pop(0))
+    debug('Calling worker to run', path)
+    runningCode = True
+    updatePrompt()
+    currentWorker = run_worker('/kuroko.js', path, _callback)
 
 def stopWorker():
-  if currentWorker is None:
-    fileio.stderr.write('No worker is runner.\n')
-    return
-  debug('Destroying worker #' + str(currentWorker))
-  destroy_worker(currentWorker)
-  finishRunning()
+    if currentWorker is None:
+        fileio.stderr.write('No worker is runner.\n')
+        return
+    debug('Destroying worker #' + str(currentWorker))
+    destroy_worker(currentWorker)
+    finishRunning()
 
 class CodeObject():
     _opcodeCache = {}
@@ -537,6 +556,7 @@ class CodeObject():
         try:
             func = dis.build(code)
         except SyntaxError as e:
+            debug({a:getattr(e,a) for a in dir(e) if not a.startswith('_')})
             return (e.lineno, e.colno, e.arg)
         return cls(func,code)
 
@@ -553,13 +573,15 @@ class CodeObject():
         else:
             description = ('def <b>' + func.__name__ + '</b>()','box','#e62b7f',func.__name__)
         let children = []
+        let offset = 0
         for instruction in dis.examine(func):
             if isinstance(instruction[2],codeobject):
                 children.append(self.makeTree(instruction[2]))
             else if instruction[0] in (dis.OP_IMPORT,dis.OP_IMPORT_LONG):
-                children.append( (('import <b>' + instruction[2] + '</b>', 'package', '#48b048', instruction[2]), 0, []) )
+                children.append( (('import <b>' + instruction[2] + '</b>', 'package', '#48b048', instruction[2]), func._ip_to_line(offset), []) )
             else if instruction[0] in (dis.OP_DEFINE_GLOBAL,dis.OP_DEFINE_GLOBAL_LONG) and (instruction[2] not in ([d[3] for d,l,c in children])):
-                children.append( (('let <b>' + instruction[2] + '</b>', 'square', '#e6ce6e', instruction[2]), 0, []) )
+                children.append( (('let <b>' + instruction[2] + '</b>', 'square', '#e6ce6e', instruction[2]), func._ip_to_line(offset), []) )
+            offset += instruction[1]
         return (description, line, children)
 
     def checkReferences(self):
@@ -581,7 +603,7 @@ class CodeObject():
                         references[instruction[2]] = [func._ip_to_line(offset)]
                 offset += instruction[1]
         recursor(self.func)
-        let undefined = {(x,references[x]) for x in referenced if x not in defined and x not in dir(__builtins__)}
+        let undefined = {(x,references[x]) for x in referenced if x not in defined and x not in dir(__builtins__) and x != '__builtins__'}
         return list(undefined)
 
     @classmethod
@@ -626,10 +648,12 @@ def __main__():
               <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-package"></use></svg>
               Create a New Project
             </button>
+            <!--
             <button type="button" class="btn btn-secondary me-2 mb-3">
               <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
               See a Sample Project
             </button>
+            -->
         </div>''')
     welcomeTab.realize()
     welcomeTab.activate()

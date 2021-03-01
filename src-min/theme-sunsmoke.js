@@ -14,7 +14,7 @@ define("ace/theme/sunsmoke",["require","exports","module","ace/lib/dom"],functio
         .ace_constant.ace_language.ace_escape  { color: #71cbad; }\
         .ace_storage { color: #e6ce6e; }\
         .ace_support.ace_function { color: #e6ce6e; }\
-        .ace_selection { background-color: #e6ce6e; color: #1f1f1f; }\
+        .ace_selection { background-color: #666; }\
         .ace_constant.ace_language { color: #e62b7f; }\
     ";
     var r=e("../lib/dom");

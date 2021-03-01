@@ -224,10 +224,6 @@ input[type=file] + span {
 #panel-files { grid-area: panel-files; }
 #panel-overview { grid-area: panel-overview; }
 
-#nav-run>.nav-link {
-  color: rgb(0,200,50) !important;
-}
-
 #extra-editor {
   display: flex;
   flex-direction: row;
@@ -321,6 +317,7 @@ svg.icon-md {
   align-items: middle;
   background-color: #2f2f2f;
   color: #aaa;
+  min-height: 30px;
 }
 .tab-bar .tab {
   padding: 2px 4px;
@@ -490,6 +487,10 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 .ace-sunsmoke.ace_editor.ace_autocomplete .ace_completion-highlight {
   color: #33a2e6;
 }
+.ace_gutter-active-line {
+  background-color: #968b39;
+  color: #000;
+}
 .ace_gutter-cell.ace_error {
   background-color: red;
   color: white;
@@ -502,7 +503,7 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
   fill: currentColor !important;
   fill-opacity: 0;
 }
-.run-button {
+#run-button.runnable, .run-button {
   color: rgb(0,200,50) !important;
 }
 .run-pulse {
