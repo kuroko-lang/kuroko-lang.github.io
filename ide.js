@@ -30,6 +30,7 @@ function runInternal(path) {
 }
 
 function stopWorker() {
+  stopAutostep();
   krk_call('emscripten.stopWorker()');
 }
 
@@ -58,6 +59,7 @@ function showSpinner() {
   document.getElementById('nav-stop').classList.remove('debugging');
   document.getElementById('nav-continue').classList.remove('debugging');
   document.getElementById('nav-step').classList.remove('debugging');
+  document.getElementById('nav-autostep').classList.remove('debugging');
 
   document.getElementById('run-button').classList.add('run-pulse');
   document.getElementById('stop-button').classList.add('running');
@@ -69,6 +71,7 @@ function dismissSpinner() {
   document.getElementById('nav-stop').classList.remove('debugging');
   document.getElementById('nav-continue').classList.remove('debugging');
   document.getElementById('nav-step').classList.remove('debugging');
+  document.getElementById('nav-autostep').classList.remove('debugging');
 
   document.getElementById('run-button').classList.remove('run-pulse');
   document.getElementById('stop-button').classList.remove('running');
@@ -79,6 +82,38 @@ function showDebugger() {
   document.getElementById('nav-stop').classList.add('debugging');
   document.getElementById('nav-continue').classList.add('debugging');
   document.getElementById('nav-step').classList.add('debugging');
+  document.getElementById('nav-autostep').classList.add('debugging');
+}
+
+var autoStepping = false;
+var autoStepCallback = null;
+
+function doAutostep() {
+  if (!document.getElementById('nav-autostep').classList.contains('debugging')) {
+    stopAutostep();
+    return;
+  }
+  stepDebugger();
+  autoStepCallback = window.setTimeout(doAutostep, 500);
+}
+
+function stopAutostep() {
+    autoStepping = false;
+    document.getElementById('nav-autostep').classList.remove('autostepping');
+    if (autoStepCallback) {
+      window.clearTimeout(autoStepCallback);
+      autoStepCallback = null;
+    }
+}
+
+function autostepDebugger() {
+  if (autoStepping) {
+    stopAutostep();
+  } else {
+    document.getElementById('nav-autostep').classList.add('autostepping');
+    autoStepCallback = window.setTimeout(doAutostep, 500);
+    autoStepping = true;
+  }
 }
 
 function stepDebugger() {
@@ -87,6 +122,15 @@ function stepDebugger() {
 
 function continueDebugger() {
   krk_call('emscripten.postDebuggerMessage("continue")');
+}
+
+document.getElementById('debugger-single-step').checked = false;
+document.getElementById('debugger-gotoline').checked = false;
+function debuggerSettings() {
+  let settings = [];
+  if (document.getElementById('debugger-single-step').checked) settings.push('single=True');
+  if (document.getElementById('debugger-gotoline').checked) settings.push('gotoline=True');
+  krk_call('emscripten.updateDebuggerSettings(' + settings + ')');
 }
 
 function openFile(fromInput) {

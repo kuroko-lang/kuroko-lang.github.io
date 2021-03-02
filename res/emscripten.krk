@@ -414,6 +414,7 @@ class EditorTab(Tab):
         self.path = path
         self.hint = path
         self.modified = None
+        self.codeCache = None
     def renderContent(self):
         return f'''
           <div class="tab-pane has-statusbar" role="tabpanel" id="{self.id}" aria-labelledby="{self.id}-tab">
@@ -469,6 +470,7 @@ class EditorTab(Tab):
         let infoColor, infoCount = 'unset', 0
         let runnableState = True
         if isinstance(c,CodeObject):
+            self.codeCache = c
             let t = makeOutline(c.makeTree()[2])
             setOutline(t)
             let undef = c.checkReferences()
@@ -585,6 +587,11 @@ def finishRunning(cleanup=True):
     if cleanup: cleanupWorkers.append(currentWorker)
     currentWorker = None
 
+let debuggerSettings = {}
+def updateDebuggerSettings(**args):
+    debuggerSettings = args
+    debug("Updated debugger settings to", debuggerSettings)
+
 def executeFile(path):
     def _callback(data):
         debug('Received final callback from worker for', path, '=>', data)
@@ -598,23 +605,68 @@ def executeFile(path):
     runningCode = True
     debuggerActive = False
     updatePrompt()
-    currentWorker = run_worker('/kuroko.js', path, _callback)
+    # Get debugger flags
+    let flags = ''
+    if 'single' in debuggerSettings:
+        flags += 's'
+    currentWorker = run_worker('/kuroko.js', path, _callback, flags)
     debug("Started worker", currentWorker)
 
 def postDebuggerMessage(msg):
     exec(f'Browser.workers[{currentWorker}].worker.postMessage(`{msg}`);')
     exec('showSpinner();')
 
-def debuggerCallback(data):
-    let sOffset, func, filename, sLine = data.split(',')
+def padHex(off):
+    let s = hex(off).replace('0x','').upper()
+    if len(s) < 2: return '0' * (2 - len(s)) + s
+    return s
+
+def cleanHtml(s):
+    return s.replace('<','&lt;').replace('>','&gt;')
+
+def debuggerCallback(blob):
+    let data = json.loads(blob)
+    debug(data)
+    let filename = data.get('file','')
+    let func = data.get('function','')
+    let offset = data.get('offset',0)
+    let line = data.get('line',1)
+    let opcode = data.get('opcode',0)
+    let opcodeName = CodeObject._findOpcodeName(opcode)
+    let codeObject = None
 
     if filename in editorTabs:
+        codeObject = editorTabs[filename].codeCache
         let id = editorTabs[filename].id
-        let annotations = '[{' + f'row: {int(sLine)-1}, column: 0, text: "breakpoint", type: "info"' + '}]'
+        let annotations = '[{' + f'row: {line-1}, column: 0, text: "breakpoint", type: "info"' + '}]'
         exec(f'document.getElementById("{id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+        if 'gotoline' in debuggerSettings:
+            editorTabs[filename].activate()
+            exec(f'document.getElementById("{id}-editor")._aceInstance.gotoLine({line},1,1);')
     else:
-        debug("not found?",filename)
-    
+        exec(f'document.getElementById("debugger-disassembly").innerText = `in file {filename}:{line}`;')
+
+    exec(f'document.getElementById("debugger-offset").innerText = `{func}+{hex(offset)}`;')
+
+    if codeObject:
+        let maybeFunc = codeObject.getFunction(func,line)
+        if maybeFunc:
+            let disassembly = []
+            let off = 0
+            let seenOffset = False
+            for i in dis.examine(maybeFunc):
+                if off == offset: seenOffset = True
+                if seenOffset:
+                    disassembly.append(f'''
+                        <div class="instruction">
+                            <div class="ip">{">" if offset == off else " "}</div>
+                            <div class="offset">{padHex(off)}</div>
+                            <div class="opcode">{CodeObject._findOpcodeName(i[0])[3:]}</div>
+                            <div class="operand {"ace_string" if isinstance(i[2],str) else "ace_numeric" if isinstance(i[2],(int,float)) else ""}">{cleanHtml(repr(i[2])) if isinstance(i[2],(int,str)) else ""}</div>
+                        </div>''')
+                off += i[1]
+            exec(f'document.getElementById("debugger-disassembly").innerHTML = `{"\n".join(disassembly)}`;')
+
     exec('dismissSpinner();')
     exec('showDebugger();')
     debuggerActive = True
@@ -643,6 +695,17 @@ class CodeObject():
             debug({a:getattr(e,a) for a in dir(e) if not a.startswith('_')})
             return (e.lineno, e.colno, e.arg)
         return cls(func,code)
+
+    def getFunction(self, name, line, func=self.func):
+        let instructions = dis.examine(func)
+        let offset = 0
+        for i in instructions:
+            if func.__name__ == name and func._ip_to_line(offset) == line: return func
+            else if isinstance(i[2],codeobject):
+                let check = self.getFunction(name,line,i[2])
+                if check: return check
+            offset += i[1]
+        return None
 
     def makeTree(self, func=self.func):
         let instructions = dis.examine(func)

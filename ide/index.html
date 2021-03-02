@@ -106,6 +106,12 @@
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
+              <li class="nav-item" id="nav-run">
+                <a class="nav-link" onclick="runCode(currentEditor())">
+                  <svg id="run-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-play"></use></svg>
+                  <div class="tooltiptext tooltip-right">Run</div>
+                </a>
+              </li>
               <li class="nav-item" id="nav-continue">
                 <a class="nav-link" onclick="continueDebugger();">
                   <svg id="continue-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-play"></use></svg>
@@ -118,10 +124,11 @@
                   <div class="tooltiptext tooltip-right">Step</div>
                 </a>
               </li>
-              <li class="nav-item" id="nav-run">
-                <a class="nav-link" onclick="runCode(currentEditor())">
-                  <svg id="run-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-play"></use></svg>
-                  <div class="tooltiptext tooltip-right">Run</div>
+              <li class="nav-item" id="nav-autostep">
+                <a class="nav-link" onclick="autostepDebugger();">
+                  <svg id="auto-step-button" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-clock"></use></svg>
+                  <svg id="auto-step-button-pause" class="icon-sm" viewBox="0 0 24 24"><use href="#icon-pause"></use></svg>
+                  <div class="tooltiptext tooltip-right">Auto-Step</div>
                 </a>
               </li>
               <li class="nav-item" id="nav-stop">
@@ -216,12 +223,19 @@
             <a onclick="var c=document.getElementById('panel-breakpoints').classList;if(c.contains('collapsed')){c.remove('collapsed');}else{c.add('collapsed')}">
               <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-chevron-down"></use></svg>
             </a>
-            Breakpoints
+            Debugger
           </div>
           <div class="panel-contents">
-            <div class="alert alert-warning alert-dismissible fade show m-3" role="alert">
-              TODO
+            <div class="ms-1 form-check">
+              <input type="checkbox" onchange="debuggerSettings();" class="form-check-input" id="debugger-single-step">
+              <label class="form-check-label" for="debugger-single-step">Single Step</label>
             </div>
+            <div class="ms-1 form-check">
+              <input type="checkbox" onchange="debuggerSettings();" class="form-check-input" id="debugger-gotoline">
+              <label class="form-check-label" for="debugger-gotoline">Jump to Line</label>
+            </div>
+            <div class="ms-1 form-check" id="debugger-offset"></div>
+            <div class="ms-1" id="debugger-disassembly"></div>
           </div>
         </div>
       </div>
@@ -356,6 +370,7 @@
       <svg id="icon-filter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
       <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
       <svg id="icon-skip-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-skip-forward"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+      <svg id="icon-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
     </div>
   </body>
 </html>

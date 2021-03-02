@@ -1430,7 +1430,7 @@ var tempI64;
 
 var ASM_CONSTS = {
   2445: function($0) {Module.krkb[$0]();},  
- 2744: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
+ 2753: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
 };
 function krk_getKey(obj,key){ var output = Object.keys(Module.krkb[obj])[key]; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
 function krk_getKeyCount(i){ console.log('Getting key count for object: ' + i); if (typeof Module.krkb[i] === 'object' && Module.krkb[i] !== null) return Object.keys(Module.krkb[i]).length; return 0; }

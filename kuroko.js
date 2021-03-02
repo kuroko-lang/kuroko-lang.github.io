@@ -1530,7 +1530,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  1298: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
+  1355: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
 };
 function check_status(){ return Module.awakeStatus; }
 function report_debugger(str){ _craftMessage("d" + UTF8ToString(str)); }

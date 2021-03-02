@@ -385,14 +385,14 @@ svg.icon-md {
 }
 .debugger {
   grid-area: debugger;
-  width: 200px;
+  width: 300px;
   font-size: 15px;
   color: #fff;
   max-height: calc(100vh - 30px);
   border-left: 1px solid #555;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: fit-content(40%);
+  grid-template-rows: fit-content(100%);
   grid-template-areas:
       "panel-breakpoints"
       "panel-extra";
@@ -636,7 +636,43 @@ svg#stop-button.running {
 #nav-step:not(.debugging) {
   display: none;
 }
+#nav-autostep:not(.debugging) {
+  display: none;
+}
+#nav-autostep.autostepping #auto-step-button {
+  display: none;
+}
+#nav-autostep:not(.autostepping) #auto-step-button-pause {
+  display: none;
+}
+#nav-autostep.autostepping {
+  display: inline-block !important;
+}
 
 svg#continue-button {
   color: #33a2e6;
+}
+
+#debugger-disassembly {
+  font-size: 14px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+#debugger-disassembly > div {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+#debugger-disassembly .offset {
+  margin-right: 1em;
+}
+#debugger-disassembly .ip {
+  font-weight: bold;
+  color: #33a2e6;
+}
+#debugger-disassembly .operand {
+  margin-left: 1em;
 }
