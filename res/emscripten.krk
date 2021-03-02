@@ -593,7 +593,7 @@ def updateDebuggerSettings(**args):
     debug("Updated debugger settings to", debuggerSettings)
 
 def cleanHtml(s):
-    return s.replace('<','&lt;').replace('>','&gt;').replace('`','\\`')
+    return s.replace('<','&lt;').replace('>','&gt;').replace('\\','\\\\').replace('`','\\`')
 
 def executeFile(path):
     def _callback(data):
