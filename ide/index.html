@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/ide/ide.css">
+    <link id="css-theme-dark" rel="stylesheet" href="/ide/ide-dark.css">
+    <link id="css-theme-light" rel="alternate stylesheet" href="/ide/ide-light.css">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Kuroko">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -244,13 +246,6 @@
         </div>
       </div>
     </main>
-    <div class="modal fade" id="spinnyboi">
-      <div>
-        <div class="spinner-border text-primary"></div>
-        <div class="spinner-text text-primary">Please wait, code execution is taking a while...</div>
-      </div>
-      <div class="modal-dialog" style="display: none;"></div>
-    </div>
     <div class="modal fade" id="settingsPanel" tabindex="-1" aria-labelledby="settingsPanelLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content bg-dark text-light">
@@ -264,22 +259,17 @@
             </a>
           </div>
           <div class="modal-body">
-            <h3>Settings Group 1</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 2</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 3</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 4</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 5</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 6</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 7</h3>
-            <p>Lorem ipsum blah blah...</p>
-            <h3>Settings Group 8</h3>
-            <p>Lorem ipsum blah blah...</p>
+            <fieldset class="mb-3">
+              <legend>Theme</legend>
+              <div class="form-check">
+                <input type="radio" name="radios" onchange="setTheme();" class="form-check-input" id="theme-dark" checked>
+                <label class="form-check-label" for="theme-dark">Dark</label>
+              </div>
+              <div class="mb-3 form-check">
+                <input type="radio" name="radios" onchange="setTheme();" class="form-check-input" id="theme-light">
+                <label class="form-check-label" for="theme-light">Light</label>
+              </div>
+            </fieldset>
           </div>
           <div class="modal-footer">
             <div class="credits">
@@ -288,11 +278,7 @@
             </div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-x"></use></svg>
-              Cancel
-            </button>
-            <button type="button" class="btn btn-success">
-              <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-check"></use></svg>
-              Save
+              Close
             </button>
           </div>
         </div>

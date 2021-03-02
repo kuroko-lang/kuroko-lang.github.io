@@ -17,15 +17,6 @@ function runInternal(path) {
   showSpinner();
   window.setTimeout(function() {
     result = krk_call('emscripten.executeFile("' + path + '")');
-    /*
-    dismissSpinner();
-    if (result != "") {
-      let newOutput = document.createElement("pre");
-      newOutput.className = "repl";
-      newOutput.appendChild(document.createTextNode(' => ' + result));
-      document.getElementById("container").appendChild(newOutput);
-      document.getElementById("extra-editor").scrollIntoView(false);
-    } */
   }, 50);
 }
 
@@ -54,7 +45,6 @@ function saveFile(editor) {
 }
 
 function showSpinner() {
-  //document.getElementById('spinnyboi').classList.add('show-spinner');
   document.getElementById('nav-run').classList.remove('debugging');
   document.getElementById('nav-stop').classList.remove('debugging');
   document.getElementById('nav-continue').classList.remove('debugging');
@@ -66,7 +56,6 @@ function showSpinner() {
 }
 
 function dismissSpinner() {
-  //document.getElementById('spinnyboi').classList.remove('show-spinner');
   document.getElementById('nav-run').classList.remove('debugging');
   document.getElementById('nav-stop').classList.remove('debugging');
   document.getElementById('nav-continue').classList.remove('debugging');
@@ -521,6 +510,25 @@ function newFile() {
   `;
   ul.appendChild(newLi);
 }
+
+function setTheme() {
+  if (document.getElementById("theme-dark").checked) {
+    document.getElementById("css-theme-dark").rel = 'stylesheet';
+    document.getElementById("css-theme-light").rel = 'alternate stylesheet';
+    localStorage.setItem("idetheme","dark");
+  } else if (document.getElementById("theme-light").checked) {
+    document.getElementById("css-theme-dark").rel = 'alternate stylesheet';
+    document.getElementById("css-theme-light").rel = 'stylesheet';
+    localStorage.setItem("idetheme","light");
+  }
+}
+let idetheme = localStorage.getItem("idetheme");
+if (idetheme) {
+  if (idetheme == 'dark') document.getElementById("theme-dark").checked = true;
+  if (idetheme == 'light') document.getElementById("theme-light").checked = true;
+  setTheme();
+}
+
 
 window.addEventListener("beforeunload", function(e) {
   /* Ask if there are any unsaved files */
