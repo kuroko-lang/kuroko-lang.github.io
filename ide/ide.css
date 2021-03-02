@@ -190,7 +190,6 @@ input[type=file] + span {
   display: inline-block;
 }
 .file-browser {
-  min-width: 200px;
   font-size: 15px;
   grid-area: files;
   max-height: calc(100vh - 30px);
@@ -285,11 +284,37 @@ svg.icon-md {
 .file-browser .file-item {
   color: unset;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   transition: border 100ms;
   white-space: nowrap;
+  margin-top: 2px;
+  margin-right: 2px;
+}
+.file-item svg.icon-sm {
+  margin-top: unset;
+}
+.file-item svg.icon-sm:first-child {
+  margin-right: 4px;
+}
+.file-item svg.icon-sm:not(:first-child) {
+  margin-right: 3px;
+  transition: opacity 100ms linear;
+  opacity: 0%;
+  height: 16px;
+}
+.file-item svg.icon-sm:not(:first-child):not(:last-child) {
+  margin-left: auto;
+}
+div.panel-pane:hover svg.icon-sm:not(:first-child) {
+  opacity: 25%;
+}
+div.panel-pane .file-item svg.icon-sm:not(:first-child):hover {
+  opacity: 100%;
 }
 .file-browser ul>li:not(:last-child)>ul {
   margin-left: 8px;
@@ -300,7 +325,6 @@ svg.icon-md {
 .left-pane, .right-pane {
   display: grid;
   grid-template-columns: 100%;
-  overflow: hidden;
   grid-template-rows: max-content auto;
   grid-template-areas:
     "tab-bar"
@@ -393,13 +417,13 @@ svg.icon-md {
   fill: currentColor;
 }
 
-div.tab>.tooltiptext, a.nav-link>.tooltiptext {
+.tooltipholder>.tooltiptext, a.nav-link>.tooltiptext {
   visibility: hidden;
   opacity: 0;
   text-align: center;
   border-radius: 6px;
   position: absolute;
-  right: 0;
+  white-space: pre;
   padding: 2px 8px;
   margin-top: 10px;
   top: 24px;
@@ -407,9 +431,17 @@ div.tab>.tooltiptext, a.nav-link>.tooltiptext {
   transition: opacity 200ms ease 500ms;
   display: inline-block;
 }
-div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
+a.nav-link>.tooltiptext {
+  right: 0;
+}
+div.tab:hover>div>.tooltiptext, a.nav-link:hover>.tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+.tooltipholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .nav-link {
   position: relative;
@@ -426,6 +458,10 @@ div.tab:hover>.tooltiptext, a.nav-link:hover>.tooltiptext {
 }
 .ace_print-margin {
   width: 10000px; /* wiiiide */
+}
+
+.modal-open main {
+  filter: blur(5px);
 }
 
 #settingsPanel .modal-dialog {
@@ -478,7 +514,7 @@ ul[role=file] li:not(.context-item-file) {
   display: none;
 }
 
-.file-browser li>input {
+.file-browser li input {
   display: inline-block;
   color: inherit;
   font-size: inherit;
@@ -488,9 +524,9 @@ ul[role=file] li:not(.context-item-file) {
   margin: 0 3px;
   border-radius: 6px;
   min-width: 0;
-  width: 100px;
+  flex: 1;
 }
-.file-browser li>input:focus {
+.file-browser li input:focus {
   outline: none;
 }
 svg#stop-button {
@@ -541,6 +577,7 @@ svg#stop-button.running {
 }
 #debugger-disassembly .operand {
   margin-left: 1em;
+  word-wrap: anywhere;
 }
 
 /* Color specifications require a theme to define variables. */
@@ -639,10 +676,10 @@ main {
 #ide-debug > pre {
   color: var(--text-primary);
 }
-.file-browser li>input {
+.file-browser li input {
   border: 1px solid var(--neutral-color);
 }
-.file-browser li>input:focus {
+.file-browser li input:focus {
   border: 1px solid var(--text-primary);
 }
 svg#stop-button.running {
@@ -699,20 +736,19 @@ svg#continue-button {
 }
 
 /* This is always white on black */
-div.tab>.tooltiptext, a.nav-link>.tooltiptext {
+div.tab>div>.tooltiptext, a.nav-link>.tooltiptext {
   background-color: rgb(0,0,0,0.75);
   color: #fff;
 }
 
 div.debugger {
-  min-width: 200px;
+  width: 250px;
   overflow: hidden;
 }
 div.file-browser {
-  min-width: 200px;
+  width: 250px;
   overflow: hidden;
 }
 div.left-pane {
-  overflow: hidden;
   height: 65vh;
 }

@@ -144,6 +144,7 @@ function addTab(tabHtml, bodyHtml) {
   newDiv.innerHTML = tabHtml.trim();
   newDiv.firstChild.addEventListener('shown.bs.tab', function (e) {
     window.setTimeout(function() {
+      window.document.title = e.target.querySelector('.tab-title').innerText + " | Kuroko IDE";
       krk_call('emscripten.reportShown("' + e.target.id + '")')
     }, 200);
   });
@@ -489,30 +490,36 @@ function makeFile(elem) {
   krk_call('emscripten.syncProjectList()')
 }
 
-function newFolder() {
-  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + contextMenuPath + '"]');
+function newFolder(rootPath=null) {
+  if (!rootPath) rootPath = contextMenuPath;
+  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + rootPath + '"]');
   let ul = panelElem.parentNode.querySelector('ul');
   let newLi = document.createElement('li');
   /* This is temporary, so we don't need to strictly file the same layout, but the svg element would be nice... */
   newLi.innerHTML = `
-    <svg class="icon-sm" viewBox="0 0 24 24" style="color: #e6ce6e"><use href="#icon-folder"></use></svg>
-    <input></input>
-    <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFolder(this)"><use href="#icon-check"></use></svg>
-    <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.filesystemReady()');"><use href="#icon-x"></use></svg>
+    <form onsubmit="makeFolder(this)" class="file-item">
+      <svg class="icon-sm" viewBox="0 0 24 24" style="color: #e6ce6e"><use href="#icon-folder"></use></svg>
+      <input></input>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFolder(this.parentNode)"><use href="#icon-check"></use></svg>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.syncProjectList()');"><use href="#icon-x"></use></svg>
+    </form>
   `;
   ul.appendChild(newLi);
 }
 
-function newFile() {
-  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + contextMenuPath + '"]');
+function newFile(rootPath=null) {
+  if (!rootPath) rootPath = contextMenuPath;
+  let panelElem = document.getElementById('panel-files').querySelector('[em-path="' + rootPath + '"]');
   let ul = panelElem.parentNode.querySelector('ul');
   let newLi = document.createElement('li');
   /* This is temporary, so we don't need to strictly file the same layout, but the svg element would be nice... */
   newLi.innerHTML = `
-    <svg class="icon-sm" viewBox="0 0 24 24" style="color: red;"><use href="#icon-code"></use></svg>
-    <input></input>
-    <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFile(this)"><use href="#icon-check"></use></svg>
-    <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.filesystemReady()');"><use href="#icon-x"></use></svg>
+    <form onsubmit="makeFile(this)" class="file-item">
+      <svg class="icon-sm" viewBox="0 0 24 24" style="color: red;"><use href="#icon-code"></use></svg>
+      <input ></input>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFile(this.parentNode)"><use href="#icon-check"></use></svg>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.syncProjectList()');"><use href="#icon-x"></use></svg>
+    </form>
   `;
   ul.appendChild(newLi);
 }
