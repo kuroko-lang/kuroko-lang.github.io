@@ -10,7 +10,7 @@ let home = os.environ.get('HOME','/')
 
 def debug(*args):
     let argString = ' '.join([str(x) for x in args])
-    let out = f'[{int(time.time())}] {argString}'
+    let out = f'[{int(time.time())}] {argString}'.replace('`','\\`')
     exec(f'ideDebug(`{out}`);')
 
 let iconColors = {
@@ -592,6 +592,9 @@ def updateDebuggerSettings(**args):
     debuggerSettings = args
     debug("Updated debugger settings to", debuggerSettings)
 
+def cleanHtml(s):
+    return s.replace('<','&lt;').replace('>','&gt;').replace('`','\\`')
+
 def executeFile(path):
     def _callback(data):
         debug('Received final callback from worker for', path, '=>', data)
@@ -620,9 +623,6 @@ def padHex(off):
     let s = hex(off).replace('0x','').upper()
     if len(s) < 2: return '0' * (2 - len(s)) + s
     return s
-
-def cleanHtml(s):
-    return s.replace('<','&lt;').replace('>','&gt;').replace('`','\\`')
 
 def debuggerCallback(blob):
     let data = json.loads(blob)
