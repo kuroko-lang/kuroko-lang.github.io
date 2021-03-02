@@ -103,7 +103,7 @@ main.layout-just-output>div:not(.right-pane) { display: none; }
   display: none;
 }
 .left-pane { grid-area: left-pane; }
-.right-pane { grid-area: right-pane; }
+.right-pane { grid-area: right-pane; overflow-y: auto; }
 .splitter {
   grid-area: splitter;
   height: 100%;
