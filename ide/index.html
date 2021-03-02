@@ -176,14 +176,18 @@
       </div>
       <div class="left-pane">
         <div class="nav tab-bar" role="tablist" id="left-pane-tab">
-          <div class="tab tab-add">
-            <!--<svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>-->
+          <div class="tab tab-add" onclick="insertCode(['scratch-' + Math.floor(Math.random() * 0xFFFF).toString(16) + '.krk','']);">
+            <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>
           </div>
         </div>
         <div id="left-pane-tabContent" class="tab-content under-tabbar">
         </div>
       </div>
-      <div class="splitter"></div>
+      <div class="splitter">
+        <div class="splitter-handle left-handle" onmousedown="startDraggingLeftSplitter();"></div>
+        <div class="splitter-handle main-handle" onmousedown="startDraggingSplitter();"></div>
+        <div class="splitter-handle right-handle" onmousedown="startDraggingRightSplitter();"></div>
+      </div>
       <div class="right-pane">
         <div class="nav tab-bar" role="tablist" id="right-pane-tab">
           <div class="tab active" id="right-pane-terminal-tab" data-bs-toggle="tab" data-bs-target="#right-pane-terminal" role="tab" aria-controls="right-pane-terminal" aria-selected="true">
@@ -199,9 +203,6 @@
           <div class="tab" id="right-pane-internal-debug-tab" data-bs-toggle="tab" data-bs-target="#right-pane-internal-debug" role="tab" aria-controls="right-pane-internal-debug" aria-selected="false">
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
             IDE Debug
-          </div>
-          <div class="tab tab-add">
-            <!--<svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-plus-square"></use></svg>-->
           </div>
         </div>
         <div id="right-pane-tabContent" class="tab-content under-tabbar">

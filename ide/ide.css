@@ -21,7 +21,7 @@ main .layout-check {
 
 main.layout-normal {
   grid-template-columns: max-content 1fr max-content;
-  grid-template-rows: max-content 2fr 1px 1fr;
+  grid-template-rows: max-content fit-content(100%) 1px 1fr;
   grid-template-areas:
     "navbar navbar    navbar"
     "files left-pane  debugger"
@@ -37,11 +37,13 @@ main.layout-left-right {
     "navbar   navbar   navbar      navbar  navbar"
     "files  left-pane splitter right-pane debugger";
 }
+main.layout-left-right div.left-pane { height: auto !important; }
 main.layout-left-right .layout-check.layout-option-left-right { visibility: visible; }
+main.layout-left-right div.splitter-handle { display: none; }
 
 main.layout-focused {
   grid-template-columns: 1fr;
-  grid-template-rows: max-content 2fr 1px 1fr;
+  grid-template-rows: max-content fit-content(100%) 1px 1fr;
   grid-template-areas:
     "navbar"
     "left-pane"
@@ -54,7 +56,7 @@ main.layout-focused .file-browser { display: none; }
 
 main.layout-no-debugger {
   grid-template-columns: max-content 1fr;
-  grid-template-rows: max-content 2fr 1px 1fr;
+  grid-template-rows: max-content fit-content(100%) 1px 1fr;
   grid-template-areas:
     "navbar navbar    "
     "files left-pane  "
@@ -71,6 +73,7 @@ main.layout-just-editor {
     "navbar"
     "left-pane";
 }
+main.layout-just-editor div.left-pane { height: auto !important; }
 main.layout-just-editor .layout-check.layout-option-just-editor { visibility: visible; }
 main.layout-just-editor>div:not(.left-pane) { display: none; }
 
@@ -104,6 +107,39 @@ main.layout-just-output>div:not(.right-pane) { display: none; }
 .splitter {
   grid-area: splitter;
   height: 100%;
+  display: flex;
+  flex-direction: row; /* uh, we need to change this for the four-column mode */
+  align-items: center;
+}
+.splitter > .splitter-handle {
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #555;
+  opacity: 50%;
+  transition: opacity 100ms linear;
+  z-index: 10000;
+  user-select: none;
+}
+.splitter-handle:hover {
+  opacity: 100%;
+}
+.splitter-handle.main-handle {
+  width: 30px;
+  height: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.splitter-handle.left-handle {
+  margin-right: auto;
+  width: 8px;
+  height: 30px;
+  margin-left: -4px;
+}
+.splitter-handle.right-handle {
+  margin-left: auto;
+  width: 8px;
+  height: 30px;
+  margin-right: -4px;
 }
 .terminal-container {
   padding: 0px;
@@ -327,13 +363,13 @@ svg.icon-md {
 }
 .status-bar .status-editor {
   margin-left: auto;
+  margin-right: 1.5rem;
 }
 .output-content {
   padding: 4px;
 }
 .debugger {
   grid-area: debugger;
-  width: 300px;
   font-size: 15px;
   max-height: calc(100vh - 30px);
   display: grid;
@@ -348,9 +384,6 @@ svg.icon-md {
 }
 #panel-breakpoints { grid-area: panel-breakpoints; }
 
-.file-browser {
-  max-width: 250px;
-}
 .file-browser li.collapsed ul {
   min-height: 0px;
   max-height: 0px;
@@ -669,4 +702,17 @@ svg#continue-button {
 div.tab>.tooltiptext, a.nav-link>.tooltiptext {
   background-color: rgb(0,0,0,0.75);
   color: #fff;
+}
+
+div.debugger {
+  min-width: 200px;
+  overflow: hidden;
+}
+div.file-browser {
+  min-width: 200px;
+  overflow: hidden;
+}
+div.left-pane {
+  overflow: hidden;
+  height: 65vh;
 }

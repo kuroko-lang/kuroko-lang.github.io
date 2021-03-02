@@ -198,6 +198,12 @@ function createEditor(containerId="editor",filePath=null) {
     }, 100);
   }
 
+  const ro = new ResizeObserver(entries => {
+    console.log("editor div is resizing!");
+    editor.resize(true);
+  });
+  ro.observe(document.getElementById(containerId));
+
   return editor;
 }
 
@@ -509,6 +515,39 @@ function newFile() {
     <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.filesystemReady()');"><use href="#icon-x"></use></svg>
   `;
   ul.appendChild(newLi);
+}
+
+function dragSplitter(e) {
+  let pane = document.querySelector("div.left-pane");
+  pane.style.height = e.clientY - pane.getBoundingClientRect().top + 'px';
+}
+function startDraggingSplitter(element) {
+  window.addEventListener("mousemove", dragSplitter);
+  window.addEventListener("mouseup", function(e) {
+    window.removeEventListener("mousemove", dragSplitter);
+  }, {once: true});
+}
+
+function dragLeftSplitter(e) {
+  let pane = document.querySelector("div.file-browser");
+  pane.style.width = e.clientX + 'px';
+}
+function startDraggingLeftSplitter(element) {
+  window.addEventListener("mousemove", dragLeftSplitter);
+  window.addEventListener("mouseup", function(e) {
+    window.removeEventListener("mousemove", dragLeftSplitter);
+  }, {once: true});
+}
+
+function dragRightSplitter(e) {
+  let pane = document.querySelector("div.debugger");
+  pane.style.width =  pane.getBoundingClientRect().right - e.clientX + 'px';
+}
+function startDraggingRightSplitter(element) {
+  window.addEventListener("mousemove", dragRightSplitter);
+  window.addEventListener("mouseup", function(e) {
+    window.removeEventListener("mousemove", dragRightSplitter);
+  }, {once: true});
 }
 
 function setTheme() {
