@@ -94,7 +94,9 @@ function doAutostep() {
     return;
   }
   stepDebugger();
-  autoStepCallback = window.setTimeout(doAutostep, 500);
+  autoStepCallback = window.setTimeout(doAutostep,
+    document.getElementById('debugger-quickauto').checked ? 100 : 500
+  );
 }
 
 function stopAutostep() {
@@ -111,8 +113,8 @@ function autostepDebugger() {
     stopAutostep();
   } else {
     document.getElementById('nav-autostep').classList.add('autostepping');
-    autoStepCallback = window.setTimeout(doAutostep, 500);
     autoStepping = true;
+    doAutostep();
   }
 }
 
@@ -126,6 +128,7 @@ function continueDebugger() {
 
 document.getElementById('debugger-single-step').checked = false;
 document.getElementById('debugger-gotoline').checked = false;
+document.getElementById('debugger-quickauto').checked = true;
 function debuggerSettings() {
   let settings = [];
   if (document.getElementById('debugger-single-step').checked) settings.push('single=True');

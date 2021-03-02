@@ -654,6 +654,7 @@ def debuggerCallback(blob):
             let disassembly = []
             let off = 0
             let seenOffset = False
+            let count = 0
             for i in dis.examine(maybeFunc):
                 if off == offset: seenOffset = True
                 if seenOffset:
@@ -664,6 +665,7 @@ def debuggerCallback(blob):
                             <div class="opcode">{CodeObject._findOpcodeName(i[0])[3:]}</div>
                             <div class="operand {"ace_string" if isinstance(i[2],str) else "ace_numeric" if isinstance(i[2],(int,float)) else ""}">{cleanHtml(repr(i[2])) if isinstance(i[2],(int,str)) else ""}</div>
                         </div>''')
+                    if count++ > 30: break
                 off += i[1]
             exec(f'document.getElementById("debugger-disassembly").innerHTML = `{"\n".join(disassembly)}`;')
 
