@@ -1,3 +1,4 @@
+var aceTheme = 'ace/theme/sunsmoke';
 var krk_call;
 var extraEditor;
 var consoleEnabled = false;
@@ -25,7 +26,7 @@ function stopWorker() {
   krk_call('emscripten.stopWorker()');
 }
 
-document.getElementById("container").innerText = "";
+document.getElementById("output-container").innerText = "";
 function runCode(editor) {
   runInternal(editor._filepath);
 }
@@ -169,7 +170,7 @@ function createEditor(containerId="editor",filePath=null) {
     enableBasicAutocompletion: true,
     enableLiveAutocompletion: true
   });
-  editor.setTheme("ace/theme/sunsmoke");
+  editor.setTheme(aceTheme);
   /* You may want to disable this? */
   editor.setBehavioursEnabled(false);
   editor.setOption('enableBasicAutocompletion', true);
@@ -266,7 +267,7 @@ function createTerminalPrompt() {
     showGutter: false,
     wrap: true
   });
-  editor.setTheme("ace/theme/sunsmoke");
+  editor.setTheme(aceTheme);
   editor.setBehavioursEnabled(false);
   //editor.session.setMode("ace/mode/kuroko");
   editor.commands.bindKey("Return", enterCallback);
@@ -293,7 +294,7 @@ function addText(stateVar, mode, text, divId) {
     for (const prop in stateVar) {
       cssText += prop + ': ' + stateVar[prop] + ';\n';
     }
-    subSpan.style.cssText = cssText;
+    if (cssText) subSpan.style.cssText = cssText;
     subSpan.appendChild(document.createTextNode(currentText));
     newOutput.appendChild(subSpan);
     currentText = '';
@@ -562,17 +563,25 @@ function setTheme() {
     document.getElementById("css-theme-dark").rel = 'stylesheet';
     document.getElementById("css-theme-light").rel = 'alternate stylesheet';
     localStorage.setItem("idetheme","dark");
+    aceTheme = 'ace/theme/sunsmoke';
   } else if (document.getElementById("theme-light").checked) {
     document.getElementById("css-theme-dark").rel = 'alternate stylesheet';
     document.getElementById("css-theme-light").rel = 'stylesheet';
     localStorage.setItem("idetheme","light");
+    aceTheme = 'ace/theme/tomorrow';
   }
+  extraEditor.setTheme(aceTheme);
+  window.setTimeout(function () {
+    document.getElementById('right-pane-tabContent').className = 'tab-content under-tabbar ace_editor ' + extraEditor.renderer.theme.cssClass;
+  }, 100);
+  document.querySelectorAll('.tab-pane .terminal-container').forEach(function (element) {
+    element._aceInstance.setTheme(aceTheme);
+  });
 }
 let idetheme = localStorage.getItem("idetheme");
 if (idetheme) {
   if (idetheme == 'dark') document.getElementById("theme-dark").checked = true;
   if (idetheme == 'light') document.getElementById("theme-light").checked = true;
-  setTheme();
 }
 
 
@@ -635,21 +644,20 @@ var Module = {
       }
     });
 
-    /* Start up Ace instances */
-    //createEditor();
-    //createEditor('editor-1');
+    /* Start up Ace instance for terminal */
     extraEditor = createTerminalPrompt();
+    setTheme();
   }],
 
   print: function(text) {
     if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
     if (consoleEnabled) console.log(text);
-    addText(consoleState, 'printed', text, 'container');
+    addText(consoleState, 'printed', text, 'output-container');
   },
   printErr: function(text) {
     if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
     if (consoleEnabled) console.error(text);
-    addText(consoleState, 'error', text, 'container');
+    addText(consoleState, 'error', text, 'output-container');
   }
 }
 

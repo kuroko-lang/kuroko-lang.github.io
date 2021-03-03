@@ -30,16 +30,6 @@ nav .dropdown-item:hover {
 	background-color: rgb(57,123,255);
 	color: #f8f9fa;
 }
-div#right-pane-tabContent {
-	background-color: rgb(31, 31, 31);
-	color: rgb(230, 230, 230);
-}
-#extra-editor > div#shell-prompt {
-	color: rgb(230, 230, 230);
-}
-#ide-debug > pre.printed {
-	color: rgb(230,230,230);
-}
 svg>use[href="#icon-text"] {
 	color: #333;
 }

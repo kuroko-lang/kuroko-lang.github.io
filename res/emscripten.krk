@@ -180,7 +180,7 @@ def touch(args):
 
 @shellCommand
 def clear(args):
-    exec('document.getElementById("container").innerHTML = "";')
+    exec('document.getElementById("output-container").innerHTML = "";')
 
 @shellCommand
 def sync(args):

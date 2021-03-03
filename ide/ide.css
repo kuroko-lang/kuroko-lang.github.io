@@ -115,7 +115,7 @@ main.layout-just-output>div:not(.right-pane) { display: none; }
 .splitter > .splitter-handle {
   overflow: hidden;
   background-color: #555;
-  opacity: 50%;
+  opacity: 0%;
   transition: opacity 100ms linear;
   z-index: 4;
   user-select: none;
@@ -676,9 +676,6 @@ main {
 .modal-header {
   border-bottom: 1px solid var(--inset-dark);
 }
-#ide-debug > pre {
-  color: var(--text-primary);
-}
 .file-browser li input {
   border: 1px solid var(--neutral-color);
 }
@@ -697,47 +694,13 @@ svg#continue-button {
 #debugger-disassembly .ip {
   color: var(--light-blue);
 }
-
-/* Ace stuff */
-.ace_print-margin {
-  background-color: #282828;
-}
 .modal .form-floating label {
   color: #000;
 }
-.ace_active-line {
-  background-color: #333;
-}
-.ace_indent-guide {
-  border-right: 1px solid #555;
-  margin-right: -1px;
-}
-.ace-sunsmoke.ace_editor.ace_autocomplete {
+
+.ace_editor.ace_autocomplete {
   font-size: 18px;
 }
-.ace-sunsmoke.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {
-  background-color: #555;
-}
-.ace-sunsmoke.ace_editor.ace_autocomplete .ace_completion-highlight {
-  color: #33a2e6;
-}
-.ace_gutter-active-line {
-  background-color: #968b39;
-  color: #000;
-}
-.ace_gutter-cell.ace_error {
-  background-color: red;
-  color: white;
-}
-.ace_gutter-cell.ace_warning {
-  background-color: orange;
-  color: black;
-}
-.ace_gutter-cell.ace_info {
-  background-color: #33a2e6;
-  color: white;
-}
-
 /* This is always white on black */
 div.tab>div>.tooltiptext, a.nav-link>.tooltiptext {
   background-color: rgb(0,0,0,0.75);
@@ -754,4 +717,18 @@ div.file-browser {
 }
 div.left-pane {
   height: 65vh;
+}
+
+.ace_editor pre {
+  font-size: 17px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  line-height: normal;
+  margin: 0;
+}
+.ace_editor .ace_gutter-cell.ace_error { background-color: red; color: white; }
+.ace_editor .ace_gutter-cell.ace_warning { background-color: orange; color: black; }
+.ace_editor .ace_gutter-cell.ace_info { background-color: #33a2e6; color: white; }
+
+pre.error {
+  color: var(--stop-red);
 }

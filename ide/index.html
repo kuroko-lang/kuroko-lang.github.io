@@ -194,28 +194,19 @@
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-terminal"></use></svg>
             Terminal
           </div>
-          <!--
-          <div class="tab" id="right-pane-output-tab" data-bs-toggle="tab" data-bs-target="#right-pane-output" role="tab" aria-controls="right-pane-output" aria-selected="false">
-            <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
-            Output
-          </div>
-          -->
           <div class="tab" id="right-pane-internal-debug-tab" data-bs-toggle="tab" data-bs-target="#right-pane-internal-debug" role="tab" aria-controls="right-pane-internal-debug" aria-selected="false">
             <svg class="icon-sm" viewBox="0 0 24 24"><use href="#icon-info"></use></svg>
             IDE Debug
           </div>
         </div>
-        <div id="right-pane-tabContent" class="tab-content under-tabbar">
+        <div id="right-pane-tabContent" class="tab-content under-tabbar ace_editor ace-tomorrow">
           <div class="tab-pane active" role="tabpanel" id="right-pane-terminal" aria-labelledby="right-pane-terminal-tab">
-            <div id="container" class="terminal-container"></div>
+            <div id="output-container"></div>
             <div id="extra-editor" class="extra"><div id="shell-prompt">$&nbsp;</div></div>
             <span class="marker"></span>
           </div>
-          <div class="under-tabbar tab-pane" role="tabpanel" id="right-pane-output" aria-labelledby="right-pane-output-tab">
-            <div class="output-content terminal-container">Hi, I'm the output tab.</div>
-          </div>
           <div class="under-tabbar tab-pane" role="tabpanel" id="right-pane-internal-debug" aria-labelledby="right-pane-internal-debug-tab">
-            <div id="ide-debug" class="terminal-container"></div>
+            <div id="ide-debug" class="ace-editor"></div>
             <span class="marker"></span>
           </div>
         </div>
