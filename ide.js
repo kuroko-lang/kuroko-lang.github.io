@@ -571,10 +571,8 @@ function setTheme() {
     aceTheme = 'ace/theme/tomorrow';
   }
   extraEditor.setTheme(aceTheme);
-  window.setTimeout(function () {
-    document.getElementById('right-pane-tabContent').className = 'tab-content under-tabbar ace_editor ' + extraEditor.renderer.theme.cssClass;
-    document.getElementById('debugger-disassembly').className = 'ace_editor ' + extraEditor.renderer.theme.cssClass;
-  }, 100);
+  document.getElementById('right-pane-tabContent').className = 'tab-content under-tabbar ace_editor ' + aceTheme.replace('ace/theme/','ace-');
+  document.getElementById('debugger-disassembly').className = 'ace_editor ' + aceTheme.replace('ace/theme/','ace-');
   document.querySelectorAll('.tab-pane .terminal-container').forEach(function (element) {
     element._aceInstance.setTheme(aceTheme);
   });

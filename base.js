@@ -52,6 +52,7 @@ function runCode(editor) {
     frozenEditor.appendChild(child);
   }
   blockCounter++;
+  editor.container.parentNode.remove();
   editor.container.remove();
   editor.destroy();
   document.getElementById("container").appendChild(frozenEditor);
@@ -130,7 +131,14 @@ function historyForwardIfOneLine(editor) {
 function createEditor(initial=false) {
   let newDiv = document.createElement("div");
   newDiv.className = "editor";
-  document.getElementById("container").appendChild(newDiv);
+  let prompt = document.createElement("div");
+  prompt.className = "prompt";
+  prompt.innerText = '>>> ';
+  let editorFlex = document.createElement("div");
+  editorFlex.className = "flex-container";
+  editorFlex.appendChild(prompt);
+  editorFlex.appendChild(newDiv);
+  document.getElementById("container").appendChild(editorFlex);
   const editor = ace.edit(newDiv, {
     minLines: 1,
     maxLines: 1000,
@@ -138,6 +146,7 @@ function createEditor(initial=false) {
     showPrintMargin: false,
     useSoftTabs: true,
     indentedSoftWrap: false,
+    showGutter: false,
     wrap: true
   });
   editor.setTheme("ace/theme/sunsmoke");

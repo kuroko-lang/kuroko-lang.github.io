@@ -21,10 +21,28 @@ footer a {
   border-radius: 8px;
   border: 1px solid #2e2e2e;
 }
+#container > div.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  font-size: 17px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  white-space: pre-wrap;
+  counter-reset: line-no;
+  line-height: normal;
+}
+#container > div.flex-container > .prompt {
+  color: #e6e6e6;
+}
+#container > div.flex-container > .ace_editor {
+  flex: auto;
+  font-size: 17px;
+}
 #container > div {
   width: auto;
   font-size: 17px;
 }
+
 #container > pre {
   color: #e6e6e6;
   width: auto;
