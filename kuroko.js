@@ -36,6 +36,8 @@ function messageCallback(msg) {
       Module.awakeStatus = 2;
     } else if (msg.data == 'step') {
       Module.awakeStatus = 3;
+    } else if (msg.data == 'quit') {
+      Module.awakeStatus = 4;
     }
     return false;
   }
@@ -6194,8 +6196,8 @@ var _emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = function()
 };
 
 /** @type {function(...*):?} */
-var dynCall_i = Module["dynCall_i"] = function() {
-  return (dynCall_i = Module["dynCall_i"] = Module["asm"]["dynCall_i"]).apply(null, arguments);
+var dynCall_ii = Module["dynCall_ii"] = function() {
+  return (dynCall_ii = Module["dynCall_ii"] = Module["asm"]["dynCall_ii"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
@@ -6211,11 +6213,6 @@ var dynCall_vi = Module["dynCall_vi"] = function() {
 /** @type {function(...*):?} */
 var dynCall_iii = Module["dynCall_iii"] = function() {
   return (dynCall_iii = Module["dynCall_iii"] = Module["asm"]["dynCall_iii"]).apply(null, arguments);
-};
-
-/** @type {function(...*):?} */
-var dynCall_ii = Module["dynCall_ii"] = function() {
-  return (dynCall_ii = Module["dynCall_ii"] = Module["asm"]["dynCall_ii"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
