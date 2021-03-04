@@ -738,3 +738,7 @@ div#debugger-disassembly {
   line-height: normal;
   margin-left: 2px;
 }
+
+div#right-pane-tabContent {
+  scroll-behavior: auto !important;
+}
