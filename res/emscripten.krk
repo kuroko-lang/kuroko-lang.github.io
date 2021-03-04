@@ -143,7 +143,7 @@ def uname(args):
 
 @shellCommand
 def help(args):
-    print("This is a simple fascimile of a Unix shell.")
+    print("This is a simple facsimile of a Unix shell.")
     print("Here are the available commands:")
     let maxLen = max([len(x) for x in shell_commands.keys()])
     for cmd in sorted(shell_commands.keys()):
@@ -567,7 +567,7 @@ def reportShown(tabIdTab):
     # Update tab data
     let tabIds = sorted([tab.id for key, tab in editorTabs.items()])
     let tabPaths = [tabs[tabId].path for tabId in tabIds]
-    let ideConfig = dumpJson({'tabs': tabPaths, 'active': tabs[tabId].path if isinstance(tabs[tabId],EditorTab) else 'WELCOME'})
+    let ideConfig = dumpJson({'tabs': tabPaths, 'active': tabs[tabId].path if tabId in tabs and isinstance(tabs[tabId],EditorTab) else 'WELCOME'})
     exec(f'''localStorage.setItem("ideconfig",`{ideConfig}`);''')
 
 def hasUnsaved():
@@ -693,7 +693,7 @@ def debuggerCallback(blob):
 
 def stopWorker():
     if currentWorker is None:
-        fileio.stderr.write('No worker is runner.\n')
+        fileio.stderr.write('No worker is currently running (nothing to stop).\n')
         return
     debug('Destroying worker #' + str(currentWorker))
     destroy_worker(currentWorker)
