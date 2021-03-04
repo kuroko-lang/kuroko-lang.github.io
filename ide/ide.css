@@ -742,3 +742,6 @@ div#debugger-disassembly {
 div#right-pane-tabContent {
   scroll-behavior: auto !important;
 }
+div#output-container > pre {
+  white-space: pre-wrap;
+}
