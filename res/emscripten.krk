@@ -145,8 +145,10 @@ def uname(args):
 def help(args):
     print("This is a simple fascimile of a Unix shell.")
     print("Here are the available commands:")
+    let maxLen = max([len(x) for x in shell_commands.keys()])
     for cmd in sorted(shell_commands.keys()):
-        print(" ",cmd)
+        print(cmd + " " * (maxLen - len(cmd) + 2),end='')
+    print('')
 
 @shellCommand
 def cat(args):
