@@ -20,8 +20,8 @@ define("ace/theme/sunsmoke",["require","exports","module","ace/lib/dom"],functio
         .ace-sunsmoke .ace_constant.ace_language { color: #e62b7f; }
         .ace-sunsmoke .ace_heading { font-weight: bold; }
         .ace-sunsmoke .ace_indent-guide { border-right: 1px solid #555; margin-right: -1px; }
-        .ace-sunsmoke.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line { background-color: #555; }
-        .ace-sunsmoke.ace_editor.ace_autocomplete .ace_completion-highlight { color: #33a2e6; }
+        .ace-sunsmoke.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line { background-color: #555 !important; }
+        .ace-sunsmoke.ace_editor.ace_autocomplete .ace_completion-highlight { color: #33a2e6 !important; }
         .ace-sunsmoke.ace_editor .ace_gutter-cell.ace_error { background-color: red; color: white; }
         .ace-sunsmoke.ace_editor .ace_gutter-cell.ace_warning { background-color: orange; color: black; }
         .ace-sunsmoke.ace_editor .ace_gutter-cell.ace_info { background-color: #33a2e6; color: white; }
