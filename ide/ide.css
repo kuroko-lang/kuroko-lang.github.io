@@ -12,7 +12,8 @@ main {
   height: 100%;
   display: grid;
   gap: 0px 0px;
-  overflow: clip;
+  overflow: hidden;
+  overflow: clip; /* clip is too new for some browsers */
 }
 
 main .layout-check {
