@@ -747,3 +747,9 @@ div#right-pane-tabContent {
 div#output-container > pre {
   white-space: pre-wrap;
 }
+
+/* Doing this here because doing it in the actual theme might mess up the repl */
+div.ace-sunsmoke.ace_editor .ace_marker-layer .ace_bracket {
+  display: unset;
+  border: 1px solid #ddd;
+}
