@@ -734,6 +734,8 @@ class CodeObject():
             description = ('class <b>' + func.__name__ + '</b>()','layers','#33a2e6',func.__name__)
         else if func.__name__ == '<lambda>':
             description = ('lambda (' + str(line) + ')','chevron-up','#e62b7f', None)
+        else if func.__name__ == '<genexpr>':
+            description = ('generator (' + str(line) + ')','filter','#e62b7f', None)
         else if func.__name__ == 'for':
             description = ('comprehension (' + str(line) + ')','filter','#e62b7f', None)
         else:
