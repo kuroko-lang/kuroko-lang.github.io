@@ -583,6 +583,18 @@ if (idetheme) {
   if (idetheme == 'light') document.getElementById("theme-light").checked = true;
 }
 
+function onHashChange() {
+  if (window.location.hash.startsWith('#gist/')) {
+    let hashElements = window.location.hash.split('/');
+    fetch('https://gist.githubusercontent.com/' + hashElements.slice(1).join('/') + '/raw/').then(r => {
+        return r.text();
+      }).then(t => {
+        FS.writeFile('/scratch/' + hashElements.slice(1).join('_') + '.krk', t);
+        FS.syncfs(function (err) {});
+        openEmscriptenFile('/scratch/' + hashElements.slice(1).join('_') + '.krk');
+      });
+  }
+}
 
 window.addEventListener("beforeunload", function(e) {
   /* Ask if there are any unsaved files */
@@ -646,6 +658,9 @@ var Module = {
     /* Start up Ace instance for terminal */
     extraEditor = createTerminalPrompt();
     setTheme();
+
+    onHashChange();
+    window.addEventListener('hashchange', onHashChange, false);
   }],
 
   print: function(text) {

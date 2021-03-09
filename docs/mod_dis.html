@@ -103,24 +103,42 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>Provides tools for disassembling bytecode.</p>
 <h2><a class="anchor" id="autotoc_md9"></a>
+Code Disassembly in Kuroko</h2>
+<p>The <code>dis</code> module contains functions for dealing with <em>code objects</em> which represent the compiled bytecode of a Kuroko function. The bytecode compilation process is entirely static and bytecode analysis can be performed without calling into the VM to run dynamic code.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Debugger Breakpoints</h2>
+<p>Kuroko interpreters can provide a debugger hook through the C API's <a class="el" href="debug_8h.html#ab85a7b4a451d229bb2b6ab18898361e1">krk_debug_registerCallback()</a> function. Breakpoints can be managed both from the C API and from this module's <a class="el" href="mod_dis.html#addbreakpoint">addbreakpoint</a>, <a class="el" href="mod_dis.html#delbreakpoint">delbreakpoint</a>, <a class="el" href="mod_dis.html#enablebreakpoint">enablebreakpoint</a>, and <a class="el" href="mod_dis.html#disablebreakpoint">disablebreakpoint</a> methods.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Functions</h2>
-<p><a class="anchor" id="addbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#addbreakpoint">_</a></span><b>addbreakpoint</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="addbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#addbreakpoint">_</a></span><b>addbreakpoint</b>(<i>func, line</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Attach a breakpoint to a code object.</p>
+<p><code>func</code> may be a filename string, or a function, method, or code object. Returns the new breakpoint index, or raises <a class="el" href="mod___builtins__.html#Exception">Exception</a> if a breakpoint code not be added.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="build"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#build">_</a></span><b>build</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="build"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#build">_</a></span><b>build</b>(<i>code</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Compile a string to a code object.</p>
+<p>Compiles the string <code>code</code> and returns a code object. If a syntax error is encountered, it will be raised.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="delbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#delbreakpoint">_</a></span><b>delbreakpoint</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="delbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#delbreakpoint">_</a></span><b>delbreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Delete a breakpoint.</p>
+<p>Delete the breakpoint specified by <code>handle</code>, disabling it if it was enabled. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="dis"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#dis">_</a></span><b>dis</b>(<i>obj</i>)</h3><div class="memitem"><div class="memdoc"></p>
 <p>Disassemble an object.</p>
 <p>Dumps a disassembly of the bytecode in the code object associated with <code>obj</code>. If <code>obj</code> can not be disassembled, a <a class="el" href="mod___builtins__.html#TypeError">TypeError</a> is raised.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="disablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#disablebreakpoint">_</a></span><b>disablebreakpoint</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="disablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#disablebreakpoint">_</a></span><b>disablebreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Disable a breakpoint.</p>
+<p>Disable the breakpoint specified by <code>handle</code>. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="enablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#enablebreakpoint">_</a></span><b>enablebreakpoint</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="enablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#enablebreakpoint">_</a></span><b>enablebreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Enable a breakpoint.</p>
+<p>Enable the breakpoint specified by <code>handle</code>. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="examine"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#examine">_</a></span><b>examine</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="examine"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#examine">_</a></span><b>examine</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Convert a code object to a list of instructions.</p>
+<p>Examines the code object <code>func</code> and returns a list representation of its instructions. Each instruction entry is a tuple of the opcode, total instruction size in bytes, and the operand of the argument, either as an integer for jump offsets, the actual value for constant operands, or the name of a local or global variable if available.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Constants</h2>
 <h3 class="letDef"><em>let</em> <b>BREAKPOINT_ONCE</b> = <code> 1 </code></h3>
 <h3 class="letDef"><em>let</em> <b>BREAKPOINT_REPEAT</b> = <code> 2 </code></h3>
@@ -129,36 +147,36 @@ Constants</h2>
 <h3 class="letDef"><em>let</em> <b>OP_BITNEGATE</b> = <code> 3 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_BITOR</b> = <code> 4 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_BITXOR</b> = <code> 5 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_BREAKPOINT</b> = <code> 43 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_BREAKPOINT</b> = <code> 41 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CALL</b> = <code> 64 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CALL_LONG</b> = <code> 192 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CALL_STACK</b> = <code> 6 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLASS</b> = <code> 65 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLASS_LONG</b> = <code> 193 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_CLASS_PROPERTY</b> = <code> 82 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_CLASS_PROPERTY_LONG</b> = <code> 210 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLEANUP_WITH</b> = <code> 7 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLOSE_UPVALUE</b> = <code> 8 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLOSURE</b> = <code> 66 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CLOSURE_LONG</b> = <code> 194 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CONSTANT</b> = <code> 67 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_CONSTANT_LONG</b> = <code> 195 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_CREATE_CLASSMETHOD</b> = <code> 40 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_CREATE_PROPERTY</b> = <code> 9 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEFINE_GLOBAL</b> = <code> 68 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEFINE_GLOBAL_LONG</b> = <code> 196 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEL_GLOBAL</b> = <code> 69 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEL_GLOBAL_LONG</b> = <code> 197 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEL_PROPERTY</b> = <code> 70 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DEL_PROPERTY_LONG</b> = <code> 198 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_DIVIDE</b> = <code> 10 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_DOCSTRING</b> = <code> 11 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_DIVIDE</b> = <code> 9 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_DOCSTRING</b> = <code> 10 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DUP</b> = <code> 71 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_DUP_LONG</b> = <code> 199 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_EQUAL</b> = <code> 12 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_EQUAL</b> = <code> 11 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_EXPAND_ARGS</b> = <code> 72 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_EXPAND_ARGS_LONG</b> = <code> 200 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_FALSE</b> = <code> 13 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_FILTER_EXCEPT</b> = <code> 39 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_FINALIZE</b> = <code> 14 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_FALSE</b> = <code> 12 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_FILTER_EXCEPT</b> = <code> 38 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_FINALIZE</b> = <code> 13 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_GET_GLOBAL</b> = <code> 73 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_GET_GLOBAL_LONG</b> = <code> 201 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_GET_LOCAL</b> = <code> 74 </code></h3>
@@ -169,43 +187,41 @@ Constants</h2>
 <h3 class="letDef"><em>let</em> <b>OP_GET_SUPER_LONG</b> = <code> 204 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_GET_UPVALUE</b> = <code> 77 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_GET_UPVALUE_LONG</b> = <code> 205 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_GREATER</b> = <code> 15 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_GREATER</b> = <code> 14 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_IMPORT</b> = <code> 78 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_IMPORT_FROM</b> = <code> 79 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_IMPORT_FROM_LONG</b> = <code> 207 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_IMPORT_LONG</b> = <code> 206 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_INC</b> = <code> 80 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_INC_LONG</b> = <code> 208 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INHERIT</b> = <code> 16 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_CONTAINS</b> = <code> 42 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_DELETE</b> = <code> 17 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_DELSLICE</b> = <code> 18 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_GETSLICE</b> = <code> 19 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_GETTER</b> = <code> 20 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_ITER</b> = <code> 41 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_SETSLICE</b> = <code> 21 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_INVOKE_SETTER</b> = <code> 22 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_IS</b> = <code> 23 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INHERIT</b> = <code> 15 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_CONTAINS</b> = <code> 40 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_DELETE</b> = <code> 16 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_DELSLICE</b> = <code> 17 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_GETSLICE</b> = <code> 18 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_GETTER</b> = <code> 19 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_ITER</b> = <code> 39 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_SETSLICE</b> = <code> 20 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_INVOKE_SETTER</b> = <code> 21 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_IS</b> = <code> 22 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_JUMP</b> = <code> 130 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_JUMP_IF_FALSE</b> = <code> 128 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_JUMP_IF_TRUE</b> = <code> 129 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_KWARGS</b> = <code> 81 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_KWARGS_LONG</b> = <code> 209 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_LESS</b> = <code> 24 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_LESS</b> = <code> 23 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_LOOP</b> = <code> 131 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_METHOD</b> = <code> 82 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_METHOD_LONG</b> = <code> 210 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_MODULO</b> = <code> 25 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_MULTIPLY</b> = <code> 26 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_NEGATE</b> = <code> 27 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_NONE</b> = <code> 28 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_NOT</b> = <code> 29 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_POP</b> = <code> 30 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_POW</b> = <code> 31 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_MODULO</b> = <code> 24 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_MULTIPLY</b> = <code> 25 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_NEGATE</b> = <code> 26 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_NONE</b> = <code> 27 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_NOT</b> = <code> 28 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_POP</b> = <code> 29 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_POW</b> = <code> 30 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_PUSH_TRY</b> = <code> 132 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_PUSH_WITH</b> = <code> 133 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_RAISE</b> = <code> 32 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_RETURN</b> = <code> 33 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_RAISE</b> = <code> 31 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_RETURN</b> = <code> 32 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_SET_GLOBAL</b> = <code> 83 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_SET_GLOBAL_LONG</b> = <code> 211 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_SET_LOCAL</b> = <code> 84 </code></h3>
@@ -214,15 +230,16 @@ Constants</h2>
 <h3 class="letDef"><em>let</em> <b>OP_SET_PROPERTY_LONG</b> = <code> 213 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_SET_UPVALUE</b> = <code> 86 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_SET_UPVALUE_LONG</b> = <code> 214 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_SHIFTLEFT</b> = <code> 34 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_SHIFTRIGHT</b> = <code> 35 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_SUBTRACT</b> = <code> 36 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_SWAP</b> = <code> 37 </code></h3>
-<h3 class="letDef"><em>let</em> <b>OP_TRUE</b> = <code> 38 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_SHIFTLEFT</b> = <code> 33 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_SHIFTRIGHT</b> = <code> 34 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_SUBTRACT</b> = <code> 35 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_SWAP</b> = <code> 36 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_TRUE</b> = <code> 37 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_TUPLE</b> = <code> 87 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_TUPLE_LONG</b> = <code> 215 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_UNPACK</b> = <code> 88 </code></h3>
 <h3 class="letDef"><em>let</em> <b>OP_UNPACK_LONG</b> = <code> 216 </code></h3>
+<h3 class="letDef"><em>let</em> <b>OP_YIELD</b> = <code> 42 </code></h3>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">

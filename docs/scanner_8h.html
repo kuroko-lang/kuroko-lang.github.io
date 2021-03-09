@@ -236,14 +236,15 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>TOKEN_FROM</b>, 
 <b>TOKEN_LAMBDA</b>, 
 <b>TOKEN_ASSERT</b>, 
-<b>TOKEN_WITH</b>, 
+<b>TOKEN_YIELD</b>, 
 <br />
-&#160;&#160;<b>TOKEN_PREFIX_B</b>, 
+&#160;&#160;<b>TOKEN_WITH</b>, 
+<b>TOKEN_PREFIX_B</b>, 
 <b>TOKEN_PREFIX_F</b>, 
 <b>TOKEN_INDENTATION</b>, 
-<b>TOKEN_EOL</b>, 
 <br />
-&#160;&#160;<b>TOKEN_RETRY</b>, 
+&#160;&#160;<b>TOKEN_EOL</b>, 
+<b>TOKEN_RETRY</b>, 
 <b>TOKEN_ERROR</b>, 
 <b>TOKEN_EOF</b>
 <br />
@@ -315,7 +316,7 @@ Functions</h2></td></tr>
 <p>Rewind the scanner to a previous state. </p>
 <p>Resets the current scanner to the state in 'to'. Used by the compiler to implement comprehensions, which would otherwise not be possible in a single-pass compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00279">279</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00280">280</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
@@ -338,7 +339,7 @@ Functions</h2></td></tr>
 <p>Read the next token from the scanner. </p>
 <p>FIXME: Or, maybe the scanner shouldn't even be available outside of the compiler, that would make some sense as well, as it's a low-level detail, but we use it for tab completion in the main repl, so I'm not sure that's feasible right now. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00287">287</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00288">288</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
@@ -361,7 +362,7 @@ Functions</h2></td></tr>
 <p>Retreive a copy of the current scanner state. </p>
 <p>Used with <a class="el" href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da" title="Rewind the scanner to a previous state.">krk_rewindScanner()</a> to implement rescanning for comprehensions. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00283">283</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00284">284</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
@@ -384,7 +385,7 @@ Functions</h2></td></tr>
 <p>Push a token back to the scanner to be reprocessed. </p>
 <p>Pushes a previously-scanned token back to the scanner. Used to implement small backtracking operations at the end of block constructs like 'if' and 'try'. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00270">270</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00271">271</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
