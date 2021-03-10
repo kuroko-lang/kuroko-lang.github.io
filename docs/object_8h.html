@@ -220,9 +220,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html">KrkTuple</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immutable sequence of arbitrary values.  <a href="structKrkTuple.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkProperty.html">KrkProperty</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamic property.  <a href="structKrkProperty.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkList.html">KrkList</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable array of values.  <a href="structKrkList.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,12 +301,6 @@ Macros</h2></td></tr>
 <tr class="memitem:a676ba5eed2a94c087b9e024ffb2b4896"><td class="memItemLeft" align="right" valign="top"><a id="a676ba5eed2a94c087b9e024ffb2b4896"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_TUPLE</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkTuple.html">KrkTuple</a> *)AS_OBJECT(value))</td></tr>
 <tr class="separator:a676ba5eed2a94c087b9e024ffb2b4896"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a906da4e5dce490cdc4ba98e2a2f561bb"><td class="memItemLeft" align="right" valign="top"><a id="a906da4e5dce490cdc4ba98e2a2f561bb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_PROPERTY</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_PROPERTY)</td></tr>
-<tr class="separator:a906da4e5dce490cdc4ba98e2a2f561bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23f91bbdee24a95fd61f027e243bc83e"><td class="memItemLeft" align="right" valign="top"><a id="a23f91bbdee24a95fd61f027e243bc83e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_PROPERTY</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkProperty.html">KrkProperty</a> *)AS_OBJECT(value))</td></tr>
-<tr class="separator:a23f91bbdee24a95fd61f027e243bc83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72634165ca1355eaa89a4c87db37f6b5"><td class="memItemLeft" align="right" valign="top"><a id="a72634165ca1355eaa89a4c87db37f6b5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_LIST</b>(value)&#160;&#160;&#160;(&amp;((<a class="el" href="structKrkList.html">KrkList</a> *)AS_OBJECT(value))-&gt;values)</td></tr>
 <tr class="separator:a72634165ca1355eaa89a4c87db37f6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -357,8 +348,7 @@ Enumerations</h2></td></tr>
 <b>OBJ_BOUND_METHOD</b>, 
 <br />
 &#160;&#160;<b>OBJ_TUPLE</b>, 
-<b>OBJ_BYTES</b>, 
-<b>OBJ_PROPERTY</b>
+<b>OBJ_BYTES</b>
 <br />
  }</td></tr>
 <tr class="separator:a21ada50c882656c2a4723dde25f56d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -399,9 +389,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a17734639bddbcf4dd68d54d7f98e8f69"><td class="memItemLeft" align="right" valign="top"><a id="a17734639bddbcf4dd68d54d7f98e8f69"></a>
 <a class="el" href="structKrkTuple.html">KrkTuple</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newTuple</b> (size_t length)</td></tr>
 <tr class="separator:a17734639bddbcf4dd68d54d7f98e8f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8041d1d21b57f2efe10f537b59eeb789"><td class="memItemLeft" align="right" valign="top"><a id="a8041d1d21b57f2efe10f537b59eeb789"></a>
-<a class="el" href="structKrkProperty.html">KrkProperty</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newProperty</b> (<a class="el" href="structKrkValue.html">KrkValue</a> method)</td></tr>
-<tr class="separator:a8041d1d21b57f2efe10f537b59eeb789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a700f8d05c2e41abb12504f3755285b"><td class="memItemLeft" align="right" valign="top"><a id="a8a700f8d05c2e41abb12504f3755285b"></a>
 <a class="el" href="structKrkBytes.html">KrkBytes</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newBytes</b> (size_t length, uint8_t *source)</td></tr>
 <tr class="separator:a8a700f8d05c2e41abb12504f3755285b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -447,7 +434,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>krk_tupleUpdateHash</
 <div class="line">    (<span class="keywordtype">string</span>-&gt;type == 2 ? ((uint16_t*)string-&gt;codes)[offset] : \</div>
 <div class="line">    ((uint32_t*)string-&gt;codes)[offset]))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00389">389</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00376">376</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>

@@ -245,7 +245,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:a4f431666f8fecd56bd5f4111068f50c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience macro for namespacing. <br /></td></tr>
 <tr class="separator:a4f431666f8fecd56bd5f4111068f50c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36ae6749848b801e91fcf637a23a0e0b"><td class="memItemLeft" align="right" valign="top"><a id="a36ae6749848b801e91fcf637a23a0e0b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_get</b>&#160;&#160;&#160;_str___get__</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_get</b>&#160;&#160;&#160;_str___getitem__</td></tr>
 <tr class="separator:a36ae6749848b801e91fcf637a23a0e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98632416373395e41be4cea48098450"><td class="memItemLeft" align="right" valign="top"><a id="ae98632416373395e41be4cea48098450"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_int</b>&#160;&#160;&#160;_str___int__</td></tr>
@@ -305,6 +305,9 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>METHOD_SETSLICE</b>, 
 <b>METHOD_DELSLICE</b>, 
 <b>METHOD_CONTAINS</b>, 
+<b>METHOD_DESCGET</b>, 
+<br />
+&#160;&#160;<b>METHOD_DESCSET</b>, 
 <b>METHOD__MAX</b>
 <br />
  }</td></tr>
@@ -371,9 +374,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abd4be90c3c58b55439bb59bb63559c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#abd4be90c3c58b55439bb59bb63559c8e">krk_addObjects</a> (void)</td></tr>
 <tr class="memdesc:abd4be90c3c58b55439bb59bb63559c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate two strings.  <a href="vm_8h.html#abd4be90c3c58b55439bb59bb63559c8e">More...</a><br /></td></tr>
 <tr class="separator:abd4be90c3c58b55439bb59bb63559c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33115e59d7a5f09c15f6eab8a913f12a"><td class="memItemLeft" align="right" valign="top"><a id="a33115e59d7a5f09c15f6eab8a913f12a"></a>
-<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_str___get__</b> (int argc, <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
-<tr class="separator:a33115e59d7a5f09c15f6eab8a913f12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2314d405010935474a5b2a89bd343b20"><td class="memItemLeft" align="right" valign="top"><a id="a2314d405010935474a5b2a89bd343b20"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_str___getitem__</b> (int argc, <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
+<tr class="separator:a2314d405010935474a5b2a89bd343b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7441395e5268b89bc21a4dbb9ef02aa9"><td class="memItemLeft" align="right" valign="top"><a id="a7441395e5268b89bc21a4dbb9ef02aa9"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_str___int__</b> (int argc, <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
 <tr class="separator:a7441395e5268b89bc21a4dbb9ef02aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -586,7 +589,7 @@ Variables</h2></td></tr>
 <p>gc = module()</p>
 <p>Namespace for methods for controlling the garbage collector.</p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00331">331</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00322">322</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
 
 </div>
 </div>
@@ -648,7 +651,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02582">2582</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02612">2612</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -687,7 +690,7 @@ Variables</h2></td></tr>
 <p>Obtain a list of properties for an object. </p>
 <p>This is the native function bound to <code>object.__dir__</code> </p>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00014">14</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00015">15</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>
@@ -717,7 +720,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01701">1701</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01718">1718</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -808,7 +811,7 @@ Variables</h2></td></tr>
 <li>import foo/bar/baz as foo.bar.baz</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01605">1605</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01622">1622</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -849,7 +852,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02534">2534</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02564">2564</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -899,7 +902,7 @@ Variables</h2></td></tr>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01454">1454</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01471">1471</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1071,7 +1074,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02558">2558</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02588">2588</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1096,7 +1099,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02517">2517</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02547">2547</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1175,7 +1178,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02525">2525</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02555">2555</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
