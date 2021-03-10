@@ -466,6 +466,7 @@ div.tab:hover>div>.tooltiptext, a.nav-link:hover>.tooltiptext {
   margin-right: 8px;
   text-align: center;
   color: #fff;
+  z-index: 1;
   transition: opacity 200ms ease 500ms;
   opacity: 0;
 }
