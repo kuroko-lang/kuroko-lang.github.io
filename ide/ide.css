@@ -455,6 +455,24 @@ div.tab:hover>div>.tooltiptext, a.nav-link:hover>.tooltiptext {
   flex-direction: column;
   align-items: center;
 }
+.form-check>.tooltiptext {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  background-color: rgba(0,0,0,0.90);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin-left: -20px;
+  margin-right: 8px;
+  text-align: center;
+  color: #fff;
+  transition: opacity 200ms ease 500ms;
+  opacity: 0;
+}
+.form-check:hover>.tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 .nav-link {
   position: relative;
 }
