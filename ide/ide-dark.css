@@ -16,3 +16,13 @@
   --light-blue: #33a2e6;
   --stop-red: red;
 }
+
+/* Mess with check boxes in the debugger */
+#panel-breakpoints .form-check-input:not(:checked) {
+  background-color: unset;
+  border-color: var(--text-tertiary);
+}
+#panel-breakpoints .form-check-input:checked {
+  background-color: unset;
+  border-color: var(--text-tertiary);
+}
