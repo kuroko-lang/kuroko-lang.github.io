@@ -201,7 +201,6 @@ function createEditor(containerId="editor",filePath=null) {
   }
 
   const ro = new ResizeObserver(entries => {
-    console.log("editor div is resizing!");
     editor.resize(true);
   });
   ro.observe(document.getElementById(containerId));
