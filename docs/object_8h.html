@@ -106,7 +106,8 @@ $(function() {
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">object.h File Reference</div>  </div>
 </div><!--header-->
@@ -144,39 +145,40 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="object_8h__dep__incl.png" border="0" usemap="#src_2object_8hdep" alt=""/></div>
 <map name="src_2object_8hdep" id="src_2object_8hdep">
-<area shape="rect" title="Struct definitions for core object types." alt="" coords="1364,5,1461,32"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="1869,80,1948,107"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="2048,155,2127,181"/>
-<area shape="rect" href="fileio_8c_source.html" title=" " alt="" coords="1020,229,1109,256"/>
-<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="399,229,509,256"/>
-<area shape="rect" href="obj__set_8c_source.html" title=" " alt="" coords="2787,229,2889,256"/>
-<area shape="rect" href="os_8c_source.html" title=" " alt="" coords="2913,229,2984,256"/>
-<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="3008,229,3095,256"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="237,229,314,256"/>
-<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="593,155,691,181"/>
-<area shape="rect" href="compiler_8c_source.html" title=" " alt="" coords="5,229,119,256"/>
-<area shape="rect" href="module__math_8c_source.html" title=" " alt="" coords="2962,155,3109,181"/>
-<area shape="rect" href="object_8c_source.html" title=" " alt="" coords="1291,155,1387,181"/>
-<area shape="rect" href="table_8c_source.html" title=" " alt="" coords="1412,155,1501,181"/>
-<area shape="rect" href="value_8c_source.html" title=" " alt="" coords="1525,155,1617,181"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="1121,80,1232,107"/>
-<area shape="rect" href="compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="302,155,417,181"/>
-<area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="1137,229,1241,256"/>
-<area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="719,229,815,256"/>
-<area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="1407,229,1533,256"/>
-<area shape="rect" href="kuroko_8c_source.html" title=" " alt="" coords="592,229,692,256"/>
-<area shape="rect" href="obj__base_8c_source.html" title=" " alt="" coords="2249,229,2363,256"/>
-<area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="2388,229,2507,256"/>
-<area shape="rect" href="obj__dict_8c_source.html" title=" " alt="" coords="2531,229,2638,256"/>
-<area shape="rect" href="obj__function_8c_source.html" title=" " alt="" coords="853,229,989,256"/>
-<area shape="rect" href="obj__gen_8c_source.html" title=" " alt="" coords="1558,229,1665,256"/>
-<area shape="rect" href="obj__list_8c_source.html" title=" " alt="" coords="1689,229,1792,256"/>
-<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="1945,229,2081,256"/>
-<area shape="rect" href="obj__range_8c_source.html" title=" " alt="" coords="2105,229,2225,256"/>
-<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="2663,229,2763,256"/>
-<area shape="rect" href="obj__tuple_8c_source.html" title=" " alt="" coords="1267,229,1383,256"/>
-<area shape="rect" href="chunk_8c_source.html" title=" " alt="" coords="1172,155,1267,181"/>
-<area shape="rect" href="threads_8c_source.html" title=" " alt="" coords="1816,229,1921,256"/>
+<area shape="rect" title="Struct definitions for core object types." alt="" coords="918,5,1015,32"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="1746,80,1824,107"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="1950,155,2028,181"/>
+<area shape="rect" href="fileio_8c_source.html" title=" " alt="" coords="1074,229,1163,256"/>
+<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="406,229,516,256"/>
+<area shape="rect" href="obj__set_8c_source.html" title=" " alt="" coords="2856,229,2959,256"/>
+<area shape="rect" href="os_8c_source.html" title=" " alt="" coords="2983,229,3054,256"/>
+<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="3078,229,3164,256"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="278,229,356,256"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="679,155,776,181"/>
+<area shape="rect" href="compiler_8c_source.html" title=" " alt="" coords="128,229,242,256"/>
+<area shape="rect" href="module__math_8c_source.html" title=" " alt="" coords="2864,155,3010,181"/>
+<area shape="rect" href="object_8c_source.html" title=" " alt="" coords="52,155,148,181"/>
+<area shape="rect" href="table_8c_source.html" title=" " alt="" coords="412,155,502,181"/>
+<area shape="rect" href="value_8c_source.html" title=" " alt="" coords="1258,155,1350,181"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="1038,80,1148,107"/>
+<area shape="rect" href="compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="273,155,388,181"/>
+<area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="945,229,1049,256"/>
+<area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="665,229,761,256"/>
+<area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="2286,229,2412,256"/>
+<area shape="rect" href="kuroko_8c_source.html" title=" " alt="" coords="540,229,640,256"/>
+<area shape="rect" href="obj__base_8c_source.html" title=" " alt="" coords="1892,229,2006,256"/>
+<area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="1187,229,1306,256"/>
+<area shape="rect" href="obj__dict_8c_source.html" title=" " alt="" coords="2577,229,2684,256"/>
+<area shape="rect" href="obj__function_8c_source.html" title=" " alt="" coords="785,229,921,256"/>
+<area shape="rect" href="obj__gen_8c_source.html" title=" " alt="" coords="2030,229,2137,256"/>
+<area shape="rect" href="obj__list_8c_source.html" title=" " alt="" coords="1635,229,1738,256"/>
+<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="1474,229,1610,256"/>
+<area shape="rect" href="obj__range_8c_source.html" title=" " alt="" coords="1330,229,1450,256"/>
+<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="2162,229,2262,256"/>
+<area shape="rect" href="obj__tuple_8c_source.html" title=" " alt="" coords="2436,229,2552,256"/>
+<area shape="rect" href="obj__typing_8c_source.html" title=" " alt="" coords="2708,229,2832,256"/>
+<area shape="rect" href="chunk_8c_source.html" title=" " alt="" coords="1374,155,1468,181"/>
+<area shape="rect" href="threads_8c_source.html" title=" " alt="" coords="1762,229,1867,256"/>
 </map>
 </div>
 </div>
@@ -398,6 +400,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>krk_bytesUpdateHash</
 <tr class="memitem:a9a9511c9c03bab2baf1d8be8eedd6f7f"><td class="memItemLeft" align="right" valign="top"><a id="a9a9511c9c03bab2baf1d8be8eedd6f7f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>krk_tupleUpdateHash</b> (<a class="el" href="structKrkTuple.html">KrkTuple</a> *self)</td></tr>
 <tr class="separator:a9a9511c9c03bab2baf1d8be8eedd6f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a7d9f95e23b35682218f4c16ec41228cc"><td class="memItemLeft" align="right" valign="top"><a id="a7d9f95e23b35682218f4c16ec41228cc"></a>
+NativeFn&#160;</td><td class="memItemRight" valign="bottom"><b>KrkGenericAlias</b></td></tr>
+<tr class="separator:a7d9f95e23b35682218f4c16ec41228cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Struct definitions for core object types. </p>
@@ -434,7 +442,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>krk_tupleUpdateHash</
 <div class="line">    (<span class="keywordtype">string</span>-&gt;type == 2 ? ((uint16_t*)string-&gt;codes)[offset] : \</div>
 <div class="line">    ((uint32_t*)string-&gt;codes)[offset]))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00376">376</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00380">380</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>
