@@ -736,8 +736,12 @@ class CodeObject():
             description = ('lambda (' + str(line) + ')','chevron-up','#e62b7f', None)
         else if func.__name__ == '<genexpr>':
             description = ('generator (' + str(line) + ')','filter','#e62b7f', None)
-        else if func.__name__ == 'for':
-            description = ('comprehension (' + str(line) + ')','filter','#e62b7f', None)
+        else if func.__name__ == '<listcomp>':
+            description = ('list comprehension (' + str(line) + ')','list','#e62b7f', None)
+        else if func.__name__ == '<dictcomp>':
+            description = ('dict comprehension (' + str(line) + ')','map','#e62b7f', None)
+        else if func.__name__ == '<setcomp>':
+            description = ('set comprehension (' + str(line) + ')','share-2','#e62b7f', None)
         else:
             description = ('def <b>' + func.__name__ + '</b>()','box','#e62b7f',func.__name__)
         let children = []
