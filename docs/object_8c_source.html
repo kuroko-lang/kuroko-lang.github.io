@@ -333,118 +333,119 @@ $(function() {
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    memcpy(heapChars, chars, length);</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    heapChars[length] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="structKrkString.html">KrkString</a> * result = allocateString(heapChars, length, hash);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    _release_lock(_stringLock);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<a class="code" href="structKrkFunction.html">KrkFunction</a> * krk_newFunction(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="structKrkFunction.html">KrkFunction</a> * <span class="keyword">function</span> = ALLOCATE_OBJECT(<a class="code" href="structKrkFunction.html">KrkFunction</a>, OBJ_FUNCTION);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keyword">function</span>-&gt;requiredArgs = 0;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">function</span>-&gt;keywordArgs = 0;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">function</span>-&gt;upvalueCount = 0;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keyword">function</span>-&gt;name = NULL;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keyword">function</span>-&gt;docstring = NULL;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keyword">function</span>-&gt;collectsArguments = 0;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">function</span>-&gt;collectsKeywords = 0;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keyword">function</span>-&gt;localNameCount = 0;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">function</span>-&gt;localNames = NULL;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keyword">function</span>-&gt;globalsContext = NULL;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;function-&gt;requiredArgNames);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;function-&gt;keywordArgNames);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="structKrkChunk.html#a1d58d95f571ad5f524379b2cc84a249c">krk_initChunk</a>(&amp;function-&gt;chunk);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">function</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<a class="code" href="structKrkNative.html">KrkNative</a> * krk_newNative(NativeFn <span class="keyword">function</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">int</span> type) {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <a class="code" href="structKrkNative.html">KrkNative</a> * native = ALLOCATE_OBJECT(<a class="code" href="structKrkNative.html">KrkNative</a>, OBJ_NATIVE);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    native-&gt;function = <span class="keyword">function</span>;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    native-&gt;isMethod = type;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    native-&gt;name = name;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    native-&gt;doc = NULL;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> native;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<a class="code" href="structKrkClosure.html">KrkClosure</a> * krk_newClosure(<a class="code" href="structKrkFunction.html">KrkFunction</a> * <span class="keyword">function</span>) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> ** upvalues = ALLOCATE(<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a>*, function-&gt;upvalueCount);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">function</span>-&gt;upvalueCount; ++i) {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        upvalues[i] = NULL;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <a class="code" href="structKrkClosure.html">KrkClosure</a> * closure = ALLOCATE_OBJECT(<a class="code" href="structKrkClosure.html">KrkClosure</a>, OBJ_CLOSURE);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    closure-&gt;function = <span class="keyword">function</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    closure-&gt;upvalues = upvalues;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    closure-&gt;upvalueCount = <span class="keyword">function</span>-&gt;upvalueCount;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    closure-&gt;annotations = <a class="code" href="structKrkDict.html#ab8ddfcbd0e1694cf1f067e91e0e1d973">krk_dict_of</a>(0,NULL,0);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> closure;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> * krk_newUpvalue(<span class="keywordtype">int</span> slot) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> * upvalue = ALLOCATE_OBJECT(<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a>, OBJ_UPVALUE);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    upvalue-&gt;location = slot;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    upvalue-&gt;next = NULL;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    upvalue-&gt;closed = NONE_VAL();</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    upvalue-&gt;owner = &amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span> upvalue;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<a class="code" href="structKrkClass.html">KrkClass</a> * krk_newClass(<a class="code" href="structKrkString.html">KrkString</a> * name, <a class="code" href="structKrkClass.html">KrkClass</a> * baseClass) {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _class = ALLOCATE_OBJECT(<a class="code" href="structKrkClass.html">KrkClass</a>, OBJ_CLASS);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    _class-&gt;name = name;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    _class-&gt;allocSize = <span class="keyword">sizeof</span>(<a class="code" href="object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f">KrkInstance</a>);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="structKrkTable.html#a03a3dfef3d54368e62652a52368e5ced">krk_initTable</a>(&amp;_class-&gt;methods);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">if</span> (baseClass) {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        _class-&gt;base = baseClass;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        _class-&gt;allocSize = baseClass-&gt;allocSize;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        _class-&gt;_ongcscan = baseClass-&gt;_ongcscan;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        _class-&gt;_ongcsweep = baseClass-&gt;_ongcsweep;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> _class;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<a class="code" href="structKrkInstance.html">KrkInstance</a> * krk_newInstance(<a class="code" href="structKrkClass.html">KrkClass</a> * _class) {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * instance = (<a class="code" href="structKrkInstance.html">KrkInstance</a>*)allocateObject(_class-&gt;allocSize, OBJ_INSTANCE);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    instance-&gt;_class = _class;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <a class="code" href="structKrkTable.html#a03a3dfef3d54368e62652a52368e5ced">krk_initTable</a>(&amp;instance-&gt;fields);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * krk_newBoundMethod(<a class="code" href="structKrkValue.html">KrkValue</a> receiver, <a class="code" href="structKrkObj.html">KrkObj</a> * method) {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * bound = ALLOCATE_OBJECT(<a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a>, OBJ_BOUND_METHOD);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    bound-&gt;receiver = receiver;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    bound-&gt;method = method;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">return</span> bound;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<a class="code" href="structKrkTuple.html">KrkTuple</a> * krk_newTuple(<span class="keywordtype">size_t</span> length) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="structKrkTuple.html">KrkTuple</a> * tuple = ALLOCATE_OBJECT(<a class="code" href="structKrkTuple.html">KrkTuple</a>, OBJ_TUPLE);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;tuple-&gt;values);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(tuple));</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    tuple-&gt;values.<a class="code" href="structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b">capacity</a> = length;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    tuple-&gt;values.<a class="code" href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">values</a> = GROW_ARRAY(<a class="code" href="structKrkValue.html">KrkValue</a>,NULL,0,length);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">return</span> tuple;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;}</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keywordtype">void</span> krk_bytesUpdateHash(<a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes) {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    bytes-&gt;obj.hash = hashString((<span class="keywordtype">char</span>*)bytes-&gt;bytes, bytes-&gt;length);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<a class="code" href="structKrkBytes.html">KrkBytes</a> * krk_newBytes(<span class="keywordtype">size_t</span> length, uint8_t * source) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes = ALLOCATE_OBJECT(<a class="code" href="structKrkBytes.html">KrkBytes</a>, OBJ_BYTES);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    bytes-&gt;length = length;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    bytes-&gt;bytes  = NULL;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(bytes));</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    bytes-&gt;bytes  = ALLOCATE(uint8_t, length);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    bytes-&gt;obj.hash = -1;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">if</span> (source) {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        memcpy(bytes-&gt;bytes, source, length);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        krk_bytesUpdateHash(bytes);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span> bytes;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span> (result-&gt;chars != heapChars) free(heapChars);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    _release_lock(_stringLock);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<a class="code" href="structKrkFunction.html">KrkFunction</a> * krk_newFunction(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="structKrkFunction.html">KrkFunction</a> * <span class="keyword">function</span> = ALLOCATE_OBJECT(<a class="code" href="structKrkFunction.html">KrkFunction</a>, OBJ_FUNCTION);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">function</span>-&gt;requiredArgs = 0;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">function</span>-&gt;keywordArgs = 0;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keyword">function</span>-&gt;upvalueCount = 0;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keyword">function</span>-&gt;name = NULL;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keyword">function</span>-&gt;docstring = NULL;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">function</span>-&gt;collectsArguments = 0;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keyword">function</span>-&gt;collectsKeywords = 0;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">function</span>-&gt;localNameCount = 0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keyword">function</span>-&gt;localNames = NULL;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">function</span>-&gt;globalsContext = NULL;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;function-&gt;requiredArgNames);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;function-&gt;keywordArgNames);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="structKrkChunk.html#a1d58d95f571ad5f524379b2cc84a249c">krk_initChunk</a>(&amp;function-&gt;chunk);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">function</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<a class="code" href="structKrkNative.html">KrkNative</a> * krk_newNative(NativeFn <span class="keyword">function</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">int</span> type) {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="structKrkNative.html">KrkNative</a> * native = ALLOCATE_OBJECT(<a class="code" href="structKrkNative.html">KrkNative</a>, OBJ_NATIVE);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    native-&gt;function = <span class="keyword">function</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    native-&gt;isMethod = type;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    native-&gt;name = name;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    native-&gt;doc = NULL;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> native;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<a class="code" href="structKrkClosure.html">KrkClosure</a> * krk_newClosure(<a class="code" href="structKrkFunction.html">KrkFunction</a> * <span class="keyword">function</span>) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> ** upvalues = ALLOCATE(<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a>*, function-&gt;upvalueCount);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">function</span>-&gt;upvalueCount; ++i) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        upvalues[i] = NULL;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="structKrkClosure.html">KrkClosure</a> * closure = ALLOCATE_OBJECT(<a class="code" href="structKrkClosure.html">KrkClosure</a>, OBJ_CLOSURE);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    closure-&gt;function = <span class="keyword">function</span>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    closure-&gt;upvalues = upvalues;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    closure-&gt;upvalueCount = <span class="keyword">function</span>-&gt;upvalueCount;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    closure-&gt;annotations = <a class="code" href="structKrkDict.html#ab8ddfcbd0e1694cf1f067e91e0e1d973">krk_dict_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">return</span> closure;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> * krk_newUpvalue(<span class="keywordtype">int</span> slot) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> * upvalue = ALLOCATE_OBJECT(<a class="code" href="structKrkUpvalue.html">KrkUpvalue</a>, OBJ_UPVALUE);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    upvalue-&gt;location = slot;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    upvalue-&gt;next = NULL;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    upvalue-&gt;closed = NONE_VAL();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    upvalue-&gt;owner = &amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">return</span> upvalue;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<a class="code" href="structKrkClass.html">KrkClass</a> * krk_newClass(<a class="code" href="structKrkString.html">KrkString</a> * name, <a class="code" href="structKrkClass.html">KrkClass</a> * baseClass) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _class = ALLOCATE_OBJECT(<a class="code" href="structKrkClass.html">KrkClass</a>, OBJ_CLASS);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    _class-&gt;name = name;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    _class-&gt;allocSize = <span class="keyword">sizeof</span>(<a class="code" href="object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f">KrkInstance</a>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="structKrkTable.html#a03a3dfef3d54368e62652a52368e5ced">krk_initTable</a>(&amp;_class-&gt;methods);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">if</span> (baseClass) {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        _class-&gt;base = baseClass;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        _class-&gt;allocSize = baseClass-&gt;allocSize;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        _class-&gt;_ongcscan = baseClass-&gt;_ongcscan;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        _class-&gt;_ongcsweep = baseClass-&gt;_ongcsweep;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> _class;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<a class="code" href="structKrkInstance.html">KrkInstance</a> * krk_newInstance(<a class="code" href="structKrkClass.html">KrkClass</a> * _class) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * instance = (<a class="code" href="structKrkInstance.html">KrkInstance</a>*)allocateObject(_class-&gt;allocSize, OBJ_INSTANCE);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    instance-&gt;_class = _class;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <a class="code" href="structKrkTable.html#a03a3dfef3d54368e62652a52368e5ced">krk_initTable</a>(&amp;instance-&gt;fields);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * krk_newBoundMethod(<a class="code" href="structKrkValue.html">KrkValue</a> receiver, <a class="code" href="structKrkObj.html">KrkObj</a> * method) {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * bound = ALLOCATE_OBJECT(<a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a>, OBJ_BOUND_METHOD);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    bound-&gt;receiver = receiver;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    bound-&gt;method = method;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">return</span> bound;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<a class="code" href="structKrkTuple.html">KrkTuple</a> * krk_newTuple(<span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <a class="code" href="structKrkTuple.html">KrkTuple</a> * tuple = ALLOCATE_OBJECT(<a class="code" href="structKrkTuple.html">KrkTuple</a>, OBJ_TUPLE);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(&amp;tuple-&gt;values);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(tuple));</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    tuple-&gt;values.<a class="code" href="structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b">capacity</a> = length;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    tuple-&gt;values.<a class="code" href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">values</a> = GROW_ARRAY(<a class="code" href="structKrkValue.html">KrkValue</a>,NULL,0,length);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> tuple;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="keywordtype">void</span> krk_bytesUpdateHash(<a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    bytes-&gt;obj.hash = hashString((<span class="keywordtype">char</span>*)bytes-&gt;bytes, bytes-&gt;length);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<a class="code" href="structKrkBytes.html">KrkBytes</a> * krk_newBytes(<span class="keywordtype">size_t</span> length, uint8_t * source) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes = ALLOCATE_OBJECT(<a class="code" href="structKrkBytes.html">KrkBytes</a>, OBJ_BYTES);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    bytes-&gt;length = length;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    bytes-&gt;bytes  = NULL;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(bytes));</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    bytes-&gt;bytes  = ALLOCATE(uint8_t, length);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    bytes-&gt;obj.hash = -1;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">if</span> (source) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        memcpy(bytes-&gt;bytes, source, length);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        krk_bytesUpdateHash(bytes);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> bytes;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructKrkFunction_html"><div class="ttname"><a href="structKrkFunction.html">KrkFunction</a></div><div class="ttdoc">Code object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00111">object.h:111</a></div></div>
 <div class="ttc" id="astructKrkTable_html_a5b651472bbf7d8cbf59d841b9c50be7b"><div class="ttname"><a href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">KrkTable::krk_tableFindString</a></div><div class="ttdeci">KrkString * krk_tableFindString(KrkTable *table, const char *chars, size_t length, uint32_t hash)</div><div class="ttdoc">Find a character sequence in the string interning table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00119">table.c:119</a></div></div>

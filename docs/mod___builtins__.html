@@ -518,9 +518,13 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="filter"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#filter">_</a></span><b>filter</b>()</h3><div class="memitem"><div class="memdoc"> Return an iterator that returns only the items from an iterable for which the given function returns true.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="getattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#getattr">_</a></span><b>getattr</b>()</h3><div class="memitem"><div class="memdoc"> Obtain a property of an object as if it were accessed by the dot operator.</p>
+<p><a class="anchor" id="getattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#getattr">_</a></span><b>getattr</b>(<i>obj,attribute,[default]</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Perform attribute lookup on an object using a string.</p>
+<p>Obtains the attributed named <code>attribute</code> from the object <code>obj</code>, if such an attribute exists. Attribute lookup ordering is complex and includes direct attribute tables of instances, dynamic attributes from classes, and so on. The use of <code>getattr</code> is equivalent to a dotted access. If <code>attribute</code> refers to a method of <code>obj's</code> class, a bound method will be obtained. If <code>default</code> is provided then the value supplied will be returned in the case where <code>obj</code> does not have an attribute named <code>attribute</code>, otherwise an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> will be raised.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="globals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#globals">_</a></span><b>globals</b>()</h3><div class="memitem"><div class="memdoc"> Return a mapping of names in the current global namespace.</p>
+<p><a class="anchor" id="globals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#globals">_</a></span><b>globals</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Update and a return a mapping of names in the global namespace.</p>
+<p>Produces a dict mapping all of the names of the current globals namespace to their values. Updating this dict has no meaning, but modifying mutable values within it can affect the global namespace.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="hash"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#hash">_</a></span><b>hash</b>()</h3><div class="memitem"><div class="memdoc"> Returns the hash of a value, used for table indexing.</p>
 <p> </div></div></p>
@@ -532,13 +536,17 @@ Functions</h2>
 <p>Read a line of input.</p>
 <p>Read a line of input from <code>stdin</code>. If the <code>rline</code> library is available, it will be used to gather input. Input reading stops on end-of file or when a read ends with a line feed, which will be removed from the returned string. If a prompt is provided, it will be printed without a line feed before requesting input. If <code>rline</code> is available, the prompt will be passed to the library as the left-hand prompt string. If not provided, <code>promptwidth</code> will default to the width of <code>prompt</code> in codepoints; if you are providing a prompt with escape characters or characters with multi-column East-Asian Character Width be sure to pass a value for <code>promptwidth</code> that reflects the display width of your prompt. If provided, <code>syntax</code> specifies the name of an <code>rline</code> syntax module to provide color highlighting of the input line.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="isinstance"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isinstance">_</a></span><b>isinstance</b>()</h3><div class="memitem"><div class="memdoc"> Determine if an object is an instance of the given class or one if its subclasses.</p>
+<p><a class="anchor" id="isinstance"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isinstance">_</a></span><b>isinstance</b>(<i>inst, cls</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Check if an object is an instance of a type.</p>
+<p>Determine if an object <code>inst</code> is an instance of the given class <code>cls</code> or one if its subclasses. <code>cls</code> may be a single class or a tuple of classes.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="len"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#len">_</a></span><b>len</b>()</h3><div class="memitem"><div class="memdoc"> Return the length of a given sequence object.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="listOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#listOf">_</a></span><b>listOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to list object.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="locals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#locals">_</a></span><b>locals</b>()</h3><div class="memitem"><div class="memdoc"> Return a mapping of names in the current local namespace.</p>
+<p><a class="anchor" id="locals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#locals">_</a></span><b>locals</b>(<i>callDepth=1</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Update and return a mapping of names in the current local scope.</p>
+<p>Produces a dict mapping the names of the requested locals scope to their current stack values. If <code>callDepth</code> is provided, the locals of an outer call frame will be returned. If the requested call depth is out of range, an exception will be raised.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="map"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#map">_</a></span><b>map</b>()</h3><div class="memitem"><div class="memdoc"> Return an iterator that applies a function to a series of iterables</p>
 <p> </div></div></p>
@@ -550,7 +558,9 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="ord"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#ord">_</a></span><b>ord</b>()</h3><div class="memitem"><div class="memdoc"> Obtain the ordinal integer value of a codepoint or byte.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="print"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#print">_</a></span><b>print</b>()</h3><div class="memitem"><div class="memdoc"> Print values to the standard output descriptor.</p>
+<p><a class="anchor" id="print"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#print">_</a></span><b>print</b>(<i>*args,sep=' ',end='\n'</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Print text to the standard output.</p>
+<p>Prints the string representation of each argument to the standard output. The keyword argument <code>sep</code> specifies the string to print between values. The keyword argument <code>end</code> specifies the string to print after all of the values have been printed.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="repr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#repr">_</a></span><b>repr</b>()</h3><div class="memitem"><div class="memdoc"> Produce a string representation of the given object.</p>
 <p> </div></div></p>
@@ -558,13 +568,17 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="setOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#setOf">_</a></span><b>setOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to set object.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="setattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#setattr">_</a></span><b>setattr</b>()</h3><div class="memitem"><div class="memdoc"> <a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> a property of an object as if it were accessed by the dot operator.</p>
+<p><a class="anchor" id="setattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#setattr">_</a></span><b>setattr</b>(<i>obj,attribute,value</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> an attribute of an object using a string name.</p>
+<p>Sets the attribute named by <code>attribute</code> of the object <code>obj</code> to <code>value</code>. If <code>attribute</code> refers to a <a class="el" href="mod___builtins__.html#property">property</a> object or other descriptor, the descriptor's <code>__set__</code> method will be called. If <code>obj</code> is a class, instance, or other type with its own attribute table, then the field will be updated. If <code>obj</code> is a type without an attribute table and no class property provides an overriding setter for <code>attribute</code>, an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> will be raised.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="sorted"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sorted">_</a></span><b>sorted</b>()</h3><div class="memitem"><div class="memdoc"> Return a sorted representation of an iterable.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="staticmethod"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#staticmethod">_</a></span><b>staticmethod</b>()</h3><div class="memitem"><div class="memdoc"> A static method does not take an implicit self or cls argument.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="sum"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sum">_</a></span><b>sum</b>()</h3><div class="memitem"><div class="memdoc"> Add the elements of an iterable.</p>
+<p><a class="anchor" id="sum"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sum">_</a></span><b>sum</b>(<i>iterable,start=0</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>add the elements of an iterable.</p>
+<p>Continuously adds all of the elements from <code>iterable</code> to <code>start</code> and returns the result when <code>iterable</code> has been exhausted.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="tupleOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#tupleOf">_</a></span><b>tupleOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to tuple object.</p>
 <p> </div></div></p>
