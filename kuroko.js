@@ -28,8 +28,16 @@ function _craftMessage(data,finalResponse=false) {
   postMessage(transferObject, [transferObject.data.buffer]);
 }
 
+var waitingForInput = 0;
+
 function messageCallback(msg) {
   if (typeof msg.data === 'string') {
+    if (waitingForInput) {
+      waitingForInput = 0;
+      Module.stdin_line = msg.data;
+      Module.awakeStatus = 1;
+      return false;
+    }
     if (msg.data == 'continue') {
       Module.awakeStatus = 1;
     } else if (msg.data == 'traceback') {
@@ -1532,12 +1540,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  1355: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
+  1552: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
 };
 function check_status(){ return Module.awakeStatus; }
+function get_stdin_line(){ var bytes = lengthBytesUTF8(Module.stdin_line)+1; var heapObj = _malloc(bytes); stringToUTF8(Module.stdin_line, heapObj, bytes); return heapObj; }
 function report_debugger(str){ _craftMessage("d" + UTF8ToString(str)); }
+function report_input(str){ waitingForInput = 1; _craftMessage("i" + UTF8ToString(str)); }
 function reset_status(){ Module.awakeStatus = 0; }
-function resume_status(){ Module.awakeStatus = 1; }
 
 
 
@@ -6131,10 +6140,11 @@ var asmLibraryArg = {
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
   "fork": _fork,
+  "get_stdin_line": get_stdin_line,
   "kill": _kill,
   "report_debugger": report_debugger,
+  "report_input": report_input,
   "reset_status": reset_status,
-  "resume_status": resume_status,
   "setTempRet0": _setTempRet0,
   "system": _system,
   "time": _time
@@ -6196,13 +6206,13 @@ var _emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = function()
 };
 
 /** @type {function(...*):?} */
-var dynCall_ii = Module["dynCall_ii"] = function() {
-  return (dynCall_ii = Module["dynCall_ii"] = Module["asm"]["dynCall_ii"]).apply(null, arguments);
+var dynCall_viiii = Module["dynCall_viiii"] = function() {
+  return (dynCall_viiii = Module["dynCall_viiii"] = Module["asm"]["dynCall_viiii"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
-var dynCall_viiii = Module["dynCall_viiii"] = function() {
-  return (dynCall_viiii = Module["dynCall_viiii"] = Module["asm"]["dynCall_viiii"]).apply(null, arguments);
+var dynCall_ii = Module["dynCall_ii"] = function() {
+  return (dynCall_ii = Module["dynCall_ii"] = Module["asm"]["dynCall_ii"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
