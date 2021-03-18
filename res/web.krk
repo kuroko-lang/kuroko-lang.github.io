@@ -501,10 +501,10 @@ for up, down in TupleGenerator():
 <p>Objects with <code>__getitem__</code> and <code>__setitem__</code> methods can be used with square brackets <code>[]</code>:</p>
 <p><code>class Foo:
     def __getitem__(ind):
-        print("You asked for ind=" + ind)
+        print("You asked for ind=", ind)
         return ind * 5
     def __setitem__(ind, val):
-        print("You asked to set ind=" + ind + " to " + val)
+        print("You asked to set ind=", ind, "to", val)
 let f = Foo()
 print(f[4])
 f[7] = "bar"</code></p>
@@ -696,7 +696,7 @@ print(f)</code></p>
         self.title = title
     def __enter__():
         print("Enter context manager", self.title)
-    def __exit__():
+    def __exit__(type,exc,traceback):
         print("Exit context manager", self.title)
 def doesANestedThing():
     with ContextManager('outer'):
@@ -707,7 +707,19 @@ def doesANestedThing():
         print('Should not print')
     print('Should not print')
 print(doesANestedThing())</code></p>
-{note("The implementation of <code>with</code> blocks is incomplete: exceptions raised within a <code>with</code> block which are not also caught within the block will result in the context manager's <code>__exit__</code> method not being called.")}
+''','''
+<p><code>with</code> statements can also take multiple context managers in one statement:</p>
+<p><code>class ContextManager:
+    def __init__(title):
+        self.title = title
+    def __enter__():
+        print("Enter context manager", self.title)
+    def __exit__(type,exc,traceback):
+        print("Exit context manager", self.title)
+def doesANestedThing():
+    with ContextManager('outer'), ContextManager('inner'), ContextManager('triple'):
+        return 42
+print(doesANestedThing())</code></p>
 ''','''
 <h1>All done!</h1>
 <p>There's just one more thing to cover: The <code>del</code> statement allows names to be deleted from the global scope or from the attributes table of an object. Let's clean things up:</p>

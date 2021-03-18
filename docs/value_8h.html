@@ -142,7 +142,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="73,379,191,405"/>
 <area shape="rect" href="obj__dict_8c_source.html" title=" " alt="" coords="479,379,585,405"/>
 <area shape="rect" href="obj__function_8c_source.html" title=" " alt="" coords="2712,379,2848,405"/>
-<area shape="rect" href="obj__gen_8c_source.html" title=" " alt="" coords="824,379,931,405"/>
+<area shape="rect" href="obj__gen_8c.html" title="Generator objects." alt="" coords="824,379,931,405"/>
 <area shape="rect" href="obj__list_8c_source.html" title=" " alt="" coords="955,379,1058,405"/>
 <area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="1083,379,1219,405"/>
 <area shape="rect" href="obj__range_8c_source.html" title=" " alt="" coords="1243,379,1363,405"/>
@@ -252,6 +252,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a2ac4f6a0dca0b5584489f11e21b0a38f"><td class="memItemLeft" align="right" valign="top"><a id="a2ac4f6a0dca0b5584489f11e21b0a38f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_WITH_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_PUSH_WITH)</td></tr>
 <tr class="separator:a2ac4f6a0dca0b5584489f11e21b0a38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad49f41e7a0ea22b64b548b52653f0f7a"><td class="memItemLeft" align="right" valign="top"><a id="ad49f41e7a0ea22b64b548b52653f0f7a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_RAISE_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_RAISE)</td></tr>
+<tr class="separator:ad49f41e7a0ea22b64b548b52653f0f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00d1496619ad0c4adccf3c688aed4be"><td class="memItemLeft" align="right" valign="top"><a id="ac00d1496619ad0c4adccf3c688aed4be"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_EXCEPT_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_FILTER_EXCEPT)</td></tr>
+<tr class="separator:ac00d1496619ad0c4adccf3c688aed4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>

@@ -159,7 +159,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="1648,304,1767,331"/>
 <area shape="rect" href="obj__dict_8c_source.html" title=" " alt="" coords="2319,304,2426,331"/>
 <area shape="rect" href="obj__function_8c_source.html" title=" " alt="" coords="947,304,1083,331"/>
-<area shape="rect" href="obj__gen_8c_source.html" title=" " alt="" coords="2450,304,2557,331"/>
+<area shape="rect" href="obj__gen_8c.html" title="Generator objects." alt="" coords="2450,304,2557,331"/>
 <area shape="rect" href="obj__list_8c_source.html" title=" " alt="" coords="2581,304,2684,331"/>
 <area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="2709,304,2845,331"/>
 <area shape="rect" href="obj__range_8c_source.html" title=" " alt="" coords="2869,304,2989,331"/>
@@ -236,92 +236,95 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<b>OP_YIELD</b>, 
 <b>OP_ANNOTATE</b>, 
-<b>OP_CALL</b> = 64, 
+<b>OP_BEGIN_FINALLY</b>, 
+<b>OP_END_FINALLY</b>, 
+<br />
+&#160;&#160;<b>OP_CALL</b> = 64, 
 <b>OP_CLASS</b>, 
-<br />
-&#160;&#160;<b>OP_CLOSURE</b>, 
+<b>OP_CLOSURE</b>, 
 <b>OP_CONSTANT</b>, 
-<b>OP_DEFINE_GLOBAL</b>, 
+<br />
+&#160;&#160;<b>OP_DEFINE_GLOBAL</b>, 
 <b>OP_DEL_GLOBAL</b>, 
-<br />
-&#160;&#160;<b>OP_DEL_PROPERTY</b>, 
+<b>OP_DEL_PROPERTY</b>, 
 <b>OP_DUP</b>, 
-<b>OP_EXPAND_ARGS</b>, 
+<br />
+&#160;&#160;<b>OP_EXPAND_ARGS</b>, 
 <b>OP_GET_GLOBAL</b>, 
-<br />
-&#160;&#160;<b>OP_GET_LOCAL</b>, 
+<b>OP_GET_LOCAL</b>, 
 <b>OP_GET_PROPERTY</b>, 
-<b>OP_GET_SUPER</b>, 
+<br />
+&#160;&#160;<b>OP_GET_SUPER</b>, 
 <b>OP_GET_UPVALUE</b>, 
-<br />
-&#160;&#160;<b>OP_IMPORT</b>, 
+<b>OP_IMPORT</b>, 
 <b>OP_IMPORT_FROM</b>, 
-<b>OP_INC</b>, 
+<br />
+&#160;&#160;<b>OP_INC</b>, 
 <b>OP_KWARGS</b>, 
-<br />
-&#160;&#160;<b>OP_CLASS_PROPERTY</b>, 
+<b>OP_CLASS_PROPERTY</b>, 
 <b>OP_SET_GLOBAL</b>, 
-<b>OP_SET_LOCAL</b>, 
+<br />
+&#160;&#160;<b>OP_SET_LOCAL</b>, 
 <b>OP_SET_PROPERTY</b>, 
-<br />
-&#160;&#160;<b>OP_SET_UPVALUE</b>, 
+<b>OP_SET_UPVALUE</b>, 
 <b>OP_TUPLE</b>, 
-<b>OP_UNPACK</b>, 
+<br />
+&#160;&#160;<b>OP_UNPACK</b>, 
 <b>OP_LIST_APPEND</b>, 
-<br />
-&#160;&#160;<b>OP_DICT_SET</b>, 
+<b>OP_DICT_SET</b>, 
 <b>OP_SET_ADD</b>, 
-<b>OP_MAKE_LIST</b>, 
+<br />
+&#160;&#160;<b>OP_MAKE_LIST</b>, 
 <b>OP_MAKE_DICT</b>, 
-<br />
-&#160;&#160;<b>OP_MAKE_SET</b>, 
+<b>OP_MAKE_SET</b>, 
 <b>OP_REVERSE</b>, 
-<b>OP_JUMP_IF_FALSE</b> = 128, 
+<br />
+&#160;&#160;<b>OP_JUMP_IF_FALSE</b> = 128, 
 <b>OP_JUMP_IF_TRUE</b>, 
-<br />
-&#160;&#160;<b>OP_JUMP</b>, 
+<b>OP_JUMP</b>, 
 <b>OP_LOOP</b>, 
-<b>OP_PUSH_TRY</b>, 
+<br />
+&#160;&#160;<b>OP_PUSH_TRY</b>, 
 <b>OP_PUSH_WITH</b>, 
-<br />
-&#160;&#160;<b>OP_CALL_LONG</b> = 192, 
+<b>OP_CALL_LONG</b> = 192, 
 <b>OP_CLASS_LONG</b>, 
-<b>OP_CLOSURE_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_CLOSURE_LONG</b>, 
 <b>OP_CONSTANT_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_DEFINE_GLOBAL_LONG</b>, 
+<b>OP_DEFINE_GLOBAL_LONG</b>, 
 <b>OP_DEL_GLOBAL_LONG</b>, 
-<b>OP_DEL_PROPERTY_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_DEL_PROPERTY_LONG</b>, 
 <b>OP_DUP_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_EXPAND_ARGS_LONG</b>, 
+<b>OP_EXPAND_ARGS_LONG</b>, 
 <b>OP_GET_GLOBAL_LONG</b>, 
-<b>OP_GET_LOCAL_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_GET_LOCAL_LONG</b>, 
 <b>OP_GET_PROPERTY_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_GET_SUPER_LONG</b>, 
+<b>OP_GET_SUPER_LONG</b>, 
 <b>OP_GET_UPVALUE_LONG</b>, 
-<b>OP_IMPORT_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_IMPORT_LONG</b>, 
 <b>OP_IMPORT_FROM_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_INC_LONG</b>, 
+<b>OP_INC_LONG</b>, 
 <b>OP_KWARGS_LONG</b>, 
-<b>OP_CLASS_PROPERTY_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_CLASS_PROPERTY_LONG</b>, 
 <b>OP_SET_GLOBAL_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_SET_LOCAL_LONG</b>, 
+<b>OP_SET_LOCAL_LONG</b>, 
 <b>OP_SET_PROPERTY_LONG</b>, 
-<b>OP_SET_UPVALUE_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_SET_UPVALUE_LONG</b>, 
 <b>OP_TUPLE_LONG</b>, 
-<br />
-&#160;&#160;<b>OP_UNPACK_LONG</b>, 
+<b>OP_UNPACK_LONG</b>, 
 <b>OP_LIST_APPEND_LONG</b>, 
-<b>OP_DICT_SET_LONG</b>, 
-<b>OP_SET_ADD_LONG</b>, 
 <br />
-&#160;&#160;<b>OP_MAKE_LIST_LONG</b>, 
+&#160;&#160;<b>OP_DICT_SET_LONG</b>, 
+<b>OP_SET_ADD_LONG</b>, 
+<b>OP_MAKE_LIST_LONG</b>, 
 <b>OP_MAKE_DICT_LONG</b>, 
-<b>OP_MAKE_SET_LONG</b>, 
+<br />
+&#160;&#160;<b>OP_MAKE_SET_LONG</b>, 
 <b>OP_REVERSE_LONG</b>
 <br />
  }</td></tr>

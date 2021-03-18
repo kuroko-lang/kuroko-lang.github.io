@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['class_20index_537',['Class Index',['../classindex.html',1,'']]],
-  ['collections_538',['collections',['../mod_collections.html',1,'']]]
+  ['class_20index_541',['Class Index',['../classindex.html',1,'']]],
+  ['collections_542',['collections',['../mod_collections.html',1,'']]]
 ];

@@ -292,73 +292,73 @@ $(function() {
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="structKrkTable.html">KrkTable</a> entries;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;} <a class="code" href="structKrkDict.html">KrkDict</a>;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="structDictItems.html">  274</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDictItems.html">DictItems</a> {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> inst;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> dict;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;};</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="structDictKeys.html">  280</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDictKeys.html">DictKeys</a> {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> inst;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> dict;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;};</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a>(<span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> * <a class="code" href="structKrkString.html#a0c5148ab9c7e0d9c3ac943715157896b">krk_unicodeString</a>(<a class="code" href="structKrkString.html">KrkString</a> * <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="structKrkString.html#a05b1b0c2d0ec8b2f8286c01bdf0c3411">krk_unicodeCodepoint</a>(<a class="code" href="structKrkString.html">KrkString</a> * <span class="keywordtype">string</span>, <span class="keywordtype">size_t</span> index);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">size_t</span> <a class="code" href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">krk_codepointToBytes</a>(krk_integer_type value, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * out);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">/* Internal stuff. */</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword">extern</span> NativeFn KrkGenericAlias;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> *    krk_newCodeObject(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkNative.html">KrkNative</a> *      krk_newNative(NativeFn <span class="keyword">function</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">int</span> type);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkClosure.html">KrkClosure</a> *     krk_newClosure(<a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * <span class="keyword">function</span>);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> *     krk_newUpvalue(<span class="keywordtype">int</span> slot);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkClass.html">KrkClass</a> *       krk_newClass(<a class="code" href="structKrkString.html">KrkString</a> * name, <a class="code" href="structKrkClass.html">KrkClass</a> * base);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkInstance.html">KrkInstance</a> *    krk_newInstance(<a class="code" href="structKrkClass.html">KrkClass</a> * _class);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * krk_newBoundMethod(<a class="code" href="structKrkValue.html">KrkValue</a> receiver, <a class="code" href="structKrkObj.html">KrkObj</a> * method);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkTuple.html">KrkTuple</a> *       krk_newTuple(<span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkBytes.html">KrkBytes</a> *       krk_newBytes(<span class="keywordtype">size_t</span> length, uint8_t * source);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> krk_bytesUpdateHash(<a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes);</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> krk_tupleUpdateHash(<a class="code" href="structKrkTuple.html">KrkTuple</a> * <span class="keyword">self</span>);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#define KRK_STRING_FAST(string,offset)  (uint32_t)\</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">    (string-&gt;type &lt;= 1 ? ((uint8_t*)string-&gt;codes)[offset] : \</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">    (string-&gt;type == 2 ? ((uint16_t*)string-&gt;codes)[offset] : \</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">    ((uint32_t*)string-&gt;codes)[offset]))</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="preprocessor">#define CODEPOINT_BYTES(cp) (cp &lt; 0x80 ? 1 : (cp &lt; 0x800 ? 2 : (cp &lt; 0x10000 ? 3 : 4)))</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#define krk_isObjType(v,t) (IS_OBJECT(v) &amp;&amp; (AS_OBJECT(v)-&gt;type == (t)))</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">#define OBJECT_TYPE(value) (AS_OBJECT(value)-&gt;type)</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">#define IS_STRING(value)   krk_isObjType(value, KRK_OBJ_STRING)</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">#define AS_STRING(value)   ((KrkString *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#define AS_CSTRING(value)  (((KrkString *)AS_OBJECT(value))-&gt;chars)</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#define IS_BYTES(value)    krk_isObjType(value, KRK_OBJ_BYTES)</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#define AS_BYTES(value)    ((KrkBytes*)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#define IS_NATIVE(value)   krk_isObjType(value, KRK_OBJ_NATIVE)</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#define AS_NATIVE(value)   ((KrkNative *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#define IS_CLOSURE(value)  krk_isObjType(value, KRK_OBJ_CLOSURE)</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#define AS_CLOSURE(value)  ((KrkClosure *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#define IS_CLASS(value)    krk_isObjType(value, KRK_OBJ_CLASS)</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#define AS_CLASS(value)    ((KrkClass *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#define IS_INSTANCE(value) krk_isObjType(value, KRK_OBJ_INSTANCE)</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#define AS_INSTANCE(value) ((KrkInstance *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#define IS_BOUND_METHOD(value) krk_isObjType(value, KRK_OBJ_BOUND_METHOD)</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#define AS_BOUND_METHOD(value) ((KrkBoundMethod*)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor">#define IS_TUPLE(value)    krk_isObjType(value, KRK_OBJ_TUPLE)</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#define AS_TUPLE(value)    ((KrkTuple *)AS_OBJECT(value))</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor">#define AS_LIST(value) (&amp;((KrkList *)AS_OBJECT(value))-&gt;values)</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#define AS_DICT(value) (&amp;((KrkDict *)AS_OBJECT(value))-&gt;entries)</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#define IS_codeobject(value) krk_isObjType(value, KRK_OBJ_CODEOBJECT)</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="preprocessor">#define AS_codeobject(value) ((KrkCodeObject *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="structDictItems.html">  277</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDictItems.html">DictItems</a> {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> inst;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> dict;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;};</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="structDictKeys.html">  286</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDictKeys.html">DictKeys</a> {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> inst;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> dict;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;};</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a>(<span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> * <a class="code" href="structKrkString.html#a0c5148ab9c7e0d9c3ac943715157896b">krk_unicodeString</a>(<a class="code" href="structKrkString.html">KrkString</a> * <span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="structKrkString.html#a05b1b0c2d0ec8b2f8286c01bdf0c3411">krk_unicodeCodepoint</a>(<a class="code" href="structKrkString.html">KrkString</a> * <span class="keywordtype">string</span>, <span class="keywordtype">size_t</span> index);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">size_t</span> <a class="code" href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">krk_codepointToBytes</a>(krk_integer_type value, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * out);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">/* Internal stuff. */</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keyword">extern</span> NativeFn KrkGenericAlias;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> *    krk_newCodeObject(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkNative.html">KrkNative</a> *      krk_newNative(NativeFn <span class="keyword">function</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">int</span> type);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkClosure.html">KrkClosure</a> *     krk_newClosure(<a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * <span class="keyword">function</span>);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkUpvalue.html">KrkUpvalue</a> *     krk_newUpvalue(<span class="keywordtype">int</span> slot);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkClass.html">KrkClass</a> *       krk_newClass(<a class="code" href="structKrkString.html">KrkString</a> * name, <a class="code" href="structKrkClass.html">KrkClass</a> * base);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkInstance.html">KrkInstance</a> *    krk_newInstance(<a class="code" href="structKrkClass.html">KrkClass</a> * _class);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkBoundMethod.html">KrkBoundMethod</a> * krk_newBoundMethod(<a class="code" href="structKrkValue.html">KrkValue</a> receiver, <a class="code" href="structKrkObj.html">KrkObj</a> * method);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkTuple.html">KrkTuple</a> *       krk_newTuple(<span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkBytes.html">KrkBytes</a> *       krk_newBytes(<span class="keywordtype">size_t</span> length, uint8_t * source);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> krk_bytesUpdateHash(<a class="code" href="structKrkBytes.html">KrkBytes</a> * bytes);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> krk_tupleUpdateHash(<a class="code" href="structKrkTuple.html">KrkTuple</a> * <span class="keyword">self</span>);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">#define KRK_STRING_FAST(string,offset)  (uint32_t)\</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">    (string-&gt;type &lt;= 1 ? ((uint8_t*)string-&gt;codes)[offset] : \</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">    (string-&gt;type == 2 ? ((uint16_t*)string-&gt;codes)[offset] : \</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">    ((uint32_t*)string-&gt;codes)[offset]))</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#define CODEPOINT_BYTES(cp) (cp &lt; 0x80 ? 1 : (cp &lt; 0x800 ? 2 : (cp &lt; 0x10000 ? 3 : 4)))</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#define krk_isObjType(v,t) (IS_OBJECT(v) &amp;&amp; (AS_OBJECT(v)-&gt;type == (t)))</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#define OBJECT_TYPE(value) (AS_OBJECT(value)-&gt;type)</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#define IS_STRING(value)   krk_isObjType(value, KRK_OBJ_STRING)</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#define AS_STRING(value)   ((KrkString *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#define AS_CSTRING(value)  (((KrkString *)AS_OBJECT(value))-&gt;chars)</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#define IS_BYTES(value)    krk_isObjType(value, KRK_OBJ_BYTES)</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#define AS_BYTES(value)    ((KrkBytes*)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#define IS_NATIVE(value)   krk_isObjType(value, KRK_OBJ_NATIVE)</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#define AS_NATIVE(value)   ((KrkNative *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#define IS_CLOSURE(value)  krk_isObjType(value, KRK_OBJ_CLOSURE)</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#define AS_CLOSURE(value)  ((KrkClosure *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor">#define IS_CLASS(value)    krk_isObjType(value, KRK_OBJ_CLASS)</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#define AS_CLASS(value)    ((KrkClass *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor">#define IS_INSTANCE(value) krk_isObjType(value, KRK_OBJ_INSTANCE)</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#define AS_INSTANCE(value) ((KrkInstance *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor">#define IS_BOUND_METHOD(value) krk_isObjType(value, KRK_OBJ_BOUND_METHOD)</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#define AS_BOUND_METHOD(value) ((KrkBoundMethod*)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="preprocessor">#define IS_TUPLE(value)    krk_isObjType(value, KRK_OBJ_TUPLE)</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#define AS_TUPLE(value)    ((KrkTuple *)AS_OBJECT(value))</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#define AS_LIST(value) (&amp;((KrkList *)AS_OBJECT(value))-&gt;values)</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#define AS_DICT(value) (&amp;((KrkDict *)AS_OBJECT(value))-&gt;entries)</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#define IS_codeobject(value) krk_isObjType(value, KRK_OBJ_CODEOBJECT)</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">#define AS_codeobject(value) ((KrkCodeObject *)AS_OBJECT(value))</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructKrkLocalEntry_html"><div class="ttname"><a href="structKrkLocalEntry.html">KrkLocalEntry</a></div><div class="ttdoc">Metadata on a local variable name in a function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00096">object.h:96</a></div></div>
 <div class="ttc" id="aobject_8h_html_a1dcb7cb75b9af1ecfbf0440c7cc770d8"><div class="ttname"><a href="object_8h.html#a1dcb7cb75b9af1ecfbf0440c7cc770d8">KrkString</a></div><div class="ttdeci">struct KrkString KrkString</div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div></div>
@@ -369,8 +369,8 @@ $(function() {
 <div class="ttc" id="aobject_8h_html_a83aaa3bd20e1038605811e9750f2fc81"><div class="ttname"><a href="object_8h.html#a83aaa3bd20e1038605811e9750f2fc81">KrkObj</a></div><div class="ttdeci">struct KrkObj KrkObj</div><div class="ttdoc">The most basic object type.</div></div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00157">object.h:157</a></div></div>
 <div class="ttc" id="astructKrkList_html"><div class="ttname"><a href="structKrkList.html">KrkList</a></div><div class="ttdoc">Mutable array of values.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00255">object.h:255</a></div></div>
-<div class="ttc" id="astructDictKeys_html"><div class="ttname"><a href="structDictKeys.html">DictKeys</a></div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00280">object.h:280</a></div></div>
-<div class="ttc" id="astructDictItems_html"><div class="ttname"><a href="structDictItems.html">DictItems</a></div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00274">object.h:274</a></div></div>
+<div class="ttc" id="astructDictKeys_html"><div class="ttname"><a href="structDictKeys.html">DictKeys</a></div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00286">object.h:286</a></div></div>
+<div class="ttc" id="astructDictItems_html"><div class="ttname"><a href="structDictItems.html">DictItems</a></div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00277">object.h:277</a></div></div>
 <div class="ttc" id="astructKrkThreadState_html"><div class="ttname"><a href="structKrkThreadState.html">KrkThreadState</a></div><div class="ttdoc">Execution state of a VM thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00175">vm.h:175</a></div></div>
 <div class="ttc" id="astructKrkTuple_html"><div class="ttname"><a href="structKrkTuple.html">KrkTuple</a></div><div class="ttdoc">Immutable sequence of arbitrary values.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00243">object.h:243</a></div></div>
 <div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00059">object.h:59</a></div></div>
@@ -381,7 +381,7 @@ $(function() {
 <div class="ttc" id="astructKrkString_html_afd3c39c1c8d8c9363c767e5038a53b8e"><div class="ttname"><a href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">KrkString::krk_codepointToBytes</a></div><div class="ttdeci">size_t krk_codepointToBytes(krk_integer_type value, unsigned char *out)</div><div class="ttdoc">Convert an integer codepoint to a UTF-8 byte representation.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00035">object.c:35</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00065">value.h:65</a></div></div>
 <div class="ttc" id="astructKrkUpvalue_html"><div class="ttname"><a href="structKrkUpvalue.html">KrkUpvalue</a></div><div class="ttdoc">Storage for values referenced from nested functions.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00082">object.h:82</a></div></div>
-<div class="ttc" id="astructKrkChunk_html"><div class="ttname"><a href="structKrkChunk.html">KrkChunk</a></div><div class="ttdoc">Opcode chunk of a code object.</div><div class="ttdef"><b>Definition:</b> <a href="chunk_8h_source.html#l00172">chunk.h:172</a></div></div>
+<div class="ttc" id="astructKrkChunk_html"><div class="ttname"><a href="structKrkChunk.html">KrkChunk</a></div><div class="ttdoc">Opcode chunk of a code object.</div><div class="ttdef"><b>Definition:</b> <a href="chunk_8h_source.html#l00174">chunk.h:174</a></div></div>
 <div class="ttc" id="astructKrkClosure_html"><div class="ttname"><a href="structKrkClosure.html">KrkClosure</a></div><div class="ttdoc">Function object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00137">object.h:137</a></div></div>
 <div class="ttc" id="achunk_8h_html"><div class="ttname"><a href="chunk_8h.html">chunk.h</a></div><div class="ttdoc">Structures and enums for bytecode chunks.</div></div>
 <div class="ttc" id="astructKrkTable_html"><div class="ttname"><a href="structKrkTable.html">KrkTable</a></div><div class="ttdoc">Simple hash table of arbitrary keys to values.</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00028">table.h:28</a></div></div>

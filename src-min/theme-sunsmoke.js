@@ -14,6 +14,7 @@ define("ace/theme/sunsmoke",["require","exports","module","ace/lib/dom"],functio
         .ace-sunsmoke .ace_comment { color: #9e9981; font-style: oblique; }
         .ace-sunsmoke .ace_numeric { color: #e62b7f; }
         .ace-sunsmoke .ace_escape  { color: #71cbad; }
+        .ace-sunsmoke .ace_variable.ace_language  { color: #c24636; }
         .ace-sunsmoke .ace_constant.ace_language.ace_escape  { color: #71cbad; }
         .ace-sunsmoke .ace_storage { color: #e6ce6e; }
         .ace-sunsmoke .ace_support.ace_function { color: #e6ce6e; }
