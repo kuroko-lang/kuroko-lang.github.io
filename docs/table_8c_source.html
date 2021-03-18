@@ -130,11 +130,11 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structKrkValue.html#aa187b64b8840682537bf2fdb7ec13f97">   24</a></span>&#160;<span class="keyword">inline</span> uint32_t <a class="code" href="structKrkValue.html#aa187b64b8840682537bf2fdb7ec13f97">krk_hashValue</a>(<a class="code" href="structKrkValue.html">KrkValue</a> value) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">switch</span> (value.type) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">case</span> VAL_INTEGER:  <span class="keywordflow">return</span> (uint32_t)(AS_INTEGER(value));</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">case</span> VAL_FLOATING: <span class="keywordflow">return</span> (uint32_t)(AS_FLOATING(value) * 1000); <span class="comment">/* arbitrary; what&#39;s a good way to hash floats? */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">case</span> VAL_BOOLEAN:  <span class="keywordflow">return</span> (uint32_t)(AS_BOOLEAN(value));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">case</span> VAL_NONE:     <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">case</span> VAL_OBJECT:   <span class="keywordflow">return</span> (uint32_t)(AS_OBJECT(value))-&gt;hash;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">case</span> KRK_VAL_INTEGER:  <span class="keywordflow">return</span> (uint32_t)(AS_INTEGER(value));</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">case</span> KRK_VAL_FLOATING: <span class="keywordflow">return</span> (uint32_t)(AS_FLOATING(value) * 1000); <span class="comment">/* arbitrary; what&#39;s a good way to hash floats? */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">case</span> KRK_VAL_BOOLEAN:  <span class="keywordflow">return</span> (uint32_t)(AS_BOOLEAN(value));</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">case</span> KRK_VAL_NONE:     <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">case</span> KRK_VAL_OBJECT:   <span class="keywordflow">return</span> (uint32_t)(AS_OBJECT(value))-&gt;hash;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
@@ -144,7 +144,7 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * tombstone = NULL;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;entries[index];</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == VAL_KWARGS) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == KRK_VAL_KWARGS) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (IS_NONE(entry-&gt;value)) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">return</span> tombstone != NULL ? tombstone : entry;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            } <span class="keywordflow">else</span> {</div>
@@ -167,7 +167,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    table-&gt;count = 0;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; table-&gt;capacity; ++i) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[i];</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == VAL_KWARGS) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == KRK_VAL_KWARGS) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * dest = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(entries, capacity, entry-&gt;key);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        dest-&gt;key = entry-&gt;key;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        dest-&gt;value = entry-&gt;value;</div>
@@ -185,7 +185,7 @@ $(function() {
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        adjustCapacity(table, capacity);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> isNewKey = entry-&gt;key.type == VAL_KWARGS;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> isNewKey = entry-&gt;key.type == KRK_VAL_KWARGS;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (isNewKey &amp;&amp; IS_NONE(entry-&gt;value)) table-&gt;count++;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    entry-&gt;key = key;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    entry-&gt;value = value;</div>
@@ -195,7 +195,7 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">krk_tableAddAll</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * from, <a class="code" href="structKrkTable.html">KrkTable</a> * to) {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; from-&gt;capacity; ++i) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;from-&gt;entries[i];</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type != VAL_KWARGS) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type != KRK_VAL_KWARGS) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">krk_tableSet</a>(to, entry-&gt;key, entry-&gt;value);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
@@ -204,7 +204,7 @@ $(function() {
 <div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">   97</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> * value) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (entry-&gt;key.type == VAL_KWARGS) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (entry-&gt;key.type == KRK_VAL_KWARGS) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        *value = entry-&gt;value;</div>
@@ -215,7 +215,7 @@ $(function() {
 <div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">  108</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">krk_tableDelete</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (entry-&gt;key.type == VAL_KWARGS) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (entry-&gt;key.type == KRK_VAL_KWARGS) {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    entry-&gt;key = KWARGS_VAL(0);</div>
@@ -229,7 +229,7 @@ $(function() {
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    uint32_t index = hash % table-&gt;capacity;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[index];</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == VAL_KWARGS) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (entry-&gt;key.type == KRK_VAL_KWARGS) {</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> (IS_NONE(entry-&gt;value)) {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>

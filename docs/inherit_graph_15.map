@@ -4,7 +4,7 @@
 <area shape="rect" id="node3" href="$structKrkBytes.html" title="Immutable sequence of bytes." alt="" coords="147,56,228,83"/>
 <area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="148,107,227,133"/>
 <area shape="rect" id="node5" href="$structKrkClosure.html" title="Function object." alt="" coords="141,157,234,184"/>
-<area shape="rect" id="node6" href="$structKrkFunction.html" title="Code object." alt="" coords="138,208,237,235"/>
+<area shape="rect" id="node6" href="$structKrkCodeObject.html" title="Code object." alt="" coords="128,208,247,235"/>
 <area shape="rect" id="node7" href="$structKrkInstance.html" title="An object of a class." alt="" coords="138,259,237,285"/>
 <area shape="rect" id="node17" href="$structKrkNative.html" title="Managed binding to a C function." alt="" coords="144,309,231,336"/>
 <area shape="rect" id="node18" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="146,360,229,387"/>

@@ -114,13 +114,13 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structKrkString.html">KrkString</a> <a class="code" href="structKrkString.html">KrkString</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="value_8h.html#a50e8074e590357d82386d513c5272575">   27</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    VAL_NONE,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    VAL_BOOLEAN,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    VAL_INTEGER,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    VAL_FLOATING,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    VAL_HANDLER,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    VAL_OBJECT,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    VAL_KWARGS,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    KRK_VAL_NONE,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    KRK_VAL_BOOLEAN,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    KRK_VAL_INTEGER,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    KRK_VAL_FLOATING,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    KRK_VAL_HANDLER,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    KRK_VAL_OBJECT,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    KRK_VAL_KWARGS,</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <a class="code" href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structKrkJumpTarget.html">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -159,13 +159,13 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(<a class="code" href="structKrkValue.html">KrkValue</a> a, <a class="code" href="structKrkValue.html">KrkValue</a> b);</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue){VAL_BOOLEAN, {.integer = value}})</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#define NONE_VAL(value)     ((KrkValue){VAL_NONE,    {.integer = 0}})</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#define INTEGER_VAL(value)  ((KrkValue){VAL_INTEGER, {.integer = value}})</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define FLOATING_VAL(value) ((KrkValue){VAL_FLOATING,{.floating = value}})</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#define HANDLER_VAL(ty,ta)  ((KrkValue){VAL_HANDLER, {.handler = (KrkJumpTarget){.type = ty, .target = ta}}})</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#define OBJECT_VAL(value)   ((KrkValue){VAL_OBJECT,  {.object = (KrkObj*)value}})</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define KWARGS_VAL(value)   ((KrkValue){VAL_KWARGS,  {.integer = value}})</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue){KRK_VAL_BOOLEAN, {.integer = value}})</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#define NONE_VAL(value)     ((KrkValue){KRK_VAL_NONE,    {.integer = 0}})</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#define INTEGER_VAL(value)  ((KrkValue){KRK_VAL_INTEGER, {.integer = value}})</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define FLOATING_VAL(value) ((KrkValue){KRK_VAL_FLOATING,{.floating = value}})</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#define HANDLER_VAL(ty,ta)  ((KrkValue){KRK_VAL_HANDLER, {.handler = (KrkJumpTarget){.type = ty, .target = ta}}})</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#define OBJECT_VAL(value)   ((KrkValue){KRK_VAL_OBJECT,  {.object = (KrkObj*)value}})</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define KWARGS_VAL(value)   ((KrkValue){KRK_VAL_KWARGS,  {.integer = value}})</span></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define AS_BOOLEAN(value)   ((value).as.integer)</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#define AS_INTEGER(value)   ((value).as.integer)</span></div>
@@ -173,13 +173,13 @@ $(function() {
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define AS_HANDLER(value)   ((value).as.handler)</span></div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#define AS_OBJECT(value)    ((value).as.object)</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#define IS_BOOLEAN(value)   ((value).type == VAL_BOOLEAN)</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define IS_NONE(value)      ((value).type == VAL_NONE)</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   (((value).type == VAL_INTEGER) || ((value.type) == VAL_BOOLEAN))</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define IS_FLOATING(value)  ((value).type == VAL_FLOATING)</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define IS_HANDLER(value)   ((value).type == VAL_HANDLER)</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#define IS_OBJECT(value)    ((value).type == VAL_OBJECT)</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#define IS_KWARGS(value)    ((value).type == VAL_KWARGS)</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#define IS_BOOLEAN(value)   ((value).type == KRK_VAL_BOOLEAN)</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define IS_NONE(value)      ((value).type == KRK_VAL_NONE)</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   (((value).type == KRK_VAL_INTEGER) || ((value.type) == KRK_VAL_BOOLEAN))</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define IS_FLOATING(value)  ((value).type == KRK_VAL_FLOATING)</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define IS_HANDLER(value)   ((value).type == KRK_VAL_HANDLER)</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#define IS_OBJECT(value)    ((value).type == KRK_VAL_OBJECT)</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#define IS_KWARGS(value)    ((value).type == KRK_VAL_KWARGS)</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#define IS_TRY_HANDLER(value)  (IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_PUSH_TRY)</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#define IS_WITH_HANDLER(value) (IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_PUSH_WITH)</span></div>
@@ -192,7 +192,7 @@ $(function() {
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00065">value.h:65</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00084">value.h:84</a></div></div>
 <div class="ttc" id="avalue_8h_html_a50e8074e590357d82386d513c5272575"><div class="ttname"><a href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a></div><div class="ttdeci">KrkValueType</div><div class="ttdoc">Tag enum for basic value types.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00027">value.h:27</a></div></div>
-<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00127">value.c:127</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00130">value.c:130</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a6d3945ff31d805a2a9e11b9765ece7ba"><div class="ttname"><a href="structKrkValue.html#a6d3945ff31d805a2a9e11b9765ece7ba">KrkValue::krk_printValue</a></div><div class="ttdeci">void krk_printValue(FILE *f, KrkValue value)</div><div class="ttdoc">Print a string representation of a value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00030">value.c:30</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a205e2953ccc34dfb5da424c06d6c836b"><div class="ttname"><a href="structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b">KrkValueArray::capacity</a></div><div class="ttdeci">size_t capacity</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00083">value.h:83</a></div></div>
 <div class="ttc" id="astructKrkJumpTarget_html"><div class="ttname"><a href="structKrkJumpTarget.html">KrkJumpTarget</a></div><div class="ttdoc">Stack value representation of a 'with' or 'try' block.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00048">value.h:48</a></div></div>

@@ -190,25 +190,25 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a5c26ea89b359606a2eaac967c834803d"><td class="memItemLeft" align="right" valign="top"><a id="a5c26ea89b359606a2eaac967c834803d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_BOOLEAN, {.integer = value}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_BOOLEAN, {.integer = value}})</td></tr>
 <tr class="separator:a5c26ea89b359606a2eaac967c834803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5913f21fe154a0025f21df73ecba9b85"><td class="memItemLeft" align="right" valign="top"><a id="a5913f21fe154a0025f21df73ecba9b85"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_NONE,    {.integer = 0}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_NONE,    {.integer = 0}})</td></tr>
 <tr class="separator:a5913f21fe154a0025f21df73ecba9b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27f86d6fd4b4397b422b811c1c50d100"><td class="memItemLeft" align="right" valign="top"><a id="a27f86d6fd4b4397b422b811c1c50d100"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_INTEGER, {.integer = value}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_INTEGER, {.integer = value}})</td></tr>
 <tr class="separator:a27f86d6fd4b4397b422b811c1c50d100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b09c283fd7f718813c08c5fa37e1306"><td class="memItemLeft" align="right" valign="top"><a id="a7b09c283fd7f718813c08c5fa37e1306"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FLOATING_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_FLOATING,{.floating = value}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FLOATING_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_FLOATING,{.floating = value}})</td></tr>
 <tr class="separator:a7b09c283fd7f718813c08c5fa37e1306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a53dfd462802b4d896373fcdab9ef38"><td class="memItemLeft" align="right" valign="top"><a id="a8a53dfd462802b4d896373fcdab9ef38"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_HANDLER, {.handler = (<a class="el" href="structKrkJumpTarget.html">KrkJumpTarget</a>){.type = ty, .target = ta}}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_HANDLER, {.handler = (<a class="el" href="structKrkJumpTarget.html">KrkJumpTarget</a>){.type = ty, .target = ta}}})</td></tr>
 <tr class="separator:a8a53dfd462802b4d896373fcdab9ef38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566325f786e8ec8c870a56b23badf593"><td class="memItemLeft" align="right" valign="top"><a id="a566325f786e8ec8c870a56b23badf593"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_OBJECT,  {.object = (<a class="el" href="structKrkObj.html">KrkObj</a>*)value}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_OBJECT,  {.object = (<a class="el" href="structKrkObj.html">KrkObj</a>*)value}})</td></tr>
 <tr class="separator:a566325f786e8ec8c870a56b23badf593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62f4aad9c10d346362409dcf6ca78b0"><td class="memItemLeft" align="right" valign="top"><a id="ae62f4aad9c10d346362409dcf6ca78b0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){VAL_KWARGS,  {.integer = value}})</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>){KRK_VAL_KWARGS,  {.integer = value}})</td></tr>
 <tr class="separator:ae62f4aad9c10d346362409dcf6ca78b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bcef61686c2675fe338898a332de54b"><td class="memItemLeft" align="right" valign="top"><a id="a8bcef61686c2675fe338898a332de54b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BOOLEAN</b>(value)&#160;&#160;&#160;((value).as.integer)</td></tr>
@@ -226,25 +226,25 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_OBJECT</b>(value)&#160;&#160;&#160;((value).as.object)</td></tr>
 <tr class="separator:a49a02b3cde1cc17ed9060e3cdcf976e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3028c5712e8f58153439d55b7bf99ff"><td class="memItemLeft" align="right" valign="top"><a id="ab3028c5712e8f58153439d55b7bf99ff"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BOOLEAN</b>(value)&#160;&#160;&#160;((value).type == VAL_BOOLEAN)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BOOLEAN</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_BOOLEAN)</td></tr>
 <tr class="separator:ab3028c5712e8f58153439d55b7bf99ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75a2b9f573891084753ad8f4007ca4b5"><td class="memItemLeft" align="right" valign="top"><a id="a75a2b9f573891084753ad8f4007ca4b5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NONE</b>(value)&#160;&#160;&#160;((value).type == VAL_NONE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NONE</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_NONE)</td></tr>
 <tr class="separator:a75a2b9f573891084753ad8f4007ca4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3861c60f7082c9ac7d55d30b8e8a343b"><td class="memItemLeft" align="right" valign="top"><a id="a3861c60f7082c9ac7d55d30b8e8a343b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_INTEGER</b>(value)&#160;&#160;&#160;(((value).type == VAL_INTEGER) || ((value.type) == VAL_BOOLEAN))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_INTEGER</b>(value)&#160;&#160;&#160;(((value).type == KRK_VAL_INTEGER) || ((value.type) == KRK_VAL_BOOLEAN))</td></tr>
 <tr class="separator:a3861c60f7082c9ac7d55d30b8e8a343b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3edfeb33fc8fca4d6cef57c5e71df73f"><td class="memItemLeft" align="right" valign="top"><a id="a3edfeb33fc8fca4d6cef57c5e71df73f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_FLOATING</b>(value)&#160;&#160;&#160;((value).type == VAL_FLOATING)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_FLOATING</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_FLOATING)</td></tr>
 <tr class="separator:a3edfeb33fc8fca4d6cef57c5e71df73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5049a363c342ab0d408749c89e9b91d5"><td class="memItemLeft" align="right" valign="top"><a id="a5049a363c342ab0d408749c89e9b91d5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_HANDLER</b>(value)&#160;&#160;&#160;((value).type == VAL_HANDLER)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_HANDLER</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_HANDLER)</td></tr>
 <tr class="separator:a5049a363c342ab0d408749c89e9b91d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac652f84a0dd6007f0ba26eefdf61d14c"><td class="memItemLeft" align="right" valign="top"><a id="ac652f84a0dd6007f0ba26eefdf61d14c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_OBJECT</b>(value)&#160;&#160;&#160;((value).type == VAL_OBJECT)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_OBJECT</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_OBJECT)</td></tr>
 <tr class="separator:ac652f84a0dd6007f0ba26eefdf61d14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a629c35a8d3a8ee0b24bbf92417167f44"><td class="memItemLeft" align="right" valign="top"><a id="a629c35a8d3a8ee0b24bbf92417167f44"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_KWARGS</b>(value)&#160;&#160;&#160;((value).type == VAL_KWARGS)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_KWARGS</b>(value)&#160;&#160;&#160;((value).type == KRK_VAL_KWARGS)</td></tr>
 <tr class="separator:a629c35a8d3a8ee0b24bbf92417167f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad208a747f7f50e850bfa7fae7c01e50a"><td class="memItemLeft" align="right" valign="top"><a id="ad208a747f7f50e850bfa7fae7c01e50a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_TRY_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER(value).type == OP_PUSH_TRY)</td></tr>
@@ -265,14 +265,14 @@ typedef struct <a class="el" href="structKrkString.html">KrkString</a>&#160;</td
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a50e8074e590357d82386d513c5272575"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a> { <br />
-&#160;&#160;<b>VAL_NONE</b>, 
-<b>VAL_BOOLEAN</b>, 
-<b>VAL_INTEGER</b>, 
-<b>VAL_FLOATING</b>, 
+&#160;&#160;<b>KRK_VAL_NONE</b>, 
+<b>KRK_VAL_BOOLEAN</b>, 
+<b>KRK_VAL_INTEGER</b>, 
+<b>KRK_VAL_FLOATING</b>, 
 <br />
-&#160;&#160;<b>VAL_HANDLER</b>, 
-<b>VAL_OBJECT</b>, 
-<b>VAL_KWARGS</b>
+&#160;&#160;<b>KRK_VAL_HANDLER</b>, 
+<b>KRK_VAL_OBJECT</b>, 
+<b>KRK_VAL_KWARGS</b>
 <br />
  }</td></tr>
 <tr class="memdesc:a50e8074e590357d82386d513c5272575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag enum for basic value types.  <a href="value_8h.html#a50e8074e590357d82386d513c5272575">More...</a><br /></td></tr>

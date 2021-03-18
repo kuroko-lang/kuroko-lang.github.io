@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['thread_295',['Thread',['../structThread.html',1,'']]]
+  ['range_320',['Range',['../structRange.html',1,'']]],
+  ['rangeiterator_321',['RangeIterator',['../structRangeIterator.html',1,'']]]
 ];

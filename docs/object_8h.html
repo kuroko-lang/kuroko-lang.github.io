@@ -201,8 +201,8 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkLocalEntry.html">KrkLocalEntry</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metadata on a local variable name in a function.  <a href="structKrkLocalEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkFunction.html">KrkFunction</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code object.  <a href="structKrkFunction.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code object.  <a href="structKrkCodeObject.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClosure.html">KrkClosure</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object.  <a href="structKrkClosure.html#details">More...</a><br /></td></tr>
@@ -240,14 +240,14 @@ Macros</h2></td></tr>
 <tr class="memitem:a9b0b38ba6d8ba0688659d46a8009acdb"><td class="memItemLeft" align="right" valign="top"><a id="a9b0b38ba6d8ba0688659d46a8009acdb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CODEPOINT_BYTES</b>(cp)&#160;&#160;&#160;(cp &lt; 0x80 ? 1 : (cp &lt; 0x800 ? 2 : (cp &lt; 0x10000 ? 3 : 4)))</td></tr>
 <tr class="separator:a9b0b38ba6d8ba0688659d46a8009acdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b1f6bdc78f7f1ed1e501483edac0693"><td class="memItemLeft" align="right" valign="top"><a id="a3b1f6bdc78f7f1ed1e501483edac0693"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>isObjType</b>(v,  t)&#160;&#160;&#160;(IS_OBJECT(v) &amp;&amp; (AS_OBJECT(v)-&gt;type == (t)))</td></tr>
-<tr class="separator:a3b1f6bdc78f7f1ed1e501483edac0693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e3016edee4e1ff712e9b2c16ec762b"><td class="memItemLeft" align="right" valign="top"><a id="a04e3016edee4e1ff712e9b2c16ec762b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_isObjType</b>(v,  t)&#160;&#160;&#160;(IS_OBJECT(v) &amp;&amp; (AS_OBJECT(v)-&gt;type == (t)))</td></tr>
+<tr class="separator:a04e3016edee4e1ff712e9b2c16ec762b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86b61553b0b71cb8b74bd702b0fd33cd"><td class="memItemLeft" align="right" valign="top"><a id="a86b61553b0b71cb8b74bd702b0fd33cd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_TYPE</b>(value)&#160;&#160;&#160;(AS_OBJECT(value)-&gt;type)</td></tr>
 <tr class="separator:a86b61553b0b71cb8b74bd702b0fd33cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a027b20d78a8506c7eed962db99b582ca"><td class="memItemLeft" align="right" valign="top"><a id="a027b20d78a8506c7eed962db99b582ca"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_STRING</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_STRING)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_STRING</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_STRING)</td></tr>
 <tr class="separator:a027b20d78a8506c7eed962db99b582ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43057a2addec6e03f7b516dbc43b3291"><td class="memItemLeft" align="right" valign="top"><a id="a43057a2addec6e03f7b516dbc43b3291"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_STRING</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkString.html">KrkString</a> *)AS_OBJECT(value))</td></tr>
@@ -256,49 +256,43 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_CSTRING</b>(value)&#160;&#160;&#160;(((<a class="el" href="structKrkString.html">KrkString</a> *)AS_OBJECT(value))-&gt;chars)</td></tr>
 <tr class="separator:a2750bdec563d37c59808b4ebbeb33d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad78135bbd4151592ca7c5a1cb0435d27"><td class="memItemLeft" align="right" valign="top"><a id="ad78135bbd4151592ca7c5a1cb0435d27"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BYTES</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_BYTES)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BYTES</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_BYTES)</td></tr>
 <tr class="separator:ad78135bbd4151592ca7c5a1cb0435d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81b7662a496d60673909ccf1e5381eb"><td class="memItemLeft" align="right" valign="top"><a id="ad81b7662a496d60673909ccf1e5381eb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BYTES</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkBytes.html">KrkBytes</a>*)AS_OBJECT(value))</td></tr>
 <tr class="separator:ad81b7662a496d60673909ccf1e5381eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad5d8d711cec7fc9d8ab5564e6c7bbda"><td class="memItemLeft" align="right" valign="top"><a id="aad5d8d711cec7fc9d8ab5564e6c7bbda"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_FUNCTION</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_FUNCTION)</td></tr>
-<tr class="separator:aad5d8d711cec7fc9d8ab5564e6c7bbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6417cfbf10ea446d23d03ec236417492"><td class="memItemLeft" align="right" valign="top"><a id="a6417cfbf10ea446d23d03ec236417492"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_FUNCTION</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkFunction.html">KrkFunction</a> *)AS_OBJECT(value))</td></tr>
-<tr class="separator:a6417cfbf10ea446d23d03ec236417492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b93eff03a4c5d6e7963beb8061666c8"><td class="memItemLeft" align="right" valign="top"><a id="a9b93eff03a4c5d6e7963beb8061666c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NATIVE</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_NATIVE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NATIVE</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_NATIVE)</td></tr>
 <tr class="separator:a9b93eff03a4c5d6e7963beb8061666c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6842a3e32de24531310602c8414d15c6"><td class="memItemLeft" align="right" valign="top"><a id="a6842a3e32de24531310602c8414d15c6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_NATIVE</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkNative.html">KrkNative</a> *)AS_OBJECT(value))</td></tr>
 <tr class="separator:a6842a3e32de24531310602c8414d15c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5607f451a18f6167a61948b73af9d473"><td class="memItemLeft" align="right" valign="top"><a id="a5607f451a18f6167a61948b73af9d473"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_CLOSURE</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_CLOSURE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_CLOSURE</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_CLOSURE)</td></tr>
 <tr class="separator:a5607f451a18f6167a61948b73af9d473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea79fcab877ee00ce2ed4ab7a7f00ac0"><td class="memItemLeft" align="right" valign="top"><a id="aea79fcab877ee00ce2ed4ab7a7f00ac0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_CLOSURE</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkClosure.html">KrkClosure</a> *)AS_OBJECT(value))</td></tr>
 <tr class="separator:aea79fcab877ee00ce2ed4ab7a7f00ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a030e8ee3e8e643b87e9b8fc0eb80cc68"><td class="memItemLeft" align="right" valign="top"><a id="a030e8ee3e8e643b87e9b8fc0eb80cc68"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_CLASS</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_CLASS)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_CLASS</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_CLASS)</td></tr>
 <tr class="separator:a030e8ee3e8e643b87e9b8fc0eb80cc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d70cdeba1b6b92fd65470d54a187d4e"><td class="memItemLeft" align="right" valign="top"><a id="a6d70cdeba1b6b92fd65470d54a187d4e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_CLASS</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkClass.html">KrkClass</a> *)AS_OBJECT(value))</td></tr>
 <tr class="separator:a6d70cdeba1b6b92fd65470d54a187d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbdb36e50b25a6c0ea68ac5bc7ab3cde"><td class="memItemLeft" align="right" valign="top"><a id="adbdb36e50b25a6c0ea68ac5bc7ab3cde"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_INSTANCE</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_INSTANCE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_INSTANCE</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_INSTANCE)</td></tr>
 <tr class="separator:adbdb36e50b25a6c0ea68ac5bc7ab3cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affc851005bdfa3d2fe82aef0d7cd4fe6"><td class="memItemLeft" align="right" valign="top"><a id="affc851005bdfa3d2fe82aef0d7cd4fe6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_INSTANCE</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkInstance.html">KrkInstance</a> *)AS_OBJECT(value))</td></tr>
 <tr class="separator:affc851005bdfa3d2fe82aef0d7cd4fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf321d652dd15e863bbf086ae029139"><td class="memItemLeft" align="right" valign="top"><a id="aecf321d652dd15e863bbf086ae029139"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BOUND_METHOD</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_BOUND_METHOD)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BOUND_METHOD</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_BOUND_METHOD)</td></tr>
 <tr class="separator:aecf321d652dd15e863bbf086ae029139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7acfb2bd72ffb79ddd8a3dfc245d6898"><td class="memItemLeft" align="right" valign="top"><a id="a7acfb2bd72ffb79ddd8a3dfc245d6898"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BOUND_METHOD</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkBoundMethod.html">KrkBoundMethod</a>*)AS_OBJECT(value))</td></tr>
 <tr class="separator:a7acfb2bd72ffb79ddd8a3dfc245d6898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a139bf79d4e4b744189e173e68395910b"><td class="memItemLeft" align="right" valign="top"><a id="a139bf79d4e4b744189e173e68395910b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_TUPLE</b>(value)&#160;&#160;&#160;isObjType(value, OBJ_TUPLE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_TUPLE</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_TUPLE)</td></tr>
 <tr class="separator:a139bf79d4e4b744189e173e68395910b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a676ba5eed2a94c087b9e024ffb2b4896"><td class="memItemLeft" align="right" valign="top"><a id="a676ba5eed2a94c087b9e024ffb2b4896"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_TUPLE</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkTuple.html">KrkTuple</a> *)AS_OBJECT(value))</td></tr>
@@ -309,6 +303,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a088a62b04d3b9dcdeee40d58d43b2964"><td class="memItemLeft" align="right" valign="top"><a id="a088a62b04d3b9dcdeee40d58d43b2964"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_DICT</b>(value)&#160;&#160;&#160;(&amp;((<a class="el" href="structKrkDict.html">KrkDict</a> *)AS_OBJECT(value))-&gt;entries)</td></tr>
 <tr class="separator:a088a62b04d3b9dcdeee40d58d43b2964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f26b37cbf3b20259829d7878a7c6749"><td class="memItemLeft" align="right" valign="top"><a id="a6f26b37cbf3b20259829d7878a7c6749"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_codeobject</b>(value)&#160;&#160;&#160;krk_isObjType(value, KRK_OBJ_CODEOBJECT)</td></tr>
+<tr class="separator:a6f26b37cbf3b20259829d7878a7c6749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93b0819314343bcb097168e0cecd3c1"><td class="memItemLeft" align="right" valign="top"><a id="ab93b0819314343bcb097168e0cecd3c1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_codeobject</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *)AS_OBJECT(value))</td></tr>
+<tr class="separator:ab93b0819314343bcb097168e0cecd3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -338,22 +338,22 @@ typedef <a class="el" href="structKrkValue.html">KrkValue</a>(*&#160;</td><td cl
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a21ada50c882656c2a4723dde25f56d4a"><td class="memItemLeft" align="right" valign="top"><a id="a21ada50c882656c2a4723dde25f56d4a"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ObjType</b> { <br />
-&#160;&#160;<b>OBJ_FUNCTION</b>, 
-<b>OBJ_NATIVE</b>, 
-<b>OBJ_CLOSURE</b>, 
-<b>OBJ_STRING</b>, 
+<tr class="memitem:ac5bd477fbb1214842662b92c9d115514"><td class="memItemLeft" align="right" valign="top"><a id="ac5bd477fbb1214842662b92c9d115514"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>KrkObjType</b> { <br />
+&#160;&#160;<b>KRK_OBJ_CODEOBJECT</b>, 
+<b>KRK_OBJ_NATIVE</b>, 
+<b>KRK_OBJ_CLOSURE</b>, 
+<b>KRK_OBJ_STRING</b>, 
 <br />
-&#160;&#160;<b>OBJ_UPVALUE</b>, 
-<b>OBJ_CLASS</b>, 
-<b>OBJ_INSTANCE</b>, 
-<b>OBJ_BOUND_METHOD</b>, 
+&#160;&#160;<b>KRK_OBJ_UPVALUE</b>, 
+<b>KRK_OBJ_CLASS</b>, 
+<b>KRK_OBJ_INSTANCE</b>, 
+<b>KRK_OBJ_BOUND_METHOD</b>, 
 <br />
-&#160;&#160;<b>OBJ_TUPLE</b>, 
-<b>OBJ_BYTES</b>
+&#160;&#160;<b>KRK_OBJ_TUPLE</b>, 
+<b>KRK_OBJ_BYTES</b>
 <br />
  }</td></tr>
-<tr class="separator:a21ada50c882656c2a4723dde25f56d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac5bd477fbb1214842662b92c9d115514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a5f5fe3ca9adcb7837674840c0e4634"><td class="memItemLeft" align="right" valign="top"><a id="a3a5f5fe3ca9adcb7837674840c0e4634"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>KrkStringType</b> { <br />
 &#160;&#160;<b>KRK_STRING_ASCII</b> = 0, 
 <b>KRK_STRING_UCS1</b> = 1, 
@@ -367,15 +367,15 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3ff91c24e36a7b2134b7bff0223bdae8"><td class="memItemLeft" align="right" valign="top"><a id="a3ff91c24e36a7b2134b7bff0223bdae8"></a>
-<a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newFunction</b> (void)</td></tr>
-<tr class="separator:a3ff91c24e36a7b2134b7bff0223bdae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6f3ec37e472fd72010d907e7a99d86"><td class="memItemLeft" align="right" valign="top"><a id="a6c6f3ec37e472fd72010d907e7a99d86"></a>
+<a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newCodeObject</b> (void)</td></tr>
+<tr class="separator:a6c6f3ec37e472fd72010d907e7a99d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20f186f0622c5a0d1939ec51f3157dba"><td class="memItemLeft" align="right" valign="top"><a id="a20f186f0622c5a0d1939ec51f3157dba"></a>
 <a class="el" href="structKrkNative.html">KrkNative</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newNative</b> (NativeFn function, const char *name, int type)</td></tr>
 <tr class="separator:a20f186f0622c5a0d1939ec51f3157dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e33390530453c4618aeda23333ae27d"><td class="memItemLeft" align="right" valign="top"><a id="a3e33390530453c4618aeda23333ae27d"></a>
-<a class="el" href="structKrkClosure.html">KrkClosure</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newClosure</b> (<a class="el" href="structKrkFunction.html">KrkFunction</a> *function)</td></tr>
-<tr class="separator:a3e33390530453c4618aeda23333ae27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646c926103cad9d9247d635436256a51"><td class="memItemLeft" align="right" valign="top"><a id="a646c926103cad9d9247d635436256a51"></a>
+<a class="el" href="structKrkClosure.html">KrkClosure</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newClosure</b> (<a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *function)</td></tr>
+<tr class="separator:a646c926103cad9d9247d635436256a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3c4542ee3220d26014c02ef28869d5d"><td class="memItemLeft" align="right" valign="top"><a id="ae3c4542ee3220d26014c02ef28869d5d"></a>
 <a class="el" href="structKrkUpvalue.html">KrkUpvalue</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_newUpvalue</b> (int slot)</td></tr>
 <tr class="separator:ae3c4542ee3220d26014c02ef28869d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -442,7 +442,7 @@ NativeFn&#160;</td><td class="memItemRight" valign="bottom"><b>KrkGenericAlias</
 <div class="line">    (<span class="keywordtype">string</span>-&gt;type == 2 ? ((uint16_t*)string-&gt;codes)[offset] : \</div>
 <div class="line">    ((uint32_t*)string-&gt;codes)[offset]))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00380">380</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00381">381</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>

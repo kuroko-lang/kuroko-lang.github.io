@@ -189,12 +189,12 @@ typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a55e57ccbdeb33cdf515e09b14da0d3be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a55e57ccbdeb33cdf515e09b14da0d3be">krk_disassembleCodeObject</a> (FILE *f, <a class="el" href="structKrkFunction.html">KrkFunction</a> *func, const char *name)</td></tr>
-<tr class="memdesc:a55e57ccbdeb33cdf515e09b14da0d3be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a disassembly of 'func' to the stream 'f'.  <a href="debug_8h.html#a55e57ccbdeb33cdf515e09b14da0d3be">More...</a><br /></td></tr>
-<tr class="separator:a55e57ccbdeb33cdf515e09b14da0d3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6e72dee262027a5b7c5cdd088decb57"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#ab6e72dee262027a5b7c5cdd088decb57">krk_disassembleInstruction</a> (FILE *f, <a class="el" href="structKrkFunction.html">KrkFunction</a> *func, size_t offset)</td></tr>
-<tr class="memdesc:ab6e72dee262027a5b7c5cdd088decb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a disassembly of a single opcode instruction.  <a href="debug_8h.html#ab6e72dee262027a5b7c5cdd088decb57">More...</a><br /></td></tr>
-<tr class="separator:ab6e72dee262027a5b7c5cdd088decb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb82f4cad01266c722a4275f88141d0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#aeb82f4cad01266c722a4275f88141d0c">krk_disassembleCodeObject</a> (FILE *f, <a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *func, const char *name)</td></tr>
+<tr class="memdesc:aeb82f4cad01266c722a4275f88141d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a disassembly of 'func' to the stream 'f'.  <a href="debug_8h.html#aeb82f4cad01266c722a4275f88141d0c">More...</a><br /></td></tr>
+<tr class="separator:aeb82f4cad01266c722a4275f88141d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accd9b2398dc8a6fe1d03c8a3702d1c76"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#accd9b2398dc8a6fe1d03c8a3702d1c76">krk_disassembleInstruction</a> (FILE *f, <a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *func, size_t offset)</td></tr>
+<tr class="memdesc:accd9b2398dc8a6fe1d03c8a3702d1c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a disassembly of a single opcode instruction.  <a href="debug_8h.html#accd9b2398dc8a6fe1d03c8a3702d1c76">More...</a><br /></td></tr>
+<tr class="separator:accd9b2398dc8a6fe1d03c8a3702d1c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c7342da1d6f87b9e7d100126d9c0026"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a8c7342da1d6f87b9e7d100126d9c0026">krk_lineNumber</a> (<a class="el" href="structKrkChunk.html">KrkChunk</a> *chunk, size_t offset)</td></tr>
 <tr class="memdesc:a8c7342da1d6f87b9e7d100126d9c0026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the line number for a byte offset into a bytecode chunk.  <a href="debug_8h.html#a8c7342da1d6f87b9e7d100126d9c0026">More...</a><br /></td></tr>
 <tr class="separator:a8c7342da1d6f87b9e7d100126d9c0026"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,9 +213,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_disMod
 <tr class="memitem:ad8b9aa9cbfe0214fe4c2242ac058f433"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#ad8b9aa9cbfe0214fe4c2242ac058f433">krk_debug_addBreakpointFileLine</a> (<a class="el" href="structKrkString.html">KrkString</a> *filename, size_t line, int flags)</td></tr>
 <tr class="memdesc:ad8b9aa9cbfe0214fe4c2242ac058f433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a breakpoint to the given line of a file.  <a href="debug_8h.html#ad8b9aa9cbfe0214fe4c2242ac058f433">More...</a><br /></td></tr>
 <tr class="separator:ad8b9aa9cbfe0214fe4c2242ac058f433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad245e1f04e995cddf8339c33273c8cdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#ad245e1f04e995cddf8339c33273c8cdd">krk_debug_addBreakpointCodeOffset</a> (<a class="el" href="structKrkFunction.html">KrkFunction</a> *codeObject, size_t offset, int flags)</td></tr>
-<tr class="memdesc:ad245e1f04e995cddf8339c33273c8cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a breakpoint to the given code object.  <a href="debug_8h.html#ad245e1f04e995cddf8339c33273c8cdd">More...</a><br /></td></tr>
-<tr class="separator:ad245e1f04e995cddf8339c33273c8cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b0a46251c3e97b72a9f36b526a1da56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a2b0a46251c3e97b72a9f36b526a1da56">krk_debug_addBreakpointCodeOffset</a> (<a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *codeObject, size_t offset, int flags)</td></tr>
+<tr class="memdesc:a2b0a46251c3e97b72a9f36b526a1da56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a breakpoint to the given code object.  <a href="debug_8h.html#a2b0a46251c3e97b72a9f36b526a1da56">More...</a><br /></td></tr>
+<tr class="separator:a2b0a46251c3e97b72a9f36b526a1da56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab684a722caa01128d8c180832e82d2b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#ab684a722caa01128d8c180832e82d2b6">krk_debug_removeBreakpoint</a> (int breakpointId)</td></tr>
 <tr class="memdesc:ab684a722caa01128d8c180832e82d2b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a breakpoint from the breakpoint table.  <a href="debug_8h.html#ab684a722caa01128d8c180832e82d2b6">More...</a><br /></td></tr>
 <tr class="separator:ab684a722caa01128d8c180832e82d2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,9 +236,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <tr class="memitem:a7d432d63fc5a09add7ea5e2715bc91ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a7d432d63fc5a09add7ea5e2715bc91ed">krk_debug_dumpTraceback</a> (void)</td></tr>
 <tr class="memdesc:a7d432d63fc5a09add7ea5e2715bc91ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Safely dump a traceback to stderr.  <a href="debug_8h.html#a7d432d63fc5a09add7ea5e2715bc91ed">More...</a><br /></td></tr>
 <tr class="separator:a7d432d63fc5a09add7ea5e2715bc91ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82adf92cf6d1c4149520e2bd4f74772d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a82adf92cf6d1c4149520e2bd4f74772d">krk_debug_examineBreakpoint</a> (int breakIndex, <a class="el" href="structKrkFunction.html">KrkFunction</a> **funcOut, size_t *offsetOut, int *flagsOut, int *enabledOut)</td></tr>
-<tr class="memdesc:a82adf92cf6d1c4149520e2bd4f74772d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retreive information on a breakpoint.  <a href="debug_8h.html#a82adf92cf6d1c4149520e2bd4f74772d">More...</a><br /></td></tr>
-<tr class="separator:a82adf92cf6d1c4149520e2bd4f74772d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44bafcee4cc80d39a5c869bd9c8a2dd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a44bafcee4cc80d39a5c869bd9c8a2dd8">krk_debug_examineBreakpoint</a> (int breakIndex, <a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> **funcOut, size_t *offsetOut, int *flagsOut, int *enabledOut)</td></tr>
+<tr class="memdesc:a44bafcee4cc80d39a5c869bd9c8a2dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retreive information on a breakpoint.  <a href="debug_8h.html#a44bafcee4cc80d39a5c869bd9c8a2dd8">More...</a><br /></td></tr>
+<tr class="separator:a44bafcee4cc80d39a5c869bd9c8a2dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff2405c0321a82bab585b02e2e62524a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#aff2405c0321a82bab585b02e2e62524a">krk_debug_dumpStack</a> (FILE *f, <a class="el" href="structKrkCallFrame.html">KrkCallFrame</a> *frame)</td></tr>
 <tr class="memdesc:aff2405c0321a82bab585b02e2e62524a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the elements on the stack.  <a href="debug_8h.html#aff2405c0321a82bab585b02e2e62524a">More...</a><br /></td></tr>
 <tr class="separator:aff2405c0321a82bab585b02e2e62524a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -303,8 +303,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ad245e1f04e995cddf8339c33273c8cdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad245e1f04e995cddf8339c33273c8cdd">&#9670;&nbsp;</a></span>krk_debug_addBreakpointCodeOffset()</h2>
+<a id="a2b0a46251c3e97b72a9f36b526a1da56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b0a46251c3e97b72a9f36b526a1da56">&#9670;&nbsp;</a></span>krk_debug_addBreakpointCodeOffset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +312,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
         <tr>
           <td class="memname">int krk_debug_addBreakpointCodeOffset </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td>
           <td class="paramname"><em>codeObject</em>, </td>
         </tr>
         <tr>
@@ -340,7 +340,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <p>Callers must ensure that <code>offset</code> points to the opcode portion of an instruction, and not an operand, or the attempt to add a breakpoint can corrupt the bytecode.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">codeObject</td><td>KrkFunction* for the code object to break on. </td></tr>
+    <tr><td class="paramname">codeObject</td><td>KrkCodeObject* for the code object to break on. </td></tr>
     <tr><td class="paramname">offset</td><td>Bytecode offset to insert the breakpoint at. </td></tr>
     <tr><td class="paramname">flags</td><td>Allows configuring the disposition of the breakpoint. </td></tr>
   </table>
@@ -518,8 +518,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 
 </div>
 </div>
-<a id="a82adf92cf6d1c4149520e2bd4f74772d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82adf92cf6d1c4149520e2bd4f74772d">&#9670;&nbsp;</a></span>krk_debug_examineBreakpoint()</h2>
+<a id="a44bafcee4cc80d39a5c869bd9c8a2dd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44bafcee4cc80d39a5c869bd9c8a2dd8">&#9670;&nbsp;</a></span>krk_debug_examineBreakpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -533,7 +533,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structKrkFunction.html">KrkFunction</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> **&#160;</td>
           <td class="paramname"><em>funcOut</em>, </td>
         </tr>
         <tr>
@@ -686,8 +686,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 
 </div>
 </div>
-<a id="a55e57ccbdeb33cdf515e09b14da0d3be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55e57ccbdeb33cdf515e09b14da0d3be">&#9670;&nbsp;</a></span>krk_disassembleCodeObject()</h2>
+<a id="aeb82f4cad01266c722a4275f88141d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb82f4cad01266c722a4275f88141d0c">&#9670;&nbsp;</a></span>krk_disassembleCodeObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -701,7 +701,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td>
           <td class="paramname"><em>func</em>, </td>
         </tr>
         <tr>
@@ -733,8 +733,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 
 </div>
 </div>
-<a id="ab6e72dee262027a5b7c5cdd088decb57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6e72dee262027a5b7c5cdd088decb57">&#9670;&nbsp;</a></span>krk_disassembleInstruction()</h2>
+<a id="accd9b2398dc8a6fe1d03c8a3702d1c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accd9b2398dc8a6fe1d03c8a3702d1c76">&#9670;&nbsp;</a></span>krk_disassembleInstruction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,7 +748,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structKrkFunction.html">KrkFunction</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td>
           <td class="paramname"><em>func</em>, </td>
         </tr>
         <tr>
