@@ -1,3 +1,9 @@
+'''
+@file   emscripten.krk
+@brief  Backend support library for the Kuroko Web IDE.
+@author K. Lange <klange@toaruos.org>
+
+'''
 import dis
 import os
 import stat
@@ -6,14 +12,17 @@ import time
 import json
 from js import exec, run_worker, destroy_worker, JSObject
 
-let home = os.environ.get('HOME','/')
+let home: str = os.environ.get('HOME','/')
 
-def debug(*args):
+def debug(*args: list[any]):
+    '''@brief Prints to the "IDE Debug" tab.'''
     let argString = ' '.join([str(x) for x in args])
     let out = f'[{int(time.time())}] {argString}'.replace('`','\\`')
     exec(f'ideDebug(`{out}`);')
 
-let iconColors = {
+# Configuration to map file types to icon colors
+# TODO: These should probably be moved to the CSS styles.
+let iconColors: dict[str,str] = {
     'code': 'red', # Actually that works just fine
     'text': 'white',
     'project': '#48b048', # string green
@@ -21,7 +30,8 @@ let iconColors = {
     'info': '#33a2e6', # keyword blue
 }
 
-let iconNames = {
+# Configuration to map file types to Feather icon names
+let iconNames: dict[str,str] = {
     'code': 'code',
     'text': 'text',
     'project': 'package',
@@ -29,38 +39,37 @@ let iconNames = {
     'info': 'info',
 }
 
-let shell_commands = {}
+# Stores the command name -> function mappings
+let shell_commands: dict[str,function[list[str]]] = {}
 
-def shellCommand(func):
+def shellCommand(func: function[list[str]]) -> function[list[str]]:
+    '''@brief Binds a function as a command for the ide's terminal.'''
     shell_commands[func.__name__] = func
     return func
 
-def max(iterable):
-    let current = None
-    for i in iterable:
-        if current is None or i > current:
-            current = i
-    return current
-
-def colorFile(file):
+def colorFile(file: tuple) -> str:
+    '''@brief Applies color escapes to files.'''
     let name, result = file
     if stat.S_ISDIR(result.st_mode):
         return f'\[[34m{name}\[[0m'
     else:
         return f'{name}'
 
-def printFileLong(file,maxLength):
+def printFileLong(file: tuple, maxLength: int):
+    '''@brief Prints a file in the long format.'''
     let name, result = file
     let padding = (maxLength + 2) - len(name)
     print(colorFile(file) + ' ' * padding, result.st_size)
 
-def printFileShort(file, maxLength):
+def printFileShort(file: tuple, maxLength: int):
+    '''@brief Prints a file in the short format.'''
     let name, result = file
     let padding = (maxLength + 2) - len(name)
     print(colorFile(file) + ' ' * padding,end='')
 
 @shellCommand
-def ls(args):
+def ls(args: list[str]):
+    '''@brief List directory.'''
     # Pop 'ls' from args
     args.pop(0)
     # Set up flags
@@ -103,11 +112,13 @@ def ls(args):
             print('')
 
 @shellCommand
-def pwd(args):
+def pwd(args: list[str]):
+    '''@brief Print working directory.'''
     print(os.getcwd())
 
 @shellCommand
-def cd(args):
+def cd(args: list[str]):
+    '''@brief Change working directory.'''
     let target = home if len(args) < 2 else args[1]
     try:
         os.chdir(target)
@@ -115,7 +126,8 @@ def cd(args):
         print(f"cd: {target}:", e)
 
 @shellCommand
-def uname(args):
+def uname(args: list[str]):
+    '''@brief Print system information.'''
     args.pop(0)
     let order = ['sysname','nodename','release','version','machine']
     let enabled = [0,0,0,0,0]
@@ -142,7 +154,7 @@ def uname(args):
     print(*[values[order[i]] for i in range(len(order)) if enabled[i]])
 
 @shellCommand
-def help(args):
+def help(args: list[str]):
     print("This is a simple facsimile of a Unix shell.")
     print("Here are the available commands:")
     let maxLen = max([len(x) for x in shell_commands.keys()])
@@ -151,7 +163,8 @@ def help(args):
     print('')
 
 @shellCommand
-def cat(args):
+def cat(args: list[str]):
+    '''@brief Concatenate files.'''
     args.pop(0)
     if not args:
         fileio.stderr.write("cat: stdin doesn't really exist\n")
@@ -164,7 +177,8 @@ def cat(args):
                 fileio.stderr.write(f'cat: {arg}: {e!r}\n')
 
 @shellCommand
-def mkdir(args):
+def mkdir(args: list[str]):
+    '''@brief Make directory.'''
     args.pop(0)
     if not args:
         fileio.stderr.write('mkdir: expected argument\n')
@@ -172,25 +186,29 @@ def mkdir(args):
         os.mkdir(args.pop(0))
 
 @shellCommand
-def touch(args):
+def touch(args: list[str]):
+    '''@brief Create empty files and update timestamps.'''
     args.pop(0)
     if not args:
         fileio.stderr.write('touch: missing file argument\n')
     else:
-        with fileio.open(args[0],'w') as f:
+        with fileio.open(args[0],'a') as f:
             pass
 
 @shellCommand
-def clear(args):
+def clear(args: list[str]):
+    '''@brief Clear the terminal.'''
     exec('document.getElementById("output-container").innerHTML = "";')
 
 @shellCommand
-def sync(args):
+def sync(args: list[str]):
+    '''@brief Write out the in-memory filesystem to the IndexedDB persistent copy.'''
     exec('FS.syncfs(function (err) { console.log(err); });')
     syncProjectList()
 
 @shellCommand
-def rm(args):
+def rm(args: list[str]):
+    '''@brief Delete files and directories.'''
     let removeDir = False
     args.pop(0)
     if args and args[0] == '-r':
@@ -206,12 +224,13 @@ def rm(args):
             print(f"rm: {arg}: {e}")
 
 @shellCommand
-def kuroko(args):
-  args.pop(0)
-  if not args:
-    print("Interactive shell not available, sorry.")
-  else:
-    executeFile(args[0])
+def kuroko(args: list[str]):
+    '''@brief Execute Kuroko scripts.'''
+    args.pop(0)
+    if not args:
+        executeFile("",interactive=True)
+    else:
+        executeFile(args[0])
 
 @shellCommand
 def open(args):
@@ -374,6 +393,10 @@ let askingForInput = None
 def updatePrompt():
     let msg = f'{shell_prompt()}&nbsp;' if not askingForInput else cleanHtml(askingForInput).replace(' ','&nbsp;')
     exec(f"document.getElementById('shell-prompt').innerHTML = `{msg}`;")
+    if askingForInput == '>>> ':
+        exec('extraEditor.session.setMode("ace/mode/kuroko");')
+    else:
+        exec('extraEditor && extraEditor.session.setMode(null);')
 
 def em_shell(s):
     if askingForInput:
@@ -620,7 +643,7 @@ def updateDebuggerSettings(**args):
 def cleanHtml(s):
     return s.replace('<','&lt;').replace('>','&gt;').replace('\\','\\\\').replace('`','\\`')
 
-def executeFile(path):
+def executeFile(path,interactive=False):
     def _callback(data):
         debug('Received final callback from worker for', path, '=>', data)
         finishRunning()
@@ -637,6 +660,8 @@ def executeFile(path):
     let flags = ''
     if 'single' in debuggerSettings:
         flags += 's'
+    if interactive:
+        flags += 'i'
     currentWorker = run_worker('/kuroko.js', path, _callback, flags)
     debug("Started worker", currentWorker)
 

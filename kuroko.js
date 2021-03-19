@@ -1540,12 +1540,12 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  1552: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
+  1830: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
 };
 function check_status(){ return Module.awakeStatus; }
 function get_stdin_line(){ var bytes = lengthBytesUTF8(Module.stdin_line)+1; var heapObj = _malloc(bytes); stringToUTF8(Module.stdin_line, heapObj, bytes); return heapObj; }
 function report_debugger(str){ _craftMessage("d" + UTF8ToString(str)); }
-function report_input(str){ waitingForInput = 1; _craftMessage("i" + UTF8ToString(str)); }
+function report_input(str){ reset_status(); waitingForInput = 1; _craftMessage("i" + UTF8ToString(str)); }
 function reset_status(){ Module.awakeStatus = 0; }
 
 

@@ -222,7 +222,7 @@ function enterCallback(editor) {
   }
   historySpot = codeHistory.length;
   window.setTimeout(function() {
-    krk_call('emscripten.em_shell("""' + value + '""")');
+    krk_call('emscripten.em_shell("""' + value.replaceAll('\\','\\\\').replaceAll('"','\\"') + '""")');
   }, 50);
   editor.setValue('',1);
 }
