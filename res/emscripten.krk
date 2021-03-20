@@ -812,7 +812,13 @@ class CodeObject():
                         references[instruction[2]] = [func._ip_to_line(offset)]
                 offset += instruction[1]
         recursor(self.func)
-        let undefined = {(x,references[x]) for x in referenced if x not in defined and x not in dir(__builtins__) and x != '__builtins__'}
+        let undefined = {
+            (x,references[x]) for x in referenced
+            if x not in defined
+            and x not in dir(__builtins__)
+            and x != '__builtins__'
+            and x != '__annotations__'
+        }
         return list(undefined)
 
     @classmethod
