@@ -136,6 +136,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkChunk.html#a7f93565a454220a75c0d6417315b55a7">krk_writeConstant</a> (<a class="el" href="structKrkChunk.html">KrkChunk</a> *chunk, <a class="el" href="structKrkValue.html">KrkValue</a> value, size_t line)</td></tr>
 <tr class="memdesc:a7f93565a454220a75c0d6417315b55a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new constant and write an instruction for it. <br /></td></tr>
 <tr class="separator:a7f93565a454220a75c0d6417315b55a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7342da1d6f87b9e7d100126d9c0026"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkChunk.html#a8c7342da1d6f87b9e7d100126d9c0026">krk_lineNumber</a> (<a class="el" href="structKrkChunk.html">KrkChunk</a> *chunk, size_t offset)</td></tr>
+<tr class="memdesc:a8c7342da1d6f87b9e7d100126d9c0026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the line number for a byte offset into a bytecode chunk.  <a href="structKrkChunk.html#a8c7342da1d6f87b9e7d100126d9c0026">More...</a><br /></td></tr>
+<tr class="separator:a8c7342da1d6f87b9e7d100126d9c0026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -175,7 +178,49 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>linesCapacity</b></
 </ul>
 
 <p class="definition">Definition at line <a class="el" href="chunk_8h_source.html#l00175">175</a> of file <a class="el" href="chunk_8h_source.html">chunk.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8c7342da1d6f87b9e7d100126d9c0026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7342da1d6f87b9e7d100126d9c0026">&#9670;&nbsp;</a></span>krk_lineNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t krk_lineNumber </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkChunk.html">KrkChunk</a> *&#160;</td>
+          <td class="paramname"><em>chunk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain the line number for a byte offset into a bytecode chunk. </p>
+<p>Scans the line mapping table for the given chunk to find the correct line number from the original source file for the instruction at byte index 'offset'.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunk</td><td>Bytecode chunk containing the instruction. </td></tr>
+    <tr><td class="paramname">offset</td><td>Byte offset of the instruction to locate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Line number, 1-indexed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chunk_8c_source.html#l00072">72</a> of file <a class="el" href="chunk_8c_source.html">chunk.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/kuroko/<a class="el" href="chunk_8h_source.html">chunk.h</a></li>
 </ul>
 </div><!-- contents -->

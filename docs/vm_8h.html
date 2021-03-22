@@ -704,7 +704,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02810">2810</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02820">2820</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -773,7 +773,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01736">1736</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01734">1734</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -866,7 +866,7 @@ Variables</h2></td></tr>
 <li>import foo/bar/baz as foo.bar.baz</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01640">1640</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01638">1638</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -907,7 +907,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02762">2762</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02772">2772</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -957,7 +957,7 @@ Variables</h2></td></tr>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01489">1489</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01487">1487</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -995,7 +995,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value from the stack. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00313">313</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00310">310</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1129,7 +1129,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02786">2786</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02796">2796</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1154,7 +1154,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02744">2744</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02754">2754</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1233,7 +1233,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02752">2752</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02762">2762</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1270,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00319">319</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00316">316</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
