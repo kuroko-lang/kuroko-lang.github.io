@@ -1,9 +1,0 @@
-<map id="src/debug.h" name="src/debug.h">
-<area shape="rect" id="node1" title="Functions for debugging bytecode execution." alt="" coords="333,5,430,32"/>
-<area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node3" href="$compiler_8c_source.html" title=" " alt="" coords="134,80,247,107"/>
-<area shape="rect" id="node4" href="$debug_8c_source.html" title=" " alt="" coords="272,80,368,107"/>
-<area shape="rect" id="node5" href="$kuroko_8c_source.html" title=" " alt="" coords="393,80,493,107"/>
-<area shape="rect" id="node6" href="$obj__function_8c_source.html" title=" " alt="" coords="516,80,652,107"/>
-<area shape="rect" id="node7" href="$vm_8c_source.html" title=" " alt="" coords="676,80,753,107"/>
-</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generator_287',['generator',['../structgenerator.html',1,'']]]
+  ['indexwithnext_59',['IndexWithNext',['../structIndexWithNext.html',1,'']]]
 ];

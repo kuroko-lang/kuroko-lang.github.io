@@ -109,10 +109,10 @@ Getting Started</h2>
 <div class="line"><span class="preprocessor">#include &lt;kuroko/vm.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
-<div class="line">    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(0);</div>
-<div class="line">    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line">    <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(<span class="stringliteral">&quot;print(&#39;hello, world&#39;)&quot;</span>, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
-<div class="line">    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
+<div class="line">    krk_initVM(0);</div>
+<div class="line">    krk_startModule(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line">    krk_interpret(<span class="stringliteral">&quot;print(&#39;hello, world&#39;)&quot;</span>, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line">    krk_freeVM();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Let's start by looking at the example code above.</p>
@@ -124,8 +124,8 @@ Headers</h3>
 <p>Other headers provide convenience functions and macros for building C extensions.</p>
 <h3><a class="anchor" id="autotoc_md1"></a>
 Initializing the VM</h3>
-<p>Our first task in integrating Kuroko into an embedded application is to set up the VM, which we do with <code><a class="el" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8" title="Initialize the VM at program startup.">krk_initVM()</a></code>. This function takes one paramater representing the initial <em>global and thread flags</em>, which control debugging features for tracing. In our example code, we do not need to use to use any debug features so we pass <code>0</code>.</p>
-<p>Valid flags to pass to <code><a class="el" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8" title="Initialize the VM at program startup.">krk_initVM()</a></code> include:</p>
+<p>Our first task in integrating Kuroko into an embedded application is to set up the VM, which we do with <code>krk_initVM()</code>. This function takes one paramater representing the initial <em>global and thread flags</em>, which control debugging features for tracing. In our example code, we do not need to use to use any debug features so we pass <code>0</code>.</p>
+<p>Valid flags to pass to <code>krk_initVM()</code> include:</p>
 <ul>
 <li><code>KRK_THREAD_ENABLE_TRACING</code> <br  />
  Prints instruction traces during execution.</li>
@@ -136,21 +136,17 @@ Initializing the VM</h3>
 <li><code>KRK_GLOBAL_ENABLE_STRESS_GC</code> <br  />
  Causes the garbage collector to be called on every allocation (from the main thread).</li>
 <li><code>KRK_GLOBAL_CLEAN_OUTPUT</code> <br  />
- Disables automatic printing of uncaught exception tracebacks. Use <code><a class="el" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> to print a traceback from the exception in the current thread to <code>stderr</code>.</li>
+ Disables automatic printing of uncaught exception tracebacks. Use <code>krk_dumpTraceback()</code> to print a traceback from the exception in the current thread to <code>stderr</code>.</li>
 </ul>
 <p> <div class="alert alert-warning">Be careful when using <code>KRK_GLOBAL_CLEAN_OUTPUT</code> when threading is available; uncaught exceptions from threads will not be automatically printed and are trickier to catch from C code.</div></p>
 <h3><a class="anchor" id="autotoc_md2"></a>
 Starting a Module</h3>
-<p>All Kuroko code runs in the context of a <em>module</em>. When we run code directly using <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code>, such as when providing a REPL or calling snippets, or by using <code><a class="el" href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1" title="Load and run a source file and return when execution completes.">krk_runfile()</a></code> to execute the contents of a file, we need to establish our own module first. <code><a class="el" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72" title="Set up a new module object in the current thread.">krk_startModule()</a></code> creates a module context and gives it a name. We use the name <code>__main__</code> as a convention for directly executed code, distinguishing it from imported code.</p>
+<p>All Kuroko code runs in the context of a <em>module</em>. When we run code directly using <code>krk_interpret()</code>, such as when providing a REPL or calling snippets, or by using <code>krk_runfile()</code> to execute the contents of a file, we need to establish our own module first. <code>krk_startModule()</code> creates a module context and gives it a name. We use the name <code>__main__</code> as a convention for directly executed code, distinguishing it from imported code.</p>
 <h3><a class="anchor" id="autotoc_md3"></a>
 Calling the Interpreter</h3>
-<p>We pass C strings containg Kuroko code to <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code> to be run by the interpreter. The second argument to <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code> provides a filename for the source of the code, or representative string to show in tracebacks for code that did not come from a file. </p>
+<p>We pass C strings containg Kuroko code to <code>krk_interpret()</code> to be run by the interpreter. The second argument to <code>krk_interpret()</code> provides a filename for the source of the code, or representative string to show in tracebacks for code that did not come from a file. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
-<div class="ttc" id="avm_8h_html_afa956022075e59caef32f51e9b48d00c"><div class="ttname"><a href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02732">vm.c:2732</a></div></div>
-<div class="ttc" id="astructKrkVM_html_a3dced9904f6a128032a729078ba16555"><div class="ttname"><a href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">KrkVM::krk_freeVM</a></div><div class="ttdeci">void krk_freeVM(void)</div><div class="ttdoc">Release resources from the VM.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01317">vm.c:1317</a></div></div>
-<div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01131">vm.c:1131</a></div></div>
-<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02722">vm.c:2722</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

@@ -1,8 +1,0 @@
-<map id="src/compiler.h" name="src/compiler.h">
-<area shape="rect" id="node1" title="Exported methods for the source compiler." alt="" coords="257,5,371,32"/>
-<area shape="rect" id="node2" href="$compiler_8c_source.html" title=" " alt="" coords="5,80,119,107"/>
-<area shape="rect" id="node3" href="$debug_8c_source.html" title=" " alt="" coords="143,80,239,107"/>
-<area shape="rect" id="node4" href="$kuroko_8c_source.html" title=" " alt="" coords="264,80,364,107"/>
-<area shape="rect" id="node5" href="$memory_8c_source.html" title=" " alt="" coords="389,80,498,107"/>
-<area shape="rect" id="node6" href="$vm_8c_source.html" title=" " alt="" coords="522,80,599,107"/>
-</map>

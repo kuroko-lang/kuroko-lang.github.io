@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['range_235',['Range',['../structRange.html',1,'']]],
-  ['rangeclass_236',['rangeClass',['../structBaseClasses.html#a88baf0b4eb1d9643a5edaa2808fb10de',1,'BaseClasses']]],
-  ['rangeiterator_237',['RangeIterator',['../structRangeIterator.html',1,'']]],
-  ['rangeiteratorclass_238',['rangeiteratorClass',['../structBaseClasses.html#a8ffc602590bf17fd4408e1fe6daed1c4',1,'BaseClasses']]]
+  ['statements_42',['Statements',['../lang_statements.html',1,'']]],
+  ['string_43',['string',['../mod_string.html',1,'']]],
+  ['set_44',['Set',['../structSet.html',1,'']]],
+  ['setiterator_45',['SetIterator',['../structSetIterator.html',1,'']]],
+  ['socket_46',['socket',['../structsocket.html',1,'']]],
+  ['syntax_20reference_47',['Syntax Reference',['../syntax.html',1,'']]]
 ];

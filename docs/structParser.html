@@ -107,10 +107,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a563fae856adc8eab7cab040f9a0d393c"><td class="memItemLeft" align="right" valign="top"><a id="a563fae856adc8eab7cab040f9a0d393c"></a>
-<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
+KrkToken&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
 <tr class="separator:a563fae856adc8eab7cab040f9a0d393c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33ac40625a534eed6eb427f54b21d781"><td class="memItemLeft" align="right" valign="top"><a id="a33ac40625a534eed6eb427f54b21d781"></a>
-<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><b>previous</b></td></tr>
+KrkToken&#160;</td><td class="memItemRight" valign="bottom"><b>previous</b></td></tr>
 <tr class="separator:a33ac40625a534eed6eb427f54b21d781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae603c53699af2ce63b255bafafcbd4d3"><td class="memItemLeft" align="right" valign="top"><a id="ae603c53699af2ce63b255bafafcbd4d3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>hadError</b></td></tr>
@@ -123,13 +123,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>eatingWhitespace</b></
 <tr class="separator:a38bbca06e7dd583c8276a2da18e982dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>There's nothing really especially different here compared to the Lox compiler from Crafting Interpreters. A handful of additional pieces of functionality are added, and some work is done to make blocks use indentation instead of braces, but the basic layout and operation of the compiler are the same top-down Pratt parser.</p>
-<p>The parser error handling has been improved over the Lox compiler with the addition of column offsets and a printed copy of the original source line and the offending token.</p>
-<p>String parsing also includes escape sequence support, so you can print quotation marks properly, as well as escape sequences for terminals.</p>
-<p>One notable part of the compiler is the handling of list comprehensions. In order to support Python-style syntax, the parser has been set up to support rolling back to a previous state, so that when the compiler sees an expression with references to a variable that has yet to be defined it will first output the expression as if that variable was a global, then it will see the 'in', rewind, parse the rest of the list comprehension, and then output the expression as a loop body, with the correct local references.</p>
-<p>if/else and try/except blocks also have to similarly handle rollback cases as they can not peek forward to see if a statement after an indentation block is an else/except. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00042">42</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00044">44</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>

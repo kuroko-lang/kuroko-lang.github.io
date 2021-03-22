@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['indexwithnext_288',['IndexWithNext',['../structIndexWithNext.html',1,'']]]
+  ['linemapentry_60',['LineMapEntry',['../structLineMapEntry.html',1,'']]],
+  ['local_61',['Local',['../structLocal.html',1,'']]],
+  ['loopexit_62',['LoopExit',['../structLoopExit.html',1,'']]]
 ];
