@@ -112,10 +112,10 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;kuroko/vm.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;kuroko/value.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;kuroko/object.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;kuroko/util.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vm_8h.html">kuroko/vm.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="value_8h.html">kuroko/value.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="object_8h.html">kuroko/object.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="util_8h.html">kuroko/util.h</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;KRK_FUNC(sleep,{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    FUNCTION_TAKES_EXACTLY(1);</div>
@@ -141,22 +141,32 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;_noexport</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> _createAndBind_timeMod(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    KrkInstance * module = krk_newInstance(vm.baseClasses-&gt;moduleClass);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    krk_attachNamedObject(&amp;vm.modules, <span class="stringliteral">&quot;time&quot;</span>, (KrkObj*)module);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    krk_attachNamedObject(&amp;module-&gt;fields, <span class="stringliteral">&quot;__name__&quot;</span>, (KrkObj*)S(<span class="stringliteral">&quot;time&quot;</span>));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    krk_attachNamedValue(&amp;module-&gt;fields, <span class="stringliteral">&quot;__file__&quot;</span>, NONE_VAL());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    KRK_DOC(module, <span class="stringliteral">&quot;@brief Provides timekeeping functions.&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    KRK_DOC(BIND_FUNC(module,sleep), <span class="stringliteral">&quot;@brief Pause execution of the current thread.\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * module = krk_newInstance(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;moduleClass);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="structKrkTable.html#a2f761feab82c4a97d29bf2ff4b4a1671">krk_attachNamedObject</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.modules, <span class="stringliteral">&quot;time&quot;</span>, (<a class="code" href="structKrkObj.html">KrkObj</a>*)module);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structKrkTable.html#a2f761feab82c4a97d29bf2ff4b4a1671">krk_attachNamedObject</a>(&amp;module-&gt;fields, <span class="stringliteral">&quot;__name__&quot;</span>, (<a class="code" href="structKrkObj.html">KrkObj</a>*)S(<span class="stringliteral">&quot;time&quot;</span>));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;module-&gt;fields, <span class="stringliteral">&quot;__file__&quot;</span>, NONE_VAL());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(module, <span class="stringliteral">&quot;@brief Provides timekeeping functions.&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(module,sleep), <span class="stringliteral">&quot;@brief Pause execution of the current thread.\n&quot;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="stringliteral">&quot;@arguments secs\n\n&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="stringliteral">&quot;Uses the system @c usleep() function to sleep for @p secs seconds, which may be a @ref float or @ref int. &quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="stringliteral">&quot;The available precision is platform-dependent.&quot;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    KRK_DOC(BIND_FUNC(module,time), <span class="stringliteral">&quot;@brief Return the elapsed seconds since the system epoch.\n\n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(module,time), <span class="stringliteral">&quot;@brief Return the elapsed seconds since the system epoch.\n\n&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="stringliteral">&quot;Returns a @ref float representation of the number of seconds since the platform&#39;s epoch date. &quot;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="stringliteral">&quot;On POSIX platforms, this is the number of seconds since 1 January 1970. &quot;</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="stringliteral">&quot;The precision of the return value is platform-dependent.&quot;</span>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructKrkTable_html_a77daf4c9266b6440bcbd2dc0c95dd45a"><div class="ttname"><a href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">KrkTable::krk_attachNamedValue</a></div><div class="ttdeci">void krk_attachNamedValue(KrkTable *table, const char name[], KrkValue obj)</div><div class="ttdoc">Attach a value to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00994">vm.c:994</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a2f761feab82c4a97d29bf2ff4b4a1671"><div class="ttname"><a href="structKrkTable.html#a2f761feab82c4a97d29bf2ff4b4a1671">KrkTable::krk_attachNamedObject</a></div><div class="ttdeci">void krk_attachNamedObject(KrkTable *table, const char name[], KrkObj *obj)</div><div class="ttdoc">Attach an object to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00983">vm.c:983</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00200">object.h:200</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00263">vm.h:263</a></div></div>
+<div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
+<div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00036">object.h:36</a></div></div>
+<div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
+<div class="ttc" id="avalue_8h_html"><div class="ttname"><a href="value_8h.html">value.h</a></div><div class="ttdoc">Definitions for primitive stack references.</div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00297">util.h:297</a></div></div>
+<div class="ttc" id="aobject_8h_html"><div class="ttname"><a href="object_8h.html">object.h</a></div><div class="ttdoc">Struct definitions for core object types.</div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

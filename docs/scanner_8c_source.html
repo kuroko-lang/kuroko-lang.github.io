@@ -110,12 +110,12 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;kuroko/kuroko.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;kuroko/scanner.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kuroko_8h.html">kuroko/kuroko.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="scanner_8h.html">kuroko/scanner.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">static</span> KrkScanner scanner;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkScanner.html">KrkScanner</a> scanner;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> krk_initScanner(<span class="keyword">const</span> <span class="keywordtype">char</span> * src) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">   11</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">krk_initScanner</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * src) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    scanner.start = src;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    scanner.cur   = src;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    scanner.line  = 1;</div>
@@ -134,8 +134,8 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    scanner.linePtr = scanner.cur;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">static</span> KrkToken makeToken(KrkTokenType type) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> (KrkToken){</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> makeToken(KrkTokenType type) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="structKrkToken.html">KrkToken</a>){</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        .type = type,</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        .start = scanner.start,</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        .length = (type == TOKEN_EOL) ? 0 : (<span class="keywordtype">size_t</span>)(scanner.cur - scanner.start),</div>
@@ -146,10 +146,10 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">static</span> KrkToken errorToken(<span class="keyword">const</span> <span class="keywordtype">char</span> * errorStr) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> errorToken(<span class="keyword">const</span> <span class="keywordtype">char</span> * errorStr) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ssize_t column = (scanner.linePtr &lt; scanner.start) ? scanner.start - scanner.linePtr : 0;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    ssize_t width  = (scanner.start   &lt; scanner.cur)   ? scanner.cur - scanner.start : 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> (KrkToken){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="structKrkToken.html">KrkToken</a>){</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        .type = TOKEN_ERROR,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        .start = errorStr,</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        .length = strlen(errorStr),</div>
@@ -195,14 +195,14 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> KrkToken makeIndentation() {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> makeIndentation() {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">char</span> reject = (peek() == <span class="charliteral">&#39; &#39;</span>) ? <span class="charliteral">&#39;\t&#39;</span> : <span class="charliteral">&#39; &#39;</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">while</span> (!isAtEnd() &amp;&amp; (peek() == <span class="charliteral">&#39; &#39;</span> || peek() == <span class="charliteral">&#39;\t&#39;</span>)) advance();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (isAtEnd()) <span class="keywordflow">return</span> makeToken(TOKEN_EOF);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> * start = scanner.start; start &lt; scanner.cur; start++) {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (*start == reject) <span class="keywordflow">return</span> errorToken(<span class="stringliteral">&quot;Invalid mix of indentation.&quot;</span>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    KrkToken out = makeToken(TOKEN_INDENTATION);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="structKrkToken.html">KrkToken</a> out = makeToken(TOKEN_INDENTATION);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> (reject == <span class="charliteral">&#39; &#39;</span>) out.length *= 8;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (peek() == <span class="charliteral">&#39;#&#39;</span>) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">/* Skip the entirety of the comment but not the line feed */</span></div>
@@ -211,7 +211,7 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">static</span> KrkToken string(<span class="keywordtype">char</span> quoteMark) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> string(<span class="keywordtype">char</span> quoteMark) {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (peek() == quoteMark &amp;&amp; peekNext(1) == quoteMark) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        advance(); advance();</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">/* Big string */</span></div>
@@ -254,7 +254,7 @@ $(function() {
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">return</span> c &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;9&#39;</span>;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">static</span> KrkToken number(<span class="keywordtype">char</span> c) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> number(<span class="keywordtype">char</span> c) {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;0&#39;</span>) {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> (peek() == <span class="charliteral">&#39;x&#39;</span> || peek() == <span class="charliteral">&#39;X&#39;</span>) {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="comment">/* Hexadecimal */</span></div>
@@ -370,13 +370,13 @@ $(function() {
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> TOKEN_IDENTIFIER;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keyword">static</span> KrkToken identifier() {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkToken.html">KrkToken</a> identifier() {</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">while</span> (isAlpha(peek()) || isDigit(peek()) || (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)peek() &gt; 0x7F) advance();</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">return</span> makeToken(identifierType());</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keywordtype">void</span> krk_ungetToken(KrkToken token) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">krk_ungetToken</a>(<a class="code" href="structKrkToken.html">KrkToken</a> token) {</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">if</span> (scanner.hasUnget) {</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;(internal error) Tried to unget multiple times, this is not valid.\n&quot;</span>);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
@@ -384,15 +384,15 @@ $(function() {
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    scanner.unget = token;</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keywordtype">void</span> krk_rewindScanner(KrkScanner to) {</div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da">  280</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da">krk_rewindScanner</a>(<a class="code" href="structKrkScanner.html">KrkScanner</a> to) {</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    scanner = to;</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;KrkScanner krk_tellScanner(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="scanner_8h.html#afd18f9ba2f222a5d996086484e8bc468">  284</a></span>&#160;<a class="code" href="structKrkScanner.html">KrkScanner</a> <a class="code" href="scanner_8h.html#afd18f9ba2f222a5d996086484e8bc468">krk_tellScanner</a>(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> scanner;</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;KrkToken krk_scanToken() {</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">  288</a></span>&#160;<a class="code" href="structKrkToken.html">KrkToken</a> <a class="code" href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">krk_scanToken</a>() {</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">if</span> (scanner.hasUnget) {</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        scanner.hasUnget = 0;</div>
@@ -418,7 +418,7 @@ $(function() {
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">char</span> c = advance();</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        KrkToken out;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <a class="code" href="structKrkToken.html">KrkToken</a> out;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">if</span> (scanner.startOfLine) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="comment">/* Ignore completely blank lines */</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            out = makeToken(TOKEN_RETRY);</div>
@@ -476,6 +476,15 @@ $(function() {
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">return</span> errorToken(<span class="stringliteral">&quot;Unexpected character.&quot;</span>);</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructKrkToken_html"><div class="ttname"><a href="structKrkToken.html">KrkToken</a></div><div class="ttdoc">A token from the scanner.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8h_source.html#l00117">scanner.h:117</a></div></div>
+<div class="ttc" id="ascanner_8h_html_aa1398ea849b4c998b6a7818661c0c262"><div class="ttname"><a href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">krk_initScanner</a></div><div class="ttdeci">void krk_initScanner(const char *src)</div><div class="ttdoc">Initialize the compiler to scan tokens from 'src'.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00011">scanner.c:11</a></div></div>
+<div class="ttc" id="ascanner_8h_html_a5e7c2e597f65d2139d7bba3fa7ed417b"><div class="ttname"><a href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">krk_ungetToken</a></div><div class="ttdeci">void krk_ungetToken(KrkToken token)</div><div class="ttdoc">Push a token back to the scanner to be reprocessed.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00272">scanner.c:272</a></div></div>
+<div class="ttc" id="ascanner_8h_html_afd18f9ba2f222a5d996086484e8bc468"><div class="ttname"><a href="scanner_8h.html#afd18f9ba2f222a5d996086484e8bc468">krk_tellScanner</a></div><div class="ttdeci">KrkScanner krk_tellScanner(void)</div><div class="ttdoc">Retreive a copy of the current scanner state.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00284">scanner.c:284</a></div></div>
+<div class="ttc" id="ascanner_8h_html_a544ecb42a4336ea54f39b2b890cbfe71"><div class="ttname"><a href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">krk_scanToken</a></div><div class="ttdeci">KrkToken krk_scanToken(void)</div><div class="ttdoc">Read the next token from the scanner.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00288">scanner.c:288</a></div></div>
+<div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
+<div class="ttc" id="ascanner_8h_html_a461824136a9cb4607b9d61b4db0c48da"><div class="ttname"><a href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da">krk_rewindScanner</a></div><div class="ttdeci">void krk_rewindScanner(KrkScanner to)</div><div class="ttdoc">Rewind the scanner to a previous state.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00280">scanner.c:280</a></div></div>
+<div class="ttc" id="ascanner_8h_html"><div class="ttname"><a href="scanner_8h.html">scanner.h</a></div><div class="ttdoc">Definitions used by the token scanner.</div></div>
+<div class="ttc" id="astructKrkScanner_html"><div class="ttname"><a href="structKrkScanner.html">KrkScanner</a></div><div class="ttdoc">Token scanner state.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8h_source.html#l00133">scanner.h:133</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

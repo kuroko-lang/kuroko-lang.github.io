@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['upvalue_71',['Upvalue',['../structUpvalue.html',1,'']]]
+  ['range_324',['Range',['../structRange.html',1,'']]],
+  ['rangeiterator_325',['RangeIterator',['../structRangeIterator.html',1,'']]]
 ];

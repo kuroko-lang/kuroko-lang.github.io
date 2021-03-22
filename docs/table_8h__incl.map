@@ -1,0 +1,12 @@
+<map id="src/kuroko/table.h" name="src/kuroko/table.h">
+<area shape="rect" id="node1" title="Implementation of a generic hash table." alt="" coords="97,5,235,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,76,256"/>
+<area shape="rect" id="node3" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="91,155,169,181"/>
+<area shape="rect" id="node6" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="168,80,239,107"/>
+<area shape="rect" id="node8" href="$threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="286,80,369,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="100,229,171,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="195,229,270,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="194,155,261,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="285,155,369,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="394,155,466,181"/>
+</map>

@@ -106,11 +106,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;kuroko/vm.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;kuroko/value.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;kuroko/memory.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;kuroko/util.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;kuroko/threads.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vm_8h.html">kuroko/vm.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="value_8h.html">kuroko/value.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="memory_8h.html">kuroko/memory.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="util_8h.html">kuroko/util.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="threads_8h.html">kuroko/threads.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define LIST_WRAP_INDEX() \</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    if (index &lt; 0) index += self-&gt;values.count; \</span></div>
@@ -121,30 +121,30 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    if (val &lt; 0) val = 0; \</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    if (val &gt; (krk_integer_type)self-&gt;values.count) val = self-&gt;values.count</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _list_gcscan(KrkInstance * <span class="keyword">self</span>) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; ((KrkList*)<span class="keyword">self</span>)-&gt;values.count; ++i) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        krk_markValue(((KrkList*)<span class="keyword">self</span>)-&gt;values.values[i]);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _list_gcscan(<a class="code" href="structKrkInstance.html">KrkInstance</a> * <span class="keyword">self</span>) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; ((<a class="code" href="structKrkList.html">KrkList</a>*)<span class="keyword">self</span>)-&gt;values.count; ++i) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="memory_8h.html#a53714149090b21fa0b5b58c070c43ca5">krk_markValue</a>(((<a class="code" href="structKrkList.html">KrkList</a>*)<span class="keyword">self</span>)-&gt;values.values[i]);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _list_gcsweep(KrkInstance * <span class="keyword">self</span>) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    krk_freeValueArray(&amp;((KrkList*)<span class="keyword">self</span>)-&gt;values);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _list_gcsweep(<a class="code" href="structKrkInstance.html">KrkInstance</a> * <span class="keyword">self</span>) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="structKrkValueArray.html#a67f7c662704ffa0fdc9ae4a36a321634">krk_freeValueArray</a>(&amp;((<a class="code" href="structKrkList.html">KrkList</a>*)<span class="keyword">self</span>)-&gt;values);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;KrkValue krk_list_of(<span class="keywordtype">int</span> argc, KrkValue argv[], <span class="keywordtype">int</span> hasKw) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    KrkValue outList = OBJECT_VAL(krk_newInstance(vm.baseClasses-&gt;listClass));</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    krk_push(outList);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    krk_initValueArray(AS_LIST(outList));</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="obj__list_8c.html#a5bc0a6b5797db38857b9a14c8f1e9389">   31</a></span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(<span class="keywordtype">int</span> argc, <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> outList = OBJECT_VAL(krk_newInstance(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass));</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(outList);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(AS_LIST(outList));</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (argc) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        AS_LIST(outList)-&gt;capacity = argc;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        AS_LIST(outList)-&gt;values = GROW_ARRAY(KrkValue, AS_LIST(outList)-&gt;values, 0, argc);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        memcpy(AS_LIST(outList)-&gt;values, argv, <span class="keyword">sizeof</span>(KrkValue) * argc);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        AS_LIST(outList)-&gt;values = GROW_ARRAY(<a class="code" href="structKrkValue.html">KrkValue</a>, AS_LIST(outList)-&gt;values, 0, argc);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        memcpy(AS_LIST(outList)-&gt;values, argv, <span class="keyword">sizeof</span>(<a class="code" href="structKrkValue.html">KrkValue</a>) * argc);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        AS_LIST(outList)-&gt;count = argc;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    pthread_rwlock_init(&amp;((KrkList*)AS_OBJECT(outList))-&gt;rwlock, NULL);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> krk_pop();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    pthread_rwlock_init(&amp;((<a class="code" href="structKrkList.html">KrkList</a>*)AS_OBJECT(outList))-&gt;rwlock, NULL);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define CURRENT_CTYPE KrkList *</span></div>
@@ -155,7 +155,7 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,index);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    LIST_WRAP_INDEX();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    KrkValue result = <span class="keyword">self</span>-&gt;values.values[index];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = <span class="keyword">self</span>-&gt;values.values[index];</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;})</div>
@@ -172,7 +172,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;KRK_METHOD(list,append,{</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    krk_writeValueArray(&amp;self-&gt;values, argv[1]);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">krk_writeValueArray</a>(&amp;self-&gt;values, argv[1]);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;})</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
@@ -181,11 +181,11 @@ $(function() {
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,index);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    LIST_WRAP_INDEX();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    krk_writeValueArray(&amp;self-&gt;values, NONE_VAL());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">krk_writeValueArray</a>(&amp;self-&gt;values, NONE_VAL());</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    memmove(</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        &amp;self-&gt;values.values[index+1],</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        &amp;self-&gt;values.values[index],</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">sizeof</span>(KrkValue) * (self-&gt;values.count - index - 1)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">sizeof</span>(<a class="code" href="structKrkValue.html">KrkValue</a>) * (self-&gt;values.count - index - 1)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    );</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">self</span>-&gt;values.values[index] = argv[2];</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
@@ -193,16 +193,16 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;KRK_METHOD(list,__repr__,{</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    METHOD_TAKES_NONE();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (((KrkObj*)<span class="keyword">self</span>)-&gt;inRepr) <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;[...]&quot;</span>));</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ((KrkObj*)<span class="keyword">self</span>)-&gt;inRepr = 1;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">struct </span>StringBuilder sb = {0};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (((<a class="code" href="structKrkObj.html">KrkObj</a>*)<span class="keyword">self</span>)-&gt;inRepr) <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;[...]&quot;</span>));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ((<a class="code" href="structKrkObj.html">KrkObj</a>*)<span class="keyword">self</span>)-&gt;inRepr = 1;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">struct </span><a class="code" href="structStringBuilder.html">StringBuilder</a> sb = {0};</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    pushStringBuilder(&amp;sb, <span class="charliteral">&#39;[&#39;</span>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">self</span>-&gt;values.count; ++i) {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">/* repr(self[i]) */</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        KrkClass * type = krk_getType(self-&gt;values.values[i]);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        krk_push(self-&gt;values.values[i]);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        KrkValue result = krk_callSimple(OBJECT_VAL(type-&gt;_reprer), 1, 0);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="structKrkClass.html">KrkClass</a> * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(self-&gt;values.values[i]);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(self-&gt;values.values[i]);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">krk_callSimple</a>(OBJECT_VAL(type-&gt;_reprer), 1, 0);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (IS_STRING(result)) {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            pushStringBuilderStr(&amp;sb, AS_STRING(result)-&gt;chars, AS_STRING(result)-&gt;length);</div>
@@ -215,7 +215,7 @@ $(function() {
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    pushStringBuilder(&amp;sb,<span class="charliteral">&#39;]&#39;</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    ((KrkObj*)<span class="keyword">self</span>)-&gt;inRepr = 0;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    ((<a class="code" href="structKrkObj.html">KrkObj</a>*)<span class="keyword">self</span>)-&gt;inRepr = 0;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> finishStringBuilder(&amp;sb);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;})</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
@@ -223,20 +223,20 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            if (positionals-&gt;count + counter &gt; positionals-&gt;capacity) { \</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                size_t old = positionals-&gt;capacity; \</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                positionals-&gt;capacity = positionals-&gt;count + counter; \</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                positionals-&gt;values = GROW_ARRAY(KrkValue,positionals-&gt;values,old,positionals-&gt;capacity); \</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                positionals-&gt;values = GROW_ARRAY(<a class="code" href="structKrkValue.html">KrkValue</a>,positionals-&gt;values,old,positionals-&gt;capacity); \</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            } \</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            for (<span class="keywordtype">size_t</span> i = 0; i &lt; counter; ++i) { \</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                positionals-&gt;values[positionals-&gt;count] = indexer; \</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                positionals-&gt;count++; \</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                if (krk_currentThread.flags &amp; KRK_THREAD_HAS_EXCEPTION) <span class="keywordflow">goto</span> _break_loop; \</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                if (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) <span class="keywordflow">goto</span> _break_loop; \</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            } \</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        } <span class="keywordflow">while</span> (0)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;KRK_METHOD(list,extend,{</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    KrkValueArray *  positionals = AS_LIST(argv[0]);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span> (krk_valuesSame(argv[0],argv[1])) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        argv[1] = krk_list_of(self-&gt;values.count, self-&gt;values.values, 0);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="structKrkValueArray.html">KrkValueArray</a> *  positionals = AS_LIST(argv[0]);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(argv[0],argv[1])) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        argv[1] = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(self-&gt;values.count, self-&gt;values.values, 0);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    unpackIterableFast(argv[1]);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;_break_loop:</div>
@@ -246,10 +246,10 @@ $(function() {
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;KRK_METHOD(list,__init__,{</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    METHOD_TAKES_AT_MOST(1);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    krk_initValueArray(AS_LIST(argv[0]));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">krk_initValueArray</a>(AS_LIST(argv[0]));</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    pthread_rwlock_init(&amp;self-&gt;rwlock, NULL);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> (argc == 2) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        _list_extend(2,(KrkValue[]){argv[0],argv[1]},0);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        _list_extend(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){argv[0],argv[1]},0);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;})</div>
@@ -258,15 +258,15 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,howMany);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    KrkValue out = krk_list_of(0, NULL, 0);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0, NULL, 0);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    krk_push(out);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(out);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">for</span> (krk_integer_type i = 0; i &lt; howMany; i++) {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        _list_extend(2, (KrkValue[]){out,argv[0]},0);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        _list_extend(2, (<a class="code" href="structKrkValue.html">KrkValue</a>[]){out,argv[0]},0);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> krk_pop();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;})</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;KRK_METHOD(list,__len__,{</div>
@@ -278,7 +278,7 @@ $(function() {
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">self</span>-&gt;values.count; ++i) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">if</span> (krk_valuesEqual(argv[1], self-&gt;values.values[i])) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a2abba7eee757ed81d8529431321ed70d">krk_valuesEqual</a>(argv[1], self-&gt;values.values[i])) {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">return</span> BOOLEAN_VAL(1);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
@@ -299,7 +299,7 @@ $(function() {
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> (end &lt; start) end = start;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    krk_integer_type len = end - start;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    KrkValue result = krk_list_of(len, &amp;AS_LIST(argv[0])-&gt;values[start], 0);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(len, &amp;AS_LIST(argv[0])-&gt;values[start], 0);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;})</div>
@@ -318,7 +318,7 @@ $(function() {
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    krk_integer_type len = end - start;</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">while</span> (len &gt; 0) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        FUNC_NAME(list,pop)(2,(KrkValue[]){argv[0],INTEGER_VAL(start)},0);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        FUNC_NAME(list,pop)(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){argv[0],INTEGER_VAL(start)},0);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        len--;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
@@ -344,12 +344,12 @@ $(function() {
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">while</span> (len &lt; newLen) {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        FUNC_NAME(list,insert)(3, (KrkValue[]){argv[0], INTEGER_VAL(start + len), AS_LIST(argv[3])-&gt;values[len]}, 0);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        FUNC_NAME(list,insert)(3, (<a class="code" href="structKrkValue.html">KrkValue</a>[]){argv[0], INTEGER_VAL(start + len), AS_LIST(argv[3])-&gt;values[len]}, 0);</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        len++;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">while</span> (newLen &lt; len) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        FUNC_NAME(list,pop)(2, (KrkValue[]){argv[0], INTEGER_VAL(start + len - 1)}, 0);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        FUNC_NAME(list,pop)(2, (<a class="code" href="structKrkValue.html">KrkValue</a>[]){argv[0], INTEGER_VAL(start + len - 1)}, 0);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        len--;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
@@ -365,7 +365,7 @@ $(function() {
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        index = ind;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    LIST_WRAP_INDEX();</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    KrkValue outItem = AS_LIST(argv[0])-&gt;values[index];</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> outItem = AS_LIST(argv[0])-&gt;values[index];</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span> (index == (<span class="keywordtype">long</span>)AS_LIST(argv[0])-&gt;count-1) {</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        AS_LIST(argv[0])-&gt;count--;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
@@ -374,7 +374,7 @@ $(function() {
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">/* Need to move up */</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordtype">size_t</span> remaining = AS_LIST(argv[0])-&gt;count - index - 1;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        memmove(&amp;AS_LIST(argv[0])-&gt;values[index], &amp;AS_LIST(argv[0])-&gt;values[index+1],</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keyword">sizeof</span>(KrkValue) * remaining);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keyword">sizeof</span>(<a class="code" href="structKrkValue.html">KrkValue</a>) * remaining);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        AS_LIST(argv[0])-&gt;count--;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">return</span> outItem;</div>
@@ -385,19 +385,19 @@ $(function() {
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">self</span>-&gt;values.count; ++i) {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">if</span> (krk_valuesEqual(self-&gt;values.values[i], argv[1])) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a2abba7eee757ed81d8529431321ed70d">krk_valuesEqual</a>(self-&gt;values.values[i], argv[1])) {</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> FUNC_NAME(list,pop)(2,(KrkValue[]){argv[0], INTEGER_VAL(i)},0);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> FUNC_NAME(list,pop)(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){argv[0], INTEGER_VAL(i)},0);</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;valueError, <span class="stringliteral">&quot;not found&quot;</span>);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;not found&quot;</span>);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;})</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;KRK_METHOD(list,clear,{</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    METHOD_TAKES_NONE();</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    krk_freeValueArray(&amp;self-&gt;values);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="structKrkValueArray.html#a67f7c662704ffa0fdc9ae4a36a321634">krk_freeValueArray</a>(&amp;self-&gt;values);</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;})</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
@@ -412,14 +412,14 @@ $(function() {
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">if</span> (IS_INTEGER(argv[2]))</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            min = AS_INTEGER(argv[2]);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;typeError, <span class="stringliteral">&quot;min must be int, not &#39;%s&#39;&quot;</span>, krk_typeName(argv[2]));</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;min must be int, not &#39;%s&#39;&quot;</span>, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[2]));</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 3) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">if</span> (IS_INTEGER(argv[3]))</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            max = AS_INTEGER(argv[3]);</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;typeError, <span class="stringliteral">&quot;max must be int, not &#39;%s&#39;&quot;</span>, krk_typeName(argv[3]));</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;max must be int, not &#39;%s&#39;&quot;</span>, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[3]));</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
@@ -427,14 +427,14 @@ $(function() {
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    LIST_WRAP_SOFT(max);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">for</span> (krk_integer_type i = min; i &lt; max; ++i) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">if</span> (krk_valuesEqual(self-&gt;values.values[i], argv[1])) {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a2abba7eee757ed81d8529431321ed70d">krk_valuesEqual</a>(self-&gt;values.values[i], argv[1])) {</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="keywordflow">return</span> INTEGER_VAL(i);</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    }</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;valueError, <span class="stringliteral">&quot;not found&quot;</span>);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;not found&quot;</span>);</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;})</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;KRK_METHOD(list,count,{</div>
@@ -443,7 +443,7 @@ $(function() {
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">self</span>-&gt;values.count; ++i) {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">if</span> (krk_valuesEqual(self-&gt;values.values[i], argv[1])) count++;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a2abba7eee757ed81d8529431321ed70d">krk_valuesEqual</a>(self-&gt;values.values[i], argv[1])) count++;</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
@@ -453,7 +453,7 @@ $(function() {
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;KRK_METHOD(list,copy,{</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    METHOD_TAKES_NONE();</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    KrkValue result = krk_list_of(self-&gt;values.count, self-&gt;values.values, 0);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(self-&gt;values.count, self-&gt;values.values, 0);</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;})</div>
@@ -462,7 +462,7 @@ $(function() {
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    METHOD_TAKES_NONE();</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (<span class="keyword">self</span>-&gt;values.count) / 2; i++) {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        KrkValue tmp = <span class="keyword">self</span>-&gt;values.values[i];</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> tmp = <span class="keyword">self</span>-&gt;values.values[i];</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keyword">self</span>-&gt;values.values[i] = <span class="keyword">self</span>-&gt;values.values[<span class="keyword">self</span>-&gt;values.count-i-1];</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keyword">self</span>-&gt;values.values[<span class="keyword">self</span>-&gt;values.count-i-1] = tmp;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    }</div>
@@ -471,12 +471,12 @@ $(function() {
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;})</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> _list_sorter(<span class="keyword">const</span> <span class="keywordtype">void</span> * _a, <span class="keyword">const</span> <span class="keywordtype">void</span> * _b) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    KrkValue a = *(KrkValue*)_a;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    KrkValue b = *(KrkValue*)_b;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> a = *(<a class="code" href="structKrkValue.html">KrkValue</a>*)_a;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> b = *(<a class="code" href="structKrkValue.html">KrkValue</a>*)_b;</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    KrkValue ltComp = krk_operator_lt(a,b);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> ltComp = krk_operator_lt(a,b);</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">if</span> (IS_NONE(ltComp) || (IS_BOOLEAN(ltComp) &amp;&amp; AS_BOOLEAN(ltComp))) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    KrkValue gtComp = krk_operator_gt(a,b);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> gtComp = krk_operator_gt(a,b);</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">if</span> (IS_NONE(gtComp) || (IS_BOOLEAN(gtComp) &amp;&amp; AS_BOOLEAN(gtComp))) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
@@ -485,7 +485,7 @@ $(function() {
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    METHOD_TAKES_NONE();</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    pthread_rwlock_wrlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    qsort(self-&gt;values.values, self-&gt;values.count, <span class="keyword">sizeof</span>(KrkValue), _list_sorter);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    qsort(self-&gt;values.values, self-&gt;values.count, <span class="keyword">sizeof</span>(<a class="code" href="structKrkValue.html">KrkValue</a>), _list_sorter);</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;})</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
@@ -494,9 +494,9 @@ $(function() {
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (!IS_list(argv[1])) <span class="keywordflow">return</span> TYPE_ERROR(list,argv[1]);</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    pthread_rwlock_rdlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    KrkValue outList = krk_list_of(self-&gt;values.count, self-&gt;values.values, 0); <span class="comment">/* copy */</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> outList = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(self-&gt;values.count, self-&gt;values.values, 0); <span class="comment">/* copy */</span></div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    pthread_rwlock_unlock(&amp;self-&gt;rwlock);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    FUNC_NAME(list,extend)(2,(KrkValue[]){outList,argv[1]},0); <span class="comment">/* extend */</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    FUNC_NAME(list,extend)(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){outList,argv[1]},0); <span class="comment">/* extend */</span></div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">return</span> outList;</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;})</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
@@ -504,40 +504,40 @@ $(function() {
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;KRK_METHOD(list,__iter__,{</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    METHOD_TAKES_NONE();</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    KrkInstance * output = krk_newInstance(vm.baseClasses-&gt;listiteratorClass);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * output = krk_newInstance(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listiteratorClass);</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    krk_push(OBJECT_VAL(output));</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    FUNC_NAME(listiterator,__init__)(2, (KrkValue[]){krk_peek(0), argv[0]},0);</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    krk_pop();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(output));</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    FUNC_NAME(listiterator,__init__)(2, (<a class="code" href="structKrkValue.html">KrkValue</a>[]){<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0), argv[0]},0);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(output);</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;})</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;#undef CURRENT_CTYPE</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;#define CURRENT_CTYPE KrkInstance*</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;#define CURRENT_CTYPE <a class="code" href="structKrkInstance.html">KrkInstance</a>*</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;KRK_METHOD(listiterator,__init__,{</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    CHECK_ARG(1,list,KrkList*,list);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    CHECK_ARG(1,list,<a class="code" href="structKrkList.html">KrkList</a>*,list);</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    krk_push(argv[0]);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    krk_attachNamedValue(&amp;self-&gt;fields, <span class="stringliteral">&quot;l&quot;</span>, OBJECT_VAL(list));</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    krk_attachNamedValue(&amp;self-&gt;fields, <span class="stringliteral">&quot;i&quot;</span>, INTEGER_VAL(0));</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    krk_pop();</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(argv[0]);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;self-&gt;fields, <span class="stringliteral">&quot;l&quot;</span>, OBJECT_VAL(list));</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;self-&gt;fields, <span class="stringliteral">&quot;i&quot;</span>, INTEGER_VAL(0));</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;})</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;KRK_METHOD(listiterator,__call__,{</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    KrkValue _list;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    KrkValue _counter;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _list;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _counter;</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * errorStr = NULL;</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">if</span> (!krk_tableGet(&amp;self-&gt;fields, OBJECT_VAL(S(<span class="stringliteral">&quot;l&quot;</span>)), &amp;_list)) {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;self-&gt;fields, OBJECT_VAL(S(<span class="stringliteral">&quot;l&quot;</span>)), &amp;_list)) {</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        errorStr = <span class="stringliteral">&quot;no list pointer&quot;</span>;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">goto</span> _corrupt;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    }</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (!krk_tableGet(&amp;self-&gt;fields, OBJECT_VAL(S(<span class="stringliteral">&quot;i&quot;</span>)), &amp;_counter)) {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;self-&gt;fields, OBJECT_VAL(S(<span class="stringliteral">&quot;i&quot;</span>)), &amp;_counter)) {</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        errorStr = <span class="stringliteral">&quot;no index&quot;</span>;</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">goto</span> _corrupt;</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    }</div>
@@ -545,43 +545,43 @@ $(function() {
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)AS_INTEGER(_counter) &gt;= AS_LIST(_list)-&gt;count) {</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="keywordflow">return</span> argv[0];</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        krk_attachNamedValue(&amp;self-&gt;fields, <span class="stringliteral">&quot;i&quot;</span>, INTEGER_VAL(AS_INTEGER(_counter)+1));</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;self-&gt;fields, <span class="stringliteral">&quot;i&quot;</span>, INTEGER_VAL(AS_INTEGER(_counter)+1));</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="keywordflow">return</span> AS_LIST(_list)-&gt;values[AS_INTEGER(_counter)];</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    }</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;_corrupt:</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;typeError, <span class="stringliteral">&quot;Corrupt list iterator: %s&quot;</span>, errorStr);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;Corrupt list iterator: %s&quot;</span>, errorStr);</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;})</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="keyword">static</span> KrkValue _sorted(<span class="keywordtype">int</span> argc, KrkValue argv[], <span class="keywordtype">int</span> hasKw) {</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;argumentError,<span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,<span class="stringliteral">&quot;sorted&quot;</span>,<span class="stringliteral">&quot;exactly&quot;</span>,1,<span class="stringliteral">&quot;&quot;</span>,argc);</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    KrkValue listOut = krk_list_of(0,NULL,0);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    krk_push(listOut);</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    FUNC_NAME(list,extend)(2,(KrkValue[]){listOut,argv[0]},0);</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(krk_currentThread.currentException)) <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _sorted(<span class="keywordtype">int</span> argc, <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError,<span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,<span class="stringliteral">&quot;sorted&quot;</span>,<span class="stringliteral">&quot;exactly&quot;</span>,1,<span class="stringliteral">&quot;&quot;</span>,argc);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> listOut = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(listOut);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    FUNC_NAME(list,extend)(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){listOut,argv[0]},0);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">currentException</a>)) <span class="keywordflow">return</span> NONE_VAL();</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    FUNC_NAME(list,sort)(1,&amp;listOut,0);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(krk_currentThread.currentException)) <span class="keywordflow">return</span> NONE_VAL();</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">return</span> krk_pop();</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">currentException</a>)) <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;}</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="keyword">static</span> KrkValue _reversed(<span class="keywordtype">int</span> argc, KrkValue argv[], <span class="keywordtype">int</span> hasKw) {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _reversed(<span class="keywordtype">int</span> argc, <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) {</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="comment">/* FIXME The Python reversed() function produces an iterator and only works for things with indexing or a __reversed__ method;</span></div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="comment">     *       Building a list and reversing it like we do here is not correct! */</span></div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> krk_runtimeError(vm.exceptions-&gt;argumentError,<span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,<span class="stringliteral">&quot;reversed&quot;</span>,<span class="stringliteral">&quot;exactly&quot;</span>,1,<span class="stringliteral">&quot;&quot;</span>,argc);</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    KrkValue listOut = krk_list_of(0,NULL,0);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    krk_push(listOut);</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    FUNC_NAME(list,extend)(2,(KrkValue[]){listOut,argv[0]},0);</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(krk_currentThread.currentException)) <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError,<span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,<span class="stringliteral">&quot;reversed&quot;</span>,<span class="stringliteral">&quot;exactly&quot;</span>,1,<span class="stringliteral">&quot;&quot;</span>,argc);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> listOut = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(listOut);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    FUNC_NAME(list,extend)(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){listOut,argv[0]},0);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">currentException</a>)) <span class="keywordflow">return</span> NONE_VAL();</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    FUNC_NAME(list,reverse)(1,&amp;listOut,0);</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(krk_currentThread.currentException)) <span class="keywordflow">return</span> NONE_VAL();</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">return</span> krk_pop();</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">if</span> (!IS_NONE(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">currentException</a>)) <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;}</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;_noexport</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="keywordtype">void</span> _createAndBind_listClass(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    KrkClass * list = ADD_BASE_CLASS(vm.baseClasses-&gt;listClass, <span class="stringliteral">&quot;list&quot;</span>, vm.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    list-&gt;allocSize = <span class="keyword">sizeof</span>(KrkList);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * list = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass, <span class="stringliteral">&quot;list&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    list-&gt;allocSize = <span class="keyword">sizeof</span>(<a class="code" href="structKrkList.html">KrkList</a>);</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    list-&gt;_ongcscan = _list_gcscan;</div>
 <div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    list-&gt;_ongcsweep = _list_gcsweep;</div>
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    BIND_METHOD(list,__init__);</div>
@@ -607,23 +607,58 @@ $(function() {
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    BIND_METHOD(list,remove);</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    BIND_METHOD(list,reverse);</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    BIND_METHOD(list,sort);</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    krk_defineNative(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__delitem__&quot;</span>, FUNC_NAME(list,pop));</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    krk_defineNative(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__str__&quot;</span>, FUNC_NAME(list,__repr__));</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    krk_defineNative(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__class_getitem__&quot;</span>, KrkGenericAlias);</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    krk_finalizeClass(list);</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    KRK_DOC(list, <span class="stringliteral">&quot;Mutable sequence of arbitrary values.&quot;</span>);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__delitem__&quot;</span>, FUNC_NAME(list,pop));</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__str__&quot;</span>, FUNC_NAME(list,__repr__));</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;list-&gt;methods, <span class="stringliteral">&quot;.__class_getitem__&quot;</span>, KrkGenericAlias);</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(list);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(list, <span class="stringliteral">&quot;Mutable sequence of arbitrary values.&quot;</span>);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    BUILTIN_FUNCTION(<span class="stringliteral">&quot;listOf&quot;</span>, krk_list_of, <span class="stringliteral">&quot;Convert argument sequence to list object.&quot;</span>);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    BUILTIN_FUNCTION(<span class="stringliteral">&quot;listOf&quot;</span>, <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>, <span class="stringliteral">&quot;Convert argument sequence to list object.&quot;</span>);</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    BUILTIN_FUNCTION(<span class="stringliteral">&quot;sorted&quot;</span>, _sorted, <span class="stringliteral">&quot;Return a sorted representation of an iterable.&quot;</span>);</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    BUILTIN_FUNCTION(<span class="stringliteral">&quot;reversed&quot;</span>, _reversed, <span class="stringliteral">&quot;Return a reversed representation of an iterable.&quot;</span>);</div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    KrkClass * listiterator = ADD_BASE_CLASS(vm.baseClasses-&gt;listiteratorClass, <span class="stringliteral">&quot;listiterator&quot;</span>, vm.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * listiterator = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listiteratorClass, <span class="stringliteral">&quot;listiterator&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    BIND_METHOD(listiterator,__init__);</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    BIND_METHOD(listiterator,__call__);</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    krk_finalizeClass(listiterator);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(listiterator);</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructKrkTable_html_a77daf4c9266b6440bcbd2dc0c95dd45a"><div class="ttname"><a href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">KrkTable::krk_attachNamedValue</a></div><div class="ttdeci">void krk_attachNamedValue(KrkTable *table, const char name[], KrkValue obj)</div><div class="ttdoc">Attach a value to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00994">vm.c:994</a></div></div>
+<div class="ttc" id="astructStringBuilder_html"><div class="ttname"><a href="structStringBuilder.html">StringBuilder</a></div><div class="ttdoc">Inline flexible string array.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00104">util.h:104</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00200">object.h:200</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00263">vm.h:263</a></div></div>
+<div class="ttc" id="athreads_8h_html"><div class="ttname"><a href="threads_8h.html">threads.h</a></div><div class="ttdoc">Convience header for providing atomic operations to threads.</div></div>
+<div class="ttc" id="astructKrkValue_html_aa79239e6ace07679bc61cd33318b3318"><div class="ttname"><a href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">KrkValue::krk_callSimple</a></div><div class="ttdeci">KrkValue krk_callSimple(KrkValue value, int argCount, int isMethod)</div><div class="ttdoc">Call a callable and manage VM state to obtain the return value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00892">vm.c:892</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00157">object.h:157</a></div></div>
+<div class="ttc" id="astructKrkList_html"><div class="ttname"><a href="structKrkList.html">KrkList</a></div><div class="ttdoc">Mutable array of values.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00255">object.h:255</a></div></div>
+<div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00300">vm.c:300</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00097">table.c:97</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a728694365ca28029a1f0f06bc1f449c6"><div class="ttname"><a href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">KrkValueArray::krk_writeValueArray</a></div><div class="ttdeci">void krk_writeValueArray(KrkValueArray *array, KrkValue value)</div><div class="ttdoc">Add a value to a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00014">value.c:14</a></div></div>
+<div class="ttc" id="avm_8h_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Raise an exception.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00233">vm.c:233</a></div></div>
+<div class="ttc" id="astructKrkClass_html_ab4f353ca0085f50bbf498df5116b66ef"><div class="ttname"><a href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">KrkClass::krk_finalizeClass</a></div><div class="ttdeci">void krk_finalizeClass(KrkClass *_class)</div><div class="ttdoc">Finalize a class by collecting pointers to core methods.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00391">vm.c:391</a></div></div>
+<div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00036">object.h:36</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_a3e1c5c6a26f58def1f898dfb168dfa13"><div class="ttname"><a href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">KrkThreadState::currentException</a></div><div class="ttdeci">KrkValue currentException</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00187">vm.h:187</a></div></div>
+<div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00065">value.h:65</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00464">vm.c:464</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00139">value.c:139</a></div></div>
+<div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00078">vm.c:78</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a67f7c662704ffa0fdc9ae4a36a321634"><div class="ttname"><a href="structKrkValueArray.html#a67f7c662704ffa0fdc9ae4a36a321634">KrkValueArray::krk_freeValueArray</a></div><div class="ttdeci">void krk_freeValueArray(KrkValueArray *array)</div><div class="ttdoc">Release relesources used by a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00025">value.c:25</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html"><div class="ttname"><a href="structKrkValueArray.html">KrkValueArray</a></div><div class="ttdoc">Flexible vector of stack references.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00082">value.h:82</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a5ff90818ef75abf0466b404ec7da5ef7"><div class="ttname"><a href="structKrkValueArray.html#a5ff90818ef75abf0466b404ec7da5ef7">KrkValueArray::krk_initValueArray</a></div><div class="ttdeci">void krk_initValueArray(KrkValueArray *array)</div><div class="ttdoc">Initialize a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00008">value.c:8</a></div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00280">vm.c:280</a></div></div>
+<div class="ttc" id="astructKrkList_html_a5bc0a6b5797db38857b9a14c8f1e9389"><div class="ttname"><a href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">KrkList::krk_list_of</a></div><div class="ttdeci">KrkValue krk_list_of(int argc, KrkValue argv[], int hasKw)</div><div class="ttdoc">Create a list object.</div><div class="ttdef"><b>Definition:</b> <a href="obj__list_8c_source.html#l00031">obj_list.c:31</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00329">vm.c:329</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01336">vm.c:1336</a></div></div>
+<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00313">vm.c:313</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00188">vm.h:188</a></div></div>
+<div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
+<div class="ttc" id="amemory_8h_html_a53714149090b21fa0b5b58c070c43ca5"><div class="ttname"><a href="memory_8h.html#a53714149090b21fa0b5b58c070c43ca5">krk_markValue</a></div><div class="ttdeci">void krk_markValue(KrkValue value)</div><div class="ttdoc">During a GC scan cycle, mark a value as used.</div><div class="ttdef"><b>Definition:</b> <a href="memory_8c_source.html#l00131">memory.c:131</a></div></div>
+<div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
+<div class="ttc" id="avalue_8h_html"><div class="ttname"><a href="value_8h.html">value.h</a></div><div class="ttdoc">Definitions for primitive stack references.</div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00297">util.h:297</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a2abba7eee757ed81d8529431321ed70d"><div class="ttname"><a href="structKrkValue.html#a2abba7eee757ed81d8529431321ed70d">KrkValue::krk_valuesEqual</a></div><div class="ttdeci">int krk_valuesEqual(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values for equality.</div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

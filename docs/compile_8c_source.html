@@ -112,10 +112,10 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;kuroko/kuroko.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;kuroko/vm.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;kuroko/compiler.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;kuroko/util.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kuroko_8h.html">kuroko/kuroko.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vm_8h.html">kuroko/vm.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="compiler_8h.html">kuroko/compiler.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="util_8h.html">kuroko/util.h</a>&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;simple-repl.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
@@ -154,19 +154,19 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;NativeFn ListAppend;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;NativeFn ListContains;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;NativeFn ListIndex;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;KrkValue SeenFunctions;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;KrkValue UnseenFunctions;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;KrkValue StringTable;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> SeenFunctions;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> UnseenFunctions;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> StringTable;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _initListFunctions(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    KrkValue _list_pop;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    KrkValue _list_append;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    KrkValue _list_contains;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    KrkValue _list_index;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    krk_tableGet(&amp;vm.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;pop&quot;</span>)), &amp;_list_pop);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    krk_tableGet(&amp;vm.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;append&quot;</span>)), &amp;_list_append);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    krk_tableGet(&amp;vm.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;__contains__&quot;</span>)), &amp;_list_contains);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    krk_tableGet(&amp;vm.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;index&quot;</span>)), &amp;_list_index);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _list_pop;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _list_append;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _list_contains;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> _list_index;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;pop&quot;</span>)), &amp;_list_pop);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;append&quot;</span>)), &amp;_list_append);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;__contains__&quot;</span>)), &amp;_list_contains);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;listClass-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;index&quot;</span>)), &amp;_list_index);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    ListPop = AS_NATIVE(_list_pop)-&gt;function;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    ListAppend = AS_NATIVE(_list_append)-&gt;function;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ListContains = AS_NATIVE(_list_contains)-&gt;function;</div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> findInterpreter(<span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    vm.binpath = strdup(_pgmptr);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.binpath = strdup(_pgmptr);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">/* Try asking /proc */</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">char</span> * binpath = realpath(<span class="stringliteral">&quot;/proc/self/exe&quot;</span>, NULL);</div>
@@ -202,22 +202,22 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (binpath) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        vm.binpath = binpath;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.binpath = binpath;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    } <span class="comment">/* Else, give up at this point and just don&#39;t attach it at all. */</span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">static</span> KrkString ** myStrings = NULL;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkString.html">KrkString</a> ** myStrings = NULL;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> available = 0;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> internString(KrkString * str) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> internString(<a class="code" href="structKrkString.html">KrkString</a> * str) {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; count; ++i) {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (myStrings[i] == str) <span class="keywordflow">return</span> i;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (count + 1 &gt; available) {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        available = (available == 0) ? 8 : (available * 2);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        myStrings = realloc(myStrings,available * <span class="keyword">sizeof</span>(KrkString*));</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        myStrings = realloc(myStrings,available * <span class="keyword">sizeof</span>(<a class="code" href="structKrkString.html">KrkString</a>*));</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    myStrings[count] = str;</div>
@@ -261,7 +261,7 @@ $(function() {
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#define WRITE_KWARGS(k) fwrite(&quot;k&quot;,1,1,out);</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#define WRITE_STRING(s) _writeString(out, s)</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeString(FILE * out, KrkString * s) {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeString(FILE * out, <a class="code" href="structKrkString.html">KrkString</a> * s) {</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    uint32_t ind = internString(s);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (ind &lt; 256) {</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        fwrite((uint8_t[]){<span class="charliteral">&#39;s&#39;</span>,(uint8_t)ind}, 1, 2, out);</div>
@@ -272,7 +272,7 @@ $(function() {
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#define WRITE_BYTES(b) _writeBytes(out,b)</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeBytes(FILE * out, KrkBytes * b) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeBytes(FILE * out, <a class="code" href="structKrkBytes.html">KrkBytes</a> * b) {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> (b-&gt;length &lt; 256) {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        fwrite((uint8_t[]){<span class="charliteral">&#39;b&#39;</span>, (uint8_t)b-&gt;length}, 1, 2, out);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        fwrite(b-&gt;bytes, 1, b-&gt;length, out);</div>
@@ -285,12 +285,12 @@ $(function() {
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#define WRITE_FUNCTION(f) _writeFunction(out,f)</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeFunction(FILE * out, KrkCodeObject * f) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _writeFunction(FILE * out, <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * f) {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="comment">/* Find this function in the function table. */</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    KrkValue <span class="keyword">this</span> = OBJECT_VAL(f);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    KrkValue index = ListIndex(2,(KrkValue[]){SeenFunctions,<span class="keyword">this</span>},0);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> <span class="keyword">this</span> = OBJECT_VAL(f);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> index = ListIndex(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){SeenFunctions,<span class="keyword">this</span>},0);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">if</span> (!IS_INTEGER(index)) {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Internal error: Expected int from list.index, got &#39;%s&#39;\n&quot;</span>, krk_typeName(index));</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Internal error: Expected int from list.index, got &#39;%s&#39;\n&quot;</span>, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(index));</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        exit(1);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    krk_integer_type i = AS_INTEGER(index);</div>
@@ -311,12 +311,12 @@ $(function() {
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">/* Go through all functions and build string tables and function index */</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">while</span> (AS_LIST(UnseenFunctions)-&gt;count) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        KrkValue nextFunc = ListPop(2,(KrkValue[]){UnseenFunctions,INTEGER_VAL(0)},0);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        krk_push(nextFunc);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        ListAppend(2,(KrkValue[]){SeenFunctions,nextFunc},0);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> nextFunc = ListPop(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){UnseenFunctions,INTEGER_VAL(0)},0);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(nextFunc);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        ListAppend(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){SeenFunctions,nextFunc},0);</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="comment">/* Examine */</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        KrkCodeObject * func = AS_codeobject(nextFunc);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * func = AS_codeobject(nextFunc);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">if</span> (func-&gt;name) internString(func-&gt;name);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">if</span> (func-&gt;docstring) internString(func-&gt;docstring);</div>
@@ -331,23 +331,23 @@ $(function() {
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; func-&gt;chunk.constants.count; ++i) {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            KrkValue value = func-&gt;chunk.constants.values[i];</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> value = func-&gt;chunk.constants.values[i];</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">if</span> (IS_OBJECT(value)) {</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">if</span> (IS_STRING(value)) {</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    internString(AS_STRING(value));</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_codeobject(value)) {</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    <span class="comment">/* If we haven&#39;t seen this function yet, append it to the list */</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    krk_push(value);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    KrkValue boolResult = ListContains(2,(KrkValue[]){SeenFunctions,value},0);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(value);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    <a class="code" href="structKrkValue.html">KrkValue</a> boolResult = ListContains(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){SeenFunctions,value},0);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    <span class="keywordflow">if</span> (IS_BOOLEAN(boolResult) &amp;&amp; AS_BOOLEAN(boolResult) == 0) {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        ListAppend(2,(KrkValue[]){UnseenFunctions,value},0);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        ListAppend(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){UnseenFunctions,value},0);</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    krk_pop();</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        krk_pop();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">return</span> 0;</div>
@@ -360,7 +360,7 @@ $(function() {
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    fwrite(&amp;functionCount, 1, <span class="keyword">sizeof</span>(uint32_t), out);</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> funcIndex = 0; funcIndex &lt; AS_LIST(SeenFunctions)-&gt;count; ++funcIndex) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        KrkCodeObject * func = AS_codeobject(AS_LIST(SeenFunctions)-&gt;values[funcIndex]);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * func = AS_codeobject(AS_LIST(SeenFunctions)-&gt;values[funcIndex]);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        uint8_t flags = 0;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span> (func-&gt;collectsArguments) flags |= (1 &lt;&lt; 0);</div>
@@ -385,11 +385,11 @@ $(function() {
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="comment">/* Argument names first */</span></div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)func-&gt;requiredArgs + !!(func-&gt;collectsArguments); ++i) {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            WRITE_STRING(AS_STRING(func-&gt;requiredArgNames.values[i]));</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            WRITE_STRING(AS_STRING(func-&gt;requiredArgNames.<a class="code" href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">values</a>[i]));</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        }</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)func-&gt;keywordArgs + !!(func-&gt;collectsKeywords); ++i) {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            WRITE_STRING(AS_STRING(func-&gt;keywordArgNames.values[i]));</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            WRITE_STRING(AS_STRING(func-&gt;keywordArgNames.<a class="code" href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">values</a>[i]));</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="comment">/* Bytecode operations next */</span></div>
@@ -404,8 +404,8 @@ $(function() {
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            fwrite(&amp;entry, 1, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structLineMapEntry.html">LineMapEntry</a>), out);</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; func-&gt;chunk.constants.count; ++i) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            KrkValue * val = &amp;func-&gt;chunk.constants.values[i];</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; func-&gt;chunk.constants.<a class="code" href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">count</a>; ++i) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> * val = &amp;func-&gt;chunk.constants.<a class="code" href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">values</a>[i];</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">switch</span> (val-&gt;type) {</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <span class="keywordflow">case</span> KRK_VAL_OBJECT:</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                    <span class="keywordflow">switch</span> (AS_OBJECT(*val)-&gt;type) {</div>
@@ -422,7 +422,7 @@ $(function() {
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                            fprintf(stderr,</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                <span class="stringliteral">&quot;Invalid object found in constants table,&quot;</span></div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                <span class="stringliteral">&quot;this marashal format can not store &#39;%s&#39;\n&quot;</span>,</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                krk_typeName(*val));</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(*val));</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                    }</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -439,7 +439,7 @@ $(function() {
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    fprintf(stderr,</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        <span class="stringliteral">&quot;Invalid value found in constants table,&quot;</span></div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                        <span class="stringliteral">&quot;this marashal format can not store &#39;%s&#39;\n&quot;</span>,</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        krk_typeName(*val));</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(*val));</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
@@ -470,12 +470,12 @@ $(function() {
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    FILE * out = fopen(<span class="stringliteral">&quot;out.kbc&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>);</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    krk_startModule(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    KrkCodeObject * func = krk_compile(buf, fileName);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * func = <a class="code" href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a>(buf, fileName);</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (krk_currentThread.flags &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%s: exception during compilation:\n&quot;</span>, fileName);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        krk_dumpTraceback();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <a class="code" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840">krk_dumpTraceback</a>();</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">return</span> 3;</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
@@ -487,23 +487,23 @@ $(function() {
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    fwrite(&amp;header, 1, <span class="keyword">sizeof</span>(header), out);</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    SeenFunctions = krk_list_of(0,NULL,0);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    krk_push(SeenFunctions);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    SeenFunctions = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(SeenFunctions);</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    UnseenFunctions = krk_list_of(1,(KrkValue[]){OBJECT_VAL(func)},0);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    krk_push(UnseenFunctions);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    UnseenFunctions = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(1,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){OBJECT_VAL(func)},0);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(UnseenFunctions);</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">if</span> (doFirstPass(out)) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span> (doStringTable(out)) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span> (doSecondPass(out)) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    krk_pop(); <span class="comment">/* UnseenFunctions */</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    krk_pop(); <span class="comment">/* SeenFunctions */</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>(); <span class="comment">/* UnseenFunctions */</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>(); <span class="comment">/* SeenFunctions */</span></div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="keyword">static</span> KrkValue valueFromConstant(<span class="keywordtype">int</span> i, FILE * inFile) {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> valueFromConstant(<span class="keywordtype">int</span> i, FILE * inFile) {</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    uint8_t c = fgetc(inFile);</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    DEBUGOUT(<span class="stringliteral">&quot;  %4lu: &quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)i);</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
@@ -518,10 +518,10 @@ $(function() {
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;S&#39;</span>: {</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            uint32_t ind = (c == <span class="charliteral">&#39;s&#39;</span>) ? fgetc(inFile) : 0;</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;S&#39;</span>) assert(fread(&amp;ind, 1, <span class="keyword">sizeof</span>(uint32_t), inFile) == <span class="keyword">sizeof</span>(uint32_t));</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            KrkValue valOut = AS_LIST(StringTable)-&gt;values[ind];</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> valOut = AS_LIST(StringTable)-&gt;values[ind];</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#ifdef ISDEBUG</span></div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;str #%lu &quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)ind);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            krk_printValueSafe(stderr, valOut);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <a class="code" href="structKrkValue.html#ac008451142bcc182fb64af125bcf635d">krk_printValueSafe</a>(stderr, valOut);</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keywordflow">return</span> valOut;</div>
@@ -557,13 +557,13 @@ $(function() {
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    }</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    krk_startModule(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    StringTable = krk_list_of(0,NULL,0);</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    krk_push(StringTable);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    StringTable = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(StringTable);</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    SeenFunctions = krk_list_of(0,NULL,0);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    krk_push(SeenFunctions);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    SeenFunctions = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(0,NULL,0);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(SeenFunctions);</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keyword">struct </span><a class="code" href="structMarshalHeader.html">MarshalHeader</a> header;</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    assert(fread(&amp;header, 1, <span class="keyword">sizeof</span>(header), inFile) == <span class="keyword">sizeof</span>(header));</div>
@@ -588,14 +588,14 @@ $(function() {
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        strVal[strLen] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160; </div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="comment">/* Create a string */</span></div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        krk_push(OBJECT_VAL(krk_takeString(strVal,strLen)));</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        ListAppend(2,(KrkValue[]){StringTable, krk_peek(0)},0);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a>(strVal,strLen)));</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        ListAppend(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){StringTable, <a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)},0);</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor">#ifdef ISDEBUG</span></div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%04lu: &quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)i);</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        krk_printValueSafe(stderr, krk_peek(0));</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <a class="code" href="structKrkValue.html#ac008451142bcc182fb64af125bcf635d">krk_printValueSafe</a>(stderr, <a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0));</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot; (len=%lu)\n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)strLen);</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        krk_pop();</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    }</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    uint32_t functionCount;</div>
@@ -604,14 +604,14 @@ $(function() {
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    DEBUGOUT(<span class="stringliteral">&quot;[Code Objects (count=%lu)]\n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)functionCount);</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)functionCount; ++i) {</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        krk_push(OBJECT_VAL(krk_newCodeObject()));</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        ListAppend(2,(KrkValue[]){SeenFunctions, krk_peek(0)}, 0);</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        krk_pop();</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(krk_newCodeObject()));</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        ListAppend(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){SeenFunctions, <a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)}, 0);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    }</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)functionCount; ++i) {</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        KrkCodeObject * <span class="keyword">self</span> = AS_codeobject(AS_LIST(SeenFunctions)-&gt;values[i]);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * <span class="keyword">self</span> = AS_codeobject(AS_LIST(SeenFunctions)-&gt;values[i]);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="keyword">struct </span><a class="code" href="structFunctionHeader.html">FunctionHeader</a> function;</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        assert(fread(&amp;<span class="keyword">function</span>, 1, <span class="keyword">sizeof</span>(<span class="keyword">function</span>), inFile) == <span class="keyword">sizeof</span>(<span class="keyword">function</span>));</div>
@@ -624,7 +624,7 @@ $(function() {
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="preprocessor">#ifdef ISDEBUG</span></div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;&lt;&quot;</span>);</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        krk_printValueSafe(stderr,OBJECT_VAL(self-&gt;name));</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <a class="code" href="structKrkValue.html#ac008451142bcc182fb64af125bcf635d">krk_printValueSafe</a>(stderr,OBJECT_VAL(self-&gt;name));</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;&gt;\n&quot;</span>);</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
@@ -650,18 +650,18 @@ $(function() {
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <span class="keyword">self</span>-&gt;collectsArguments = (<span class="keyword">function</span>.flags &amp; (1 &lt;&lt; 0)) ? 1 : 0;</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="keyword">self</span>-&gt;collectsKeywords  = (<span class="keyword">function</span>.flags &amp; (1 &lt;&lt; 1)) ? 1 : 0;</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="keyword">self</span>-&gt;isGenerator       = (<span class="keyword">function</span>.flags &amp; (1 &lt;&lt; 2)) ? 1 : 0;</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <span class="keyword">self</span>-&gt;globalsContext = krk_currentThread.module;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <span class="keyword">self</span>-&gt;globalsContext = <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>;</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <span class="keyword">self</span>-&gt;upvalueCount = <span class="keyword">function</span>.upvalues;</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
 <div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        <span class="comment">/* Read argument names */</span></div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        DEBUGOUT(<span class="stringliteral">&quot;  [Required Arguments]\n&quot;</span>);</div>
 <div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)<span class="keyword">function</span>.reqArgs + !!(self-&gt;collectsArguments); i++) {</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;            krk_writeValueArray(&amp;self-&gt;requiredArgNames, valueFromConstant(i,inFile));</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;            <a class="code" href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">krk_writeValueArray</a>(&amp;self-&gt;requiredArgNames, valueFromConstant(i,inFile));</div>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        }</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; </div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        DEBUGOUT(<span class="stringliteral">&quot;  [Keyword Arguments]\n&quot;</span>);</div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)<span class="keyword">function</span>.kwArgs + !!(self-&gt;collectsKeywords); i++) {</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            krk_writeValueArray(&amp;self-&gt;keywordArgNames, valueFromConstant(i,inFile));</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            <a class="code" href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">krk_writeValueArray</a>(&amp;self-&gt;keywordArgNames, valueFromConstant(i,inFile));</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        }</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="comment">/* Skip bytecode for now, we&#39;ll look at it later */</span></div>
@@ -671,7 +671,7 @@ $(function() {
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="keyword">self</span>-&gt;chunk.count = <span class="keyword">self</span>-&gt;chunk.capacity;</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        <span class="keyword">self</span>-&gt;chunk.linesCapacity = <span class="keyword">function</span>.lmSize;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keyword">self</span>-&gt;chunk.lines = malloc(<span class="keyword">sizeof</span>(KrkLineMap) * <span class="keyword">function</span>.lmSize);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keyword">self</span>-&gt;chunk.lines = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structKrkLineMap.html">KrkLineMap</a>) * <span class="keyword">function</span>.lmSize);</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        <span class="comment">/* Examine line mappings */</span></div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        DEBUGOUT(<span class="stringliteral">&quot;  [Line Mapping]\n&quot;</span>);</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">function</span>.lmSize; ++i) {</div>
@@ -689,23 +689,23 @@ $(function() {
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="comment">/* Read constants */</span></div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        DEBUGOUT(<span class="stringliteral">&quot;  [Constants Table]\n&quot;</span>);</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">function</span>.ctSize; i++) {</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            krk_writeValueArray(&amp;self-&gt;chunk.constants, valueFromConstant(i, inFile));</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            <a class="code" href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">krk_writeValueArray</a>(&amp;self-&gt;chunk.constants, valueFromConstant(i, inFile));</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        }</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    }</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    <span class="comment">/* Now we can move the first function up and call it to initialize a module */</span></div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    krk_pop();</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    krk_pop();</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    krk_push(AS_LIST(SeenFunctions)-&gt;values[0]);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(AS_LIST(SeenFunctions)-&gt;values[0]);</div>
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    KrkClosure * closure = krk_newClosure(AS_codeobject(krk_peek(0)));</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    krk_pop();</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    krk_push(OBJECT_VAL(closure));</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <a class="code" href="structKrkClosure.html">KrkClosure</a> * closure = krk_newClosure(AS_codeobject(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)));</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(closure));</div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160; </div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    krk_callValue(OBJECT_VAL(closure), 0, 1);</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <a class="code" href="structKrkValue.html#a1d42a4f280a6ccd9994f7ce3d8500a35">krk_callValue</a>(OBJECT_VAL(closure), 0, 1);</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; </div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="comment">/* TODO: Load module into module table */</span></div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    KrkValue result = krk_runNext();</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="vm_8h.html#a1888ed7a2fa5d9f3f1cd619543a4f9a1">krk_runNext</a>();</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(result)) <span class="keywordflow">return</span> AS_INTEGER(result);</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">return</span> runSimpleRepl();</div>
@@ -722,7 +722,7 @@ $(function() {
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="comment">/* Initialize a VM */</span></div>
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    findInterpreter(argv);</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    krk_initVM(0);</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(0);</div>
 <div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    _initListFunctions();</div>
 <div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">if</span> (argc &lt; 3) {</div>
@@ -734,9 +734,40 @@ $(function() {
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="avm_8h_html_ae174ce2f93bf0cc63ae45f90e8c61840"><div class="ttname"><a href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840">krk_dumpTraceback</a></div><div class="ttdeci">void krk_dumpTraceback()</div><div class="ttdoc">If there is an active exception, print a traceback to stderr.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00116">vm.c:116</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00263">vm.h:263</a></div></div>
 <div class="ttc" id="astructMarshalHeader_html"><div class="ttname"><a href="structMarshalHeader.html">MarshalHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="compile_8c_source.html#l00025">compile.c:25</a></div></div>
+<div class="ttc" id="astructKrkLineMap_html"><div class="ttname"><a href="structKrkLineMap.html">KrkLineMap</a></div><div class="ttdoc">Map entry of instruction offsets to line numbers.</div><div class="ttdef"><b>Definition:</b> <a href="chunk_8h_source.html#l00158">chunk.h:158</a></div></div>
+<div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00059">object.h:59</a></div></div>
+<div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00300">vm.c:300</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00097">table.c:97</a></div></div>
+<div class="ttc" id="avm_8h_html_a1888ed7a2fa5d9f3f1cd619543a4f9a1"><div class="ttname"><a href="vm_8h.html#a1888ed7a2fa5d9f3f1cd619543a4f9a1">krk_runNext</a></div><div class="ttdeci">KrkValue krk_runNext(void)</div><div class="ttdoc">Continue VM execution until the next exit trigger.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02744">vm.c:2744</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a728694365ca28029a1f0f06bc1f449c6"><div class="ttname"><a href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">KrkValueArray::krk_writeValueArray</a></div><div class="ttdeci">void krk_writeValueArray(KrkValueArray *array, KrkValue value)</div><div class="ttdoc">Add a value to a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00014">value.c:14</a></div></div>
+<div class="ttc" id="astructKrkBytes_html"><div class="ttname"><a href="structKrkBytes.html">KrkBytes</a></div><div class="ttdoc">Immutable sequence of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00072">object.h:72</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a21803c1b5e958b8935f51c162c70c090"><div class="ttname"><a href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">KrkValueArray::values</a></div><div class="ttdeci">KrkValue * values</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00085">value.h:85</a></div></div>
+<div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00065">value.h:65</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_af4ccc362db656f5de1ab9d9f1be205e9"><div class="ttname"><a href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">KrkThreadState::module</a></div><div class="ttdeci">KrkInstance * module</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00084">value.h:84</a></div></div>
+<div class="ttc" id="astructKrkClosure_html"><div class="ttname"><a href="structKrkClosure.html">KrkClosure</a></div><div class="ttdoc">Function object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00137">object.h:137</a></div></div>
+<div class="ttc" id="acompiler_8h_html"><div class="ttname"><a href="compiler_8h.html">compiler.h</a></div><div class="ttdoc">Exported methods for the source compiler.</div></div>
 <div class="ttc" id="astructLineMapEntry_html"><div class="ttname"><a href="structLineMapEntry.html">LineMapEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="compile_8c_source.html#l00045">compile.c:45</a></div></div>
+<div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01131">vm.c:1131</a></div></div>
+<div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00078">vm.c:78</a></div></div>
+<div class="ttc" id="acompiler_8c_html_acab3272031ba406c0aa9ce777a50ce77"><div class="ttname"><a href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a></div><div class="ttdeci">KrkCodeObject * krk_compile(const char *src, char *fileName)</div><div class="ttdoc">Compile a string to a code object.</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l03115">compiler.c:3115</a></div></div>
+<div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00280">vm.c:280</a></div></div>
+<div class="ttc" id="astructKrkList_html_a5bc0a6b5797db38857b9a14c8f1e9389"><div class="ttname"><a href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">KrkList::krk_list_of</a></div><div class="ttdeci">KrkValue krk_list_of(int argc, KrkValue argv[], int hasKw)</div><div class="ttdoc">Create a list object.</div><div class="ttdef"><b>Definition:</b> <a href="obj__list_8c_source.html#l00031">obj_list.c:31</a></div></div>
 <div class="ttc" id="astructFunctionHeader_html"><div class="ttname"><a href="structFunctionHeader.html">FunctionHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="compile_8c_source.html#l00030">compile.c:30</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a1d42a4f280a6ccd9994f7ce3d8500a35"><div class="ttname"><a href="structKrkValue.html#a1d42a4f280a6ccd9994f7ce3d8500a35">KrkValue::krk_callValue</a></div><div class="ttdeci">int krk_callValue(KrkValue callee, int argCount, int extra)</div><div class="ttdoc">Call a callable value in the current stack context.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00807">vm.c:807</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01336">vm.c:1336</a></div></div>
+<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00313">vm.c:313</a></div></div>
+<div class="ttc" id="astructKrkString_html_a6caf0d99ca9b010dad6c7acb3b9839d9"><div class="ttname"><a href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">KrkString::krk_takeString</a></div><div class="ttdeci">KrkString * krk_takeString(char *chars, size_t length)</div><div class="ttdoc">Yield ownership of a C string to the GC and obtain a string object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00204">object.c:204</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00188">vm.h:188</a></div></div>
+<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02752">vm.c:2752</a></div></div>
+<div class="ttc" id="astructKrkCodeObject_html"><div class="ttname"><a href="structKrkCodeObject.html">KrkCodeObject</a></div><div class="ttdoc">Code object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00111">object.h:111</a></div></div>
+<div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
+<div class="ttc" id="astructKrkValue_html_ac008451142bcc182fb64af125bcf635d"><div class="ttname"><a href="structKrkValue.html#ac008451142bcc182fb64af125bcf635d">KrkValue::krk_printValueSafe</a></div><div class="ttdeci">void krk_printValueSafe(FILE *f, KrkValue value)</div><div class="ttdoc">Print a value without calling the VM.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00049">value.c:49</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

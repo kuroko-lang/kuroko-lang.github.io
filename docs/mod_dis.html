@@ -107,7 +107,7 @@ Code Disassembly in Kuroko</h2>
 <p>The <code>dis</code> module contains functions for dealing with <em>code objects</em> which represent the compiled bytecode of a Kuroko function. The bytecode compilation process is entirely static and bytecode analysis can be performed without calling into the VM to run dynamic code.</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Debugger Breakpoints</h2>
-<p>Kuroko interpreters can provide a debugger hook through the C API's krk_debug_registerCallback() function. Breakpoints can be managed both from the C API and from this module's <a class="el" href="mod_dis.html#addbreakpoint">addbreakpoint</a>, <a class="el" href="mod_dis.html#delbreakpoint">delbreakpoint</a>, <a class="el" href="mod_dis.html#enablebreakpoint">enablebreakpoint</a>, and <a class="el" href="mod_dis.html#disablebreakpoint">disablebreakpoint</a> methods.</p>
+<p>Kuroko interpreters can provide a debugger hook through the C API's <a class="el" href="debug_8h.html#ab85a7b4a451d229bb2b6ab18898361e1">krk_debug_registerCallback()</a> function. Breakpoints can be managed both from the C API and from this module's <a class="el" href="mod_dis.html#addbreakpoint">addbreakpoint</a>, <a class="el" href="mod_dis.html#delbreakpoint">delbreakpoint</a>, <a class="el" href="mod_dis.html#enablebreakpoint">enablebreakpoint</a>, and <a class="el" href="mod_dis.html#disablebreakpoint">disablebreakpoint</a> methods.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Functions</h2>
 <p><a class="anchor" id="addbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#addbreakpoint">_</a></span><b>addbreakpoint</b>(<i>func, line</i>)</h3><div class="memitem"><div class="memdoc"></p>

@@ -120,31 +120,40 @@ $(function() {
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
-<code>#include &lt;kuroko/kuroko.h&gt;</code><br />
-<code>#include &lt;kuroko/compiler.h&gt;</code><br />
-<code>#include &lt;kuroko/memory.h&gt;</code><br />
-<code>#include &lt;kuroko/scanner.h&gt;</code><br />
-<code>#include &lt;kuroko/object.h&gt;</code><br />
-<code>#include &lt;kuroko/debug.h&gt;</code><br />
-<code>#include &lt;kuroko/vm.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="kuroko_8h_source.html">kuroko/kuroko.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="compiler_8h_source.html">kuroko/compiler.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="memory_8h_source.html">kuroko/memory.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="scanner_8h_source.html">kuroko/scanner.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="object_8h_source.html">kuroko/object.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="debug_8h_source.html">kuroko/debug.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vm_8h_source.html">kuroko/vm.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for compiler.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="compiler_8c__incl.png" border="0" usemap="#src_2compiler_8c" alt=""/></div>
 <map name="src_2compiler_8c" id="src_2compiler_8c">
-<area shape="rect" title="Single&#45;pass bytecode compiler." alt="" coords="591,5,705,32"/>
+<area shape="rect" title="Single&#45;pass bytecode compiler." alt="" coords="667,5,781,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" title=" " alt="" coords="104,80,171,107"/>
-<area shape="rect" title=" " alt="" coords="195,80,266,107"/>
-<area shape="rect" title=" " alt="" coords="290,80,361,107"/>
-<area shape="rect" title=" " alt="" coords="385,80,481,107"/>
-<area shape="rect" title=" " alt="" coords="506,80,633,107"/>
-<area shape="rect" title=" " alt="" coords="657,80,796,107"/>
-<area shape="rect" title=" " alt="" coords="821,80,955,107"/>
-<area shape="rect" title=" " alt="" coords="980,80,1113,107"/>
-<area shape="rect" title=" " alt="" coords="1137,80,1260,107"/>
-<area shape="rect" title=" " alt="" coords="1284,80,1407,107"/>
-<area shape="rect" title=" " alt="" coords="1431,80,1534,107"/>
+<area shape="rect" title=" " alt="" coords="160,453,227,480"/>
+<area shape="rect" title=" " alt="" coords="665,528,735,555"/>
+<area shape="rect" title=" " alt="" coords="1067,80,1138,107"/>
+<area shape="rect" title=" " alt="" coords="744,229,840,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="535,453,662,480"/>
+<area shape="rect" href="compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="483,155,621,181"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="395,229,469,256"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="802,155,937,181"/>
+<area shape="rect" href="scanner_8h.html" title="Definitions used by the token scanner." alt="" coords="1163,80,1296,107"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="285,80,408,107"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="646,155,701,181"/>
+<area shape="rect" title=" " alt="" coords="469,528,539,555"/>
+<area shape="rect" title=" " alt="" coords="564,528,639,555"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="434,379,505,405"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="307,304,381,331"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="557,304,624,331"/>
+<area shape="rect" title=" " alt="" coords="303,453,387,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="529,379,612,405"/>
+<area shape="rect" title=" " alt="" coords="439,453,511,480"/>
+<area shape="rect" title=" " alt="" coords="595,229,669,256"/>
 </map>
 </div>
 </div>
@@ -179,7 +188,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE</b>(s)</td></tr>
 <tr class="separator:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a742a715a9dbe2cb517df0ca218d47"><td class="memItemLeft" align="right" valign="top"><a id="a24a742a715a9dbe2cb517df0ca218d47"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.panicMode) break; krk_runtimeError(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.panicMode) break; <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
 <tr class="separator:a24a742a715a9dbe2cb517df0ca218d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259aac00ed43fd7ac58196b770963525"><td class="memItemLeft" align="right" valign="top"><a id="a259aac00ed43fd7ac58196b770963525"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>error</b>(...)&#160;&#160;&#160;raiseSyntaxError(&amp;parser.previous, __VA_ARGS__)</td></tr>
@@ -268,11 +277,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acab3272031ba406c0aa9ce777a50ce77"><td class="memItemLeft" align="right" valign="top"><a id="acab3272031ba406c0aa9ce777a50ce77"></a>
-KrkCodeObject *&#160;</td><td class="memItemRight" valign="bottom"><b>krk_compile</b> (const char *src, char *fileName)</td></tr>
+<tr class="memitem:acab3272031ba406c0aa9ce777a50ce77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a> (const char *src, char *fileName)</td></tr>
+<tr class="memdesc:acab3272031ba406c0aa9ce777a50ce77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a string to a code object.  <a href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">More...</a><br /></td></tr>
 <tr class="separator:acab3272031ba406c0aa9ce777a50ce77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89722e8b88cad3e99af005bbf750e55b"><td class="memItemLeft" align="right" valign="top"><a id="a89722e8b88cad3e99af005bbf750e55b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>krk_markCompilerRoots</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a89722e8b88cad3e99af005bbf750e55b">krk_markCompilerRoots</a> ()</td></tr>
+<tr class="memdesc:a89722e8b88cad3e99af005bbf750e55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark objects owned by the compiler as in use. <br /></td></tr>
 <tr class="separator:a89722e8b88cad3e99af005bbf750e55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -489,7 +499,7 @@ Variables</h2></td></tr>
 <div class="line">        break; \</div>
 <div class="line">    } \</div>
 <div class="line">    unsigned <span class="keywordtype">char</span> bytes[5] = {0}; \</div>
-<div class="line">    size_t len = krk_codepointToBytes(value, bytes); \</div>
+<div class="line">    size_t len = <a class="code" href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">krk_codepointToBytes</a>(value, bytes); \</div>
 <div class="line">    for (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) PUSH_CHAR(bytes[i]); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
@@ -519,7 +529,50 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="acab3272031ba406c0aa9ce777a50ce77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acab3272031ba406c0aa9ce777a50ce77">&#9670;&nbsp;</a></span>krk_compile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a>* krk_compile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compile a string to a code object. </p>
+<p>Compiles the source string 'src' into a code object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Source code string to compile. </td></tr>
+    <tr><td class="paramname">fileName</td><td>Path name of the source file or a representative string like "&lt;stdin&gt;" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The code object resulting from the compilation, or NULL if compilation failed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03115">3115</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
+<div class="ttc" id="astructKrkString_html_afd3c39c1c8d8c9363c767e5038a53b8e"><div class="ttname"><a href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">KrkString::krk_codepointToBytes</a></div><div class="ttdeci">size_t krk_codepointToBytes(krk_integer_type value, unsigned char *out)</div><div class="ttdoc">Convert an integer codepoint to a UTF-8 byte representation.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00035">object.c:35</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

@@ -113,23 +113,36 @@ $(function() {
 <p>Generator objects.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;kuroko/vm.h&gt;</code><br />
-<code>#include &lt;kuroko/value.h&gt;</code><br />
-<code>#include &lt;kuroko/memory.h&gt;</code><br />
-<code>#include &lt;kuroko/util.h&gt;</code><br />
-<code>#include &lt;kuroko/debug.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="vm_8h_source.html">kuroko/vm.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="value_8h_source.html">kuroko/value.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="memory_8h_source.html">kuroko/memory.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="util_8h_source.html">kuroko/util.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="debug_8h_source.html">kuroko/debug.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for obj_gen.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__gen_8c__incl.png" border="0" usemap="#src_2obj__gen_8c" alt=""/></div>
 <map name="src_2obj__gen_8c" id="src_2obj__gen_8c">
-<area shape="rect" title="Generator objects." alt="" coords="307,5,414,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,76,107"/>
-<area shape="rect" title=" " alt="" coords="100,80,203,107"/>
-<area shape="rect" title=" " alt="" coords="227,80,345,107"/>
-<area shape="rect" title=" " alt="" coords="369,80,504,107"/>
-<area shape="rect" title=" " alt="" coords="528,80,631,107"/>
-<area shape="rect" title=" " alt="" coords="655,80,778,107"/>
+<area shape="rect" title="Generator objects." alt="" coords="414,5,521,32"/>
+<area shape="rect" title=" " alt="" coords="225,80,296,107"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="487,155,589,181"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="639,379,709,405"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="225,155,360,181"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="372,80,475,107"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="550,80,673,107"/>
+<area shape="rect" title=" " alt="" coords="562,229,637,256"/>
+<area shape="rect" title=" " alt="" coords="442,229,538,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="413,453,492,480"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="318,304,385,331"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="293,229,367,256"/>
+<area shape="rect" title=" " alt="" coords="513,528,584,555"/>
+<area shape="rect" title=" " alt="" coords="414,528,489,555"/>
+<area shape="rect" title=" " alt="" coords="317,528,388,555"/>
+<area shape="rect" title=" " alt="" coords="793,453,859,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="85,379,167,405"/>
+<area shape="rect" title=" " alt="" coords="5,453,89,480"/>
+<area shape="rect" title=" " alt="" coords="114,453,186,480"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="563,304,636,331"/>
 </map>
 </div>
 </div>
@@ -147,7 +160,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_generator</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structgenerator.html">generator</a> *)AS_OBJECT(o))</td></tr>
 <tr class="separator:a307dcaf24f78b1f2528dbc9915e4b459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a041b1fb83d1ee6be42bd782de6bcae12"><td class="memItemLeft" align="right" valign="top"><a id="a041b1fb83d1ee6be42bd782de6bcae12"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_generator</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o, <a class="el" href="structgenerator.html">generator</a>))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_generator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o, <a class="el" href="structgenerator.html">generator</a>))</td></tr>
 <tr class="separator:a041b1fb83d1ee6be42bd782de6bcae12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374c3875a65d947903e27fc7a47d4e33"><td class="memItemLeft" align="right" valign="top"><a id="a374c3875a65d947903e27fc7a47d4e33"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_CTYPE</b>&#160;&#160;&#160;struct <a class="el" href="structgenerator.html">generator</a> *</td></tr>
@@ -158,14 +171,14 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memItemLeft" align="right" valign="top">KrkInstance *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">krk_buildGenerator</a> (KrkClosure *closure, KrkValue *argsIn, size_t argCount)</td></tr>
+<tr class="memitem:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">krk_buildGenerator</a> (<a class="el" href="structKrkClosure.html">KrkClosure</a> *closure, <a class="el" href="structKrkValue.html">KrkValue</a> *argsIn, size_t argCount)</td></tr>
 <tr class="memdesc:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator object from a closure and set of arguments.  <a href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">More...</a><br /></td></tr>
 <tr class="separator:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1cd1b556bc2e7f34f507b06b6a392f8"><td class="memItemLeft" align="right" valign="top"><a id="ae1cd1b556bc2e7f34f507b06b6a392f8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structgenerator.html">generator</a>, __repr__, { METHOD_TAKES_NONE();size_t estimatedLength=sizeof(&quot;&lt;generator object  at 0x1234567812345678&gt;&quot;)+1+self-&gt;closure-&gt;function-&gt;name-&gt;length;char *tmp=malloc(estimatedLength);size_t lenActual=snprintf(tmp, estimatedLength, &quot;&lt;generator object %s at %p&gt;&quot;, self-&gt;closure-&gt;function-&gt;name-&gt;chars,(void *) self);return OBJECT_VAL(krk_takeString(tmp, lenActual));})</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structgenerator.html">generator</a>, __repr__, { METHOD_TAKES_NONE();size_t estimatedLength=sizeof(&quot;&lt;generator object  at 0x1234567812345678&gt;&quot;)+1+self-&gt;closure-&gt;function-&gt;name-&gt;length;char *tmp=malloc(estimatedLength);size_t lenActual=snprintf(tmp, estimatedLength, &quot;&lt;generator object %s at %p&gt;&quot;, self-&gt;closure-&gt;function-&gt;name-&gt;chars,(void *) self);return OBJECT_VAL(<a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a>(tmp, lenActual));})</td></tr>
 <tr class="separator:ae1cd1b556bc2e7f34f507b06b6a392f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b531d76d521c95ffbe52415c8fa3192"><td class="memItemLeft" align="right" valign="top"><a id="a7b531d76d521c95ffbe52415c8fa3192"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structgenerator.html">generator</a>, __call__, { METHOD_TAKES_AT_MOST(1);if(!self-&gt;ip) return OBJECT_VAL(self);KrkCallFrame *frame=&amp;krk_currentThread.frames[krk_currentThread.frameCount++];frame-&gt;closure=self-&gt;closure;frame-&gt;ip=self-&gt;ip;frame-&gt;slots=krk_currentThread.stackTop - krk_currentThread.stack;frame-&gt;outSlots=frame-&gt;slots;frame-&gt;globals=&amp;self-&gt;closure-&gt;function-&gt;globalsContext-&gt;fields;for(size_t i=0;i&lt; self-&gt;argCount;++i) { krk_push(self-&gt;args[i]);} if(self-&gt;started) { krk_pop();if(argc &gt; 1) { krk_push(argv[1]);} else { krk_push(NONE_VAL());} } self-&gt;running=1;size_t stackBefore=krk_currentThread.stackTop - krk_currentThread.stack;KrkValue result=krk_runNext();size_t stackAfter=krk_currentThread.stackTop - krk_currentThread.stack;self-&gt;running=0;self-&gt;started=1;if(IS_KWARGS(result) &amp;&amp;AS_INTEGER(result)==0) { self-&gt;result=krk_pop();_set_generator_done(self);return OBJECT_VAL(self);} if(krk_currentThread.flags &amp;KRK_THREAD_HAS_EXCEPTION) { _set_generator_done(self);krk_currentThread.stackTop=krk_currentThread.stack+frame-&gt;slots;return NONE_VAL();} if(stackAfter &gt; stackBefore) { size_t newArgs=stackAfter - stackBefore;self-&gt;args=realloc(self-&gt;args, sizeof(KrkValue) *(self-&gt;argCount+newArgs));self-&gt;argCount+=newArgs;} else if(stackAfter&lt; stackBefore) { size_t deadArgs=stackBefore - stackAfter;self-&gt;args=realloc(self-&gt;args, sizeof(KrkValue) *(self-&gt;argCount - deadArgs));self-&gt;argCount -=deadArgs;} memcpy(self-&gt;args, krk_currentThread.stackTop - self-&gt;argCount, sizeof(KrkValue) *self-&gt;argCount);self-&gt;ip=frame-&gt;ip;krk_currentThread.stackTop=krk_currentThread.stack+frame-&gt;slots;return result;})</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structgenerator.html">generator</a>, __call__, { METHOD_TAKES_AT_MOST(1);if(!self-&gt;ip) return OBJECT_VAL(self);<a class="el" href="structKrkCallFrame.html">KrkCallFrame</a> *frame=&amp;krk_currentThread.frames[krk_currentThread.frameCount++];frame-&gt;closure=self-&gt;closure;frame-&gt;ip=self-&gt;ip;frame-&gt;slots=krk_currentThread.stackTop - krk_currentThread.stack;frame-&gt;outSlots=frame-&gt;slots;frame-&gt;globals=&amp;self-&gt;closure-&gt;function-&gt;globalsContext-&gt;fields;for(size_t i=0;i&lt; self-&gt;argCount;++i) { <a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(self-&gt;args[i]);} if(self-&gt;started) { <a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();if(argc &gt; 1) { <a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(argv[1]);} else { <a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(NONE_VAL());} } self-&gt;running=1;size_t stackBefore=krk_currentThread.stackTop - krk_currentThread.stack;<a class="el" href="structKrkValue.html">KrkValue</a> result=<a class="el" href="vm_8h.html#a1888ed7a2fa5d9f3f1cd619543a4f9a1">krk_runNext</a>();size_t stackAfter=krk_currentThread.stackTop - krk_currentThread.stack;self-&gt;running=0;self-&gt;started=1;if(IS_KWARGS(result) &amp;&amp;AS_INTEGER(result)==0) { self-&gt;result=<a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();_set_generator_done(self);return OBJECT_VAL(self);} if(krk_currentThread.flags &amp;KRK_THREAD_HAS_EXCEPTION) { _set_generator_done(self);krk_currentThread.stackTop=krk_currentThread.stack+frame-&gt;slots;return NONE_VAL();} if(stackAfter &gt; stackBefore) { size_t newArgs=stackAfter - stackBefore;self-&gt;args=realloc(self-&gt;args, sizeof(<a class="el" href="structKrkValue.html">KrkValue</a>) *(self-&gt;argCount+newArgs));self-&gt;argCount+=newArgs;} else if(stackAfter&lt; stackBefore) { size_t deadArgs=stackBefore - stackAfter;self-&gt;args=realloc(self-&gt;args, sizeof(<a class="el" href="structKrkValue.html">KrkValue</a>) *(self-&gt;argCount - deadArgs));self-&gt;argCount -=deadArgs;} memcpy(self-&gt;args, krk_currentThread.stackTop - self-&gt;argCount, sizeof(<a class="el" href="structKrkValue.html">KrkValue</a>) *self-&gt;argCount);self-&gt;ip=frame-&gt;ip;krk_currentThread.stackTop=krk_currentThread.stack+frame-&gt;slots;return result;})</td></tr>
 <tr class="separator:a7b531d76d521c95ffbe52415c8fa3192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09ca45d4d9d1dfb1662ad021a1517cec"><td class="memItemLeft" align="right" valign="top"><a id="a09ca45d4d9d1dfb1662ad021a1517cec"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structgenerator.html">generator</a>, __finish__, { METHOD_TAKES_NONE();return self-&gt;result;})</td></tr>
@@ -187,15 +200,15 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">KrkInstance* krk_buildGenerator </td>
+          <td class="memname"><a class="el" href="structKrkInstance.html">KrkInstance</a>* krk_buildGenerator </td>
           <td>(</td>
-          <td class="paramtype">KrkClosure *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkClosure.html">KrkClosure</a> *&#160;</td>
           <td class="paramname"><em>closure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">KrkValue *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
           <td class="paramname"><em>argsIn</em>, </td>
         </tr>
         <tr>
