@@ -5989,6 +5989,21 @@ var ___errno_location = Module["___errno_location"] = function() {
 };
 
 /** @type {function(...*):?} */
+var _htons = Module["_htons"] = function() {
+  return (_htons = Module["_htons"] = Module["asm"]["htons"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
+var _ntohs = Module["_ntohs"] = function() {
+  return (_ntohs = Module["_ntohs"] = Module["asm"]["ntohs"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
+var _htonl = Module["_htonl"] = function() {
+  return (_htonl = Module["_htonl"] = Module["asm"]["htonl"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
 var stackSave = Module["stackSave"] = function() {
   return (stackSave = Module["stackSave"] = Module["asm"]["stackSave"]).apply(null, arguments);
 };
