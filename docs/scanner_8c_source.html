@@ -230,7 +230,7 @@ $(function() {
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">else</span> advance();</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (isAtEnd()) <span class="keywordflow">return</span> errorToken(<span class="stringliteral">&quot;Unterminated string?&quot;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (isAtEnd()) <span class="keywordflow">return</span> errorToken(<span class="stringliteral">&quot;Unterminated string.&quot;</span>);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">while</span> (peek() != quoteMark &amp;&amp; !isAtEnd()) {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span> (peek() == <span class="charliteral">&#39;\n&#39;</span>) <span class="keywordflow">return</span> errorToken(<span class="stringliteral">&quot;Unterminated string.&quot;</span>);</div>
@@ -378,7 +378,7 @@ $(function() {
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
 <div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">krk_ungetToken</a>(<a class="code" href="structKrkToken.html">KrkToken</a> token) {</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">if</span> (scanner.hasUnget) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;(internal error) Tried to unget multiple times, this is not valid.\n&quot;</span>);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        abort();</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    scanner.hasUnget = 1;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    scanner.unget = token;</div>
