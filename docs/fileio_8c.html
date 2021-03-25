@@ -127,28 +127,29 @@ Include dependency graph for fileio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileio_8c__incl.png" border="0" usemap="#src_2fileio_8c" alt=""/></div>
 <map name="src_2fileio_8c" id="src_2fileio_8c">
-<area shape="rect" title="Provides an interface to C FILE* streams." alt="" coords="495,5,585,32"/>
+<area shape="rect" title="Provides an interface to C FILE* streams." alt="" coords="683,5,773,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" title=" " alt="" coords="401,453,468,480"/>
-<area shape="rect" title=" " alt="" coords="713,80,783,107"/>
-<area shape="rect" title=" " alt="" coords="807,80,875,107"/>
-<area shape="rect" title=" " alt="" coords="900,80,972,107"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="382,155,485,181"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="473,379,543,405"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="532,229,607,256"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="611,155,746,181"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="534,80,637,107"/>
-<area shape="rect" title=" " alt="" coords="205,229,280,256"/>
-<area shape="rect" title=" " alt="" coords="304,229,400,256"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="594,453,673,480"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="723,304,789,331"/>
-<area shape="rect" title=" " alt="" coords="646,528,717,555"/>
-<area shape="rect" title=" " alt="" coords="547,528,621,555"/>
-<area shape="rect" title=" " alt="" coords="847,528,918,555"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="823,379,905,405"/>
-<area shape="rect" title=" " alt="" coords="709,453,793,480"/>
-<area shape="rect" title=" " alt="" coords="828,453,900,480"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="523,304,597,331"/>
+<area shape="rect" title=" " alt="" coords="519,453,585,480"/>
+<area shape="rect" title=" " alt="" coords="818,453,889,480"/>
+<area shape="rect" title=" " alt="" coords="993,80,1061,107"/>
+<area shape="rect" title=" " alt="" coords="1085,80,1157,107"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="407,155,510,181"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="618,379,689,405"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="691,229,765,256"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="586,155,721,181"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="541,80,643,107"/>
+<area shape="rect" title=" " alt="" coords="440,229,515,256"/>
+<area shape="rect" title=" " alt="" coords="155,229,251,256"/>
+<area shape="rect" title=" " alt="" coords="325,229,416,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="614,453,693,480"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="347,304,413,331"/>
+<area shape="rect" title=" " alt="" coords="569,528,639,555"/>
+<area shape="rect" title=" " alt="" coords="664,528,739,555"/>
+<area shape="rect" title=" " alt="" coords="339,528,410,555"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="229,379,312,405"/>
+<area shape="rect" title=" " alt="" coords="370,453,454,480"/>
+<area shape="rect" title=" " alt="" coords="235,453,307,480"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="691,304,765,331"/>
 </map>
 </div>
 </div>
@@ -166,19 +167,19 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ae94a4963c7331d7e969cfd053738fdd4"><td class="memItemLeft" align="right" valign="top"><a id="ae94a4963c7331d7e969cfd053738fdd4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_File</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o, <a class="el" href="structFile.html">File</a>))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_File</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o, <a class="el" href="structFile.html">File</a>))</td></tr>
 <tr class="separator:ae94a4963c7331d7e969cfd053738fdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20837a7f5b23128c491f5650dbbb630c"><td class="memItemLeft" align="right" valign="top"><a id="a20837a7f5b23128c491f5650dbbb630c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_File</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structFile.html">File</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:a20837a7f5b23128c491f5650dbbb630c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63b7191e54649886a417efdaf49884e9"><td class="memItemLeft" align="right" valign="top"><a id="a63b7191e54649886a417efdaf49884e9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BinaryFile</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o, BinaryFile))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_BinaryFile</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o, BinaryFile))</td></tr>
 <tr class="separator:a63b7191e54649886a417efdaf49884e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac85b9fa517f3d9902c2fe21a21756eb1"><td class="memItemLeft" align="right" valign="top"><a id="ac85b9fa517f3d9902c2fe21a21756eb1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BinaryFile</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structFile.html">File</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:ac85b9fa517f3d9902c2fe21a21756eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad584c692e50485f9fdfdf8820679d88c"><td class="memItemLeft" align="right" valign="top"><a id="ad584c692e50485f9fdfdf8820679d88c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_Directory</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,<a class="el" href="structDirectory.html">Directory</a>))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_Directory</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o,<a class="el" href="structDirectory.html">Directory</a>))</td></tr>
 <tr class="separator:ad584c692e50485f9fdfdf8820679d88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e6e9526cb99ba8221a325ee29e52c65"><td class="memItemLeft" align="right" valign="top"><a id="a0e6e9526cb99ba8221a325ee29e52c65"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_Directory</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structDirectory.html">Directory</a>*)AS_OBJECT(o))</td></tr>
@@ -199,7 +200,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2b6d9b079fa112a2257b36b9dd790121"><td class="memItemLeft" align="right" valign="top"><a id="a2b6d9b079fa112a2257b36b9dd790121"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_FUNC</b> (open, { FUNCTION_TAKES_AT_LEAST(1);FUNCTION_TAKES_AT_MOST(2);CHECK_ARG(0, str, <a class="el" href="structKrkString.html">KrkString</a> *, filename);if(argc==2 &amp;&amp;!IS_STRING(argv[1])) return TYPE_ERROR(str, argv[1]);<a class="el" href="structKrkValue.html">KrkValue</a> arg;int isBinary=0;if(argc==1) { arg=OBJECT_VAL(S(&quot;r&quot;));krk_push(arg);} else { if(AS_STRING(argv[1]) -&gt;length==0) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;open: mode string must not be empty&quot;);for(size_t i=0;i&lt; AS_STRING(argv[1]) -&gt;length-1;++i) { if(AS_CSTRING(argv[1])[i]=='b') { return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;open: 'b' mode indicator must appear at end of mode string&quot;);} } arg=argv[1];if(AS_CSTRING(argv[1])[AS_STRING(argv[1]) -&gt;length-1]=='b') { <a class="el" href="structKrkValue.html">KrkValue</a> tmp=OBJECT_VAL(<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(AS_CSTRING(argv[1]), AS_STRING(argv[1]) -&gt;length-1));<a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(tmp);isBinary=1;} else { <a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(arg);} } FILE *file=fopen(filename-&gt;chars, AS_CSTRING(<a class="el" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)));if(!file) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;ioError, &quot;open: failed to open file; system returned: %s&quot;, strerror(errno));<a class="el" href="structKrkInstance.html">KrkInstance</a> *fileObject=krk_newInstance(isBinary ? BinaryFile :<a class="el" href="structFile.html">File</a>);<a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(fileObject));<a class="el" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;fileObject-&gt;fields, &quot;filename&quot;, OBJECT_VAL(filename));<a class="el" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;fileObject-&gt;fields, &quot;modestr&quot;, arg);((struct <a class="el" href="structFile.html">File</a> *) fileObject) -&gt;filePtr=file;<a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();<a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();return OBJECT_VAL(fileObject);})</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_FUNC</b> (open, { FUNCTION_TAKES_AT_LEAST(1);FUNCTION_TAKES_AT_MOST(2);CHECK_ARG(0, str, <a class="el" href="structKrkString.html">KrkString</a> *, filename);if(argc==2 &amp;&amp;!IS_STRING(argv[1])) return TYPE_ERROR(str, argv[1]);<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> arg;int isBinary=0;if(argc==1) { arg=OBJECT_VAL(S(&quot;r&quot;));krk_push(arg);} else { if(AS_STRING(argv[1]) -&gt;length==0) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;open: mode string must not be empty&quot;);for(size_t i=0;i&lt; AS_STRING(argv[1]) -&gt;length-1;++i) { if(AS_CSTRING(argv[1])[i]=='b') { return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;open: 'b' mode indicator must appear at end of mode string&quot;);} } arg=argv[1];if(AS_CSTRING(argv[1])[AS_STRING(argv[1]) -&gt;length-1]=='b') { <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> tmp=OBJECT_VAL(<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(AS_CSTRING(argv[1]), AS_STRING(argv[1]) -&gt;length-1));<a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(tmp);isBinary=1;} else { <a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(arg);} } FILE *file=fopen(filename-&gt;chars, AS_CSTRING(<a class="el" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)));if(!file) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;ioError, &quot;open: failed to open file; system returned: %s&quot;, strerror(errno));<a class="el" href="structKrkInstance.html">KrkInstance</a> *fileObject=krk_newInstance(isBinary ? BinaryFile :<a class="el" href="structFile.html">File</a>);<a class="el" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(fileObject));<a class="el" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;fileObject-&gt;fields, &quot;filename&quot;, OBJECT_VAL(filename));<a class="el" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;fileObject-&gt;fields, &quot;modestr&quot;, arg);((struct <a class="el" href="structFile.html">File</a> *) fileObject) -&gt;filePtr=file;<a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();<a class="el" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();return OBJECT_VAL(fileObject);})</td></tr>
 <tr class="separator:a2b6d9b079fa112a2257b36b9dd790121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf9d63307ce277e58236c2df5b2bc8f5"><td class="memItemLeft" align="right" valign="top"><a id="abf9d63307ce277e58236c2df5b2bc8f5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structFile.html">File</a>, readline, { METHOD_TAKES_NONE();FILE *file=self-&gt;filePtr;if(!file||feof(file)) { return NONE_VAL();} size_t sizeRead=0;size_t spaceAvailable=0;char *buffer=NULL;do { if(spaceAvailable&lt; sizeRead+BLOCK_SIZE) { spaceAvailable=(spaceAvailable ? spaceAvailable *2 :(2 *BLOCK_SIZE));buffer=realloc(buffer, spaceAvailable);} char *target=&amp;buffer[sizeRead];while(sizeRead&lt; spaceAvailable) { int c=fgetc(file);if(krk_currentThread.flags &amp;KRK_THREAD_SIGNALLED) break;if(c&lt; 0) break;sizeRead++;*target++=c;if(c=='\n') goto _finish_line;} if(krk_currentThread.flags &amp;KRK_THREAD_SIGNALLED) break;} while(!feof(file));_finish_line:(void) 0;if(sizeRead==0) { free(buffer);return NONE_VAL();} <a class="el" href="structKrkString.html">KrkString</a> *out=<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(buffer, sizeRead);free(buffer);return OBJECT_VAL(out);})</td></tr>
@@ -226,7 +227,7 @@ Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structDirectory.html">Directory</a>, __iter__, { METHOD_TAKES_NONE();return argv[0];})</td></tr>
 <tr class="separator:a075335fa759f72a7ab28af3cc5a1cc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d3e11db60cc8dc7ef18222fd0bee7d7"><td class="memItemLeft" align="right" valign="top"><a id="a0d3e11db60cc8dc7ef18222fd0bee7d7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structDirectory.html">Directory</a>, __repr__, { METHOD_TAKES_NONE();<a class="el" href="structKrkValue.html">KrkValue</a> path;if(!<a class="el" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;self-&gt;inst.fields, OBJECT_VAL(S(&quot;path&quot;)), &amp;path)||!IS_STRING(path)) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;valueError, &quot;corrupt <a class="el" href="structDirectory.html">Directory</a>&quot;);size_t allocSize=AS_STRING(path) -&gt;length+100;char *tmp=malloc(allocSize);size_t len=snprintf(tmp, allocSize, &quot;&lt;%s directory '%s' at %p&gt;&quot;, self-&gt;dirPtr ? &quot;open&quot; :&quot;closed&quot;, AS_CSTRING(path),(void *) self);<a class="el" href="structKrkString.html">KrkString</a> *out=<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(tmp, len);free(tmp);return OBJECT_VAL(out);})</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (KRK_METHOD(<a class="el" href="structDirectory.html">Directory</a>, __repr__, { METHOD_TAKES_NONE();<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> path;if(!<a class="el" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;self-&gt;inst.fields, OBJECT_VAL(S(&quot;path&quot;)), &amp;path)||!IS_STRING(path)) return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;valueError, &quot;corrupt <a class="el" href="structDirectory.html">Directory</a>&quot;);size_t allocSize=AS_STRING(path) -&gt;length+100;char *tmp=malloc(allocSize);size_t len=snprintf(tmp, allocSize, &quot;&lt;%s directory '%s' at %p&gt;&quot;, self-&gt;dirPtr ? &quot;open&quot; :&quot;closed&quot;, AS_CSTRING(path),(void *) self);<a class="el" href="structKrkString.html">KrkString</a> *out=<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(tmp, len);free(tmp);return OBJECT_VAL(out);})</td></tr>
 <tr class="separator:a0d3e11db60cc8dc7ef18222fd0bee7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b320a3711956d17603c421041391245"><td class="memItemLeft" align="right" valign="top"><a id="a4b320a3711956d17603c421041391245"></a>
 _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileioMod</b> (void)</td></tr>

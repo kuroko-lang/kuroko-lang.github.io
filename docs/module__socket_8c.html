@@ -125,29 +125,30 @@ Include dependency graph for module_socket.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="module__socket_8c__incl.png" border="0" usemap="#src_2module__socket_8c" alt=""/></div>
 <map name="src_2module__socket_8c" id="src_2module__socket_8c">
-<area shape="rect" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="369,5,524,32"/>
-<area shape="rect" title=" " alt="" coords="115,80,186,107"/>
-<area shape="rect" title=" " alt="" coords="5,229,101,256"/>
-<area shape="rect" title=" " alt="" coords="459,80,562,107"/>
-<area shape="rect" title=" " alt="" coords="586,80,678,107"/>
-<area shape="rect" title=" " alt="" coords="702,80,773,107"/>
-<area shape="rect" title=" " alt="" coords="797,80,865,107"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="262,155,365,181"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="333,80,435,107"/>
-<area shape="rect" title=" " alt="" coords="125,229,200,256"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="473,453,551,480"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="353,379,423,405"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="601,304,668,331"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="401,229,476,256"/>
-<area shape="rect" title=" " alt="" coords="525,528,595,555"/>
-<area shape="rect" title=" " alt="" coords="425,528,500,555"/>
-<area shape="rect" title=" " alt="" coords="726,528,797,555"/>
-<area shape="rect" title=" " alt="" coords="292,453,359,480"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="701,379,784,405"/>
-<area shape="rect" title=" " alt="" coords="587,453,671,480"/>
-<area shape="rect" title=" " alt="" coords="707,453,779,480"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="402,304,475,331"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="533,155,619,181"/>
+<area shape="rect" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="241,5,396,32"/>
+<area shape="rect" title=" " alt="" coords="193,453,263,480"/>
+<area shape="rect" title=" " alt="" coords="47,229,143,256"/>
+<area shape="rect" title=" " alt="" coords="94,80,197,107"/>
+<area shape="rect" title=" " alt="" coords="221,80,313,107"/>
+<area shape="rect" title=" " alt="" coords="337,80,407,107"/>
+<area shape="rect" title=" " alt="" coords="431,80,499,107"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="394,155,497,181"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="575,80,678,107"/>
+<area shape="rect" title=" " alt="" coords="333,229,408,256"/>
+<area shape="rect" title=" " alt="" coords="219,229,309,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="575,453,654,480"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="405,379,475,405"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="652,304,719,331"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="527,229,601,256"/>
+<area shape="rect" title=" " alt="" coords="483,528,554,555"/>
+<area shape="rect" title=" " alt="" coords="579,528,653,555"/>
+<area shape="rect" title=" " alt="" coords="679,528,750,555"/>
+<area shape="rect" title=" " alt="" coords="445,453,512,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="804,379,887,405"/>
+<area shape="rect" title=" " alt="" coords="882,453,966,480"/>
+<area shape="rect" title=" " alt="" coords="785,453,857,480"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="453,304,526,331"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="627,155,714,181"/>
 </map>
 </div>
 </div>
@@ -161,7 +162,7 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a67dd34f746d5a767cba1a646f3ed8f37"><td class="memItemLeft" align="right" valign="top"><a id="a67dd34f746d5a767cba1a646f3ed8f37"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_socket</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,SocketClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_socket</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o,SocketClass))</td></tr>
 <tr class="separator:a67dd34f746d5a767cba1a646f3ed8f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb6cf3d326990b24b6605003097f197"><td class="memItemLeft" align="right" valign="top"><a id="abdb6cf3d326990b24b6605003097f197"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_socket</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structsocket.html">socket</a>*)AS_OBJECT(o))</td></tr>
@@ -201,7 +202,7 @@ Functions</h2></td></tr>
 <tr class="memitem:aa5895ad3d006c6b431b8a57bc5387a38"><td class="memItemLeft" align="right" valign="top"><a id="aa5895ad3d006c6b431b8a57bc5387a38"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b> (<a class="el" href="structsocket.html">socket</a>, setsockopt, { METHOD_TAKES_EXACTLY(3);CHECK_ARG(1, int, krk_integer_type, level);CHECK_ARG(2, int, krk_integer_type, optname);int result;if(IS_INTEGER(argv[3])) { int val=AS_INTEGER(argv[3]);result=setsockopt(self-&gt;sockfd, level, optname,(void *)&amp;val, sizeof(int));} else if(IS_BYTES(argv[3])) { result=setsockopt(self-&gt;sockfd, level, optname,(void *) AS_BYTES(argv[3]) -&gt;bytes, AS_BYTES(argv[3]) -&gt;length);} else { return TYPE_ERROR(int or bytes, argv[3]);} if(result&lt; 0) { return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(SocketError, &quot;Socket error: %s&quot;, strerror(errno));} })</td></tr>
 <tr class="separator:aa5895ad3d006c6b431b8a57bc5387a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdefb72377282a1f18b0297679fbfd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a> (void)</td></tr>
+<tr class="memitem:adfdefb72377282a1f18b0297679fbfd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a> (void)</td></tr>
 <tr class="separator:adfdefb72377282a1f18b0297679fbfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -278,7 +279,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> krk_module_onload_socket </td>
+          <td class="memname"><a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> krk_module_onload_socket </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -293,7 +294,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00097">table.c:97</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00098">table.c:98</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>
