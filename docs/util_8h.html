@@ -103,7 +103,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">util.h File Reference</div>  </div>
 </div><!--header-->
@@ -119,25 +121,26 @@ Include dependency graph for util.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="util_8h__incl.png" border="0" usemap="#src_2kuroko_2util_8h" alt=""/></div>
 <map name="src_2kuroko_2util_8h" id="src_2kuroko_2util_8h">
-<area shape="rect" title="Utilities for creating native bindings." alt="" coords="219,5,346,32"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="245,155,320,181"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="408,80,463,107"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="136,80,223,107"/>
-<area shape="rect" title=" " alt="" coords="588,379,654,405"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="259,379,338,405"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="406,304,476,331"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="336,229,410,256"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="144,229,210,256"/>
-<area shape="rect" title=" " alt="" coords="140,379,224,405"/>
-<area shape="rect" title=" " alt="" coords="311,453,382,480"/>
-<area shape="rect" title=" " alt="" coords="212,453,286,480"/>
-<area shape="rect" title=" " alt="" coords="59,453,130,480"/>
-<area shape="rect" title=" " alt="" coords="406,379,476,405"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="26,304,109,331"/>
-<area shape="rect" title=" " alt="" coords="32,379,104,405"/>
-<area shape="rect" title=" " alt="" coords="344,155,418,181"/>
-<area shape="rect" title=" " alt="" coords="442,155,538,181"/>
-<area shape="rect" title=" " alt="" coords="562,155,653,181"/>
+<area shape="rect" title="Utilities for creating native bindings." alt="" coords="454,5,581,32"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="562,155,636,181"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="364,80,418,107"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="556,80,642,107"/>
+<area shape="rect" title=" " alt="" coords="575,379,642,405"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="377,379,456,405"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="489,304,560,331"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="413,229,486,256"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="714,229,780,256"/>
+<area shape="rect" title=" " alt="" coords="666,379,750,405"/>
+<area shape="rect" title=" " alt="" coords="430,453,501,480"/>
+<area shape="rect" title=" " alt="" coords="331,453,406,480"/>
+<area shape="rect" title=" " alt="" coords="686,453,757,480"/>
+<area shape="rect" title=" " alt="" coords="480,379,550,405"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="764,304,847,331"/>
+<area shape="rect" title=" " alt="" coords="775,379,847,405"/>
+<area shape="rect" title=" " alt="" coords="39,155,114,181"/>
+<area shape="rect" title=" " alt="" coords="138,155,202,181"/>
+<area shape="rect" title=" " alt="" coords="226,155,322,181"/>
+<area shape="rect" title=" " alt="" coords="346,155,436,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -145,7 +148,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="util_8h__dep__incl.png" border="0" usemap="#src_2kuroko_2util_8hdep" alt=""/></div>
 <map name="src_2kuroko_2util_8hdep" id="src_2kuroko_2util_8hdep">
-<area shape="rect" title="Utilities for creating native bindings." alt="" coords="1689,5,1815,32"/>
+<area shape="rect" title="Utilities for creating native bindings." alt="" coords="1818,5,1945,32"/>
 <area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
 <area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="133,80,229,107"/>
 <area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="254,80,381,107"/>
@@ -167,10 +170,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="obj__tuple_8c_source.html" title=" " alt="" coords="2513,80,2629,107"/>
 <area shape="rect" href="obj__typing_8c_source.html" title=" " alt="" coords="2653,80,2777,107"/>
 <area shape="rect" href="os_8c_source.html" title=" " alt="" coords="2801,80,2871,107"/>
-<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="2895,80,2982,107"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="3007,80,3084,107"/>
-<area shape="rect" href="compile_8c_source.html" title=" " alt="" coords="3109,80,3230,107"/>
-<area shape="rect" href="sandbox_8c_source.html" title=" " alt="" coords="3254,80,3378,107"/>
+<area shape="rect" href="table_8c_source.html" title=" " alt="" coords="2895,80,2985,107"/>
+<area shape="rect" href="threads_8c_source.html" title=" " alt="" coords="3009,80,3114,107"/>
+<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="3138,80,3225,107"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="3249,80,3327,107"/>
+<area shape="rect" href="compile_8c_source.html" title=" " alt="" coords="3351,80,3473,107"/>
+<area shape="rect" href="sandbox_8c_source.html" title=" " alt="" coords="3497,80,3621,107"/>
 </map>
 </div>
 </div>
@@ -265,7 +270,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_float</b>(o)&#160;&#160;&#160;(AS_FLOATING(o))</td></tr>
 <tr class="separator:a95ea6523d1ef4dba24c1ef3d763b3775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0978b619dc6dbe6571b756372557cc8"><td class="memItemLeft" align="right" valign="top"><a id="ab0978b619dc6dbe6571b756372557cc8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;krk_isInstanceOf(o,vm.baseClasses-&gt;listClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;listClass) || krk_isInstanceOf(o,vm.baseClasses-&gt;listClass))</td></tr>
 <tr class="separator:ab0978b619dc6dbe6571b756372557cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5941ef7097fda1e8d39b92ea1f7c3db6"><td class="memItemLeft" align="right" valign="top"><a id="a5941ef7097fda1e8d39b92ea1f7c3db6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_list</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkList.html">KrkList</a>*)AS_OBJECT(o)</td></tr>
@@ -307,7 +312,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_striterator</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
 <tr class="separator:a1404d8a282279f5d84f9100102957660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memItemLeft" align="right" valign="top"><a id="aaae5a839f21b930f00ad8e9282cf60fd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;krk_isInstanceOf(o,vm.baseClasses-&gt;dictClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;dictClass) || krk_isInstanceOf(o,vm.baseClasses-&gt;dictClass))</td></tr>
 <tr class="separator:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a482e5b129feba8ce2d4a401d0c3f2830"><td class="memItemLeft" align="right" valign="top"><a id="a482e5b129feba8ce2d4a401d0c3f2830"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dict</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkDict.html">KrkDict</a>*)AS_OBJECT(o)</td></tr>
@@ -333,6 +338,21 @@ Macros</h2></td></tr>
 <tr class="memitem:a30b66fee49fe25b0a81b08d60bd16e43"><td class="memItemLeft" align="right" valign="top"><a id="a30b66fee49fe25b0a81b08d60bd16e43"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>unpackError</b>(fromInput)&#160;&#160;&#160;return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;'%s' object is not iterable&quot;, krk_typeName(fromInput));</td></tr>
 <tr class="separator:a30b66fee49fe25b0a81b08d60bd16e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ae6749848b801e91fcf637a23a0e0b"><td class="memItemLeft" align="right" valign="top"><a id="a36ae6749848b801e91fcf637a23a0e0b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_get</b>&#160;&#160;&#160;FUNC_NAME(str,__getitem__)</td></tr>
+<tr class="separator:a36ae6749848b801e91fcf637a23a0e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98632416373395e41be4cea48098450"><td class="memItemLeft" align="right" valign="top"><a id="ae98632416373395e41be4cea48098450"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_int</b>&#160;&#160;&#160;FUNC_NAME(str,__int__)</td></tr>
+<tr class="separator:ae98632416373395e41be4cea48098450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a352970066d198dbcc72d0d79889fc09d"><td class="memItemLeft" align="right" valign="top"><a id="a352970066d198dbcc72d0d79889fc09d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_float</b>&#160;&#160;&#160;FUNC_NAME(str,__float__)</td></tr>
+<tr class="separator:a352970066d198dbcc72d0d79889fc09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfabbd67f67eaf952cdf7394eeb22731"><td class="memItemLeft" align="right" valign="top"><a id="abfabbd67f67eaf952cdf7394eeb22731"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_split</b>&#160;&#160;&#160;FUNC_NAME(str,split)</td></tr>
+<tr class="separator:abfabbd67f67eaf952cdf7394eeb22731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba145dec987bb141a6c2468a06b6e5d"><td class="memItemLeft" align="right" valign="top"><a id="a0ba145dec987bb141a6c2468a06b6e5d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_format</b>&#160;&#160;&#160;FUNC_NAME(str,format)</td></tr>
+<tr class="separator:a0ba145dec987bb141a6c2468a06b6e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f9c33e00f216e18c217ff9817454b59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>unpackIterable</b>(fromInput)</td></tr>
 <tr class="separator:a9f9c33e00f216e18c217ff9817454b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77a71b1d28d4fa94bca35208cc91533f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>unpackIterableFast</b>(fromInput)</td></tr>
@@ -343,6 +363,33 @@ Macros</h2></td></tr>
 <tr class="memitem:a358ea7ed70aafc4488f206959450591a"><td class="memItemLeft" align="right" valign="top"><a id="a358ea7ed70aafc4488f206959450591a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BUILTIN_FUNCTION</b>(name,  func,  docStr)&#160;&#160;&#160;<a class="el" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(<a class="el" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;vm.builtins-&gt;fields, name, func), docStr)</td></tr>
 <tr class="separator:a358ea7ed70aafc4488f206959450591a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aea190e6a9843237a80774642672b287d"><td class="memItemLeft" align="right" valign="top"><a id="aea190e6a9843237a80774642672b287d"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_dict_nth_key_fast</b> (size_t capacity, <a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *entries, size_t index)</td></tr>
+<tr class="separator:aea190e6a9843237a80774642672b287d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d8e2608d125128efb368108ceabcfbe"><td class="memItemLeft" align="right" valign="top"><a id="a2d8e2608d125128efb368108ceabcfbe"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __getitem__)(int</td></tr>
+<tr class="separator:a2d8e2608d125128efb368108ceabcfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d48761763dab3a19c4f3b616b6cb086"><td class="memItemLeft" align="right" valign="top"><a id="a3d48761763dab3a19c4f3b616b6cb086"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __int__)(int</td></tr>
+<tr class="separator:a3d48761763dab3a19c4f3b616b6cb086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30fb131765a2cd661be42eec86748f8b"><td class="memItemLeft" align="right" valign="top"><a id="a30fb131765a2cd661be42eec86748f8b"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __float__)(int</td></tr>
+<tr class="separator:a30fb131765a2cd661be42eec86748f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae5ec9f9c3e6507375467ead377d9c0"><td class="memItemLeft" align="right" valign="top"><a id="afae5ec9f9c3e6507375467ead377d9c0"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, split)(int</td></tr>
+<tr class="separator:afae5ec9f9c3e6507375467ead377d9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2abd25e09dc5bd17cd35f976b8eeb8"><td class="memItemLeft" align="right" valign="top"><a id="a9f2abd25e09dc5bd17cd35f976b8eeb8"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, format)(int</td></tr>
+<tr class="separator:a9f2abd25e09dc5bd17cd35f976b8eeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab53ffd236e80779a60add2a9ac22a989"><td class="memItemLeft" align="right" valign="top"><a id="ab53ffd236e80779a60add2a9ac22a989"></a>
+<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>int</b></td></tr>
+<tr class="separator:ab53ffd236e80779a60add2a9ac22a989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utilities for creating native bindings. </p>
@@ -364,7 +411,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
 <div class="line">    krk_typeName(argv[0]), _method_name); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00027">27</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -408,8 +455,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (argc &lt; (i+1)) <span class="keywordflow">return</span> NOT_ENOUGH_ARGS(name); \</div>
-<div class="line">    if (!IS_ ## type (argv[i])) <span class="keywordflow">return</span> TYPE_ERROR(type,argv[i]); \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (unlikely(argc &lt; (i+1))) <span class="keywordflow">return</span> NOT_ENOUGH_ARGS(name); \</div>
+<div class="line">    if (unlikely(!IS_ ## type (argv[i]))) <span class="keywordflow">return</span> TYPE_ERROR(type,argv[i]); \</div>
 <div class="line">    ctype name __attribute__((unused)) = AS_ ## type (argv[i])</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00059">59</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -431,7 +478,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc &lt; n) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00048">48</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -453,7 +500,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc &gt; n) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00051">51</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -475,7 +522,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc != n) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00045">45</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -496,7 +543,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc != 0) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 0)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00042">42</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -538,7 +585,7 @@ Macros</h2></td></tr>
 <p>Classes store their docstrings directly, rather than in their attribute tables. Instances use the attribute table and store strings with the name <code>__doc__</code>. Native functions store direct C string pointers for documentation.</p>
 <p>This macro provides a generic interface for applying documentation strings to any of the above types, and handles not attaching documentation when built with KRK_NO_DOCUMENTATION. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00280">280</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00292">292</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -630,7 +677,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc &lt; (n+1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00036">36</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -652,7 +699,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc &gt; (n+1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00039">39</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -674,7 +721,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc != (n+1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00033">33</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -695,7 +742,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (argc != 1) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00030">30</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -771,7 +818,7 @@ Macros</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00217">217</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00229">229</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -805,21 +852,21 @@ Macros</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00239">239</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00251">251</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00200">object.h:200</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00268">vm.h:268</a></div></div>
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00157">object.h:157</a></div></div>
-<div class="ttc" id="avm_8h_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Raise an exception.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00260">vm.c:260</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00228">object.h:228</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00184">vm.h:184</a></div></div>
-<div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00078">vm.c:78</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00213">object.h:213</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00271">vm.h:271</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00169">object.h:169</a></div></div>
+<div class="ttc" id="avm_8h_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Raise an exception.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00261">vm.c:261</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00241">object.h:241</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
+<div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
 <div class="ttc" id="avalue_8h_html_ac4d48408bd4c5a3ecff1d9568533484c"><div class="ttname"><a href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a></div><div class="ttdeci">uint64_t KrkValue</div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00056">value.h:56</a></div></div>
-<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00337">vm.c:337</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_a5eb8266e561d8f0b2fc576cdfd68f6f0"><div class="ttname"><a href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">KrkThreadState::stack</a></div><div class="ttdeci">KrkValue * stack</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00183">vm.h:183</a></div></div>
+<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00338">vm.c:338</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_a5eb8266e561d8f0b2fc576cdfd68f6f0"><div class="ttname"><a href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">KrkThreadState::stack</a></div><div class="ttdeci">KrkValue * stack</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00185">vm.h:185</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

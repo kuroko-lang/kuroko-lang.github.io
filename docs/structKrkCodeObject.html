@@ -98,6 +98,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">KrkCodeObject Struct Reference</div>  </div>
@@ -118,6 +119,12 @@ Inheritance diagram for KrkCodeObject:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad22088848f23dd43223e0a0fc12f5022"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#ad22088848f23dd43223e0a0fc12f5022">krk_newCodeObject</a> (void)</td></tr>
+<tr class="memdesc:ad22088848f23dd43223e0a0fc12f5022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new, uninitialized code object.  <a href="structKrkCodeObject.html#ad22088848f23dd43223e0a0fc12f5022">More...</a><br /></td></tr>
+<tr class="separator:ad22088848f23dd43223e0a0fc12f5022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a94bc11527cf1601587e855504c792590"><td class="memItemLeft" align="right" valign="top"><a id="a94bc11527cf1601587e855504c792590"></a>
@@ -156,15 +163,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localNameCount</b><
 <tr class="memitem:a55bb80d7fa00fb25369e502c8d7d11b8"><td class="memItemLeft" align="right" valign="top"><a id="a55bb80d7fa00fb25369e502c8d7d11b8"></a>
 <a class="el" href="structKrkLocalEntry.html">KrkLocalEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>localNames</b></td></tr>
 <tr class="separator:a55bb80d7fa00fb25369e502c8d7d11b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1279eeddd502ff7f070a3c20472d62e"><td class="memItemLeft" align="right" valign="top"><a id="ab1279eeddd502ff7f070a3c20472d62e"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>collectsArguments</b>:1</td></tr>
-<tr class="separator:ab1279eeddd502ff7f070a3c20472d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44360f14b56cf4252b5be29b7467b803"><td class="memItemLeft" align="right" valign="top"><a id="a44360f14b56cf4252b5be29b7467b803"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>collectsKeywords</b>:1</td></tr>
-<tr class="separator:a44360f14b56cf4252b5be29b7467b803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eb941c58f9670750818f7ea34ab6f33"><td class="memItemLeft" align="right" valign="top"><a id="a1eb941c58f9670750818f7ea34ab6f33"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isGenerator</b>:1</td></tr>
-<tr class="separator:a1eb941c58f9670750818f7ea34ab6f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada0c93bc0f9f0486583217a3f771731d"><td class="memItemLeft" align="right" valign="top"><a id="ada0c93bc0f9f0486583217a3f771731d"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+<tr class="separator:ada0c93bc0f9f0486583217a3f771731d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab77d6aa30f58c68daa1af5ff5f6bcee0"><td class="memItemLeft" align="right" valign="top"><a id="ab77d6aa30f58c68daa1af5ff5f6bcee0"></a>
 struct <a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>globalsContext</b></td></tr>
 <tr class="separator:ab77d6aa30f58c68daa1af5ff5f6bcee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,18 +176,9 @@ struct <a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><
 <tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
 KrkObjType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a684e4dc52c8e44e6a3fc3db2e2a19f6d"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isMarked</b>:1</td></tr>
-<tr class="separator:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a40a89c4c913993804c14e24cb60d75bf"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>inRepr</b>:1</td></tr>
-<tr class="separator:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a68d30ba8e3532795f21339409a0de004"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>generation</b>:2</td></tr>
-<tr class="separator:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a0d10c8050ba881836ed1dfa8070bbc06"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isImmortal</b>:1</td></tr>
-<tr class="separator:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b></td></tr>
 <tr class="separator:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,8 +190,32 @@ struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="
 <div class="textblock"><p>Code object. </p>
 <p>Contains the static data associated with a chunk of bytecode. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00111">111</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00119">119</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad22088848f23dd43223e0a0fc12f5022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad22088848f23dd43223e0a0fc12f5022">&#9670;&nbsp;</a></span>krk_newCodeObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> * krk_newCodeObject </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new, uninitialized code object. </p>
+<p>The code object will have an empty bytecode chunk and no assigned names or docstrings. This is intended only to be used by a compiler directly. </p>
+
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00234">234</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/kuroko/<a class="el" href="object_8h_source.html">object.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,5 +1,5 @@
 <map id="src/kuroko/util.h" name="src/kuroko/util.h">
-<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="1689,5,1815,32"/>
+<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="1818,5,1945,32"/>
 <area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
 <area shape="rect" id="node3" href="$debug_8c_source.html" title=" " alt="" coords="133,80,229,107"/>
 <area shape="rect" id="node4" href="$exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="254,80,381,107"/>
@@ -21,8 +21,10 @@
 <area shape="rect" id="node20" href="$obj__tuple_8c_source.html" title=" " alt="" coords="2513,80,2629,107"/>
 <area shape="rect" id="node21" href="$obj__typing_8c_source.html" title=" " alt="" coords="2653,80,2777,107"/>
 <area shape="rect" id="node22" href="$os_8c_source.html" title=" " alt="" coords="2801,80,2871,107"/>
-<area shape="rect" id="node23" href="$time_8c_source.html" title=" " alt="" coords="2895,80,2982,107"/>
-<area shape="rect" id="node24" href="$vm_8c_source.html" title=" " alt="" coords="3007,80,3084,107"/>
-<area shape="rect" id="node25" href="$compile_8c_source.html" title=" " alt="" coords="3109,80,3230,107"/>
-<area shape="rect" id="node26" href="$sandbox_8c_source.html" title=" " alt="" coords="3254,80,3378,107"/>
+<area shape="rect" id="node23" href="$table_8c_source.html" title=" " alt="" coords="2895,80,2985,107"/>
+<area shape="rect" id="node24" href="$threads_8c_source.html" title=" " alt="" coords="3009,80,3114,107"/>
+<area shape="rect" id="node25" href="$time_8c_source.html" title=" " alt="" coords="3138,80,3225,107"/>
+<area shape="rect" id="node26" href="$vm_8c_source.html" title=" " alt="" coords="3249,80,3327,107"/>
+<area shape="rect" id="node27" href="$compile_8c_source.html" title=" " alt="" coords="3351,80,3473,107"/>
+<area shape="rect" id="node28" href="$sandbox_8c_source.html" title=" " alt="" coords="3497,80,3621,107"/>
 </map>

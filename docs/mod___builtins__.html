@@ -108,13 +108,13 @@ $(function() {
 Classes</h2>
 <p><a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Special object that prints a helpeful message.</p>
-<p>Object that prints help summary when passed to <a class="el" href="mod___builtins__.html#repr">repr</a>.</p>
+<p>Object that prints help summary when passed to repr.</p>
 <p><a class="anchor" id="Helper___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Helper___call__">_</a></span>Helper(<i>obj=None</i>)</h4><div class="memitem"><div class="memproto">Helper.<b>__call__</b>(<i>obj=None</i>)</div><div class="memdoc"></p>
 <p>Prints help text.</p>
 <p>Prints the help documentation attached to <code>obj</code> or starts the interactive help system by importing the mod_help module.</p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="LicenseReader"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#LicenseReader">_</a></span><i>class</i> <b>LicenseReader</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Special object that prints Kuroko's copyright information when passed to <a class="el" href="mod___builtins__.html#repr">repr</a></p>
+<p>Special object that prints Kuroko's copyright information when passed to repr</p>
 <p><a class="anchor" id="LicenseReader___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#LicenseReader___call__">_</a></span>LicenseReader()</h4><div class="memitem"><div class="memproto">LicenseReader.<b>__call__</b>()</div><div class="memdoc"> Print the full license statement.</p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="NoneType"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#NoneType">_</a></span><i>class</i> <b>NoneType</b>(object)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="bool"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bool">_</a></span><i>class</i> <b>bool</b>(int)</h3><div class="memitem"><div class="memdoc"> </p>
@@ -133,6 +133,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="bytes___getitem__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___getitem__">_</a></span>bytes[<i>key</i>]</h4><div class="memitem"><div class="memproto">bytes.<b>__getitem__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
+<p><a class="anchor" id="bytes___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___hash__">_</a></span>bytes.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p><a class="anchor" id="bytes___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> bytes:</h4><div class="memitem"><div class="memproto">bytes.<b>__iter__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="bytes___len__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___len__">_</a></span><b>len</b>(bytes)</h4><div class="memitem"><div class="memproto">bytes.<b>__len__</b>()</div><div class="memdoc"></p>
@@ -146,6 +148,8 @@ Classes</h2>
 <p><a class="anchor" id="bytesiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytesiterator___call__">_</a></span>bytesiterator()</h4><div class="memitem"><div class="memproto">bytesiterator.<b>__call__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="codeobject"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#codeobject">_</a></span><i>class</i> <b>codeobject</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="codeobject__ip_to_line"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject__ip_to_line">_</a></span>codeobject.<b>_ip_to_line</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p><a class="anchor" id="codeobject___constants__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___constants__">_</a></span><i>property</i> codeobject.<b>__constants__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="codeobject___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___name__">_</a></span><i>property</i> codeobject.<b>__name__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
@@ -226,6 +230,8 @@ Classes</h2>
 <p><a class="anchor" id="function___annotations__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___annotations__">_</a></span><i>property</i> function.<b>__annotations__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="function___args__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___args__">_</a></span><i>property</i> function.<b>__args__</b></h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p><a class="anchor" id="function___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___code__">_</a></span><i>property</i> function.<b>__code__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="function___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___doc__">_</a></span><i>property</i> function.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
@@ -323,6 +329,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="method___args__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___args__">_</a></span><i>property</i> method.<b>__args__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
+<p><a class="anchor" id="method___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___code__">_</a></span><i>property</i> method.<b>__code__</b></h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p><a class="anchor" id="method___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___doc__">_</a></span><i>property</i> method.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="method___file__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___file__">_</a></span><i>property</i> method.<b>__file__</b></h4><div class="memitem"><div class="memdoc"></p>
@@ -337,6 +345,8 @@ Classes</h2>
 <p><a class="anchor" id="object___class__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___class__">_</a></span>object.<b>__class__</b>()</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="object___dir__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___dir__">_</a></span>object.<b>__dir__</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
+<p><a class="anchor" id="object___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___eq__">_</a></span>object == <i>other</i></h4><div class="memitem"><div class="memproto">object.<b>__eq__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="object___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___hash__">_</a></span>object.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
@@ -415,6 +425,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="str___gt__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___gt__">_</a></span>str &gt; <i>other</i></h4><div class="memitem"><div class="memproto">str.<b>__gt__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
+<p><a class="anchor" id="str___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___hash__">_</a></span>str.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p><a class="anchor" id="str___int__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___int__">_</a></span>str.<b>__int__</b>()</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="str___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> str:</h4><div class="memitem"><div class="memproto">str.<b>__iter__</b>()</div><div class="memdoc"></p>
@@ -489,6 +501,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="tuple___getitem__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___getitem__">_</a></span>tuple[<i>key</i>]</h4><div class="memitem"><div class="memproto">tuple.<b>__getitem__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
+<p><a class="anchor" id="tuple___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___hash__">_</a></span>tuple.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div></p>
 <p><a class="anchor" id="tuple___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> tuple:</h4><div class="memitem"><div class="memproto">tuple.<b>__iter__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="tuple___len__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___len__">_</a></span><b>len</b>(tuple)</h4><div class="memitem"><div class="memproto">tuple.<b>__len__</b>()</div><div class="memdoc"></p>
@@ -507,6 +521,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="type___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___doc__">_</a></span>type.<b>__doc__</b>()</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
+<p><a class="anchor" id="type___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___eq__">_</a></span>type == <i>other</i></h4><div class="memitem"><div class="memproto">type.<b>__eq__</b>()</div><div class="memdoc"></p>
+<p> </div></div></p>
 <p><a class="anchor" id="type___file__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___file__">_</a></span>type.<b>__file__</b>()</h4><div class="memitem"><div class="memdoc"></p>
 <p> </div></div></p>
 <p><a class="anchor" id="type___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___hash__">_</a></span>type.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"></p>
@@ -515,105 +531,11 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div></p>
 <h2><a class="anchor" id="autotoc_md5"></a>
-Functions</h2>
-<p><a class="anchor" id="all"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#all">_</a></span><b>all</b>()</h3><div class="memitem"><div class="memdoc"> Returns True if every element in the given iterable is truthy, False otherwise.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="any"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#any">_</a></span><b>any</b>()</h3><div class="memitem"><div class="memdoc"> Returns True if at least one element in the given iterable is truthy, False otherwise.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="bin"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#bin">_</a></span><b>bin</b>()</h3><div class="memitem"><div class="memdoc"> Convert an integer value to a binary string.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="chr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#chr">_</a></span><b>chr</b>()</h3><div class="memitem"><div class="memdoc"> Convert an integer codepoint to its string representation.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="classmethod"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#classmethod">_</a></span><b>classmethod</b>()</h3><div class="memitem"><div class="memdoc"> A class method takes an implicit cls argument, instead of self.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="delattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#delattr">_</a></span><b>delattr</b>(<i>obj,attribute</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Delete an attribute by name.</p>
-<p>Deletes the attribute <code>attribute</code> from <code>obj</code>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="dictOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#dictOf">_</a></span><b>dictOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to dict object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="dir"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#dir">_</a></span><b>dir</b>()</h3><div class="memitem"><div class="memdoc"> Return a list of known property names for a given object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="getattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#getattr">_</a></span><b>getattr</b>(<i>obj,attribute,[default]</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Perform attribute lookup on an object using a string.</p>
-<p>Obtains the attributed named <code>attribute</code> from the object <code>obj</code>, if such an attribute exists. Attribute lookup ordering is complex and includes direct attribute tables of instances, dynamic attributes from classes, and so on. The use of <code>getattr</code> is equivalent to a dotted access. If <code>attribute</code> refers to a method of <code>obj's</code> class, a bound method will be obtained. If <code>default</code> is provided then the value supplied will be returned in the case where <code>obj</code> does not have an attribute named <code>attribute</code>, otherwise an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> will be raised.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="globals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#globals">_</a></span><b>globals</b>()</h3><div class="memitem"><div class="memdoc"></p>
-<p>Update and a return a mapping of names in the global namespace.</p>
-<p>Produces a dict mapping all of the names of the current globals namespace to their values. Updating this dict has no meaning, but modifying mutable values within it can affect the global namespace.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="hasattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#hasattr">_</a></span><b>hasattr</b>(<i>obj,attribute</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Determines if an object has an attribute.</p>
-<p>Uses <a class="el" href="mod___builtins__.html#getattr">getattr</a> to determine if <code>obj</code> has an attribute named <code>attribute</code>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="hash"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#hash">_</a></span><b>hash</b>()</h3><div class="memitem"><div class="memdoc"> Returns the hash of a value, used for table indexing.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="hex"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#hex">_</a></span><b>hex</b>()</h3><div class="memitem"><div class="memdoc"> Convert an integer value to a hexadecimal string.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="id"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#id">_</a></span><b>id</b>()</h3><div class="memitem"><div class="memdoc"> Returns the identity of an object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="input"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#input">_</a></span><b>input</b>(<i>[prompt], promptwidth=None, syntax=None</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Read a line of input.</p>
-<p>Read a line of input from <code>stdin</code>. If the <code>rline</code> library is available, it will be used to gather input. Input reading stops on end-of file or when a read ends with a line feed, which will be removed from the returned string. If a prompt is provided, it will be printed without a line feed before requesting input. If <code>rline</code> is available, the prompt will be passed to the library as the left-hand prompt string. If not provided, <code>promptwidth</code> will default to the width of <code>prompt</code> in codepoints; if you are providing a prompt with escape characters or characters with multi-column East-Asian Character Width be sure to pass a value for <code>promptwidth</code> that reflects the display width of your prompt. If provided, <code>syntax</code> specifies the name of an <code>rline</code> syntax module to provide color highlighting of the input line.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="isinstance"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isinstance">_</a></span><b>isinstance</b>(<i>inst, cls</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Check if an object is an instance of a type.</p>
-<p>Determine if an object <code>inst</code> is an instance of the given class <code>cls</code> or one if its subclasses. <code>cls</code> may be a single class or a tuple of classes.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="issubclass"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#issubclass">_</a></span><b>issubclass</b>(<i>cls, clsinfo</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Check if a class is a subclass of a type.</p>
-<p>Determine if the class <code>cls</code> is a subclass of the class <code>clsinfo</code>. <code>clsinfo</code> may be a single class or a tuple of classes.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="len"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#len">_</a></span><b>len</b>()</h3><div class="memitem"><div class="memdoc"> Return the length of a given sequence object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="listOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#listOf">_</a></span><b>listOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to list object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="locals"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#locals">_</a></span><b>locals</b>(<i>callDepth=1</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Update and return a mapping of names in the current local scope.</p>
-<p>Produces a dict mapping the names of the requested locals scope to their current stack values. If <code>callDepth</code> is provided, the locals of an outer call frame will be returned. If the requested call depth is out of range, an exception will be raised.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="max"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#max">_</a></span><b>max</b>()</h3><div class="memitem"><div class="memdoc"> Return the highest value in an iterable or the passed arguments.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="min"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#min">_</a></span><b>min</b>()</h3><div class="memitem"><div class="memdoc"> Return the lowest value in an iterable or the passed arguments.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="next"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#next">_</a></span><b>next</b>()</h3><div class="memitem"><div class="memdoc"> Compatibility function. Calls an iterable.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="oct"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#oct">_</a></span><b>oct</b>()</h3><div class="memitem"><div class="memdoc"> Convert an integer value to an octal string.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="ord"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#ord">_</a></span><b>ord</b>()</h3><div class="memitem"><div class="memdoc"> Obtain the ordinal integer value of a codepoint or byte.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="print"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#print">_</a></span><b>print</b>(<i>*args,sep=' ',end='\n'</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>Print text to the standard output.</p>
-<p>Prints the string representation of each argument to the standard output. The keyword argument <code>sep</code> specifies the string to print between values. The keyword argument <code>end</code> specifies the string to print after all of the values have been printed.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="repr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#repr">_</a></span><b>repr</b>()</h3><div class="memitem"><div class="memdoc"> Produce a string representation of the given object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="reversed"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#reversed">_</a></span><b>reversed</b>()</h3><div class="memitem"><div class="memdoc"> Return a reversed representation of an iterable.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="setOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#setOf">_</a></span><b>setOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to set object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="setattr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#setattr">_</a></span><b>setattr</b>(<i>obj,attribute,value</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> an attribute of an object using a string name.</p>
-<p>Sets the attribute named by <code>attribute</code> of the object <code>obj</code> to <code>value</code>. If <code>attribute</code> refers to a <a class="el" href="mod___builtins__.html#property">property</a> object or other descriptor, the descriptor's <code>__set__</code> method will be called. If <code>obj</code> is a class, instance, or other type with its own attribute table, then the field will be updated. If <code>obj</code> is a type without an attribute table and no class property provides an overriding setter for <code>attribute</code>, an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> will be raised.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="sorted"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sorted">_</a></span><b>sorted</b>()</h3><div class="memitem"><div class="memdoc"> Return a sorted representation of an iterable.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="staticmethod"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#staticmethod">_</a></span><b>staticmethod</b>()</h3><div class="memitem"><div class="memdoc"> A static method does not take an implicit self or cls argument.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="sum"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sum">_</a></span><b>sum</b>(<i>iterable,start=0</i>)</h3><div class="memitem"><div class="memdoc"></p>
-<p>add the elements of an iterable.</p>
-<p>Continuously adds all of the elements from <code>iterable</code> to <code>start</code> and returns the result when <code>iterable</code> has been exhausted.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="tupleOf"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#tupleOf">_</a></span><b>tupleOf</b>()</h3><div class="memitem"><div class="memdoc"> Convert argument sequence to tuple object.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="zip"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#zip">_</a></span><b>zip</b>()</h3><div class="memitem"><div class="memdoc"> Returns an iterator that produces tuples of the nth element of each passed iterable.</p>
-<p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
 Exceptions</h2>
 <p><a class="anchor" id="ArgumentError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ArgumentError">_</a></span><i>class</i> <b>ArgumentError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AssertionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AssertionError">_</a></span><i>class</i> <b>AssertionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AttributeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AttributeError">_</a></span><i>class</i> <b>AttributeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Exception"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#Exception">_</a></span><i>class</i> <b>Exception</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="Exception___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Exception___init__">_</a></span>let <i>x</i> = <b>Exception</b>()</h4><div class="memitem"><div class="memproto">Exception.<b>__init__</b>()</div><div class="memdoc"></p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="IOError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IOError">_</a></span><i>class</i> <b>IOError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ImportError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ImportError">_</a></span><i>class</i> <b>ImportError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="IndexError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IndexError">_</a></span><i>class</i> <b>IndexError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyError">_</a></span><i>class</i> <b>KeyError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyboardInterrupt"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyboardInterrupt">_</a></span><i>class</i> <b>KeyboardInterrupt</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NameError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NameError">_</a></span><i>class</i> <b>NameError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NotImplementedError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NotImplementedError">_</a></span><i>class</i> <b>NotImplementedError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="SyntaxError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SyntaxError">_</a></span><i>class</i> <b>SyntaxError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="TypeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#TypeError">_</a></span><i>class</i> <b>TypeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ValueError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ValueError">_</a></span><i>class</i> <b>ValueError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ZeroDivisionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ZeroDivisionError">_</a></span><i>class</i> <b>ZeroDivisionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>help</b> = <em>Helper</em></h3>
 <h3 class="letDef"><em>let</em> <b>license</b> = <em>LicenseReader</em></h3>

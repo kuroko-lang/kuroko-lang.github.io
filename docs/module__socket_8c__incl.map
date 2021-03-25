@@ -1,26 +1,27 @@
 <map id="src/module_socket.c" name="src/module_socket.c">
 <area shape="rect" id="node1" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="241,5,396,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="193,453,263,480"/>
-<area shape="rect" id="node3" title=" " alt="" coords="47,229,143,256"/>
+<area shape="rect" id="node2" title=" " alt="" coords="195,453,266,480"/>
+<area shape="rect" id="node3" title=" " alt="" coords="55,229,151,256"/>
 <area shape="rect" id="node4" title=" " alt="" coords="94,80,197,107"/>
 <area shape="rect" id="node5" title=" " alt="" coords="221,80,313,107"/>
 <area shape="rect" id="node6" title=" " alt="" coords="337,80,407,107"/>
 <area shape="rect" id="node7" title=" " alt="" coords="431,80,499,107"/>
-<area shape="rect" id="node8" href="$vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="394,155,497,181"/>
-<area shape="rect" id="node23" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="575,80,678,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="333,229,408,256"/>
-<area shape="rect" id="node10" title=" " alt="" coords="219,229,309,256"/>
-<area shape="rect" id="node11" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="575,453,654,480"/>
-<area shape="rect" id="node15" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="405,379,475,405"/>
-<area shape="rect" id="node17" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="652,304,719,331"/>
-<area shape="rect" id="node21" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="527,229,601,256"/>
-<area shape="rect" id="node12" title=" " alt="" coords="483,528,554,555"/>
-<area shape="rect" id="node13" title=" " alt="" coords="579,528,653,555"/>
-<area shape="rect" id="node14" title=" " alt="" coords="679,528,750,555"/>
-<area shape="rect" id="node16" title=" " alt="" coords="445,453,512,480"/>
-<area shape="rect" id="node18" href="$threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="804,379,887,405"/>
-<area shape="rect" id="node19" title=" " alt="" coords="882,453,966,480"/>
-<area shape="rect" id="node20" title=" " alt="" coords="785,453,857,480"/>
-<area shape="rect" id="node22" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="453,304,526,331"/>
-<area shape="rect" id="node24" href="$memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="627,155,714,181"/>
+<area shape="rect" id="node8" href="$vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="446,155,549,181"/>
+<area shape="rect" id="node24" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="575,80,678,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="231,229,305,256"/>
+<area shape="rect" id="node10" title=" " alt="" coords="329,229,393,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="417,229,508,256"/>
+<area shape="rect" id="node12" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="637,453,715,480"/>
+<area shape="rect" id="node16" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="515,379,586,405"/>
+<area shape="rect" id="node18" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="715,304,781,331"/>
+<area shape="rect" id="node22" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="585,229,660,256"/>
+<area shape="rect" id="node13" title=" " alt="" coords="643,528,714,555"/>
+<area shape="rect" id="node14" title=" " alt="" coords="544,528,619,555"/>
+<area shape="rect" id="node15" title=" " alt="" coords="741,528,811,555"/>
+<area shape="rect" id="node17" title=" " alt="" coords="480,453,547,480"/>
+<area shape="rect" id="node19" href="$threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="865,379,948,405"/>
+<area shape="rect" id="node20" title=" " alt="" coords="943,453,1027,480"/>
+<area shape="rect" id="node21" title=" " alt="" coords="847,453,919,480"/>
+<area shape="rect" id="node23" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="566,304,639,331"/>
+<area shape="rect" id="node25" href="$memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="683,155,770,181"/>
 </map>

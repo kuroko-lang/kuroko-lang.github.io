@@ -121,26 +121,27 @@ Include dependency graph for exceptions.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="exceptions_8c__incl.png" border="0" usemap="#src_2exceptions_8c" alt=""/></div>
 <map name="src_2exceptions_8c" id="src_2exceptions_8c">
-<area shape="rect" title="Definitions and native method bindings for error types." alt="" coords="342,5,469,32"/>
-<area shape="rect" title=" " alt="" coords="98,453,169,480"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="354,155,457,181"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="225,379,295,405"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="533,155,667,181"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="443,80,546,107"/>
-<area shape="rect" title=" " alt="" coords="259,229,333,256"/>
-<area shape="rect" title=" " alt="" coords="357,229,453,256"/>
-<area shape="rect" title=" " alt="" coords="144,229,235,256"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="502,453,581,480"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="637,304,704,331"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="528,229,603,256"/>
-<area shape="rect" title=" " alt="" coords="554,528,625,555"/>
-<area shape="rect" title=" " alt="" coords="455,528,529,555"/>
-<area shape="rect" title=" " alt="" coords="755,528,826,555"/>
-<area shape="rect" title=" " alt="" coords="328,453,395,480"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="731,379,813,405"/>
-<area shape="rect" title=" " alt="" coords="633,453,717,480"/>
-<area shape="rect" title=" " alt="" coords="741,453,813,480"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="291,304,365,331"/>
+<area shape="rect" title="Definitions and native method bindings for error types." alt="" coords="414,5,541,32"/>
+<area shape="rect" title=" " alt="" coords="118,453,189,480"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="426,155,529,181"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="359,379,430,405"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="605,155,739,181"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="515,80,618,107"/>
+<area shape="rect" title=" " alt="" coords="144,229,219,256"/>
+<area shape="rect" title=" " alt="" coords="243,229,307,256"/>
+<area shape="rect" title=" " alt="" coords="331,229,427,256"/>
+<area shape="rect" title=" " alt="" coords="451,229,541,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="590,453,669,480"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="725,304,792,331"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="616,229,691,256"/>
+<area shape="rect" title=" " alt="" coords="642,528,713,555"/>
+<area shape="rect" title=" " alt="" coords="543,528,617,555"/>
+<area shape="rect" title=" " alt="" coords="843,528,914,555"/>
+<area shape="rect" title=" " alt="" coords="403,453,469,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="819,379,901,405"/>
+<area shape="rect" title=" " alt="" coords="721,453,805,480"/>
+<area shape="rect" title=" " alt="" coords="829,453,901,480"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="393,304,466,331"/>
 </map>
 </div>
 </div>
@@ -194,7 +195,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
-<div class="line">    obj = krk_newClass(S(name), baseClass); \</div>
+<div class="line">    obj = <a class="code" href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">krk_newClass</a>(S(name), baseClass); \</div>
 <div class="line">    krk_attachNamedObject(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins-&gt;fields, name, (<a class="code" href="structKrkObj.html">KrkObj</a>*)obj); \</div>
 <div class="line">    krk_finalizeClass(obj); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
@@ -229,7 +230,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00268">vm.h:268</a></div></div>
+<div class="ttc" id="astructKrkClass_html_a2856a24fd7b3eb3b1d32806b5f373636"><div class="ttname"><a href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">KrkClass::krk_newClass</a></div><div class="ttdeci">KrkClass * krk_newClass(KrkString *name, KrkClass *base)</div><div class="ttdoc">Create a new class object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00283">object.c:283</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00271">vm.h:271</a></div></div>
 <div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00036">object.h:36</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>

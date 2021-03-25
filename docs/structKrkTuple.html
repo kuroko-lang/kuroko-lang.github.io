@@ -121,6 +121,9 @@ Inheritance diagram for KrkTuple:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ae8f407651c9df700ede0485e9a8d9db9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkTuple.html">KrkTuple</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html#ae8f407651c9df700ede0485e9a8d9db9">krk_newTuple</a> (size_t length)</td></tr>
+<tr class="memdesc:ae8f407651c9df700ede0485e9a8d9db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new tuple.  <a href="structKrkTuple.html#ae8f407651c9df700ede0485e9a8d9db9">More...</a><br /></td></tr>
+<tr class="separator:ae8f407651c9df700ede0485e9a8d9db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55aba49bb96da7f9c4bbf75710ff5530"><td class="memItemLeft" align="right" valign="top"><a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html#a55aba49bb96da7f9c4bbf75710ff5530">krk_tuple_of</a> (int argc, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> argv[], int hasKw)</td></tr>
 <tr class="memdesc:a55aba49bb96da7f9c4bbf75710ff5530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a tuple object.  <a href="structKrkTuple.html#a55aba49bb96da7f9c4bbf75710ff5530">More...</a><br /></td></tr>
 <tr class="separator:a55aba49bb96da7f9c4bbf75710ff5530"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,18 +140,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
 KrkObjType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a684e4dc52c8e44e6a3fc3db2e2a19f6d"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isMarked</b>:1</td></tr>
-<tr class="separator:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a40a89c4c913993804c14e24cb60d75bf"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>inRepr</b>:1</td></tr>
-<tr class="separator:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a68d30ba8e3532795f21339409a0de004"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>generation</b>:2</td></tr>
-<tr class="separator:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a0d10c8050ba881836ed1dfa8070bbc06"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isImmortal</b>:1</td></tr>
-<tr class="separator:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b></td></tr>
 <tr class="separator:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,8 +154,31 @@ struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="
 <div class="textblock"><p>Immutable sequence of arbitrary values. </p>
 <p>Tuples are fixed-length non-mutable collections of values intended for use in situations where the flexibility of a list is not needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00243">243</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00258">258</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae8f407651c9df700ede0485e9a8d9db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8f407651c9df700ede0485e9a8d9db9">&#9670;&nbsp;</a></span>krk_newTuple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkTuple.html">KrkTuple</a> * krk_newTuple </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new tuple. </p>
+<p>Creates a tuple object with the request space preallocated. The actual length of the tuple must be updated after places values within it by setting <code>value.count</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00313">313</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+
+</div>
+</div>
 <a id="a55aba49bb96da7f9c4bbf75710ff5530"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55aba49bb96da7f9c4bbf75710ff5530">&#9670;&nbsp;</a></span>krk_tuple_of()</h2>
 
@@ -197,7 +214,7 @@ struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="
 <p>Create a tuple object. </p>
 <p>This is the native function bound to <code>tupleOf</code> </p>
 
-<p class="definition">Definition at line <a class="el" href="obj__tuple_8c_source.html#l00040">40</a> of file <a class="el" href="obj__tuple_8c_source.html">obj_tuple.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__tuple_8c_source.html#l00032">32</a> of file <a class="el" href="obj__tuple_8c_source.html">obj_tuple.c</a>.</p>
 
 </div>
 </div>

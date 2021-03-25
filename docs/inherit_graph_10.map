@@ -1,23 +1,26 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structKrkObj.html" title="The most basic object type." alt="" coords="5,233,72,260"/>
-<area shape="rect" id="node2" href="$structKrkBoundMethod.html" title="A function that has been attached to an object to serve as a method." alt="" coords="120,5,255,32"/>
-<area shape="rect" id="node3" href="$structKrkBytes.html" title="Immutable sequence of bytes." alt="" coords="147,56,228,83"/>
-<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="148,107,227,133"/>
-<area shape="rect" id="node5" href="$structKrkClosure.html" title="Function object." alt="" coords="141,157,234,184"/>
-<area shape="rect" id="node6" href="$structKrkCodeObject.html" title="Code object." alt="" coords="128,208,247,235"/>
-<area shape="rect" id="node7" href="$structKrkInstance.html" title="An object of a class." alt="" coords="138,259,237,285"/>
-<area shape="rect" id="node18" href="$structKrkNative.html" title="Managed binding to a C function." alt="" coords="144,309,231,336"/>
-<area shape="rect" id="node19" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="146,360,229,387"/>
-<area shape="rect" id="node20" href="$structKrkTuple.html" title="Immutable sequence of arbitrary values." alt="" coords="148,411,227,437"/>
-<area shape="rect" id="node21" href="$structKrkUpvalue.html" title="Storage for values referenced from nested functions." alt="" coords="138,461,237,488"/>
-<area shape="rect" id="node8" href="$structDictItems.html" title=" " alt="" coords="305,31,391,57"/>
-<area shape="rect" id="node9" href="$structDictKeys.html" title=" " alt="" coords="309,81,387,108"/>
-<area shape="rect" id="node10" href="$structDirectory.html" title="OBject for a C DIR* stream." alt="" coords="307,132,389,159"/>
-<area shape="rect" id="node11" href="$structFile.html" title="Object for a C FILE* stream." alt="" coords="326,183,370,209"/>
-<area shape="rect" id="node12" href="$structgenerator.html" title="Generator object implementation." alt="" coords="305,233,391,260"/>
-<area shape="rect" id="node13" href="$structKrkDict.html" title="Flexible mapping type." alt="" coords="313,284,383,311"/>
-<area shape="rect" id="node14" href="$structKrkList.html" title="Mutable array of values." alt="" coords="315,335,381,361"/>
-<area shape="rect" id="node15" href="$structRange.html" title="range object." alt="" coords="317,385,379,412"/>
-<area shape="rect" id="node16" href="$structSet.html" title="Mutable unordered set of values." alt="" coords="327,436,369,463"/>
-<area shape="rect" id="node17" href="$structSetIterator.html" title="Iterator over the values in a set." alt="" coords="303,487,393,513"/>
+<area shape="rect" id="node1" href="$structKrkObj.html" title="The most basic object type." alt="" coords="5,284,72,311"/>
+<area shape="rect" id="node2" href="$structKrkBoundMethod.html" title="A function that has been attached to an object to serve as a method." alt="" coords="120,56,255,83"/>
+<area shape="rect" id="node3" href="$structKrkBytes.html" title="Immutable sequence of bytes." alt="" coords="147,107,228,133"/>
+<area shape="rect" id="node4" href="$structKrkClass.html" title="Type object." alt="" coords="148,157,227,184"/>
+<area shape="rect" id="node5" href="$structKrkClosure.html" title="Function object." alt="" coords="141,208,234,235"/>
+<area shape="rect" id="node6" href="$structKrkCodeObject.html" title="Code object." alt="" coords="128,259,247,285"/>
+<area shape="rect" id="node7" href="$structKrkInstance.html" title="An object of a class." alt="" coords="138,309,237,336"/>
+<area shape="rect" id="node21" href="$structKrkNative.html" title="Managed binding to a C function." alt="" coords="144,360,231,387"/>
+<area shape="rect" id="node22" href="$structKrkString.html" title="Immutable sequence of Unicode codepoints." alt="" coords="146,411,229,437"/>
+<area shape="rect" id="node23" href="$structKrkTuple.html" title="Immutable sequence of arbitrary values." alt="" coords="148,461,227,488"/>
+<area shape="rect" id="node24" href="$structKrkUpvalue.html" title="Storage for values referenced from nested functions." alt="" coords="138,512,237,539"/>
+<area shape="rect" id="node8" href="$structDictItems.html" title=" " alt="" coords="305,5,391,32"/>
+<area shape="rect" id="node9" href="$structDictKeys.html" title=" " alt="" coords="309,56,387,83"/>
+<area shape="rect" id="node10" href="$structDirectory.html" title="OBject for a C DIR* stream." alt="" coords="307,107,389,133"/>
+<area shape="rect" id="node11" href="$structFile.html" title="Object for a C FILE* stream." alt="" coords="326,157,370,184"/>
+<area shape="rect" id="node12" href="$structgenerator.html" title="Generator object implementation." alt="" coords="305,208,391,235"/>
+<area shape="rect" id="node13" href="$structKrkDict.html" title="Flexible mapping type." alt="" coords="313,259,383,285"/>
+<area shape="rect" id="node14" href="$structKrkList.html" title="Mutable array of values." alt="" coords="315,309,381,336"/>
+<area shape="rect" id="node15" href="$structLock.html" title="Simple atomic structure for waiting." alt="" coords="322,360,374,387"/>
+<area shape="rect" id="node16" href="$structRange.html" title="range object." alt="" coords="317,411,379,437"/>
+<area shape="rect" id="node17" href="$structSet.html" title="Mutable unordered set of values." alt="" coords="327,461,369,488"/>
+<area shape="rect" id="node18" href="$structSetIterator.html" title="Iterator over the values in a set." alt="" coords="303,512,393,539"/>
+<area shape="rect" id="node19" href="$structThread.html" title="Object representation of a system thread." alt="" coords="315,563,381,589"/>
+<area shape="rect" id="node20" href="$structTupleIter.html" title="Iterator over the values in a tuple." alt="" coords="309,613,387,640"/>
 </map>

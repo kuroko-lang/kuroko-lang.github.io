@@ -98,6 +98,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">KrkUpvalue Struct Reference</div>  </div>
@@ -118,6 +119,12 @@ Inheritance diagram for KrkUpvalue:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad3fe22c269f3e89363540b54b0350e19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkUpvalue.html">KrkUpvalue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkUpvalue.html#ad3fe22c269f3e89363540b54b0350e19">krk_newUpvalue</a> (int slot)</td></tr>
+<tr class="memdesc:ad3fe22c269f3e89363540b54b0350e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an upvalue slot.  <a href="structKrkUpvalue.html#ad3fe22c269f3e89363540b54b0350e19">More...</a><br /></td></tr>
+<tr class="separator:ad3fe22c269f3e89363540b54b0350e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a51d5813422abdd24fc77d77d6da720fc"><td class="memItemLeft" align="right" valign="top"><a id="a51d5813422abdd24fc77d77d6da720fc"></a>
@@ -139,18 +146,9 @@ struct <a class="el" href="structKrkThreadState.html">KrkThreadState</a> *&#160;
 <tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
 KrkObjType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a684e4dc52c8e44e6a3fc3db2e2a19f6d"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isMarked</b>:1</td></tr>
-<tr class="separator:a684e4dc52c8e44e6a3fc3db2e2a19f6d inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a40a89c4c913993804c14e24cb60d75bf"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>inRepr</b>:1</td></tr>
-<tr class="separator:a40a89c4c913993804c14e24cb60d75bf inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a68d30ba8e3532795f21339409a0de004"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>generation</b>:2</td></tr>
-<tr class="separator:a68d30ba8e3532795f21339409a0de004 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a0d10c8050ba881836ed1dfa8070bbc06"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>isImmortal</b>:1</td></tr>
-<tr class="separator:a0d10c8050ba881836ed1dfa8070bbc06 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b></td></tr>
 <tr class="separator:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,8 +159,32 @@ struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Storage for values referenced from nested functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00082">82</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00090">90</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad3fe22c269f3e89363540b54b0350e19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3fe22c269f3e89363540b54b0350e19">&#9670;&nbsp;</a></span>krk_newUpvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkUpvalue.html">KrkUpvalue</a> * krk_newUpvalue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create an upvalue slot. </p>
+<p><a class="el" href="structUpvalue.html">Upvalue</a> slots hold references to values captured in closures. This function should only be used directly by the VM in the process of running compiled bytecode and creating function objects from code objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00274">274</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/kuroko/<a class="el" href="object_8h_source.html">object.h</a></li>
 </ul>
 </div><!-- contents -->
