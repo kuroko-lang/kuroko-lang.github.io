@@ -102,13 +102,43 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Provides tools for disassembling bytecode.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Code Disassembly in Kuroko</h2>
 <p>The <code>dis</code> module contains functions for dealing with <em>code objects</em> which represent the compiled bytecode of a Kuroko function. The bytecode compilation process is entirely static and bytecode analysis can be performed without calling into the VM to run dynamic code.</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
-Debugger Breakpoints</h2>
-<p>Kuroko interpreters can provide a debugger hook through the C API's krk_debug_registerCallback() function. Breakpoints can be managed both from the C API and from this module's addbreakpoint, delbreakpoint, enablebreakpoint, and disablebreakpoint methods.</p>
 <h2><a class="anchor" id="autotoc_md29"></a>
+Debugger Breakpoints</h2>
+<p>Kuroko interpreters can provide a debugger hook through the C API's krk_debug_registerCallback() function. Breakpoints can be managed both from the C API and from this module's <a class="el" href="mod_dis.html#addbreakpoint">addbreakpoint</a>, <a class="el" href="mod_dis.html#delbreakpoint">delbreakpoint</a>, <a class="el" href="mod_dis.html#enablebreakpoint">enablebreakpoint</a>, and <a class="el" href="mod_dis.html#disablebreakpoint">disablebreakpoint</a> methods.</p>
+<h2><a class="anchor" id="autotoc_md30"></a>
+Functions</h2>
+<p><a class="anchor" id="addbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#addbreakpoint">_</a></span><b>addbreakpoint</b>(<i>func, line</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Attach a breakpoint to a code object.</p>
+<p><code>func</code> may be a filename string, or a function, method, or code object. Returns the new breakpoint index, or raises <a class="el" href="mod___builtins__.html#Exception">Exception</a> if a breakpoint code not be added.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="build"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#build">_</a></span><b>build</b>(<i>code</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Compile a string to a code object.</p>
+<p>Compiles the string <code>code</code> and returns a code object. If a syntax error is encountered, it will be raised.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="delbreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#delbreakpoint">_</a></span><b>delbreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Delete a breakpoint.</p>
+<p>Delete the breakpoint specified by <code>handle</code>, disabling it if it was enabled. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="dis"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#dis">_</a></span><b>dis</b>(<i>obj</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Disassemble an object.</p>
+<p>Dumps a disassembly of the bytecode in the code object associated with <code>obj</code>. If <code>obj</code> can not be disassembled, a <a class="el" href="mod___builtins__.html#TypeError">TypeError</a> is raised.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="disablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#disablebreakpoint">_</a></span><b>disablebreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Disable a breakpoint.</p>
+<p>Disable the breakpoint specified by <code>handle</code>. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="enablebreakpoint"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#enablebreakpoint">_</a></span><b>enablebreakpoint</b>(<i>handle</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Enable a breakpoint.</p>
+<p>Enable the breakpoint specified by <code>handle</code>. May raise <a class="el" href="mod___builtins__.html#IndexError">IndexError</a> if <code>handle</code> is not a valid breakpoint handle.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="examine"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#examine">_</a></span><b>examine</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p>Convert a code object to a list of instructions.</p>
+<p>Examines the code object <code>func</code> and returns a list representation of its instructions. Each instruction entry is a tuple of the opcode, total instruction size in bytes, and the operand of the argument, either as an integer for jump offsets, the actual value for constant operands, or the name of a local or global variable if available.</p>
+<p> </div></div></p>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Constants</h2>
 <h3 class="letDef"><em>let</em> <b>BREAKPOINT_ONCE</b> = <code> 1 </code></h3>
 <h3 class="letDef"><em>let</em> <b>BREAKPOINT_REPEAT</b> = <code> 2 </code></h3>

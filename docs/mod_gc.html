@@ -101,7 +101,21 @@ $(function() {
 <div class="title">gc </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Namespace containing methods for controlling the garbage collector. </p>
+<div class="textblock"><p>Namespace containing methods for controlling the garbage collector.</p>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Functions</h2>
+<p><a class="anchor" id="collect"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#collect">_</a></span><b>collect</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Triggers one cycle of garbage collection.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="generations"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#generations">_</a></span><b>generations</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Returns a 4-tuple of the counts of objects in each stage of garbage collection.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="pause"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#pause">_</a></span><b>pause</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Disables automatic garbage collection until <a class="el" href="mod_gc.html#resume">resume</a> is called.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="resume"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#resume">_</a></span><b>resume</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p>Re-enable automatic garbage collection after it was stopped by <a class="el" href="mod_gc.html#pause">pause</a></p>
+<p> </div></div> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">
