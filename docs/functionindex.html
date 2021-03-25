@@ -219,6 +219,7 @@ $(function() {
 <li><a class="el" href="mod_socket.html#htons">htons</a> <i>from <b>socket</b></i></li>
 <li><a class="el" href="mod_json.html#loads">loads</a> <i>from <b>json</b></i></li>
 <li><a class="el" href="mod_collections.html#smartrepr">smartrepr</a> <i>from <b>collections</b></i></li>
+<li><a class="el" href="mod_callgrind.html#processFile">processFile</a> <i>from <b>callgrind</b></i></li>
 <li><a class="el" href="mod_tools_gendoc.html#fixup">fixup</a> <i>from <b>tools_gendoc</b></i></li>
 <li><a class="el" href="mod_tools_gendoc.html#fixupDoc">fixupDoc</a> <i>from <b>tools_gendoc</b></i></li>
 <li><a class="el" href="mod_tools_gendoc.html#functionDoc">functionDoc</a> <i>from <b>tools_gendoc</b></i></li>
@@ -227,6 +228,42 @@ $(function() {
 <li><a class="el" href="mod_tools_gendoc.html#processModules">processModules</a> <i>from <b>tools_gendoc</b></i></li>
 <li><a class="el" href="mod_tools_gendoc.html#realPrint">realPrint</a> <i>from <b>tools_gendoc</b></i></li>
 <li><a class="el" href="mod_tools_gendoc.html#truncateString">truncateString</a> <i>from <b>tools_gendoc</b></i></li>
+<li><a class="el" href="mod_tools_gendoc.html#typeName">typeName</a> <i>from <b>tools_gendoc</b></i></li>
+<li><a class="el" href="mod_codecs_bespokecodecs.html#lazy_property">lazy_property</a> <i>from <b>codecs_bespokecodecs</b></i></li>
+<li><a class="el" href="mod_codecs_bespokecodecs.html#lookup">lookup</a> <i>from <b>codecs_bespokecodecs</b></i></li>
+<li><a class="el" href="mod_codecs_bespokecodecs.html#lookup_error">lookup_error</a> <i>from <b>codecs_bespokecodecs</b></i></li>
+<li><a class="el" href="mod_codecs_bespokecodecs.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_bespokecodecs</b></i></li>
+<li><a class="el" href="mod_codecs_binascii.html#base64_file_create">base64_file_create</a> <i>from <b>codecs_binascii</b></i></li>
+<li><a class="el" href="mod_codecs_binascii.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_binascii</b></i></li>
+<li><a class="el" href="mod_codecs_binascii.html#uu_file_create">uu_file_create</a> <i>from <b>codecs_binascii</b></i></li>
+<li><a class="el" href="mod_codecs_dbdata.html#lazy_property">lazy_property</a> <i>from <b>codecs_dbdata</b></i></li>
+<li><a class="el" href="mod_codecs_dbdata.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_dbdata</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra_data_7bit.html#lazy_property">lazy_property</a> <i>from <b>codecs_dbextra_data_7bit</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra_data_8bit.html#lazy_property">lazy_property</a> <i>from <b>codecs_dbextra_data_8bit</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra.html#lazy_property">lazy_property</a> <i>from <b>codecs_dbextra</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra.html#lookup">lookup</a> <i>from <b>codecs_dbextra</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra.html#lookup_error">lookup_error</a> <i>from <b>codecs_dbextra</b></i></li>
+<li><a class="el" href="mod_codecs_dbextra.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_dbextra</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#backslashreplace_errors">backslashreplace_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#decode">decode</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#encode">encode</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#idstr">idstr</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#ignore_errors">ignore_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#lazy_property">lazy_property</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#lookup">lookup</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#lookup_error">lookup_error</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#map_weblabel">map_weblabel</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#register_error">register_error</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#replace_errors">replace_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#strict_errors">strict_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#warnreplace_errors">warnreplace_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_infrastructure.html#xmlcharrefreplace_errors">xmlcharrefreplace_errors</a> <i>from <b>codecs_infrastructure</b></i></li>
+<li><a class="el" href="mod_codecs_isweblabel.html#map_weblabel">map_weblabel</a> <i>from <b>codecs_isweblabel</b></i></li>
+<li><a class="el" href="mod_codecs_sbencs.html#lazy_property">lazy_property</a> <i>from <b>codecs_sbencs</b></i></li>
+<li><a class="el" href="mod_codecs_sbencs.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_sbencs</b></i></li>
+<li><a class="el" href="mod_codecs_sbextra.html#lazy_property">lazy_property</a> <i>from <b>codecs_sbextra</b></i></li>
+<li><a class="el" href="mod_codecs_sbextra.html#register_kuroko_codec">register_kuroko_codec</a> <i>from <b>codecs_sbextra</b></i></li>
 </ul></div> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -102,13 +102,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p> <div class="alert alert-warning">This is a work-in-progress based on the Lua reference manual.</div></p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 Introduction</h2>
 <p>Kuroko is a dynamic, bytecode-compiled, garbage-collected, embeddable, extensible, modular programming language in the same family as Python. Kuroko combines a familiar indentation-driven syntax with more traditional block-based variable declaration and scoping rules and adds to that a GIL-free concurrent multhreading model, all without sacrificing the high-level constructs and flexibility of its siblings.</p>
 <p>As Kuroko was initially designed for use as an extension language, setting up the interpreter and running code in a hosted environment is quick and simple, and restricting the operations available to managed code is straightforward. Kuroko is also intended to be a featureful standalone language, and includes an ever-growing (but altogether optional) standard library.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 Concepts</h2>
-<h3><a class="anchor" id="autotoc_md44"></a>
+<h3><a class="anchor" id="autotoc_md74"></a>
 Values, Objects, and Classes</h3>
 <p>All operations in Kuroko are structured around <em>objects</em>. Every representable thing, from integers to strings to functions and classes, is an <em>object</em>, and all objects have an associated <em>type</em>. While Kuroko is <em>dynamic</em>, this type is an inherent property of each object that can be examined at runtime.</p>
 <p>Kuroko has several kinds of <em>built-in types</em>. Simple objects, including integers, floating-point numbers, boolean <code>True</code> and <code>False</code>, are known as <em>values</em>. Values are lightweight and ephemeral, passed around the interpreter through copying. Values are also immutable, never changing on their own but always through reassignment.</p>
