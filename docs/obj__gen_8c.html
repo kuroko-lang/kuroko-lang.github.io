@@ -162,7 +162,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_generator</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structgenerator.html">generator</a> *)AS_OBJECT(o))</td></tr>
 <tr class="separator:a307dcaf24f78b1f2528dbc9915e4b459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a041b1fb83d1ee6be42bd782de6bcae12"><td class="memItemLeft" align="right" valign="top"><a id="a041b1fb83d1ee6be42bd782de6bcae12"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_generator</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o, <a class="el" href="structgenerator.html">generator</a>))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_generator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o, <a class="el" href="structgenerator.html">generator</a>))</td></tr>
 <tr class="separator:a041b1fb83d1ee6be42bd782de6bcae12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374c3875a65d947903e27fc7a47d4e33"><td class="memItemLeft" align="right" valign="top"><a id="a374c3875a65d947903e27fc7a47d4e33"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_CTYPE</b>&#160;&#160;&#160;struct <a class="el" href="structgenerator.html">generator</a> *</td></tr>
@@ -173,26 +173,26 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">krk_buildGenerator</a> (<a class="el" href="structKrkClosure.html">KrkClosure</a> *closure, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *argsIn, size_t argCount)</td></tr>
+<tr class="memitem:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">krk_buildGenerator</a> (<a class="el" href="structKrkClosure.html">KrkClosure</a> *closure, <a class="el" href="structKrkValue.html">KrkValue</a> *argsIn, size_t argCount)</td></tr>
 <tr class="memdesc:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator object from a closure and set of arguments.  <a href="obj__gen_8c.html#a67ccb0d8a4f863c7ad5294cb764d0a37">More...</a><br /></td></tr>
 <tr class="separator:a67ccb0d8a4f863c7ad5294cb764d0a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc0ca399136d69cc380a3a30f310fb3e"><td class="memItemLeft" align="right" valign="top"><a id="adc0ca399136d69cc380a3a30f310fb3e"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___repr__</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___repr__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:adc0ca399136d69cc380a3a30f310fb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc0b4748629de7926a30d7a92286f26d"><td class="memItemLeft" align="right" valign="top"><a id="abc0b4748629de7926a30d7a92286f26d"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___iter__</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___iter__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:abc0b4748629de7926a30d7a92286f26d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0c8e37ed02ab379c9db2a92b2e150c6"><td class="memItemLeft" align="right" valign="top"><a id="ac0c8e37ed02ab379c9db2a92b2e150c6"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___call__</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___call__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:ac0c8e37ed02ab379c9db2a92b2e150c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa723d3db7b6f7268146a4c1045d825"><td class="memItemLeft" align="right" valign="top"><a id="a8aa723d3db7b6f7268146a4c1045d825"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator_send</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator_send</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:a8aa723d3db7b6f7268146a4c1045d825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74636b9c34ee7cd4622c081196332f0"><td class="memItemLeft" align="right" valign="top"><a id="aa74636b9c34ee7cd4622c081196332f0"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___finish__</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator___finish__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:aa74636b9c34ee7cd4622c081196332f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f869007694472e9949409c30f4595c6"><td class="memItemLeft" align="right" valign="top"><a id="a6f869007694472e9949409c30f4595c6"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator_gi_running</b> (int, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *, int)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_generator_gi_running</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:a6f869007694472e9949409c30f4595c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad19df236e3ce549ac53cec18df5cc279"><td class="memItemLeft" align="right" valign="top"><a id="ad19df236e3ce549ac53cec18df5cc279"></a>
 _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_generatorClass</b> (void)</td></tr>
@@ -219,7 +219,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
           <td class="paramname"><em>argsIn</em>, </td>
         </tr>
         <tr>

@@ -210,6 +210,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a27c578cd339a73e7f8f06f17fb3944d2"><td class="memItemLeft" align="right" valign="top"><a id="a27c578cd339a73e7f8f06f17fb3944d2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_MASK_OBJECT</b>&#160;&#160;&#160;((uint64_t)0x7FFD000000000000) /* 0..1101 */</td></tr>
 <tr class="separator:a27c578cd339a73e7f8f06f17fb3944d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a0c790e3e016b2d7d29a8313161566"><td class="memItemLeft" align="right" valign="top"><a id="a48a0c790e3e016b2d7d29a8313161566"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_MASK_NOTIMPL</b>&#160;&#160;&#160;((uint64_t)0x7FFE000000000000) /* 0..1110 */</td></tr>
+<tr class="separator:a48a0c790e3e016b2d7d29a8313161566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab13446ac1bab220c1223ebda15ffc5f5"><td class="memItemLeft" align="right" valign="top"><a id="ab13446ac1bab220c1223ebda15ffc5f5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_MASK_NAN</b>&#160;&#160;&#160;((uint64_t)0x7FFC000000000000)</td></tr>
 <tr class="separator:ab13446ac1bab220c1223ebda15ffc5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,22 +220,25 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_MASK_LOW</b>&#160;&#160;&#160;((uint64_t)0x0000FFFFFFFFFFFF)</td></tr>
 <tr class="separator:a6adea6e801946f94db35ffc556965ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5913f21fe154a0025f21df73ecba9b85"><td class="memItemLeft" align="right" valign="top"><a id="a5913f21fe154a0025f21df73ecba9b85"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</td></tr>
 <tr class="separator:a5913f21fe154a0025f21df73ecba9b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dedf04b6dbc4f024ed257a802f59435"><td class="memItemLeft" align="right" valign="top"><a id="a3dedf04b6dbc4f024ed257a802f59435"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOTIMPL_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</td></tr>
+<tr class="separator:a3dedf04b6dbc4f024ed257a802f59435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c26ea89b359606a2eaac967c834803d"><td class="memItemLeft" align="right" valign="top"><a id="a5c26ea89b359606a2eaac967c834803d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_BOOLEAN))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_BOOLEAN))</td></tr>
 <tr class="separator:a5c26ea89b359606a2eaac967c834803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27f86d6fd4b4397b422b811c1c50d100"><td class="memItemLeft" align="right" valign="top"><a id="a27f86d6fd4b4397b422b811c1c50d100"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_INTEGER))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_INTEGER))</td></tr>
 <tr class="separator:a27f86d6fd4b4397b422b811c1c50d100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62f4aad9c10d346362409dcf6ca78b0"><td class="memItemLeft" align="right" valign="top"><a id="ae62f4aad9c10d346362409dcf6ca78b0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_KWARGS))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_KWARGS))</td></tr>
 <tr class="separator:ae62f4aad9c10d346362409dcf6ca78b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566325f786e8ec8c870a56b23badf593"><td class="memItemLeft" align="right" valign="top"><a id="a566325f786e8ec8c870a56b23badf593"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)(((uintptr_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_OBJECT))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(((uintptr_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_OBJECT))</td></tr>
 <tr class="separator:a566325f786e8ec8c870a56b23badf593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a53dfd462802b4d896373fcdab9ef38"><td class="memItemLeft" align="right" valign="top"><a id="a8a53dfd462802b4d896373fcdab9ef38"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>)((uint32_t)((((uint16_t)ty) &lt;&lt; 16) | ((uint16_t)ta)) | KRK_VAL_MASK_HANDLER))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)((((uint16_t)ty) &lt;&lt; 16) | ((uint16_t)ta)) | KRK_VAL_MASK_HANDLER))</td></tr>
 <tr class="separator:a8a53dfd462802b4d896373fcdab9ef38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b09c283fd7f718813c08c5fa37e1306"><td class="memItemLeft" align="right" valign="top"><a id="a7b09c283fd7f718813c08c5fa37e1306"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FLOATING_VAL</b>(value)&#160;&#160;&#160;(((<a class="el" href="unionKrkValueDbl.html">KrkValueDbl</a>){.dbl = (value)}).val)</td></tr>
@@ -246,6 +252,9 @@ Macros</h2></td></tr>
 <tr class="memitem:aaa055879b3088f10c5fa209de6fa2d47"><td class="memItemLeft" align="right" valign="top"><a id="aaa055879b3088f10c5fa209de6fa2d47"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_INTEGER</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
 <tr class="separator:aaa055879b3088f10c5fa209de6fa2d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d1322036f1e2fcb90c16a95cbf89af"><td class="memItemLeft" align="right" valign="top"><a id="af9d1322036f1e2fcb90c16a95cbf89af"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_NOTIMPL</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
+<tr class="separator:af9d1322036f1e2fcb90c16a95cbf89af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0c65ea91698bb036657a795d4d0c7b"><td class="memItemLeft" align="right" valign="top"><a id="a0c0c65ea91698bb036657a795d4d0c7b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER</b>(value)&#160;&#160;&#160;((uint32_t)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
 <tr class="separator:a0c0c65ea91698bb036657a795d4d0c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,6 +282,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a629c35a8d3a8ee0b24bbf92417167f44"><td class="memItemLeft" align="right" valign="top"><a id="a629c35a8d3a8ee0b24bbf92417167f44"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_KWARGS</b>(value)&#160;&#160;&#160;(((value) &amp; KRK_VAL_MASK_NONE) == KRK_VAL_MASK_KWARGS)</td></tr>
 <tr class="separator:a629c35a8d3a8ee0b24bbf92417167f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f25999390c41ba3e349031f8aab0d0"><td class="memItemLeft" align="right" valign="top"><a id="a06f25999390c41ba3e349031f8aab0d0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NOTIMPL</b>(value)&#160;&#160;&#160;(((value) &amp; KRK_VAL_MASK_NONE) == KRK_VAL_MASK_NOTIMPL)</td></tr>
+<tr class="separator:a06f25999390c41ba3e349031f8aab0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3edfeb33fc8fca4d6cef57c5e71df73f"><td class="memItemLeft" align="right" valign="top"><a id="a3edfeb33fc8fca4d6cef57c5e71df73f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_FLOATING</b>(value)&#160;&#160;&#160;(((value) &amp; KRK_VAL_MASK_NAN) != KRK_VAL_MASK_NAN)</td></tr>
 <tr class="separator:a3edfeb33fc8fca4d6cef57c5e71df73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -318,8 +330,8 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a1dcb7cb75b9af1ecfbf0440c7cc770d8"><td class="memItemLeft" align="right" valign="top"><a id="a1dcb7cb75b9af1ecfbf0440c7cc770d8"></a>
 typedef struct <a class="el" href="structKrkString.html">KrkString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>KrkString</b></td></tr>
 <tr class="separator:a1dcb7cb75b9af1ecfbf0440c7cc770d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d48408bd4c5a3ecff1d9568533484c"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a></td></tr>
-<tr class="memdesc:ac4d48408bd4c5a3ecff1d9568533484c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stack reference or primative value.  <a href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">More...</a><br /></td></tr>
+<tr class="memitem:ac4d48408bd4c5a3ecff1d9568533484c"><td class="memItemLeft" align="right" valign="top"><a id="ac4d48408bd4c5a3ecff1d9568533484c"></a>
+typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>KrkValue</b></td></tr>
 <tr class="separator:ac4d48408bd4c5a3ecff1d9568533484c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -331,7 +343,8 @@ Enumerations</h2></td></tr>
 <b>KRK_VAL_NONE</b> = 0xFFFF, 
 <br />
 &#160;&#160;<b>KRK_VAL_KWARGS</b> = 0x7FFC, 
-<b>KRK_VAL_OBJECT</b> = 0x7FFD
+<b>KRK_VAL_OBJECT</b> = 0x7FFD, 
+<b>KRK_VAL_NOTIMPL</b> = 0x7FFE
 <br />
  }</td></tr>
 <tr class="memdesc:a50e8074e590357d82386d513c5272575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag enum for basic value types.  <a href="value_8h.html#a50e8074e590357d82386d513c5272575">More...</a><br /></td></tr>
@@ -358,26 +371,6 @@ Enumerations</h2></td></tr>
 <p><a class="el" href="structKrkObj.html" title="The most basic object type.">KrkObj</a> is the base type of all objects stored on the heap and managed by the garbage collector. </p>
 
 <p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00016">16</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
-
-</div>
-</div>
-<a id="ac4d48408bd4c5a3ecff1d9568533484c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4d48408bd4c5a3ecff1d9568533484c">&#9670;&nbsp;</a></span>KrkValue</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint64_t <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Stack reference or primative value. </p>
-<p>This type stores a stack reference to an object, or the contents of a primitive type. Each VM thread's stack consists of an array of these values, and they are generally passed around in the VM through direct copying rather than as pointers, avoiding the need to track memory used by them.</p>
-<p>Implemented through basic NaN-boxing where the top sixteen bits are used as a tag (<a class="el" href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a>) and the lower 32 or 48 bits contain the various primitive types. </p>
-
-<p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00056">56</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
 
 </div>
 </div>

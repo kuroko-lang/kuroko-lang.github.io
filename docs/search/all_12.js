@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['threading_257',['threading',['../mod_threading.html',1,'']]],
-  ['time_258',['time',['../mod_time.html',1,'']]],
-  ['tools_2egendoc_259',['tools.gendoc',['../mod_tools_gendoc.html',1,'']]],
-  ['table_2eh_260',['table.h',['../table_8h.html',1,'']]],
-  ['thread_261',['Thread',['../structThread.html',1,'']]],
-  ['threads_262',['threads',['../structKrkVM.html#a3d11d3f68fdef079c201f447eb7df4a8',1,'KrkVM']]],
-  ['threads_2eh_263',['threads.h',['../threads_8h.html',1,'']]],
-  ['tupleclass_264',['tupleClass',['../structBaseClasses.html#a835a48d30cb8696086de6e96d5dabfa3',1,'BaseClasses']]],
-  ['tupleiter_265',['TupleIter',['../structTupleIter.html',1,'']]],
-  ['tupleiteratorclass_266',['tupleiteratorClass',['../structBaseClasses.html#a9f82e91110a110a6133c82f7303d9f13',1,'BaseClasses']]],
-  ['typeclass_267',['typeClass',['../structBaseClasses.html#a6b9bac910c9a0b246809784df2201546',1,'BaseClasses']]],
-  ['typeerror_268',['typeError',['../structExceptions.html#a10b8b8c7b0ae879c754374941e97d05b',1,'Exceptions']]]
+  ['range_315',['Range',['../structRange.html',1,'']]],
+  ['rangeclass_316',['rangeClass',['../structBaseClasses.html#a88baf0b4eb1d9643a5edaa2808fb10de',1,'BaseClasses']]],
+  ['rangeiterator_317',['RangeIterator',['../structRangeIterator.html',1,'']]],
+  ['rangeiteratorclass_318',['rangeiteratorClass',['../structBaseClasses.html#a8ffc602590bf17fd4408e1fe6daed1c4',1,'BaseClasses']]],
+  ['receiver_319',['receiver',['../structKrkBoundMethod.html#ab734385d646290836316b6007d7dafa1',1,'KrkBoundMethod']]],
+  ['requiredargnames_320',['requiredArgNames',['../structKrkCodeObject.html#ad27883927e3b86fd7e56eb28b4a510c2',1,'KrkCodeObject']]],
+  ['requiredargs_321',['requiredArgs',['../structKrkCodeObject.html#a39f3768c7b53202d2fcdfea91fd88ff1',1,'KrkCodeObject']]]
 ];

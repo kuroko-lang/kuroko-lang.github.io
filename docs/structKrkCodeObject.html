@@ -99,7 +99,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#pub-attribs">Data Fields</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">KrkCodeObject Struct Reference</div>  </div>
 </div><!--header-->
@@ -127,70 +128,92 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a94bc11527cf1601587e855504c792590"><td class="memItemLeft" align="right" valign="top"><a id="a94bc11527cf1601587e855504c792590"></a>
-<a class="el" href="structKrkObj.html">KrkObj</a>&#160;</td><td class="memItemRight" valign="bottom"><b>obj</b></td></tr>
-<tr class="separator:a94bc11527cf1601587e855504c792590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39f3768c7b53202d2fcdfea91fd88ff1"><td class="memItemLeft" align="right" valign="top"><a id="a39f3768c7b53202d2fcdfea91fd88ff1"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>requiredArgs</b></td></tr>
+short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a39f3768c7b53202d2fcdfea91fd88ff1">requiredArgs</a></td></tr>
+<tr class="memdesc:a39f3768c7b53202d2fcdfea91fd88ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arity of required (non-default) arguments. <br /></td></tr>
 <tr class="separator:a39f3768c7b53202d2fcdfea91fd88ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad53eafaeb50f18371cb3d4b57e8b230d"><td class="memItemLeft" align="right" valign="top"><a id="ad53eafaeb50f18371cb3d4b57e8b230d"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>keywordArgs</b></td></tr>
+short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#ad53eafaeb50f18371cb3d4b57e8b230d">keywordArgs</a></td></tr>
+<tr class="memdesc:ad53eafaeb50f18371cb3d4b57e8b230d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arity of keyword (default) arguments. <br /></td></tr>
 <tr class="separator:ad53eafaeb50f18371cb3d4b57e8b230d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d8fecbf580fb0d7e5782fbae6253e3f"><td class="memItemLeft" align="right" valign="top"><a id="a2d8fecbf580fb0d7e5782fbae6253e3f"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>upvalueCount</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a2d8fecbf580fb0d7e5782fbae6253e3f">upvalueCount</a></td></tr>
+<tr class="memdesc:a2d8fecbf580fb0d7e5782fbae6253e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of upvalues this function collects as a closure. <br /></td></tr>
 <tr class="separator:a2d8fecbf580fb0d7e5782fbae6253e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a31d0b0262fe43a11e33d5c619f0b43"><td class="memItemLeft" align="right" valign="top"><a id="a2a31d0b0262fe43a11e33d5c619f0b43"></a>
-<a class="el" href="structKrkChunk.html">KrkChunk</a>&#160;</td><td class="memItemRight" valign="bottom"><b>chunk</b></td></tr>
+<a class="el" href="structKrkChunk.html">KrkChunk</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a2a31d0b0262fe43a11e33d5c619f0b43">chunk</a></td></tr>
+<tr class="memdesc:a2a31d0b0262fe43a11e33d5c619f0b43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bytecode data. <br /></td></tr>
 <tr class="separator:a2a31d0b0262fe43a11e33d5c619f0b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afce5b20d7c83cbf2c567d091bd331ab9"><td class="memItemLeft" align="right" valign="top"><a id="afce5b20d7c83cbf2c567d091bd331ab9"></a>
-<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#afce5b20d7c83cbf2c567d091bd331ab9">name</a></td></tr>
+<tr class="memdesc:afce5b20d7c83cbf2c567d091bd331ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the function. <br /></td></tr>
 <tr class="separator:afce5b20d7c83cbf2c567d091bd331ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810e83becc529ea49b494e9c88448f18"><td class="memItemLeft" align="right" valign="top"><a id="a810e83becc529ea49b494e9c88448f18"></a>
-<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>docstring</b></td></tr>
+<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a810e83becc529ea49b494e9c88448f18">docstring</a></td></tr>
+<tr class="memdesc:a810e83becc529ea49b494e9c88448f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring attached to the function. <br /></td></tr>
 <tr class="separator:a810e83becc529ea49b494e9c88448f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad27883927e3b86fd7e56eb28b4a510c2"><td class="memItemLeft" align="right" valign="top"><a id="ad27883927e3b86fd7e56eb28b4a510c2"></a>
-<a class="el" href="structKrkValueArray.html">KrkValueArray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>requiredArgNames</b></td></tr>
+<a class="el" href="structKrkValueArray.html">KrkValueArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#ad27883927e3b86fd7e56eb28b4a510c2">requiredArgNames</a></td></tr>
+<tr class="memdesc:ad27883927e3b86fd7e56eb28b4a510c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of names for required arguments (and *args) <br /></td></tr>
 <tr class="separator:ad27883927e3b86fd7e56eb28b4a510c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acffe219e74014384dad62827b2a0cae0"><td class="memItemLeft" align="right" valign="top"><a id="acffe219e74014384dad62827b2a0cae0"></a>
-<a class="el" href="structKrkValueArray.html">KrkValueArray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>keywordArgNames</b></td></tr>
+<a class="el" href="structKrkValueArray.html">KrkValueArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#acffe219e74014384dad62827b2a0cae0">keywordArgNames</a></td></tr>
+<tr class="memdesc:acffe219e74014384dad62827b2a0cae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of names for keyword arguments (and **kwargs) <br /></td></tr>
 <tr class="separator:acffe219e74014384dad62827b2a0cae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43c2a4b86c23c7db0c5218e5056e7f1b"><td class="memItemLeft" align="right" valign="top"><a id="a43c2a4b86c23c7db0c5218e5056e7f1b"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localNameCapacity</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a43c2a4b86c23c7db0c5218e5056e7f1b">localNameCapacity</a></td></tr>
+<tr class="memdesc:a43c2a4b86c23c7db0c5218e5056e7f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of <a class="el" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a>. <br /></td></tr>
 <tr class="separator:a43c2a4b86c23c7db0c5218e5056e7f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcbcd26517529a7242cc6d946e57a650"><td class="memItemLeft" align="right" valign="top"><a id="afcbcd26517529a7242cc6d946e57a650"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localNameCount</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#afcbcd26517529a7242cc6d946e57a650">localNameCount</a></td></tr>
+<tr class="memdesc:afcbcd26517529a7242cc6d946e57a650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in <a class="el" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a>. <br /></td></tr>
 <tr class="separator:afcbcd26517529a7242cc6d946e57a650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55bb80d7fa00fb25369e502c8d7d11b8"><td class="memItemLeft" align="right" valign="top"><a id="a55bb80d7fa00fb25369e502c8d7d11b8"></a>
-<a class="el" href="structKrkLocalEntry.html">KrkLocalEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>localNames</b></td></tr>
+<a class="el" href="structKrkLocalEntry.html">KrkLocalEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a></td></tr>
+<tr class="memdesc:a55bb80d7fa00fb25369e502c8d7d11b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the names of local variables used in the function, for debugging. <br /></td></tr>
 <tr class="separator:a55bb80d7fa00fb25369e502c8d7d11b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada0c93bc0f9f0486583217a3f771731d"><td class="memItemLeft" align="right" valign="top"><a id="ada0c93bc0f9f0486583217a3f771731d"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#ada0c93bc0f9f0486583217a3f771731d">flags</a></td></tr>
+<tr class="memdesc:ada0c93bc0f9f0486583217a3f771731d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function type flags. <br /></td></tr>
 <tr class="separator:ada0c93bc0f9f0486583217a3f771731d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab77d6aa30f58c68daa1af5ff5f6bcee0"><td class="memItemLeft" align="right" valign="top"><a id="ab77d6aa30f58c68daa1af5ff5f6bcee0"></a>
-struct <a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>globalsContext</b></td></tr>
+struct <a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#ab77d6aa30f58c68daa1af5ff5f6bcee0">globalsContext</a></td></tr>
+<tr class="memdesc:ab77d6aa30f58c68daa1af5ff5f6bcee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The globals namespace the function should reference when called. <br /></td></tr>
 <tr class="separator:ab77d6aa30f58c68daa1af5ff5f6bcee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff86904807af419fc2201fe7d1d37a6f"><td class="memItemLeft" align="right" valign="top"><a id="aff86904807af419fc2201fe7d1d37a6f"></a>
-<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>qualname</b></td></tr>
+<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#aff86904807af419fc2201fe7d1d37a6f">qualname</a></td></tr>
+<tr class="memdesc:aff86904807af419fc2201fe7d1d37a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dotted name of the function. <br /></td></tr>
 <tr class="separator:aff86904807af419fc2201fe7d1d37a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
 <tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
-KrkObjType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a2f705bab2fd0bc6ab7b85ddfebb51280">type</a></td></tr>
+<tr class="memdesc:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
 <tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>flags</b></td></tr>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4d1595cd9238ce141b8fbcfd81ae78c5">flags</a></td></tr>
+<tr class="memdesc:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
 <tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b></td></tr>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a></td></tr>
+<tr class="memdesc:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached hash value for table keys. <br /></td></tr>
 <tr class="separator:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae80a8aa4393308cbf7081094de2c52bc inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="ae80a8aa4393308cbf7081094de2c52bc"></a>
-struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>next</b></td></tr>
+struct <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#ae80a8aa4393308cbf7081094de2c52bc">next</a></td></tr>
+<tr class="memdesc:ae80a8aa4393308cbf7081094de2c52bc inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invasive linked list of all objects in the VM. <br /></td></tr>
 <tr class="separator:ae80a8aa4393308cbf7081094de2c52bc inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a94bc11527cf1601587e855504c792590"><td class="memItemLeft" align="right" valign="top"><a id="a94bc11527cf1601587e855504c792590"></a>
+<a class="el" href="structKrkObj.html">KrkObj</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a94bc11527cf1601587e855504c792590">obj</a></td></tr>
+<tr class="memdesc:a94bc11527cf1601587e855504c792590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base. <br /></td></tr>
+<tr class="separator:a94bc11527cf1601587e855504c792590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Code object. </p>
 <p>Contains the static data associated with a chunk of bytecode. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00114">114</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00129">129</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad22088848f23dd43223e0a0fc12f5022"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad22088848f23dd43223e0a0fc12f5022">&#9670;&nbsp;</a></span>krk_newCodeObject()</h2>

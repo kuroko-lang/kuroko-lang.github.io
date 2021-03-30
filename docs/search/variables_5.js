@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['flags_455',['flags',['../structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872',1,'KrkThreadState']]],
-  ['floatclass_456',['floatClass',['../structBaseClasses.html#a04953c5198755001d6043b902ce4187c',1,'BaseClasses']]],
-  ['framecount_457',['frameCount',['../structKrkThreadState.html#a5b746e8dd984acb036bb7fc284b8ec0a',1,'KrkThreadState']]],
-  ['frames_458',['frames',['../structKrkThreadState.html#ada4094ade0cd8dd334aaa3029c8dc3e7',1,'KrkThreadState']]],
-  ['functionclass_459',['functionClass',['../structBaseClasses.html#a5a9480d69bdee9e2b3be451e38d59122',1,'BaseClasses']]]
+  ['entries_595',['entries',['../structKrkDict.html#a636af73c2ab0c907003102116c5736db',1,'KrkDict']]],
+  ['exceptions_596',['exceptions',['../structKrkVM.html#a29a5308fcfc5769cb8a28e65f955288e',1,'KrkVM']]],
+  ['exitonframe_597',['exitOnFrame',['../structKrkThreadState.html#ad054ec6bed664019e32bbd8774d2b723',1,'KrkThreadState']]]
 ];

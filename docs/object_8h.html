@@ -372,12 +372,12 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>KrkCleanupC
 <tr class="memdesc:a68bb9e711f52c8489f5bf08c846cc49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">An object of a class.  <a href="object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f">More...</a><br /></td></tr>
 <tr class="separator:a68bb9e711f52c8489f5bf08c846cc49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2a0b4675bbf0b10ed77a11fa56a058e"><td class="memItemLeft" align="right" valign="top"><a id="ac2a0b4675bbf0b10ed77a11fa56a058e"></a>
-typedef <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>NativeFn</b>) (int argCount, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> *args, int hasKwargs)</td></tr>
+typedef <a class="el" href="structKrkValue.html">KrkValue</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>NativeFn</b>) (int argCount, <a class="el" href="structKrkValue.html">KrkValue</a> *args, int hasKwargs)</td></tr>
 <tr class="separator:ac2a0b4675bbf0b10ed77a11fa56a058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ac5bd477fbb1214842662b92c9d115514"><td class="memItemLeft" align="right" valign="top"><a id="ac5bd477fbb1214842662b92c9d115514"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>KrkObjType</b> { <br />
+<tr class="memitem:ac5bd477fbb1214842662b92c9d115514"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a> { <br />
 &#160;&#160;<b>KRK_OBJ_CODEOBJECT</b>, 
 <b>KRK_OBJ_NATIVE</b>, 
 <b>KRK_OBJ_CLOSURE</b>, 
@@ -392,16 +392,18 @@ Enumerations</h2></td></tr>
 <b>KRK_OBJ_BYTES</b>
 <br />
  }</td></tr>
+<tr class="memdesc:ac5bd477fbb1214842662b92c9d115514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union tag for heap objects.  <a href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">More...</a><br /></td></tr>
 <tr class="separator:ac5bd477fbb1214842662b92c9d115514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a5f5fe3ca9adcb7837674840c0e4634"><td class="memItemLeft" align="right" valign="top"><a id="a3a5f5fe3ca9adcb7837674840c0e4634"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>KrkStringType</b> { <br />
-&#160;&#160;<b>KRK_STRING_ASCII</b> = 0, 
-<b>KRK_STRING_UCS1</b> = 1, 
-<b>KRK_STRING_UCS2</b> = 2, 
-<b>KRK_STRING_UCS4</b> = 4, 
+<tr class="memitem:a3a5f5fe3ca9adcb7837674840c0e4634"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a> { <br />
+&#160;&#160;<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634ae4686098b750408ca2d7b9bb1d105dcd">KRK_STRING_ASCII</a> = 0, 
+<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634ac1ddb2639169b88942823ae6b9ae5766">KRK_STRING_UCS1</a> = 1, 
+<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634a170f7589fe3573a4f21f52f819757a59">KRK_STRING_UCS2</a> = 2, 
+<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634a7293795302ab2750aa3fffa948919560">KRK_STRING_UCS4</a> = 4, 
 <br />
-&#160;&#160;<b>KRK_STRING_INVALID</b> = 5
+&#160;&#160;<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634a8c5663a5232addb52e4293362d9c1907">KRK_STRING_INVALID</a> = 5
 <br />
  }</td></tr>
+<tr class="memdesc:a3a5f5fe3ca9adcb7837674840c0e4634"><td class="mdescLeft">&#160;</td><td class="mdescRight">String compact storage type.  <a href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">More...</a><br /></td></tr>
 <tr class="separator:a3a5f5fe3ca9adcb7837674840c0e4634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -463,6 +465,57 @@ Variables</h2></td></tr>
 
 <p>The most basic object type. </p>
 <p>This is the base of all object types and contains the core structures for garbage collection. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ac5bd477fbb1214842662b92c9d115514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5bd477fbb1214842662b92c9d115514">&#9670;&nbsp;</a></span>KrkObjType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Union tag for heap objects. </p>
+<p>Allows for quick identification of special types. </p>
+
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00021">21</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+
+</div>
+</div>
+<a id="a3a5f5fe3ca9adcb7837674840c0e4634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5f5fe3ca9adcb7837674840c0e4634">&#9670;&nbsp;</a></span>KrkStringType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>String compact storage type. </p>
+<p>Indicates how raw codepoint values are stored in an a string object. We use the smallest form, of the four options, that can provide direct lookup by codepoint index for all codepoints. ASCII and UCS1 are separated because ASCII can re-use the existing UTF8 encoded data instead of allocating a separate buffer for codepoints, but this is not possible for UCS1. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3a5f5fe3ca9adcb7837674840c0e4634ae4686098b750408ca2d7b9bb1d105dcd"></a>KRK_STRING_ASCII&#160;</td><td class="fielddoc"><p>Codepoints can be extracted directly from UTF8 data. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a5f5fe3ca9adcb7837674840c0e4634ac1ddb2639169b88942823ae6b9ae5766"></a>KRK_STRING_UCS1&#160;</td><td class="fielddoc"><p>Codepoints are one byte. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a5f5fe3ca9adcb7837674840c0e4634a170f7589fe3573a4f21f52f819757a59"></a>KRK_STRING_UCS2&#160;</td><td class="fielddoc"><p>Codepoints are two bytes. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a5f5fe3ca9adcb7837674840c0e4634a7293795302ab2750aa3fffa948919560"></a>KRK_STRING_UCS4&#160;</td><td class="fielddoc"><p>Codepoints are four bytes. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a5f5fe3ca9adcb7837674840c0e4634a8c5663a5232addb52e4293362d9c1907"></a>KRK_STRING_INVALID&#160;</td><td class="fielddoc"><p>This is an invalid string. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00064">64</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>

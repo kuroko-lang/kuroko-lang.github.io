@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['listclass_476',['listClass',['../structBaseClasses.html#aea786dc01d4f91b6eaf46ac2d9b1c8f0',1,'BaseClasses']]],
-  ['listiteratorclass_477',['listiteratorClass',['../structBaseClasses.html#a8c4e4cf0d595d53286926f5040b5babf',1,'BaseClasses']]]
+  ['id_614',['id',['../structKrkLocalEntry.html#aac2d41da4518e82773abff8c2e2dc39e',1,'KrkLocalEntry']]],
+  ['importerror_615',['importError',['../structExceptions.html#a11098c4b4f2168e92de39abfee64f7c3',1,'Exceptions']]],
+  ['indexerror_616',['indexError',['../structExceptions.html#a0a4efa5ca8af1269ff9d4389df8894be',1,'Exceptions']]],
+  ['inst_617',['inst',['../structKrkList.html#ac2c5a75ed2344c87ece401bd4c19ac25',1,'KrkList::inst()'],['../structKrkDict.html#ad25ae9ffe13f281cf2c888c4e8f2c2c3',1,'KrkDict::inst()']]],
+  ['intclass_618',['intClass',['../structBaseClasses.html#a6a05517015c5fa3bc8e83a2d780f276a',1,'BaseClasses']]],
+  ['ioerror_619',['ioError',['../structExceptions.html#ab2f051d39c51d7fe6e1c7ecbce17313d',1,'Exceptions']]],
+  ['ip_620',['ip',['../structKrkCallFrame.html#ae25ed875e0124bd726956509b7788e98',1,'KrkCallFrame']]]
 ];

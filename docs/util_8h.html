@@ -233,7 +233,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b>(klass,  name)&#160;&#160;&#160;_ ## klass ## _ ## name</td></tr>
 <tr class="separator:a0cfa6513a8686f9126031c14a6b1f3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23594a5d0e09d60138dcaf1909e3f121"><td class="memItemLeft" align="right" valign="top"><a id="a23594a5d0e09d60138dcaf1909e3f121"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_SIG</b>(klass,  name)&#160;&#160;&#160;_noexport <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> FUNC_NAME(klass,name) (int argc, <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> argv[], int hasKw)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_SIG</b>(klass,  name)&#160;&#160;&#160;_noexport <a class="el" href="structKrkValue.html">KrkValue</a> FUNC_NAME(klass,name) (int argc, <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
 <tr class="separator:a23594a5d0e09d60138dcaf1909e3f121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ad29b6272fa0efbed6416a2dc8128a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b>(klass,  name,  body)</td></tr>
 <tr class="separator:a46ad29b6272fa0efbed6416a2dc8128a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,7 +270,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_float</b>(o)&#160;&#160;&#160;(AS_FLOATING(o))</td></tr>
 <tr class="separator:a95ea6523d1ef4dba24c1ef3d763b3775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0978b619dc6dbe6571b756372557cc8"><td class="memItemLeft" align="right" valign="top"><a id="ab0978b619dc6dbe6571b756372557cc8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;listClass) || krk_isInstanceOf(o,vm.baseClasses-&gt;listClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;listClass) || <a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listClass))</td></tr>
 <tr class="separator:ab0978b619dc6dbe6571b756372557cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5941ef7097fda1e8d39b92ea1f7c3db6"><td class="memItemLeft" align="right" valign="top"><a id="a5941ef7097fda1e8d39b92ea1f7c3db6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_list</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkList.html">KrkList</a>*)AS_OBJECT(o)</td></tr>
@@ -294,43 +294,43 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_class</b>(o)&#160;&#160;&#160;AS_CLASS(o)</td></tr>
 <tr class="separator:a69d9c16bc3f919c098184aad86518dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57982d278a1eb70d849858e0fc5b9396"><td class="memItemLeft" align="right" valign="top"><a id="a57982d278a1eb70d849858e0fc5b9396"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_listiterator</b>(o)&#160;&#160;&#160;krk_isInstanceOf(o,vm.baseClasses-&gt;listiteratorClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_listiterator</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listiteratorClass)</td></tr>
 <tr class="separator:a57982d278a1eb70d849858e0fc5b9396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2cd30552eff1fe063a0baf75248f96"><td class="memItemLeft" align="right" valign="top"><a id="a1c2cd30552eff1fe063a0baf75248f96"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_listiterator</b>(o)&#160;&#160;&#160;AS_INSTANCE(o)</td></tr>
 <tr class="separator:a1c2cd30552eff1fe063a0baf75248f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9db06cd618b33c808b70858f5d4c53f"><td class="memItemLeft" align="right" valign="top"><a id="ae9db06cd618b33c808b70858f5d4c53f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_str</b>(o)&#160;&#160;&#160;(IS_STRING(o)||krk_isInstanceOf(o,vm.baseClasses-&gt;strClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_str</b>(o)&#160;&#160;&#160;(IS_STRING(o)||<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;strClass))</td></tr>
 <tr class="separator:ae9db06cd618b33c808b70858f5d4c53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a0f3505b1becb2ecdbfeb4d2dddfa1"><td class="memItemLeft" align="right" valign="top"><a id="a98a0f3505b1becb2ecdbfeb4d2dddfa1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_str</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkString.html">KrkString</a>*)AS_OBJECT(o)</td></tr>
 <tr class="separator:a98a0f3505b1becb2ecdbfeb4d2dddfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d5ec996fe96bdfd20b6b842fe539bb"><td class="memItemLeft" align="right" valign="top"><a id="a64d5ec996fe96bdfd20b6b842fe539bb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_striterator</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o,vm.baseClasses-&gt;striteratorClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_striterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;striteratorClass))</td></tr>
 <tr class="separator:a64d5ec996fe96bdfd20b6b842fe539bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1404d8a282279f5d84f9100102957660"><td class="memItemLeft" align="right" valign="top"><a id="a1404d8a282279f5d84f9100102957660"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_striterator</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
 <tr class="separator:a1404d8a282279f5d84f9100102957660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memItemLeft" align="right" valign="top"><a id="aaae5a839f21b930f00ad8e9282cf60fd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;dictClass) || krk_isInstanceOf(o,vm.baseClasses-&gt;dictClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;dictClass) || <a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictClass))</td></tr>
 <tr class="separator:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a482e5b129feba8ce2d4a401d0c3f2830"><td class="memItemLeft" align="right" valign="top"><a id="a482e5b129feba8ce2d4a401d0c3f2830"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dict</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkDict.html">KrkDict</a>*)AS_OBJECT(o)</td></tr>
 <tr class="separator:a482e5b129feba8ce2d4a401d0c3f2830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8718910ef437d790435181d0e1474831"><td class="memItemLeft" align="right" valign="top"><a id="a8718910ef437d790435181d0e1474831"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictitems</b>(o)&#160;&#160;&#160;krk_isInstanceOf(o,vm.baseClasses-&gt;dictitemsClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictitems</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictitemsClass)</td></tr>
 <tr class="separator:a8718910ef437d790435181d0e1474831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade7ba3e73d52e80428053cea6f894568"><td class="memItemLeft" align="right" valign="top"><a id="ade7ba3e73d52e80428053cea6f894568"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dictitems</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structDictItems.html">DictItems</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:ade7ba3e73d52e80428053cea6f894568"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a217a13f5c25ce01881826b83084ae022"><td class="memItemLeft" align="right" valign="top"><a id="a217a13f5c25ce01881826b83084ae022"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictkeys</b>(o)&#160;&#160;&#160;krk_isInstanceOf(o,vm.baseClasses-&gt;dictkeysClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictkeys</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictkeysClass)</td></tr>
 <tr class="separator:a217a13f5c25ce01881826b83084ae022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7456652f87497f80e8e4d8dd47b6394"><td class="memItemLeft" align="right" valign="top"><a id="ad7456652f87497f80e8e4d8dd47b6394"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dictkeys</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structDictKeys.html">DictKeys</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:ad7456652f87497f80e8e4d8dd47b6394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1510647600983675c2690aec4d2b3a96"><td class="memItemLeft" align="right" valign="top"><a id="a1510647600983675c2690aec4d2b3a96"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_bytesiterator</b>(o)&#160;&#160;&#160;(krk_isInstanceOf(o,vm.baseClasses-&gt;bytesiteratorClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_bytesiterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;bytesiteratorClass))</td></tr>
 <tr class="separator:a1510647600983675c2690aec4d2b3a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac2fefdec1a8260a42b841367ff85be"><td class="memItemLeft" align="right" valign="top"><a id="a1ac2fefdec1a8260a42b841367ff85be"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_bytesiterator</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
@@ -367,28 +367,28 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aea190e6a9843237a80774642672b287d"><td class="memItemLeft" align="right" valign="top"><a id="aea190e6a9843237a80774642672b287d"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_dict_nth_key_fast</b> (size_t capacity, <a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *entries, size_t index)</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_dict_nth_key_fast</b> (size_t capacity, <a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *entries, size_t index)</td></tr>
 <tr class="separator:aea190e6a9843237a80774642672b287d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d8e2608d125128efb368108ceabcfbe"><td class="memItemLeft" align="right" valign="top"><a id="a2d8e2608d125128efb368108ceabcfbe"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __getitem__)(int</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __getitem__)(int</td></tr>
 <tr class="separator:a2d8e2608d125128efb368108ceabcfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d48761763dab3a19c4f3b616b6cb086"><td class="memItemLeft" align="right" valign="top"><a id="a3d48761763dab3a19c4f3b616b6cb086"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __int__)(int</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __int__)(int</td></tr>
 <tr class="separator:a3d48761763dab3a19c4f3b616b6cb086"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30fb131765a2cd661be42eec86748f8b"><td class="memItemLeft" align="right" valign="top"><a id="a30fb131765a2cd661be42eec86748f8b"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __float__)(int</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, __float__)(int</td></tr>
 <tr class="separator:a30fb131765a2cd661be42eec86748f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afae5ec9f9c3e6507375467ead377d9c0"><td class="memItemLeft" align="right" valign="top"><a id="afae5ec9f9c3e6507375467ead377d9c0"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, split)(int</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, split)(int</td></tr>
 <tr class="separator:afae5ec9f9c3e6507375467ead377d9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f2abd25e09dc5bd17cd35f976b8eeb8"><td class="memItemLeft" align="right" valign="top"><a id="a9f2abd25e09dc5bd17cd35f976b8eeb8"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, format)(int</td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_NAME</b> (str, format)(int</td></tr>
 <tr class="separator:a9f2abd25e09dc5bd17cd35f976b8eeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab53ffd236e80779a60add2a9ac22a989"><td class="memItemLeft" align="right" valign="top"><a id="ab53ffd236e80779a60add2a9ac22a989"></a>
-<a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> <a class="el" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>int</b></td></tr>
+<a class="el" href="structKrkValue.html">KrkValue</a> <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>int</b></td></tr>
 <tr class="separator:ab53ffd236e80779a60add2a9ac22a989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -412,7 +412,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
-<div class="line">    krk_typeName(argv[0]), _method_name); } <span class="keywordflow">while</span> (0)</div>
+<div class="line">    <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[0]), _method_name); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00027">27</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
@@ -614,7 +614,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">static</span> <a class="code" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> _krk_ ## name (<span class="keywordtype">int</span> argc, <a class="code" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) { \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _krk_ ## name (<span class="keywordtype">int</span> argc, <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) { \</div>
 <div class="line">    static __attribute__ ((unused)) <span class="keyword">const</span> <span class="keywordtype">char</span>* _method_name = # name; \</div>
 <div class="line">    body; <span class="keywordflow">return</span> NONE_VAL(); }</div>
 </div><!-- fragment -->
@@ -775,7 +775,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">        <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() expects %s, not &#39;%s&#39;&quot;</span>, \</div>
-<div class="line">        <span class="comment">/* Function name */</span> _method_name, <span class="comment">/* expected type */</span> #expected, krk_typeName(value))</div>
+<div class="line">        <span class="comment">/* Function name */</span> _method_name, <span class="comment">/* expected type */</span> #expected, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(value))</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00054">54</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
@@ -797,15 +797,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
-<div class="line">    KrkClass * type = krk_getType(fromInput); \</div>
+<div class="line">    KrkClass * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(fromInput); \</div>
 <div class="line">    if (type-&gt;_iter) { \</div>
 <div class="line">        size_t stackOffset = <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">stackTop</a> - <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">stack</a>; \</div>
 <div class="line">        krk_push(fromInput); \</div>
-<div class="line">        krk_push(krk_callSimple(OBJECT_VAL(type-&gt;_iter), 1, 0)); \</div>
+<div class="line">        krk_push(<a class="code" href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">krk_callSimple</a>(OBJECT_VAL(type-&gt;_iter), 1, 0)); \</div>
 <div class="line">        do { \</div>
 <div class="line">            krk_push(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">stack</a>[stackOffset]); \</div>
-<div class="line">            krk_push(krk_callSimple(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0), 0, 1)); \</div>
-<div class="line">            if (krk_valuesSame(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">stack</a>[stackOffset], <a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))) { \</div>
+<div class="line">            krk_push(<a class="code" href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">krk_callSimple</a>(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0), 0, 1)); \</div>
+<div class="line">            if (<a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">stack</a>[stackOffset], <a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))) { \</div>
 <div class="line">                krk_pop(); \</div>
 <div class="line">                krk_pop(); \</div>
 <div class="line">                break; \</div>
@@ -846,7 +846,7 @@ Variables</h2></td></tr>
 <div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_INSTANCE(iterableValue) &amp;&amp; AS_INSTANCE(iterableValue)-&gt;_class == <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;dictClass) { \</div>
 <div class="line">        unpackArray(AS_DICT(iterableValue)-&gt;count, krk_dict_nth_key_fast(AS_DICT(iterableValue)-&gt;capacity, AS_DICT(iterableValue)-&gt;entries, i)); \</div>
 <div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_STRING(iterableValue)) { \</div>
-<div class="line">        unpackArray(AS_STRING(iterableValue)-&gt;codesLength, krk_string_get(2,(<a class="code" href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a>[]){iterableValue,INTEGER_VAL(i)},0)); \</div>
+<div class="line">        unpackArray(AS_STRING(iterableValue)-&gt;codesLength, krk_string_get(2,(<a class="code" href="structKrkValue.html">KrkValue</a>[]){iterableValue,INTEGER_VAL(i)},0)); \</div>
 <div class="line">    } <span class="keywordflow">else</span> { \</div>
 <div class="line">        unpackIterable(iterableValue); \</div>
 <div class="line">    } \</div>
@@ -857,16 +857,20 @@ Variables</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00208">object.h:208</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00271">vm.h:271</a></div></div>
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00164">object.h:164</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00222">object.h:222</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00272">vm.h:272</a></div></div>
+<div class="ttc" id="astructKrkValue_html_aa79239e6ace07679bc61cd33318b3318"><div class="ttname"><a href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">KrkValue::krk_callSimple</a></div><div class="ttdeci">KrkValue krk_callSimple(KrkValue value, int argCount, int isMethod)</div><div class="ttdoc">Call a callable and manage VM state to obtain the return value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00897">vm.c:897</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00179">object.h:179</a></div></div>
 <div class="ttc" id="avm_8h_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Raise an exception.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00261">vm.c:261</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00236">object.h:236</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00250">object.h:250</a></div></div>
+<div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
+<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00458">vm.c:458</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00187">vm.h:187</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00140">value.c:140</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
-<div class="ttc" id="avalue_8h_html_ac4d48408bd4c5a3ecff1d9568533484c"><div class="ttname"><a href="value_8h.html#ac4d48408bd4c5a3ecff1d9568533484c">KrkValue</a></div><div class="ttdeci">uint64_t KrkValue</div><div class="ttdoc">Stack reference or primative value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00056">value.h:56</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01381">vm.c:1381</a></div></div>
 <div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00338">vm.c:338</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_a5eb8266e561d8f0b2fc576cdfd68f6f0"><div class="ttname"><a href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">KrkThreadState::stack</a></div><div class="ttdeci">KrkValue * stack</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00185">vm.h:185</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_a5eb8266e561d8f0b2fc576cdfd68f6f0"><div class="ttname"><a href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">KrkThreadState::stack</a></div><div class="ttdeci">KrkValue * stack</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

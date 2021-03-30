@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['objectclass_487',['objectClass',['../structBaseClasses.html#ac42048780334582a6698aff614c4b61f',1,'BaseClasses']]],
-  ['objects_488',['objects',['../structKrkVM.html#a6aec1bb1196faef7804d11f599f91d82',1,'KrkVM']]],
-  ['openupvalues_489',['openUpvalues',['../structKrkThreadState.html#a988ba4eff15db94992295097cbfbaf50',1,'KrkThreadState']]],
-  ['outslots_490',['outSlots',['../structKrkCallFrame.html#a8fc758eb69e9105be894b1c0c08b4d06',1,'KrkCallFrame']]]
+  ['method_635',['method',['../structKrkBoundMethod.html#ad870732c4fc3b394407949e57ab2c92e',1,'KrkBoundMethod']]],
+  ['methodclass_636',['methodClass',['../structBaseClasses.html#a8943c1113b0b3ba04dcd19a4b3247ee7',1,'BaseClasses']]],
+  ['methods_637',['methods',['../structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1',1,'KrkClass']]],
+  ['module_638',['module',['../structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9',1,'KrkThreadState']]],
+  ['moduleclass_639',['moduleClass',['../structBaseClasses.html#a494f956d728cb224d46503e5e16dcfc1',1,'BaseClasses']]],
+  ['modules_640',['modules',['../structKrkVM.html#ac7496d0c22c318c30adbe3848a5f1efb',1,'KrkVM']]]
 ];

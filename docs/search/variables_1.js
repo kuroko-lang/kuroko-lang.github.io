@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['baseclasses_436',['baseClasses',['../structKrkVM.html#aa76ccdbaf9880c2d88f20cb001f8fe16',1,'KrkVM']]],
-  ['baseexception_437',['baseException',['../structExceptions.html#acd5e7d313a09627ffbbc95e3c2b6ba2e',1,'Exceptions']]],
-  ['binpath_438',['binpath',['../structKrkVM.html#ae082ddc007eb99d385eea2c99d3f3691',1,'KrkVM']]],
-  ['boolclass_439',['boolClass',['../structBaseClasses.html#a89299ca35288c06800bccdcfe22d75e7',1,'BaseClasses']]],
-  ['builtins_440',['builtins',['../structKrkVM.html#a89e597653e42841a708fae2b8780001f',1,'KrkVM']]],
-  ['bytesallocated_441',['bytesAllocated',['../structKrkVM.html#ac9c2e6107ccad8ea3e00604bccefba21',1,'KrkVM']]],
-  ['bytesclass_442',['bytesClass',['../structBaseClasses.html#a5d9c25289e110adbf76c5e91fba19389',1,'BaseClasses']]],
-  ['bytesiteratorclass_443',['bytesiteratorClass',['../structBaseClasses.html#a7d82cfe5ba7b3c46b44a49c382058380',1,'BaseClasses']]]
+  ['allocsize_562',['allocSize',['../structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77',1,'KrkClass']]],
+  ['annotations_563',['annotations',['../structKrkClosure.html#ad1325f0b5be0d2c14cd1d00e0e8e9d43',1,'KrkClosure']]],
+  ['argumenterror_564',['argumentError',['../structExceptions.html#ad96971a88bceb9b1c88b43976ca58b94',1,'Exceptions']]],
+  ['assertionerror_565',['assertionError',['../structExceptions.html#ad35d1b7969a31db10e4441205262982c',1,'Exceptions']]],
+  ['attributeerror_566',['attributeError',['../structExceptions.html#aa8eb19062a0db4ab8a78d611c1a8c7ea',1,'Exceptions']]]
 ];
