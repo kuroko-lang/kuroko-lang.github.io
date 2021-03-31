@@ -813,13 +813,13 @@ class CodeObject():
                 offset += instruction[1]
         recursor(self.func)
         let undefined = {
-            (x,references[x]) for x in referenced
+            x for x in referenced
             if x not in defined
             and x not in dir(__builtins__)
             and x != '__builtins__'
             and x != '__annotations__'
         }
-        return list(undefined)
+        return [(x,references[x]) for x in undefined]
 
     @classmethod
     def _findOpcodeName(cls, i):
