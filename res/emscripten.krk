@@ -779,6 +779,10 @@ class CodeObject():
             description = ('dict comprehension (' + str(line) + ')','map','#e62b7f', None)
         else if func.__name__ == '<setcomp>':
             description = ('set comprehension (' + str(line) + ')','share-2','#e62b7f', None)
+        else if func.co_flags & 0x20:
+            description = ('generator <b>' + func.__name__ + '</b>()','box','#e62b7f', func.__name__)
+        else if func.co_flags & 0x80:
+            description = ('async def <b>' + func.__name__ + '</b>()','box','#e62b7f', func.__name__)
         else:
             description = ('def <b>' + func.__name__ + '</b>()','box','#e62b7f',func.__name__)
         let children = []
