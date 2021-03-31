@@ -1,12 +1,12 @@
 define("ace/mode/kuroko_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"],function(e,t,n){"use strict";var r=e("../lib/oop"),i=e("./text_highlight_rules").TextHighlightRules,s=function(){
     /* keywords */
-    var e="and|yield|finally|assert|pass|class|def|del|else|for|if|in|import|let|not|or|return|while|try|except|raise|continue|break|as|from|elif|lambda|with|is";
+    var e="and|yield|finally|assert|pass|class|def|del|else|for|if|in|import|let|not|or|return|while|try|except|raise|continue|break|as|from|elif|lambda|with|is|async|await";
     /* exceptions */
     var ex="TypeError|ArgumentError|IndexError|KeyError|AttributeError|NameError|ImportError|IOError|ValueError|KeyboardInterrupt|ZeroDivisionError|SyntaxError|Exception";
     /* special constants */
     var t="True|False|None";
     /* builtins */
-    var n="getattr|setattr|bin|min|max|sum|hash|id|oct|self|super|len|str|int|float|dir|repr|list|dict|range|object|bytes|exception|isinstance|type|print|set|any|all|bool|ord|chr|hex|tuple";
+    var n="getattr|setattr|bin|min|max|sum|hash|id|oct|self|super|len|str|int|float|dir|repr|list|dict|range|object|bytes|exception|isinstance|type|print|set|any|all|bool|ord|chr|hex|tuple|NotImplemented";
     var r=this.createKeywordMapper({"variable.language":ex,"support.function":n,"constant.language":t,keyword:e},"identifier");
     var i="[uU]?",s="[rR]",o="[fF]",u="(?:[rR][fF]|[fF][rR])",a="(?:(?:[1-9]\\d*)|(?:0))",f="(?:0[oO]?[0-7]+)",l="(?:0[xX][\\dA-Fa-f]+)",c="(?:0[bB][01]+)";
     var h="(?:"+a+"|"+f+"|"+l+"|"+c+")",p="(?:[eE][+-]?\\d+)",d="(?:\\.\\d+)",v="(?:\\d+)",m="(?:(?:"+v+"?"+d+")|(?:"+v+"\\.))",g="(?:(?:"+m+"|"+v+")"+p+")";
