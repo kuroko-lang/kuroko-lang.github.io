@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['set_412',['Set',['../structSet.html',1,'']]],
-  ['setiterator_413',['SetIterator',['../structSetIterator.html',1,'']]],
-  ['socket_414',['socket',['../structsocket.html',1,'']]],
-  ['stringbuilder_415',['StringBuilder',['../structStringBuilder.html',1,'']]]
+  ['set_413',['Set',['../structSet.html',1,'']]],
+  ['setiterator_414',['SetIterator',['../structSetIterator.html',1,'']]],
+  ['socket_415',['socket',['../structsocket.html',1,'']]],
+  ['stringbuilder_416',['StringBuilder',['../structStringBuilder.html',1,'']]]
 ];

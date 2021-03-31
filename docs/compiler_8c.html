@@ -272,7 +272,9 @@ Enumerations</h2></td></tr>
 <b>TYPE_PROPERTY</b>, 
 <b>TYPE_CLASS</b>, 
 <br />
-&#160;&#160;<b>TYPE_CLASSMETHOD</b>
+&#160;&#160;<b>TYPE_CLASSMETHOD</b>, 
+<b>TYPE_COROUTINE</b>, 
+<b>TYPE_COROUTINE_METHOD</b>
 <br />
  }</td></tr>
 <tr class="separator:a42a11575cc237e37732d560240e04371"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,7 +344,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_CONSTANT_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01247">1247</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01271">1271</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -399,7 +401,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_CONSTANT_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02310">2310</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02397">2397</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -431,7 +433,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00160">160</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00162">162</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -569,7 +571,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The code object resulting from the compilation, or NULL if compilation failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03137">3137</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03226">3226</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
