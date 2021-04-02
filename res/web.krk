@@ -727,11 +727,153 @@ print(doesANestedThing())</code></p>
 del __builtins__.next</code></p>
 ''']
 
-def tutorial(start=0):
+let newTutorial = [
+'''
+<h1>Let's explore what's new in Kuroko 1.1!</h1>
+<p>The newest release of Kuroko adds support for lots of new syntax, so let's see what's been added.</p>
+''',
+'''
+<h1>Class Methods</h1>
+<p>Class methods are implicitly bound to the class they are defined in (or its subclass) when retreived from the class or an instance.</p>
+<code>
+class Foo:
+    @classmethod
+    def doThing(cls):
+        print("Called from a",cls)
+class Bar(Foo):
+    pass
+Foo.doThing()
+Foo().doThing()
+Bar.doThing()
+Bar().doThing()
+</code>
+''','''
+<h1>Assertions</h1>
+<p>Assertions are a quick way to test conditions and raise an exception on failure.</p>
+<code>
+assert 1 > 2, "I sure hope this fails!"
+</code>
+''','''
+<h1>Generators</h1>
+<p>Generators allow functions to yield execution back to their caller. Any function with the <code>yield</code> operation will produce a generator.</p>
+<code>
+def myGenerator():
+    yield 1
+    yield 2
+    yield 3
+let gen = myGenerator() # Calling the function returns a generator object
+for i in gen: # ... which can then be iterated over.
+    print(i)
+</code>
+''','''
+<p>We can see how execution switches back and forth between the caller and the generator:</p>
+<code>
+def myGenerator():
+    yield 1
+    print('hello')
+    yield 2
+    print('hi')
+    yield 3
+    print('all done')
+let gen = myGenerator() # Calling the function returns a generator object
+for i in gen: # ... which can then be iterated over.
+    print(i)
+    print("back here again")
+</code>
+''','''
+<h1>Generator Expressions</h1>
+<p>Tuple comprehensions in Kuroko 1.0 have been replaced with <i>generator expressions</i>. The expression part of the comprehension is only evaluated as needed when the generator expression is iterated over:</p>
+<code>
+def printAndSquare(x):
+    print('squaring',x)
+    return x * x
+let t = (printAndSquare(x) for x in range(100000))
+for i in t:
+    print(i)
+    if i > 20:
+        break
+</code>
+''','''
+<p>Generator expressions can also be passed directly as the argument to a function.</p>
+<code>
+print(max(x * x for x in range(25)))
+</code>
+''','''
+<h1>Builtin Functions</h1>
+<p>A number of new builtin functions have been added:</p>
+<code>
+print(min([1,2,3]))
+print(max([1,2,3]))
+print(list(map(str,[1,2,3])))
+print(list(enumerate(['zero','one','two','three'])))
+</code>
+''','''
+<h1>Class Attributes</h1>
+<p>In Kuroko 1.0, a class's attributes and methods were stored separately, which prevented classes from being extended with new methods.</p>
+<code>
+class Foo:
+    pass
+def amethod(self,value):
+    print(self,value)
+Foo.method = amethod
+Foo().method(42)
+</code>
+''','''
+<p>We can even add new methods to built-in types:</p>
+<code>
+def __iter__(self):
+    yield self
+int.__iter__ = __iter__
+for i in 42:
+    print(i)
+</code>
+''','''
+<h1>Annotations</h1>
+<p>Function arguments, class members, and global declarations can have <i>annotations</i> attached to them. Annotations can be any expression, but are typically types.</p>
+<code>
+let x: int = 42
+def foo(a: float, b: str) -> list:
+    return [a,b]
+class Foo:
+    name: str
+</code>
+<p>Annotations will be stored in a dict called <code>__annotations__</code> on the module, function, or class.</p>
+''','''
+<h1>Complex Assignment Targets</h1>
+<p>Support has been added for assigning to multiple targets, including nested tuples of targets.</p>
+<code>
+let x, y, a, b, c, d
+a, (b, (c, d)) = x, y = 1, (2, '34')
+print(a,b,c,d,x,y)
+</code>
+''','''
+<h1><code>finally</code></h1>
+<p><code>try</code>/<code>except</code> blocks can be extended with a <code>finally</code> branch which is always run either after the <code>try</code> is successfully completed, after the <code>except</code>, or before an exception is raised to the outside.</p>
+<code>
+def f():
+    try:
+        print("in try")
+        raise Exception()
+    except:
+        print("exception?")
+        return "exception"
+    finally:
+        print("in finally")
+        return 'finally'
+print(f())
+</code>
+<p>The <code>finally</code> block will also be run if the <code>try</code> or <code>except</code> block calls <code>return</code>. If the <code>finally</code> block also calls return, its value will override the original return value.</p>
+''','''
+<h1>There's more coming!</h1>
+<p>That's it for this tutorial, but more features are still making their way into Kuroko, so check back again for updates!</p>
+'''
+]
+
+def tutorial(start=0,content=tutorials):
     '''Displays an interactive tutorial.'''
-    let this = tutorials[start]
+    let this = content[start]
     # Process this section and highlight <code> blocks.
-    let output = f'<div class="cardnumber">Slide {start+1}/{len(tutorials)}</div>'
+    let output = f'<div class="cardnumber">Slide {start+1}/{len(content)}</div>'
     while '<code>' in this:
         let before, after = this.split('<code>',1)
         output += before
@@ -739,10 +881,11 @@ def tutorial(start=0):
         output += codeSample(code)
         this = other
     if this: output += this
-    if start >= 3 and start + 1 < len(tutorials):
+    if (content is not tutorials or start >= 3) and start + 1 < len(content):
         output += nextButton()
     write(output)
 
     start += 1
-    if start < len(tutorials):
-        __builtins__.next = lambda: tutorial(start)
+    if start < len(content):
+        __builtins__.next = lambda: tutorial(start,content)
+

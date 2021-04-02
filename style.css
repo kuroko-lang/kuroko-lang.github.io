@@ -145,3 +145,6 @@ footer a {
   border: 1px solid rgba(0,0,0,.125);
   padding: 4px;
 }
+a.btn>svg {
+  margin-top: -3px;
+}
