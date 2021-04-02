@@ -89,12 +89,10 @@ let tutorials = ['''
 <p>The basic types in Kuroko are <i>integers</i> (like <code>1</code> or <code>42</code> or <code>29489352</code>),
 <i>floats</i> (like <code>3.14159</code> or <code>-0.33333333</code>), <i>bools</i> (<code>True</code> and <code>False</code>), and the special value <code>None</code>.</p>
 <p><code>print(1 + 2 + 3)</code></p>
-<p>When integer values are used in arithmetic operations, such as division, the result will be an integer as well:</p>
+<p>Since 1.1, there are two types of division in Kuroko: <i>true division</i> and <i>floor division</i>. True division on numeric values will always return a floating-point result:</p>
 <p><code>print(1 / 2)</code></p>
-<p>Basic operations like this try to maintain the types of their inputs. To get so-called <i>"true division"</i>, a float value can be used for one or the other operand:</p>
-<p><code>print(1 / 2.0)</code></p>
-<p>Some types can also be <i>cast</i> to other types. Type casting in Kuroko works like in Python, with types having constructors that may be able to take other types and convert them:</p>
-<p><code>print(float(1) / float(2))</code></p>
+<p>Floor division on integers works like division in languages like C:</p>
+<p><code>print(1 // 2)</code></p>
 <p>From here on out, the button to see the next slide will appear on the right side on all cards.</p>
 ''','''
 <h1>Objects</h1>

@@ -5513,6 +5513,10 @@ function reset_status(){ Module.awakeStatus = 0; }
       abort();
     }
 
+  function _dlclose(handle) {
+      abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
+    }
+
   function _dlopen(filename, flag) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
     }
@@ -6122,6 +6126,7 @@ var asmLibraryArg = {
   "__sys_unlink": ___sys_unlink,
   "abort": _abort,
   "check_status": check_status,
+  "dlclose": _dlclose,
   "dlopen": _dlopen,
   "dlsym": _dlsym,
   "emscripten_asm_const_int": _emscripten_asm_const_int,

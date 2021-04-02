@@ -102,36 +102,43 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Methods and classes for creating platform threads.</p>
-<h2><a class="anchor" id="autotoc_md52"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Classes</h2>
 <p><a class="anchor" id="Lock"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Lock">_</a></span><i>class</i> <b>Lock</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Represents an atomic mutex.</p>
 <p><a class="el" href="mod_threading.html#Lock">Lock</a> objects allow for exclusive access to a resource and can be used in a <code>with</code> block.</p>
-<p><a class="anchor" id="Lock___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___init__">_</a></span>let <i>x</i> = <b>Lock</b>()</h4><div class="memitem"><div class="memproto">Lock.<b>__init__</b>()</div><div class="memdoc"> Initialize a system mutex.</p>
+<p><a class="anchor" id="Lock___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___init__">_</a></span>let <i>x</i> = <b>Lock</b>()</h4><div class="memitem"><div class="memproto">Lock.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p>Initialize a system mutex.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="Lock___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___enter__">_</a></span>Lock.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> Acquire the lock.</p>
+<p><a class="anchor" id="Lock___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___enter__">_</a></span>Lock.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Acquire the lock.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="Lock___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___exit__">_</a></span>Lock.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> Release the lock.</p>
+<p><a class="anchor" id="Lock___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Lock___exit__">_</a></span>Lock.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Release the lock.</p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Thread"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Thread">_</a></span><i>class</i> <b>Thread</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Base class for building threaded execution contexts.</p>
 <p>The <a class="el" href="mod_threading.html#Thread">Thread</a> class should be subclassed and the subclass should implement a <code>run</code> method.</p>
-<p><a class="anchor" id="Thread_is_alive"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_is_alive">_</a></span>Thread.<b>is_alive</b>()</h4><div class="memitem"><div class="memdoc"> Query the status of the thread.</p>
+<p><a class="anchor" id="Thread_is_alive"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_is_alive">_</a></span>Thread.<b>is_alive</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Query the status of the thread.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="Thread_join"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_join">_</a></span>Thread.<b>join</b>()</h4><div class="memitem"><div class="memdoc"> Join the thread. Does not return until the thread finishes.</p>
+<p><a class="anchor" id="Thread_join"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_join">_</a></span>Thread.<b>join</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Join the thread. Does not return until the thread finishes.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="Thread_start"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_start">_</a></span>Thread.<b>start</b>()</h4><div class="memitem"><div class="memdoc"> Start the thread. A thread may only be started once.</p>
+<p><a class="anchor" id="Thread_start"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_start">_</a></span>Thread.<b>start</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Start the thread. A thread may only be started once.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="Thread_tid"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_tid">_</a></span><i>property</i> Thread.<b>tid</b></h4><div class="memitem"><div class="memdoc"> The platform-specific thread identifier, if available. Usually an integer.</p>
+<p><a class="anchor" id="Thread_tid"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Thread_tid">_</a></span><i>property</i> Thread.<b>tid</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>The platform-specific thread identifier, if available. Usually an integer.</p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Functions</h2>
-<p><a class="anchor" id="current_thread"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#current_thread">_</a></span><b>current_thread</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="current_thread"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#current_thread">_</a></span><b>current_thread</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Obtain a reference to the current thread.</p>
 <p>Returns the <a class="el" href="mod_threading.html#Thread">Thread</a> object associated with the calling thread, if one exists.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 Exceptions</h2>
 <p><a class="anchor" id="ThreadError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ThreadError">_</a></span><i>class</i> <b>ThreadError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Raised in various situations when an action on a thread is invalid.</p>

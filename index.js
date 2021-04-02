@@ -5408,6 +5408,10 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
   function _atexit(func, arg) {
     }
 
+  function _dlclose(handle) {
+      abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
+    }
+
   function _dlopen(filename, flag) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
     }
@@ -5924,6 +5928,7 @@ var asmLibraryArg = {
   "__sys_unlink": ___sys_unlink,
   "abort": _abort,
   "atexit": _atexit,
+  "dlclose": _dlclose,
   "dlopen": _dlopen,
   "dlsym": _dlsym,
   "emscripten_asm_const_int": _emscripten_asm_const_int,

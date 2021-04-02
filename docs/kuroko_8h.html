@@ -114,15 +114,17 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;dlfcn.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for kuroko.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="kuroko_8h__incl.png" border="0" usemap="#src_2kuroko_2kuroko_8h" alt=""/></div>
 <map name="src_2kuroko_2kuroko_8h" id="src_2kuroko_2kuroko_8h">
-<area shape="rect" title="Top&#45;level header with configuration macros." alt="" coords="63,5,213,32"/>
+<area shape="rect" title="Top&#45;level header with configuration macros." alt="" coords="111,5,261,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,76,107"/>
 <area shape="rect" title=" " alt="" coords="101,80,175,107"/>
 <area shape="rect" title=" " alt="" coords="200,80,271,107"/>
+<area shape="rect" title=" " alt="" coords="295,80,362,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -194,6 +196,24 @@ Macros</h2></td></tr>
 <tr class="memitem:a12a57fcc1fcdb69c2b57b69af8afd14e"><td class="memItemLeft" align="right" valign="top"><a id="a12a57fcc1fcdb69c2b57b69af8afd14e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ENABLE_THREADING</b></td></tr>
 <tr class="separator:a12a57fcc1fcdb69c2b57b69af8afd14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837df2c29aacf37cb96c2b65acb312a6"><td class="memItemLeft" align="right" valign="top"><a id="a837df2c29aacf37cb96c2b65acb312a6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SEP</b>&#160;&#160;&#160;&quot;/&quot;</td></tr>
+<tr class="separator:a837df2c29aacf37cb96c2b65acb312a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad9bc47341d7ebf57e15a4057c6b47a"><td class="memItemLeft" align="right" valign="top"><a id="a0ad9bc47341d7ebf57e15a4057c6b47a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>dlRefType</b>&#160;&#160;&#160;void *</td></tr>
+<tr class="separator:a0ad9bc47341d7ebf57e15a4057c6b47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bc142fdb200c3c0170e0c2399daad2"><td class="memItemLeft" align="right" valign="top"><a id="a32bc142fdb200c3c0170e0c2399daad2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>dlSymType</b>&#160;&#160;&#160;void *</td></tr>
+<tr class="separator:a32bc142fdb200c3c0170e0c2399daad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ecf6037dd481a2af46ee5e165edb9b9"><td class="memItemLeft" align="right" valign="top"><a id="a6ecf6037dd481a2af46ee5e165edb9b9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>dlOpen</b>(fileName)&#160;&#160;&#160;dlopen(fileName, RTLD_NOW)</td></tr>
+<tr class="separator:a6ecf6037dd481a2af46ee5e165edb9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd92afa2a2d7abedbbfd163bbebdc3a"><td class="memItemLeft" align="right" valign="top"><a id="a7bd92afa2a2d7abedbbfd163bbebdc3a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>dlSym</b>(dlRef,  handlerName)&#160;&#160;&#160;dlsym(dlRef,handlerName)</td></tr>
+<tr class="separator:a7bd92afa2a2d7abedbbfd163bbebdc3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ea9a015e62126ee77b33ec1dc3de05"><td class="memItemLeft" align="right" valign="top"><a id="a26ea9a015e62126ee77b33ec1dc3de05"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>dlClose</b>(dlRef)&#160;&#160;&#160;dlclose(dlRef)</td></tr>
+<tr class="separator:a26ea9a015e62126ee77b33ec1dc3de05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>

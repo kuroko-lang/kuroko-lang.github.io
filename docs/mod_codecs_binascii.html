@@ -101,40 +101,77 @@ $(function() {
 <div class="title">codecs.binascii </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md11"></a>
+<div class="textblock"><p><a href="mod_codecs.html">← codecs</a></p>
+<p>Defines functions and codecs pertaining to binary-to-text encodings.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Classes</h2>
-<p><a class="anchor" id="Base64HQXIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64HQXIncrementalCreator">_</a></span><i>class</i> <b>Base64HQXIncrementalCreator</b>(Base64IncrementalCreator)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Base64HQXIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64HQXIncrementalParser">_</a></span><i>class</i> <b>Base64HQXIncrementalParser</b>(Base64IncrementalParser)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Base64IncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64IncrementalCreator">_</a></span><i>class</i> <b>Base64IncrementalCreator</b>(IncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="Base64IncrementalCreator_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalCreator_decode">_</a></span>Base64IncrementalCreator.<b>decode</b>(<i>data_in,final=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="Base64HQXIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64HQXIncrementalCreator">_</a></span><i>class</i> <b>Base64HQXIncrementalCreator</b>(Base64IncrementalCreator)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalDecoder implementation to create (yes) the flavour of Base64 used in BinHex4.</p>
+<p>Note that this does not output the BinHex4 format, and is only one component of implementing it. </p>
+<p> </div></div> <a class="anchor" id="Base64HQXIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64HQXIncrementalParser">_</a></span><i>class</i> <b>Base64HQXIncrementalParser</b>(Base64IncrementalParser)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalEncoder implementation to parse (yes) the flavour of Base64 used in BinHex4.</p>
+<p>Note that this does not take the BinHex4 format, and is only one component of implementing it. </p>
+<p> </div></div> <a class="anchor" id="Base64IncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64IncrementalCreator">_</a></span><i>class</i> <b>Base64IncrementalCreator</b>(IncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalDecoder implementation to create (yes) Base64 from bytes. </p>
+<p><a class="anchor" id="Base64IncrementalCreator_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalCreator_decode">_</a></span>Base64IncrementalCreator.<b>decode</b>(<i>data_in,final=</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalDecoder.decode</code></p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Base64IncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64IncrementalParser">_</a></span><i>class</i> <b>Base64IncrementalParser</b>(IncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="Base64IncrementalParser_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_encode">_</a></span>Base64IncrementalParser.<b>encode</b>(<i>string_in,final=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div> <a class="anchor" id="Base64IncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64IncrementalParser">_</a></span><i>class</i> <b>Base64IncrementalParser</b>(IncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalEncoder implementation to parse (yes) Base64 from a string to bytes. </p>
+<p><a class="anchor" id="Base64IncrementalParser_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_encode">_</a></span>Base64IncrementalParser.<b>encode</b>(<i>string_in,final=</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.encode</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="Base64IncrementalParser_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_getstate">_</a></span>Base64IncrementalParser.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="Base64IncrementalParser_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_getstate">_</a></span>Base64IncrementalParser.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.getstate</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="Base64IncrementalParser_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_reset">_</a></span>Base64IncrementalParser.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="Base64IncrementalParser_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_reset">_</a></span>Base64IncrementalParser.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.reset</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="Base64IncrementalParser_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_setstate">_</a></span>Base64IncrementalParser.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="Base64IncrementalParser_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Base64IncrementalParser_setstate">_</a></span>Base64IncrementalParser.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.setstate</code></p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Base64UUIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64UUIncrementalCreator">_</a></span><i>class</i> <b>Base64UUIncrementalCreator</b>(Base64IncrementalCreator)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Base64UUIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64UUIncrementalParser">_</a></span><i>class</i> <b>Base64UUIncrementalParser</b>(Base64IncrementalParser)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="QuoPriIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#QuoPriIncrementalCreator">_</a></span><i>class</i> <b>QuoPriIncrementalCreator</b>(IncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="QuoPriIncrementalCreator_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_decode">_</a></span>QuoPriIncrementalCreator.<b>decode</b>(<i>data_in,final=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div> <a class="anchor" id="Base64UUIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64UUIncrementalCreator">_</a></span><i>class</i> <b>Base64UUIncrementalCreator</b>(Base64IncrementalCreator)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalDecoder implementation to create (yes) the flavour of Base64 used in uuencode.</p>
+<p>Note that this does not output the uuencode format, and is only one component of implementing it. </p>
+<p> </div></div> <a class="anchor" id="Base64UUIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Base64UUIncrementalParser">_</a></span><i>class</i> <b>Base64UUIncrementalParser</b>(Base64IncrementalParser)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalEncoder implementation to parse (yes) the flavour of Base64 used in uuencode.</p>
+<p>Note that this does not take the uuencode format, and is only one component of implementing it. </p>
+<p> </div></div> <a class="anchor" id="QuoPriIncrementalCreator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#QuoPriIncrementalCreator">_</a></span><i>class</i> <b>QuoPriIncrementalCreator</b>(IncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalDecoder implementation to create (yes) Quoted-Printable from bytes. </p>
+<p><a class="anchor" id="QuoPriIncrementalCreator_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_decode">_</a></span>QuoPriIncrementalCreator.<b>decode</b>(<i>data_in,final=</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalDecoder.decode</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalCreator_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_getstate">_</a></span>QuoPriIncrementalCreator.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalCreator_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_getstate">_</a></span>QuoPriIncrementalCreator.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalDecoder.getstate</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalCreator_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_reset">_</a></span>QuoPriIncrementalCreator.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalCreator_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_reset">_</a></span>QuoPriIncrementalCreator.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalDecoder.reset</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalCreator_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_setstate">_</a></span>QuoPriIncrementalCreator.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalCreator_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalCreator_setstate">_</a></span>QuoPriIncrementalCreator.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalDecoder.setstate</code></p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="QuoPriIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#QuoPriIncrementalParser">_</a></span><i>class</i> <b>QuoPriIncrementalParser</b>(IncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="QuoPriIncrementalParser_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_encode">_</a></span>QuoPriIncrementalParser.<b>encode</b>(<i>string_in,final=</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p> </div></div> <a class="anchor" id="QuoPriIncrementalParser"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#QuoPriIncrementalParser">_</a></span><i>class</i> <b>QuoPriIncrementalParser</b>(IncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalEncoder implementation to parse (yes) Quoted-Printable from a string to bytes. </p>
+<p><a class="anchor" id="QuoPriIncrementalParser_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_encode">_</a></span>QuoPriIncrementalParser.<b>encode</b>(<i>string_in,final=</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.encode</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalParser_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_getstate">_</a></span>QuoPriIncrementalParser.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalParser_getstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_getstate">_</a></span>QuoPriIncrementalParser.<b>getstate</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.getstate</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalParser_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_reset">_</a></span>QuoPriIncrementalParser.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalParser_reset"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_reset">_</a></span>QuoPriIncrementalParser.<b>reset</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.reset</code></p>
 <p> </div></div></p>
-<p><a class="anchor" id="QuoPriIncrementalParser_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_setstate">_</a></span>QuoPriIncrementalParser.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="QuoPriIncrementalParser_setstate"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#QuoPriIncrementalParser_setstate">_</a></span>QuoPriIncrementalParser.<b>setstate</b>(<i>state</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>Implements <code>IncrementalEncoder.setstate</code></p>
 <p> </div></div></p>
 <p> </div></div></p>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Functions</h2>
-<p><a class="anchor" id="base64_file_create"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#base64_file_create">_</a></span><b>base64_file_create</b>(<i>data,filename=,mode=</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="base64_file_create"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#base64_file_create">_</a></span><b>base64_file_create</b>(<i>data,filename=,mode=</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Create a Base64 string containing the provided data, with lines wrapped as required by some formats. If a filename and optional UNIX mode are provided, Base64 headers as recognised by some modern versions of uudecode are added. </p>
 <p> </div></div></p>
-<p><a class="anchor" id="uu_file_create"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#uu_file_create">_</a></span><b>uu_file_create</b>(<i>data,filename=,mode=</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="uu_file_create"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#uu_file_create">_</a></span><b>uu_file_create</b>(<i>data,filename=,mode=</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Create a string in the uuencode file format containing the provided data. </p>
 <p> </div></div> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

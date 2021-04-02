@@ -104,40 +104,47 @@ $(function() {
 <div class="textblock"><p>Tool for dynamically generating documentation files through introspection.</p>
 <p>Imports modules and scans through members to generate Markdown files to feed into Doxygen. Uses dynamic introspection to obtain member lists and look up function arguments, docstrings, etc.</p>
 <p>Markdown output is aided by a set of macros defined in the Kuroko API Documentation Doxyfile. The output should be suitable for use with a normal Doxygen build, but some additional customization is available.</p>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 Classes</h2>
 <p><a class="anchor" id="Pair"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Pair">_</a></span><i>class</i> <b>Pair</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Makes a silly sortable pair that can be expanded like a two-tuple.</p>
-<p><a class="anchor" id="Pair___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___init__">_</a></span>let <i>x</i> = <b>Pair</b>(<i>left,right</i>)</h4><div class="memitem"><div class="memproto">Pair.<b>__init__</b>(<i>left,right</i>)</div><div class="memdoc"></p>
+<p><a class="anchor" id="Pair___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___init__">_</a></span>let <i>x</i> = <b>Pair</b>(<i>left,right</i>)</h4><div class="memitem"><div class="memproto">Pair.<b>__init__</b>(<i>left,right</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="Pair___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___eq__">_</a></span>Pair == <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__eq__</b>(<i>other</i>)</div><div class="memdoc"></p>
+<p><a class="anchor" id="Pair___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___eq__">_</a></span>Pair == <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__eq__</b>(<i>other</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="Pair___gt__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___gt__">_</a></span>Pair &gt; <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__gt__</b>(<i>other</i>)</div><div class="memdoc"></p>
+<p><a class="anchor" id="Pair___gt__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___gt__">_</a></span>Pair &gt; <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__gt__</b>(<i>other</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="Pair___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> Pair:</h4><div class="memitem"><div class="memproto">Pair.<b>__iter__</b>()</div><div class="memdoc"></p>
+<p><a class="anchor" id="Pair___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> Pair:</h4><div class="memitem"><div class="memproto">Pair.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="Pair___lt__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___lt__">_</a></span>Pair &lt; <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__lt__</b>(<i>other</i>)</div><div class="memdoc"></p>
+<p><a class="anchor" id="Pair___lt__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Pair___lt__">_</a></span>Pair &lt; <i>other</i></h4><div class="memitem"><div class="memproto">Pair.<b>__lt__</b>(<i>other</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md66"></a>
 Functions</h2>
-<p><a class="anchor" id="fixup"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#fixup">_</a></span><b>fixup</b>(<i>mod</i>)</h3><div class="memitem"><div class="memdoc"> Escapes some characters in module names to make better page IDs.</p>
+<p><a class="anchor" id="fixup"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#fixup">_</a></span><b>fixup</b>(<i>mod</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Escapes some characters in module names to make better page IDs.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="fixupDoc"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#fixupDoc">_</a></span><b>fixupDoc</b>(<i>doc</i>)</h3><div class="memitem"><div class="memdoc"> Cleans up docstring contents for display in the module list.</p>
+<p><a class="anchor" id="fixupDoc"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#fixupDoc">_</a></span><b>fixupDoc</b>(<i>doc</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Cleans up docstring contents for display in the module list.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="functionDoc"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#functionDoc">_</a></span><b>functionDoc</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"> Extracts the docstring from a function and removes markup that Doxygen will choke on.</p>
+<p><a class="anchor" id="functionDoc"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#functionDoc">_</a></span><b>functionDoc</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Extracts the docstring from a function and removes markup that Doxygen will choke on.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="getArgs"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#getArgs">_</a></span><b>getArgs</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"> Extract the arguments of either a managed (<code>func.__args__</code>) or native (from an <code>@arguments</code> docstring) function.</p>
+<p><a class="anchor" id="getArgs"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#getArgs">_</a></span><b>getArgs</b>(<i>func</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Extract the arguments of either a managed (<code>func.__args__</code>) or native (from an <code>@arguments</code> docstring) function.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="isExceptionType"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isExceptionType">_</a></span><b>isExceptionType</b>(<i>cls</i>)</h3><div class="memitem"><div class="memdoc"> Determines if <code>cls</code> is an <code>Exception</code> type by examining its superclass chain.</p>
+<p><a class="anchor" id="isExceptionType"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isExceptionType">_</a></span><b>isExceptionType</b>(<i>cls</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Determines if <code>cls</code> is an <code>Exception</code> type by examining its superclass chain.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="processModules"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#processModules">_</a></span><b>processModules</b>(<i>modules</i>)</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="processModules"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#processModules">_</a></span><b>processModules</b>(<i>modules</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="truncateString"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#truncateString">_</a></span><b>truncateString</b>(<i>s</i>)</h3><div class="memitem"><div class="memdoc"> If <code>s</code> is longer than 100 characters, truncate it with an ellipsis.</p>
+<p><a class="anchor" id="truncateString"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#truncateString">_</a></span><b>truncateString</b>(<i>s</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>If <code>s</code> is longer than 100 characters, truncate it with an ellipsis.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="typeName"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#typeName">_</a></span><b>typeName</b>(<i>t<span class="type-hint">type</span></i>)<span class="type-hint-return">str</span></h3><div class="memitem"><div class="memdoc"> Get a clean type name from <code>t</code> </p>
+<p><a class="anchor" id="typeName"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#typeName">_</a></span><b>typeName</b>(<i>t<span class="type-hint">type</span></i>)<span class="type-hint-return">str</span></h3><div class="memitem"><div class="memdoc"> </p>
+<p>Get a clean type name from <code>t</code> </p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>blacklistedMethods</b> = <em>list</em></h3>
 <h3 class="letDef"><em>let</em> <b>docString</b> = <em>dict</em></h3>

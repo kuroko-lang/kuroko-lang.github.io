@@ -137,9 +137,10 @@ Include dependency graph for vm.h:</div>
 <area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="554,229,625,256"/>
 <area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="300,155,367,181"/>
 <area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="477,80,552,107"/>
-<area shape="rect" title=" " alt="" coords="710,379,781,405"/>
-<area shape="rect" title=" " alt="" coords="611,379,685,405"/>
-<area shape="rect" title=" " alt="" coords="379,379,450,405"/>
+<area shape="rect" title=" " alt="" coords="565,379,635,405"/>
+<area shape="rect" title=" " alt="" coords="660,379,735,405"/>
+<area shape="rect" title=" " alt="" coords="333,379,403,405"/>
+<area shape="rect" title=" " alt="" coords="759,379,825,405"/>
 <area shape="rect" title=" " alt="" coords="472,304,539,331"/>
 <area shape="rect" title=" " alt="" coords="563,304,634,331"/>
 <area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="284,229,367,256"/>
@@ -541,7 +542,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02942">2942</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02957">2957</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -610,7 +611,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01818">1818</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01829">1829</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -633,7 +634,7 @@ Variables</h2></td></tr>
 <p>This function is exposed as a convenience for repl developers. Normally, the VM will call <code><a class="el" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> itself if an exception is unhandled and no exit trigger is current set. The traceback is obtained from the exception object. If the exception object does not have a traceback, only the exception itself will be printed. The traceback printer will attempt to open source files to print faulting lines and may call into the VM if the exception object has a managed implementation of <code>__str__</code>.</p>
 <p>Display a traceback by scanning up the stack / call frames. The format of the output here is modeled after the output given by CPython, so we display the outermost call first and then move inwards; on each call frame we try to open the source file and print the corresponding line. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00145">145</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00127">127</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -701,7 +702,7 @@ Variables</h2></td></tr>
 <li>import foo/bar/baz as foo.bar.baz</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01722">1722</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01733">1733</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -742,7 +743,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02893">2893</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02908">2908</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -792,7 +793,7 @@ Variables</h2></td></tr>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01558">1558</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01564">1564</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -892,7 +893,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value from the stack. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00338">338</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00320">320</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -924,7 +925,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The value previously at the top of the stack.</dd></dl>
 <p>Pop the top of the stack. We never reclaim space used by the stack, so anything that is popped can be safely pushed back on without the stack moving, and you an also generally rely on a popped item still being where it was if you don't allocate anything in between; the repl relies on this it expects to be able to get the last pushed value and display it (if it's not None). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00328">328</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00310">310</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -962,7 +963,7 @@ Variables</h2></td></tr>
 </dl>
 <p>Push a value onto the stack, and grow the stack if necessary. Note that growing the stack can involve the stack <em>moving</em>, so do not rely on the memory offset of a stack value if you expect the stack to grow - eg. if you are calling into managed code to do anything, or if you are pushing anything. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00308">308</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00290">290</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -985,7 +986,7 @@ Variables</h2></td></tr>
 <p>In a repl, this should be called before or after each iteration to clean up any remnant stack entries from an uncaught exception. It should not be called during normal execution by C extensions. Values on the stack may be lost to garbage collection after a call to <code>krk_resetStack</code> .</p>
 <p>Reset the stack pointers, frame, upvalue list, clear the exception flag and current exception; happens on startup (twice) and after an exception. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00130">130</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00112">112</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1026,7 +1027,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02917">2917</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02932">2932</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1051,7 +1052,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02875">2875</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02890">2890</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1100,7 +1101,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>As a convenience to C extension authors, returns <code>None</code> </dd></dl>
 <p>Raise an exception. Creates an exception object of the requested type and formats a message string to attach to it. Exception classes are found in vm.exceptions and are initialized on startup. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00261">261</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00243">243</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1131,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02883">2883</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02898">2898</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1168,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00344">344</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00326">326</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

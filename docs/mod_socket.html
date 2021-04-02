@@ -103,56 +103,57 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>Create a socket object.</p>
 <p>Lightweight wrapper around the standard Berkeley sockets interface.</p>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Classes</h2>
-<p><a class="anchor" id="socket"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#socket">_</a></span><i>class</i> <b>socket</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="socket___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket___init__">_</a></span>let <i>x</i> = <b>socket</b>(<i>family=AF_INET,type=SOCK_STREAM,proto=0</i>)</h4><div class="memitem"><div class="memproto">socket.<b>__init__</b>(<i>family=AF_INET,type=SOCK_STREAM,proto=0</i>)</div><div class="memdoc"> Creates a new socket object for the given address family and type.</p>
+<p><a class="anchor" id="socket"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#socket">_</a></span><i>class</i> <b>socket</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="socket___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket___init__">_</a></span>let <i>x</i> = <b>socket</b>(<i>family=AF_INET,type=SOCK_STREAM,proto=0</i>)</h4><div class="memitem"><div class="memproto">socket.<b>__init__</b>(<i>family=AF_INET,type=SOCK_STREAM,proto=0</i>)</div><div class="memdoc"> </p>
+<p>Creates a new socket object for the given address family and type.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_accept"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_accept">_</a></span>socket.<b>accept</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_accept"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_accept">_</a></span>socket.<b>accept</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Accept a connection on a listening socket.</p>
 <p>Accepts one connection and returns a two-tuple with a new socket object and the address of the remote host.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_bind"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_bind">_</a></span>socket.<b>bind</b>(<i>address</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_bind"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_bind">_</a></span>socket.<b>bind</b>(<i>address</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Bind a socket to an address.</p>
 <p>The format of <code>address</code> varies by address family. For <code>AF_INET</code>, <code>address</code> should be a two-tuple of a string domain name and integer port number.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_connect"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_connect">_</a></span>socket.<b>connect</b>(<i>address</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_connect"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_connect">_</a></span>socket.<b>connect</b>(<i>address</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Connect a socket to a remote endpoint.</p>
 <p>As with <a class="el" href="mod_socket.html#socket_bind">socket_bind</a>, the format of <code>address</code> varies.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_fileno"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_fileno">_</a></span>socket.<b>fileno</b>()</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_fileno"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_fileno">_</a></span>socket.<b>fileno</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Get the file descriptor number for the underlying socket.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_listen"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_listen">_</a></span>socket.<b>listen</b>(<i>backlog=0</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_listen"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_listen">_</a></span>socket.<b>listen</b>(<i>backlog=0</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> a bound socket to listen.</p>
 <p>Begin listening on a bound socket, keeping <code>backlog</code> connections in a queue.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_recv"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_recv">_</a></span>socket.<b>recv</b>(<i>bufsize,[flags]</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_recv"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_recv">_</a></span>socket.<b>recv</b>(<i>bufsize,[flags]</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Receive data from a connected socket.</p>
 <p>Receive up to <code>bufsize</code> bytes of data, which is returned as a <a class="el" href="mod___builtins__.html#bytes">bytes</a> object.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_send"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_send">_</a></span>socket.<b>send</b>(<i>buf,[flags]</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_send"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_send">_</a></span>socket.<b>send</b>(<i>buf,[flags]</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Send data to a connected socket.</p>
 <p>Send the data in the <a class="el" href="mod___builtins__.html#bytes">bytes</a> object <code>buf</code> to the socket. Returns the number of bytes written to the socket.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_setsockopt"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_setsockopt">_</a></span>socket.<b>setsockopt</b>(<i>level,optname,value</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_setsockopt"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_setsockopt">_</a></span>socket.<b>setsockopt</b>(<i>level,optname,value</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> socket options.</p>
 <p><code>level</code> and <code>optname</code> should be integer values defined by <code>SOL</code> and <code>SO</code> options. <code>value</code> must be either an <a class="el" href="mod___builtins__.html#int">int</a> or a <a class="el" href="mod___builtins__.html#bytes">bytes</a> object.</p>
 <p> </div></div></p>
-<p><a class="anchor" id="socket_shutdown"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_shutdown">_</a></span>socket.<b>shutdown</b>(<i>how</i>)</h4><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="socket_shutdown"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#socket_shutdown">_</a></span>socket.<b>shutdown</b>(<i>how</i>)</h4><div class="memitem"><div class="memdoc"> </p>
 <p>Shut down an active socket.</p>
 <p>Gracefully closes an open socket.</p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Functions</h2>
-<p><a class="anchor" id="htons"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#htons">_</a></span><b>htons</b>()</h3><div class="memitem"><div class="memdoc"></p>
+<p><a class="anchor" id="htons"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#htons">_</a></span><b>htons</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 Exceptions</h2>
 <p><a class="anchor" id="SocketError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SocketError">_</a></span><i>class</i> <b>SocketError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Raised on faults from socket functions.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Constants</h2>
 <h3 class="letDef"><em>let</em> <b>AF_INET</b> = <code> 2 </code></h3>
 <h3 class="letDef"><em>let</em> <b>AF_INET6</b> = <code> 10 </code></h3>
