@@ -348,18 +348,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a8df3bd9547300e90d44e22b137ffb5ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a8df3bd9547300e90d44e22b137ffb5ba">krk_swap</a> (int distance)</td></tr>
 <tr class="memdesc:a8df3bd9547300e90d44e22b137ffb5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap the top of the stack of the value <code>distance</code> slots down.  <a href="vm_8h.html#a8df3bd9547300e90d44e22b137ffb5ba">More...</a><br /></td></tr>
 <tr class="separator:a8df3bd9547300e90d44e22b137ffb5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91c57f379018d1ce7efca0a406e35431"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *type, const char *fmt,...)</td></tr>
-<tr class="memdesc:a91c57f379018d1ce7efca0a406e35431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raise an exception.  <a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">More...</a><br /></td></tr>
-<tr class="separator:a91c57f379018d1ce7efca0a406e35431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a593d5627429c9ebf20f406723df0fd0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkThreadState.html">KrkThreadState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a593d5627429c9ebf20f406723df0fd0c">krk_getCurrentThread</a> (void)</td></tr>
-<tr class="memdesc:a593d5627429c9ebf20f406723df0fd0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the current thread state.  <a href="vm_8h.html#a593d5627429c9ebf20f406723df0fd0c">More...</a><br /></td></tr>
-<tr class="separator:a593d5627429c9ebf20f406723df0fd0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb587b1253fdff0419b5adfa1420ae7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *type, const char *fmt,...) __attribute__((format(printf</td></tr>
+<tr class="memdesc:a6cb587b1253fdff0419b5adfa1420ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raise an exception.  <a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">More...</a><br /></td></tr>
+<tr class="separator:a6cb587b1253fdff0419b5adfa1420ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a770eab2c2afdcbfb8ac7ccd7450f716e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a> <a class="el" href="structKrkThreadState.html">KrkThreadState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a770eab2c2afdcbfb8ac7ccd7450f716e">krk_getCurrentThread</a> (void)</td></tr>
+<tr class="memdesc:a770eab2c2afdcbfb8ac7ccd7450f716e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the current thread state.  <a href="vm_8h.html#a770eab2c2afdcbfb8ac7ccd7450f716e">More...</a><br /></td></tr>
+<tr class="separator:a770eab2c2afdcbfb8ac7ccd7450f716e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1888ed7a2fa5d9f3f1cd619543a4f9a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#a1888ed7a2fa5d9f3f1cd619543a4f9a1">krk_runNext</a> (void)</td></tr>
 <tr class="memdesc:a1888ed7a2fa5d9f3f1cd619543a4f9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continue VM execution until the next exit trigger.  <a href="vm_8h.html#a1888ed7a2fa5d9f3f1cd619543a4f9a1">More...</a><br /></td></tr>
 <tr class="separator:a1888ed7a2fa5d9f3f1cd619543a4f9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae174ce2f93bf0cc63ae45f90e8c61840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840">krk_dumpTraceback</a> ()</td></tr>
-<tr class="memdesc:ae174ce2f93bf0cc63ae45f90e8c61840"><td class="mdescLeft">&#160;</td><td class="mdescRight">If there is an active exception, print a traceback to <code>stderr</code>.  <a href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840">More...</a><br /></td></tr>
-<tr class="separator:ae174ce2f93bf0cc63ae45f90e8c61840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba179e01c3f823141190d3e5d0a1aa46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a> (void)</td></tr>
+<tr class="memdesc:aba179e01c3f823141190d3e5d0a1aa46"><td class="mdescLeft">&#160;</td><td class="mdescRight">If there is an active exception, print a traceback to <code>stderr</code>.  <a href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">More...</a><br /></td></tr>
+<tr class="separator:aba179e01c3f823141190d3e5d0a1aa46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad067a4963efa7c2e48afd53fe2269c72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkInstance.html">KrkInstance</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a> (const char *name)</td></tr>
 <tr class="memdesc:ad067a4963efa7c2e48afd53fe2269c72"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> up a new module object in the current thread.  <a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">More...</a><br /></td></tr>
 <tr class="separator:ad067a4963efa7c2e48afd53fe2269c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -542,7 +542,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02957">2957</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03010">3010</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -611,12 +611,12 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod___builtins__.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01829">1829</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01821">1821</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
-<a id="ae174ce2f93bf0cc63ae45f90e8c61840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae174ce2f93bf0cc63ae45f90e8c61840">&#9670;&nbsp;</a></span>krk_dumpTraceback()</h2>
+<a id="aba179e01c3f823141190d3e5d0a1aa46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba179e01c3f823141190d3e5d0a1aa46">&#9670;&nbsp;</a></span>krk_dumpTraceback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -624,6 +624,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void krk_dumpTraceback </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -631,21 +632,21 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>If there is an active exception, print a traceback to <code>stderr</code>. </p>
-<p>This function is exposed as a convenience for repl developers. Normally, the VM will call <code><a class="el" href="vm_8h.html#ae174ce2f93bf0cc63ae45f90e8c61840" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> itself if an exception is unhandled and no exit trigger is current set. The traceback is obtained from the exception object. If the exception object does not have a traceback, only the exception itself will be printed. The traceback printer will attempt to open source files to print faulting lines and may call into the VM if the exception object has a managed implementation of <code>__str__</code>.</p>
+<p>This function is exposed as a convenience for repl developers. Normally, the VM will call <code><a class="el" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> itself if an exception is unhandled and no exit trigger is current set. The traceback is obtained from the exception object. If the exception object does not have a traceback, only the exception itself will be printed. The traceback printer will attempt to open source files to print faulting lines and may call into the VM if the exception object has a managed implementation of <code>__str__</code>.</p>
 <p>Display a traceback by scanning up the stack / call frames. The format of the output here is modeled after the output given by CPython, so we display the outermost call first and then move inwards; on each call frame we try to open the source file and print the corresponding line. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00127">127</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00128">128</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
-<a id="a593d5627429c9ebf20f406723df0fd0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a593d5627429c9ebf20f406723df0fd0c">&#9670;&nbsp;</a></span>krk_getCurrentThread()</h2>
+<a id="a770eab2c2afdcbfb8ac7ccd7450f716e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a770eab2c2afdcbfb8ac7ccd7450f716e">&#9670;&nbsp;</a></span>krk_getCurrentThread()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structKrkThreadState.html">KrkThreadState</a>* krk_getCurrentThread </td>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> <a class="el" href="structKrkThreadState.html">KrkThreadState</a>* krk_getCurrentThread </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -702,7 +703,7 @@ Variables</h2></td></tr>
 <li>import foo/bar/baz as foo.bar.baz</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01733">1733</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01725">1725</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -743,7 +744,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02908">2908</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02960">2960</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -793,7 +794,7 @@ Variables</h2></td></tr>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01564">1564</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01552">1552</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -925,7 +926,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The value previously at the top of the stack.</dd></dl>
 <p>Pop the top of the stack. We never reclaim space used by the stack, so anything that is popped can be safely pushed back on without the stack moving, and you an also generally rely on a popped item still being where it was if you don't allocate anything in between; the repl relies on this it expects to be able to get the last pushed value and display it (if it's not None). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00310">310</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00311">311</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -963,7 +964,7 @@ Variables</h2></td></tr>
 </dl>
 <p>Push a value onto the stack, and grow the stack if necessary. Note that growing the stack can involve the stack <em>moving</em>, so do not rely on the memory offset of a stack value if you expect the stack to grow - eg. if you are calling into managed code to do anything, or if you are pushing anything. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00290">290</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00298">298</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -976,6 +977,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void krk_resetStack </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -1027,7 +1029,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02932">2932</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02985">2985</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1052,12 +1054,12 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02890">2890</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02942">2942</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
-<a id="a91c57f379018d1ce7efca0a406e35431"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91c57f379018d1ce7efca0a406e35431">&#9670;&nbsp;</a></span>krk_runtimeError()</h2>
+<a id="a6cb587b1253fdff0419b5adfa1420ae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb587b1253fdff0419b5adfa1420ae7">&#9670;&nbsp;</a></span>krk_runtimeError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1099,9 +1101,6 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As a convenience to C extension authors, returns <code>None</code> </dd></dl>
-<p>Raise an exception. Creates an exception object of the requested type and formats a message string to attach to it. Exception classes are found in vm.exceptions and are initialized on startup. </p>
-
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00243">243</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1131,7 +1130,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02898">2898</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02950">2950</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

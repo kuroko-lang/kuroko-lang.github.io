@@ -194,10 +194,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>S</b>(c)&#160;&#160;&#160;(<a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(c,sizeof(c)-1))</td></tr>
 <tr class="separator:a0cf41177d43bbdffe08f3878a5cd4704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b73b1b40c12111a2483d07bb22bd855"><td class="memItemLeft" align="right" valign="top"><a id="a0b73b1b40c12111a2483d07bb22bd855"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>likely</b>(cond)&#160;&#160;&#160;__builtin_expect(!!(cond), 1)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>likely</b>(cond)&#160;&#160;&#160;__builtin_expect((cond), 1)</td></tr>
 <tr class="separator:a0b73b1b40c12111a2483d07bb22bd855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e951923c66693f5d308458676313f2e"><td class="memItemLeft" align="right" valign="top"><a id="a6e951923c66693f5d308458676313f2e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>unlikely</b>(cond)&#160;&#160;&#160;__builtin_expect(!!(cond), 0)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>unlikely</b>(cond)&#160;&#160;&#160;__builtin_expect((cond), 0)</td></tr>
 <tr class="separator:a6e951923c66693f5d308458676313f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecba292508aeeab552501193bee5ee1a"><td class="memItemLeft" align="right" valign="top"><a id="aecba292508aeeab552501193bee5ee1a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_noexport</b>&#160;&#160;&#160;__attribute__((visibility(&quot;hidden&quot;)))</td></tr>
@@ -226,7 +226,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a005eaac847422c58b218f48539a7f90d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>TYPE_ERROR</b>(expected,  value)</td></tr>
 <tr class="separator:a005eaac847422c58b218f48539a7f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4605a36fd0d04d36870351d13a20c51"><td class="memItemLeft" align="right" valign="top"><a id="ab4605a36fd0d04d36870351d13a20c51"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOT_ENOUGH_ARGS</b>(name)&#160;&#160;&#160;<a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;argumentError, &quot;&quot;)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOT_ENOUGH_ARGS</b>(name)&#160;&#160;&#160;<a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;argumentError, &quot;Expected more args.&quot;)</td></tr>
 <tr class="separator:ab4605a36fd0d04d36870351d13a20c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c5d7f8a9cb847c6187ab43006d26367"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>CHECK_ARG</b>(i,  type,  ctype,  name)</td></tr>
 <tr class="separator:a5c5d7f8a9cb847c6187ab43006d26367"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,10 +236,10 @@ Macros</h2></td></tr>
 <tr class="memitem:a23594a5d0e09d60138dcaf1909e3f121"><td class="memItemLeft" align="right" valign="top"><a id="a23594a5d0e09d60138dcaf1909e3f121"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FUNC_SIG</b>(klass,  name)&#160;&#160;&#160;_noexport <a class="el" href="structKrkValue.html">KrkValue</a> FUNC_NAME(klass,name) (int argc, <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
 <tr class="separator:a23594a5d0e09d60138dcaf1909e3f121"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46ad29b6272fa0efbed6416a2dc8128a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b>(klass,  name,  body)</td></tr>
-<tr class="separator:a46ad29b6272fa0efbed6416a2dc8128a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae80b472bc7be8b3f5d36ac62d7fe7001"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_FUNC</b>(name,  body)</td></tr>
-<tr class="separator:ae80b472bc7be8b3f5d36ac62d7fe7001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae64e6600c6fa47b2e5752057278c0d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_METHOD</b>(klass,  name, ...)</td></tr>
+<tr class="separator:aae64e6600c6fa47b2e5752057278c0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa1d92b72d8bca2f4abbc2f4e71e698"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_FUNC</b>(name, ...)</td></tr>
+<tr class="separator:a6fa1d92b72d8bca2f4abbc2f4e71e698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3bbd9eb13e9777f90f9a9ec77411aed"><td class="memItemLeft" align="right" valign="top"><a id="ab3bbd9eb13e9777f90f9a9ec77411aed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAKE_CLASS</b>(klass)&#160;&#160;&#160;do { <a class="el" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a>(module,&amp;klass,#klass,vm.baseClasses-&gt;objectClass); klass -&gt;allocSize = sizeof(struct klass); } while (0)</td></tr>
 <tr class="separator:ab3bbd9eb13e9777f90f9a9ec77411aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,7 +271,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_float</b>(o)&#160;&#160;&#160;(AS_FLOATING(o))</td></tr>
 <tr class="separator:a95ea6523d1ef4dba24c1ef3d763b3775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0978b619dc6dbe6571b756372557cc8"><td class="memItemLeft" align="right" valign="top"><a id="ab0978b619dc6dbe6571b756372557cc8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;listClass) || <a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_list</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;listClass) || <a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listClass))</td></tr>
 <tr class="separator:ab0978b619dc6dbe6571b756372557cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5941ef7097fda1e8d39b92ea1f7c3db6"><td class="memItemLeft" align="right" valign="top"><a id="a5941ef7097fda1e8d39b92ea1f7c3db6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_list</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkList.html">KrkList</a>*)AS_OBJECT(o)</td></tr>
@@ -295,49 +295,49 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_class</b>(o)&#160;&#160;&#160;AS_CLASS(o)</td></tr>
 <tr class="separator:a69d9c16bc3f919c098184aad86518dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57982d278a1eb70d849858e0fc5b9396"><td class="memItemLeft" align="right" valign="top"><a id="a57982d278a1eb70d849858e0fc5b9396"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_listiterator</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listiteratorClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_listiterator</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;listiteratorClass)</td></tr>
 <tr class="separator:a57982d278a1eb70d849858e0fc5b9396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2cd30552eff1fe063a0baf75248f96"><td class="memItemLeft" align="right" valign="top"><a id="a1c2cd30552eff1fe063a0baf75248f96"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_listiterator</b>(o)&#160;&#160;&#160;AS_INSTANCE(o)</td></tr>
 <tr class="separator:a1c2cd30552eff1fe063a0baf75248f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9db06cd618b33c808b70858f5d4c53f"><td class="memItemLeft" align="right" valign="top"><a id="ae9db06cd618b33c808b70858f5d4c53f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_str</b>(o)&#160;&#160;&#160;(IS_STRING(o)||<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;strClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_str</b>(o)&#160;&#160;&#160;(IS_STRING(o)||<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;strClass))</td></tr>
 <tr class="separator:ae9db06cd618b33c808b70858f5d4c53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a0f3505b1becb2ecdbfeb4d2dddfa1"><td class="memItemLeft" align="right" valign="top"><a id="a98a0f3505b1becb2ecdbfeb4d2dddfa1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_str</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkString.html">KrkString</a>*)AS_OBJECT(o)</td></tr>
 <tr class="separator:a98a0f3505b1becb2ecdbfeb4d2dddfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d5ec996fe96bdfd20b6b842fe539bb"><td class="memItemLeft" align="right" valign="top"><a id="a64d5ec996fe96bdfd20b6b842fe539bb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_striterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;striteratorClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_striterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;striteratorClass))</td></tr>
 <tr class="separator:a64d5ec996fe96bdfd20b6b842fe539bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1404d8a282279f5d84f9100102957660"><td class="memItemLeft" align="right" valign="top"><a id="a1404d8a282279f5d84f9100102957660"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_striterator</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
 <tr class="separator:a1404d8a282279f5d84f9100102957660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memItemLeft" align="right" valign="top"><a id="aaae5a839f21b930f00ad8e9282cf60fd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;dictClass) || <a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dict</b>(o)&#160;&#160;&#160;((IS_INSTANCE(o) &amp;&amp; AS_INSTANCE(o)-&gt;_class == vm.baseClasses-&gt;dictClass) || <a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictClass))</td></tr>
 <tr class="separator:aaae5a839f21b930f00ad8e9282cf60fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a482e5b129feba8ce2d4a401d0c3f2830"><td class="memItemLeft" align="right" valign="top"><a id="a482e5b129feba8ce2d4a401d0c3f2830"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dict</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkDict.html">KrkDict</a>*)AS_OBJECT(o)</td></tr>
 <tr class="separator:a482e5b129feba8ce2d4a401d0c3f2830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8718910ef437d790435181d0e1474831"><td class="memItemLeft" align="right" valign="top"><a id="a8718910ef437d790435181d0e1474831"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictitems</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictitemsClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictitems</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictitemsClass)</td></tr>
 <tr class="separator:a8718910ef437d790435181d0e1474831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade7ba3e73d52e80428053cea6f894568"><td class="memItemLeft" align="right" valign="top"><a id="ade7ba3e73d52e80428053cea6f894568"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dictitems</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structDictItems.html">DictItems</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:ade7ba3e73d52e80428053cea6f894568"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a217a13f5c25ce01881826b83084ae022"><td class="memItemLeft" align="right" valign="top"><a id="a217a13f5c25ce01881826b83084ae022"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictkeys</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictkeysClass)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_dictkeys</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;dictkeysClass)</td></tr>
 <tr class="separator:a217a13f5c25ce01881826b83084ae022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7456652f87497f80e8e4d8dd47b6394"><td class="memItemLeft" align="right" valign="top"><a id="ad7456652f87497f80e8e4d8dd47b6394"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_dictkeys</b>(o)&#160;&#160;&#160;((struct <a class="el" href="structDictKeys.html">DictKeys</a>*)AS_OBJECT(o))</td></tr>
 <tr class="separator:ad7456652f87497f80e8e4d8dd47b6394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1510647600983675c2690aec4d2b3a96"><td class="memItemLeft" align="right" valign="top"><a id="a1510647600983675c2690aec4d2b3a96"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_bytesiterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a267ad31fd0a9c3ddfd65805ba0a60d96">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;bytesiteratorClass))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_bytesiterator</b>(o)&#160;&#160;&#160;(<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.baseClasses-&gt;bytesiteratorClass))</td></tr>
 <tr class="separator:a1510647600983675c2690aec4d2b3a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac2fefdec1a8260a42b841367ff85be"><td class="memItemLeft" align="right" valign="top"><a id="a1ac2fefdec1a8260a42b841367ff85be"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_bytesiterator</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
 <tr class="separator:a1ac2fefdec1a8260a42b841367ff85be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30b66fee49fe25b0a81b08d60bd16e43"><td class="memItemLeft" align="right" valign="top"><a id="a30b66fee49fe25b0a81b08d60bd16e43"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>unpackError</b>(fromInput)&#160;&#160;&#160;return <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;'%s' object is not iterable&quot;, krk_typeName(fromInput));</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>unpackError</b>(fromInput)&#160;&#160;&#160;return <a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;typeError, &quot;'%s' object is not iterable&quot;, krk_typeName(fromInput));</td></tr>
 <tr class="separator:a30b66fee49fe25b0a81b08d60bd16e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36ae6749848b801e91fcf637a23a0e0b"><td class="memItemLeft" align="right" valign="top"><a id="a36ae6749848b801e91fcf637a23a0e0b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_string_get</b>&#160;&#160;&#160;FUNC_NAME(str,__getitem__)</td></tr>
@@ -412,10 +412,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
 <div class="line">    <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[0]), _method_name); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00027">27</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00028">28</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +460,7 @@ Variables</h2></td></tr>
 <div class="line">    if (unlikely(!IS_ ## type (argv[i]))) <span class="keywordflow">return</span> TYPE_ERROR(type,argv[i]); \</div>
 <div class="line">    ctype name __attribute__((unused)) = AS_ ## type (argv[i])</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00059">59</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00060">60</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -479,10 +479,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00048">48</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00049">49</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -501,10 +501,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00051">51</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00052">52</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -523,10 +523,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00045">45</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00046">46</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -544,10 +544,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 0)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 0)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00042">42</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00043">43</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -586,12 +586,12 @@ Variables</h2></td></tr>
 <p>Classes store their docstrings directly, rather than in their attribute tables. Instances use the attribute table and store strings with the name <code>__doc__</code>. Native functions store direct C string pointers for documentation.</p>
 <p>This macro provides a generic interface for applying documentation strings to any of the above types, and handles not attaching documentation when built with KRK_NO_DOCUMENTATION. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00292">292</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00295">295</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
-<a id="ae80b472bc7be8b3f5d36ac62d7fe7001"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae80b472bc7be8b3f5d36ac62d7fe7001">&#9670;&nbsp;</a></span>KRK_FUNC</h2>
+<a id="a6fa1d92b72d8bca2f4abbc2f4e71e698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa1d92b72d8bca2f4abbc2f4e71e698">&#9670;&nbsp;</a></span>KRK_FUNC</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -606,7 +606,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">body&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -617,14 +617,15 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _krk_ ## name (<span class="keywordtype">int</span> argc, <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) { \</div>
 <div class="line">    static __attribute__ ((unused)) <span class="keyword">const</span> <span class="keywordtype">char</span>* _method_name = # name; \</div>
-<div class="line">    body; <span class="keywordflow">return</span> NONE_VAL(); }</div>
+<div class="line">    __VA_ARGS__ \</div>
+<div class="line">    return NONE_VAL(); }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00071">71</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00073">73</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
-<a id="a46ad29b6272fa0efbed6416a2dc8128a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46ad29b6272fa0efbed6416a2dc8128a">&#9670;&nbsp;</a></span>KRK_METHOD</h2>
+<a id="aae64e6600c6fa47b2e5752057278c0d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae64e6600c6fa47b2e5752057278c0d4">&#9670;&nbsp;</a></span>KRK_METHOD</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -645,7 +646,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">body&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -657,9 +658,10 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    FUNC_SIG(klass, name) { \</div>
 <div class="line">    static __attribute__ ((unused)) <span class="keyword">const</span> <span class="keywordtype">char</span>* _method_name = # name; \</div>
 <div class="line">    CHECK_ARG(0,klass,CURRENT_CTYPE,CURRENT_NAME); \</div>
-<div class="line">    body; <span class="keywordflow">return</span> NONE_VAL(); }</div>
+<div class="line">    __VA_ARGS__ \</div>
+<div class="line">    return NONE_VAL(); }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00066">66</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00067">67</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -678,10 +680,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00036">36</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00037">37</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -700,10 +702,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00039">39</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00040">40</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -722,10 +724,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00033">33</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00034">34</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -743,10 +745,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00030">30</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00031">31</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -775,10 +777,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">        <a class="code" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() expects %s, not &#39;%s&#39;&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">        <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() expects %s, not &#39;%s&#39;&quot;</span>, \</div>
 <div class="line">        <span class="comment">/* Function name */</span> _method_name, <span class="comment">/* expected type */</span> #expected, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(value))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00054">54</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00055">55</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +821,7 @@ Variables</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00229">229</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00232">232</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -853,24 +855,24 @@ Variables</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00251">251</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00254">254</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00223">object.h:223</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00272">vm.h:272</a></div></div>
-<div class="ttc" id="astructKrkValue_html_aa79239e6ace07679bc61cd33318b3318"><div class="ttname"><a href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">KrkValue::krk_callSimple</a></div><div class="ttdeci">KrkValue krk_callSimple(KrkValue value, int argCount, int isMethod)</div><div class="ttdoc">Call a callable and manage VM state to obtain the return value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00879">vm.c:879</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00273">vm.h:273</a></div></div>
+<div class="ttc" id="astructKrkValue_html_aa79239e6ace07679bc61cd33318b3318"><div class="ttname"><a href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">KrkValue::krk_callSimple</a></div><div class="ttdeci">KrkValue krk_callSimple(KrkValue value, int argCount, int isMethod)</div><div class="ttdoc">Call a callable and manage VM state to obtain the return value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00865">vm.c:865</a></div></div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00180">object.h:180</a></div></div>
-<div class="ttc" id="avm_8h_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Raise an exception.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00243">vm.c:243</a></div></div>
 <div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00251">object.h:251</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00440">vm.c:440</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00441">vm.c:441</a></div></div>
 <div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00187">vm.h:187</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00140">value.c:140</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
-<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01364">vm.c:1364</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01350">vm.c:1350</a></div></div>
 <div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00320">vm.c:320</a></div></div>
+<div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
 <div class="ttc" id="astructKrkThreadState_html_a5eb8266e561d8f0b2fc576cdfd68f6f0"><div class="ttname"><a href="structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0">KrkThreadState::stack</a></div><div class="ttdeci">KrkValue * stack</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>

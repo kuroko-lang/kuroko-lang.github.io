@@ -32,12 +32,12 @@ function toggleVisibility(linkObj)
    content.hide();
    summary.show();
    $(linkObj).addClass('closed').removeClass('opened');
-   $(trigger).attr('src','closed.png');
+   $(trigger).attr('src',src.substring(0,src.length-8)+'closed.png');
  } else {
    content.show();
    summary.hide();
    $(linkObj).removeClass('closed').addClass('opened');
-   $(trigger).attr('src','open.png');
+   $(trigger).attr('src',src.substring(0,src.length-10)+'open.png');
  }
  return false;
 }
@@ -111,10 +111,10 @@ function toggleInherit(id)
   var src = $(img).attr('src');
   if (rows.filter(':first').is(':visible')===true) {
     rows.css('display','none');
-    $(img).attr('src','closed.png');
+    $(img).attr('src',src.substring(0,src.length-8)+'closed.png');
   } else {
     rows.css('display','table-row'); // using show() causes jump in firefox
-    $(img).attr('src','open.png');
+    $(img).attr('src',src.substring(0,src.length-10)+'open.png');
   }
 }
 /* @license-end */

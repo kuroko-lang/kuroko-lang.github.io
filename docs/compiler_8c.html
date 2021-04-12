@@ -191,7 +191,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE</b>(s)</td></tr>
 <tr class="separator:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a742a715a9dbe2cb517df0ca218d47"><td class="memItemLeft" align="right" valign="top"><a id="a24a742a715a9dbe2cb517df0ca218d47"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.panicMode) break; <a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.panicMode) break; <a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
 <tr class="separator:a24a742a715a9dbe2cb517df0ca218d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259aac00ed43fd7ac58196b770963525"><td class="memItemLeft" align="right" valign="top"><a id="a259aac00ed43fd7ac58196b770963525"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>error</b>(...)&#160;&#160;&#160;raiseSyntaxError(&amp;parser.previous, __VA_ARGS__)</td></tr>
@@ -214,7 +214,7 @@ Macros</h2></td></tr>
 <tr class="memitem:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>DO_VARIABLE</b>(opset,  opget,  opdel)</td></tr>
 <tr class="separator:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memItemLeft" align="right" valign="top"><a id="ad6c6834c3abc1f712b7cc21df7a548c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[token] = {a, b, c}</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[token] = {# token, a, b, c}</td></tr>
 <tr class="separator:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -345,7 +345,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_CONSTANT_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01273">1273</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01271">1271</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -402,7 +402,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_CONSTANT_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02399">2399</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02390">2390</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -495,7 +495,7 @@ Variables</h2></td></tr>
 <div class="line">        } \</div>
 <div class="line">        tmpbuf[i] = c[i+2]; \</div>
 <div class="line">    } \</div>
-<div class="line">    unsigned <span class="keywordtype">long</span> value = strtoul(tmpbuf, NULL, 16); \</div>
+<div class="line">    unsigned <span class="keywordtype">long</span> value = parseStrInt(tmpbuf, NULL, 16); \</div>
 <div class="line">    if (value &gt;= 0x110000) { \</div>
 <div class="line">        error(<span class="stringliteral">&quot;invalid codepoint in \\%c escape&quot;</span>, type); \</div>
 <div class="line">    } \</div>
@@ -572,7 +572,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The code object resulting from the compilation, or NULL if compilation failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03230">3230</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03213">3213</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
