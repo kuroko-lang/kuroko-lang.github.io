@@ -5741,6 +5741,13 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
       return -1;
     }
 
+  function _gettimeofday(ptr) {
+      var now = Date.now();
+      HEAP32[((ptr)>>2)] = (now/1000)|0; // seconds
+      HEAP32[(((ptr)+(4))>>2)] = ((now % 1000)*1000)|0; // microseconds
+      return 0;
+    }
+
   function _kill(pid, sig) {
       // http://pubs.opengroup.org/onlinepubs/000095399/functions/kill.html
       // Makes no sense in a single-process environment.
@@ -5794,14 +5801,6 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
       if (!command) return 0; // no shell available
       setErrNo(6);
       return -1;
-    }
-
-  function _time(ptr) {
-      var ret = (Date.now()/1000)|0;
-      if (ptr) {
-        HEAP32[((ptr)>>2)] = ret;
-      }
-      return ret;
     }
 
   var readAsmConstArgsArray=[];
@@ -5950,6 +5949,7 @@ var asmLibraryArg = {
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
   "fork": _fork,
+  "gettimeofday": _gettimeofday,
   "kill": _kill,
   "krk_getKey": krk_getKey,
   "krk_getKeyCount": krk_getKeyCount,
@@ -5959,8 +5959,7 @@ var asmLibraryArg = {
   "krk_jsErr": krk_jsErr,
   "krk_jsType": krk_jsType,
   "setTempRet0": _setTempRet0,
-  "system": _system,
-  "time": _time
+  "system": _system
 };
 var asm = createWasm();
 /** @type {function(...*):?} */

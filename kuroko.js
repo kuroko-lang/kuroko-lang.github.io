@@ -5784,6 +5784,13 @@ function reset_status(){ Module.awakeStatus = 0; }
       return -1;
     }
 
+  function _gettimeofday(ptr) {
+      var now = Date.now();
+      HEAP32[((ptr)>>2)] = (now/1000)|0; // seconds
+      HEAP32[(((ptr)+(4))>>2)] = ((now % 1000)*1000)|0; // microseconds
+      return 0;
+    }
+
   function _kill(pid, sig) {
       // http://pubs.opengroup.org/onlinepubs/000095399/functions/kill.html
       // Makes no sense in a single-process environment.
@@ -5837,14 +5844,6 @@ function reset_status(){ Module.awakeStatus = 0; }
       if (!command) return 0; // no shell available
       setErrNo(6);
       return -1;
-    }
-
-  function _time(ptr) {
-      var ret = (Date.now()/1000)|0;
-      if (ptr) {
-        HEAP32[((ptr)>>2)] = ret;
-      }
-      return ret;
     }
 
   var readAsmConstArgsArray=[];
@@ -6146,13 +6145,13 @@ var asmLibraryArg = {
   "fd_write": _fd_write,
   "fork": _fork,
   "get_stdin_line": get_stdin_line,
+  "gettimeofday": _gettimeofday,
   "kill": _kill,
   "report_debugger": report_debugger,
   "report_input": report_input,
   "reset_status": reset_status,
   "setTempRet0": _setTempRet0,
-  "system": _system,
-  "time": _time
+  "system": _system
 };
 var asm = createWasm();
 /** @type {function(...*):?} */
