@@ -103,74 +103,419 @@ $(function() {
 <div class="title">Compiler Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Subcompiler state.  
+ <a href="structCompiler.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ae1fe27bd7001120f0a8518c1a62debc6"><td class="memItemLeft" align="right" valign="top"><a id="ae1fe27bd7001120f0a8518c1a62debc6"></a>
-struct <a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>enclosing</b></td></tr>
+<tr class="memitem:ae1fe27bd7001120f0a8518c1a62debc6"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#ae1fe27bd7001120f0a8518c1a62debc6">enclosing</a></td></tr>
 <tr class="separator:ae1fe27bd7001120f0a8518c1a62debc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abba48344e599659ecfb8c3da27ab1768"><td class="memItemLeft" align="right" valign="top"><a id="abba48344e599659ecfb8c3da27ab1768"></a>
-<a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>codeobject</b></td></tr>
+<tr class="memitem:abba48344e599659ecfb8c3da27ab1768"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#abba48344e599659ecfb8c3da27ab1768">codeobject</a></td></tr>
 <tr class="separator:abba48344e599659ecfb8c3da27ab1768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a216c01909473b506ea321815e378ee6f"><td class="memItemLeft" align="right" valign="top"><a id="a216c01909473b506ea321815e378ee6f"></a>
-FunctionType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="memitem:a216c01909473b506ea321815e378ee6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8c.html#a42a11575cc237e37732d560240e04371">FunctionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a216c01909473b506ea321815e378ee6f">type</a></td></tr>
 <tr class="separator:a216c01909473b506ea321815e378ee6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61dcc5c9f1db5f56897b02b6f64aea03"><td class="memItemLeft" align="right" valign="top"><a id="a61dcc5c9f1db5f56897b02b6f64aea03"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localCount</b></td></tr>
-<tr class="separator:a61dcc5c9f1db5f56897b02b6f64aea03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62bfb06bd032481f51da54e2f3f26655"><td class="memItemLeft" align="right" valign="top"><a id="a62bfb06bd032481f51da54e2f3f26655"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>scopeDepth</b></td></tr>
+<tr class="memitem:a62bfb06bd032481f51da54e2f3f26655"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a62bfb06bd032481f51da54e2f3f26655">scopeDepth</a></td></tr>
 <tr class="separator:a62bfb06bd032481f51da54e2f3f26655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b5593f9372cbaf382a924771c6f215a"><td class="memItemLeft" align="right" valign="top"><a id="a4b5593f9372cbaf382a924771c6f215a"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localsSpace</b></td></tr>
+<tr class="memitem:a61dcc5c9f1db5f56897b02b6f64aea03"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a61dcc5c9f1db5f56897b02b6f64aea03">localCount</a></td></tr>
+<tr class="separator:a61dcc5c9f1db5f56897b02b6f64aea03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b5593f9372cbaf382a924771c6f215a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a4b5593f9372cbaf382a924771c6f215a">localsSpace</a></td></tr>
 <tr class="separator:a4b5593f9372cbaf382a924771c6f215a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f5c9e57c7e6390994b4ff84b898af73"><td class="memItemLeft" align="right" valign="top"><a id="a8f5c9e57c7e6390994b4ff84b898af73"></a>
-<a class="el" href="structLocal.html">Local</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>locals</b></td></tr>
+<tr class="memitem:a8f5c9e57c7e6390994b4ff84b898af73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLocal.html">Local</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a></td></tr>
 <tr class="separator:a8f5c9e57c7e6390994b4ff84b898af73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86a5132c3b912629e59c11adbe41a721"><td class="memItemLeft" align="right" valign="top"><a id="a86a5132c3b912629e59c11adbe41a721"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>upvaluesSpace</b></td></tr>
+<tr class="memitem:a86a5132c3b912629e59c11adbe41a721"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a86a5132c3b912629e59c11adbe41a721">upvaluesSpace</a></td></tr>
 <tr class="separator:a86a5132c3b912629e59c11adbe41a721"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae87dcfa9e81edb6a051642fe7123d082"><td class="memItemLeft" align="right" valign="top"><a id="ae87dcfa9e81edb6a051642fe7123d082"></a>
-<a class="el" href="structUpvalue.html">Upvalue</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>upvalues</b></td></tr>
+<tr class="memitem:ae87dcfa9e81edb6a051642fe7123d082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUpvalue.html">Upvalue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#ae87dcfa9e81edb6a051642fe7123d082">upvalues</a></td></tr>
 <tr class="separator:ae87dcfa9e81edb6a051642fe7123d082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a591e94865bbf3d38396005ff39032c54"><td class="memItemLeft" align="right" valign="top"><a id="a591e94865bbf3d38396005ff39032c54"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>loopLocalCount</b></td></tr>
+<tr class="memitem:a591e94865bbf3d38396005ff39032c54"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a591e94865bbf3d38396005ff39032c54">loopLocalCount</a></td></tr>
 <tr class="separator:a591e94865bbf3d38396005ff39032c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add901f64c841eb59d71f1cb95b2498b0"><td class="memItemLeft" align="right" valign="top"><a id="add901f64c841eb59d71f1cb95b2498b0"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>breakCount</b></td></tr>
+<tr class="memitem:add901f64c841eb59d71f1cb95b2498b0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#add901f64c841eb59d71f1cb95b2498b0">breakCount</a></td></tr>
 <tr class="separator:add901f64c841eb59d71f1cb95b2498b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a722d2fab24be12b1fc9fcde88360ee1d"><td class="memItemLeft" align="right" valign="top"><a id="a722d2fab24be12b1fc9fcde88360ee1d"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>breakSpace</b></td></tr>
+<tr class="memitem:a722d2fab24be12b1fc9fcde88360ee1d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a722d2fab24be12b1fc9fcde88360ee1d">breakSpace</a></td></tr>
 <tr class="separator:a722d2fab24be12b1fc9fcde88360ee1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa964402ff69a568077eb51df06e4bdf4"><td class="memItemLeft" align="right" valign="top"><a id="aa964402ff69a568077eb51df06e4bdf4"></a>
-struct <a class="el" href="structLoopExit.html">LoopExit</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>breaks</b></td></tr>
+<tr class="memitem:aa964402ff69a568077eb51df06e4bdf4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLoopExit.html">LoopExit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#aa964402ff69a568077eb51df06e4bdf4">breaks</a></td></tr>
 <tr class="separator:aa964402ff69a568077eb51df06e4bdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a016e498be71ac3dadd9ae8e2a43f5d09"><td class="memItemLeft" align="right" valign="top"><a id="a016e498be71ac3dadd9ae8e2a43f5d09"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>continueCount</b></td></tr>
+<tr class="memitem:a016e498be71ac3dadd9ae8e2a43f5d09"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a016e498be71ac3dadd9ae8e2a43f5d09">continueCount</a></td></tr>
 <tr class="separator:a016e498be71ac3dadd9ae8e2a43f5d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374edd89b4479312529d68a686066c53"><td class="memItemLeft" align="right" valign="top"><a id="a374edd89b4479312529d68a686066c53"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>continueSpace</b></td></tr>
+<tr class="memitem:a374edd89b4479312529d68a686066c53"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a374edd89b4479312529d68a686066c53">continueSpace</a></td></tr>
 <tr class="separator:a374edd89b4479312529d68a686066c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eba383e6cf4f215506fba215cdab17f"><td class="memItemLeft" align="right" valign="top"><a id="a9eba383e6cf4f215506fba215cdab17f"></a>
-struct <a class="el" href="structLoopExit.html">LoopExit</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>continues</b></td></tr>
+<tr class="memitem:a9eba383e6cf4f215506fba215cdab17f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLoopExit.html">LoopExit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a9eba383e6cf4f215506fba215cdab17f">continues</a></td></tr>
 <tr class="separator:a9eba383e6cf4f215506fba215cdab17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a6813f11a781e3fc49ba782d3e7e094"><td class="memItemLeft" align="right" valign="top"><a id="a0a6813f11a781e3fc49ba782d3e7e094"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>localNameCapacity</b></td></tr>
+<tr class="memitem:a0a6813f11a781e3fc49ba782d3e7e094"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a0a6813f11a781e3fc49ba782d3e7e094">localNameCapacity</a></td></tr>
 <tr class="separator:a0a6813f11a781e3fc49ba782d3e7e094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1684bf440aa292aff94c40bd615f7ae8"><td class="memItemLeft" align="right" valign="top"><a id="a1684bf440aa292aff94c40bd615f7ae8"></a>
-struct <a class="el" href="structIndexWithNext.html">IndexWithNext</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>properties</b></td></tr>
+<tr class="memitem:a1684bf440aa292aff94c40bd615f7ae8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structIndexWithNext.html">IndexWithNext</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a1684bf440aa292aff94c40bd615f7ae8">properties</a></td></tr>
 <tr class="separator:a1684bf440aa292aff94c40bd615f7ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5120857a9057b7ebdf939a4f99ffd0ef"><td class="memItemLeft" align="right" valign="top"><a id="a5120857a9057b7ebdf939a4f99ffd0ef"></a>
-struct <a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>enclosed</b></td></tr>
+<tr class="memitem:a5120857a9057b7ebdf939a4f99ffd0ef"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a5120857a9057b7ebdf939a4f99ffd0ef">enclosed</a></td></tr>
 <tr class="separator:a5120857a9057b7ebdf939a4f99ffd0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab59a98f2e3d01e3d4efae69d0cdd79ed"><td class="memItemLeft" align="right" valign="top"><a id="ab59a98f2e3d01e3d4efae69d0cdd79ed"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>annotationCount</b></td></tr>
+<tr class="memitem:ab59a98f2e3d01e3d4efae69d0cdd79ed"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#ab59a98f2e3d01e3d4efae69d0cdd79ed">annotationCount</a></td></tr>
 <tr class="separator:ab59a98f2e3d01e3d4efae69d0cdd79ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506ba0041e9e202c341231b5580c7a3b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler.html#a506ba0041e9e202c341231b5580c7a3b">delSatisfied</a></td></tr>
+<tr class="separator:a506ba0041e9e202c341231b5580c7a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00123">123</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Subcompiler state. </p>
+<p>Each function is compiled in its own context, with its own codeobject, locals, type, scopes, etc. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00193">193</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="ab59a98f2e3d01e3d4efae69d0cdd79ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab59a98f2e3d01e3d4efae69d0cdd79ed">&#9670;&nbsp;</a></span>annotationCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::annotationCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of type annotations found while compiling function signature. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00216">216</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="add901f64c841eb59d71f1cb95b2498b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add901f64c841eb59d71f1cb95b2498b0">&#9670;&nbsp;</a></span>breakCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::breakCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of break statements. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00205">205</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="aa964402ff69a568077eb51df06e4bdf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa964402ff69a568077eb51df06e4bdf4">&#9670;&nbsp;</a></span>breaks</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structLoopExit.html">LoopExit</a>* Compiler::breaks</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of loop exit instruction indices for break statements. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00207">207</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a722d2fab24be12b1fc9fcde88360ee1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a722d2fab24be12b1fc9fcde88360ee1d">&#9670;&nbsp;</a></span>breakSpace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::breakSpace</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Space in breaks array. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00206">206</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="abba48344e599659ecfb8c3da27ab1768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abba48344e599659ecfb8c3da27ab1768">&#9670;&nbsp;</a></span>codeobject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a>* Compiler::codeobject</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bytecode emitter </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00195">195</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a016e498be71ac3dadd9ae8e2a43f5d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a016e498be71ac3dadd9ae8e2a43f5d09">&#9670;&nbsp;</a></span>continueCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::continueCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of continue statements. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00208">208</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a9eba383e6cf4f215506fba215cdab17f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eba383e6cf4f215506fba215cdab17f">&#9670;&nbsp;</a></span>continues</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structLoopExit.html">LoopExit</a>* Compiler::continues</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of loop exit instruction indices for continue statements. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00210">210</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a374edd89b4479312529d68a686066c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a374edd89b4479312529d68a686066c53">&#9670;&nbsp;</a></span>continueSpace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::continueSpace</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Space in continues array. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00209">209</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a506ba0041e9e202c341231b5580c7a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a506ba0041e9e202c341231b5580c7a3b">&#9670;&nbsp;</a></span>delSatisfied</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Compiler::delSatisfied</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating if a 'del' target has been completed. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00218">218</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a5120857a9057b7ebdf939a4f99ffd0ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5120857a9057b7ebdf939a4f99ffd0ef">&#9670;&nbsp;</a></span>enclosed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structCompiler.html">Compiler</a>* Compiler::enclosed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Subcompiler we are enclosing, need for type annotation compilation. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00215">215</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="ae1fe27bd7001120f0a8518c1a62debc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1fe27bd7001120f0a8518c1a62debc6">&#9670;&nbsp;</a></span>enclosing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structCompiler.html">Compiler</a>* Compiler::enclosing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enclosing function compiler, or NULL for a module. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00194">194</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a61dcc5c9f1db5f56897b02b6f64aea03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61dcc5c9f1db5f56897b02b6f64aea03">&#9670;&nbsp;</a></span>localCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::localCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Total number of local variables. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00198">198</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a0a6813f11a781e3fc49ba782d3e7e094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6813f11a781e3fc49ba782d3e7e094">&#9670;&nbsp;</a></span>localNameCapacity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::localNameCapacity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>How much space is available in the codeobject's local names table. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00212">212</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a8f5c9e57c7e6390994b4ff84b898af73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f5c9e57c7e6390994b4ff84b898af73">&#9670;&nbsp;</a></span>locals</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLocal.html">Local</a>* Compiler::locals</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of local variable references. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00200">200</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a4b5593f9372cbaf382a924771c6f215a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b5593f9372cbaf382a924771c6f215a">&#9670;&nbsp;</a></span>localsSpace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::localsSpace</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Space in the locals array. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00199">199</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a591e94865bbf3d38396005ff39032c54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a591e94865bbf3d38396005ff39032c54">&#9670;&nbsp;</a></span>loopLocalCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::loopLocalCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tracks how many locals to pop off the stack when exiting a loop. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00204">204</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a1684bf440aa292aff94c40bd615f7ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1684bf440aa292aff94c40bd615f7ae8">&#9670;&nbsp;</a></span>properties</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structIndexWithNext.html">IndexWithNext</a>* Compiler::properties</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Linked list of class property constant indices. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00214">214</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a62bfb06bd032481f51da54e2f3f26655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62bfb06bd032481f51da54e2f3f26655">&#9670;&nbsp;</a></span>scopeDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::scopeDepth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Depth of nested scope blocks. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00197">197</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a216c01909473b506ea321815e378ee6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216c01909473b506ea321815e378ee6f">&#9670;&nbsp;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="compiler_8c.html#a42a11575cc237e37732d560240e04371">FunctionType</a> Compiler::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type of function being compiled. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00196">196</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="ae87dcfa9e81edb6a051642fe7123d082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae87dcfa9e81edb6a051642fe7123d082">&#9670;&nbsp;</a></span>upvalues</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUpvalue.html">Upvalue</a>* Compiler::upvalues</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of upvalue references. Count is stored in the codeobject. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00202">202</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a86a5132c3b912629e59c11adbe41a721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a5132c3b912629e59c11adbe41a721">&#9670;&nbsp;</a></span>upvaluesSpace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Compiler::upvaluesSpace</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Space in the upvalues array. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00201">201</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

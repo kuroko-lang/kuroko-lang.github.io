@@ -103,23 +103,77 @@ $(function() {
 <div class="title">ClassCompiler Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class compilation context.  
+ <a href="structClassCompiler.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a37081d9415b4a68e3ecb48b4c6e1bc32"><td class="memItemLeft" align="right" valign="top"><a id="a37081d9415b4a68e3ecb48b4c6e1bc32"></a>
-struct <a class="el" href="structClassCompiler.html">ClassCompiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>enclosing</b></td></tr>
+<tr class="memitem:a37081d9415b4a68e3ecb48b4c6e1bc32"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structClassCompiler.html">ClassCompiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structClassCompiler.html#a37081d9415b4a68e3ecb48b4c6e1bc32">enclosing</a></td></tr>
 <tr class="separator:a37081d9415b4a68e3ecb48b4c6e1bc32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a594814f7428c654e5b838129d984aa4e"><td class="memItemLeft" align="right" valign="top"><a id="a594814f7428c654e5b838129d984aa4e"></a>
-<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memitem:a594814f7428c654e5b838129d984aa4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structClassCompiler.html#a594814f7428c654e5b838129d984aa4e">name</a></td></tr>
 <tr class="separator:a594814f7428c654e5b838129d984aa4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57355ce2c0528fa6286bdfb7300b7847"><td class="memItemLeft" align="right" valign="top"><a id="a57355ce2c0528fa6286bdfb7300b7847"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>hasAnnotations</b></td></tr>
+<tr class="memitem:a57355ce2c0528fa6286bdfb7300b7847"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structClassCompiler.html#a57355ce2c0528fa6286bdfb7300b7847">hasAnnotations</a></td></tr>
 <tr class="separator:a57355ce2c0528fa6286bdfb7300b7847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00149">149</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Class compilation context. </p>
+<p>Allows for things like super to be bound correctly. Also allows us to establish qualified names for functions and nested class definitions. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00228">228</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="a37081d9415b4a68e3ecb48b4c6e1bc32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37081d9415b4a68e3ecb48b4c6e1bc32">&#9670;&nbsp;</a></span>enclosing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structClassCompiler.html">ClassCompiler</a>* ClassCompiler::enclosing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enclosing class scope. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00229">229</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a57355ce2c0528fa6286bdfb7300b7847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57355ce2c0528fa6286bdfb7300b7847">&#9670;&nbsp;</a></span>hasAnnotations</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ClassCompiler::hasAnnotations</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating if an annotation dictionary has been attached to this class. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00231">231</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a594814f7428c654e5b838129d984aa4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a594814f7428c654e5b838129d984aa4e">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> ClassCompiler::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Name of the current class. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00230">230</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

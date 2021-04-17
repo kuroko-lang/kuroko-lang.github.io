@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['krkclass_726',['KrkClass',['../object_8h.html#a13fdd0ddeb36ce367df82eb6d7d3cbb3',1,'object.h']]],
-  ['krkdebugcallback_727',['KrkDebugCallback',['../debug_8h.html#a6ae6dfd498ed75727f118daaf004b5c7',1,'debug.h']]],
-  ['krkinstance_728',['KrkInstance',['../object_8h.html#a68bb9e711f52c8489f5bf08c846cc49f',1,'object.h']]],
-  ['krkobj_729',['KrkObj',['../object_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;object.h'],['../value_8h.html#a83aaa3bd20e1038605811e9750f2fc81',1,'KrkObj():&#160;value.h']]],
-  ['krkstring_730',['KrkString',['../object_8h.html#a1dcb7cb75b9af1ecfbf0440c7cc770d8',1,'object.h']]],
-  ['krkthreadstate_731',['KrkThreadState',['../vm_8h.html#ad845f3a8058abb66385dfbb6d31a8dfc',1,'vm.h']]],
-  ['krkupvalue_732',['KrkUpvalue',['../object_8h.html#a89babf164e8d82c97ecd1131a33089df',1,'object.h']]],
-  ['krkvm_733',['KrkVM',['../vm_8h.html#ab24d03c0b5b25d5ddfa9f902f1d2c97a',1,'vm.h']]]
+  ['chunkrecorder_839',['ChunkRecorder',['../compiler_8c.html#af43295b553f14bc55a60680e476124ce',1,'compiler.c']]],
+  ['classcompiler_840',['ClassCompiler',['../compiler_8c.html#ac2ceaa6082b504b725bc6dd33d1d5f22',1,'compiler.c']]],
+  ['compiler_841',['Compiler',['../compiler_8c.html#a59d46fe4edc33c8cc818e3aced56de29',1,'compiler.c']]]
 ];

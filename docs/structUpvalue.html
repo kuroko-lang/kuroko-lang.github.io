@@ -103,20 +103,58 @@ $(function() {
 <div class="title">Upvalue Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Closure upvalue reference.  
+ <a href="structUpvalue.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:af67a3830ae534db0cfa916ba622d84d6"><td class="memItemLeft" align="right" valign="top"><a id="af67a3830ae534db0cfa916ba622d84d6"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>index</b></td></tr>
+<tr class="memitem:af67a3830ae534db0cfa916ba622d84d6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUpvalue.html#af67a3830ae534db0cfa916ba622d84d6">index</a></td></tr>
 <tr class="separator:af67a3830ae534db0cfa916ba622d84d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6997397e78b08ae301c0a79e4c116a4"><td class="memItemLeft" align="right" valign="top"><a id="ac6997397e78b08ae301c0a79e4c116a4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>isLocal</b></td></tr>
-<tr class="separator:ac6997397e78b08ae301c0a79e4c116a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048685eb993ddc4bce28014e516ef724"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUpvalue.html#a048685eb993ddc4bce28014e516ef724">isLocal</a></td></tr>
+<tr class="separator:a048685eb993ddc4bce28014e516ef724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00094">94</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Closure upvalue reference. </p>
+<p>Tracks references to local variables from enclosing scopes. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00143">143</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="af67a3830ae534db0cfa916ba622d84d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67a3830ae534db0cfa916ba622d84d6">&#9670;&nbsp;</a></span>index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Upvalue::index</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enclosing local index or upvalue index. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00144">144</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a048685eb993ddc4bce28014e516ef724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a048685eb993ddc4bce28014e516ef724">&#9670;&nbsp;</a></span>isLocal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Upvalue::isLocal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating if <a class="el" href="index.html">Kuroko Language Reference</a> is a local or upvalue index. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00145">145</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

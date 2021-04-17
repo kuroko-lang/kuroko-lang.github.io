@@ -133,13 +133,10 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3e1c5c6a26f58def1f898dfb168dfa13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeb763c0da808951512c91a2ed36c872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a></td></tr>
 <tr class="separator:adeb763c0da808951512c91a2ed36c872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a261a50187de6d49e553bd10f9541f368"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#a261a50187de6d49e553bd10f9541f368">_padding</a></td></tr>
-<tr class="separator:a261a50187de6d49e553bd10f9541f368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92914511a3320da896a06b2d53e3bb63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#a92914511a3320da896a06b2d53e3bb63">stackMax</a></td></tr>
+<tr class="separator:a92914511a3320da896a06b2d53e3bb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeea61d72564ae8c9c992fb0a1ea65a0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#aeea61d72564ae8c9c992fb0a1ea65a0c">scratchSpace</a> [<a class="el" href="vm_8h.html#a953d72106f209857d287c39553d49b25">KRK_THREAD_SCRATCH_SIZE</a>]</td></tr>
 <tr class="separator:aeea61d72564ae8c9c992fb0a1ea65a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92914511a3320da896a06b2d53e3bb63"><td class="memItemLeft" align="right" valign="top"><a id="a92914511a3320da896a06b2d53e3bb63"></a>
-<a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>stackMax</b></td></tr>
-<tr class="separator:a92914511a3320da896a06b2d53e3bb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Execution state of a VM thread. </p>
@@ -148,23 +145,6 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00180">180</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a261a50187de6d49e553bd10f9541f368"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a261a50187de6d49e553bd10f9541f368">&#9670;&nbsp;</a></span>_padding</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">long KrkThreadState::_padding</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Unused. </p>
-
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00194">194</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
-
-</div>
-</div>
 <a id="a3e1c5c6a26f58def1f898dfb168dfa13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e1c5c6a26f58def1f898dfb168dfa13">&#9670;&nbsp;</a></span>currentException</h2>
 
@@ -332,6 +312,23 @@ Data Fields</h2></td></tr>
 <p>Pointer to the bottom of the stack for this thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00186">186</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+
+</div>
+</div>
+<a id="a92914511a3320da896a06b2d53e3bb63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92914511a3320da896a06b2d53e3bb63">&#9670;&nbsp;</a></span>stackMax</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a>* KrkThreadState::stackMax</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>End of allocated stack space. </p>
+
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00194">194</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>

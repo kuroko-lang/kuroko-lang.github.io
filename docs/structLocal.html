@@ -103,23 +103,77 @@ $(function() {
 <div class="title">Local Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="structLocal.html" title="Local variable reference.">Local</a> variable reference.  
+ <a href="structLocal.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a42ab7447ce0c91bfff3fc146b94f2265"><td class="memItemLeft" align="right" valign="top"><a id="a42ab7447ce0c91bfff3fc146b94f2265"></a>
-<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memitem:a42ab7447ce0c91bfff3fc146b94f2265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a></td></tr>
 <tr class="separator:a42ab7447ce0c91bfff3fc146b94f2265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc46e25142cf9a611f1b1756daf7090d"><td class="memItemLeft" align="right" valign="top"><a id="acc46e25142cf9a611f1b1756daf7090d"></a>
-ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>depth</b></td></tr>
+<tr class="memitem:acc46e25142cf9a611f1b1756daf7090d"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLocal.html#acc46e25142cf9a611f1b1756daf7090d">depth</a></td></tr>
 <tr class="separator:acc46e25142cf9a611f1b1756daf7090d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ce1852c1834d77806191007296b3d4a"><td class="memItemLeft" align="right" valign="top"><a id="a0ce1852c1834d77806191007296b3d4a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>isCaptured</b></td></tr>
-<tr class="separator:a0ce1852c1834d77806191007296b3d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad61d6a0961e89059bb834e0f078912c6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLocal.html#ad61d6a0961e89059bb834e0f078912c6">isCaptured</a></td></tr>
+<tr class="separator:ad61d6a0961e89059bb834e0f078912c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00088">88</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p><a class="el" href="structLocal.html" title="Local variable reference.">Local</a> variable reference. </p>
+<p>Tracks the names and scope depth of local variables. Locals are mapped to stack locations by their index in the compiler's locals array. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00132">132</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="acc46e25142cf9a611f1b1756daf7090d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc46e25142cf9a611f1b1756daf7090d">&#9670;&nbsp;</a></span>depth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t Local::depth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stack depth, or -1 if uninitialized. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00134">134</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="ad61d6a0961e89059bb834e0f078912c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad61d6a0961e89059bb834e0f078912c6">&#9670;&nbsp;</a></span>isCaptured</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Local::isCaptured</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating if the variable is captured by a closure. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00135">135</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a42ab7447ce0c91bfff3fc146b94f2265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ab7447ce0c91bfff3fc146b94f2265">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> Local::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Token that provided the name for this variable. </p>
+
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00133">133</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

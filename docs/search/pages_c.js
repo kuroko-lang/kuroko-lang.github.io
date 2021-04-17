@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['threading_786',['threading',['../mod_threading.html',1,'']]],
-  ['time_787',['time',['../mod_time.html',1,'']]],
-  ['tools_2egendoc_788',['tools.gendoc',['../mod_tools_gendoc.html',1,'']]]
+  ['statements_936',['Statements',['../lang_statements.html',1,'']]],
+  ['socket_937',['socket',['../mod_socket.html',1,'']]],
+  ['string_938',['string',['../mod_string.html',1,'']]],
+  ['syntax_20reference_939',['Syntax Reference',['../syntax.html',1,'']]]
 ];

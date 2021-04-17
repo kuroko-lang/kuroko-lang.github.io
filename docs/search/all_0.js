@@ -24,10 +24,9 @@ var searchData=
   ['_5flen_21',['_len',['../structKrkClass.html#a67112b7dddb5bc8c7dc5e8879083a465',1,'KrkClass']]],
   ['_5fongcscan_22',['_ongcscan',['../structKrkClass.html#a2dee46a5648c4d9250295fc540add710',1,'KrkClass']]],
   ['_5fongcsweep_23',['_ongcsweep',['../structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556',1,'KrkClass']]],
-  ['_5fpadding_24',['_padding',['../structKrkThreadState.html#a261a50187de6d49e553bd10f9541f368',1,'KrkThreadState']]],
-  ['_5freprer_25',['_reprer',['../structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0',1,'KrkClass']]],
-  ['_5fsetslice_26',['_setslice',['../structKrkClass.html#ab56ad6956c89dab6139fbe76993f5d22',1,'KrkClass']]],
-  ['_5fsetter_27',['_setter',['../structKrkClass.html#aa57f7259766ce663bcb81d3bd341aa28',1,'KrkClass']]],
-  ['_5ftostr_28',['_tostr',['../structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1',1,'KrkClass']]],
-  ['_5f_5fbuiltins_5f_5f_29',['__builtins__',['../mod___builtins__.html',1,'']]]
+  ['_5freprer_24',['_reprer',['../structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0',1,'KrkClass']]],
+  ['_5fsetslice_25',['_setslice',['../structKrkClass.html#ab56ad6956c89dab6139fbe76993f5d22',1,'KrkClass']]],
+  ['_5fsetter_26',['_setter',['../structKrkClass.html#aa57f7259766ce663bcb81d3bd341aa28',1,'KrkClass']]],
+  ['_5ftostr_27',['_tostr',['../structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1',1,'KrkClass']]],
+  ['_5f_5fbuiltins_5f_5f_28',['__builtins__',['../mod___builtins__.html',1,'']]]
 ];
