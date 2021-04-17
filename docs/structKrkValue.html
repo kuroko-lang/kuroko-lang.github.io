@@ -135,12 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a6b7f88d9471659817208aea72ac548"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a> (<a class="el" href="structKrkValue.html">KrkValue</a> obj, const <a class="el" href="structKrkClass.html">KrkClass</a> *type)</td></tr>
 <tr class="memdesc:a2a6b7f88d9471659817208aea72ac548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if a class is an instance or subclass of a given type.  <a href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">More...</a><br /></td></tr>
 <tr class="separator:a2a6b7f88d9471659817208aea72ac548"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d42a4f280a6ccd9994f7ce3d8500a35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#a1d42a4f280a6ccd9994f7ce3d8500a35">krk_callValue</a> (<a class="el" href="structKrkValue.html">KrkValue</a> callee, int argCount, int extra)</td></tr>
-<tr class="memdesc:a1d42a4f280a6ccd9994f7ce3d8500a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call a callable value in the current stack context.  <a href="structKrkValue.html#a1d42a4f280a6ccd9994f7ce3d8500a35">More...</a><br /></td></tr>
-<tr class="separator:a1d42a4f280a6ccd9994f7ce3d8500a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa79239e6ace07679bc61cd33318b3318"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">krk_callSimple</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value, int argCount, int isMethod)</td></tr>
-<tr class="memdesc:aa79239e6ace07679bc61cd33318b3318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call a callable and manage VM state to obtain the return value.  <a href="structKrkValue.html#aa79239e6ace07679bc61cd33318b3318">More...</a><br /></td></tr>
-<tr class="separator:aa79239e6ace07679bc61cd33318b3318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144e0a6efb97fc5920ea9488dceb1a52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#a144e0a6efb97fc5920ea9488dceb1a52">krk_callValue</a> (<a class="el" href="structKrkValue.html">KrkValue</a> callee, int argCount, int callableOnStack)</td></tr>
+<tr class="memdesc:a144e0a6efb97fc5920ea9488dceb1a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call a callable value in the current stack context.  <a href="structKrkValue.html#a144e0a6efb97fc5920ea9488dceb1a52">More...</a><br /></td></tr>
+<tr class="separator:a144e0a6efb97fc5920ea9488dceb1a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade554b36ef7d3c8789db59062001fa07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
 <tr class="memdesc:ade554b36ef7d3c8789db59062001fa07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine the truth of a value.  <a href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">More...</a><br /></td></tr>
 <tr class="separator:ade554b36ef7d3c8789db59062001fa07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,56 +156,8 @@ Public Member Functions</h2></td></tr>
 <p>This type stores a stack reference to an object, or the contents of a primitive type. Each VM thread's stack consists of an array of these values, and they are generally passed around in the VM through direct copying rather than as pointers, avoiding the need to track memory used by them.</p>
 <p>Implemented through basic NaN-boxing where the top sixteen bits are used as a tag (<a class="el" href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a>) and the lower 32 or 48 bits contain the various primitive types. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa79239e6ace07679bc61cd33318b3318"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa79239e6ace07679bc61cd33318b3318">&#9670;&nbsp;</a></span>krk_callSimple()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> krk_callSimple </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>isMethod</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Call a callable and manage VM state to obtain the return value. </p>
-<p>This is a wrapper around various mechanisms including krk_callValue intended for use by C extensions to call arbitrary functions without knowledge of their implementation details. See the notes for <code>krk_callValue</code> 's <code>extra</code> paramater for details on how <code>isMethod</code> is used.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Callable object reference. </td></tr>
-    <tr><td class="paramname">argCount</td><td>Arguments to collect from the stack. </td></tr>
-    <tr><td class="paramname">isMethod</td><td>This should almost always be 0. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The return value of the function. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00865">865</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
-
-</div>
-</div>
-<a id="a1d42a4f280a6ccd9994f7ce3d8500a35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d42a4f280a6ccd9994f7ce3d8500a35">&#9670;&nbsp;</a></span>krk_callValue()</h2>
+<a id="a144e0a6efb97fc5920ea9488dceb1a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a144e0a6efb97fc5920ea9488dceb1a52">&#9670;&nbsp;</a></span>krk_callValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +178,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>extra</em>&#160;</td>
+          <td class="paramname"><em>callableOnStack</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -245,7 +194,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">callee</td><td>Value referencing a callable object. </td></tr>
     <tr><td class="paramname">argCount</td><td>Arguments to retreive from stack. </td></tr>
-    <tr><td class="paramname">extra</td><td>Whether extra arguments below argCount should be considered as part of this call frame. Generally, when this is 1, the value below the arguments is the callable object. Most library users will want to leave this as 0 when calling normal functions, bound method objects, or ubound methods when the instance is included in the arguments already. </td></tr>
+    <tr><td class="paramname">callableOnStack</td><td>Whether <code>callee</code> is on the stack below the arguments, which must be the case for bound methods, classes, and instances, as that space will be used for the implicit first argument passed to these kinds of callables. </td></tr>
   </table>
   </dd>
 </dl>
@@ -352,7 +301,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if falsey, 0 if truthy </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00991">991</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01000">1000</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -505,7 +454,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01356">1356</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01365">1365</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -545,7 +494,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01932">1932</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01941">1941</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -586,7 +535,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01888">1888</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01897">1897</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -666,7 +615,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01995">1995</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02004">2004</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
