@@ -104,7 +104,7 @@ $(function() {
 <div class="textblock"><p>Internal module containing built-in functions and classes.</p>
 <p>Classes and functions from the <code>__builtins__</code> module are generally available from all global namespaces. Built-in names can still be shadowed by module-level globals and function-level locals, so none the names in this module are reserved. When a built-in name has been shadowed, the original can be referenced directly as <code>__builtins__.name</code> instead.</p>
 <p>Built-in names may be bound from several sources. Most come from the core interpreter directly, but some may come from loaded C extension modules or the interpreter binary. Kuroko source modules are also free to append new names to the built-in name space by attaching new properties to the <code>__builtins__</code> instance.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Classes</h2>
 <p><a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Special object that prints a helpeful message.</p>
@@ -573,7 +573,7 @@ Classes</h2>
 <p><a class="anchor" id="type___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___name__">_</a></span>type.<b>__name__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Functions</h2>
 <p><a class="anchor" id="all"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#all">_</a></span><b>all</b>(<i>iterable</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Returns True if every element in the given iterable is truthy, False otherwise.</p>
@@ -705,12 +705,12 @@ Functions</h2>
 <p>Returns an iterator that produces tuples of the nth element of each passed iterable.</p>
 <p>Creates an iterator that returns a tuple of elements from each of <code>iterables</code>, until one of <code>iterables</code> is exhuasted.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Exceptions</h2>
 <p><a class="anchor" id="ArgumentError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ArgumentError">_</a></span><i>class</i> <b>ArgumentError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AssertionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AssertionError">_</a></span><i>class</i> <b>AssertionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AttributeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AttributeError">_</a></span><i>class</i> <b>AttributeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Exception"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#Exception">_</a></span><i>class</i> <b>Exception</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="Exception___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Exception___init__">_</a></span>let <i>x</i> = <b>Exception</b>()</h4><div class="memitem"><div class="memproto">Exception.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="IOError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IOError">_</a></span><i>class</i> <b>IOError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ImportError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ImportError">_</a></span><i>class</i> <b>ImportError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="IndexError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IndexError">_</a></span><i>class</i> <b>IndexError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyError">_</a></span><i>class</i> <b>KeyError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyboardInterrupt"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyboardInterrupt">_</a></span><i>class</i> <b>KeyboardInterrupt</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NameError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NameError">_</a></span><i>class</i> <b>NameError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NotImplementedError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NotImplementedError">_</a></span><i>class</i> <b>NotImplementedError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="SyntaxError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SyntaxError">_</a></span><i>class</i> <b>SyntaxError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="TypeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#TypeError">_</a></span><i>class</i> <b>TypeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ValueError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ValueError">_</a></span><i>class</i> <b>ValueError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ZeroDivisionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ZeroDivisionError">_</a></span><i>class</i> <b>ZeroDivisionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>NotImplemented</b> = <em>NotImplementedType</em></h3>
 <h3 class="letDef"><em>let</em> <b>help</b> = <em>Helper</em></h3>

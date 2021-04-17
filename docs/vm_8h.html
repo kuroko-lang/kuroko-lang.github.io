@@ -611,7 +611,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Call a callable on the stack with <code>argCount</code> arguments. </p>
-<p>Calls the callable <code>argCount</code> stack entries down from the top of the stack, passing <code>argCount</code> arguments. Resumes execution of the VM for managed calls until they are completed. Pops <code>argCount</code> items from the stack and returns the result of the call.</p>
+<p>Calls the callable <code>argCount</code> stack entries down from the top of the stack, passing <code>argCount</code> arguments. Resumes execution of the VM for managed calls until they are completed. Pops all arguments and the callable from the stack and returns the return value of the call.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">argCount</td><td>Arguments to collect from the stack. </td></tr>

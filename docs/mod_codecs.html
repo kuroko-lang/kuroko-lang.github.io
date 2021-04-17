@@ -106,7 +106,7 @@ $(function() {
 <p>Most encodings supported by Python are implemented, but not currently <code>idna</code> or <code>punycode</code>. Note however that Python makes <code>x-mac-japanese</code> and <code>x-mac-korean</code> aliases of <code>shift_jis</code> and <code>euc-kr</code>; this has not been done here. Also note that the behaviour in regards to association of encoding names with variants is somewhat different to Python's, partly due to following WHATWG: this affects most CJK codecs (e.g. Python treats <code>shift_jis</code> and <code>ms-kanji</code> differently, while this package does not), but also e.g. "ISO-8859-1".</p>
 <p>Main entry points for the package are <code>codecs.infrastructure.encode</code>, <code>codecs.infrastructure.decode</code> and <code>codecs.infrastructure.lookup</code>, all three of which are also available as e.g. <code>codecs.encode</code> for convenience.</p>
 <p>The list of codecs (not an exhaustive list of labels, nor close to one) is as follows.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Single-byte extended ASCII encodings:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -234,7 +234,7 @@ Single-byte extended ASCII encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>x-user-defined</code> </td><td class="markdownTableBodyNone">8-bit User Defined (ASCII based variant: using U+0000–007F, U+F780–F7FF)  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Single-byte symbol or dingbat font encodings:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -242,7 +242,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>cp042</code> </td><td class="markdownTableBodyNone">8-bit User Defined (variant using U+0000–001F, U+F020–F0FF). Windows uses that mapping for symbol fonts in some contexts.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 8-bit multi-byte Unicode codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -268,7 +268,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>utf-32le</code> </td><td class="markdownTableBodyNone">UTF-32, little endian, no byte order mark  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 8-bit multi-byte legacy CJK codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -300,7 +300,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>x-mac-chinesetrad</code> </td><td class="markdownTableBodyNone">Traditional Chinese Big5, Macintosh version  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 7-bit stateful codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -328,7 +328,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>utf-7</code> </td><td class="markdownTableBodyNone">A largely obsolete scheme for mixing ASCII and Base64'd UTF-16BE in e-mail. Included mostly for Python parity.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 EBCDIC codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -350,7 +350,7 @@ EBCDIC codecs:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>cp1140</code> </td><td class="markdownTableBodyNone">EBCDIC with Euro Sign  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Codecs with unusual behaviour:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -368,7 +368,7 @@ Codecs with unusual behaviour:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>undefined</code>, <code>replacement</code> </td><td class="markdownTableBodyNone">Represents data for which encoding/decoding must not be attempted. Following WHATWG (and differing from Python), error handlers are accepted, though only by the decoder: the encoder will ignore them.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Package contents</h2>
 <p> <div class="krk-class-index"><ul>
 

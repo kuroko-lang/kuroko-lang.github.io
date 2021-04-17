@@ -116,13 +116,12 @@ Getting Started</h2>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Let's start by looking at the example code above.</p>
-<h3><a class="anchor" id="autotoc_md0"></a>
+<h3><a class="anchor" id="autotoc_md2"></a>
 Headers</h3>
 <p>Kuroko's public API is exposed primarily through the <code>&lt;<a class="el" href="kuroko_8h.html" title="Top-level header with configuration macros.">kuroko/kuroko.h</a>&gt;</code> header.</p>
 <p><code>&lt;<a class="el" href="vm_8h.html" title="Core API for the bytecode virtual machine.">kuroko/vm.h</a>&gt;</code> provides internal functions for finer control over how the VM operates.</p>
-<p> <div class="alert alert-warning">Headers are in the process of being reorganized and the above statements are not necessarily true <em>yet</em>.</div></p>
 <p>Other headers provide convenience functions and macros for building C extensions.</p>
-<h3><a class="anchor" id="autotoc_md1"></a>
+<h3><a class="anchor" id="autotoc_md3"></a>
 Initializing the VM</h3>
 <p>Our first task in integrating Kuroko into an embedded application is to set up the VM, which we do with <code><a class="el" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8" title="Initialize the VM at program startup.">krk_initVM()</a></code>. This function takes one paramater representing the initial <em>global and thread flags</em>, which control debugging features for tracing. In our example code, we do not need to use to use any debug features so we pass <code>0</code>.</p>
 <p>Valid flags to pass to <code><a class="el" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8" title="Initialize the VM at program startup.">krk_initVM()</a></code> include:</p>
@@ -145,10 +144,10 @@ Initializing the VM</h3>
  Disables automatic printing of uncaught exception tracebacks. Use <code><a class="el" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> to print a traceback from the exception in the current thread to <code>stderr</code>.</li>
 </ul>
 <p> <div class="alert alert-warning">Be careful when using <code>KRK_GLOBAL_CLEAN_OUTPUT</code> when threading is available; uncaught exceptions from threads will not be automatically printed and are trickier to catch from C code.</div></p>
-<h3><a class="anchor" id="autotoc_md2"></a>
+<h3><a class="anchor" id="autotoc_md4"></a>
 Starting a Module</h3>
 <p>All Kuroko code runs in the context of a <em>module</em>. When we run code directly using <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code>, such as when providing a REPL or calling snippets, or by using <code><a class="el" href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1" title="Load and run a source file and return when execution completes.">krk_runfile()</a></code> to execute the contents of a file, we need to establish our own module first. <code><a class="el" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72" title="Set up a new module object in the current thread.">krk_startModule()</a></code> creates a module context and gives it a name. We use the name <code>__main__</code> as a convention for directly executed code, distinguishing it from imported code.</p>
-<h3><a class="anchor" id="autotoc_md3"></a>
+<h3><a class="anchor" id="autotoc_md5"></a>
 Calling the Interpreter</h3>
 <p>We pass C strings containg Kuroko code to <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code> to be run by the interpreter. The second argument to <code><a class="el" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c" title="Compile and execute a source code input.">krk_interpret()</a></code> provides a filename for the source of the code, or representative string to show in tracebacks for code that did not come from a file.</p>
 <p>Next up, we'll look at <a class="el" href="c_functions.html">Binding C Functions</a>. </p>
