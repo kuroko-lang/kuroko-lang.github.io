@@ -202,7 +202,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>WRITE</b>(s)</td></tr>
 <tr class="separator:a196e029eb2adc9808b1e6928e3e1ce23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a742a715a9dbe2cb517df0ca218d47"><td class="memItemLeft" align="right" valign="top"><a id="a24a742a715a9dbe2cb517df0ca218d47"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.panicMode) break; <a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>raiseSyntaxError</b>(token, ...)&#160;&#160;&#160;do { if (parser.hadError) break; <a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;syntaxError, __VA_ARGS__); finishError(token); } while (0)</td></tr>
 <tr class="separator:a24a742a715a9dbe2cb517df0ca218d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259aac00ed43fd7ac58196b770963525"><td class="memItemLeft" align="right" valign="top"><a id="a259aac00ed43fd7ac58196b770963525"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>error</b>(...)&#160;&#160;&#160;raiseSyntaxError(&amp;parser.previous, __VA_ARGS__)</td></tr>
@@ -363,7 +363,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01481">1481</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01466">1466</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_OPERAND_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02591">2591</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02596">2596</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -452,7 +452,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00258">258</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00257">257</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -545,7 +545,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">    size_t len = strlen(s); \</div>
-<div class="line">    if (writer - len &lt; space) <span class="keywordflow">break</span>; \</div>
+<div class="line">    if (writer - len &lt; space) <span class="keywordflow">goto</span> _exit; \</div>
 <div class="line">    writer -= len; \</div>
 <div class="line">    memcpy(writer, s, len); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
@@ -620,7 +620,7 @@ Variables</h2></td></tr>
 <p>Subexpression parser function. </p>
 <p>Used by the parse rule table for infix and prefix expression parser functions. The argument passed is the <a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720">ExpressionType</a> to compile the expression as. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00108">108</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00107">107</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -650,7 +650,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00094">94</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00093">93</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -691,7 +691,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00154">154</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00153">153</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -751,7 +751,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00066">66</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00065">65</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -801,7 +801,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03306">3306</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03316">3316</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -825,7 +825,7 @@ Variables</h2></td></tr>
 <p>Mark objects owned by the compiler as in use.</p>
 <p>Called by the garbage collector during the scan phase to mark references held by the compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03375">3375</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03385">3385</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -845,17 +845,17 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03400">3400</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03410">3410</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00068">compiler.c:68</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00096">compiler.c:96</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f">EXPR_ASSIGN_TARGET</a></div><div class="ttdeci">@ EXPR_ASSIGN_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00097">compiler.c:97</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a></div><div class="ttdeci">@ EXPR_DEL_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00098">compiler.c:98</a></div></div>
+<div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00067">compiler.c:67</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00095">compiler.c:95</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f">EXPR_ASSIGN_TARGET</a></div><div class="ttdeci">@ EXPR_ASSIGN_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00096">compiler.c:96</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a></div><div class="ttdeci">@ EXPR_DEL_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00097">compiler.c:97</a></div></div>
 <div class="ttc" id="astructKrkString_html_afd3c39c1c8d8c9363c767e5038a53b8e"><div class="ttname"><a href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">KrkString::krk_codepointToBytes</a></div><div class="ttdeci">size_t krk_codepointToBytes(krk_integer_type value, unsigned char *out)</div><div class="ttdoc">Convert an integer codepoint to a UTF-8 byte representation.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00035">object.c:35</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7">EXPR_NORMAL</a></div><div class="ttdeci">@ EXPR_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00095">compiler.c:95</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7">EXPR_NORMAL</a></div><div class="ttdeci">@ EXPR_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00094">compiler.c:94</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>
