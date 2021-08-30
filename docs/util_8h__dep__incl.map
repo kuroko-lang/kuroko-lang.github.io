@@ -1,5 +1,5 @@
 <map id="src/kuroko/util.h" name="src/kuroko/util.h">
-<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="1833,5,1959,32"/>
+<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="1901,5,2027,32"/>
 <area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,87,109,114"/>
 <area shape="rect" id="node3" href="$debug_8c_source.html" title=" " alt="" coords="133,87,229,114"/>
 <area shape="rect" id="node4" href="$exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="254,87,381,114"/>
@@ -26,6 +26,7 @@
 <area shape="rect" id="node25" href="$compile_8c_source.html" title=" " alt="" coords="3002,87,3123,114"/>
 <area shape="rect" id="node26" href="$sandbox_8c_source.html" title=" " alt="" coords="3147,87,3271,114"/>
 <area shape="rect" id="node27" href="$module__math_8c_source.html" title=" " alt="" coords="3296,80,3451,121"/>
-<area shape="rect" id="node28" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="3475,80,3629,121"/>
-<area shape="rect" id="node29" href="$module__timeit_8c_source.html" title=" " alt="" coords="3653,80,3808,121"/>
+<area shape="rect" id="node28" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3475,80,3629,121"/>
+<area shape="rect" id="node29" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="3653,80,3808,121"/>
+<area shape="rect" id="node30" href="$module__timeit_8c_source.html" title=" " alt="" coords="3832,80,3987,121"/>
 </map>

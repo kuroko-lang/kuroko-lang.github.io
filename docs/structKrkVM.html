@@ -155,6 +155,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3d11d3f68fdef079c201f447eb7df4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9860a073b74e2e8adaba1e03b227b212"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkVM.html#a9860a073b74e2e8adaba1e03b227b212">callgrindFile</a></td></tr>
 <tr class="separator:a9860a073b74e2e8adaba1e03b227b212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1319bc6e2696c9b10d03b42b7b25d911"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkVM.html#a1319bc6e2696c9b10d03b42b7b25d911">maximumCallDepth</a></td></tr>
+<tr class="separator:a1319bc6e2696c9b10d03b42b7b25d911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Global VM state. </p>
@@ -181,7 +183,7 @@ Data Fields</h2></td></tr>
 <p>Release resources from the VM. </p>
 <p>Generally, it is desirable to call this once before the hosting program exits. If a fresh VM state is needed, krk_freeVM should be called before a further call to krk_initVM is made. The resources released here can include allocated heap memory, FILE pointers or descriptors, or various other things which were initialized by C extension modules. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01337">1337</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01351">1351</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -210,7 +212,7 @@ Data Fields</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01146">1146</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01159">1159</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -382,6 +384,23 @@ Data Fields</h2></td></tr>
 <p>Scan list </p>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00224">224</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+
+</div>
+</div>
+<a id="a1319bc6e2696c9b10d03b42b7b25d911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1319bc6e2696c9b10d03b42b7b25d911">&#9670;&nbsp;</a></span>maximumCallDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t KrkVM::maximumCallDepth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Maximum recursive call depth. </p>
+
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00228">228</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
