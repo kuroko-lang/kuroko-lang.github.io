@@ -11,9 +11,12 @@ var searchData=
   ['breaks_44',['breaks',['../structCompiler.html#aa964402ff69a568077eb51df06e4bdf4',1,'Compiler']]],
   ['breakspace_45',['breakSpace',['../structCompiler.html#a722d2fab24be12b1fc9fcde88360ee1d',1,'Compiler']]],
   ['builtins_46',['builtins',['../structKrkVM.html#a89e597653e42841a708fae2b8780001f',1,'KrkVM']]],
-  ['bytes_47',['bytes',['../structKrkBytes.html#a58a0482ac916dcd9f2d5155420062047',1,'KrkBytes']]],
-  ['bytesallocated_48',['bytesAllocated',['../structKrkVM.html#ac9c2e6107ccad8ea3e00604bccefba21',1,'KrkVM']]],
-  ['bytesclass_49',['bytesClass',['../structBaseClasses.html#a5d9c25289e110adbf76c5e91fba19389',1,'BaseClasses']]],
-  ['bytesiteratorclass_50',['bytesiteratorClass',['../structBaseClasses.html#a7d82cfe5ba7b3c46b44a49c382058380',1,'BaseClasses']]],
-  ['binding_20c_20functions_51',['Binding C Functions',['../c_functions.html',1,'']]]
+  ['bytearray_47',['ByteArray',['../structByteArray.html',1,'']]],
+  ['bytearrayclass_48',['bytearrayClass',['../structBaseClasses.html#af4029ffa53bd9bad2dcce39122a7e1a0',1,'BaseClasses']]],
+  ['bytes_49',['bytes',['../structKrkBytes.html#a58a0482ac916dcd9f2d5155420062047',1,'KrkBytes']]],
+  ['bytesallocated_50',['bytesAllocated',['../structKrkVM.html#ac9c2e6107ccad8ea3e00604bccefba21',1,'KrkVM']]],
+  ['bytesclass_51',['bytesClass',['../structBaseClasses.html#a5d9c25289e110adbf76c5e91fba19389',1,'BaseClasses']]],
+  ['bytesiterator_52',['BytesIterator',['../structBytesIterator.html',1,'']]],
+  ['bytesiteratorclass_53',['bytesiteratorClass',['../structBaseClasses.html#a7d82cfe5ba7b3c46b44a49c382058380',1,'BaseClasses']]],
+  ['binding_20c_20functions_54',['Binding C Functions',['../c_functions.html',1,'']]]
 ];

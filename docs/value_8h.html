@@ -229,10 +229,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>NOTIMPL_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</td></tr>
 <tr class="separator:a3dedf04b6dbc4f024ed257a802f59435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c26ea89b359606a2eaac967c834803d"><td class="memItemLeft" align="right" valign="top"><a id="a5c26ea89b359606a2eaac967c834803d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_BOOLEAN))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_BOOLEAN))</td></tr>
 <tr class="separator:a5c26ea89b359606a2eaac967c834803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27f86d6fd4b4397b422b811c1c50d100"><td class="memItemLeft" align="right" valign="top"><a id="a27f86d6fd4b4397b422b811c1c50d100"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_INTEGER))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INTEGER_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_INTEGER))</td></tr>
 <tr class="separator:a27f86d6fd4b4397b422b811c1c50d100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62f4aad9c10d346362409dcf6ca78b0"><td class="memItemLeft" align="right" valign="top"><a id="ae62f4aad9c10d346362409dcf6ca78b0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)(value) | KRK_VAL_MASK_KWARGS))</td></tr>
@@ -249,12 +249,18 @@ Macros</h2></td></tr>
 <tr class="memitem:aadb945a2dcd1d2afeecbf68de12202c5"><td class="memItemLeft" align="right" valign="top"><a id="aadb945a2dcd1d2afeecbf68de12202c5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_TYPE</b>(value)&#160;&#160;&#160;((value) &gt;&gt; 48)</td></tr>
 <tr class="separator:aadb945a2dcd1d2afeecbf68de12202c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bcef61686c2675fe338898a332de54b"><td class="memItemLeft" align="right" valign="top"><a id="a8bcef61686c2675fe338898a332de54b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BOOLEAN</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
-<tr class="separator:a8bcef61686c2675fe338898a332de54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5a88270e2e1dde35e5d7042d8759c6"><td class="memItemLeft" align="right" valign="top"><a id="a3f5a88270e2e1dde35e5d7042d8759c6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_IX</b>(value)&#160;&#160;&#160;((uint64_t)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
+<tr class="separator:a3f5a88270e2e1dde35e5d7042d8759c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28f20edc77589ae106d0c0fca265138"><td class="memItemLeft" align="right" valign="top"><a id="ad28f20edc77589ae106d0c0fca265138"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_SX</b>(value)&#160;&#160;&#160;((uint64_t)((value) &amp; 0x800000000000))</td></tr>
+<tr class="separator:ad28f20edc77589ae106d0c0fca265138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa055879b3088f10c5fa209de6fa2d47"><td class="memItemLeft" align="right" valign="top"><a id="aaa055879b3088f10c5fa209de6fa2d47"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_INTEGER</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_INTEGER</b>(value)&#160;&#160;&#160;((krk_integer_type)(KRK_SX(value) ? (KRK_IX(value) | KRK_VAL_MASK_NONE) : (KRK_IX(value))))</td></tr>
 <tr class="separator:aaa055879b3088f10c5fa209de6fa2d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bcef61686c2675fe338898a332de54b"><td class="memItemLeft" align="right" valign="top"><a id="a8bcef61686c2675fe338898a332de54b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_BOOLEAN</b>(value)&#160;&#160;&#160;AS_INTEGER(value)</td></tr>
+<tr class="separator:a8bcef61686c2675fe338898a332de54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d1322036f1e2fcb90c16a95cbf89af"><td class="memItemLeft" align="right" valign="top"><a id="af9d1322036f1e2fcb90c16a95cbf89af"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_NOTIMPL</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
 <tr class="separator:af9d1322036f1e2fcb90c16a95cbf89af"><td class="memSeparator" colspan="2">&#160;</td></tr>

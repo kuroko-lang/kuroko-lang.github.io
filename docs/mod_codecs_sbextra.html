@@ -108,12 +108,12 @@ $(function() {
 Classes</h2>
 <p><a class="anchor" id="Cp037IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp037IncrementalDecoder">_</a></span><i>class</i> <b>Cp037IncrementalDecoder</b>(BaseEbcdicIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalDecoder implementation for EBCDIC-037.</p>
-<p>This is what might be considered the "default" EBCDIC set, and is used in the United States, the Netherlands, Portugal, Brazil, Australia and New Zealand, and on the ESA/390 in Canada. </p>
+<p>This is what might be considered the "default" EBCDIC set, and is used in the United States, the Netherlands, Portugal, Brazil, Australia and New Zealand, and on the ESA/390 in Canada. Amongst EBCDIC pages with the Latin-1 character repertoire, it is characterised by placing the hard brackets (<code>[]</code>) at 0xBA and 0xBB. </p>
 <p><a class="anchor" id="Cp037IncrementalDecoder_sbcs_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp037IncrementalDecoder_sbcs_decode">_</a></span><i>property</i> Cp037IncrementalDecoder.<b>sbcs_decode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp037IncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp037IncrementalEncoder">_</a></span><i>class</i> <b>Cp037IncrementalEncoder</b>(BaseEbcdicIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalEncoder implementation for EBCDIC-037.</p>
-<p>This is what might be considered the "default" EBCDIC set, and is used in the United States, the Netherlands, Portugal, Brazil, Australia and New Zealand, and on the ESA/390 in Canada. </p>
+<p>This is what might be considered the "default" EBCDIC set, and is used in the United States, the Netherlands, Portugal, Brazil, Australia and New Zealand, and on the ESA/390 in Canada. Amongst EBCDIC pages with the Latin-1 character repertoire, it is characterised by placing the hard brackets (<code>[]</code>) at 0xBA and 0xBB. </p>
 <p><a class="anchor" id="Cp037IncrementalEncoder_sbcs_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp037IncrementalEncoder_sbcs_encode">_</a></span><i>property</i> Cp037IncrementalEncoder.<b>sbcs_encode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp1006IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp1006IncrementalDecoder">_</a></span><i>class</i> <b>Cp1006IncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
@@ -143,27 +143,27 @@ Classes</h2>
 <p><a class="anchor" id="Cp1125IncrementalEncoder_encoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp1125IncrementalEncoder_encoding_map">_</a></span><i>property</i> Cp1125IncrementalEncoder.<b>encoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp1140IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp1140IncrementalDecoder">_</a></span><i>class</i> <b>Cp1140IncrementalDecoder</b>(BaseEbcdicIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalDecoder implementation for EBCDIC-1140 (EBCDIC with Euro sign). </p>
+<p>IncrementalDecoder implementation for EBCDIC-1140 (EBCDIC with Euro sign). In particular, this is the Euro update of EBCDIC-037. </p>
 <p><a class="anchor" id="Cp1140IncrementalDecoder_sbcs_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp1140IncrementalDecoder_sbcs_decode">_</a></span><i>property</i> Cp1140IncrementalDecoder.<b>sbcs_decode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp1140IncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp1140IncrementalEncoder">_</a></span><i>class</i> <b>Cp1140IncrementalEncoder</b>(BaseEbcdicIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalEncoder implementation for EBCDIC-1140 (EBCDIC with Euro sign). </p>
+<p>IncrementalEncoder implementation for EBCDIC-1140 (EBCDIC with Euro sign). In particular, this is the Euro update of EBCDIC-037. </p>
 <p><a class="anchor" id="Cp1140IncrementalEncoder_sbcs_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp1140IncrementalEncoder_sbcs_encode">_</a></span><i>property</i> Cp1140IncrementalEncoder.<b>sbcs_encode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp273IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp273IncrementalDecoder">_</a></span><i>class</i> <b>Cp273IncrementalDecoder</b>(BaseEbcdicIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalDecoder implementation for EBCDIC-273 (used in German-speaking locales). </p>
+<p>IncrementalDecoder implementation for EBCDIC-273 (used in German-speaking locales). This is somewhat related to EBCDIC-500, but with several character swaps corresponding to the differences between DIN 66003 and ASCII. </p>
 <p><a class="anchor" id="Cp273IncrementalDecoder_sbcs_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp273IncrementalDecoder_sbcs_decode">_</a></span><i>property</i> Cp273IncrementalDecoder.<b>sbcs_decode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp273IncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp273IncrementalEncoder">_</a></span><i>class</i> <b>Cp273IncrementalEncoder</b>(BaseEbcdicIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalEncoder implementation for EBCDIC-273 (used in German-speaking locales). </p>
+<p>IncrementalEncoder implementation for EBCDIC-273 (used in German-speaking locales). This is somewhat related to EBCDIC-500, but with several character swaps corresponding to the differences between DIN 66003 and ASCII. </p>
 <p><a class="anchor" id="Cp273IncrementalEncoder_sbcs_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp273IncrementalEncoder_sbcs_encode">_</a></span><i>property</i> Cp273IncrementalEncoder.<b>sbcs_encode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp424IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp424IncrementalDecoder">_</a></span><i>class</i> <b>Cp424IncrementalDecoder</b>(BaseEbcdicIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalEncoder implementation for EBCDIC-273 (used in Hebrew-speaking locales). </p>
+<p>IncrementalEncoder implementation for EBCDIC-424 (used in Hebrew-speaking locales). </p>
 <p><a class="anchor" id="Cp424IncrementalDecoder_sbcs_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp424IncrementalDecoder_sbcs_decode">_</a></span><i>property</i> Cp424IncrementalDecoder.<b>sbcs_decode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp424IncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp424IncrementalEncoder">_</a></span><i>class</i> <b>Cp424IncrementalEncoder</b>(BaseEbcdicIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>IncrementalEncoder implementation for EBCDIC-273 (used in Hebrew-speaking locales). </p>
+<p>IncrementalEncoder implementation for EBCDIC-424 (used in Hebrew-speaking locales). </p>
 <p><a class="anchor" id="Cp424IncrementalEncoder_sbcs_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp424IncrementalEncoder_sbcs_encode">_</a></span><i>property</i> Cp424IncrementalEncoder.<b>sbcs_encode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp437IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp437IncrementalDecoder">_</a></span><i>class</i> <b>Cp437IncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
@@ -176,12 +176,12 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp500IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp500IncrementalDecoder">_</a></span><i>class</i> <b>Cp500IncrementalDecoder</b>(BaseEbcdicIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalDecoder implementation for EBCDIC-500.</p>
-<p>This is the so-called "International" EBCDIC locale, used in Belgium and Switzerland, as well as on the AS/400 in Canada. </p>
+<p>This is the so-called "International" EBCDIC locale, used in Belgium and Switzerland, as well as on the AS/400 in Canada. Amongst EBCDIC pages with the Latin-1 character repertoire, it is characterised by placing the hard brackets (<code>[]</code>) at 0x4A and 0x5A. </p>
 <p><a class="anchor" id="Cp500IncrementalDecoder_sbcs_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp500IncrementalDecoder_sbcs_decode">_</a></span><i>property</i> Cp500IncrementalDecoder.<b>sbcs_decode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp500IncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp500IncrementalEncoder">_</a></span><i>class</i> <b>Cp500IncrementalEncoder</b>(BaseEbcdicIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalEncoder implementation for EBCDIC-500.</p>
-<p>This is the so-called "International" EBCDIC locale, used in Belgium and Switzerland, as well as on the AS/400 in Canada. </p>
+<p>This is the so-called "International" EBCDIC locale, used in Belgium and Switzerland, as well as on the AS/400 in Canada. Amongst EBCDIC pages with the Latin-1 character repertoire, it is characterised by placing the hard brackets (<code>[]</code>) at 0x4A and 0x5A. </p>
 <p><a class="anchor" id="Cp500IncrementalEncoder_sbcs_encode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Cp500IncrementalEncoder_sbcs_encode">_</a></span><i>property</i> Cp500IncrementalEncoder.<b>sbcs_encode</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Cp720IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Cp720IncrementalDecoder">_</a></span><i>class</i> <b>Cp720IncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
@@ -362,12 +362,12 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="PalmosIncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#PalmosIncrementalDecoder">_</a></span><i>class</i> <b>PalmosIncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalDecoder implementation for the PalmOS encoding.</p>
-<p>This is an modification of ISO-8859-1 along similar lines to Windows-1252. </p>
+<p>This is a modification of ISO-8859-1 along similar lines to Windows-1252. </p>
 <p><a class="anchor" id="PalmosIncrementalDecoder_decoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#PalmosIncrementalDecoder_decoding_map">_</a></span><i>property</i> PalmosIncrementalDecoder.<b>decoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="PalmosIncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#PalmosIncrementalEncoder">_</a></span><i>class</i> <b>PalmosIncrementalEncoder</b>(AsciiIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>IncrementalEncoder implementation for the PalmOS encoding.</p>
-<p>This is an modification of ISO-8859-1 along similar lines to Windows-1252. </p>
+<p>This is a modification of ISO-8859-1 along similar lines to Windows-1252. </p>
 <p><a class="anchor" id="PalmosIncrementalEncoder_encoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#PalmosIncrementalEncoder_encoding_map">_</a></span><i>property</i> PalmosIncrementalEncoder.<b>encoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="Ptcp154IncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Ptcp154IncrementalDecoder">_</a></span><i>class</i> <b>Ptcp154IncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>

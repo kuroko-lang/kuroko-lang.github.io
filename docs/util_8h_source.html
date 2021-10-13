@@ -262,8 +262,8 @@ $(function() {
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#define IS_dictkeys(o) krk_isInstanceOf(o,vm.baseClasses-&gt;dictkeysClass)</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#define AS_dictkeys(o) ((struct DictKeys*)AS_OBJECT(o))</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">#define IS_bytesiterator(o) (krk_isInstanceOf(o,vm.baseClasses-&gt;bytesiteratorClass))</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#define AS_bytesiterator(o) (AS_INSTANCE(o))</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">#define IS_bytearray(o) (krk_isInstanceOf(o,vm.baseClasses-&gt;bytearrayClass))</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#define AS_bytearray(o) ((struct ByteArray*)AS_INSTANCE(o))</span></div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#ifndef unpackError</span></div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#define unpackError(fromInput) return krk_runtimeError(vm.exceptions-&gt;typeError, &quot;&#39;%s&#39; object is not iterable&quot;, krk_typeName(fromInput));</span></div>
