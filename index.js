@@ -5354,10 +5354,6 @@ function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module
   }
   }
 
-  function ___sys_sync() {
-      return 0;
-    }
-
   function ___sys_truncate64(path, zero, low, high) {try {
   
       path = SYSCALLS.getStr(path);
@@ -5921,7 +5917,6 @@ var asmLibraryArg = {
   "__sys_rmdir": ___sys_rmdir,
   "__sys_stat64": ___sys_stat64,
   "__sys_symlink": ___sys_symlink,
-  "__sys_sync": ___sys_sync,
   "__sys_truncate64": ___sys_truncate64,
   "__sys_uname": ___sys_uname,
   "__sys_unlink": ___sys_unlink,
