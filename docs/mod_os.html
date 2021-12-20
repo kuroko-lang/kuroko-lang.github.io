@@ -150,6 +150,10 @@ Functions</h2>
 <p>Replace the current process.</p>
 <p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execvp</code> takes a <code>filename</code> of a binary and a <a class="el" href="mod___builtins__.html#list">list</a> <code>args</code> of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable. <code>filename</code> will be searched for in <code>$PATH</code>.</p>
 <p> </div></div></p>
+<p><a class="anchor" id="exit"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#exit">_</a></span><b>exit</b>()</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Exit the current process.</p>
+<p> <div class="alert alert-warning">This will exit the interpreter without calling cleanup routines.</div></p>
+<p> </div></div></p>
 <p><a class="anchor" id="fork"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#fork">_</a></span><b>fork</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Fork the current process.</p>
 <p>Returns the PID of the new child process in the original process and <code>0</code> in the child.</p>
@@ -204,9 +208,6 @@ Functions</h2>
 <p><a class="anchor" id="symlink"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#symlink">_</a></span><b>symlink</b>(<i>src,dst</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Create a symbolic link.</p>
 <p>Creates a symbolic link at <code>src</code> pointing to <code>dst</code>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="sync"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sync">_</a></span><b>sync</b>()</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Commit filesystem caches to disk.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="system"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#system">_</a></span><b>system</b>(<i>cmd</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Call the system shell.</p>

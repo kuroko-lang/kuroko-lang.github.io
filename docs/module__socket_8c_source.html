@@ -435,140 +435,175 @@ $(function() {
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(result);</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;})</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;KRK_METHOD(<a class="code" href="structsocket.html">socket</a>,fileno,{</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(self-&gt;sockfd);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;})</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;KRK_METHOD(<a class="code" href="structsocket.html">socket</a>,setsockopt,{</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    METHOD_TAKES_EXACTLY(3);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,level);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    CHECK_ARG(2,<span class="keywordtype">int</span>,krk_integer_type,optname);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordtype">int</span> result;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(argv[3])) {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordtype">int</span> val = AS_INTEGER(argv[3]);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        result = setsockopt(self-&gt;sockfd, level, optname, (<span class="keywordtype">void</span>*)&amp;val, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_BYTES(argv[3])) {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        result = setsockopt(self-&gt;sockfd, level, optname, (<span class="keywordtype">void</span>*)AS_BYTES(argv[3])-&gt;bytes, AS_BYTES(argv[3])-&gt;length);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">return</span> TYPE_ERROR(<span class="keywordtype">int</span> or bytes,argv[3]);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">if</span> (result &lt; 0) {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(SocketError, <span class="stringliteral">&quot;Socket error: %s&quot;</span>, strerror(errno));</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;})</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;KRK_METHOD(<a class="code" href="structsocket.html">socket</a>,sendto,{</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    METHOD_TAKES_AT_LEAST(1);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    METHOD_TAKES_AT_MOST(3);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    CHECK_ARG(1,bytes,<a class="code" href="structKrkBytes.html">KrkBytes</a>*,buf);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">int</span> flags = 0;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 3) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        CHECK_ARG(2,<span class="keywordtype">int</span>,krk_integer_type,_flags);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        flags = _flags;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">struct </span>sockaddr_storage sock_addr;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    socklen_t sock_size = 0;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="comment">/* What do we take? I guess a tuple for AF_INET */</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordtype">int</span> parseResult = socket_parse_address(<span class="keyword">self</span>, argv[argc-1], &amp;sock_addr, &amp;sock_size);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">if</span> (parseResult) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">if</span> (!(<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION))</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(SocketError, <span class="stringliteral">&quot;Unspecified error.&quot;</span>);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    ssize_t result = sendto(self-&gt;sockfd, (<span class="keywordtype">void</span>*)buf-&gt;bytes, buf-&gt;length, flags, (<span class="keyword">struct</span> sockaddr*)&amp;sock_addr, sock_size);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">if</span> (result &lt; 0) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(SocketError, <span class="stringliteral">&quot;Socket error: %s&quot;</span>, strerror(errno));</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;KRK_FUNC(htons,{</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    FUNCTION_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    CHECK_ARG(0,<span class="keywordtype">int</span>,krk_integer_type,value);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(htons(value));</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;})</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno"><a class="line" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">  368</a></span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> <a class="code" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * module = <a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;moduleClass);</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(module));</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(module, <span class="stringliteral">&quot;Lightweight wrapper around the standard Berkeley sockets interface.&quot;</span>);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * <a class="code" href="structsocket.html">socket</a> = <a class="code" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a>(module, &amp;SocketClass, <span class="stringliteral">&quot;socket&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    SocketClass-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = <span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code" href="structsocket.html">socket</a>);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,__init__),</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="stringliteral">&quot;@brief Create a socket object.\n&quot;</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="stringliteral">&quot;@arguments family=AF_INET,type=SOCK_STREAM,proto=0\n\n&quot;</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="stringliteral">&quot;Creates a new socket object for the given address family and type.&quot;</span>);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,__repr__);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,bind),</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="stringliteral">&quot;@brief Bind a socket to an address.\n&quot;</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="stringliteral">&quot;@arguments address\n\n&quot;</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="stringliteral">&quot;The format of @p address varies by address family. For @c AF_INET, @p address should be a &quot;</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="stringliteral">&quot;two-tuple of a string domain name and integer port number.&quot;</span>);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,listen),</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="stringliteral">&quot;@brief Set a bound socket to listen.\n&quot;</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="stringliteral">&quot;@arguments backlog=0\n\n&quot;</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="stringliteral">&quot;Begin listening on a bound socket, keeping @p backlog connections in a queue.&quot;</span>);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,accept),</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="stringliteral">&quot;@brief Accept a connection on a listening socket.\n\n&quot;</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="stringliteral">&quot;Accepts one connection and returns a two-tuple with a new socket object and &quot;</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="stringliteral">&quot;the address of the remote host.&quot;</span>);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,connect),</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="stringliteral">&quot;@brief Connect a socket to a remote endpoint.\n&quot;</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="stringliteral">&quot;@arguments address\n\n&quot;</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="stringliteral">&quot;As with @ref socket_bind, the format of @p address varies.&quot;</span>);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,shutdown),</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="stringliteral">&quot;@brief Shut down an active socket.\n&quot;</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="stringliteral">&quot;@arguments how\n\n&quot;</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="stringliteral">&quot;Gracefully closes an open socket.&quot;</span>);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,recv),</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="stringliteral">&quot;@brief Receive data from a connected socket.\n&quot;</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        <span class="stringliteral">&quot;@arguments bufsize,[flags]\n\n&quot;</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="stringliteral">&quot;Receive up to @p bufsize bytes of data, which is returned as a @ref bytes object.&quot;</span>);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,send),</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="stringliteral">&quot;@brief Send data to a connected socket.\n&quot;</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="stringliteral">&quot;@arguments buf,[flags]\n\n&quot;</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="stringliteral">&quot;Send the data in the @ref bytes object @p buf to the socket. Returns the number &quot;</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="stringliteral">&quot;of bytes written to the socket.&quot;</span>);</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,fileno),</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="stringliteral">&quot;@brief Get the file descriptor number for the underlying socket.&quot;</span>);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,setsockopt),</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="stringliteral">&quot;@brief Set socket options.\n&quot;</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="stringliteral">&quot;@arguments level,optname,value\n\n&quot;</span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        <span class="stringliteral">&quot;@p level and @p optname should be integer values defined by @c SOL and @c SO options. &quot;</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="stringliteral">&quot;@p value must be either an @ref int or a @ref bytes object.&quot;</span>);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;<a class="code" href="structsocket.html">socket</a>-&gt;methods,<span class="stringliteral">&quot;__str__&quot;</span>, FUNC_NAME(<a class="code" href="structsocket.html">socket</a>,__repr__));</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(SocketClass);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    BIND_FUNC(module, htons);</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="comment">/* Constants */</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#define SOCK_CONST(o) krk_attachNamedValue(&amp;module-&gt;fields, #o, INTEGER_VAL(o));</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    SOCK_CONST(AF_INET);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="preprocessor">#ifdef AF_INET6</span></div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    SOCK_CONST(AF_INET6);</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#ifdef AF_UNIX</span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    SOCK_CONST(AF_UNIX);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="comment">/* SOCK_ constants, similarly */</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    SOCK_CONST(SOCK_STREAM);</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    SOCK_CONST(SOCK_DGRAM);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#ifdef SOCK_RAW</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    SOCK_CONST(SOCK_RAW);</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="comment">/* These are OR&#39;d together with the above on Linux */</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">#ifdef SOCK_NONBLOCK</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    SOCK_CONST(SOCK_NONBLOCK);</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">#ifdef SOCK_CLOEXEC</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    SOCK_CONST(SOCK_CLOEXEC);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">#ifdef SHUT_RD</span></div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    SOCK_CONST(SHUT_RD);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    SOCK_CONST(SHUT_WR);</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    SOCK_CONST(SHUT_RDWR);</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(result);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;})</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;KRK_METHOD(<a class="code" href="structsocket.html">socket</a>,fileno,{</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(self-&gt;sockfd);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;})</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;KRK_METHOD(<a class="code" href="structsocket.html">socket</a>,setsockopt,{</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    METHOD_TAKES_EXACTLY(3);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,level);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    CHECK_ARG(2,<span class="keywordtype">int</span>,krk_integer_type,optname);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordtype">int</span> result;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(argv[3])) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordtype">int</span> val = AS_INTEGER(argv[3]);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        result = setsockopt(self-&gt;sockfd, level, optname, (<span class="keywordtype">void</span>*)&amp;val, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_BYTES(argv[3])) {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        result = setsockopt(self-&gt;sockfd, level, optname, (<span class="keywordtype">void</span>*)AS_BYTES(argv[3])-&gt;bytes, AS_BYTES(argv[3])-&gt;length);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">return</span> TYPE_ERROR(<span class="keywordtype">int</span> or bytes,argv[3]);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">if</span> (result &lt; 0) {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(SocketError, <span class="stringliteral">&quot;Socket error: %s&quot;</span>, strerror(errno));</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;})</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;KRK_FUNC(htons,{</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    FUNCTION_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    CHECK_ARG(0,<span class="keywordtype">int</span>,krk_integer_type,value);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(htons(value));</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;})</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">  398</a></span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> <a class="code" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * module = <a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;moduleClass);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(module));</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(module, <span class="stringliteral">&quot;Lightweight wrapper around the standard Berkeley sockets interface.&quot;</span>);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * <a class="code" href="structsocket.html">socket</a> = <a class="code" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a>(module, &amp;SocketClass, <span class="stringliteral">&quot;socket&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    SocketClass-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = <span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code" href="structsocket.html">socket</a>);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,__init__),</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="stringliteral">&quot;@brief Create a socket object.\n&quot;</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="stringliteral">&quot;@arguments family=AF_INET,type=SOCK_STREAM,proto=0\n\n&quot;</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="stringliteral">&quot;Creates a new socket object for the given address family and type.&quot;</span>);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,__repr__);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,bind),</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="stringliteral">&quot;@brief Bind a socket to an address.\n&quot;</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="stringliteral">&quot;@arguments address\n\n&quot;</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="stringliteral">&quot;The format of @p address varies by address family. For @c AF_INET, @p address should be a &quot;</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="stringliteral">&quot;two-tuple of a string domain name and integer port number.&quot;</span>);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,listen),</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="stringliteral">&quot;@brief Set a bound socket to listen.\n&quot;</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="stringliteral">&quot;@arguments backlog=0\n\n&quot;</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="stringliteral">&quot;Begin listening on a bound socket, keeping @p backlog connections in a queue.&quot;</span>);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,accept),</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="stringliteral">&quot;@brief Accept a connection on a listening socket.\n\n&quot;</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="stringliteral">&quot;Accepts one connection and returns a two-tuple with a new socket object and &quot;</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <span class="stringliteral">&quot;the address of the remote host.&quot;</span>);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,connect),</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <span class="stringliteral">&quot;@brief Connect a socket to a remote endpoint.\n&quot;</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        <span class="stringliteral">&quot;@arguments address\n\n&quot;</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="stringliteral">&quot;As with @ref socket_bind, the format of @p address varies.&quot;</span>);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,shutdown),</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="stringliteral">&quot;@brief Shut down an active socket.\n&quot;</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="stringliteral">&quot;@arguments how\n\n&quot;</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="stringliteral">&quot;Gracefully closes an open socket.&quot;</span>);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,recv),</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="stringliteral">&quot;@brief Receive data from a connected socket.\n&quot;</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="stringliteral">&quot;@arguments bufsize,[flags]\n\n&quot;</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="stringliteral">&quot;Receive up to @p bufsize bytes of data, which is returned as a @ref bytes object.&quot;</span>);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,send),</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="stringliteral">&quot;@brief Send data to a connected socket.\n&quot;</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="stringliteral">&quot;@arguments buf,[flags]\n\n&quot;</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="stringliteral">&quot;Send the data in the @ref bytes object @p buf to the socket. Returns the number &quot;</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="stringliteral">&quot;of bytes written to the socket.&quot;</span>);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,sendto),</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="stringliteral">&quot;@brief Send data to an socket with a particular destination.\n&quot;</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="stringliteral">&quot;@arguments buf,[flags],addr\n\n&quot;</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        <span class="stringliteral">&quot;Send the data in the @ref bytes object @p buf to the socket. Returns the number &quot;</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="stringliteral">&quot;of bytes written to the socket.&quot;</span>);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,fileno),</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="stringliteral">&quot;@brief Get the file descriptor number for the underlying socket.&quot;</span>);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_METHOD(<a class="code" href="structsocket.html">socket</a>,setsockopt),</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="stringliteral">&quot;@brief Set socket options.\n&quot;</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="stringliteral">&quot;@arguments level,optname,value\n\n&quot;</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <span class="stringliteral">&quot;@p level and @p optname should be integer values defined by @c SOL and @c SO options. &quot;</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="stringliteral">&quot;@p value must be either an @ref int or a @ref bytes object.&quot;</span>);</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;<a class="code" href="structsocket.html">socket</a>-&gt;methods,<span class="stringliteral">&quot;__str__&quot;</span>, FUNC_NAME(<a class="code" href="structsocket.html">socket</a>,__repr__));</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(SocketClass);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    BIND_FUNC(module, htons);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="comment">/* Constants */</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#define SOCK_CONST(o) krk_attachNamedValue(&amp;module-&gt;fields, #o, INTEGER_VAL(o));</span></div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    SOCK_CONST(SOL_SOCKET);</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    SOCK_CONST(SO_REUSEADDR);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <a class="code" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a>(module, &amp;SocketError, <span class="stringliteral">&quot;SocketError&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;baseException);</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(SocketError, <span class="stringliteral">&quot;Raised on faults from socket functions.&quot;</span>);</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(SocketError);</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;}</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    SOCK_CONST(AF_INET);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="preprocessor">#ifdef AF_INET6</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    SOCK_CONST(AF_INET6);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="preprocessor">#ifdef AF_UNIX</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    SOCK_CONST(AF_UNIX);</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="comment">/* SOCK_ constants, similarly */</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    SOCK_CONST(SOCK_STREAM);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    SOCK_CONST(SOCK_DGRAM);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor">#ifdef SOCK_RAW</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    SOCK_CONST(SOCK_RAW);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="comment">/* These are OR&#39;d together with the above on Linux */</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor">#ifdef SOCK_NONBLOCK</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    SOCK_CONST(SOCK_NONBLOCK);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#ifdef SOCK_CLOEXEC</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    SOCK_CONST(SOCK_CLOEXEC);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor">#ifdef SHUT_RD</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    SOCK_CONST(SHUT_RD);</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    SOCK_CONST(SHUT_WR);</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    SOCK_CONST(SHUT_RDWR);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    SOCK_CONST(SOL_SOCKET);</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    SOCK_CONST(SO_REUSEADDR);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <a class="code" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a>(module, &amp;SocketError, <span class="stringliteral">&quot;SocketError&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;baseException);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(SocketError, <span class="stringliteral">&quot;Raised on faults from socket functions.&quot;</span>);</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(SocketError);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00223">object.h:223</a></div></div>
 <div class="ttc" id="astructKrkString_html_a5a5d858a11fd8b8216fee7a8861c6920"><div class="ttname"><a href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">KrkString::krk_copyString</a></div><div class="ttdeci">KrkString * krk_copyString(const char *chars, size_t length)</div><div class="ttdoc">Obtain a string object representation of the given C string.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00217">object.c:217</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00274">vm.h:274</a></div></div>
-<div class="ttc" id="amodule__socket_8c_html_adfdefb72377282a1f18b0297679fbfd5"><div class="ttname"><a href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a></div><div class="ttdeci">KrkValue krk_module_onload_socket(void)</div><div class="ttdef"><b>Definition:</b> <a href="module__socket_8c_source.html#l00368">module_socket.c:368</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00275">vm.h:275</a></div></div>
+<div class="ttc" id="amodule__socket_8c_html_adfdefb72377282a1f18b0297679fbfd5"><div class="ttname"><a href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a></div><div class="ttdeci">KrkValue krk_module_onload_socket(void)</div><div class="ttdef"><b>Definition:</b> <a href="module__socket_8c_source.html#l00398">module_socket.c:398</a></div></div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00180">object.h:180</a></div></div>
 <div class="ttc" id="astructKrkTuple_html"><div class="ttname"><a href="structKrkTuple.html">KrkTuple</a></div><div class="ttdoc">Immutable sequence of arbitrary values.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00270">object.h:270</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
@@ -576,23 +611,23 @@ $(function() {
 <div class="ttc" id="astructKrkClass_html_ab4f353ca0085f50bbf498df5116b66ef"><div class="ttname"><a href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">KrkClass::krk_finalizeClass</a></div><div class="ttdeci">void krk_finalizeClass(KrkClass *_class)</div><div class="ttdoc">Finalize a class by collecting pointers to core methods.</div></div>
 <div class="ttc" id="astructKrkBytes_html"><div class="ttname"><a href="structKrkBytes.html">KrkBytes</a></div><div class="ttdoc">Immutable sequence of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00090">object.h:90</a></div></div>
 <div class="ttc" id="astructKrkClass_html_a6d254a1d23874b5bdccad657eba1dd77"><div class="ttname"><a href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">KrkClass::allocSize</a></div><div class="ttdeci">size_t allocSize</div><div class="ttdoc">Size to allocate when creating instances of this class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00187">object.h:187</a></div></div>
-<div class="ttc" id="astructKrkValueArray_html_a21803c1b5e958b8935f51c162c70c090"><div class="ttname"><a href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">KrkValueArray::values</a></div><div class="ttdeci">KrkValue * values</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00070">value.h:70</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_a21803c1b5e958b8935f51c162c70c090"><div class="ttname"><a href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">KrkValueArray::values</a></div><div class="ttdeci">KrkValue * values</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00082">value.h:82</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
 <div class="ttc" id="astructKrkTuple_html_aa9eecb930aa34bded4891a55ee7a5155"><div class="ttname"><a href="structKrkTuple.html#aa9eecb930aa34bded4891a55ee7a5155">KrkTuple::values</a></div><div class="ttdeci">KrkValueArray values</div><div class="ttdoc">Stores the length, capacity, and actual values of the tuple.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00272">object.h:272</a></div></div>
-<div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00069">value.h:69</a></div></div>
+<div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00081">value.h:81</a></div></div>
 <div class="ttc" id="astructKrkClass_html_a86207dac51db021c72473dfa08924e5f"><div class="ttname"><a href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">KrkClass::krk_makeClass</a></div><div class="ttdeci">KrkClass * krk_makeClass(KrkInstance *module, KrkClass **_class, const char *name, KrkClass *base)</div><div class="ttdoc">Convenience function for creating new types.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00360">vm.c:360</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
 <div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00298">vm.c:298</a></div></div>
 <div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00335">vm.c:335</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01379">vm.c:1379</a></div></div>
 <div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00319">vm.c:319</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00194">vm.h:194</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00195">vm.h:195</a></div></div>
 <div class="ttc" id="astructKrkBytes_html_af996a6f2dbd8fac6b346589d21322594"><div class="ttname"><a href="structKrkBytes.html#af996a6f2dbd8fac6b346589d21322594">KrkBytes::krk_newBytes</a></div><div class="ttdeci">KrkBytes * krk_newBytes(size_t length, uint8_t *source)</div><div class="ttdoc">Create a new byte array.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00323">object.c:323</a></div></div>
 <div class="ttc" id="astructKrkTuple_html_ae8f407651c9df700ede0485e9a8d9db9"><div class="ttname"><a href="structKrkTuple.html#ae8f407651c9df700ede0485e9a8d9db9">KrkTuple::krk_newTuple</a></div><div class="ttdeci">KrkTuple * krk_newTuple(size_t length)</div><div class="ttdoc">Create a new tuple.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00313">object.c:313</a></div></div>
 <div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdef"><b>Definition:</b> <a href="module__socket_8c_source.html#l00025">module_socket.c:25</a></div></div>
 <div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
-<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00294">util.h:294</a></div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00297">util.h:297</a></div></div>
 <div class="ttc" id="astructKrkInstance_html_a3d0bf09b92b2d6a02685b143f4438e01"><div class="ttname"><a href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">KrkInstance::krk_newInstance</a></div><div class="ttdeci">KrkInstance * krk_newInstance(KrkClass *_class)</div><div class="ttdoc">Create a new instance of the given class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00299">object.c:299</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>

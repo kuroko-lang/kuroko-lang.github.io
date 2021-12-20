@@ -750,507 +750,511 @@ $(function() {
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="comment">/* Try asking /proc */</span></div>
 <div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordtype">char</span> tmp[4096];</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordtype">char</span> * binpath = realpath(<span class="stringliteral">&quot;/proc/self/exe&quot;</span>, tmp);</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordtype">char</span> * binpath = realpath(<span class="stringliteral">&quot;/proc/self/exe&quot;</span>, NULL);</div>
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <span class="keywordflow">if</span> (!binpath || (access(binpath, X_OK) != 0)) {</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;        <span class="keywordflow">if</span> (strchr(argv[0], <span class="charliteral">&#39;/&#39;</span>)) {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;            binpath = realpath(argv[0], tmp);</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            <span class="comment">/* Search PATH for argv[0] */</span></div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            <span class="keywordtype">char</span> * p = getenv(<span class="stringliteral">&quot;PATH&quot;</span>);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <span class="keywordflow">if</span> (!p) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;            <span class="keywordtype">char</span> * _path = strdup(p);</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="keywordtype">char</span> * path = _path;</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            <span class="keywordflow">while</span> (path) {</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                <span class="keywordtype">char</span> * next = strchr(path,<span class="charliteral">&#39;:&#39;</span>);</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                <span class="keywordflow">if</span> (next) *next++ = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                snprintf(tmp, 4096, <span class="stringliteral">&quot;%s/%s&quot;</span>, path, argv[0]);</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                <span class="keywordflow">if</span> (access(tmp, X_OK) == 0) {</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                    binpath = tmp;</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                path = next;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            }</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            free(_path);</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        }</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    }</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    <span class="keywordflow">if</span> (binpath) {</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.binpath = strdup(binpath);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    } <span class="comment">/* Else, give up at this point and just don&#39;t attach it at all. */</span></div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;}</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160; </div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> runString(<span class="keywordtype">char</span> * argv[], <span class="keywordtype">int</span> flags, <span class="keywordtype">char</span> * <span class="keywordtype">string</span>) {</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    findInterpreter(argv);</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>,<span class="stringliteral">&quot;__doc__&quot;</span>, NONE_VAL());</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(<span class="keywordtype">string</span>, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;}</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160; </div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> compileFile(<span class="keywordtype">char</span> * argv[], <span class="keywordtype">int</span> flags, <span class="keywordtype">char</span> * fileName) {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    findInterpreter(argv);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;        <span class="keywordflow">if</span> (binpath) {</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;            free(binpath);</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;            binpath = NULL;</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        }</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <span class="keywordflow">if</span> (strchr(argv[0], <span class="charliteral">&#39;/&#39;</span>)) {</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            binpath = realpath(argv[0], NULL);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="comment">/* Search PATH for argv[0] */</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            <span class="keywordtype">char</span> * p = getenv(<span class="stringliteral">&quot;PATH&quot;</span>);</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            <span class="keywordflow">if</span> (!p) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;            <span class="keywordtype">char</span> * _path = strdup(p);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="keywordtype">char</span> * path = _path;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            <span class="keywordflow">while</span> (path) {</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                <span class="keywordtype">char</span> * next = strchr(path,<span class="charliteral">&#39;:&#39;</span>);</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <span class="keywordflow">if</span> (next) *next++ = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; </div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                snprintf(tmp, 4096, <span class="stringliteral">&quot;%s/%s&quot;</span>, path, argv[0]);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                <span class="keywordflow">if</span> (access(tmp, X_OK) == 0) {</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                    binpath = strdup(tmp);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                }</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                path = next;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;            }</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;            free(_path);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        }</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    }</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">if</span> (binpath) {</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.binpath = binpath;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    } <span class="comment">/* Else, give up at this point and just don&#39;t attach it at all. */</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;}</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; </div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> runString(<span class="keywordtype">char</span> * argv[], <span class="keywordtype">int</span> flags, <span class="keywordtype">char</span> * <span class="keywordtype">string</span>) {</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    findInterpreter(argv);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>,<span class="stringliteral">&quot;__doc__&quot;</span>, NONE_VAL());</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(<span class="keywordtype">string</span>, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;}</div>
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; </div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="comment">/* Open the file. */</span></div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    FILE * f = fopen(fileName,<span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <span class="keywordflow">if</span> (!f) {</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%s: could not read file &#39;%s&#39;: %s\n&quot;</span>, argv[0], fileName, strerror(errno));</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    }</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; </div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">/* Read it like we normally do... */</span></div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    fseek(f, 0, SEEK_END);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <span class="keywordtype">size_t</span> size = ftell(f);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    fseek(f, 0, SEEK_SET);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    <span class="keywordtype">char</span> * buf = malloc(size+1);</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    <span class="keywordflow">if</span> (fread(buf, 1, size, f) == 0) <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    fclose(f);</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    buf[size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="comment">/* Set up a module scope */</span></div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160; </div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    <span class="comment">/* Call the compiler directly. */</span></div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * func = <a class="code" href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a>(buf, fileName);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    <span class="comment">/* See if there was an exception. */</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <a class="code" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a>();</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    }</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160; </div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="comment">/* Free the source string */</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    free(buf);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <span class="comment">/* Close out the compiler */</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160; </div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    <span class="keywordflow">return</span> func == NULL;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;}</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#ifdef BUNDLE_LIBS</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="preprocessor">#define BUNDLED(name) do { \</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="preprocessor">    extern KrkValue krk_module_onload_ ## name (); \</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="preprocessor">    KrkValue moduleOut = krk_module_onload_ ## name (); \</span></div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="preprocessor">    krk_attachNamedValue(&amp;vm.modules, # name, moduleOut); \</span></div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="preprocessor">    krk_attachNamedObject(&amp;AS_INSTANCE(moduleOut)-&gt;fields, &quot;__name__&quot;, (KrkObj*)krk_copyString(#name, sizeof(#name)-1)); \</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="preprocessor">    krk_attachNamedValue(&amp;AS_INSTANCE(moduleOut)-&gt;fields, &quot;__file__&quot;, NONE_VAL()); \</span></div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="preprocessor">} while (0)</span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160; </div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    SetConsoleOutputCP(65001);</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    SetConsoleCP(65001);</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    <span class="keywordtype">char</span> * runCmd = NULL;</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    <span class="keywordtype">int</span> flags = 0;</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    <span class="keywordtype">int</span> moduleAsMain = 0;</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="keywordtype">int</span> inspectAfter = 0;</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordtype">int</span> opt;</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    <span class="keywordtype">int</span> maxDepth = -1;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="keywordflow">while</span> ((opt = getopt(argc, argv, <span class="stringliteral">&quot;+:c:C:dgGim:rR:stTMSV-:&quot;</span>)) != -1) {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        <span class="keywordflow">switch</span> (opt) {</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                runCmd = optarg;</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                <span class="keywordflow">goto</span> _finishArgs;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>:</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                <span class="comment">/* Disassemble code blocks after compilation. */</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                flags |= KRK_THREAD_ENABLE_DISASSEMBLY;</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;g&#39;</span>:</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <span class="comment">/* Always garbage collect during an allocation. */</span></div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                flags |= KRK_GLOBAL_ENABLE_STRESS_GC;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> compileFile(<span class="keywordtype">char</span> * argv[], <span class="keywordtype">int</span> flags, <span class="keywordtype">char</span> * fileName) {</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    findInterpreter(argv);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160; </div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="comment">/* Open the file. */</span></div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    FILE * f = fopen(fileName,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    <span class="keywordflow">if</span> (!f) {</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%s: could not read file &#39;%s&#39;: %s\n&quot;</span>, argv[0], fileName, strerror(errno));</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    }</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160; </div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    <span class="comment">/* Read it like we normally do... */</span></div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    fseek(f, 0, SEEK_END);</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="keywordtype">size_t</span> size = ftell(f);</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    fseek(f, 0, SEEK_SET);</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    <span class="keywordtype">char</span> * buf = malloc(size+1);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="keywordflow">if</span> (fread(buf, 1, size, f) == 0) <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    fclose(f);</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    buf[size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160; </div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="comment">/* Set up a module scope */</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160; </div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="comment">/* Call the compiler directly. */</span></div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * func = <a class="code" href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a>(buf, fileName);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160; </div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <span class="comment">/* See if there was an exception. */</span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        <a class="code" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a>();</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="comment">/* Free the source string */</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    free(buf);</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;    <span class="comment">/* Close out the compiler */</span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160; </div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordflow">return</span> func == NULL;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;}</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160; </div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="preprocessor">#ifdef BUNDLE_LIBS</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="preprocessor">#define BUNDLED(name) do { \</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="preprocessor">    extern KrkValue krk_module_onload_ ## name (); \</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="preprocessor">    KrkValue moduleOut = krk_module_onload_ ## name (); \</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;<span class="preprocessor">    krk_attachNamedValue(&amp;vm.modules, # name, moduleOut); \</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;<span class="preprocessor">    krk_attachNamedObject(&amp;AS_INSTANCE(moduleOut)-&gt;fields, &quot;__name__&quot;, (KrkObj*)krk_copyString(#name, sizeof(#name)-1)); \</span></div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="preprocessor">    krk_attachNamedValue(&amp;AS_INSTANCE(moduleOut)-&gt;fields, &quot;__file__&quot;, NONE_VAL()); \</span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor">} while (0)</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    SetConsoleOutputCP(65001);</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    SetConsoleCP(65001);</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordtype">char</span> * runCmd = NULL;</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    <span class="keywordtype">int</span> flags = 0;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="keywordtype">int</span> moduleAsMain = 0;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keywordtype">int</span> inspectAfter = 0;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordtype">int</span> opt;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keywordtype">int</span> maxDepth = -1;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordflow">while</span> ((opt = getopt(argc, argv, <span class="stringliteral">&quot;+:c:C:dgGim:rR:stTMSV-:&quot;</span>)) != -1) {</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        <span class="keywordflow">switch</span> (opt) {</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                runCmd = optarg;</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                <span class="keywordflow">goto</span> _finishArgs;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>:</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <span class="comment">/* Disassemble code blocks after compilation. */</span></div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                flags |= KRK_THREAD_ENABLE_DISASSEMBLY;</div>
 <div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;G&#39;</span>:</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                flags |= KRK_GLOBAL_REPORT_GC_COLLECTS;</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;s&#39;</span>:</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                <span class="comment">/* Print debug information during compilation. */</span></div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                flags |= KRK_THREAD_ENABLE_SCAN_TRACING;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;g&#39;</span>:</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                <span class="comment">/* Always garbage collect during an allocation. */</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                flags |= KRK_GLOBAL_ENABLE_STRESS_GC;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;G&#39;</span>:</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                flags |= KRK_GLOBAL_REPORT_GC_COLLECTS;</div>
 <div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;S&#39;</span>:</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                flags |= KRK_THREAD_SINGLE_STEP;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;t&#39;</span>:</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="comment">/* Disassemble instructions as they are executed. */</span></div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                flags |= KRK_THREAD_ENABLE_TRACING;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;s&#39;</span>:</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                <span class="comment">/* Print debug information during compilation. */</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                flags |= KRK_THREAD_ENABLE_SCAN_TRACING;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;S&#39;</span>:</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                flags |= KRK_THREAD_SINGLE_STEP;</div>
 <div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;T&#39;</span>: {</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                flags |= KRK_GLOBAL_CALLGRIND;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.callgrindFile = fopen(CALLGRIND_TMP_FILE,<span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;t&#39;</span>:</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                <span class="comment">/* Disassemble instructions as they are executed. */</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                flags |= KRK_THREAD_ENABLE_TRACING;</div>
 <div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            }</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;i&#39;</span>:</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                inspectAfter = 1;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;T&#39;</span>: {</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                flags |= KRK_GLOBAL_CALLGRIND;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.callgrindFile = fopen(CALLGRIND_TMP_FILE,<span class="stringliteral">&quot;w&quot;</span>);</div>
 <div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;m&#39;</span>:</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                moduleAsMain = 1;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                optind--; <span class="comment">/* to get us back to optarg */</span></div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                <span class="keywordflow">goto</span> _finishArgs;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                enableRline = 0;</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;R&#39;</span>:</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                maxDepth = atoi(optarg);</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;M&#39;</span>:</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(kuroko.module_paths)\n&quot;</span>);</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span>:</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(&#39;Kuroko&#39;,kuroko.version)\n&quot;</span>);</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;C&#39;</span>:</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                <span class="keywordflow">return</span> compileFile(argv,flags,optarg);</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;:&#39;</span>:</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;%s: option &#39;%c&#39; requires an argument\n&quot;</span>, argv[0], optopt);</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                <span class="keywordflow">if</span> (optopt != <span class="charliteral">&#39;-&#39;</span>) {</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;%s: unrecognized option &#39;%c&#39;\n&quot;</span>, argv[0], optopt);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                }</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                optarg = argv[optind]+2;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                <span class="comment">/* fall through */</span></div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;-&#39;</span>:</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                <span class="keywordflow">if</span> (!strcmp(optarg,<span class="stringliteral">&quot;version&quot;</span>)) {</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                    <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(&#39;Kuroko&#39;,kuroko.version)\n&quot;</span>);</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!strcmp(optarg,<span class="stringliteral">&quot;help&quot;</span>)) {</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;<span class="preprocessor">#ifndef KRK_NO_DOCUMENTATION</span></div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                    fprintf(stderr,<span class="stringliteral">&quot;usage: %s [flags] [FILE...]\n&quot;</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                        <span class="stringliteral">&quot;Interpreter options:\n&quot;</span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                        <span class="stringliteral">&quot; -d          Debug output from the bytecode compiler.\n&quot;</span></div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                        <span class="stringliteral">&quot; -g          Collect garbage on every allocation.\n&quot;</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                        <span class="stringliteral">&quot; -G          Report GC collections.\n&quot;</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                        <span class="stringliteral">&quot; -i          Enter repl after a running -c, -m, or FILE.\n&quot;</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                        <span class="stringliteral">&quot; -m mod      Run a module as a script.\n&quot;</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                        <span class="stringliteral">&quot; -r          Disable complex line editing in the REPL.\n&quot;</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                        <span class="stringliteral">&quot; -R depth    Set maximum recursion depth.\n&quot;</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                        <span class="stringliteral">&quot; -s          Debug output from the scanner/tokenizer.\n&quot;</span></div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                        <span class="stringliteral">&quot; -t          Disassemble instructions as they are exceuted.\n&quot;</span></div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                        <span class="stringliteral">&quot; -T          Write call trace file.\n&quot;</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                        <span class="stringliteral">&quot; -C file     Compile &#39;file&#39;, but do not execute it.\n&quot;</span></div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                        <span class="stringliteral">&quot; -M          Print the default module import paths.\n&quot;</span></div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                        <span class="stringliteral">&quot; -S          Enable single-step debugging.\n&quot;</span></div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                        <span class="stringliteral">&quot; -V          Print version information.\n&quot;</span></div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                        <span class="stringliteral">&quot; --version   Print version information.\n&quot;</span></div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                        <span class="stringliteral">&quot; --help      Show this help text.\n&quot;</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                        <span class="stringliteral">&quot;If no files are provided, the interactive REPL will run.\n&quot;</span>,</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                        argv[0]);</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                    fprintf(stderr,<span class="stringliteral">&quot;%s: unrecognized option &#39;--%s&#39;\n&quot;</span>,</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                        argv[0], optarg);</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                }</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        }</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    }</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;_finishArgs:</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    findInterpreter(argv);</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            }</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;i&#39;</span>:</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                inspectAfter = 1;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;m&#39;</span>:</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                moduleAsMain = 1;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                optind--; <span class="comment">/* to get us back to optarg */</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                <span class="keywordflow">goto</span> _finishArgs;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                enableRline = 0;</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;R&#39;</span>:</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                maxDepth = atoi(optarg);</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;M&#39;</span>:</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(kuroko.module_paths)\n&quot;</span>);</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span>:</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(&#39;Kuroko&#39;,kuroko.version)\n&quot;</span>);</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;C&#39;</span>:</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                <span class="keywordflow">return</span> compileFile(argv,flags,optarg);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;:&#39;</span>:</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;%s: option &#39;%c&#39; requires an argument\n&quot;</span>, argv[0], optopt);</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                <span class="keywordflow">if</span> (optopt != <span class="charliteral">&#39;-&#39;</span>) {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;%s: unrecognized option &#39;%c&#39;\n&quot;</span>, argv[0], optopt);</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                }</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                optarg = argv[optind]+2;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                <span class="comment">/* fall through */</span></div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;-&#39;</span>:</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                <span class="keywordflow">if</span> (!strcmp(optarg,<span class="stringliteral">&quot;version&quot;</span>)) {</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                    <span class="keywordflow">return</span> runString(argv,0,<span class="stringliteral">&quot;import kuroko; print(&#39;Kuroko&#39;,kuroko.version)\n&quot;</span>);</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!strcmp(optarg,<span class="stringliteral">&quot;help&quot;</span>)) {</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="preprocessor">#ifndef KRK_NO_DOCUMENTATION</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                    fprintf(stderr,<span class="stringliteral">&quot;usage: %s [flags] [FILE...]\n&quot;</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                        <span class="stringliteral">&quot;Interpreter options:\n&quot;</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                        <span class="stringliteral">&quot; -d          Debug output from the bytecode compiler.\n&quot;</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                        <span class="stringliteral">&quot; -g          Collect garbage on every allocation.\n&quot;</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                        <span class="stringliteral">&quot; -G          Report GC collections.\n&quot;</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                        <span class="stringliteral">&quot; -i          Enter repl after a running -c, -m, or FILE.\n&quot;</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                        <span class="stringliteral">&quot; -m mod      Run a module as a script.\n&quot;</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                        <span class="stringliteral">&quot; -r          Disable complex line editing in the REPL.\n&quot;</span></div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                        <span class="stringliteral">&quot; -R depth    Set maximum recursion depth.\n&quot;</span></div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                        <span class="stringliteral">&quot; -s          Debug output from the scanner/tokenizer.\n&quot;</span></div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                        <span class="stringliteral">&quot; -t          Disassemble instructions as they are exceuted.\n&quot;</span></div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                        <span class="stringliteral">&quot; -T          Write call trace file.\n&quot;</span></div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                        <span class="stringliteral">&quot; -C file     Compile &#39;file&#39;, but do not execute it.\n&quot;</span></div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                        <span class="stringliteral">&quot; -M          Print the default module import paths.\n&quot;</span></div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                        <span class="stringliteral">&quot; -S          Enable single-step debugging.\n&quot;</span></div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        <span class="stringliteral">&quot; -V          Print version information.\n&quot;</span></div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                        <span class="stringliteral">&quot; --version   Print version information.\n&quot;</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                        <span class="stringliteral">&quot; --help      Show this help text.\n&quot;</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                        <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                        <span class="stringliteral">&quot;If no files are provided, the interactive REPL will run.\n&quot;</span>,</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                        argv[0]);</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                    fprintf(stderr,<span class="stringliteral">&quot;%s: unrecognized option &#39;--%s&#39;\n&quot;</span>,</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                        argv[0], optarg);</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                }</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;        }</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    }</div>
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160; </div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    <span class="keywordflow">if</span> (maxDepth != -1) {</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;        <a class="code" href="vm_8h.html#a86cb2216c6e489fc594290c655bd67c9">krk_setMaximumRecursionDepth</a>(maxDepth);</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    }</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;_finishArgs:</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    findInterpreter(argv);</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <a class="code" href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">krk_initVM</a>(flags);</div>
 <div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160; </div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;<span class="preprocessor">#ifndef KRK_DISABLE_DEBUG</span></div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <a class="code" href="debug_8h.html#ab85a7b4a451d229bb2b6ab18898361e1">krk_debug_registerCallback</a>(debuggerHook);</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (maxDepth != -1) {</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        <a class="code" href="vm_8h.html#a86cb2216c6e489fc594290c655bd67c9">krk_setMaximumRecursionDepth</a>(maxDepth);</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    }</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160; </div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    <span class="comment">/* Attach kuroko.argv - argv[0] will be set to an empty string for the repl */</span></div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">if</span> (argc == optind) <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;&quot;</span>,0)));</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arg = optind; arg &lt; argc; ++arg) {</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(argv[arg],strlen(argv[arg]))));</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    }</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> argList = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(argc - optind + (optind == argc), &amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">stackTop</a>[-(argc - optind + (optind == argc))],0);</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(argList);</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.system-&gt;fields, <span class="stringliteral">&quot;argv&quot;</span>, argList);</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arg = optind; arg &lt; argc + (optind == argc); ++arg) <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160; </div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    <span class="comment">/* Bind interrupt signal */</span></div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    bindSignalHandlers();</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160; </div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;<span class="preprocessor">#ifdef BUNDLE_LIBS</span></div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    <span class="comment">/* Add any other modules you want to include that are normally built as shared objects. */</span></div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    BUNDLED(math);</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    BUNDLED(<a class="code" href="structsocket.html">socket</a>);</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    BUNDLED(timeit);</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160; </div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = INTEGER_VAL(0);</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160; </div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,input), <span class="stringliteral">&quot;@brief Read a line of input.\n&quot;</span></div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;        <span class="stringliteral">&quot;@arguments [prompt], promptwidth=None, syntax=None\n\n&quot;</span></div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;        <span class="stringliteral">&quot;Read a line of input from @c stdin. If the @c rline library is available, &quot;</span></div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;        <span class="stringliteral">&quot;it will be used to gather input. Input reading stops on end-of file or when &quot;</span></div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;        <span class="stringliteral">&quot;a read ends with a line feed, which will be removed from the returned string. &quot;</span></div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;        <span class="stringliteral">&quot;If a prompt is provided, it will be printed without a line feed before requesting &quot;</span></div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        <span class="stringliteral">&quot;input. If @c rline is available, the prompt will be passed to the library as the &quot;</span></div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        <span class="stringliteral">&quot;left-hand prompt string. If not provided, @p promptwidth will default to the width &quot;</span></div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;        <span class="stringliteral">&quot;of @p prompt in codepoints; if you are providing a prompt with escape characters or &quot;</span></div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;        <span class="stringliteral">&quot;characters with multi-column East-Asian Character Width be sure to pass a value &quot;</span></div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;        <span class="stringliteral">&quot;for @p promptwidth that reflects the display width of your prompt. &quot;</span></div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;        <span class="stringliteral">&quot;If provided, @p syntax specifies the name of an @c rline syntax module to &quot;</span></div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;        <span class="stringliteral">&quot;provide color highlighting of the input line.&quot;</span>);</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160; </div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;    <span class="keywordflow">if</span> (moduleAsMain) {</div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;__main__&quot;</span>,8)));</div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;        <span class="keywordtype">int</span> out = !<a class="code" href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce">krk_importModule</a>(</div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;            AS_STRING(AS_LIST(argList)-&gt;values[0]),</div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;            AS_STRING(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)));</div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;            <a class="code" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a>();</div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;            <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        }</div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;        <span class="keywordflow">if</span> (!inspectAfter) <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;        <span class="keywordflow">if</span> (IS_INSTANCE(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))) {</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;            <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a> = AS_INSTANCE(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0));</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;<span class="preprocessor">#ifndef KRK_DISABLE_DEBUG</span></div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <a class="code" href="debug_8h.html#ab85a7b4a451d229bb2b6ab18898361e1">krk_debug_registerCallback</a>(debuggerHook);</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160; </div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="comment">/* Attach kuroko.argv - argv[0] will be set to an empty string for the repl */</span></div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <span class="keywordflow">if</span> (argc == optind) <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;&quot;</span>,0)));</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arg = optind; arg &lt; argc; ++arg) {</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(argv[arg],strlen(argv[arg]))));</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    }</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> argList = <a class="code" href="structKrkList.html#a5bc0a6b5797db38857b9a14c8f1e9389">krk_list_of</a>(argc - optind + (optind == argc), &amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">stackTop</a>[-(argc - optind + (optind == argc))],0);</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(argList);</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.system-&gt;fields, <span class="stringliteral">&quot;argv&quot;</span>, argList);</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arg = optind; arg &lt; argc + (optind == argc); ++arg) <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160; </div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    <span class="comment">/* Bind interrupt signal */</span></div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    bindSignalHandlers();</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160; </div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;<span class="preprocessor">#ifdef BUNDLE_LIBS</span></div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <span class="comment">/* Add any other modules you want to include that are normally built as shared objects. */</span></div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    BUNDLED(math);</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    BUNDLED(<a class="code" href="structsocket.html">socket</a>);</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    BUNDLED(timeit);</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160; </div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = INTEGER_VAL(0);</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160; </div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,input), <span class="stringliteral">&quot;@brief Read a line of input.\n&quot;</span></div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;        <span class="stringliteral">&quot;@arguments [prompt], promptwidth=None, syntax=None\n\n&quot;</span></div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        <span class="stringliteral">&quot;Read a line of input from @c stdin. If the @c rline library is available, &quot;</span></div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        <span class="stringliteral">&quot;it will be used to gather input. Input reading stops on end-of file or when &quot;</span></div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;        <span class="stringliteral">&quot;a read ends with a line feed, which will be removed from the returned string. &quot;</span></div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;        <span class="stringliteral">&quot;If a prompt is provided, it will be printed without a line feed before requesting &quot;</span></div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;        <span class="stringliteral">&quot;input. If @c rline is available, the prompt will be passed to the library as the &quot;</span></div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;        <span class="stringliteral">&quot;left-hand prompt string. If not provided, @p promptwidth will default to the width &quot;</span></div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;        <span class="stringliteral">&quot;of @p prompt in codepoints; if you are providing a prompt with escape characters or &quot;</span></div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;        <span class="stringliteral">&quot;characters with multi-column East-Asian Character Width be sure to pass a value &quot;</span></div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;        <span class="stringliteral">&quot;for @p promptwidth that reflects the display width of your prompt. &quot;</span></div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;        <span class="stringliteral">&quot;If provided, @p syntax specifies the name of an @c rline syntax module to &quot;</span></div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;        <span class="stringliteral">&quot;provide color highlighting of the input line.&quot;</span>);</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160; </div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;    <span class="keywordflow">if</span> (moduleAsMain) {</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;__main__&quot;</span>,8)));</div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;        <span class="keywordtype">int</span> out = !<a class="code" href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce">krk_importModule</a>(</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;            AS_STRING(AS_LIST(argList)-&gt;values[0]),</div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;            AS_STRING(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0)));</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) {</div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;            <a class="code" href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a>();</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;            <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;        }</div>
-<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (optind != argc) {</div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        result = <a class="code" href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">krk_runfile</a>(argv[optind],argv[optind]);</div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        <span class="keywordflow">if</span> (IS_NONE(result) &amp;&amp; <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) result = INTEGER_VAL(1);</div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;    }</div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160; </div>
-<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>) {</div>
-<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;        <span class="comment">/* The repl runs in the context of a top-level module so each input</span></div>
-<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;<span class="comment">         * line can share a globals state with the others. */</span></div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;        <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>,<span class="stringliteral">&quot;__doc__&quot;</span>, NONE_VAL());</div>
-<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;    }</div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160; </div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;    <span class="keywordflow">if</span> (runCmd) {</div>
-<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;        result = <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(runCmd, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;        <span class="keywordflow">if</span> (!inspectAfter) <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;        <span class="keywordflow">if</span> (IS_INSTANCE(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))) {</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;            <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a> = AS_INSTANCE(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0));</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        }</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (optind != argc) {</div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;        result = <a class="code" href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">krk_runfile</a>(argv[optind],argv[optind]);</div>
+<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;        <span class="keywordflow">if</span> (IS_NONE(result) &amp;&amp; <a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) result = INTEGER_VAL(1);</div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;    }</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160; </div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>) {</div>
+<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;        <span class="comment">/* The repl runs in the context of a top-level module so each input</span></div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;<span class="comment">         * line can share a globals state with the others. */</span></div>
+<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;__main__&quot;</span>);</div>
+<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;        <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>,<span class="stringliteral">&quot;__doc__&quot;</span>, NONE_VAL());</div>
 <div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;    }</div>
 <div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160; </div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;    <span class="keywordflow">if</span> ((!moduleAsMain &amp;&amp; !runCmd &amp;&amp; optind == argc) || inspectAfter) {</div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;        <span class="comment">/* Add builtins for the repl, but hide them from the globals() list. */</span></div>
-<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;        <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,exit), <span class="stringliteral">&quot;@brief Exit the interactive repl.\n\n&quot;</span></div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;            <span class="stringliteral">&quot;Only available from the interactive interpreter; exits the repl.&quot;</span>);</div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;        <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,paste), <span class="stringliteral">&quot;@brief Toggle paste mode.\n&quot;</span></div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;            <span class="stringliteral">&quot;@arguments enabled=None\n\n&quot;</span></div>
-<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;            <span class="stringliteral">&quot;Toggles paste-safe mode, disabling automatic indentation in the repl. &quot;</span></div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;            <span class="stringliteral">&quot;If @p enabled is specified, the mode can be directly specified, otherwise &quot;</span></div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;            <span class="stringliteral">&quot;it will be set to the opposite of the current mode. The new mode will be &quot;</span></div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;            <span class="stringliteral">&quot;printed to stderr.&quot;</span>);</div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160; </div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> systemModule;</div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.modules, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;kuroko&quot;</span>,6)), &amp;systemModule)) {</div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> version, buildenv, builddate;</div>
-<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;version&quot;</span>,7)), &amp;version);</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;buildenv&quot;</span>,8)), &amp;buildenv);</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;builddate&quot;</span>,9)), &amp;builddate);</div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160; </div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;            fprintf(stdout, <span class="stringliteral">&quot;Kuroko %s (%s) with %s\n&quot;</span>,</div>
-<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;                AS_CSTRING(version), AS_CSTRING(builddate), AS_CSTRING(buildenv));</div>
-<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;        }</div>
+<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;    <span class="keywordflow">if</span> (runCmd) {</div>
+<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;        result = <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(runCmd, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;    }</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160; </div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;    <span class="keywordflow">if</span> ((!moduleAsMain &amp;&amp; !runCmd &amp;&amp; optind == argc) || inspectAfter) {</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;        <span class="comment">/* Add builtins for the repl, but hide them from the globals() list. */</span></div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;        <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,exit), <span class="stringliteral">&quot;@brief Exit the interactive repl.\n\n&quot;</span></div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;            <span class="stringliteral">&quot;Only available from the interactive interpreter; exits the repl.&quot;</span>);</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;        <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(BIND_FUNC(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins,paste), <span class="stringliteral">&quot;@brief Toggle paste mode.\n&quot;</span></div>
+<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;            <span class="stringliteral">&quot;@arguments enabled=None\n\n&quot;</span></div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;            <span class="stringliteral">&quot;Toggles paste-safe mode, disabling automatic indentation in the repl. &quot;</span></div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;            <span class="stringliteral">&quot;If @p enabled is specified, the mode can be directly specified, otherwise &quot;</span></div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;            <span class="stringliteral">&quot;it will be set to the opposite of the current mode. The new mode will be &quot;</span></div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;            <span class="stringliteral">&quot;printed to stderr.&quot;</span>);</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160; </div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> systemModule;</div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.modules, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;kuroko&quot;</span>,6)), &amp;systemModule)) {</div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> version, buildenv, builddate;</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;version&quot;</span>,7)), &amp;version);</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;buildenv&quot;</span>,8)), &amp;buildenv);</div>
+<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;            <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;AS_INSTANCE(systemModule)-&gt;fields, OBJECT_VAL(<a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(<span class="stringliteral">&quot;builddate&quot;</span>,9)), &amp;builddate);</div>
 <div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160; </div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;        fprintf(stdout, <span class="stringliteral">&quot;Type `help` for guidance, `paste()` to toggle automatic indentation, `license` for copyright information.\n&quot;</span>);</div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160; </div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;        <span class="keywordflow">while</span> (!exitRepl) {</div>
-<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;            <span class="keywordtype">size_t</span> lineCapacity = 8;</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;            <span class="keywordtype">size_t</span> lineCount = 0;</div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;            <span class="keywordtype">char</span> ** lines = ALLOCATE(<span class="keywordtype">char</span> *, lineCapacity);</div>
-<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;            <span class="keywordtype">size_t</span> totalData = 0;</div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;            <span class="keywordtype">int</span> valid = 1;</div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;            <span class="keywordtype">char</span> * allData = NULL;</div>
-<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;            <span class="keywordtype">int</span> inBlock = 0;</div>
-<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;            <span class="keywordtype">int</span> blockWidth = 0;</div>
-<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160; </div>
-<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
-<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            <span class="comment">/* Main prompt is &gt;&gt;&gt; like in Python */</span></div>
-<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;            rline_exp_set_prompts(PROMPT_MAIN, <span class="stringliteral">&quot;&quot;</span>, 4, 0);</div>
-<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;            <span class="comment">/* Set ^D to send EOF */</span></div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;            rline_exit_string=<span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;            <span class="comment">/* Enable syntax highlight for Kuroko */</span></div>
-<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;            rline_exp_set_syntax(<span class="stringliteral">&quot;krk&quot;</span>);</div>
-<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;            <span class="comment">/* Bind a callback for \t */</span></div>
-<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;            rline_exp_set_tab_complete_func(tab_complete_func);</div>
-<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160; </div>
-<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;            <span class="keywordflow">while</span> (1) {</div>
-<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;                <span class="comment">/* This would be a nice place for line editing */</span></div>
-<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;                <span class="keywordtype">char</span> buf[4096] = {0};</div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;            fprintf(stdout, <span class="stringliteral">&quot;Kuroko %s (%s) with %s\n&quot;</span>,</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;                AS_CSTRING(version), AS_CSTRING(builddate), AS_CSTRING(buildenv));</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;        }</div>
+<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160; </div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;        fprintf(stdout, <span class="stringliteral">&quot;Type `help` for guidance, `paste()` to toggle automatic indentation, `license` for copyright information.\n&quot;</span>);</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160; </div>
+<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;        <span class="keywordflow">while</span> (!exitRepl) {</div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;            <span class="keywordtype">size_t</span> lineCapacity = 8;</div>
+<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;            <span class="keywordtype">size_t</span> lineCount = 0;</div>
+<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;            <span class="keywordtype">char</span> ** lines = ALLOCATE(<span class="keywordtype">char</span> *, lineCapacity);</div>
+<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;            <span class="keywordtype">size_t</span> totalData = 0;</div>
+<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;            <span class="keywordtype">int</span> valid = 1;</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;            <span class="keywordtype">char</span> * allData = NULL;</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            <span class="keywordtype">int</span> inBlock = 0;</div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;            <span class="keywordtype">int</span> blockWidth = 0;</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160; </div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;            <span class="comment">/* Main prompt is &gt;&gt;&gt; like in Python */</span></div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;            rline_exp_set_prompts(PROMPT_MAIN, <span class="stringliteral">&quot;&quot;</span>, 4, 0);</div>
+<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;            <span class="comment">/* Set ^D to send EOF */</span></div>
+<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;            rline_exit_string=<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;            <span class="comment">/* Enable syntax highlight for Kuroko */</span></div>
+<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;            rline_exp_set_syntax(<span class="stringliteral">&quot;krk&quot;</span>);</div>
+<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;            <span class="comment">/* Bind a callback for \t */</span></div>
+<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;            rline_exp_set_tab_complete_func(tab_complete_func);</div>
+<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160; </div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
-<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;                <span class="keywordflow">if</span> (inBlock) {</div>
-<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;                    <span class="comment">/* When entering multiple lines, the additional lines</span></div>
-<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;<span class="comment">                     * will show a single &gt; (and keep the left side aligned) */</span></div>
-<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;                    rline_exp_set_prompts(PROMPT_BLOCK, <span class="stringliteral">&quot;&quot;</span>, 4, 0);</div>
-<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;                    <span class="comment">/* Also add indentation as necessary */</span></div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;                    <span class="keywordflow">if</span> (!pasteEnabled) {</div>
-<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;                        rline_preload = malloc(blockWidth + 1);</div>
-<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; blockWidth; ++i) {</div>
-<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;                            rline_preload[i] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;                        }</div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                        rline_preload[blockWidth] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;                    }</div>
-<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;                }</div>
-<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160; </div>
-<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;                <span class="keywordflow">if</span> (!enableRline) {</div>
-<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;                <span class="keywordflow">if</span> (1) {</div>
-<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;                    fprintf(stdout, <span class="stringliteral">&quot;%s&quot;</span>, inBlock ? PROMPT_BLOCK : PROMPT_MAIN);</div>
-<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;                    fflush(stdout);</div>
-<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;                }</div>
-<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160; </div>
-<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
-<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;                rline_scroll = 0;</div>
-<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;                <span class="keywordflow">if</span> (enableRline) {</div>
-<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;                    <span class="keywordflow">if</span> (rline(buf, 4096) == 0) {</div>
-<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;                        valid = 0;</div>
-<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;                        exitRepl = 1;</div>
-<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;                    }</div>
-<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;                    <span class="keywordtype">char</span> * out = fgets(buf, 4096, stdin);</div>
-<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;                    <span class="keywordflow">if</span> (!out || !strlen(buf)) {</div>
-<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;                        fprintf(stdout, <span class="stringliteral">&quot;^D\n&quot;</span>);</div>
-<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;                        valid = 0;</div>
-<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;                        exitRepl = 1;</div>
-<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;                    }</div>
-<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
-<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;                }</div>
-<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160; </div>
-<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;                <span class="keywordflow">if</span> (buf[strlen(buf)-1] != <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;                    <span class="comment">/* rline shouldn&#39;t allow this as it doesn&#39;t accept ^D to submit input</span></div>
-<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;<span class="comment">                     * unless the line is empty, but just in case... */</span></div>
-<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;Expected end of line in repl input. Did you ^D early?\n&quot;</span>);</div>
-<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;                    valid = 0;</div>
-<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;                }</div>
-<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160; </div>
-<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;                <span class="keywordflow">if</span> (lineCapacity &lt; lineCount + 1) {</div>
-<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;                    <span class="comment">/* If we need more space, grow as needed... */</span></div>
-<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;                    <span class="keywordtype">size_t</span> old = lineCapacity;</div>
-<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;                    lineCapacity = GROW_CAPACITY(old);</div>
-<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;                    lines = GROW_ARRAY(<span class="keywordtype">char</span> *,lines,old,lineCapacity);</div>
-<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;                }</div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160; </div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;                <span class="keywordtype">int</span> i = lineCount++;</div>
-<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;                lines[i] = strdup(buf);</div>
-<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160; </div>
-<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;                <span class="keywordtype">size_t</span> lineLength = strlen(lines[i]);</div>
-<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;                totalData += lineLength;</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160; </div>
-<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;                <span class="comment">/* Figure out indentation */</span></div>
-<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;                <span class="keywordtype">int</span> isSpaces = 1;</div>
-<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;                <span class="keywordtype">int</span> countSpaces = 0;</div>
-<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; lineLength; ++j) {</div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;                    <span class="keywordflow">if</span> (lines[i][j] != <span class="charliteral">&#39; &#39;</span> &amp;&amp; lines[i][j] != <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;                        isSpaces = 0;</div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;                    }</div>
-<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;                    countSpaces += 1;</div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;                }</div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160; </div>
-<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;                <span class="comment">/* Naively detect the start of a new block so we can</span></div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;<span class="comment">                 * continue to accept input. Our compiler isn&#39;t really</span></div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;<span class="comment">                 * set up to let us compile &quot;on the fly&quot; so we can&#39;t just</span></div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;<span class="comment">                 * run lines through it and see if it wants more... */</span></div>
-<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;                <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][lineLength-2] == <span class="charliteral">&#39;:&#39;</span>) {</div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;                    inBlock = 1;</div>
-<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;                    blockWidth = countSpaces + 4;</div>
-<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][lineLength-2] == <span class="charliteral">&#39;\\&#39;</span>) {</div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;            <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;                <span class="comment">/* This would be a nice place for line editing */</span></div>
+<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;                <span class="keywordtype">char</span> buf[4096] = {0};</div>
+<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160; </div>
+<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
+<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;                <span class="keywordflow">if</span> (inBlock) {</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;                    <span class="comment">/* When entering multiple lines, the additional lines</span></div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;<span class="comment">                     * will show a single &gt; (and keep the left side aligned) */</span></div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;                    rline_exp_set_prompts(PROMPT_BLOCK, <span class="stringliteral">&quot;&quot;</span>, 4, 0);</div>
+<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;                    <span class="comment">/* Also add indentation as necessary */</span></div>
+<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;                    <span class="keywordflow">if</span> (!pasteEnabled) {</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                        rline_preload = malloc(blockWidth + 1);</div>
+<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; blockWidth; ++i) {</div>
+<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;                            rline_preload[i] = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;                        }</div>
+<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;                        rline_preload[blockWidth] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;                    }</div>
+<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;                }</div>
+<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160; </div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;                <span class="keywordflow">if</span> (!enableRline) {</div>
+<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;                <span class="keywordflow">if</span> (1) {</div>
+<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;                    fprintf(stdout, <span class="stringliteral">&quot;%s&quot;</span>, inBlock ? PROMPT_BLOCK : PROMPT_MAIN);</div>
+<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;                    fflush(stdout);</div>
+<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;                }</div>
+<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160; </div>
+<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;                rline_scroll = 0;</div>
+<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;                <span class="keywordflow">if</span> (enableRline) {</div>
+<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;                    <span class="keywordflow">if</span> (rline(buf, 4096) == 0) {</div>
+<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;                        valid = 0;</div>
+<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;                        exitRepl = 1;</div>
+<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;                    }</div>
+<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;                    <span class="keywordtype">char</span> * out = fgets(buf, 4096, stdin);</div>
+<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;                    <span class="keywordflow">if</span> (!out || !strlen(buf)) {</div>
+<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;                        fprintf(stdout, <span class="stringliteral">&quot;^D\n&quot;</span>);</div>
+<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;                        valid = 0;</div>
+<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;                        exitRepl = 1;</div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;                    }</div>
+<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
+<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;                }</div>
+<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160; </div>
+<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;                <span class="keywordflow">if</span> (buf[strlen(buf)-1] != <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;                    <span class="comment">/* rline shouldn&#39;t allow this as it doesn&#39;t accept ^D to submit input</span></div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;<span class="comment">                     * unless the line is empty, but just in case... */</span></div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;Expected end of line in repl input. Did you ^D early?\n&quot;</span>);</div>
+<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;                    valid = 0;</div>
+<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;                }</div>
+<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160; </div>
+<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;                <span class="keywordflow">if</span> (lineCapacity &lt; lineCount + 1) {</div>
+<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;                    <span class="comment">/* If we need more space, grow as needed... */</span></div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;                    <span class="keywordtype">size_t</span> old = lineCapacity;</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;                    lineCapacity = GROW_CAPACITY(old);</div>
+<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;                    lines = GROW_ARRAY(<span class="keywordtype">char</span> *,lines,old,lineCapacity);</div>
+<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;                }</div>
+<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160; </div>
+<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;                <span class="keywordtype">int</span> i = lineCount++;</div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;                lines[i] = strdup(buf);</div>
+<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160; </div>
+<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;                <span class="keywordtype">size_t</span> lineLength = strlen(lines[i]);</div>
+<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;                totalData += lineLength;</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160; </div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;                <span class="comment">/* Figure out indentation */</span></div>
+<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;                <span class="keywordtype">int</span> isSpaces = 1;</div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;                <span class="keywordtype">int</span> countSpaces = 0;</div>
+<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; lineLength; ++j) {</div>
+<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;                    <span class="keywordflow">if</span> (lines[i][j] != <span class="charliteral">&#39; &#39;</span> &amp;&amp; lines[i][j] != <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;                        isSpaces = 0;</div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;                    }</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;                    countSpaces += 1;</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;                }</div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160; </div>
+<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;                <span class="comment">/* Naively detect the start of a new block so we can</span></div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;<span class="comment">                 * continue to accept input. Our compiler isn&#39;t really</span></div>
+<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;<span class="comment">                 * set up to let us compile &quot;on the fly&quot; so we can&#39;t just</span></div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;<span class="comment">                 * run lines through it and see if it wants more... */</span></div>
+<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;                <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][lineLength-2] == <span class="charliteral">&#39;:&#39;</span>) {</div>
 <div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;                    inBlock = 1;</div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (inBlock &amp;&amp; lineLength != 1) {</div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;                    <span class="keywordflow">if</span> (isSpaces) {</div>
-<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;                        free(lines[i]);</div>
-<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;                        totalData -= lineLength;</div>
-<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;                        lineCount--;</div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;                    }</div>
-<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;                    blockWidth = countSpaces;</div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][countSpaces] == <span class="charliteral">&#39;@&#39;</span>) {</div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;                    inBlock = 1;</div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;                    blockWidth = countSpaces + 4;</div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][lineLength-2] == <span class="charliteral">&#39;\\&#39;</span>) {</div>
+<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;                    inBlock = 1;</div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (inBlock &amp;&amp; lineLength != 1) {</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;                    <span class="keywordflow">if</span> (isSpaces) {</div>
+<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;                        free(lines[i]);</div>
+<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;                        totalData -= lineLength;</div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;                        lineCount--;</div>
+<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;                    }</div>
 <div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;                    blockWidth = countSpaces;</div>
 <div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;                }</div>
-<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160; </div>
-<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;                <span class="comment">/* Ignore blank lines. */</span></div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;                <span class="keywordflow">if</span> (isSpaces &amp;&amp; !i) valid = 0;</div>
-<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160; </div>
-<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;                <span class="comment">/* If we&#39;re not in a block, or have entered a blank line,</span></div>
-<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;<span class="comment">                 * we can stop reading new lines and jump to execution. */</span></div>
-<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;            }</div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160; </div>
-<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;            <span class="keywordflow">if</span> (valid) {</div>
-<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;                allData = malloc(totalData + 1);</div>
-<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;                allData[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;            }</div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160; </div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; lineCount; ++i) {</div>
-<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;                <span class="keywordflow">if</span> (valid) strcat(allData, lines[i]);</div>
-<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
-<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;                <span class="keywordflow">if</span> (enableRline) {</div>
-<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;                    rline_history_insert(strdup(lines[i]));</div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;                    rline_scroll = 0;</div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;                }</div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;                free(lines[i]);</div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;            }</div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;            FREE_ARRAY(<span class="keywordtype">char</span> *, lines, lineCapacity);</div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160; </div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;            <span class="keywordflow">if</span> (valid) {</div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;                <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(allData, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;                <span class="keywordflow">if</span> (!IS_NONE(result)) {</div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;                    <a class="code" href="structKrkClass.html">KrkClass</a> * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(result);</div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> * formatStr = <span class="stringliteral">&quot; \033[1;90m=&gt; %s\033[0m\n&quot;</span>;</div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;                    <span class="keywordflow">if</span> (type-&gt;<a class="code" href="structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0">_reprer</a>) {</div>
-<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(result);</div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;                        result = <a class="code" href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a>(type-&gt;<a class="code" href="structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0">_reprer</a>, 1);</div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type-&gt;<a class="code" href="structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1">_tostr</a>) {</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(result);</div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;                        result = <a class="code" href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a>(type-&gt;<a class="code" href="structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1">_tostr</a>, 1);</div>
-<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;                    }</div>
-<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;                    <span class="keywordflow">if</span> (!IS_STRING(result)) {</div>
-<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;                        fprintf(stdout, <span class="stringliteral">&quot; \033[1;91m=&gt; Unable to produce representation for value.\033[0m\n&quot;</span>);</div>
-<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;                        fprintf(stdout, formatStr, AS_CSTRING(result));</div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;                    }</div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;                }</div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;                <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;                free(allData);</div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            }</div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160; </div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;            (void)blockWidth;</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;        }</div>
-<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;    }</div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lineLength &gt; 1 &amp;&amp; lines[i][countSpaces] == <span class="charliteral">&#39;@&#39;</span>) {</div>
+<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;                    inBlock = 1;</div>
+<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;                    blockWidth = countSpaces;</div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;                }</div>
+<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160; </div>
+<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;                <span class="comment">/* Ignore blank lines. */</span></div>
+<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;                <span class="keywordflow">if</span> (isSpaces &amp;&amp; !i) valid = 0;</div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160; </div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;                <span class="comment">/* If we&#39;re not in a block, or have entered a blank line,</span></div>
+<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;<span class="comment">                 * we can stop reading new lines and jump to execution. */</span></div>
+<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;            }</div>
+<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160; </div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;            <span class="keywordflow">if</span> (valid) {</div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;                allData = malloc(totalData + 1);</div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;                allData[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;            }</div>
+<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160; </div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; lineCount; ++i) {</div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;                <span class="keywordflow">if</span> (valid) strcat(allData, lines[i]);</div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;<span class="preprocessor">#ifndef NO_RLINE</span></div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;                <span class="keywordflow">if</span> (enableRline) {</div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;                    rline_history_insert(strdup(lines[i]));</div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;                    rline_scroll = 0;</div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;                }</div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;                free(lines[i]);</div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;            }</div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;            FREE_ARRAY(<span class="keywordtype">char</span> *, lines, lineCapacity);</div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160; </div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;            <span class="keywordflow">if</span> (valid) {</div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;                <a class="code" href="structKrkValue.html">KrkValue</a> result = <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(allData, <span class="stringliteral">&quot;&lt;stdin&gt;&quot;</span>);</div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;                <span class="keywordflow">if</span> (!IS_NONE(result)) {</div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;                    <a class="code" href="structKrkClass.html">KrkClass</a> * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(result);</div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> * formatStr = <span class="stringliteral">&quot; \033[1;90m=&gt; %s\033[0m\n&quot;</span>;</div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;                    <span class="keywordflow">if</span> (type-&gt;<a class="code" href="structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0">_reprer</a>) {</div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(result);</div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;                        result = <a class="code" href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a>(type-&gt;<a class="code" href="structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0">_reprer</a>, 1);</div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type-&gt;<a class="code" href="structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1">_tostr</a>) {</div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(result);</div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;                        result = <a class="code" href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a>(type-&gt;<a class="code" href="structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1">_tostr</a>, 1);</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;                    }</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;                    <span class="keywordflow">if</span> (!IS_STRING(result)) {</div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;                        fprintf(stdout, <span class="stringliteral">&quot; \033[1;91m=&gt; Unable to produce representation for value.\033[0m\n&quot;</span>);</div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;                        fprintf(stdout, formatStr, AS_CSTRING(result));</div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;                    }</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;                }</div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;                <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;                free(allData);</div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;            }</div>
 <div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160; </div>
-<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.globalFlags &amp; KRK_GLOBAL_CALLGRIND) {</div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        fclose(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.callgrindFile);</div>
-<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;        <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.globalFlags &amp;= ~(KRK_GLOBAL_CALLGRIND);</div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;            (void)blockWidth;</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        }</div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;    }</div>
 <div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160; </div>
-<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;        <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;&lt;callgrind&gt;&quot;</span>);</div>
-<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;        <a class="code" href="structKrkTable.html#a2f761feab82c4a97d29bf2ff4b4a1671">krk_attachNamedObject</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>, <span class="stringliteral">&quot;filename&quot;</span>, (<a class="code" href="structKrkObj.html">KrkObj</a>*)S(CALLGRIND_TMP_FILE));</div>
-<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;        <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(</div>
-<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;            <span class="stringliteral">&quot;from callgrind import processFile\n&quot;</span></div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;            <span class="stringliteral">&quot;import kuroko\n&quot;</span></div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;            <span class="stringliteral">&quot;import os\n&quot;</span></div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;            <span class="stringliteral">&quot;processFile(filename, os.getpid(), &#39; &#39;.join(kuroko.argv))&quot;</span>,<span class="stringliteral">&quot;&lt;callgrind&gt;&quot;</span>);</div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;    }</div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160; </div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
-<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160; </div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(result)) <span class="keywordflow">return</span> AS_INTEGER(result);</div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.globalFlags &amp; KRK_GLOBAL_CALLGRIND) {</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;        fclose(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.callgrindFile);</div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;        <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.globalFlags &amp;= ~(KRK_GLOBAL_CALLGRIND);</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160; </div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;        <a class="code" href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a>();</div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        <a class="code" href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a>(<span class="stringliteral">&quot;&lt;callgrind&gt;&quot;</span>);</div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;        <a class="code" href="structKrkTable.html#a2f761feab82c4a97d29bf2ff4b4a1671">krk_attachNamedObject</a>(&amp;<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">module</a>-&gt;<a class="code" href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">fields</a>, <span class="stringliteral">&quot;filename&quot;</span>, (<a class="code" href="structKrkObj.html">KrkObj</a>*)S(CALLGRIND_TMP_FILE));</div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;        <a class="code" href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a>(</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;            <span class="stringliteral">&quot;from callgrind import processFile\n&quot;</span></div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;            <span class="stringliteral">&quot;import kuroko\n&quot;</span></div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;            <span class="stringliteral">&quot;import os\n&quot;</span></div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;            <span class="stringliteral">&quot;processFile(filename, os.getpid(), &#39; &#39;.join(kuroko.argv))&quot;</span>,<span class="stringliteral">&quot;&lt;callgrind&gt;&quot;</span>);</div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;    }</div>
 <div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160; </div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;}</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;    <a class="code" href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">krk_freeVM</a>();</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160; </div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(result)) <span class="keywordflow">return</span> AS_INTEGER(result);</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160; </div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="avm_8h_html_a27e346ab67b34940df32c51fcd850419"><div class="ttname"><a href="vm_8h.html#a27e346ab67b34940df32c51fcd850419">krk_resetStack</a></div><div class="ttdeci">void krk_resetStack(void)</div><div class="ttdoc">Reset the current thread's stack state to the top level.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00112">vm.c:112</a></div></div>
 <div class="ttc" id="astructKrkClosure_html_a63a8cf7a9bfe4bfa8643a424a579da60"><div class="ttname"><a href="structKrkClosure.html#a63a8cf7a9bfe4bfa8643a424a579da60">KrkClosure::krk_newClosure</a></div><div class="ttdeci">KrkClosure * krk_newClosure(KrkCodeObject *function)</div><div class="ttdoc">Create a new function object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00260">object.c:260</a></div></div>
@@ -1260,7 +1264,7 @@ $(function() {
 <div class="ttc" id="avm_8h_html_aba179e01c3f823141190d3e5d0a1aa46"><div class="ttname"><a href="vm_8h.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a></div><div class="ttdeci">void krk_dumpTraceback(void)</div><div class="ttdoc">If there is an active exception, print a traceback to stderr.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00128">vm.c:128</a></div></div>
 <div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00223">object.h:223</a></div></div>
 <div class="ttc" id="astructKrkString_html_a5a5d858a11fd8b8216fee7a8861c6920"><div class="ttname"><a href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">KrkString::krk_copyString</a></div><div class="ttdeci">KrkString * krk_copyString(const char *chars, size_t length)</div><div class="ttdoc">Obtain a string object representation of the given C string.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00217">object.c:217</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00274">vm.h:274</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00275">vm.h:275</a></div></div>
 <div class="ttc" id="adebug_8h_html_a1c734b1c3c1a07bac73ab1d9ad73ead8"><div class="ttname"><a href="debug_8h.html#a1c734b1c3c1a07bac73ab1d9ad73ead8">KRK_BREAKPOINT_ONCE</a></div><div class="ttdeci">#define KRK_BREAKPOINT_ONCE</div><div class="ttdef"><b>Definition:</b> <a href="debug_8h_source.html#l00230">debug.h:230</a></div></div>
 <div class="ttc" id="avm_8h_html_a4849b50bba0bec7bbd17c0892985b338"><div class="ttname"><a href="vm_8h.html#a4849b50bba0bec7bbd17c0892985b338">krk_callStack</a></div><div class="ttdeci">KrkValue krk_callStack(int argCount)</div><div class="ttdoc">Call a callable on the stack with argCount arguments.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00867">vm.c:867</a></div></div>
 <div class="ttc" id="astructKrkChunk_html_a8c7342da1d6f87b9e7d100126d9c0026"><div class="ttname"><a href="structKrkChunk.html#a8c7342da1d6f87b9e7d100126d9c0026">KrkChunk::krk_lineNumber</a></div><div class="ttdeci">size_t krk_lineNumber(KrkChunk *chunk, size_t offset)</div><div class="ttdoc">Obtain the line number for a byte offset into a bytecode chunk.</div><div class="ttdef"><b>Definition:</b> <a href="chunk_8c_source.html#l00072">chunk.c:72</a></div></div>
@@ -1271,11 +1275,11 @@ $(function() {
 <div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00077">object.h:77</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
 <div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00311">vm.c:311</a></div></div>
-<div class="ttc" id="avm_8h_html_afa956022075e59caef32f51e9b48d00c"><div class="ttname"><a href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02987">vm.c:2987</a></div></div>
+<div class="ttc" id="avm_8h_html_afa956022075e59caef32f51e9b48d00c"><div class="ttname"><a href="vm_8h.html#afa956022075e59caef32f51e9b48d00c">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02988">vm.c:2988</a></div></div>
 <div class="ttc" id="adebug_8h_html_accd9b2398dc8a6fe1d03c8a3702d1c76"><div class="ttname"><a href="debug_8h.html#accd9b2398dc8a6fe1d03c8a3702d1c76">krk_disassembleInstruction</a></div><div class="ttdeci">size_t krk_disassembleInstruction(FILE *f, KrkCodeObject *func, size_t offset)</div><div class="ttdoc">Print a disassembly of a single opcode instruction.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00188">debug.c:188</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00139">table.c:139</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00140">table.c:140</a></div></div>
 <div class="ttc" id="adebug_8h_html_adebf73464eafe3e3d175a397e7007ba5"><div class="ttname"><a href="debug_8h.html#adebf73464eafe3e3d175a397e7007ba5">KRK_BREAKPOINT_REPEAT</a></div><div class="ttdeci">#define KRK_BREAKPOINT_REPEAT</div><div class="ttdef"><b>Definition:</b> <a href="debug_8h_source.html#l00231">debug.h:231</a></div></div>
-<div class="ttc" id="astructKrkTable_html_aa9dddcdcaa592c046eccdf9841faa355"><div class="ttname"><a href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00150">table.c:150</a></div></div>
+<div class="ttc" id="astructKrkTable_html_aa9dddcdcaa592c046eccdf9841faa355"><div class="ttname"><a href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00151">table.c:151</a></div></div>
 <div class="ttc" id="adebug_8h_html_a325e6b19a05d4a8f42241b2b5790a4c6"><div class="ttname"><a href="debug_8h.html#a325e6b19a05d4a8f42241b2b5790a4c6">krk_debug_disableSingleStep</a></div><div class="ttdeci">void krk_debug_disableSingleStep(void)</div><div class="ttdoc">Disable single stepping in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00450">debug.c:450</a></div></div>
 <div class="ttc" id="adebug_8h_html_af4cec662eb6788d8198f3e45ba477768"><div class="ttname"><a href="debug_8h.html#af4cec662eb6788d8198f3e45ba477768">KRK_BREAKPOINT_NORMAL</a></div><div class="ttdeci">#define KRK_BREAKPOINT_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="debug_8h_source.html#l00229">debug.h:229</a></div></div>
 <div class="ttc" id="adebug_8h_html_a7d432d63fc5a09add7ea5e2715bc91ed"><div class="ttname"><a href="debug_8h.html#a7d432d63fc5a09add7ea5e2715bc91ed">krk_debug_dumpTraceback</a></div><div class="ttdeci">void krk_debug_dumpTraceback(void)</div><div class="ttdoc">Safely dump a traceback to stderr.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00434">debug.c:434</a></div></div>
@@ -1289,26 +1293,26 @@ $(function() {
 <div class="ttc" id="ascanner_8h_html_aa1398ea849b4c998b6a7818661c0c262"><div class="ttname"><a href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">krk_initScanner</a></div><div class="ttdeci">void krk_initScanner(const char *src)</div><div class="ttdoc">Initialize the compiler to scan tokens from 'src'.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00011">scanner.c:11</a></div></div>
 <div class="ttc" id="adebug_8h_html_ab684a722caa01128d8c180832e82d2b6"><div class="ttname"><a href="debug_8h.html#ab684a722caa01128d8c180832e82d2b6">krk_debug_removeBreakpoint</a></div><div class="ttdeci">int krk_debug_removeBreakpoint(int breakpointId)</div><div class="ttdoc">Remove a breakpoint from the breakpoint table.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00356">debug.c:356</a></div></div>
 <div class="ttc" id="astructKrkCodeObject_html_a2a31d0b0262fe43a11e33d5c619f0b43"><div class="ttname"><a href="structKrkCodeObject.html#a2a31d0b0262fe43a11e33d5c619f0b43">KrkCodeObject::chunk</a></div><div class="ttdeci">KrkChunk chunk</div><div class="ttdoc">Bytecode data.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00134">object.h:134</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_af4ccc362db656f5de1ab9d9f1be205e9"><div class="ttname"><a href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">KrkThreadState::module</a></div><div class="ttdeci">KrkInstance * module</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00192">vm.h:192</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_af4ccc362db656f5de1ab9d9f1be205e9"><div class="ttname"><a href="structKrkThreadState.html#af4ccc362db656f5de1ab9d9f1be205e9">KrkThreadState::module</a></div><div class="ttdeci">KrkInstance * module</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00193">vm.h:193</a></div></div>
 <div class="ttc" id="adebug_8h_html_ab85a7b4a451d229bb2b6ab18898361e1"><div class="ttname"><a href="debug_8h.html#ab85a7b4a451d229bb2b6ab18898361e1">krk_debug_registerCallback</a></div><div class="ttdeci">int krk_debug_registerCallback(KrkDebugCallback hook)</div><div class="ttdoc">Register a debugger callback.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00500">debug.c:500</a></div></div>
 <div class="ttc" id="acompiler_8h_html"><div class="ttname"><a href="compiler_8h.html">compiler.h</a></div><div class="ttdoc">Exported methods for the source compiler.</div></div>
 <div class="ttc" id="achunk_8h_html"><div class="ttname"><a href="chunk_8h.html">chunk.h</a></div><div class="ttdoc">Structures and enums for bytecode chunks.</div></div>
 <div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00440">vm.c:440</a></div></div>
-<div class="ttc" id="avm_8h_html_a99cc264b2e561baa3bc7ec2514de19a1"><div class="ttname"><a href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">krk_runfile</a></div><div class="ttdeci">KrkValue krk_runfile(const char *fileName, char *fromFile)</div><div class="ttdoc">Load and run a source file and return when execution completes.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03012">vm.c:3012</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00188">vm.h:188</a></div></div>
+<div class="ttc" id="avm_8h_html_a99cc264b2e561baa3bc7ec2514de19a1"><div class="ttname"><a href="vm_8h.html#a99cc264b2e561baa3bc7ec2514de19a1">krk_runfile</a></div><div class="ttdeci">KrkValue krk_runfile(const char *fileName, char *fromFile)</div><div class="ttdoc">Load and run a source file and return when execution completes.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03013">vm.c:3013</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_aa24f3f60c02bfdb677b57fb9fb6acc99"><div class="ttname"><a href="structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99">KrkThreadState::stackTop</a></div><div class="ttdeci">KrkValue * stackTop</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00189">vm.h:189</a></div></div>
 <div class="ttc" id="astructKrkVM_html_a3dced9904f6a128032a729078ba16555"><div class="ttname"><a href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">KrkVM::krk_freeVM</a></div><div class="ttdeci">void krk_freeVM(void)</div><div class="ttdoc">Release resources from the VM.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01352">vm.c:1352</a></div></div>
 <div class="ttc" id="ascanner_8h_html_a544ecb42a4336ea54f39b2b890cbfe71"><div class="ttname"><a href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">krk_scanToken</a></div><div class="ttdeci">KrkToken krk_scanToken(void)</div><div class="ttdoc">Read the next token from the scanner.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8c_source.html#l00291">scanner.c:291</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a6d3945ff31d805a2a9e11b9765ece7ba"><div class="ttname"><a href="structKrkValue.html#a6d3945ff31d805a2a9e11b9765ece7ba">KrkValue::krk_printValue</a></div><div class="ttdeci">void krk_printValue(FILE *f, KrkValue value)</div><div class="ttdoc">Print a string representation of a value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00030">value.c:30</a></div></div>
 <div class="ttc" id="adebug_8h_html_aff2405c0321a82bab585b02e2e62524a"><div class="ttname"><a href="debug_8h.html#aff2405c0321a82bab585b02e2e62524a">krk_debug_dumpStack</a></div><div class="ttdeci">void krk_debug_dumpStack(FILE *f, KrkCallFrame *frame)</div><div class="ttdoc">Print the elements on the stack.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00018">debug.c:18</a></div></div>
 <div class="ttc" id="adebug_8h_html_a6ce5fdf5b27f96e57302221c3f943f4f"><div class="ttname"><a href="debug_8h.html#a6ce5fdf5b27f96e57302221c3f943f4f">krk_debug_enableBreakpoint</a></div><div class="ttdeci">int krk_debug_enableBreakpoint(int breakpointId)</div><div class="ttdoc">Enable a breakpoint.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00328">debug.c:328</a></div></div>
 <div class="ttc" id="astructKrkInstance_html_ac447550dfd50d193e09f19832001fa56"><div class="ttname"><a href="structKrkInstance.html#ac447550dfd50d193e09f19832001fa56">KrkInstance::fields</a></div><div class="ttdeci">KrkTable fields</div><div class="ttdoc">Attributes table.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00226">object.h:226</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_a5b746e8dd984acb036bb7fc284b8ec0a"><div class="ttname"><a href="structKrkThreadState.html#a5b746e8dd984acb036bb7fc284b8ec0a">KrkThreadState::frameCount</a></div><div class="ttdeci">size_t frameCount</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00185">vm.h:185</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_a5b746e8dd984acb036bb7fc284b8ec0a"><div class="ttname"><a href="structKrkThreadState.html#a5b746e8dd984acb036bb7fc284b8ec0a">KrkThreadState::frameCount</a></div><div class="ttdeci">size_t frameCount</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00186">vm.h:186</a></div></div>
 <div class="ttc" id="astructKrkCallFrame_html"><div class="ttname"><a href="structKrkCallFrame.html">KrkCallFrame</a></div><div class="ttdoc">Represents a managed call state in a VM thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00046">vm.h:46</a></div></div>
 <div class="ttc" id="astructKrkString_html_a7373911dddad465c12630008b733c9d2"><div class="ttname"><a href="structKrkString.html#a7373911dddad465c12630008b733c9d2">KrkString::chars</a></div><div class="ttdeci">char * chars</div><div class="ttdoc">UTF8 canonical data.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00082">object.h:82</a></div></div>
 <div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01160">vm.c:1160</a></div></div>
 <div class="ttc" id="avm_8h_html_a8df3bd9547300e90d44e22b137ffb5ba"><div class="ttname"><a href="vm_8h.html#a8df3bd9547300e90d44e22b137ffb5ba">krk_swap</a></div><div class="ttdeci">void krk_swap(int distance)</div><div class="ttdoc">Swap the top of the stack of the value distance slots down.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00325">vm.c:325</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
-<div class="ttc" id="acompiler_8c_html_acab3272031ba406c0aa9ce777a50ce77"><div class="ttname"><a href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a></div><div class="ttdeci">KrkCodeObject * krk_compile(const char *src, char *fileName)</div><div class="ttdoc">Compile a source string to bytecode.</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l03327">compiler.c:3327</a></div></div>
+<div class="ttc" id="acompiler_8c_html_acab3272031ba406c0aa9ce777a50ce77"><div class="ttname"><a href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a></div><div class="ttdeci">KrkCodeObject * krk_compile(const char *src, char *fileName)</div><div class="ttdoc">Compile a source string to bytecode.</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l03336">compiler.c:3336</a></div></div>
 <div class="ttc" id="astructKrkCallFrame_html_ae25ed875e0124bd726956509b7788e98"><div class="ttname"><a href="structKrkCallFrame.html#ae25ed875e0124bd726956509b7788e98">KrkCallFrame::ip</a></div><div class="ttdeci">uint8_t * ip</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00048">vm.h:48</a></div></div>
 <div class="ttc" id="astructKrkCodeObject_html_afce5b20d7c83cbf2c567d091bd331ab9"><div class="ttname"><a href="structKrkCodeObject.html#afce5b20d7c83cbf2c567d091bd331ab9">KrkCodeObject::name</a></div><div class="ttdeci">KrkString * name</div><div class="ttdoc">Name of the function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00135">object.h:135</a></div></div>
 <div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
@@ -1319,10 +1323,10 @@ $(function() {
 <div class="ttc" id="avm_8h_html_a22918dd9c5fe8e3e7d274da3e45fc0ce"><div class="ttname"><a href="vm_8h.html#a22918dd9c5fe8e3e7d274da3e45fc0ce">krk_importModule</a></div><div class="ttdeci">int krk_importModule(KrkString *name, KrkString *runAs)</div><div class="ttdoc">Load the dotted name name with the final element as runAs.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01759">vm.c:1759</a></div></div>
 <div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00319">vm.c:319</a></div></div>
 <div class="ttc" id="astructKrkString_html_a6caf0d99ca9b010dad6c7acb3b9839d9"><div class="ttname"><a href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">KrkString::krk_takeString</a></div><div class="ttdeci">KrkString * krk_takeString(char *chars, size_t length)</div><div class="ttdoc">Yield ownership of a C string to the GC and obtain a string object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00204">object.c:204</a></div></div>
-<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00194">vm.h:194</a></div></div>
+<div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00195">vm.h:195</a></div></div>
 <div class="ttc" id="astructKrkCallFrame_html_ace740807c5d26f838b641c0e3a8d184f"><div class="ttname"><a href="structKrkCallFrame.html#ace740807c5d26f838b641c0e3a8d184f">KrkCallFrame::closure</a></div><div class="ttdeci">KrkClosure * closure</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00047">vm.h:47</a></div></div>
 <div class="ttc" id="adebug_8h_html_ad8b9aa9cbfe0214fe4c2242ac058f433"><div class="ttname"><a href="debug_8h.html#ad8b9aa9cbfe0214fe4c2242ac058f433">krk_debug_addBreakpointFileLine</a></div><div class="ttdeci">int krk_debug_addBreakpointFileLine(KrkString *filename, size_t line, int flags)</div><div class="ttdoc">Add a breakpoint to the given line of a file.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00288">debug.c:288</a></div></div>
-<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02977">vm.c:2977</a></div></div>
+<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l02978">vm.c:2978</a></div></div>
 <div class="ttc" id="ascanner_8h_html"><div class="ttname"><a href="scanner_8h.html">scanner.h</a></div><div class="ttdoc">Definitions used by the token scanner.</div></div>
 <div class="ttc" id="adebug_8h_html_ac5d56a6471ad20675030a67144d41b86"><div class="ttname"><a href="debug_8h.html#ac5d56a6471ad20675030a67144d41b86">krk_debug_disableBreakpoint</a></div><div class="ttdeci">int krk_debug_disableBreakpoint(int breakpointId)</div><div class="ttdoc">Disable a breakpoint.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00340">debug.c:340</a></div></div>
 <div class="ttc" id="astructKrkCodeObject_html"><div class="ttname"><a href="structKrkCodeObject.html">KrkCodeObject</a></div><div class="ttdoc">Code object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00129">object.h:129</a></div></div>
@@ -1331,7 +1335,7 @@ $(function() {
 <div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
-<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00294">util.h:294</a></div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00297">util.h:297</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Functions for debugging bytecode execution.</div></div>
 <div class="ttc" id="astructKrkInstance_html_a3d0bf09b92b2d6a02685b143f4438e01"><div class="ttname"><a href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">KrkInstance::krk_newInstance</a></div><div class="ttdeci">KrkInstance * krk_newInstance(KrkClass *_class)</div><div class="ttdoc">Create a new instance of the given class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00299">object.c:299</a></div></div>
       <footer class="container text-center mb-3">

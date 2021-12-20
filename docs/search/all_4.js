@@ -9,8 +9,10 @@ var searchData=
   ['dictitemsclass_99',['dictitemsClass',['../structBaseClasses.html#a06d70556a03c73a3888d296103720a0d',1,'BaseClasses']]],
   ['dictkeys_100',['DictKeys',['../structDictKeys.html',1,'']]],
   ['dictkeysclass_101',['dictkeysClass',['../structBaseClasses.html#a52d8adb715586e7ceabab42a3013e446',1,'BaseClasses']]],
-  ['directory_102',['Directory',['../structDirectory.html',1,'']]],
-  ['doc_103',['doc',['../structKrkNative.html#a9c84b8bf66c5d53ef910697590e15e50',1,'KrkNative']]],
-  ['docstring_104',['docstring',['../structKrkCodeObject.html#a810e83becc529ea49b494e9c88448f18',1,'KrkCodeObject::docstring()'],['../structKrkClass.html#a7eb7fde94d73d43c374617f3bc917876',1,'KrkClass::docstring()']]],
-  ['dis_105',['dis',['../mod_dis.html',1,'']]]
+  ['dictvalues_102',['DictValues',['../structDictValues.html',1,'']]],
+  ['dictvaluesclass_103',['dictvaluesClass',['../structBaseClasses.html#a12e8fdea6a1c95b22824083d3b28ab88',1,'BaseClasses']]],
+  ['directory_104',['Directory',['../structDirectory.html',1,'']]],
+  ['doc_105',['doc',['../structKrkNative.html#a9c84b8bf66c5d53ef910697590e15e50',1,'KrkNative']]],
+  ['docstring_106',['docstring',['../structKrkCodeObject.html#a810e83becc529ea49b494e9c88448f18',1,'KrkCodeObject::docstring()'],['../structKrkClass.html#a7eb7fde94d73d43c374617f3bc917876',1,'KrkClass::docstring()']]],
+  ['dis_107',['dis',['../mod_dis.html',1,'']]]
 ];
