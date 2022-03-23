@@ -5509,6 +5509,23 @@ function reset_status(){ Module.awakeStatus = 0; }
       abort();
     }
 
+  var _emscripten_get_now_is_monotonic=true;;
+  function _clock_gettime(clk_id, tp) {
+      // int clock_gettime(clockid_t clk_id, struct timespec *tp);
+      var now;
+      if (clk_id === 0) {
+        now = Date.now();
+      } else if ((clk_id === 1 || clk_id === 4) && _emscripten_get_now_is_monotonic) {
+        now = _emscripten_get_now();
+      } else {
+        setErrNo(28);
+        return -1;
+      }
+      HEAP32[((tp)>>2)] = (now/1000)|0; // seconds
+      HEAP32[(((tp)+(4))>>2)] = ((now % 1000)*1000*1000)|0; // nanoseconds
+      return 0;
+    }
+
   function _dlclose(handle) {
       abort("To use dlopen, you need to use Emscripten's linking support, see https://github.com/emscripten-core/emscripten/wiki/Linking");
     }
@@ -6120,6 +6137,7 @@ var asmLibraryArg = {
   "__sys_unlink": ___sys_unlink,
   "abort": _abort,
   "check_status": check_status,
+  "clock_gettime": _clock_gettime,
   "dlclose": _dlclose,
   "dlopen": _dlopen,
   "dlsym": _dlsym,
