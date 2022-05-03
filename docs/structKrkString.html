@@ -125,6 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a> (char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>)</td></tr>
 <tr class="memdesc:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield ownership of a C string to the GC and obtain a string object.  <a href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">More...</a><br /></td></tr>
 <tr class="separator:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5eeb810cdf58c0edd2d0280469d6740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">krk_takeStringVetted</a> (char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>, size_t <a class="el" href="structKrkString.html#a71e90fcf0abd603225392dc386867c75">codesLength</a>, <a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a> <a class="el" href="structKrkString.html#a0ac4c063e12e27a8a211118f75dc9845">type</a>, uint32_t <a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a>)</td></tr>
+<tr class="memdesc:af5eeb810cdf58c0edd2d0280469d6740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a> but for when the caller has already calculated code lengths, hash, and string type.  <a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">More...</a><br /></td></tr>
+<tr class="separator:af5eeb810cdf58c0edd2d0280469d6740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a5d858a11fd8b8216fee7a8861c6920"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a> (const char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>)</td></tr>
 <tr class="memdesc:a5a5d858a11fd8b8216fee7a8861c6920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a string object representation of the given C string.  <a href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">More...</a><br /></td></tr>
 <tr class="separator:a5a5d858a11fd8b8216fee7a8861c6920"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -312,6 +315,73 @@ Protected Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A string object. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00204">204</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+
+</div>
+</div>
+<a id="af5eeb810cdf58c0edd2d0280469d6740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5eeb810cdf58c0edd2d0280469d6740">&#9670;&nbsp;</a></span>krk_takeStringVetted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkString.html">KrkString</a> * krk_takeStringVetted </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>chars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>codesLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Like <a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a> but for when the caller has already calculated code lengths, hash, and string type. </p>
+<p>Creates a new string object in cases where the caller has already calculated codepoint length, expanded string type, and hash. Useful for functions that create strings from other KrkStrings, where it's easier to know these things without having to start from scratch.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chars</td><td>C string to take ownership of. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the C string. </td></tr>
+    <tr><td class="paramname">codesLength</td><td>Length of the expected resulting <a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a> in codepoints. </td></tr>
+    <tr><td class="paramname">type</td><td>Compact type of the string, eg. UCS1, UCS2, UCS4... </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634" title="String compact storage type.">KrkStringType</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hash</td><td>Precalculated string hash. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00234">234</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <map id="src/kuroko/util.h" name="src/kuroko/util.h">
-<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="1963,5,2090,32"/>
+<area shape="rect" id="node1" title="Utilities for creating native bindings." alt="" coords="2033,5,2159,32"/>
 <area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,87,109,114"/>
 <area shape="rect" id="node3" href="$debug_8c_source.html" title=" " alt="" coords="133,87,229,114"/>
 <area shape="rect" id="node4" href="$exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="254,87,381,114"/>
@@ -15,19 +15,20 @@
 <area shape="rect" id="node14" href="$obj__numeric_8c_source.html" title=" " alt="" coords="1608,87,1744,114"/>
 <area shape="rect" id="node15" href="$obj__range_8c_source.html" title=" " alt="" coords="1768,87,1888,114"/>
 <area shape="rect" id="node16" href="$obj__set_8c_source.html" title=" " alt="" coords="1913,87,2015,114"/>
-<area shape="rect" id="node17" href="$obj__str_8c_source.html" title=" " alt="" coords="2039,87,2139,114"/>
-<area shape="rect" id="node18" href="$obj__tuple_8c_source.html" title=" " alt="" coords="2163,87,2279,114"/>
-<area shape="rect" id="node19" href="$obj__typing_8c_source.html" title=" " alt="" coords="2303,87,2427,114"/>
-<area shape="rect" id="node20" href="$os_8c_source.html" title=" " alt="" coords="2451,87,2522,114"/>
-<area shape="rect" id="node21" href="$table_8c_source.html" title=" " alt="" coords="2546,87,2635,114"/>
-<area shape="rect" id="node22" href="$threads_8c_source.html" title=" " alt="" coords="2659,87,2765,114"/>
-<area shape="rect" id="node23" href="$time_8c_source.html" title=" " alt="" coords="2789,87,2875,114"/>
-<area shape="rect" id="node24" href="$vm_8c_source.html" title=" " alt="" coords="2900,87,2977,114"/>
-<area shape="rect" id="node25" href="$compile_8c_source.html" title=" " alt="" coords="3002,87,3123,114"/>
-<area shape="rect" id="node26" href="$sandbox_8c_source.html" title=" " alt="" coords="3147,87,3271,114"/>
-<area shape="rect" id="node27" href="$module__math_8c_source.html" title=" " alt="" coords="3296,80,3451,121"/>
-<area shape="rect" id="node28" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3475,80,3629,121"/>
-<area shape="rect" id="node29" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="3653,80,3808,121"/>
-<area shape="rect" id="node30" href="$module__timeit_8c_source.html" title=" " alt="" coords="3832,80,3987,121"/>
-<area shape="rect" id="node31" href="$module__wcwidth_8c_source.html" title=" " alt="" coords="4011,80,4165,121"/>
+<area shape="rect" id="node17" href="$obj__slice_8c_source.html" title=" " alt="" coords="2039,87,2153,114"/>
+<area shape="rect" id="node18" href="$obj__str_8c_source.html" title=" " alt="" coords="2177,87,2277,114"/>
+<area shape="rect" id="node19" href="$obj__tuple_8c_source.html" title=" " alt="" coords="2301,87,2417,114"/>
+<area shape="rect" id="node20" href="$obj__typing_8c_source.html" title=" " alt="" coords="2441,87,2565,114"/>
+<area shape="rect" id="node21" href="$os_8c_source.html" title=" " alt="" coords="2589,87,2659,114"/>
+<area shape="rect" id="node22" href="$table_8c_source.html" title=" " alt="" coords="2683,87,2773,114"/>
+<area shape="rect" id="node23" href="$threads_8c_source.html" title=" " alt="" coords="2797,87,2902,114"/>
+<area shape="rect" id="node24" href="$time_8c_source.html" title=" " alt="" coords="2926,87,3013,114"/>
+<area shape="rect" id="node25" href="$vm_8c_source.html" title=" " alt="" coords="3037,87,3115,114"/>
+<area shape="rect" id="node26" href="$compile_8c_source.html" title=" " alt="" coords="3139,87,3261,114"/>
+<area shape="rect" id="node27" href="$sandbox_8c_source.html" title=" " alt="" coords="3285,87,3409,114"/>
+<area shape="rect" id="node28" href="$module__math_8c_source.html" title=" " alt="" coords="3433,80,3588,121"/>
+<area shape="rect" id="node29" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3612,80,3767,121"/>
+<area shape="rect" id="node30" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="3791,80,3945,121"/>
+<area shape="rect" id="node31" href="$module__timeit_8c_source.html" title=" " alt="" coords="3969,80,4124,121"/>
+<area shape="rect" id="node32" href="$module__wcwidth_8c_source.html" title=" " alt="" coords="4148,80,4303,121"/>
 </map>

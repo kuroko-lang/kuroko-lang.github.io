@@ -111,6 +111,8 @@ $(function() {
 <p>Functions for generating pseudo-random numbers.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;sys/time.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="vm_8h_source.html">kuroko/vm.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_8h_source.html">kuroko/util.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -118,28 +120,29 @@ Include dependency graph for module_random.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="module__random_8c__incl.png" border="0" usemap="#src_2modules_2module__random_8c" alt=""/></div>
 <map name="src_2modules_2module__random_8c" id="src_2modules_2module__random_8c">
-<area shape="rect" title="Functions for generating pseudo&#45;random numbers." alt="" coords="327,5,482,47"/>
-<area shape="rect" title=" " alt="" coords="209,543,280,569"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="499,169,601,196"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="353,95,456,121"/>
-<area shape="rect" title=" " alt="" coords="466,244,541,271"/>
-<area shape="rect" title=" " alt="" coords="565,244,629,271"/>
-<area shape="rect" title=" " alt="" coords="653,244,749,271"/>
-<area shape="rect" title=" " alt="" coords="773,244,863,271"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="377,468,456,495"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="503,393,573,420"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="309,319,375,345"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="367,244,442,271"/>
-<area shape="rect" title=" " alt="" coords="304,543,375,569"/>
-<area shape="rect" title=" " alt="" coords="399,543,474,569"/>
-<area shape="rect" title=" " alt="" coords="498,543,565,569"/>
-<area shape="rect" title=" " alt="" coords="579,468,646,495"/>
-<area shape="rect" title=" " alt="" coords="484,468,555,495"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="142,393,225,420"/>
-<area shape="rect" title=" " alt="" coords="44,468,128,495"/>
-<area shape="rect" title=" " alt="" coords="153,468,225,495"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="451,319,524,345"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="257,169,344,196"/>
+<area shape="rect" title="Functions for generating pseudo&#45;random numbers." alt="" coords="328,5,483,47"/>
+<area shape="rect" title=" " alt="" coords="757,543,827,569"/>
+<area shape="rect" title=" " alt="" coords="5,244,69,271"/>
+<area shape="rect" title=" " alt="" coords="93,244,184,271"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="354,169,457,196"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="449,95,551,121"/>
+<area shape="rect" title=" " alt="" coords="259,244,333,271"/>
+<area shape="rect" title=" " alt="" coords="357,244,453,271"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="545,468,623,495"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="258,393,329,420"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="551,319,617,345"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="477,244,552,271"/>
+<area shape="rect" title=" " alt="" coords="451,543,522,569"/>
+<area shape="rect" title=" " alt="" coords="547,543,621,569"/>
+<area shape="rect" title=" " alt="" coords="646,543,733,569"/>
+<area shape="rect" title=" " alt="" coords="360,543,427,569"/>
+<area shape="rect" title=" " alt="" coords="143,468,209,495"/>
+<area shape="rect" title=" " alt="" coords="238,468,309,495"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="353,393,436,420"/>
+<area shape="rect" title=" " alt="" coords="333,468,417,495"/>
+<area shape="rect" title=" " alt="" coords="441,468,513,495"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="402,319,475,345"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="598,169,685,196"/>
 </map>
 </div>
 </div>
@@ -147,9 +150,15 @@ Include dependency graph for module_random.c:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad01b1ef405a59c7b2f317489007fe795"><td class="memItemLeft" align="right" valign="top"><a id="ad01b1ef405a59c7b2f317489007fe795"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_srand</b> (unsigned int seed)</td></tr>
+<tr class="separator:ad01b1ef405a59c7b2f317489007fe795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afae19c7dbf34f3d13216e7dc06e62706"><td class="memItemLeft" align="right" valign="top"><a id="afae19c7dbf34f3d13216e7dc06e62706"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_krk_random</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:afae19c7dbf34f3d13216e7dc06e62706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0571aa65e3acb1172080cdcddf20636"><td class="memItemLeft" align="right" valign="top"><a id="ab0571aa65e3acb1172080cdcddf20636"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_krk_seed</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:ab0571aa65e3acb1172080cdcddf20636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45eb2131592efacb3fd596ccf9c22b0b"><td class="memItemLeft" align="right" valign="top"><a id="a45eb2131592efacb3fd596ccf9c22b0b"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_module_onload_random</b> (void)</td></tr>
 <tr class="separator:a45eb2131592efacb3fd596ccf9c22b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>

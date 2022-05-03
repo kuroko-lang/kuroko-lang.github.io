@@ -115,7 +115,7 @@ Inheritance diagram for KrkInstance:</div>
 <div class="dyncontent">
 <div class="center"><img src="structKrkInstance__inherit__graph.png" border="0" usemap="#KrkInstance_inherit__map" alt="Inheritance graph"/></div>
 <map name="KrkInstance_inherit__map" id="KrkInstance_inherit__map">
-<area shape="rect" title="An object of a class." alt="" coords="120,360,219,387"/>
+<area shape="rect" title="An object of a class." alt="" coords="120,385,219,412"/>
 <area shape="rect" href="structDictItems.html" title=" " alt="" coords="270,5,355,32"/>
 <area shape="rect" href="structDictKeys.html" title=" " alt="" coords="273,56,352,83"/>
 <area shape="rect" href="structDictValues.html" title=" " alt="" coords="267,107,359,133"/>
@@ -125,13 +125,14 @@ Inheritance diagram for KrkInstance:</div>
 <area shape="rect" href="structKrkDict.html" title="Flexible mapping type." alt="" coords="277,309,348,336"/>
 <area shape="rect" href="structKrkList.html" title="Mutable array of values." alt="" coords="279,360,346,387"/>
 <area shape="rect" href="structKrkModule.html" title="Representation of a loaded module." alt="" coords="267,411,359,437"/>
-<area shape="rect" href="structLock.html" title="Simple atomic structure for waiting." alt="" coords="287,461,339,488"/>
-<area shape="rect" href="structRange.html" title="range object." alt="" coords="281,512,344,539"/>
-<area shape="rect" href="structSet.html" title="Mutable unordered set of values." alt="" coords="291,563,334,589"/>
-<area shape="rect" href="structSetIterator.html" title="Iterator over the values in a set." alt="" coords="267,613,358,640"/>
-<area shape="rect" href="structThread.html" title="Object representation of a system thread." alt="" coords="279,664,346,691"/>
-<area shape="rect" href="structTupleIter.html" title="Iterator over the values in a tuple." alt="" coords="273,715,352,741"/>
-<area shape="rect" href="structKrkObj.html" title="The most basic object type." alt="" coords="5,360,72,387"/>
+<area shape="rect" href="structKrkSlice.html" title=" " alt="" coords="275,461,350,488"/>
+<area shape="rect" href="structLock.html" title="Simple atomic structure for waiting." alt="" coords="287,512,339,539"/>
+<area shape="rect" href="structRange.html" title="range object." alt="" coords="281,563,344,589"/>
+<area shape="rect" href="structSet.html" title="Mutable unordered set of values." alt="" coords="291,613,334,640"/>
+<area shape="rect" href="structSetIterator.html" title="Iterator over the values in a set." alt="" coords="267,664,358,691"/>
+<area shape="rect" href="structThread.html" title="Object representation of a system thread." alt="" coords="279,715,346,741"/>
+<area shape="rect" href="structTupleIter.html" title="Iterator over the values in a tuple." alt="" coords="273,765,352,792"/>
+<area shape="rect" href="structKrkObj.html" title="The most basic object type." alt="" coords="5,385,72,412"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -180,7 +181,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>An object of a class. </p>
 <p>Created by class initializers, instances are the standard type of objects built by managed code. Not all objects are instances, but all instances are objects, and all instances have well-defined class. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00223">223</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00220">220</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3d0bf09b92b2d6a02685b143f4438e01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d0bf09b92b2d6a02685b143f4438e01">&#9670;&nbsp;</a></span>krk_newInstance()</h2>
@@ -201,7 +202,7 @@ Protected Attributes</h2></td></tr>
 <p>Create a new instance of the given class. </p>
 <p>Handles allocation, but not <b>init</b>, of the new instance. Be sure to populate any fields expected by the class or call its <b>init</b> function (eg. with <a class="el" href="vm_8h.html#a4849b50bba0bec7bbd17c0892985b338">krk_callStack</a>) as needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00299">299</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00323">323</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>
