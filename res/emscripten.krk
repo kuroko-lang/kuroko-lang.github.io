@@ -244,6 +244,11 @@ def open(args):
       path = os.getcwd() + '/' + path
     openFile(path)
 
+@shellCommand
+def collect(args):
+    import gc
+    print(gc.collect())
+
 class FileNode(object):
     def __init__(self, path, fileType, children=[]):
         let filename = path.split('/')[-1]
