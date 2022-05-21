@@ -100,14 +100,15 @@ def ls(args: list[str]):
             # Stat that, all on the floor...
             let result = os.stat(directory + '/' + name)
             files[name] = (name, result)
-        let maxLength = max([len(x) for x in files.keys()])
-        if long:
-            for key in sorted(files.keys()):
-                printFileLong(files[key], maxLength)
-        else:
-            for key in sorted(files.keys()):
-                printFileShort(files[key], maxLength)
-            if files: print('')
+        if files:
+            let maxLength = max([len(x) for x in files.keys()])
+            if long:
+                for key in sorted(files.keys()):
+                    printFileLong(files[key], maxLength)
+            else:
+                for key in sorted(files.keys()):
+                    printFileShort(files[key], maxLength)
+                print('')
         if len(targets) > 1:
             print('')
 
