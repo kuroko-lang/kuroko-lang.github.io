@@ -605,7 +605,7 @@ function setTheme() {
     document.getElementById("css-theme-light").rel = 'alternate stylesheet';
     localStorage.setItem("idetheme","dark");
     aceTheme = 'ace/theme/sunsmoke';
-  } else if (document.getElementById("theme-light").checked) {
+  } else {
     document.getElementById("css-theme-dark").rel = 'alternate stylesheet';
     document.getElementById("css-theme-light").rel = 'stylesheet';
     localStorage.setItem("idetheme","light");
@@ -620,8 +620,7 @@ function setTheme() {
 }
 let idetheme = localStorage.getItem("idetheme");
 if (idetheme) {
-  if (idetheme == 'dark') document.getElementById("theme-dark").checked = true;
-  if (idetheme == 'light') document.getElementById("theme-light").checked = true;
+  if (idetheme == 'dark') document.getElementById("theme-dark").checked = (idetheme == 'dark');
 }
 
 function onHashChange() {
