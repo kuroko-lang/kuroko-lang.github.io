@@ -18,6 +18,11 @@ main {
   overflow: clip; /* clip is too new for some browsers */
 }
 
+:root {
+  --krk-editor-font-family: var(--bs-font-monospace);
+  --krk-editor-font-size: 13px;
+}
+
 main .layout-check {
   visibility: hidden;
 }
@@ -153,8 +158,8 @@ main.layout-just-output>div:not(.right-pane) { display: none; }
   border: 0;
 }
 div.editor {
-  font-size: 17px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   line-height: normal;
   height: 100%;
 }
@@ -257,8 +262,8 @@ input[type=file] + span {
 }
 #extra-editor>#shell-prompt {
   flex: 0 1 auto;
-  font-size: 17px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   line-height: normal;
 }
 #extra-editor>.ace_editor {
@@ -528,8 +533,8 @@ main a:not(:hover) {
 #ide-debug > pre {
   width: auto;
   margin: 0px;
-  font-size: 17px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   white-space: pre-wrap;
   line-height: normal;
   overflow: visible;
@@ -588,8 +593,8 @@ svg#stop-button.running {
   display: inline-block !important;
 }
 #debugger-disassembly {
-  font-size: 14px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   white-space: pre;
   display: flex;
   flex-direction: column;
@@ -767,8 +772,8 @@ div.left-pane {
 }
 
 .ace_editor pre {
-  font-size: 17px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   line-height: normal;
   margin: 0;
 }
@@ -781,7 +786,8 @@ pre.error {
 }
 
 div#debugger-disassembly {
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  font-size: var(--krk-editor-font-size);
+  font-family: var(--krk-editor-font-family);
   line-height: normal;
   margin-left: 2px;
 }
