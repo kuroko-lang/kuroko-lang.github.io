@@ -143,10 +143,6 @@ Data Fields</h2></td></tr>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClosure.html#a322d575e32eadc0c62950bbe34914264">upvalueCount</a></td></tr>
 <tr class="memdesc:a322d575e32eadc0c62950bbe34914264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in <a class="el" href="structKrkClosure.html#ad622572debc191583c2782d548f1271b">upvalues</a>. <br /></td></tr>
 <tr class="separator:a322d575e32eadc0c62950bbe34914264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8921f7853ceb8ebb77e505c371705276"><td class="memItemLeft" align="right" valign="top"><a id="a8921f7853ceb8ebb77e505c371705276"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClosure.html#a8921f7853ceb8ebb77e505c371705276">flags</a></td></tr>
-<tr class="memdesc:a8921f7853ceb8ebb77e505c371705276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closure type flags. <br /></td></tr>
-<tr class="separator:a8921f7853ceb8ebb77e505c371705276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1325f0b5be0d2c14cd1d00e0e8e9d43"><td class="memItemLeft" align="right" valign="top"><a id="ad1325f0b5be0d2c14cd1d00e0e8e9d43"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClosure.html#ad1325f0b5be0d2c14cd1d00e0e8e9d43">annotations</a></td></tr>
 <tr class="memdesc:ad1325f0b5be0d2c14cd1d00e0e8e9d43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of type hints. <br /></td></tr>
@@ -156,14 +152,14 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:af37bba59b398c8d7e12f03b32238ee3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object attributes table. <br /></td></tr>
 <tr class="separator:af37bba59b398c8d7e12f03b32238ee3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
-<tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
-<a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a2f705bab2fd0bc6ab7b85ddfebb51280">type</a></td></tr>
-<tr class="memdesc:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
-<tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4d1595cd9238ce141b8fbcfd81ae78c5">flags</a></td></tr>
-<tr class="memdesc:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
-<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a848914a5a5311144820f2a793bea644a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a></td></tr>
+<tr class="memdesc:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
+<tr class="separator:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4a25d0e5c012bbbf4752ac6f76009b86"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a></td></tr>
+<tr class="memdesc:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
+<tr class="separator:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a></td></tr>
 <tr class="memdesc:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached hash value for table keys. <br /></td></tr>
@@ -184,7 +180,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Function object. </p>
 <p>Not to be confused with code objects, a closure is a single instance of a function. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00158">158</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00170">170</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae1ba305061f214ae653c90b3143d17e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1ba305061f214ae653c90b3143d17e3">&#9670;&nbsp;</a></span>krk_buildGenerator()</h2>

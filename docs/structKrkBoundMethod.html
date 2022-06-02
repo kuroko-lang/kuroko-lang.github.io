@@ -137,14 +137,14 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:ad870732c4fc3b394407949e57ab2c92e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to call. <br /></td></tr>
 <tr class="separator:ad870732c4fc3b394407949e57ab2c92e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
-<tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
-<a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a2f705bab2fd0bc6ab7b85ddfebb51280">type</a></td></tr>
-<tr class="memdesc:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
-<tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4d1595cd9238ce141b8fbcfd81ae78c5">flags</a></td></tr>
-<tr class="memdesc:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
-<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a848914a5a5311144820f2a793bea644a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a></td></tr>
+<tr class="memdesc:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
+<tr class="separator:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4a25d0e5c012bbbf4752ac6f76009b86"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a></td></tr>
+<tr class="memdesc:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
+<tr class="separator:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a></td></tr>
 <tr class="memdesc:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached hash value for table keys. <br /></td></tr>
@@ -165,7 +165,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>A function that has been attached to an object to serve as a method. </p>
 <p>When a bound method is called, its receiver is implicitly extracted as the first argument. Bound methods are created whenever a method is retreived from the class of a value. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00234">234</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00243">243</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6ebb46500af334b0876b741426752b76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ebb46500af334b0876b741426752b76">&#9670;&nbsp;</a></span>krk_newBoundMethod()</h2>
@@ -196,7 +196,7 @@ Protected Attributes</h2></td></tr>
 <p>Create a new bound method. </p>
 <p>Binds the callable specified by <code>method</code> to the value <code>receiver</code> and returns a <code>method</code> object. When a <code>method</code> object is called, <code>receiver</code> will automatically be provided as the first argument. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00330">330</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00333">333</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>

@@ -169,6 +169,10 @@ KrkCleanupCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="
 KrkCleanupCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556">_ongcsweep</a></td></tr>
 <tr class="memdesc:a179052bf72d30fcec2eddf4b3a1be556"><td class="mdescLeft">&#160;</td><td class="mdescRight">C function to call when the garbage collector is discarding an instance of this class. <br /></td></tr>
 <tr class="separator:a179052bf72d30fcec2eddf4b3a1be556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bfb7fb953d81ecbed71549c948abf16"><td class="memItemLeft" align="right" valign="top"><a id="a4bfb7fb953d81ecbed71549c948abf16"></a>
+<a class="el" href="structKrkTable.html">KrkTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a4bfb7fb953d81ecbed71549c948abf16">subclasses</a></td></tr>
+<tr class="memdesc:a4bfb7fb953d81ecbed71549c948abf16"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> of classes that subclass this class. <br /></td></tr>
+<tr class="separator:a4bfb7fb953d81ecbed71549c948abf16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adebcd3334c2931f14f9bcbd8fda65eb5"><td class="memItemLeft" align="right" valign="top"><a id="adebcd3334c2931f14f9bcbd8fda65eb5"></a>
 <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#adebcd3334c2931f14f9bcbd8fda65eb5">_getter</a></td></tr>
 <tr class="memdesc:adebcd3334c2931f14f9bcbd8fda65eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>__getitem__</code> Called when an instance is subscripted <br /></td></tr>
@@ -246,14 +250,14 @@ KrkCleanupCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <tr class="memdesc:ad82fb3bef45cfd8a62462034999fba38"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>__hash__</code> Called when an instance is a key in a dict or an entry in a set <br /></td></tr>
 <tr class="separator:ad82fb3bef45cfd8a62462034999fba38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
-<tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
-<a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a2f705bab2fd0bc6ab7b85ddfebb51280">type</a></td></tr>
-<tr class="memdesc:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
-<tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4d1595cd9238ce141b8fbcfd81ae78c5">flags</a></td></tr>
-<tr class="memdesc:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
-<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a848914a5a5311144820f2a793bea644a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a></td></tr>
+<tr class="memdesc:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
+<tr class="separator:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4a25d0e5c012bbbf4752ac6f76009b86"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a></td></tr>
+<tr class="memdesc:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
+<tr class="separator:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a></td></tr>
 <tr class="memdesc:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached hash value for table keys. <br /></td></tr>
@@ -274,7 +278,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Type object. </p>
 <p>Represents classes defined in user code as well as classes defined by C extensions to represent method tables for new types. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00180">180</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00188">188</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="abc655f0e358222165d5165a86017eb5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abc655f0e358222165d5165a86017eb5d">&#9670;&nbsp;</a></span>krk_bindMethod()</h2>
@@ -313,7 +317,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the method has been bound, 0 if binding failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00887">887</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00948">948</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -395,7 +399,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the class object, equivalent to the value assigned to <code>_class</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00360">360</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00383">383</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

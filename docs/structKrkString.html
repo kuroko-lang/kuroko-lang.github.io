@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a> (char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>)</td></tr>
 <tr class="memdesc:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield ownership of a C string to the GC and obtain a string object.  <a href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">More...</a><br /></td></tr>
 <tr class="separator:a6caf0d99ca9b010dad6c7acb3b9839d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5eeb810cdf58c0edd2d0280469d6740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">krk_takeStringVetted</a> (char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>, size_t <a class="el" href="structKrkString.html#a71e90fcf0abd603225392dc386867c75">codesLength</a>, <a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a> <a class="el" href="structKrkString.html#a0ac4c063e12e27a8a211118f75dc9845">type</a>, uint32_t <a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a>)</td></tr>
+<tr class="memitem:af5eeb810cdf58c0edd2d0280469d6740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">krk_takeStringVetted</a> (char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>, size_t <a class="el" href="structKrkString.html#a71e90fcf0abd603225392dc386867c75">codesLength</a>, <a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a> <a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a>, uint32_t <a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a>)</td></tr>
 <tr class="memdesc:af5eeb810cdf58c0edd2d0280469d6740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="structKrkString.html#a6caf0d99ca9b010dad6c7acb3b9839d9">krk_takeString</a> but for when the caller has already calculated code lengths, hash, and string type.  <a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">More...</a><br /></td></tr>
 <tr class="separator:af5eeb810cdf58c0edd2d0280469d6740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a5d858a11fd8b8216fee7a8861c6920"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a> (const char *<a class="el" href="structKrkString.html#a7373911dddad465c12630008b733c9d2">chars</a>, size_t <a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>)</td></tr>
@@ -143,10 +143,6 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a0ac4c063e12e27a8a211118f75dc9845"><td class="memItemLeft" align="right" valign="top"><a id="a0ac4c063e12e27a8a211118f75dc9845"></a>
-<a class="el" href="object_8h.html#a3a5f5fe3ca9adcb7837674840c0e4634">KrkStringType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#a0ac4c063e12e27a8a211118f75dc9845">type</a></td></tr>
-<tr class="memdesc:a0ac4c063e12e27a8a211118f75dc9845"><td class="mdescLeft">&#160;</td><td class="mdescRight">String codepoint storage format. <br /></td></tr>
-<tr class="separator:a0ac4c063e12e27a8a211118f75dc9845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8fc2ddac29d69f44ff0b1db5922d12d"><td class="memItemLeft" align="right" valign="top"><a id="ae8fc2ddac29d69f44ff0b1db5922d12d"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a></td></tr>
 <tr class="memdesc:ae8fc2ddac29d69f44ff0b1db5922d12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">String length in bytes. <br /></td></tr>
@@ -164,14 +160,14 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memdesc:aa571bdcc984b263f7ecf8819d7978e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codepoint data. <br /></td></tr>
 <tr class="separator:aa571bdcc984b263f7ecf8819d7978e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
-<tr class="memitem:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a2f705bab2fd0bc6ab7b85ddfebb51280"></a>
-<a class="el" href="object_8h.html#ac5bd477fbb1214842662b92c9d115514">KrkObjType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a2f705bab2fd0bc6ab7b85ddfebb51280">type</a></td></tr>
-<tr class="memdesc:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
-<tr class="separator:a2f705bab2fd0bc6ab7b85ddfebb51280 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4d1595cd9238ce141b8fbcfd81ae78c5"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4d1595cd9238ce141b8fbcfd81ae78c5">flags</a></td></tr>
-<tr class="memdesc:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
-<tr class="separator:a4d1595cd9238ce141b8fbcfd81ae78c5 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a848914a5a5311144820f2a793bea644a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a></td></tr>
+<tr class="memdesc:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag indicating core type. <br /></td></tr>
+<tr class="separator:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a4a25d0e5c012bbbf4752ac6f76009b86"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a></td></tr>
+<tr class="memdesc:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">General object flags, mostly related to garbage collection. <br /></td></tr>
+<tr class="separator:a4a25d0e5c012bbbf4752ac6f76009b86 inherit pub_attribs_structKrkObj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a1c7d5586494b5133a18223dc07b466b3"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a></td></tr>
 <tr class="memdesc:a1c7d5586494b5133a18223dc07b466b3 inherit pub_attribs_structKrkObj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached hash value for table keys. <br /></td></tr>
@@ -191,7 +187,7 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Immutable sequence of Unicode codepoints. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00077">77</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00095">95</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afd3c39c1c8d8c9363c767e5038a53b8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd3c39c1c8d8c9363c767e5038a53b8e">&#9670;&nbsp;</a></span>krk_codepointToBytes()</h2>
@@ -272,7 +268,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00217">217</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00219">219</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>
@@ -314,7 +310,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00204">204</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00203">203</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>
@@ -381,7 +377,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00234">234</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00236">236</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>

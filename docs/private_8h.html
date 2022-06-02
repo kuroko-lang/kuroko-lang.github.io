@@ -102,6 +102,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">private.h File Reference</div>  </div>
@@ -111,13 +113,15 @@ $(function() {
 <p>Internal header.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="kuroko_8h_source.html">kuroko/kuroko.h</a>&quot;</code><br />
+<code>#include &quot;methods.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for private.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__incl.png" border="0" usemap="#src_2private_8h" alt=""/></div>
 <map name="src_2private_8h" id="src_2private_8h">
-<area shape="rect" title="Internal header." alt="" coords="184,5,287,32"/>
+<area shape="rect" title="Internal header." alt="" coords="251,5,353,32"/>
 <area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="172,80,299,107"/>
+<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="323,80,414,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,76,181"/>
 <area shape="rect" title=" " alt="" coords="101,155,175,181"/>
 <area shape="rect" title=" " alt="" coords="200,155,271,181"/>
@@ -130,13 +134,33 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__dep__incl.png" border="0" usemap="#src_2private_8hdep" alt=""/></div>
 <map name="src_2private_8hdep" id="src_2private_8hdep">
-<area shape="rect" title="Internal header." alt="" coords="5,5,108,32"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="18,80,95,107"/>
+<area shape="rect" title="Internal header." alt="" coords="275,5,378,32"/>
+<area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
+<area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="134,80,247,107"/>
+<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="272,80,381,107"/>
+<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="406,80,506,107"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="529,80,607,107"/>
 </map>
 </div>
 </div>
 <p><a href="private_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a0a20e670f75ae34e8413bcf7de9cde18"><td class="memItemLeft" align="right" valign="top"><a id="a0a20e670f75ae34e8413bcf7de9cde18"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CACHED_METHOD</b>(a,  b,  c)&#160;&#160;&#160;METHOD_ ## a,</td></tr>
+<tr class="separator:a0a20e670f75ae34e8413bcf7de9cde18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb7101797b9528ae7566036be8f6fc7"><td class="memItemLeft" align="right" valign="top"><a id="aaeb7101797b9528ae7566036be8f6fc7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SPECIAL_ATTRS</b>(a,  b)&#160;&#160;&#160;METHOD_ ## a,</td></tr>
+<tr class="separator:aaeb7101797b9528ae7566036be8f6fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a62180e29e93500068869ad4a459be927"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="private_8h.html#a62180e29e93500068869ad4a459be927">KrkSpecialMethods</a> { <b>METHOD__MAX</b>
+ }</td></tr>
+<tr class="memdesc:a62180e29e93500068869ad4a459be927"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index numbers for always-available interned strings representing important method and member names.  <a href="private_8h.html#a62180e29e93500068869ad4a459be927">More...</a><br /></td></tr>
+<tr class="separator:a62180e29e93500068869ad4a459be927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:acac392f628c19256b65c24210f46a0ca"><td class="memItemLeft" align="right" valign="top"><a id="acac392f628c19256b65c24210f46a0ca"></a>
@@ -200,7 +224,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileio
 <p>These functions are not part of the public API for Kuroko. They are used internally by the interpreter library. </p>
 
 <p class="definition">Definition in file <a class="el" href="private_8h_source.html">private.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a62180e29e93500068869ad4a459be927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62180e29e93500068869ad4a459be927">&#9670;&nbsp;</a></span>KrkSpecialMethods</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="private_8h.html#a62180e29e93500068869ad4a459be927">KrkSpecialMethods</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Index numbers for always-available interned strings representing important method and member names. </p>
+<p>The VM must look up many methods and members by fixed names. To avoid continuously having to box and unbox these from C strings to the appropriate interned <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code>, we keep an array of the <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code> pointers in the global VM state.</p>
+<p>These values are the offsets into that index for each of the relevant function names (generally with extra underscores removed). For example <code>METHOD_INIT</code> is the offset for the string value for <code>"__init__"</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="private_8h_source.html#l00044">44</a> of file <a class="el" href="private_8h_source.html">private.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a0e31397b2d77b1a44a35064c79a8e535"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e31397b2d77b1a44a35064c79a8e535">&#9670;&nbsp;</a></span>_createAndBind_exceptions()</h2>
 
@@ -242,7 +287,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileio
 <p>gc = module()</p>
 <p>Namespace for methods for controlling the garbage collector.</p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00375">375</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00578">578</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
 
 </div>
 </div>
@@ -264,7 +309,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileio
 <p>threads = module()</p>
 <p>Methods for dealing with threads.</p>
 
-<p class="definition">Definition at line <a class="el" href="threads_8c_source.html#l00202">202</a> of file <a class="el" href="threads_8c_source.html">threads.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threads_8c_source.html#l00205">205</a> of file <a class="el" href="threads_8c_source.html">threads.c</a>.</p>
 
 </div>
 </div>

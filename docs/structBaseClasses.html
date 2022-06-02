@@ -175,7 +175,7 @@ Data Fields</h2></td></tr>
 <p>For use by C modules and within the VM, an instance of this struct is attached to the global VM state. At VM initialization, each built-in class is attached to this table, and the class values stored here are used for integrated type checking with krk_isInstanceOf.</p>
 <dl class="section note"><dt>Note</dt><dd>As this and other tables are used directly by embedders, do not reorder the layout of the individual class pointers, even if it looks nicer. The ordering here is part of our library ABI. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00142">142</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00095">95</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a89299ca35288c06800bccdcfe22d75e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a89299ca35288c06800bccdcfe22d75e7">&#9670;&nbsp;</a></span>boolClass</h2>
@@ -190,7 +190,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Primitive boolean type. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00148">148</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00101">101</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -207,7 +207,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Mutable array of bytes </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00169">169</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00122">122</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -224,7 +224,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>An immutable sequence of bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00154">154</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00107">107</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +241,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over the integer byte values of a bytes object. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00164">164</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00117">117</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -258,7 +258,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Static compiled bytecode container (<a class="el" href="structKrkCodeObject.html" title="Code object.">KrkCodeObject</a>) </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00166">166</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00119">119</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +275,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Mutable mapping of hashable keys to arbitrary values. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00161">161</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00114">114</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over the (key,value) pairs of a dict </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00162">162</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00115">115</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +309,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over the keys of a dict </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00163">163</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00116">116</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -326,7 +326,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over values of a dict </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00170">170</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00123">123</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -343,7 +343,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Primitive double-precision floating-point type. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00147">147</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00100">100</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Represents a function object (<a class="el" href="structKrkClosure.html" title="Function object.">KrkClosure</a>) or native bind (<a class="el" href="structKrkNative.html" title="Managed binding to a C function.">KrkNative</a>) </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00151">151</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00104">104</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Generator object. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00167">167</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00120">120</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Primitive integer type. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00146">146</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00099">99</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -411,7 +411,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Mutable collection of arbitrary values. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00160">160</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00113">113</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -428,7 +428,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over lists </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00155">155</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00108">108</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -445,7 +445,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Represents a bound method (<a class="el" href="structKrkBoundMethod.html" title="A function that has been attached to an object to serve as a method.">KrkBoundMethod</a>) </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00152">152</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00105">105</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -462,7 +462,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>A class for representing imported modules, both managed and C. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00144">144</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00097">97</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -479,7 +479,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>The class of the None value. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00149">149</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00102">102</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -496,7 +496,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>NotImplementedType </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00168">168</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00121">121</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -513,7 +513,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>The base of all classes within the type tree. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00143">143</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00096">96</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -530,7 +530,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Magic object that calls a function when accessed from an instance through the dot operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00165">165</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00118">118</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -547,7 +547,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>An object representing a start and end point for a sequence of integers. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00156">156</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00109">109</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -564,7 +564,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over a range of values </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00157">157</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00110">110</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -581,7 +581,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Slice object </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00171">171</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00124">124</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +598,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Built-in Unicode string type. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00150">150</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00103">103</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -615,7 +615,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over characters (by codepoint) in a string </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00158">158</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00111">111</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -632,7 +632,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>An immutable collection of arbitrary values. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00153">153</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00106">106</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -649,7 +649,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator over values in a tuple </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00159">159</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00112">112</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -666,7 +666,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Classes themselves are of this class. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00145">145</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00098">98</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
