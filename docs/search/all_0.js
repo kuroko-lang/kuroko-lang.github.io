@@ -18,12 +18,13 @@ var searchData=
   ['_5fgetter_15',['_getter',['../structKrkClass.html#adebcd3334c2931f14f9bcbd8fda65eb5',1,'KrkClass']]],
   ['_5fhash_16',['_hash',['../structKrkClass.html#ad82fb3bef45cfd8a62462034999fba38',1,'KrkClass']]],
   ['_5finit_17',['_init',['../structKrkClass.html#a517f80f3d764e86dde173e29e9556a2b',1,'KrkClass']]],
-  ['_5fiter_18',['_iter',['../structKrkClass.html#a9bf6ca357871dd7d4d045d11e675db06',1,'KrkClass']]],
-  ['_5flen_19',['_len',['../structKrkClass.html#a67112b7dddb5bc8c7dc5e8879083a465',1,'KrkClass']]],
-  ['_5fongcscan_20',['_ongcscan',['../structKrkClass.html#a2dee46a5648c4d9250295fc540add710',1,'KrkClass']]],
-  ['_5fongcsweep_21',['_ongcsweep',['../structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556',1,'KrkClass']]],
-  ['_5freprer_22',['_reprer',['../structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0',1,'KrkClass']]],
-  ['_5fsetter_23',['_setter',['../structKrkClass.html#aa57f7259766ce663bcb81d3bd341aa28',1,'KrkClass']]],
-  ['_5ftostr_24',['_tostr',['../structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1',1,'KrkClass']]],
-  ['_5f_5fbuiltins_5f_5f_25',['__builtins__',['../mod___builtins__.html',1,'']]]
+  ['_5fint_5fbit_5fcount_18',['_int_bit_count',['../obj__long_8c.html#a31252309a3cef6064954d5c13f33a3d9',1,'obj_long.c']]],
+  ['_5fiter_19',['_iter',['../structKrkClass.html#a9bf6ca357871dd7d4d045d11e675db06',1,'KrkClass']]],
+  ['_5flen_20',['_len',['../structKrkClass.html#a67112b7dddb5bc8c7dc5e8879083a465',1,'KrkClass']]],
+  ['_5fongcscan_21',['_ongcscan',['../structKrkClass.html#a2dee46a5648c4d9250295fc540add710',1,'KrkClass']]],
+  ['_5fongcsweep_22',['_ongcsweep',['../structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556',1,'KrkClass']]],
+  ['_5freprer_23',['_reprer',['../structKrkClass.html#a2ef05ea178571ed6b70c69b85a9aecd0',1,'KrkClass']]],
+  ['_5fsetter_24',['_setter',['../structKrkClass.html#aa57f7259766ce663bcb81d3bd341aa28',1,'KrkClass']]],
+  ['_5ftostr_25',['_tostr',['../structKrkClass.html#a0aa3b36bdd4c1e71d06c206ed2e0c3a1',1,'KrkClass']]],
+  ['_5f_5fbuiltins_5f_5f_26',['__builtins__',['../mod___builtins__.html',1,'']]]
 ];

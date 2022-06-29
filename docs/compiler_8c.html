@@ -197,9 +197,15 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html">ChunkRecorder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bytecode emitter backtracking breadcrumb.  <a href="structChunkRecorder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRewindState.html">RewindState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structCompiler.html" title="Subcompiler state.">Compiler</a> emit and parse state prior to this expression.  <a href="structRewindState.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ae83df8b53541debd6d3c826413a63625"><td class="memItemLeft" align="right" valign="top"><a id="ae83df8b53541debd6d3c826413a63625"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OPTIONS_FLAG_COMPILE_TIME_BUILTINS</b>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
+<tr class="separator:ae83df8b53541debd6d3c826413a63625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b54f2cabbdfa0d5ed437d3746209e12"><td class="memItemLeft" align="right" valign="top"><a id="a7b54f2cabbdfa0d5ed437d3746209e12"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>currentChunk</b>()&#160;&#160;&#160;(&amp;current-&gt;codeobject-&gt;chunk)</td></tr>
 <tr class="separator:a7b54f2cabbdfa0d5ed437d3746209e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,9 +242,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aa7ffb002ed975e6b04f342d466b328df"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">ParseFn</a>) (int)</td></tr>
-<tr class="memdesc:aa7ffb002ed975e6b04f342d466b328df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subexpression parser function.  <a href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">More...</a><br /></td></tr>
-<tr class="separator:aa7ffb002ed975e6b04f342d466b328df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4887f9cab20f8779eff50fd63447fc78"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a4887f9cab20f8779eff50fd63447fc78">ParsePrefixFn</a>) (int)</td></tr>
+<tr class="memdesc:a4887f9cab20f8779eff50fd63447fc78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subexpression parser function.  <a href="compiler_8c.html#a4887f9cab20f8779eff50fd63447fc78">More...</a><br /></td></tr>
+<tr class="separator:a4887f9cab20f8779eff50fd63447fc78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde4199faa872fc4ac8672ed20ffeae1"><td class="memItemLeft" align="right" valign="top"><a id="abde4199faa872fc4ac8672ed20ffeae1"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>ParseInfixFn</b>) (int, struct <a class="el" href="structRewindState.html">RewindState</a> *)</td></tr>
+<tr class="separator:abde4199faa872fc4ac8672ed20ffeae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59d46fe4edc33c8cc818e3aced56de29"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCompiler.html">Compiler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a59d46fe4edc33c8cc818e3aced56de29">Compiler</a></td></tr>
 <tr class="memdesc:a59d46fe4edc33c8cc818e3aced56de29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subcompiler state.  <a href="compiler_8c.html#a59d46fe4edc33c8cc818e3aced56de29">More...</a><br /></td></tr>
 <tr class="separator:a59d46fe4edc33c8cc818e3aced56de29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -248,6 +257,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:af43295b553f14bc55a60680e476124ce"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structChunkRecorder.html">ChunkRecorder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#af43295b553f14bc55a60680e476124ce">ChunkRecorder</a></td></tr>
 <tr class="memdesc:af43295b553f14bc55a60680e476124ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bytecode emitter backtracking breadcrumb.  <a href="compiler_8c.html#af43295b553f14bc55a60680e476124ce">More...</a><br /></td></tr>
 <tr class="separator:af43295b553f14bc55a60680e476124ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9576f26f3cd067da78c96b13ed858d7d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structRewindState.html">RewindState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a9576f26f3cd067da78c96b13ed858d7d">RewindState</a></td></tr>
+<tr class="memdesc:a9576f26f3cd067da78c96b13ed858d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structCompiler.html" title="Subcompiler state.">Compiler</a> emit and parse state prior to this expression.  <a href="compiler_8c.html#a9576f26f3cd067da78c96b13ed858d7d">More...</a><br /></td></tr>
+<tr class="separator:a9576f26f3cd067da78c96b13ed858d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -373,7 +385,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01526">1526</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01544">1544</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -430,7 +442,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_OPERAND_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02710">2710</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02797">2797</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -462,7 +474,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00261">261</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00278">278</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -523,7 +535,7 @@ Variables</h2></td></tr>
 <div class="line">        } \</div>
 <div class="line">        tmpbuf[i] = c[i+2]; \</div>
 <div class="line">    } \</div>
-<div class="line">    unsigned <span class="keywordtype">long</span> value = parseStrInt(tmpbuf, NULL, 16); \</div>
+<div class="line">    unsigned <span class="keywordtype">long</span> value = strtoul(tmpbuf, NULL, 16); \</div>
 <div class="line">    if (value &gt;= 0x110000) { \</div>
 <div class="line">        error(<span class="stringliteral">&quot;invalid codepoint in \\%c escape&quot;</span>, type); \</div>
 <div class="line">    } \</div>
@@ -615,14 +627,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa7ffb002ed975e6b04f342d466b328df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7ffb002ed975e6b04f342d466b328df">&#9670;&nbsp;</a></span>ParseFn</h2>
+<a id="a4887f9cab20f8779eff50fd63447fc78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4887f9cab20f8779eff50fd63447fc78">&#9670;&nbsp;</a></span>ParsePrefixFn</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* ParseFn) (int)</td>
+          <td class="memname">typedef void(* ParsePrefixFn) (int)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -630,7 +642,24 @@ Variables</h2></td></tr>
 <p>Subexpression parser function. </p>
 <p>Used by the parse rule table for infix and prefix expression parser functions. The argument passed is the <a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720">ExpressionType</a> to compile the expression as. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00111">111</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00112">112</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+
+</div>
+</div>
+<a id="a9576f26f3cd067da78c96b13ed858d7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9576f26f3cd067da78c96b13ed858d7d">&#9670;&nbsp;</a></span>RewindState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structRewindState.html">RewindState</a> <a class="el" href="structRewindState.html">RewindState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structCompiler.html" title="Subcompiler state.">Compiler</a> emit and parse state prior to this expression. </p>
+<p>Used to rewind the parser for ternary and comma expressions. </p>
 
 </div>
 </div>
@@ -703,7 +732,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00157">157</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00159">159</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -813,7 +842,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03437">3437</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03537">3537</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -837,7 +866,7 @@ Variables</h2></td></tr>
 <p>Mark objects owned by the compiler as in use.</p>
 <p>Called by the garbage collector during the scan phase to mark references held by the compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03506">3506</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03606">3606</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -857,7 +886,7 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03531">3531</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03631">3631</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>

@@ -111,10 +111,10 @@ $(function() {
 Data Fields</h2></td></tr>
 <tr class="memitem:a2c72c1cdcf3740eb279a42e5a09b5a32"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#a2c72c1cdcf3740eb279a42e5a09b5a32">name</a></td></tr>
 <tr class="separator:a2c72c1cdcf3740eb279a42e5a09b5a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c1490f5188f58fe0c85e2eca17370f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">ParseFn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#ac9c1490f5188f58fe0c85e2eca17370f">prefix</a></td></tr>
-<tr class="separator:ac9c1490f5188f58fe0c85e2eca17370f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c5366d6fadafc2c45f7bb90b181f88e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">ParseFn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#a6c5366d6fadafc2c45f7bb90b181f88e">infix</a></td></tr>
-<tr class="separator:a6c5366d6fadafc2c45f7bb90b181f88e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af577de0a89681f28ed9b13f0f6aa978f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8c.html#a4887f9cab20f8779eff50fd63447fc78">ParsePrefixFn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#af577de0a89681f28ed9b13f0f6aa978f">prefix</a></td></tr>
+<tr class="separator:af577de0a89681f28ed9b13f0f6aa978f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b39de9994f799141ef53e689d127ca"><td class="memItemLeft" align="right" valign="top">ParseInfixFn&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#a91b39de9994f799141ef53e689d127ca">infix</a></td></tr>
+<tr class="separator:a91b39de9994f799141ef53e689d127ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2d316f6c8cf2de84f27d25ab21d1847"><td class="memItemLeft" align="right" valign="top"><a class="el" href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006">Precedence</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParseRule.html#ac2d316f6c8cf2de84f27d25ab21d1847">precedence</a></td></tr>
 <tr class="separator:ac2d316f6c8cf2de84f27d25ab21d1847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -122,22 +122,22 @@ Data Fields</h2></td></tr>
 <div class="textblock"><p>Parse rule table entry. </p>
 <p>Maps tokens to prefix and infix rules. Precedence values here are for the infix parsing. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00119">119</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00121">121</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a6c5366d6fadafc2c45f7bb90b181f88e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c5366d6fadafc2c45f7bb90b181f88e">&#9670;&nbsp;</a></span>infix</h2>
+<a id="a91b39de9994f799141ef53e689d127ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b39de9994f799141ef53e689d127ca">&#9670;&nbsp;</a></span>infix</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">ParseFn</a> ParseRule::infix</td>
+          <td class="memname">ParseInfixFn ParseRule::infix</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Parse function to call when this token appears after an expression. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00124">124</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00126">126</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -154,7 +154,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Stringified token name for error messages and debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00121">121</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00123">123</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -171,24 +171,24 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Precedence ordering for Pratt parsing, <a class="el" href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006">Precedence</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00125">125</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00127">127</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
-<a id="ac9c1490f5188f58fe0c85e2eca17370f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9c1490f5188f58fe0c85e2eca17370f">&#9670;&nbsp;</a></span>prefix</h2>
+<a id="af577de0a89681f28ed9b13f0f6aa978f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af577de0a89681f28ed9b13f0f6aa978f">&#9670;&nbsp;</a></span>prefix</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="compiler_8c.html#aa7ffb002ed975e6b04f342d466b328df">ParseFn</a> ParseRule::prefix</td>
+          <td class="memname"><a class="el" href="compiler_8c.html#a4887f9cab20f8779eff50fd63447fc78">ParsePrefixFn</a> ParseRule::prefix</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Parse function to call when this token appears at the start of an expression. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00123">123</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00125">125</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
