@@ -153,9 +153,48 @@ Include dependency graph for exceptions.c:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a2b32adabcb1762797b79c676b1e48f11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a2b32adabcb1762797b79c676b1e48f11">ADD_EXCEPTION_CLASS</a>(obj,  name,  baseClass)</td></tr>
 <tr class="separator:a2b32adabcb1762797b79c676b1e48f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a87fa03cf49b3c42f1937749a373ab"><td class="memItemLeft" align="right" valign="top"><a id="a95a87fa03cf49b3c42f1937749a373ab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_Exception</b>(o)&#160;&#160;&#160;(likely(<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.exceptions-&gt;baseException)))</td></tr>
+<tr class="separator:a95a87fa03cf49b3c42f1937749a373ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a315c1a4dbc7ffa8fdf4739a932909f8f"><td class="memItemLeft" align="right" valign="top"><a id="a315c1a4dbc7ffa8fdf4739a932909f8f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_Exception</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
+<tr class="separator:a315c1a4dbc7ffa8fdf4739a932909f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a528cc2d5831a731bf06e73f9a17a72b3"><td class="memItemLeft" align="right" valign="top"><a id="a528cc2d5831a731bf06e73f9a17a72b3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_KeyError</b>(o)&#160;&#160;&#160;(likely(<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.exceptions-&gt;keyError)))</td></tr>
+<tr class="separator:a528cc2d5831a731bf06e73f9a17a72b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb34064c39ab3fe48dc3809d4d6a604"><td class="memItemLeft" align="right" valign="top"><a id="a1eb34064c39ab3fe48dc3809d4d6a604"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_KeyError</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
+<tr class="separator:a1eb34064c39ab3fe48dc3809d4d6a604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fe5a7203a93f9005be81147a3cc0373"><td class="memItemLeft" align="right" valign="top"><a id="a9fe5a7203a93f9005be81147a3cc0373"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_SyntaxError</b>(o)&#160;&#160;&#160;(likely(<a class="el" href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">krk_isInstanceOf</a>(o,vm.exceptions-&gt;syntaxError)))</td></tr>
+<tr class="separator:a9fe5a7203a93f9005be81147a3cc0373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98003337d4b21a3465a8c4109f983c22"><td class="memItemLeft" align="right" valign="top"><a id="a98003337d4b21a3465a8c4109f983c22"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_SyntaxError</b>(o)&#160;&#160;&#160;(AS_INSTANCE(o))</td></tr>
+<tr class="separator:a98003337d4b21a3465a8c4109f983c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a374c3875a65d947903e27fc7a47d4e33"><td class="memItemLeft" align="right" valign="top"><a id="a374c3875a65d947903e27fc7a47d4e33"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_CTYPE</b>&#160;&#160;&#160;<a class="el" href="structKrkInstance.html">KrkInstance</a>*</td></tr>
+<tr class="separator:a374c3875a65d947903e27fc7a47d4e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4cc55b2cd994354ff8af32820425fa8"><td class="memItemLeft" align="right" valign="top"><a id="ae4cc55b2cd994354ff8af32820425fa8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_NAME</b>&#160;&#160;&#160;self</td></tr>
+<tr class="separator:ae4cc55b2cd994354ff8af32820425fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a83da5e5c69bbbf92937c5307aa8c2dea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a83da5e5c69bbbf92937c5307aa8c2dea">_Exception___init__</a> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="memdesc:a83da5e5c69bbbf92937c5307aa8c2dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an exception object.  <a href="exceptions_8c.html#a83da5e5c69bbbf92937c5307aa8c2dea">More...</a><br /></td></tr>
+<tr class="separator:a83da5e5c69bbbf92937c5307aa8c2dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8dc8125b43da65ca67fabc4f8771e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a2e8dc8125b43da65ca67fabc4f8771e6">_Exception___repr__</a> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="memdesc:a2e8dc8125b43da65ca67fabc4f8771e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a string representation of an Exception.  <a href="exceptions_8c.html#a2e8dc8125b43da65ca67fabc4f8771e6">More...</a><br /></td></tr>
+<tr class="separator:a2e8dc8125b43da65ca67fabc4f8771e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a715d645ba7baa0f2f681d8d51ee08a55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a715d645ba7baa0f2f681d8d51ee08a55">_Exception___str__</a> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="memdesc:a715d645ba7baa0f2f681d8d51ee08a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a descriptive string from an exception.  <a href="exceptions_8c.html#a715d645ba7baa0f2f681d8d51ee08a55">More...</a><br /></td></tr>
+<tr class="separator:a715d645ba7baa0f2f681d8d51ee08a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a562fd1203011b1eee94848cc26d3abb5"><td class="memItemLeft" align="right" valign="top"><a id="a562fd1203011b1eee94848cc26d3abb5"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_KeyError___str__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:a562fd1203011b1eee94848cc26d3abb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54582f0d967fb8962f035e7f27a282e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a54582f0d967fb8962f035e7f27a282e1">_SyntaxError___str__</a> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="memdesc:a54582f0d967fb8962f035e7f27a282e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate printable text for a syntax error.  <a href="exceptions_8c.html#a54582f0d967fb8962f035e7f27a282e1">More...</a><br /></td></tr>
+<tr class="separator:a54582f0d967fb8962f035e7f27a282e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18105c62ed1904b013e43f9fd0e6f42a"><td class="memItemLeft" align="right" valign="top">_noexport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a18105c62ed1904b013e43f9fd0e6f42a">_createAndBind_exceptions</a> (void)</td></tr>
 <tr class="memdesc:a18105c62ed1904b013e43f9fd0e6f42a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind native methods and classes for exceptions.  <a href="exceptions_8c.html#a18105c62ed1904b013e43f9fd0e6f42a">More...</a><br /></td></tr>
 <tr class="separator:a18105c62ed1904b013e43f9fd0e6f42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,10 +235,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
-<div class="line">    obj = <a class="code" href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">krk_newClass</a>(S(name), baseClass); \</div>
-<div class="line">    krk_attachNamedObject(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins-&gt;fields, name, (<a class="code" href="structKrkObj.html">KrkObj</a>*)obj); \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="structKrkClass.html">KrkClass</a> * name; <span class="keywordflow">do</span> { \</div>
+<div class="line">    ADD_BASE_CLASS(obj,#name,baseClass); \</div>
 <div class="line">    krk_finalizeClass(obj); \</div>
+<div class="line">    name = obj; \</div>
+<div class="line">    (void)name; \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment --><p>Convenience macro for creating exception types. </p>
 
@@ -227,14 +267,177 @@ Functions</h2></td></tr>
 <p>Bind native methods and classes for exceptions. </p>
 <p>Called on VM initialization to create the base classes for exception types and bind the native methods for exception objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00154">154</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00182">182</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a83da5e5c69bbbf92937c5307aa8c2dea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83da5e5c69bbbf92937c5307aa8c2dea">&#9670;&nbsp;</a></span>_Exception___init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> _Exception___init__ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize an exception object. </p>
+<p>Native binding for Exception.__init__</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>Optional string to attach to the exception object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00046">46</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a2e8dc8125b43da65ca67fabc4f8771e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e8dc8125b43da65ca67fabc4f8771e6">&#9670;&nbsp;</a></span>_Exception___repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> _Exception___repr__ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a string representation of an Exception. </p>
+<p>Native binding for <code>Exception.__repr__</code> </p>
+<p>Generates a string representation of the form <code>"Exception(arg)"</code> . </p>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00072">72</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a715d645ba7baa0f2f681d8d51ee08a55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a715d645ba7baa0f2f681d8d51ee08a55">&#9670;&nbsp;</a></span>_Exception___str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> _Exception___str__ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain a descriptive string from an exception. </p>
+<p>Native binding for <code>Exception.__str__</code> </p>
+<p>For most exceptions, this is the 'arg' value attached at initialization and is printed during a traceback after the name of the exception type. </p>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00096">96</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a54582f0d967fb8962f035e7f27a282e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54582f0d967fb8962f035e7f27a282e1">&#9670;&nbsp;</a></span>_SyntaxError___str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> _SyntaxError___str__ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate printable text for a syntax error. </p>
+<p>Native binding for <code>SyntaxError.__str__</code> </p>
+<p>Syntax errors are handled specially by the traceback generator so that they can print the original source line containing the erroneous input, so instead of printing {Exception.__class__.__name__}: {str(Exception)} we just print {str(Exception)} for syntax errors and they handle the rest. This is a bit of a kludge, but it works for now. </p>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00172">172</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkClass_html_a2856a24fd7b3eb3b1d32806b5f373636"><div class="ttname"><a href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">KrkClass::krk_newClass</a></div><div class="ttdeci">KrkClass * krk_newClass(KrkString *name, KrkClass *base)</div><div class="ttdoc">Create a new class object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00307">object.c:307</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00240">vm.h:240</a></div></div>
-<div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00041">object.h:41</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>
