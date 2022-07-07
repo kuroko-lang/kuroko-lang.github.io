@@ -13,8 +13,8 @@ var codeSamples = {
   classes: "class Foo(object):\n  def __init__(self):\n    self.bar = 'baz'\n  def frob(self):\n    print(self.bar)\n\nlet foo = Foo()\nfoo.frob()",
   comprehensions: "let lst = [x * 5 for x in range(10)]\nlet dct = {str(x): x for x in lst}\nprint(lst)\nprint(dct)",
   tutorialsource: "import web, fileio\nweb.write(web.codeSample(fileio.open(web.__file__).read()))",
-  loadgist: "import js; js.exec(\"fetch('https://gist.githubusercontent.com/klange/396982d00e8fbff80fe6529d47e31e35/raw/').then(r=>{return r.text();}).then(t=>{currentEditor.setValue(t,1);});\")",
-  clear: "import js; js.exec('document.getElementById(\"container\").innerHTML = \"\";')"
+  loadgist: "import js; js.window.eval(\"fetch('https://gist.githubusercontent.com/klange/396982d00e8fbff80fe6529d47e31e35/raw/').then(r=>{return r.text();}).then(t=>{currentEditor.setValue(t,1);});\")",
+  clear: "import js; js.document.getElementById('container').innerHTML = ''; None"
 };
 
 document.getElementById("container").innerText = "";

@@ -1429,16 +1429,34 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  2450: function($0) {Module.krkb[$0]();},  
- 2758: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
+  7002: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
 };
-function krk_getKey(obj,key){ var output = Object.keys(Module.krkb[obj])[key]; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_getKeyCount(i){ console.log('Getting key count for object: ' + i); if (typeof Module.krkb[i] === 'object' && Module.krkb[i] !== null) return Object.keys(Module.krkb[i]).length; return 0; }
-function krk_jsAsFloat(obj){ return Module.krkb[obj]; }
-function krk_jsAsInt(obj){ return Module.krkb[obj]; }
-function krk_jsAsString(obj){ var output = Module.krkb[obj]; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_jsErr(){ var output = Module.krkerr.name; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
-function krk_jsType(i){ if (Module.krkb[i] == null) return -1; if (typeof Module.krkb[i] === 'string') return 1; if (typeof Module.krkb[i] === 'boolean') return 2; if (typeof Module.krkb[i] === 'number') return 3; if (typeof Module.krkb[i] === 'function') return 4; if (Array.isArray(Module.krkb[i])) return 5; return 0; }
+function JsArray_Get(idobj,ind){ let jsobj = Hiwire.get_value(idobj); let result = jsobj[ind]; if (result === undefined && !(ind in jsobj)) return 0; return Hiwire.new_value(result); }
+function JsArray_New(){ return Hiwire.new_value([]); }
+function JsArray_Push(idarr,idval){ Hiwire.get_value(idarr).push(Hiwire.get_value(idval)); }
+function hiwire_decref(idval){ Hiwire.decref(idval); }
+function hiwire_document(){ return Hiwire.new_value(document); }
+function hiwire_error_message(){ return Hiwire.new_value(Hiwire.exception.message); }
+function hiwire_error_name(){ return Hiwire.new_value(Hiwire.exception.name); }
+function hiwire_float(val){ return Hiwire.new_value(val); }
+function hiwire_incref(idval){ if (idval & 1) { Hiwire.incref(idval); } return idval; }
+function hiwire_int(val){ return Hiwire.new_value(val); }
+function hiwire_object(){ return Hiwire.new_value({}); }
+function hiwire_out_float(idval){ let jsobj = Hiwire.get_value(idval); return jsobj; }
+function hiwire_string_utf8(ptr){ return Hiwire.new_value(UTF8ToString(ptr)); }
+function hiwire_to_str(idobj){ var output = Hiwire.get_value(idobj); if (typeof output !== 'string') output = '<undefined>'; var bytes = lengthBytesUTF8(output)+1; var heapObj = _malloc(bytes); stringToUTF8(output, heapObj, bytes); return heapObj; }
+function hiwire_to_string(idobj){ let jsobj = Hiwire.get_value(idobj); if (jsobj === undefined) return Hiwire.new_value('None'); let jsstr = jsobj.toString(); if (typeof jsstr != 'string') return Hiwire.new_value('None'); return Hiwire.new_value(jsstr); }
+function js_krk_init(){ let _hiwire = { objects: new Map(), obj_to_key: new Map(), counter: new Uint32Array([1]) }; window.Hiwire = {}; Hiwire.UNDEFINED = HEAPU8[_Js_undefined]; _hiwire.objects.set(Hiwire.UNDEFINED, [ undefined, -1 ]); _hiwire.obj_to_key.set(undefined, Hiwire.UNDEFINED); Hiwire.TRUE = HEAPU8[_Js_true]; _hiwire.objects.set(Hiwire.TRUE, [ true, -1 ]); _hiwire.obj_to_key.set(true, Hiwire.TRUE); Hiwire.FALSE = HEAPU8[_Js_false]; _hiwire.objects.set(Hiwire.FALSE, [ false, -1 ]); _hiwire.obj_to_key.set(false, Hiwire.FALSE); Hiwire.JSNULL = HEAPU8[_Js_null]; _hiwire.objects.set(Hiwire.JSNULL, [ null, -1 ]); _hiwire.obj_to_key.set(null, Hiwire.JSNULL); let next_permanent = HEAPU8[_Js_novalue] + 2; Hiwire.new_value = function(jsval) { let idval = _hiwire.obj_to_key.get(jsval); if (idval !== undefined) { _hiwire.objects.get(idval)[1]++; return idval; } while (_hiwire.objects.has(_hiwire.counter[0])) { _hiwire.counter[0] += 2; } idval = _hiwire.counter[0]; _hiwire.objects.set(idval, [ jsval, 1 ]); _hiwire.obj_to_key.set(jsval, idval); _hiwire.counter[0] += 2; return idval; }; Hiwire.intern_object = function(obj) { let id = next_permanent; next_permanent += 2; _hiwire.objects.set(id, [ obj, -1 ]); return id; }; Hiwire.num_keys = function() { return Array.from(_hiwire.objects.keys()).filter((x) => x % 2).length; }; Hiwire.get_value = function(idval) { if (!idval) { console.error("idval is unset in get_value"); throw new Error("idval is usnet in get_value"); } if (!_hiwire.objects.has(idval)) { console.error(`idval not found ${idval}`); throw new Error(`idval not found ${idval}`); } return _hiwire.objects.get(idval)[0]; }; Hiwire.decref = function(idval) { if ((idval & 1) === 0) return; let pair = _hiwire.objects.get(idval); let new_refcnt = --pair[1]; if (new_refcnt === 0) { _hiwire.objects.delete(idval); _hiwire.obj_to_key.delete(pair[0]); } }; Hiwire.incref = function(idval) { if ((idval & 1) === 0) return; _hiwire.objects.get(idval)[1]++; }; Hiwire.pop_value = function(idval) { let result = Hiwire.get_value(idval); Hiwire.decref(idval); return result; }; return 0; }
+function obj_call(idobj,idthis,idargs){ let jsfunc = Hiwire.get_value(idobj); let jsthis = idthis === 0 ? null : Hiwire.get_value(idthis); let jsargs = Hiwire.get_value(idargs); try { return Hiwire.new_value(jsfunc.apply(jsthis,jsargs)); } catch (error) { console.log(error); Hiwire.exception = error; return 0; } }
+function obj_delattr(idobj,name){ let jsobj = Hiwire.get_value(idobj); let jskey = UTF8ToString(name); delete jsobj[jskey]; }
+function obj_dir(idobj){ let jsobj = Hiwire.get_value(idobj); let result = []; do { result.push(... Object.getOwnPropertyNames(jsobj).filter( s => { let c = s.charCodeAt(0); return c < 48 || c > 57; } )); } while (jsobj = Object.getPrototypeOf(jsobj)); return Hiwire.new_value(result); }
+function obj_getattr(idobj,name){ let jsobj = Hiwire.get_value(idobj); let jskey = UTF8ToString(name); let result = jsobj[jskey]; if (result === undefined && !(jskey in jsobj)) return 0; return Hiwire.new_value(result); }
+function obj_getitem(idobj,idkey){ let jsobj = Hiwire.get_value(idobj); let jskey = Hiwire.get_value(idkey); let result = jsobj[jskey]; if (result === undefined && !(jskey in jsobj)) return 0; return Hiwire.new_value(result); }
+function obj_isfunction(idobj){ return typeof Hiwire.get_value(idobj) === 'function'; }
+function obj_isnumber(idobj){ let jsobj = Hiwire.get_value(idobj); if (typeof jsobj === 'number') { return Number.isSafeInteger(jsobj) ? 2 : 1; } return 0; }
+function obj_isstring(idobj){ return typeof Hiwire.get_value(idobj) === 'string'; }
+function obj_setattr(idobj,name,idval){ let jsobj = Hiwire.get_value(idobj); let jskey = UTF8ToString(name); let jsval = Hiwire.get_value(idval); jsobj[jskey] = jsval; }
+function obj_setitem(idobj,idkey,idval){ let jsobj = Hiwire.get_value(idobj); let jskey = Hiwire.get_value(idkey); let jsval = Hiwire.get_value(idval); jsobj[jskey] = jsval; }
 
 
 
@@ -5917,6 +5935,9 @@ function intArrayToString(array) {
 
 
 var asmLibraryArg = {
+  "JsArray_Get": JsArray_Get,
+  "JsArray_New": JsArray_New,
+  "JsArray_Push": JsArray_Push,
   "__assert_fail": ___assert_fail,
   "__sys_access": ___sys_access,
   "__sys_chdir": ___sys_chdir,
@@ -5963,14 +5984,30 @@ var asmLibraryArg = {
   "fd_write": _fd_write,
   "fork": _fork,
   "gettimeofday": _gettimeofday,
+  "hiwire_decref": hiwire_decref,
+  "hiwire_document": hiwire_document,
+  "hiwire_error_message": hiwire_error_message,
+  "hiwire_error_name": hiwire_error_name,
+  "hiwire_float": hiwire_float,
+  "hiwire_incref": hiwire_incref,
+  "hiwire_int": hiwire_int,
+  "hiwire_object": hiwire_object,
+  "hiwire_out_float": hiwire_out_float,
+  "hiwire_string_utf8": hiwire_string_utf8,
+  "hiwire_to_str": hiwire_to_str,
+  "hiwire_to_string": hiwire_to_string,
+  "js_krk_init": js_krk_init,
   "kill": _kill,
-  "krk_getKey": krk_getKey,
-  "krk_getKeyCount": krk_getKeyCount,
-  "krk_jsAsFloat": krk_jsAsFloat,
-  "krk_jsAsInt": krk_jsAsInt,
-  "krk_jsAsString": krk_jsAsString,
-  "krk_jsErr": krk_jsErr,
-  "krk_jsType": krk_jsType,
+  "obj_call": obj_call,
+  "obj_delattr": obj_delattr,
+  "obj_dir": obj_dir,
+  "obj_getattr": obj_getattr,
+  "obj_getitem": obj_getitem,
+  "obj_isfunction": obj_isfunction,
+  "obj_isnumber": obj_isnumber,
+  "obj_isstring": obj_isstring,
+  "obj_setattr": obj_setattr,
+  "obj_setitem": obj_setitem,
   "setTempRet0": _setTempRet0,
   "system": _system
 };
@@ -5981,16 +6018,6 @@ var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
 };
 
 /** @type {function(...*):?} */
-var _malloc = Module["_malloc"] = function() {
-  return (_malloc = Module["_malloc"] = Module["asm"]["malloc"]).apply(null, arguments);
-};
-
-/** @type {function(...*):?} */
-var _free = Module["_free"] = function() {
-  return (_free = Module["_free"] = Module["asm"]["free"]).apply(null, arguments);
-};
-
-/** @type {function(...*):?} */
 var _krk_call = Module["_krk_call"] = function() {
   return (_krk_call = Module["_krk_call"] = Module["asm"]["krk_call"]).apply(null, arguments);
 };
@@ -5998,6 +6025,16 @@ var _krk_call = Module["_krk_call"] = function() {
 /** @type {function(...*):?} */
 var _main = Module["_main"] = function() {
   return (_main = Module["_main"] = Module["asm"]["main"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
+var _malloc = Module["_malloc"] = function() {
+  return (_malloc = Module["_malloc"] = Module["asm"]["malloc"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
+var _free = Module["_free"] = function() {
+  return (_free = Module["_free"] = Module["asm"]["free"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
@@ -6045,7 +6082,11 @@ var dynCall_jiji = Module["dynCall_jiji"] = function() {
   return (dynCall_jiji = Module["dynCall_jiji"] = Module["asm"]["dynCall_jiji"]).apply(null, arguments);
 };
 
-
+var _Js_undefined = Module['_Js_undefined'] = 1124;
+var _Js_true = Module['_Js_true'] = 1128;
+var _Js_false = Module['_Js_false'] = 1132;
+var _Js_null = Module['_Js_null'] = 1136;
+var _Js_novalue = Module['_Js_novalue'] = 1140;
 
 
 

@@ -797,6 +797,7 @@ div#right-pane-tabContent {
 }
 div#output-container > pre {
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 /* Doing this here because doing it in the actual theme might mess up the repl */

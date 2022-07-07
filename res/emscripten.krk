@@ -10,7 +10,7 @@ import stat
 import fileio
 import time
 import json
-from js import exec, run_worker, destroy_worker, JSObject
+from js import document, window, run_worker, destroy_worker, JSObject
 
 let home: str = os.environ.get('HOME','/')
 
@@ -18,7 +18,7 @@ def debug(*args: list[any]):
     '''@brief Prints to the "IDE Debug" tab.'''
     let argString = ' '.join([str(x) for x in args])
     let out = f'[{int(time.time())}] {argString}'.replace('`','\\`')
-    exec(f'ideDebug(`{out}`);')
+    window.ideDebug(out)
 
 # Configuration to map file types to icon colors
 # TODO: These should probably be moved to the CSS styles.
@@ -199,12 +199,12 @@ def touch(args: list[str]):
 @shellCommand
 def clear(args: list[str]):
     '''@brief Clear the terminal.'''
-    exec('document.getElementById("output-container").innerHTML = "";')
+    document.getElementById('output-container').innerHTML = ''
 
 @shellCommand
 def sync(args: list[str]):
     '''@brief Write out the in-memory filesystem to the IndexedDB persistent copy.'''
-    exec('FS.syncfs(function (err) { console.log(err); });')
+    window.eval('FS.syncfs(function (err) { console.log(err); });')
     syncProjectList()
 
 @shellCommand
@@ -289,7 +289,7 @@ def createListEntry(obj):
 
 def setFiles(roots):
     let rootEntries = ''.join([createListEntry(root) for root in roots])
-    exec(f'document.getElementById("panel-files").querySelector(".panel-contents").innerHTML = `<ul>{rootEntries}</ul>`;')
+    document.getElementById("panel-files").querySelector(".panel-contents").innerHTML = f'<ul>{rootEntries}</ul>'
 
 def discoverFiles(path):
     let out = []
@@ -352,7 +352,7 @@ def filesystemReady():
     debug("Filesystem is ready, loading project list.")
     syncProjectList()
     # Get configuration data
-    let configData = JSObject('ideConfig')
+    let configData = window.ideConfig
     if not configData:
         # Add welcome tab.
         showWelcomeTab()
@@ -384,7 +384,7 @@ def setupContextMenu(path):
             role = 'directory'
         else:
             role = 'file'
-    exec(f'document.getElementById("file-context-menu").setAttribute("role","{role}");')
+    document.getElementById("file-context-menu").setAttribute("role",role)
 
 let runningCode = False
 let debuggerActive = 0
@@ -398,11 +398,12 @@ def shell_prompt():
 let askingForInput = None
 def updatePrompt():
     let msg = f'{shell_prompt()}&nbsp;' if not askingForInput else cleanHtml(askingForInput).replace(' ','&nbsp;')
-    exec(f"document.getElementById('shell-prompt').innerHTML = `{msg}`;")
+    document.getElementById('shell-prompt').innerHTML = msg
     if askingForInput == '>>> ':
-        exec('extraEditor.session.setMode("ace/mode/kuroko");')
+        window.extraEditor.session.setMode('ace/mode/kuroko')
     else:
-        exec('extraEditor && extraEditor.session.setMode(null);')
+        if window.extraEditor:
+            window.extraEditor.session.setMode(None)
 
 def em_shell(s):
     if askingForInput:
@@ -455,10 +456,9 @@ class Tab():
           </div>
         '''
     def activate(self):
-        exec(f'document.getElementById("{self.id}-tab").click();')
+        document.getElementById(f'{self.id}-tab').click()
     def realize(self):
-        # Add to tab bar
-        exec(f'addTab(`{self.renderTab()}`,`{self.renderContent()}`);')
+        window.addTab(self.renderTab(), self.renderContent())
 
 class EditorTab(Tab):
     def __init__(self, path):
@@ -493,15 +493,15 @@ class EditorTab(Tab):
         '''
     def realize(self):
         super().realize()
-        exec(f'let myNewEditor = createEditor("{self.id}-editor",`{self.path}`);')
+        window.createEditor(f'{self.id}-editor', self.path)
     def setModified(self):
         if self.modified is None:
             self.modified = False
             return
-        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = `{self.name}*`;')
+        document.getElementById(f"{self.id}-tab").querySelector(".tab-title").innerText = f'{self.name}*'
         self.modified = True
     def unsetModified(self):
-        exec(f'document.getElementById("{self.id}-tab").querySelector(".tab-title").innerText = `{self.name}`;')
+        document.getElementById(f'{self.id}-tab').querySelector('.tab-title').innerText = self.name
         self.modified = False
         self.updateOutline()
     def updateOutline(self):
@@ -530,36 +530,54 @@ class EditorTab(Tab):
             if undef:
                 warningColor = 'orange'
                 warningCount = len(undef)
-                annotations = '[' + ','.join([makeAnnotations(x) for x in undef]) + ']'
+                annotations = []
+                for x in undef:
+                    annotations.extend(makeAnnotations(x))
         else:
             errorColor = 'red'
             errorCount = 1
-            annotations = '[{' + f'row: {c[0]-1}, column: {c[1]-1}, text: "{c[2]}", type: "error"' + '}]'
+            let a = JSObject()
+            a.row = c[0]-1
+            a.column = c[1]-1
+            a.text = c[2]
+            a.type = 'error'
+            annotations = [a]
             runnableState = False
 
         # Play button state
         setRunnableState(runnableState)
+        let thisTab = document.getElementById(self.id)
         # Errors
-        exec(f'document.getElementById("{self.id}").querySelector(".status-errors").parentNode.style.color = "{errorColor}";')
-        exec(f'document.getElementById("{self.id}").querySelector(".status-errors").innerText = "{errorCount}";')
+        thisTab.querySelector(".status-errors").parentNode.style.color = errorColor
+        thisTab.querySelector(".status-errors").innerText = str(errorCount)
         # Warnings
-        exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").parentNode.style.color = "{warningColor}";')
-        exec(f'document.getElementById("{self.id}").querySelector(".status-warnings").innerText = "{warningCount}";')
+        thisTab.querySelector(".status-warnings").parentNode.style.color = warningColor
+        thisTab.querySelector(".status-warnings").innerText = str(warningCount)
         # Info
-        exec(f'document.getElementById("{self.id}").querySelector(".status-info").parentNode.style.color = "{infoColor}";')
-        exec(f'document.getElementById("{self.id}").querySelector(".status-info").innerText = "{infoCount}";')
+        thisTab.querySelector(".status-info").parentNode.style.color = infoColor
+        thisTab.querySelector(".status-info").innerText = str(infoCount)
         # Editor annotations
-        exec(f'document.getElementById("{self.id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+        document.getElementById(f'{self.id}-editor')._aceInstance.getSession().setAnnotations(annotations)
 
 def setOutline(t):
-    exec(f'document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = `{t}`;')
+    document.getElementById("panel-outline").querySelector(".panel-contents").innerHTML = t
 
 def setRunnableState(runnableState):
-    exec(f'document.getElementById("run-button").classList.{"add" if runnableState else "remove"}("runnable");')
+    if runnableState:
+        document.getElementById("run-button").classList.add("runnable")
+    else:
+        document.getElementById("run-button").classList.remove("runnable")
 
 def makeAnnotations(undefined):
     let var, lines = undefined
-    return ','.join(['{' + f'''row: {l-1}, column: 0, text: "Global '{var}' is never declared.", type: "warning"''' + '}' for l in lines])
+    let annotations = []
+    for l in lines:
+        let a = JSObject()
+        a.row = l-1
+        a.text = f"Global '{var}' is never declared."
+        a.type = "warning"
+        annotations.append(a)
+    return annotations
 
 def makeOutline(children):
     return '<ul>' + ''.join([f'''
@@ -604,7 +622,7 @@ def reportShown(tabIdTab):
     let tabIds = sorted([tab.id for key, tab in editorTabs.items()])
     let tabPaths = [tabs[tabId].path for tabId in tabIds]
     let ideConfig = dumpJson({'tabs': tabPaths, 'active': tabs[tabId].path if tabId in tabs and isinstance(tabs[tabId],EditorTab) else 'WELCOME'})
-    exec(f'''localStorage.setItem("ideconfig",`{ideConfig}`);''')
+    window.localStorage.setItem('ideconfig',ideConfig)
 
 def hasUnsaved():
   for k,v in editorTabs.items():
@@ -633,7 +651,7 @@ let currentWorker = None
 let cleanupWorkers = []
 
 def finishRunning(cleanup=True):
-    exec('dismissSpinner();')
+    window.dismissSpinner()
     runningCode = False
     debuggerActive = False
     askingForInput = None
@@ -647,7 +665,7 @@ def updateDebuggerSettings(**args):
     debug("Updated debugger settings to", debuggerSettings)
 
 def cleanHtml(s):
-    return s.replace('<','&lt;').replace('>','&gt;').replace('\\','\\\\').replace('`','\\`')
+    return s.replace('<','&lt;').replace('>','&gt;')
 
 def executeFile(path,interactive=False):
     def _callback(data):
@@ -672,8 +690,8 @@ def executeFile(path,interactive=False):
     debug("Started worker", currentWorker)
 
 def postDebuggerMessage(msg):
-    exec(f'Browser.workers[{currentWorker}].worker.postMessage(`{msg}`);')
-    exec('showSpinner();')
+    window.Browser.workers[currentWorker].worker.postMessage(msg)
+    window.showSpinner()
 
 def padHex(off):
     let s = hex(off).replace('0x','').upper()
@@ -698,15 +716,20 @@ def debuggerCallback(blob):
     if filename in editorTabs:
         codeObject = editorTabs[filename].codeCache
         let id = editorTabs[filename].id
-        let annotations = '[{' + f'row: {line-1}, column: 0, text: "breakpoint", type: "info"' + '}]'
-        exec(f'document.getElementById("{id}-editor")._aceInstance.getSession().setAnnotations({annotations});')
+        let a = JSObject()
+        a.row = line-1
+        a.column = 0
+        a.text = 'breakpoint'
+        a.type = 'info'
+        let annotations = [a]
+        document.getElementById(f"{id}-editor")._aceInstance.getSession().setAnnotations(annotations)
         if 'gotoline' in debuggerSettings:
             editorTabs[filename].activate()
-            exec(f'document.getElementById("{id}-editor")._aceInstance.gotoLine({line},1,1);')
+            document.getElementById(f"{id}-editor")._aceInstance.gotoLine(line,1,1)
     else:
-        exec(f'document.getElementById("debugger-disassembly").innerText = `in file {filename}:{line}`;')
+        document.getElementById("debugger-disassembly").innerText = f'in file {filename}:{line}'
 
-    exec(f'document.getElementById("debugger-offset").innerText = `{func}+{hex(offset)}`;')
+    document.getElementById("debugger-offset").innerText = f'{func}+{hex(offset)}'
 
     if codeObject:
         let maybeFunc = codeObject.getFunction(func,line)
@@ -727,10 +750,10 @@ def debuggerCallback(blob):
                         </div>''')
                     if count++ > 30: break
                 off += i[1]
-            exec(f'document.getElementById("debugger-disassembly").innerHTML = `{"\n".join(disassembly)}`;')
+            document.getElementById("debugger-disassembly").innerHTML = "\n".join(disassembly)
 
-    exec('dismissSpinner();')
-    exec('showDebugger();')
+    window.dismissSpinner()
+    window.showDebugger()
     debuggerActive = True
     updatePrompt()
 
@@ -882,8 +905,8 @@ def __main__():
     # Update shell prompt
     updatePrompt()
     # Set terminal tab colors
-    exec(f'document.getElementById("right-pane-terminal-tab").querySelector("svg").style.color = "{iconColors["project"]}";')
-    exec(f'document.getElementById("right-pane-internal-debug-tab").querySelector("svg").style.color = "{iconColors["info"]}";')
+    document.getElementById("right-pane-terminal-tab").querySelector("svg").style.color = iconColors["project"]
+    document.getElementById("right-pane-internal-debug-tab").querySelector("svg").style.color = iconColors["info"]
     # Pretend we have an input() function
     __builtins__.input = lambda prompt: print("Hello, ", prompt)
 
