@@ -679,7 +679,9 @@ def finishRunning(cleanup=True):
 
 let debuggerSettings = {}
 def updateDebuggerSettings(single, gotoline):
-    debuggerSettings = {'single': single, 'gotoline': gotoline}
+    debuggerSettings = {}
+    if single: debuggerSettings['single'] = True
+    if gotoline: debuggerSettings['gotoline'] = True
     debug("Updated debugger settings to", debuggerSettings)
 
 def cleanHtml(s):
