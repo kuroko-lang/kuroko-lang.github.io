@@ -678,8 +678,8 @@ def finishRunning(cleanup=True):
     currentWorker = None
 
 let debuggerSettings = {}
-def updateDebuggerSettings(**args):
-    debuggerSettings = args
+def updateDebuggerSettings(single, gotoline):
+    debuggerSettings = {'single': single, 'gotoline': gotoline}
     debug("Updated debugger settings to", debuggerSettings)
 
 def cleanHtml(s):

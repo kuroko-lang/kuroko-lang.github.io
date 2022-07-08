@@ -128,10 +128,9 @@ document.getElementById('debugger-single-step').checked = false;
 document.getElementById('debugger-gotoline').checked = false;
 document.getElementById('debugger-quickauto').checked = true;
 function debuggerSettings() {
-  let settings = [];
-  if (document.getElementById('debugger-single-step').checked) settings.push('single=True');
-  if (document.getElementById('debugger-gotoline').checked) settings.push('gotoline=True');
-  emscripten.updateDebuggerSettings(settings);
+  const single = document.getElementById('debugger-single-step').checked;
+  const gotoline = document.getElementById('debugger-gotoline').checked;
+  emscripten.updateDebuggerSettings(single, gotoline);
 }
 
 function openFile(fromInput) {
