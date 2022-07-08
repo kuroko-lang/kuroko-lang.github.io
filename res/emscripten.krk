@@ -204,7 +204,7 @@ def clear(args: list[str]):
 @shellCommand
 def sync(args: list[str]):
     '''@brief Write out the in-memory filesystem to the IndexedDB persistent copy.'''
-    window.eval('FS.syncfs(function (err) { console.log(err); });')
+    window.FS.syncfs(lambda err: window.console.log(err) if err else None)
     syncProjectList()
 
 @shellCommand

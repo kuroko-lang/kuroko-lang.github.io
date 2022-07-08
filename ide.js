@@ -655,24 +655,49 @@ var Module = {
     FS.mount(IDBFS, {}, '/home/web_user');
     FS.mkdir('/scratch');
     FS.mount(IDBFS, {}, '/scratch');
-    FS.mkdir('/usr');
-    FS.mkdir('/usr/local');
-    FS.mkdir('/usr/local/lib');
-    FS.mkdir('/usr/local/lib/kuroko');
-    FS.mkdir('/usr/local/lib/kuroko/syntax');
-    FS.mkdir('/usr/local/lib/kuroko/foo');
-    FS.mkdir('/usr/local/lib/kuroko/foo/bar');
 
-    /* Load source modules from web server */
-    const modules = ["help.krk","collections.krk","json.krk","string.krk","web.krk","dummy.krk","emscripten.krk"];
-    for (const i in modules) {
-      FS.createPreloadedFile('/usr/local/lib/kuroko', modules[i], "/res/" + modules[i], 1, 0)
+    const fs = {
+      usr: {
+        local: {
+          lib: {
+            kuroko: {
+              syntax: {
+                '__init__.krk': true,
+                'highlighter.krk': true,
+              },
+              foo: {
+                bar: {
+                  '__init__.krk': true,
+                  'baz.krk': true,
+                },
+                '__init__.krk': true,
+              },
+              'help.krk': true,
+              'collections.krk': true,
+              'json.krk': true,
+              'string.krk': true,
+              'web.krk': true,
+              'dummy.krk': true,
+              'emscripten.krk': true,
+            }
+          }
+        }
+      }
+    };
+
+    function processFiles(node, parent) {
+      for (const [key, value] of Object.entries(node)) {
+        if (typeof value === 'boolean') {
+          FS.createPreloadedFile(parent, key, '/res/' + key, 1, 0);
+        } else {
+          const path = parent + '/' + key;
+          FS.mkdir(path);
+          processFiles(value, path);
+        }
+      }
     }
-    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', '__init__.krk', '/res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', 'highlighter.krk', '/res/highlighter.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo', '__init__.krk', '/res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', '__init__.krk', '/res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', 'baz.krk', '/res/baz.krk', 1, 0)
+
+    processFiles(fs, '/');
   }],
   postRun: [function() {
     /* Bind krk_call */

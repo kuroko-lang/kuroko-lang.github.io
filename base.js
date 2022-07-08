@@ -13,8 +13,8 @@ var codeSamples = {
   classes: "class Foo(object):\n  def __init__(self):\n    self.bar = 'baz'\n  def frob(self):\n    print(self.bar)\n\nlet foo = Foo()\nfoo.frob()",
   comprehensions: "let lst = [x * 5 for x in range(10)]\nlet dct = {str(x): x for x in lst}\nprint(lst)\nprint(dct)",
   tutorialsource: "import web, fileio\nweb.write(web.codeSample(fileio.open(web.__file__).read()))",
-  loadgist: "import js; js.window.eval(\"fetch('https://gist.githubusercontent.com/klange/396982d00e8fbff80fe6529d47e31e35/raw/').then(r=>{return r.text();}).then(t=>{currentEditor.setValue(t,1);});\")",
-  clear: "import js; js.document.getElementById('container').innerHTML = ''; None"
+  loadgist: "import js\njs.window.fetch('https://gist.githubusercontent.com/klange/396982d00e8fbff80fe6529d47e31e35/raw/').then(lambda r: r.text()).then(lambda t: js.window.currentEditor.setValue(t,1))",
+  clear: "import js\njs.document.getElementById('container').innerHTML = ''\nNone"
 };
 
 document.getElementById("container").innerText = "";
@@ -191,24 +191,40 @@ function insertThis(e) {
 
 var Module = {
   preRun: [function() {
-    FS.mkdir('/usr');
-    FS.mkdir('/usr/local');
-    FS.mkdir('/usr/local/lib');
-    FS.mkdir('/usr/local/lib/kuroko');
-    FS.mkdir('/usr/local/lib/kuroko/syntax');
-    FS.mkdir('/usr/local/lib/kuroko/foo');
-    FS.mkdir('/usr/local/lib/kuroko/foo/bar');
+    const fs = { usr: { local: { lib: { kuroko: {
+      syntax: {
+        '__init__.krk': 1,
+        'highlighter.krk': 1,
+      },
+      foo: {
+        bar: {
+          '__init__.krk': 1,
+          'baz.krk': 1,
+        },
+        '__init__.krk': 1,
+      },
+      'help.krk': 1,
+      'collections.krk': 1,
+      'json.krk': 1,
+      'string.krk': 1,
+      'web.krk': 1,
+      'dummy.krk': 1,
+      'emscripten.krk': 1,
+    }}}}};
 
-    /* Load source modules from web server */
-    const modules = ["help.krk","collections.krk","json.krk","string.krk","web.krk","dummy.krk"];
-    for (const i in modules) {
-      FS.createPreloadedFile('/usr/local/lib/kuroko', modules[i], "res/" + modules[i], 1, 0)
+    function processFiles(node, parent) {
+      for (const [key, value] of Object.entries(node)) {
+        if (value === 1) {
+          FS.createPreloadedFile(parent, key, '/res/' + key, 1, 0);
+        } else {
+          const path = parent + '/' + key;
+          FS.mkdir(path);
+          processFiles(value, path);
+        }
+      }
     }
-    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', '__init__.krk', 'res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/syntax', 'highlighter.krk', 'res/highlighter.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo', '__init__.krk', 'res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', '__init__.krk', 'res/init.krk', 1, 0)
-    FS.createPreloadedFile('/usr/local/lib/kuroko/foo/bar', 'baz.krk', 'res/baz.krk', 1, 0)
+
+    processFiles(fs, '/');
   }],
   postRun: [function() {
     /* Bind krk_call */
