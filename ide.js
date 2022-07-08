@@ -87,13 +87,11 @@ var autoStepping = false;
 var autoStepCallback = null;
 
 function doAutostep() {
-  if (!document.getElementById('nav-autostep').classList.contains('debugging')) {
-    stopAutostep();
-    return;
+  if (document.getElementById('nav-autostep').classList.contains('debugging')) {
+    stepDebugger();
   }
-  stepDebugger();
   autoStepCallback = window.setTimeout(doAutostep,
-    document.getElementById('debugger-quickauto').checked ? 100 : 500
+    document.getElementById('debugger-quickauto').checked ? 20 : 500
   );
 }
 
