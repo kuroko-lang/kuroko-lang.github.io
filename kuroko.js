@@ -1540,7 +1540,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  1839: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
+  1831: function() {if (_idbfsSuccess) { FS.syncfs(function (err) { console.log(err); _craftMessage('F',true); }); }}
 };
 function check_status(){ return Module.awakeStatus; }
 function get_stdin_line(){ var bytes = lengthBytesUTF8(Module.stdin_line)+1; var heapObj = _malloc(bytes); stringToUTF8(Module.stdin_line, heapObj, bytes); return heapObj; }

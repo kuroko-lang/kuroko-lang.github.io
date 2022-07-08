@@ -30,9 +30,12 @@ footer a {
   white-space: pre-wrap;
   counter-reset: line-no;
   line-height: normal;
+  overflow-y: hidden;
 }
 #container > div.flex-container > .prompt {
   color: #e6e6e6;
+  position: relative;
+  max-height: 0px;
 }
 #container > div.flex-container > .ace_editor {
   flex: auto;

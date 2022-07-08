@@ -39,17 +39,18 @@ var termColors256 = [
     '#6c6c6c', '#767676', '#808080', '#8a8a8a', '#949494', '#9e9e9e', '#a8a8a8', '#b2b2b2', '#bcbcbc', '#c6c6c6', '#d0d0d0',
     '#dadada', '#e4e4e4', '#eeeeee'
 ];
+var scrollToBottom;
 
 function runInternal(path) {
   showSpinner();
   window.setTimeout(function() {
-    result = krk_call('emscripten.executeFile("' + path + '")');
+    result = emscripten.executeFile(path)
   }, 50);
 }
 
 function stopWorker() {
   stopAutostep();
-  krk_call('emscripten.stopWorker()');
+  emscripten.stopWorker();
 }
 
 document.getElementById("output-container").innerText = "";
@@ -80,25 +81,6 @@ function showSpinner() {
 
   document.getElementById('run-button').classList.add('run-pulse');
   document.getElementById('stop-button').classList.add('running');
-}
-
-function dismissSpinner() {
-  document.getElementById('nav-run').classList.remove('debugging');
-  document.getElementById('nav-stop').classList.remove('debugging');
-  document.getElementById('nav-continue').classList.remove('debugging');
-  document.getElementById('nav-step').classList.remove('debugging');
-  document.getElementById('nav-autostep').classList.remove('debugging');
-
-  document.getElementById('run-button').classList.remove('run-pulse');
-  document.getElementById('stop-button').classList.remove('running');
-}
-
-function showDebugger() {
-  document.getElementById('nav-run').classList.add('debugging');
-  document.getElementById('nav-stop').classList.add('debugging');
-  document.getElementById('nav-continue').classList.add('debugging');
-  document.getElementById('nav-step').classList.add('debugging');
-  document.getElementById('nav-autostep').classList.add('debugging');
 }
 
 var autoStepping = false;
@@ -135,11 +117,11 @@ function autostepDebugger() {
 }
 
 function stepDebugger() {
-  krk_call('emscripten.postDebuggerMessage("step")');
+  emscripten.postDebuggerMessage('step');
 }
 
 function continueDebugger() {
-  krk_call('emscripten.postDebuggerMessage("continue")');
+  emscripten.postDebuggerMessage('continue');
 }
 
 document.getElementById('debugger-single-step').checked = false;
@@ -149,7 +131,7 @@ function debuggerSettings() {
   let settings = [];
   if (document.getElementById('debugger-single-step').checked) settings.push('single=True');
   if (document.getElementById('debugger-gotoline').checked) settings.push('gotoline=True');
-  krk_call('emscripten.updateDebuggerSettings(' + settings + ')');
+  emscripten.updateDebuggerSettings(settings);
 }
 
 function openFile(fromInput) {
@@ -160,7 +142,7 @@ function openFile(fromInput) {
       /* Need to make a tab */
       FS.writeFile('/scratch/' + file.name, reader.result);
       FS.syncfs(function(err){});
-      openEmscriptenFile('/scratch/' + file.name);
+      emscripten.openFile('/scratch/' + file.name);
     };
     reader.readAsText(file);
   }, 100);
@@ -172,7 +154,7 @@ function addTab(tabHtml, bodyHtml) {
   newDiv.firstChild.addEventListener('shown.bs.tab', function (e) {
     window.setTimeout(function() {
       window.document.title = e.target.querySelector('.tab-title').innerText + " | Kuroko IDE";
-      krk_call('emscripten.reportShown("' + e.target.id + '")')
+      emscripten.reportShown(e.target.id);
     }, 200);
   });
   let tabbar = document.getElementById("left-pane-tab");
@@ -216,7 +198,7 @@ function createEditor(containerId="editor",filePath=null) {
     document.getElementById(containerId).parentNode.querySelector('.status-column').innerText = position.column + 1;
   });
   editor.session.getDocument().on("change", function() {
-    krk_call('emscripten.reportChange("' + containerId + '")');
+    emscripten.reportChange(containerId);
   });
   document.getElementById(containerId)._aceInstance = editor;
   editor._filepath = filePath;
@@ -238,19 +220,48 @@ var codeHistory = [];
 var historySpot = 0;
 function enterCallback(editor) {
   var value = editor.getValue();
-  // if ((value.endsWith(":") || value.endsWith("\\")) || (value.split("\n").length > 1 && value.replace(/.*\n */g,"").length > 0)) {
-  //   editor.insert("\n");
-  //   return;
-  // }
-  var value = editor.getValue();
+  if ((value.endsWith(":") || value.endsWith("\\")) || (value.split("\n").length > 1 && value.replace(/.*\n */g,"").length > 0)) {
+    editor.insert("\n");
+    return;
+  }
   if (!codeHistory.length || codeHistory[codeHistory.length-1] != value) {
     codeHistory.push(value);
   }
   historySpot = codeHistory.length;
-  window.setTimeout(function() {
-    krk_call('emscripten.em_shell("""' + value.replaceAll('\\','\\\\').replaceAll('"','\\"') + '""")');
-  }, 50);
+  // Freeze the editor.
+  editor.renderer.off("afterRender", scrollToBottom);
+  editor.setReadOnly(true);
+  editor.renderer.$cursorLayer.element.style.display = "none";
+
+  // Clone the read-only editor
+  const outText = editor.container.cloneNode(true);
   editor.setValue('',1);
+  const frozen = document.createElement("div");
+  frozen.className = 'prompt-frozen';
+  const prompt = document.getElementById("shell-prompt").cloneNode(true);
+  prompt.removeAttribute('id');
+  prompt.className = 'prompt-string';
+  frozen.appendChild(prompt);
+  const inner = document.createElement('div');
+  const lines = outText.getElementsByClassName("ace_line");
+  const len = lines.length;
+  for (var i = 0; i < len; i = i + 1) {
+    inner.appendChild(lines[0]);
+  }
+  frozen.appendChild(inner);
+  document.getElementById('output-container').appendChild(frozen);
+
+  // Restore the editor and clear it.
+  editor.renderer.$cursorLayer.element.style.display = "unset";
+  editor.setReadOnly(false);
+  editor.renderer.on('afterRender',scrollToBottom);
+  editor.container.parentElement.classList.add('hidden-prompt');
+
+  // Call shell in async
+  window.setTimeout(function() {
+    emscripten.em_shell(value);
+    editor.container.parentElement.classList.remove('hidden-prompt');
+  }, 50);
 }
 function historyBackIfOneLine(editor) {
   var value = editor.getValue();
@@ -278,6 +289,9 @@ function historyForwardIfOneLine(editor) {
     editor.moveCursorTo(current.row + 1, current.column, true);
   }
 }
+function clearOutput(editor) {
+  document.getElementById('output-container').innerText = '';
+}
 function createTerminalPrompt() {
   let newDiv = document.createElement("div");
   newDiv.className = "editor";
@@ -298,6 +312,10 @@ function createTerminalPrompt() {
   editor.commands.bindKey("Return", enterCallback);
   editor.commands.bindKey("Up", historyBackIfOneLine);
   editor.commands.bindKey("Down", historyForwardIfOneLine);
+  editor.commands.bindKey("Ctrl-L", clearOutput);
+  scrollToBottom = editor.renderer.on('afterRender', function() {
+    newDiv.scrollIntoView();
+  });
   return editor;
 }
 
@@ -305,7 +323,7 @@ function saveEditor(editor) {
   let editorId = editor.renderer.getContainerElement().parentNode.id;
   FS.writeFile(editor._filepath, editor.getValue());
   FS.syncfs(function(err){});
-  krk_call('emscripten.reportSaved("' + editorId + '")');
+  emscripten.reportSaved(editorId)
 }
 
 function addText(stateVar, mode, text, divId) {
@@ -406,7 +424,7 @@ function insertCode(obj, runIt=true) {
   window.setTimeout(function() {
     FS.writeFile('/scratch/' + name, code);
     FS.syncfs(function(err){});
-    openEmscriptenFile('/scratch/' + name);
+    emscripten.openFile('/scratch/' + name);
     if (runIt) {
       window.setTimeout(function() { runCode(currentEditor()); }, 100);
     }
@@ -418,9 +436,9 @@ function closeTab(tabId) {
   let tabContents = document.getElementById(tabId);
   let tabHeader   = document.getElementById(tabId + '-tab');
 
-  if (krk_call('emscripten.tabClosed("' + tabId + '")') == 'False') {
+  if (emscripten.tabClosed(tabId) === false) {
     if (!confirm("File is modified, close anyway? (Unsaved changes will be lost.)")) return;
-    krk_call('emscripten.tabClosed("' + tabId + '", True)');
+    emscripten.tabClosed(tabId,true)
   }
 
   tabContents.remove();
@@ -451,14 +469,6 @@ function toggleDirectory(element) {
   }
 }
 
-function openEmscriptenFile(path) {
-  krk_call('emscripten.openFile("' + path + '")')
-}
-
-function ideDebug(s) {
-  addText(debugState, 'printed', s, 'ide-debug');
-}
-
 function hideContextMenu(e) {
   window.removeEventListener("click", hideContextMenu);
   let dropdown = document.getElementById('file-context-menu');
@@ -467,7 +477,7 @@ function hideContextMenu(e) {
 
 var contextMenuPath = null;
 function showContextMenu(path) {
-  krk_call('emscripten.setupContextMenu("' + path + '")');
+  emscripten.setupContextMenu(path)
   contextMenuPath = path;
   let e = window.event;
   let dropdown = document.getElementById('file-context-menu');
@@ -512,8 +522,8 @@ function createProject() {
   }
   FS.writeFile(path + '/main.krk','# main.krk\n');
   FS.syncfs(function (err) {});
-  krk_call('emscripten.syncProjectList()')
-  openEmscriptenFile(path + '/main.krk');
+  emscripten.syncProjectList()
+  emscripten.openFile(path + '/main.krk');
 }
 
 function makeFolder(elem) {
@@ -521,7 +531,7 @@ function makeFolder(elem) {
   let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
   FS.mkdir(source + '/' + dirName);
   FS.syncfs(function (err) {});
-  krk_call('emscripten.syncProjectList()')
+  emscripten.syncProjectList()
 }
 
 function makeFile(elem) {
@@ -529,7 +539,7 @@ function makeFile(elem) {
   let source = elem.parentNode.parentNode.parentNode.querySelector('a').getAttribute('em-path');
   FS.writeFile(source + '/' + pathName, '');
   FS.syncfs(function (err) {});
-  krk_call('emscripten.syncProjectList()')
+  emscripten.syncProjectList();
 }
 
 function newFolder(rootPath=null) {
@@ -543,7 +553,7 @@ function newFolder(rootPath=null) {
       <svg class="icon-sm" viewBox="0 0 24 24" style="color: #e6ce6e"><use href="#icon-folder"></use></svg>
       <input></input>
       <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFolder(this.parentNode)"><use href="#icon-check"></use></svg>
-      <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.syncProjectList()');"><use href="#icon-x"></use></svg>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="emscripten.syncProjectList();"><use href="#icon-x"></use></svg>
     </form>
   `;
   ul.appendChild(newLi);
@@ -560,7 +570,7 @@ function newFile(rootPath=null) {
       <svg class="icon-sm" viewBox="0 0 24 24" style="color: red;"><use href="#icon-code"></use></svg>
       <input ></input>
       <svg class="icon-sm" viewBox="0 0 24 24" onclick="makeFile(this.parentNode)"><use href="#icon-check"></use></svg>
-      <svg class="icon-sm" viewBox="0 0 24 24" onclick="krk_call('emscripten.syncProjectList()');"><use href="#icon-x"></use></svg>
+      <svg class="icon-sm" viewBox="0 0 24 24" onclick="emscripten.syncProjectList();"><use href="#icon-x"></use></svg>
     </form>
   `;
   ul.appendChild(newLi);
@@ -631,14 +641,14 @@ function onHashChange() {
       }).then(t => {
         FS.writeFile('/scratch/' + hashElements.slice(1).join('_') + '.krk', t);
         FS.syncfs(function (err) {});
-        openEmscriptenFile('/scratch/' + hashElements.slice(1).join('_') + '.krk');
+        emscripten.openFile('/scratch/' + hashElements.slice(1).join('_') + '.krk');
       });
   }
 }
 
 window.addEventListener("beforeunload", function(e) {
   /* Ask if there are any unsaved files */
-  if (krk_call('emscripten.hasUnsaved()') == 'True') {
+  if (emscripten.hasUnsaved()) {
     if (!confirm('Some files are not saved. Are you sure you want to close the editor?')) {
       e.preventDefault();
     }
@@ -714,7 +724,7 @@ var Module = {
 
     FS.syncfs(true, function (err) {
       if (!err) {
-        krk_call("emscripten.filesystemReady()");
+        emscripten.filesystemReady()
       } else {
         console.log(err);
       }

@@ -133,7 +133,7 @@ function createEditor(initial=false) {
   newDiv.className = "editor";
   let prompt = document.createElement("div");
   prompt.className = "prompt";
-  prompt.innerText = '>>> ';
+  prompt.innerText = '>>> \n' + '  > \n'.repeat(1000);
   let editorFlex = document.createElement("div");
   editorFlex.className = "flex-container";
   editorFlex.appendChild(prompt);
