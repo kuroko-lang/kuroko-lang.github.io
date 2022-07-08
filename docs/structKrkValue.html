@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a874e42a5367b49a012a592e2fb8fb0b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a> (<a class="el" href="structKrkValue.html">KrkValue</a> a, <a class="el" href="structKrkValue.html">KrkValue</a> b)</td></tr>
 <tr class="memdesc:a874e42a5367b49a012a592e2fb8fb0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two values by identity.  <a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">More...</a><br /></td></tr>
 <tr class="separator:a874e42a5367b49a012a592e2fb8fb0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba44fd5f3070ef118052ae6cd7405281"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#aba44fd5f3070ef118052ae6cd7405281">krk_valuesSameOrEqual</a> (<a class="el" href="structKrkValue.html">KrkValue</a> a, <a class="el" href="structKrkValue.html">KrkValue</a> b)</td></tr>
+<tr class="memdesc:aba44fd5f3070ef118052ae6cd7405281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two values by identity, then by equality.  <a href="structKrkValue.html#aba44fd5f3070ef118052ae6cd7405281">More...</a><br /></td></tr>
+<tr class="separator:aba44fd5f3070ef118052ae6cd7405281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07c5e8c5653bff1b6fc876cc24b0ff15"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a> (<a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
 <tr class="memdesc:a07c5e8c5653bff1b6fc876cc24b0ff15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the type of a value.  <a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">More...</a><br /></td></tr>
 <tr class="separator:a07c5e8c5653bff1b6fc876cc24b0ff15"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +203,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An indicator of how the result should be obtained: 1: The VM must be resumed to run managed code. 2: The callable was a native function and result should be popped now. Else: The call failed. An exception may have already been set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00958">958</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01028">1028</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -230,7 +233,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the value's type's class object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00539">539</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00594">594</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -301,7 +304,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if falsey, 0 if truthy </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01191">1191</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01261">1261</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -342,7 +345,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if <code>obj</code> is an instance of <code>type</code> or of a subclass of <code>type</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00580">580</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00635">635</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -454,7 +457,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01568">1568</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01639">1639</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -494,7 +497,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02274">2274</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02381">2381</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -535,7 +538,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02227">2227</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02334">2334</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -615,7 +618,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02337">2337</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02480">2480</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -649,7 +652,39 @@ Public Member Functions</h2></td></tr>
 <p>Performs a strict comparison between two values, comparing their identities. For primitive values, this is generally the same as comparing by equality. For objects, this compares pointer values directly.</p>
 <dl class="section return"><dt>Returns</dt><dd>1 if values represent the same object or value, 0 otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="value_8c_source.html#l00142">142</a> of file <a class="el" href="value_8c_source.html">value.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="value_8c_source.html#l00145">145</a> of file <a class="el" href="value_8c_source.html">value.c</a>.</p>
+
+</div>
+</div>
+<a id="aba44fd5f3070ef118052ae6cd7405281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba44fd5f3070ef118052ae6cd7405281">&#9670;&nbsp;</a></span>krk_valuesSameOrEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_valuesSameOrEqual </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compare two values by identity, then by equality. </p>
+<p>More efficient than just <code>krk_valuesSame</code> followed by <code>krk_valuesEqual</code> </p>
+<dl class="section return"><dt>Returns</dt><dd>1 if values represent the same object or value, 0 otherwise. </dd></dl>
 
 </div>
 </div>

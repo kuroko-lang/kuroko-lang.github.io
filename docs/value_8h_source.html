@@ -168,75 +168,78 @@ $(function() {
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(<a class="code" href="structKrkValue.html">KrkValue</a> a, <a class="code" href="structKrkValue.html">KrkValue</a> b);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkValue.html">KrkValue</a> krk_parse_int(<span class="keyword">const</span> <span class="keywordtype">char</span> * start, <span class="keywordtype">size_t</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> base);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="unionKrkValueDbl.html">  185</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> val;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">double</span>   dbl;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;} <a class="code" href="unionKrkValueDbl.html">KrkValueDbl</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#define NONE_VAL(value)     ((KrkValue)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#define NOTIMPL_VAL(value)  ((KrkValue)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_BOOLEAN))</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#define INTEGER_VAL(value)  ((KrkValue)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_INTEGER))</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define KWARGS_VAL(value)   ((KrkValue)((uint32_t)(value) | KRK_VAL_MASK_KWARGS))</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#define OBJECT_VAL(value)   ((KrkValue)(((uintptr_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_OBJECT))</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#define HANDLER_VAL(ty,ta)  ((KrkValue)((uint32_t)((((uint16_t)ty) &lt;&lt; 16) | ((uint16_t)ta)) | KRK_VAL_MASK_HANDLER))</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define FLOATING_VAL(value) (((KrkValueDbl){.dbl = (value)}).val)</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#define KRK_VAL_TYPE(value) ((value) &gt;&gt; 48)</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define KRK_IX(value)  ((uint64_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define KRK_SX(value)  ((uint64_t)((value) &amp; 0x800000000000))</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define AS_INTEGER(value) ((krk_integer_type)(KRK_SX(value) ? (KRK_IX(value) | KRK_VAL_MASK_NONE) : (KRK_IX(value))))</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define AS_BOOLEAN(value) AS_INTEGER(value)</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#define AS_NOTIMPL(value)   ((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#define AS_HANDLER(value)   ((uint32_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#define AS_OBJECT(value)    ((KrkObj*)(uintptr_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#define AS_FLOATING(value)  (((KrkValueDbl){.val = (value)}).dbl)</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structKrkValue.html#aba44fd5f3070ef118052ae6cd7405281">krk_valuesSameOrEqual</a>(<a class="code" href="structKrkValue.html">KrkValue</a> a, <a class="code" href="structKrkValue.html">KrkValue</a> b);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkValue.html">KrkValue</a> krk_parse_int(<span class="keyword">const</span> <span class="keywordtype">char</span> * start, <span class="keywordtype">size_t</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> base);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="unionKrkValueDbl.html">  195</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> val;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">double</span>   dbl;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;} <a class="code" href="unionKrkValueDbl.html">KrkValueDbl</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#define NONE_VAL(value)     ((KrkValue)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define NOTIMPL_VAL(value)  ((KrkValue)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define BOOLEAN_VAL(value)  ((KrkValue)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_BOOLEAN))</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define INTEGER_VAL(value)  ((KrkValue)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_INTEGER))</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define KWARGS_VAL(value)   ((KrkValue)((uint32_t)(value) | KRK_VAL_MASK_KWARGS))</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#define OBJECT_VAL(value)   ((KrkValue)(((uintptr_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_OBJECT))</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#define HANDLER_VAL(ty,ta)  ((KrkValue)((uint32_t)((((uint16_t)ty) &lt;&lt; 16) | ((uint16_t)ta)) | KRK_VAL_MASK_HANDLER))</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#define FLOATING_VAL(value) (((KrkValueDbl){.dbl = (value)}).val)</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#define KRK_VAL_TYPE(value) ((value) &gt;&gt; 48)</span></div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">/* This is a silly optimization: because of the arrangement of the identifying</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> * bits, (TYPE &amp; MASK_HANDLER) == MASK_BOOLEAN can be used to tell if something</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> * is either an integer or a boolean - and booleans are also integers, so this</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * is how we check if something is an integer in the general case; for everything</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * else, we check against MASK_NONE because it sets all the identifying bits. */</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   ((((value) &gt;&gt; 48L) &amp; (KRK_VAL_MASK_HANDLER &gt;&gt; 48L)) == (KRK_VAL_MASK_BOOLEAN &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#define IS_BOOLEAN(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_BOOLEAN &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">#define IS_NONE(value)      (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_NONE    &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">#define IS_HANDLER(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_HANDLER &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#define IS_OBJECT(value)    (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_OBJECT  &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#define IS_KWARGS(value)    (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_KWARGS  &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#define IS_NOTIMPL(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_NOTIMPL &gt;&gt; 48L))</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/* ... and as we said above, if any of the MASK_NAN bits are unset, it&#39;s a float. */</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#define IS_FLOATING(value)  (((value) &amp; KRK_VAL_MASK_NAN) != KRK_VAL_MASK_NAN)</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#define AS_HANDLER_TYPE(value)    (AS_HANDLER(value) &gt;&gt; 16)</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#define AS_HANDLER_TARGET(value)  (AS_HANDLER(value) &amp; 0xFFFF)</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#define IS_TRY_HANDLER(value)     (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_TRY)</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define IS_WITH_HANDLER(value)    (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_WITH)</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#define IS_RAISE_HANDLER(value)   (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_RAISE)</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#define IS_EXCEPT_HANDLER(value)  (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_FILTER_EXCEPT)</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#define KWARGS_SINGLE (INT32_MAX)</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#define KWARGS_LIST   (INT32_MAX-1)</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#define KWARGS_DICT   (INT32_MAX-2)</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#define KWARGS_NIL    (INT32_MAX-3)</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#define KWARGS_UNSET  (0)</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#define PRIkrk_int &quot;%&quot; PRId64</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#define PRIkrk_hex &quot;%&quot; PRIx64</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#define KRK_IX(value)  ((uint64_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#define KRK_SX(value)  ((uint64_t)((value) &amp; 0x800000000000))</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#define AS_INTEGER(value) ((krk_integer_type)(KRK_SX(value) ? (KRK_IX(value) | KRK_VAL_MASK_NONE) : (KRK_IX(value))))</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#define AS_BOOLEAN(value) AS_INTEGER(value)</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#define AS_NOTIMPL(value)   ((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#define AS_HANDLER(value)   ((uint32_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">#define AS_OBJECT(value)    ((KrkObj*)(uintptr_t)((value) &amp; KRK_VAL_MASK_LOW))</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">#define AS_FLOATING(value)  (((KrkValueDbl){.val = (value)}).dbl)</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">/* This is a silly optimization: because of the arrangement of the identifying</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment"> * bits, (TYPE &amp; MASK_HANDLER) == MASK_BOOLEAN can be used to tell if something</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment"> * is either an integer or a boolean - and booleans are also integers, so this</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment"> * is how we check if something is an integer in the general case; for everything</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment"> * else, we check against MASK_NONE because it sets all the identifying bits. */</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#define IS_INTEGER(value)   ((((value) &gt;&gt; 48L) &amp; (KRK_VAL_MASK_HANDLER &gt;&gt; 48L)) == (KRK_VAL_MASK_BOOLEAN &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#define IS_BOOLEAN(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_BOOLEAN &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#define IS_NONE(value)      (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_NONE    &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define IS_HANDLER(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_HANDLER &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#define IS_OBJECT(value)    (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_OBJECT  &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#define IS_KWARGS(value)    (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_KWARGS  &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#define IS_NOTIMPL(value)   (((value) &gt;&gt; 48L) == (KRK_VAL_MASK_NOTIMPL &gt;&gt; 48L))</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">/* ... and as we said above, if any of the MASK_NAN bits are unset, it&#39;s a float. */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#define IS_FLOATING(value)  (((value) &amp; KRK_VAL_MASK_NAN) != KRK_VAL_MASK_NAN)</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#define AS_HANDLER_TYPE(value)    (AS_HANDLER(value) &gt;&gt; 16)</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#define AS_HANDLER_TARGET(value)  (AS_HANDLER(value) &amp; 0xFFFF)</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#define IS_TRY_HANDLER(value)     (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_TRY)</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#define IS_WITH_HANDLER(value)    (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_WITH)</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#define IS_RAISE_HANDLER(value)   (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_RAISE)</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#define IS_EXCEPT_HANDLER(value)  (IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_FILTER_EXCEPT)</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#define KWARGS_SINGLE (INT32_MAX)</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#define KWARGS_LIST   (INT32_MAX-1)</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">#define KWARGS_DICT   (INT32_MAX-2)</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#define KWARGS_NIL    (INT32_MAX-3)</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#define KWARGS_UNSET  (0)</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#define PRIkrk_int &quot;%&quot; PRId64</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#define PRIkrk_hex &quot;%&quot; PRIx64</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructKrkValue_html_aba44fd5f3070ef118052ae6cd7405281"><div class="ttname"><a href="structKrkValue.html#aba44fd5f3070ef118052ae6cd7405281">KrkValue::krk_valuesSameOrEqual</a></div><div class="ttdeci">int krk_valuesSameOrEqual(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity, then by equality.</div></div>
 <div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00095">object.h:95</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a728694365ca28029a1f0f06bc1f449c6"><div class="ttname"><a href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">KrkValueArray::krk_writeValueArray</a></div><div class="ttdeci">void krk_writeValueArray(KrkValueArray *array, KrkValue value)</div><div class="ttdoc">Add a value to a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00015">value.c:15</a></div></div>
 <div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00041">object.h:41</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a21803c1b5e958b8935f51c162c70c090"><div class="ttname"><a href="structKrkValueArray.html#a21803c1b5e958b8935f51c162c70c090">KrkValueArray::values</a></div><div class="ttdeci">KrkValue * values</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00082">value.h:82</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="aunionKrkValueDbl_html"><div class="ttname"><a href="unionKrkValueDbl.html">KrkValueDbl</a></div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00185">value.h:185</a></div></div>
+<div class="ttc" id="aunionKrkValueDbl_html"><div class="ttname"><a href="unionKrkValueDbl.html">KrkValueDbl</a></div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00195">value.h:195</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00081">value.h:81</a></div></div>
 <div class="ttc" id="avalue_8h_html_a50e8074e590357d82386d513c5272575"><div class="ttname"><a href="value_8h.html#a50e8074e590357d82386d513c5272575">KrkValueType</a></div><div class="ttdeci">KrkValueType</div><div class="ttdoc">Tag enum for basic value types.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00025">value.h:25</a></div></div>
-<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00142">value.c:142</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00145">value.c:145</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a6d3945ff31d805a2a9e11b9765ece7ba"><div class="ttname"><a href="structKrkValue.html#a6d3945ff31d805a2a9e11b9765ece7ba">KrkValue::krk_printValue</a></div><div class="ttdeci">void krk_printValue(FILE *f, KrkValue value)</div><div class="ttdoc">Print a string representation of a value.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00031">value.c:31</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a205e2953ccc34dfb5da424c06d6c836b"><div class="ttname"><a href="structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b">KrkValueArray::capacity</a></div><div class="ttdeci">size_t capacity</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00080">value.h:80</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a67f7c662704ffa0fdc9ae4a36a321634"><div class="ttname"><a href="structKrkValueArray.html#a67f7c662704ffa0fdc9ae4a36a321634">KrkValueArray::krk_freeValueArray</a></div><div class="ttdeci">void krk_freeValueArray(KrkValueArray *array)</div><div class="ttdoc">Release relesources used by a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00026">value.c:26</a></div></div>

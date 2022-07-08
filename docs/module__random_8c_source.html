@@ -134,15 +134,15 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    w = 88675123;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;KRK_FUNC(random,{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;KRK_Function(random) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    FUNCTION_TAKES_NONE();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> r = (double)_rand() / (double)(RAND_MAX);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(r);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;})</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;KRK_FUNC(seed,{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;KRK_Function(seed) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    FUNCTION_TAKES_AT_MOST(1);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> seed;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
@@ -157,30 +157,31 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    _srand(seed);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;})</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> krk_module_onload_random(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * module = <a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;moduleClass);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(module));</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(module, <span class="stringliteral">&quot;Functions for generating pseudo-random numbers.&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    BIND_FUNC(module, random);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    BIND_FUNC(module, seed);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    FUNC_NAME(krk,seed)(0,NULL,0);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> krk_module_onload_random(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structKrkInstance.html">KrkInstance</a> * module = <a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;moduleClass);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(module));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(module, <span class="stringliteral">&quot;Functions for generating pseudo-random numbers.&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    BIND_FUNC(module, random);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    BIND_FUNC(module, seed);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    FUNC_NAME(krk,seed)(0,NULL,0);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00247">object.h:247</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00251">object.h:251</a></div></div>
 <div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00240">vm.h:240</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00420">vm.c:420</a></div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00431">vm.c:431</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00407">vm.c:407</a></div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00418">vm.c:418</a></div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
-<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00301">util.h:301</a></div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00283">util.h:283</a></div></div>
 <div class="ttc" id="astructKrkInstance_html_a3d0bf09b92b2d6a02685b143f4438e01"><div class="ttname"><a href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">KrkInstance::krk_newInstance</a></div><div class="ttdeci">KrkInstance * krk_newInstance(KrkClass *_class)</div><div class="ttdoc">Create a new instance of the given class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00326">object.c:326</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>

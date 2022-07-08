@@ -125,8 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8f407651c9df700ede0485e9a8d9db9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkTuple.html">KrkTuple</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html#ae8f407651c9df700ede0485e9a8d9db9">krk_newTuple</a> (size_t length)</td></tr>
 <tr class="memdesc:ae8f407651c9df700ede0485e9a8d9db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new tuple.  <a href="structKrkTuple.html#ae8f407651c9df700ede0485e9a8d9db9">More...</a><br /></td></tr>
 <tr class="separator:ae8f407651c9df700ede0485e9a8d9db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6492875c044fd8723ca7814ac00929d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html#ae6492875c044fd8723ca7814ac00929d">krk_tuple_of</a> (int argc, const <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
-<tr class="memdesc:ae6492875c044fd8723ca7814ac00929d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a tuple object.  <a href="structKrkTuple.html#ae6492875c044fd8723ca7814ac00929d">More...</a><br /></td></tr>
+<tr class="memitem:ae6492875c044fd8723ca7814ac00929d"><td class="memItemLeft" align="right" valign="top"><a id="ae6492875c044fd8723ca7814ac00929d"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTuple.html#ae6492875c044fd8723ca7814ac00929d">krk_tuple_of</a> (int argc, const <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
+<tr class="memdesc:ae6492875c044fd8723ca7814ac00929d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a tuple object. <br /></td></tr>
 <tr class="separator:ae6492875c044fd8723ca7814ac00929d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -164,7 +165,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Immutable sequence of arbitrary values. </p>
 <p>Tuples are fixed-length non-mutable collections of values intended for use in situations where the flexibility of a list is not needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00289">289</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00293">293</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae8f407651c9df700ede0485e9a8d9db9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8f407651c9df700ede0485e9a8d9db9">&#9670;&nbsp;</a></span>krk_newTuple()</h2>
@@ -186,45 +187,6 @@ Protected Attributes</h2></td></tr>
 <p>Creates a tuple object with the request space preallocated. The actual length of the tuple must be updated after places values within it by setting <code>value.count</code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00340">340</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
-
-</div>
-</div>
-<a id="ae6492875c044fd8723ca7814ac00929d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6492875c044fd8723ca7814ac00929d">&#9670;&nbsp;</a></span>krk_tuple_of()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> krk_tuple_of </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
-          <td class="paramname"><em>argv</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>hasKw</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create a tuple object. </p>
-<p>This is the native function bound to <code>tupleOf</code> </p>
-
-<p class="definition">Definition at line <a class="el" href="obj__tuple_8c_source.html#l00033">33</a> of file <a class="el" href="obj__tuple_8c_source.html">obj_tuple.c</a>.</p>
 
 </div>
 </div>

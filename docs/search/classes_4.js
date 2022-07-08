@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['file_506',['File',['../structFile.html',1,'']]],
-  ['functionheader_507',['FunctionHeader',['../structFunctionHeader.html',1,'']]]
+  ['exceptions_512',['Exceptions',['../structExceptions.html',1,'']]]
 ];

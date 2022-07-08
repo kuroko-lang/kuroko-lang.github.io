@@ -116,36 +116,36 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define IS_type(o) (1)</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define AS_type(o) (o)</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define CURRENT_CTYPE KrkValue</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;KRK_METHOD(type,__init__,{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;KRK_Method(type,__init__) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(<a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(argv[1]));</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;})</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;#undef IS_type</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;#undef AS_type</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;#undef CURRENT_CTYPE</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#undef IS_type</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#undef AS_type</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#undef CURRENT_CTYPE</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;#define IS_type(o) (IS_CLASS(o))</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;#define AS_type(o) (AS_CLASS(o))</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define IS_type(o) (IS_CLASS(o))</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define AS_type(o) (AS_CLASS(o))</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;#define CURRENT_CTYPE <a class="code" href="structKrkClass.html">KrkClass</a> *</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define CURRENT_CTYPE KrkClass *</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;KRK_METHOD(type,__base__,{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;KRK_Method(type,__base__) {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>-&gt;base ? OBJECT_VAL(self-&gt;base) : NONE_VAL();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;})</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;KRK_METHOD(type,__name__,{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;KRK_Method(type,__name__) {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>-&gt;name ? OBJECT_VAL(self-&gt;name) : NONE_VAL();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;})</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;KRK_METHOD(type,__file__,{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;KRK_Method(type,__file__) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>-&gt;filename ? OBJECT_VAL(self-&gt;filename) : NONE_VAL();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;})</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;KRK_METHOD(type,__doc__,{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;KRK_Method(type,__doc__) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>-&gt;docstring ? OBJECT_VAL(self-&gt;docstring) : NONE_VAL();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;})</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;KRK_METHOD(type,__str__,{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;KRK_Method(type,__str__) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">/* Determine if this class has a module */</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> module = NONE_VAL();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(&amp;self-&gt;methods, OBJECT_VAL(S(<span class="stringliteral">&quot;__module__&quot;</span>)), &amp;module);</div>
@@ -166,9 +166,9 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="structKrkString.html">KrkString</a> * out = <a class="code" href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">krk_copyString</a>(tmp,l);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    free(tmp);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(out);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;})</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;KRK_METHOD(type,__subclasses__,{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;KRK_Method(type,__subclasses__) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> myList = <a class="code" href="structKrkList.html#a93378d65c43bdad11671ac6dbdb3034d">krk_list_of</a>(0,NULL,0);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(myList);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
@@ -179,7 +179,7 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;})</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;_noexport</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> _createAndBind_type(<span class="keywordtype">void</span>) {</div>
@@ -207,23 +207,23 @@ $(function() {
 <div class="ttc" id="astructKrkTableEntry_html"><div class="ttname"><a href="structKrkTableEntry.html">KrkTableEntry</a></div><div class="ttdoc">One (key,value) pair in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00020">table.h:20</a></div></div>
 <div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00095">object.h:95</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00420">vm.c:420</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00145">table.c:145</a></div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00431">vm.c:431</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00155">table.c:155</a></div></div>
 <div class="ttc" id="astructKrkValueArray_html_a728694365ca28029a1f0f06bc1f449c6"><div class="ttname"><a href="structKrkValueArray.html#a728694365ca28029a1f0f06bc1f449c6">KrkValueArray::krk_writeValueArray</a></div><div class="ttdeci">void krk_writeValueArray(KrkValueArray *array, KrkValue value)</div><div class="ttdoc">Add a value to a value array.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00015">value.c:15</a></div></div>
 <div class="ttc" id="astructKrkClass_html_ab4f353ca0085f50bbf498df5116b66ef"><div class="ttname"><a href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">KrkClass::krk_finalizeClass</a></div><div class="ttdeci">void krk_finalizeClass(KrkClass *_class)</div><div class="ttdoc">Finalize a class by collecting pointers to core methods.</div></div>
 <div class="ttc" id="astructKrkString_html_ae8fc2ddac29d69f44ff0b1db5922d12d"><div class="ttname"><a href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">KrkString::length</a></div><div class="ttdeci">size_t length</div><div class="ttdoc">String length in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00097">object.h:97</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="astructKrkList_html_a93378d65c43bdad11671ac6dbdb3034d"><div class="ttname"><a href="structKrkList.html#a93378d65c43bdad11671ac6dbdb3034d">KrkList::krk_list_of</a></div><div class="ttdeci">KrkValue krk_list_of(int argc, const KrkValue argv[], int hasKw)</div><div class="ttdoc">Create a list object.</div><div class="ttdef"><b>Definition:</b> <a href="obj__list_8c_source.html#l00031">obj_list.c:31</a></div></div>
+<div class="ttc" id="astructKrkList_html_a93378d65c43bdad11671ac6dbdb3034d"><div class="ttname"><a href="structKrkList.html#a93378d65c43bdad11671ac6dbdb3034d">KrkList::krk_list_of</a></div><div class="ttdeci">KrkValue krk_list_of(int argc, const KrkValue argv[], int hasKw)</div><div class="ttdoc">Create a list object.</div><div class="ttdef"><b>Definition:</b> <a href="obj__list_8c_source.html#l00030">obj_list.c:30</a></div></div>
 <div class="ttc" id="astructKrkClass_html_a822b03386b6897607742e17daa48a7e5"><div class="ttname"><a href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">KrkClass::obj</a></div><div class="ttdeci">KrkObj obj</div><div class="ttdoc">Base.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00191">object.h:191</a></div></div>
-<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00539">vm.c:539</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00594">vm.c:594</a></div></div>
 <div class="ttc" id="astructKrkObj_html_a4a25d0e5c012bbbf4752ac6f76009b86"><div class="ttname"><a href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">KrkObj::flags</a></div><div class="ttdeci">uint16_t flags</div><div class="ttdoc">General object flags, mostly related to garbage collection.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00043">object.h:43</a></div></div>
 <div class="ttc" id="astructKrkString_html_a7373911dddad465c12630008b733c9d2"><div class="ttname"><a href="structKrkString.html#a7373911dddad465c12630008b733c9d2">KrkString::chars</a></div><div class="ttdeci">char * chars</div><div class="ttdoc">UTF8 canonical data.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00099">object.h:99</a></div></div>
-<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00407">vm.c:407</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00444">vm.c:444</a></div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00418">vm.c:418</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00455">vm.c:455</a></div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
 <div class="ttc" id="avalue_8h_html"><div class="ttname"><a href="value_8h.html">value.h</a></div><div class="ttdoc">Definitions for primitive stack references.</div></div>
-<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00301">util.h:301</a></div></div>
+<div class="ttc" id="autil_8h_html_afb7457099cbbd1db968f9d592f193c89"><div class="ttname"><a href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a></div><div class="ttdeci">#define KRK_DOC(thing, text)</div><div class="ttdoc">Attach documentation to a thing of various types.</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00283">util.h:283</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2021 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>
