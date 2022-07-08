@@ -284,7 +284,6 @@ input[type=file] + span {
   overflow-y: hidden;
 }
 .prompt-frozen > .prompt-string {
-  color: #e6e6e6;
   position: relative;
   max-height: 0px;
   margin-right: 3.5px;
