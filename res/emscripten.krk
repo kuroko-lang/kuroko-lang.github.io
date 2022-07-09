@@ -678,10 +678,8 @@ def finishRunning(cleanup=True):
     currentWorker = None
 
 let debuggerSettings = {}
-def updateDebuggerSettings(single, gotoline):
-    debuggerSettings = {}
-    if single: debuggerSettings['single'] = True
-    if gotoline: debuggerSettings['gotoline'] = True
+def updateDebuggerSettings(args):
+    debuggerSettings = {args[i]: True for i in range(args.length)}
     debug("Updated debugger settings to", debuggerSettings)
 
 def cleanHtml(s):
@@ -724,7 +722,7 @@ def inputCallback(prompt):
 
 def debuggerCallback(blob):
     let data = json.loads(blob)
-    debug(data)
+    #debug(data)
     let filename = data.get('file','')
     let func = data.get('function','')
     let offset = data.get('offset',0)
@@ -743,8 +741,9 @@ def debuggerCallback(blob):
         a.type = 'info'
         let annotations = [a]
         document.getElementById(f"{id}-editor")._aceInstance.getSession().setAnnotations(annotations)
-        if 'gotoline' in debuggerSettings:
+        if 'gotofile' in debuggerSettings:
             editorTabs[filename].activate()
+        if 'gotoline' in debuggerSettings:
             document.getElementById(f"{id}-editor")._aceInstance.gotoLine(line,1,1)
     else:
         document.getElementById("debugger-disassembly").innerText = f'in file {filename}:{line}'

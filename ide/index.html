@@ -244,6 +244,11 @@
               <div class="tooltiptext tooltip-right">Follow the debugger by jumping to the currently traced line if a file is open.</div>
             </div>
             <div class="ms-1 form-check">
+              <input type="checkbox" onchange="debuggerSettings();" class="form-check-input" id="debugger-gotofile">
+              <label class="form-check-label" for="debugger-gotofile">Jump to File</label>
+              <div class="tooltiptext tooltip-right">Switch to the tab for the currently executing file, if it is open.</div>
+            </div>
+            <div class="ms-1 form-check">
               <input type="checkbox" onchange="debuggerSettings();" class="form-check-input" id="debugger-quickauto">
               <label class="form-check-label" for="debugger-quickauto">Quick Autostep</label>
               <div class="tooltiptext tooltip-right">Autostep with a delay of 100ms.</div>

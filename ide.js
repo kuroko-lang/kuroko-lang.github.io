@@ -124,11 +124,14 @@ function continueDebugger() {
 
 document.getElementById('debugger-single-step').checked = false;
 document.getElementById('debugger-gotoline').checked = false;
+document.getElementById('debugger-gotofile').checked = false;
 document.getElementById('debugger-quickauto').checked = true;
 function debuggerSettings() {
-  const single = document.getElementById('debugger-single-step').checked;
-  const gotoline = document.getElementById('debugger-gotoline').checked;
-  emscripten.updateDebuggerSettings(single, gotoline);
+  let settings = [];
+  if (document.getElementById('debugger-single-step').checked) settings.push('single');
+  if (document.getElementById('debugger-gotoline').checked) settings.push('gotoline');
+  if (document.getElementById('debugger-gotofile').checked) settings.push('gotofile');
+  emscripten.updateDebuggerSettings(settings);
 }
 
 function openFile(fromInput) {
