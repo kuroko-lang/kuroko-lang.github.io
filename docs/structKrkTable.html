@@ -136,6 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f7587ed816678405664034d259dd3a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">krk_tableDelete</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, <a class="el" href="structKrkValue.html">KrkValue</a> key)</td></tr>
 <tr class="memdesc:a1f7587ed816678405664034d259dd3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key from a hash table.  <a href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">More...</a><br /></td></tr>
 <tr class="separator:a1f7587ed816678405664034d259dd3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">krk_tableDeleteExact</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, <a class="el" href="structKrkValue.html">KrkValue</a> key)</td></tr>
+<tr class="memdesc:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key from a hash table, with identity lookup.  <a href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">More...</a><br /></td></tr>
+<tr class="separator:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca9e99099ff2f9dddcbae02583d3da56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a> (<a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *entries, size_t capacity, <a class="el" href="structKrkValue.html">KrkValue</a> key)</td></tr>
 <tr class="memdesc:aca9e99099ff2f9dddcbae02583d3da56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal table scan function.  <a href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">More...</a><br /></td></tr>
 <tr class="separator:aca9e99099ff2f9dddcbae02583d3da56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -505,7 +508,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00146">146</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00169">169</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -545,7 +548,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00093">93</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00116">116</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -586,7 +589,48 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the value was found and deleted, 0 if it was not present. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00180">180</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00203">203</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<a id="a179aecaca4e8fc7e7a7e1c7445196d97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179aecaca4e8fc7e7a7e1c7445196d97">&#9670;&nbsp;</a></span>krk_tableDeleteExact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_tableDeleteExact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkTable.html">KrkTable</a> *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a key from a hash table, with identity lookup. </p>
+<p>Scans the table 'table' for the key 'key' and, if found, removes the entry, replacing it with a tombstone value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Table to delete from. </td></tr>
+    <tr><td class="paramname">key</td><td>Key to delete. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the value was found and deleted, 0 if it was not present. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00215">215</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -641,7 +685,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the string was found, the string object representation, else NULL. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00192">192</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00227">227</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -689,7 +733,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was not found, 1 if it was. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00155">155</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00178">178</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -737,7 +781,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was not found, 1 if it was. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00166">166</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00189">189</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -785,7 +829,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was already present and has been overwritten, 1 if the key is new to the table. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00122">122</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00145">145</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>

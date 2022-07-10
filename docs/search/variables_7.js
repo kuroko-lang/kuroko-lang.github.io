@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['generatorclass_797',['generatorClass',['../structBaseClasses.html#a597d3df53e958fd91ce8a2097b86ee5a',1,'BaseClasses']]],
-  ['globalflags_798',['globalFlags',['../structKrkVM.html#a72772a2091b6766bd10498cac8a7c693',1,'KrkVM']]],
-  ['globals_799',['globals',['../structKrkCallFrame.html#a730fceb5b7190d7473853b37105d305e',1,'KrkCallFrame']]],
-  ['globalscontext_800',['globalsContext',['../structKrkCodeObject.html#ab77d6aa30f58c68daa1af5ff5f6bcee0',1,'KrkCodeObject']]],
-  ['graycapacity_801',['grayCapacity',['../structKrkVM.html#a6a4d87a87dc8ef5b26130b79c4d1d30a',1,'KrkVM']]],
-  ['graycount_802',['grayCount',['../structKrkVM.html#ad2e3c99d05b4d4bbbede6f13d4d0cef8',1,'KrkVM']]],
-  ['graystack_803',['grayStack',['../structKrkVM.html#ac100b7758c1e8aedabc1ef60f2987493',1,'KrkVM']]]
+  ['generatorclass_801',['generatorClass',['../structBaseClasses.html#a597d3df53e958fd91ce8a2097b86ee5a',1,'BaseClasses']]],
+  ['globalflags_802',['globalFlags',['../structKrkVM.html#a72772a2091b6766bd10498cac8a7c693',1,'KrkVM']]],
+  ['globals_803',['globals',['../structKrkCallFrame.html#a730fceb5b7190d7473853b37105d305e',1,'KrkCallFrame']]],
+  ['globalscontext_804',['globalsContext',['../structKrkCodeObject.html#ab77d6aa30f58c68daa1af5ff5f6bcee0',1,'KrkCodeObject']]],
+  ['graycapacity_805',['grayCapacity',['../structKrkVM.html#a6a4d87a87dc8ef5b26130b79c4d1d30a',1,'KrkVM']]],
+  ['graycount_806',['grayCount',['../structKrkVM.html#ad2e3c99d05b4d4bbbede6f13d4d0cef8',1,'KrkVM']]],
+  ['graystack_807',['grayStack',['../structKrkVM.html#ac100b7758c1e8aedabc1ef60f2987493',1,'KrkVM']]]
 ];

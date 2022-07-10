@@ -378,14 +378,14 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">    KrkToken val_tok = syntheticToken(propValue); \</div>
-<div class="line">    size_t val_ind = identifierConstant(&amp;val_tok); \</div>
+<div class="line">    size_t val_ind = nonidentifierTokenConstant(&amp;val_tok); \</div>
 <div class="line">    EMIT_OPERAND_OP(how, val_ind); \</div>
 <div class="line">    KrkToken name_tok = syntheticToken(propName); \</div>
 <div class="line">    size_t name_ind = identifierConstant(&amp;name_tok); \</div>
 <div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01546">1546</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01570">1570</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -442,7 +442,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_OPERAND_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02805">2805</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02851">2851</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -530,14 +530,14 @@ Variables</h2></td></tr>
 <div class="line">    for (<span class="keywordtype">size_t</span> i = 0; i &lt; n; ++i) { \</div>
 <div class="line">        if (c + i + 2 == end || !isHex(c[i+2])) { \</div>
 <div class="line">            error(<span class="stringliteral">&quot;truncated \\%c escape&quot;</span>, type); \</div>
-<div class="line">            FREE_ARRAY(<span class="keywordtype">char</span>,stringBytes,stringCapacity); \</div>
-<div class="line">            return; \</div>
+<div class="line">            goto _cleanupError; \</div>
 <div class="line">        } \</div>
 <div class="line">        tmpbuf[i] = c[i+2]; \</div>
 <div class="line">    } \</div>
 <div class="line">    unsigned <span class="keywordtype">long</span> value = strtoul(tmpbuf, NULL, 16); \</div>
 <div class="line">    if (value &gt;= 0x110000) { \</div>
 <div class="line">        error(<span class="stringliteral">&quot;invalid codepoint in \\%c escape&quot;</span>, type); \</div>
+<div class="line">        goto _cleanupError; \</div>
 <div class="line">    } \</div>
 <div class="line">    if (isBytes) { \</div>
 <div class="line">        PUSH_CHAR(value); \</div>
@@ -842,7 +842,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03545">3545</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03591">3591</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -866,7 +866,7 @@ Variables</h2></td></tr>
 <p>Mark objects owned by the compiler as in use.</p>
 <p>Called by the garbage collector during the scan phase to mark references held by the compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03614">3614</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03660">3660</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -886,7 +886,7 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03639">3639</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03685">3685</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>

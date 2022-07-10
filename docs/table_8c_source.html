@@ -189,157 +189,194 @@ $(function() {
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#ifdef __TINYC__</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">int</span> __builtin_clz(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">int</span> i = 31;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">while</span> (!(x &amp; (1 &lt;&lt; i)) &amp;&amp; i &gt;= 0) i--;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> 31-i;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <span class="keywordtype">size_t</span> capacity) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (capacity) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">/* Fast power-of-two calculation */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">size_t</span> powerOfTwoCapacity = __builtin_clz(1) - __builtin_clz(capacity);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> ((1UL &lt;&lt; powerOfTwoCapacity) != capacity) powerOfTwoCapacity++;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        capacity = (1UL &lt;&lt; powerOfTwoCapacity);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entries = ALLOCATE(<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a>, capacity);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; capacity; ++i) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        entries[i].key = KWARGS_VAL(0);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        entries[i].value = NONE_VAL();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * krk_findEntryExact(<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entries, <span class="keywordtype">size_t</span> capacity, <a class="code" href="structKrkValue.html">KrkValue</a> key) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint32_t index;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#aea6c902feabf3d2ada79c072c2c12b71">krk_hashValue</a>(key, &amp;index)) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    index &amp;= (capacity-1);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * tombstone = NULL;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;entries[index];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (IS_NONE(entry-&gt;value)) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">return</span> tombstone != NULL ? tombstone : entry;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">if</span> (tombstone == entry) <span class="keywordflow">return</span> tombstone;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">if</span> (tombstone == NULL) tombstone = entry;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">krk_valuesSame</a>(entry-&gt;key, key)) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> entry;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        index = (index + 1) &amp; (capacity-1);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    table-&gt;count = 0;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; table-&gt;capacity; ++i) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[i];</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * dest = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(entries, capacity, entry-&gt;key);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        dest-&gt;key = entry-&gt;key;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        dest-&gt;value = entry-&gt;value;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        table-&gt;count++;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    FREE_ARRAY(<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a>, table-&gt;entries, table-&gt;capacity);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    table-&gt;entries = entries;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    table-&gt;capacity = capacity;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">  122</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">krk_tableSet</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> value) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count + 1 &gt; table-&gt;capacity * TABLE_MAX_LOAD) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">size_t</span> capacity = GROW_CAPACITY(table-&gt;capacity);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a>(table, capacity);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (!entry) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">int</span> isNewKey = IS_KWARGS(entry-&gt;key);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">if</span> (isNewKey) table-&gt;count++;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    entry-&gt;key = key;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    entry-&gt;value = value;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> isNewKey;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keywordtype">int</span> krk_tableSetIfExists(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> value) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> (!entry) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">return</span> 0; <span class="comment">/* Not found */</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    entry-&gt;key = key;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    entry-&gt;value = value;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">  146</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">krk_tableAddAll</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * from, <a class="code" href="structKrkTable.html">KrkTable</a> * to) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; from-&gt;capacity; ++i) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;from-&gt;entries[i];</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (!IS_KWARGS(entry-&gt;key)) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <a class="code" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">krk_tableSet</a>(to, entry-&gt;key, entry-&gt;value);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">  155</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> * value) {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">if</span> (!entry || IS_KWARGS(entry-&gt;key)) {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        *value = entry-&gt;value;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">  166</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">krk_tableGet_fast</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkString.html">KrkString</a> * str, <a class="code" href="structKrkValue.html">KrkValue</a> * value) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span> (unlikely(table-&gt;count == 0)) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    uint32_t index = str-&gt;<a class="code" href="structKrkString.html#a3396fd72d61450c56aab4bd5f5946462">obj</a>.<a class="code" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a> &amp; (table-&gt;capacity-1);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[index];</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">if</span> (IS_OBJECT(entry-&gt;key) &amp;&amp; AS_OBJECT(entry-&gt;key) == (<a class="code" href="structKrkObj.html">KrkObj</a>*)str) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            *value = entry-&gt;value;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        index = (index + 1) &amp; (table-&gt;capacity-1);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">  180</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">krk_tableDelete</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key) {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span> (!entry || IS_KWARGS(entry-&gt;key)) {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    table-&gt;count--;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    entry-&gt;key = KWARGS_VAL(0);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    entry-&gt;value = KWARGS_VAL(0);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">  192</a></span>&#160;<a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">krk_tableFindString</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <span class="keyword">const</span> <span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length, uint32_t hash) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    uint32_t index = hash &amp; (table-&gt;capacity-1);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[index];</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">if</span> (IS_NONE(entry-&gt;value)) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (AS_STRING(entry-&gt;key)-&gt;length == length &amp;&amp;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                   AS_OBJECT(entry-&gt;key)-&gt;hash == hash &amp;&amp;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                   memcmp(AS_STRING(entry-&gt;key)-&gt;chars, chars, length) == 0) {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span> AS_STRING(entry-&gt;key);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        index = (index + 1) &amp; (table-&gt;capacity-1);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#ifdef __TINYC__</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">int</span> __builtin_clz(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> i = 31;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">while</span> (!(x &amp; (1 &lt;&lt; i)) &amp;&amp; i &gt;= 0) i--;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> 31-i;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">  116</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <span class="keywordtype">size_t</span> capacity) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span> (capacity) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">/* Fast power-of-two calculation */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">size_t</span> powerOfTwoCapacity = __builtin_clz(1) - __builtin_clz(capacity);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span> ((1UL &lt;&lt; powerOfTwoCapacity) != capacity) powerOfTwoCapacity++;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        capacity = (1UL &lt;&lt; powerOfTwoCapacity);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entries = ALLOCATE(<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a>, capacity);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; capacity; ++i) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        entries[i].key = KWARGS_VAL(0);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        entries[i].value = NONE_VAL();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    table-&gt;count = 0;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; table-&gt;capacity; ++i) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[i];</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * dest = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(entries, capacity, entry-&gt;key);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        dest-&gt;key = entry-&gt;key;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        dest-&gt;value = entry-&gt;value;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        table-&gt;count++;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    FREE_ARRAY(<a class="code" href="structKrkTableEntry.html">KrkTableEntry</a>, table-&gt;entries, table-&gt;capacity);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    table-&gt;entries = entries;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    table-&gt;capacity = capacity;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">  145</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">krk_tableSet</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> value) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count + 1 &gt; table-&gt;capacity * TABLE_MAX_LOAD) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordtype">size_t</span> capacity = GROW_CAPACITY(table-&gt;capacity);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a>(table, capacity);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (!entry) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">int</span> isNewKey = IS_KWARGS(entry-&gt;key);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> (isNewKey) table-&gt;count++;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    entry-&gt;key = key;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    entry-&gt;value = value;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> isNewKey;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">int</span> krk_tableSetIfExists(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> value) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (!entry) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">return</span> 0; <span class="comment">/* Not found */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    entry-&gt;key = key;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    entry-&gt;value = value;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">krk_tableAddAll</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * from, <a class="code" href="structKrkTable.html">KrkTable</a> * to) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; from-&gt;capacity; ++i) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;from-&gt;entries[i];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">if</span> (!IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <a class="code" href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">krk_tableSet</a>(to, entry-&gt;key, entry-&gt;value);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">  178</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key, <a class="code" href="structKrkValue.html">KrkValue</a> * value) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (!entry || IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        *value = entry-&gt;value;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">  189</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">krk_tableGet_fast</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkString.html">KrkString</a> * str, <a class="code" href="structKrkValue.html">KrkValue</a> * value) {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> (unlikely(table-&gt;count == 0)) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    uint32_t index = str-&gt;<a class="code" href="structKrkString.html#a3396fd72d61450c56aab4bd5f5946462">obj</a>.<a class="code" href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">hash</a> &amp; (table-&gt;capacity-1);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[index];</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (IS_OBJECT(entry-&gt;key) &amp;&amp; AS_OBJECT(entry-&gt;key) == (<a class="code" href="structKrkObj.html">KrkObj</a>*)str) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            *value = entry-&gt;value;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        index = (index + 1) &amp; (table-&gt;capacity-1);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">  203</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">krk_tableDelete</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = <a class="code" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a>(table-&gt;entries, table-&gt;capacity, key);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">if</span> (!entry || IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    table-&gt;count--;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    entry-&gt;key = KWARGS_VAL(0);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    entry-&gt;value = KWARGS_VAL(0);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">  215</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">krk_tableDeleteExact</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <a class="code" href="structKrkValue.html">KrkValue</a> key) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = krk_findEntryExact(table-&gt;entries, table-&gt;capacity, key);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> (!entry || IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    table-&gt;count--;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    entry-&gt;key = KWARGS_VAL(0);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    entry-&gt;value = KWARGS_VAL(0);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">  227</a></span>&#160;<a class="code" href="structKrkString.html">KrkString</a> * <a class="code" href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">krk_tableFindString</a>(<a class="code" href="structKrkTable.html">KrkTable</a> * table, <span class="keyword">const</span> <span class="keywordtype">char</span> * chars, <span class="keywordtype">size_t</span> length, uint32_t hash) {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">if</span> (table-&gt;count == 0) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    uint32_t index = hash &amp; (table-&gt;capacity-1);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;table-&gt;entries[index];</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">if</span> (IS_KWARGS(entry-&gt;key)) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span> (IS_NONE(entry-&gt;value)) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (AS_STRING(entry-&gt;key)-&gt;length == length &amp;&amp;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                   AS_OBJECT(entry-&gt;key)-&gt;hash == hash &amp;&amp;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                   memcmp(AS_STRING(entry-&gt;key)-&gt;chars, chars, length) == 0) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">return</span> AS_STRING(entry-&gt;key);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        index = (index + 1) &amp; (table-&gt;capacity-1);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructKrkString_html_a3396fd72d61450c56aab4bd5f5946462"><div class="ttname"><a href="structKrkString.html#a3396fd72d61450c56aab4bd5f5946462">KrkString::obj</a></div><div class="ttdeci">KrkObj obj</div><div class="ttdoc">Base.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00096">object.h:96</a></div></div>
 <div class="ttc" id="astructKrkClass_html_ad82fb3bef45cfd8a62462034999fba38"><div class="ttname"><a href="structKrkClass.html#ad82fb3bef45cfd8a62462034999fba38">KrkClass::_hash</a></div><div class="ttdeci">KrkObj * _hash</div><div class="ttdoc">__hash__ Called when an instance is a key in a dict or an entry in a set</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00220">object.h:220</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a5b651472bbf7d8cbf59d841b9c50be7b"><div class="ttname"><a href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">KrkTable::krk_tableFindString</a></div><div class="ttdeci">KrkString * krk_tableFindString(KrkTable *table, const char *chars, size_t length, uint32_t hash)</div><div class="ttdoc">Find a character sequence in the string interning table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00192">table.c:192</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a5b651472bbf7d8cbf59d841b9c50be7b"><div class="ttname"><a href="structKrkTable.html#a5b651472bbf7d8cbf59d841b9c50be7b">KrkTable::krk_tableFindString</a></div><div class="ttdeci">KrkString * krk_tableFindString(KrkTable *table, const char *chars, size_t length, uint32_t hash)</div><div class="ttdoc">Find a character sequence in the string interning table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00227">table.c:227</a></div></div>
 <div class="ttc" id="astructKrkValue_html_aba44fd5f3070ef118052ae6cd7405281"><div class="ttname"><a href="structKrkValue.html#aba44fd5f3070ef118052ae6cd7405281">KrkValue::krk_valuesSameOrEqual</a></div><div class="ttdeci">int krk_valuesSameOrEqual(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity, then by equality.</div></div>
 <div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00240">vm.h:240</a></div></div>
 <div class="ttc" id="athreads_8h_html"><div class="ttname"><a href="threads_8h.html">threads.h</a></div><div class="ttdoc">Convience header for providing atomic operations to threads.</div></div>
 <div class="ttc" id="astructKrkValue_html_aea6c902feabf3d2ada79c072c2c12b71"><div class="ttname"><a href="structKrkValue.html#aea6c902feabf3d2ada79c072c2c12b71">KrkValue::krk_hashValue</a></div><div class="ttdeci">int krk_hashValue(KrkValue value, uint32_t *hashOut)</div><div class="ttdoc">Calculate the hash for a value.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00025">table.c:25</a></div></div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a1f7587ed816678405664034d259dd3a7"><div class="ttname"><a href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">KrkTable::krk_tableDelete</a></div><div class="ttdeci">int krk_tableDelete(KrkTable *table, KrkValue key)</div><div class="ttdoc">Remove a key from a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00180">table.c:180</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a1f7587ed816678405664034d259dd3a7"><div class="ttname"><a href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">KrkTable::krk_tableDelete</a></div><div class="ttdeci">int krk_tableDelete(KrkTable *table, KrkValue key)</div><div class="ttdoc">Remove a key from a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00203">table.c:203</a></div></div>
 <div class="ttc" id="astructKrkTableEntry_html"><div class="ttname"><a href="structKrkTableEntry.html">KrkTableEntry</a></div><div class="ttdoc">One (key,value) pair in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00020">table.h:20</a></div></div>
 <div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00095">object.h:95</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00155">table.c:155</a></div></div>
-<div class="ttc" id="astructKrkTable_html_aa9dddcdcaa592c046eccdf9841faa355"><div class="ttname"><a href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00166">table.c:166</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00178">table.c:178</a></div></div>
+<div class="ttc" id="astructKrkTable_html_aa9dddcdcaa592c046eccdf9841faa355"><div class="ttname"><a href="structKrkTable.html#aa9dddcdcaa592c046eccdf9841faa355">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00189">table.c:189</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a179aecaca4e8fc7e7a7e1c7445196d97"><div class="ttname"><a href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">KrkTable::krk_tableDeleteExact</a></div><div class="ttdeci">int krk_tableDeleteExact(KrkTable *table, KrkValue key)</div><div class="ttdoc">Remove a key from a hash table, with identity lookup.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00215">table.c:215</a></div></div>
 <div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00041">object.h:41</a></div></div>
 <div class="ttc" id="astructKrkThreadState_html_a3e1c5c6a26f58def1f898dfb168dfa13"><div class="ttname"><a href="structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13">KrkThreadState::currentException</a></div><div class="ttdeci">KrkValue currentException</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00149">vm.h:149</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
 <div class="ttc" id="astructKrkTable_html_a95f96d5055dad5331c368e22b1932f56"><div class="ttname"><a href="structKrkTable.html#a95f96d5055dad5331c368e22b1932f56">KrkTable::krk_freeTable</a></div><div class="ttdeci">void krk_freeTable(KrkTable *table)</div><div class="ttdoc">Release resources associated with a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00020">table.c:20</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a82ef1bc475e4d535cdbc2398d30f2ff4"><div class="ttname"><a href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">KrkTable::krk_tableAddAll</a></div><div class="ttdeci">void krk_tableAddAll(KrkTable *from, KrkTable *to)</div><div class="ttdoc">Add all key-value pairs from 'from' into 'to'.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00146">table.c:146</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a82ef1bc475e4d535cdbc2398d30f2ff4"><div class="ttname"><a href="structKrkTable.html#a82ef1bc475e4d535cdbc2398d30f2ff4">KrkTable::krk_tableAddAll</a></div><div class="ttdeci">void krk_tableAddAll(KrkTable *from, KrkTable *to)</div><div class="ttdoc">Add all key-value pairs from 'from' into 'to'.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00169">table.c:169</a></div></div>
 <div class="ttc" id="astructKrkTable_html_aca9e99099ff2f9dddcbae02583d3da56"><div class="ttname"><a href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">KrkTable::krk_findEntry</a></div><div class="ttdeci">KrkTableEntry * krk_findEntry(KrkTableEntry *entries, size_t capacity, KrkValue key)</div><div class="ttdoc">Internal table scan function.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00062">table.c:62</a></div></div>
 <div class="ttc" id="astructKrkObj_html_a1c7d5586494b5133a18223dc07b466b3"><div class="ttname"><a href="structKrkObj.html#a1c7d5586494b5133a18223dc07b466b3">KrkObj::hash</a></div><div class="ttdeci">uint32_t hash</div><div class="ttdoc">Cached hash value for table keys.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00044">object.h:44</a></div></div>
 <div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00594">vm.c:594</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a2b8118a428aea18eb3478f8235a4d2ca"><div class="ttname"><a href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">KrkTable::krk_tableAdjustCapacity</a></div><div class="ttdeci">void krk_tableAdjustCapacity(KrkTable *table, size_t capacity)</div><div class="ttdoc">Preset the size of a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00093">table.c:93</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a2b8118a428aea18eb3478f8235a4d2ca"><div class="ttname"><a href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">KrkTable::krk_tableAdjustCapacity</a></div><div class="ttdeci">void krk_tableAdjustCapacity(KrkTable *table, size_t capacity)</div><div class="ttdoc">Preset the size of a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00116">table.c:116</a></div></div>
 <div class="ttc" id="astructKrkTable_html_a03a3dfef3d54368e62652a52368e5ced"><div class="ttname"><a href="structKrkTable.html#a03a3dfef3d54368e62652a52368e5ced">KrkTable::krk_initTable</a></div><div class="ttdeci">void krk_initTable(KrkTable *table)</div><div class="ttdoc">Initialize a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00014">table.c:14</a></div></div>
 <div class="ttc" id="astructKrkTable_html"><div class="ttname"><a href="structKrkTable.html">KrkTable</a></div><div class="ttdoc">Simple hash table of arbitrary keys to values.</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00028">table.h:28</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a874e42a5367b49a012a592e2fb8fb0b7"><div class="ttname"><a href="structKrkValue.html#a874e42a5367b49a012a592e2fb8fb0b7">KrkValue::krk_valuesSame</a></div><div class="ttdeci">int krk_valuesSame(KrkValue a, KrkValue b)</div><div class="ttdoc">Compare two values by identity.</div><div class="ttdef"><b>Definition:</b> <a href="value_8c_source.html#l00145">value.c:145</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
 <div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
 <div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00418">vm.c:418</a></div></div>
@@ -350,7 +387,7 @@ $(function() {
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
 <div class="ttc" id="atable_8h_html"><div class="ttname"><a href="table_8h.html">table.h</a></div><div class="ttdoc">Implementation of a generic hash table.</div></div>
 <div class="ttc" id="avalue_8h_html"><div class="ttname"><a href="value_8h.html">value.h</a></div><div class="ttdoc">Definitions for primitive stack references.</div></div>
-<div class="ttc" id="astructKrkTable_html_a2a3ee986f10e8d90c486082d30e88d5a"><div class="ttname"><a href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">KrkTable::krk_tableSet</a></div><div class="ttdeci">int krk_tableSet(KrkTable *table, KrkValue key, KrkValue value)</div><div class="ttdoc">Assign a value to a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00122">table.c:122</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a2a3ee986f10e8d90c486082d30e88d5a"><div class="ttname"><a href="structKrkTable.html#a2a3ee986f10e8d90c486082d30e88d5a">KrkTable::krk_tableSet</a></div><div class="ttdeci">int krk_tableSet(KrkTable *table, KrkValue key, KrkValue value)</div><div class="ttdoc">Assign a value to a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00145">table.c:145</a></div></div>
 <div class="ttc" id="aobject_8h_html"><div class="ttname"><a href="object_8h.html">object.h</a></div><div class="ttdoc">Struct definitions for core object types.</div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>

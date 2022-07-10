@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['parser_552',['Parser',['../structParser.html',1,'']]],
-  ['parserule_553',['ParseRule',['../structParseRule.html',1,'']]]
+  ['parsedformatspec_554',['ParsedFormatSpec',['../structParsedFormatSpec.html',1,'']]],
+  ['parser_555',['Parser',['../structParser.html',1,'']]],
+  ['parserule_556',['ParseRule',['../structParseRule.html',1,'']]]
 ];

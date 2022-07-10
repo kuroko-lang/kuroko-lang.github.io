@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['eatingwhitespace_783',['eatingWhitespace',['../structParser.html#a92c4de65e315d75aa383dc6819551daf',1,'Parser']]],
-  ['enclosed_784',['enclosed',['../structCompiler.html#a5120857a9057b7ebdf939a4f99ffd0ef',1,'Compiler']]],
-  ['enclosing_785',['enclosing',['../structCompiler.html#ae1fe27bd7001120f0a8518c1a62debc6',1,'Compiler::enclosing()'],['../structClassCompiler.html#a37081d9415b4a68e3ecb48b4c6e1bc32',1,'ClassCompiler::enclosing()']]],
-  ['entries_786',['entries',['../structKrkDict.html#a636af73c2ab0c907003102116c5736db',1,'KrkDict']]],
-  ['exceptions_787',['exceptions',['../structKrkVM.html#a29a5308fcfc5769cb8a28e65f955288e',1,'KrkVM']]],
-  ['exitonframe_788',['exitOnFrame',['../structKrkThreadState.html#ad054ec6bed664019e32bbd8774d2b723',1,'KrkThreadState']]]
+  ['eatingwhitespace_787',['eatingWhitespace',['../structParser.html#a92c4de65e315d75aa383dc6819551daf',1,'Parser']]],
+  ['enclosed_788',['enclosed',['../structCompiler.html#a5120857a9057b7ebdf939a4f99ffd0ef',1,'Compiler']]],
+  ['enclosing_789',['enclosing',['../structCompiler.html#ae1fe27bd7001120f0a8518c1a62debc6',1,'Compiler::enclosing()'],['../structClassCompiler.html#a37081d9415b4a68e3ecb48b4c6e1bc32',1,'ClassCompiler::enclosing()']]],
+  ['entries_790',['entries',['../structKrkDict.html#a636af73c2ab0c907003102116c5736db',1,'KrkDict']]],
+  ['exceptions_791',['exceptions',['../structKrkVM.html#a29a5308fcfc5769cb8a28e65f955288e',1,'KrkVM']]],
+  ['exitonframe_792',['exitOnFrame',['../structKrkThreadState.html#ad054ec6bed664019e32bbd8774d2b723',1,'KrkThreadState']]]
 ];

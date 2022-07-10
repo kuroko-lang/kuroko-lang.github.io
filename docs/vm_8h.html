@@ -460,7 +460,7 @@ Variables</h2></td></tr>
 <p>Concatenate two strings. </p>
 <p>This is a convenience function which calls <code>str.__add__</code> on the top stack values. Generally, this should be avoided - use <code><a class="el" href="structStringBuilder.html" title="Inline flexible string array.">StringBuilder</a></code> instead. </p>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l00851">851</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l00929">929</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The object representing the module, or None if execution of the file failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03535">3535</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03628">3628</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -836,7 +836,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03485">3485</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03578">3578</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1190,7 +1190,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03510">3510</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03603">3603</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1215,7 +1215,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03467">3467</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03560">3560</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1291,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03475">3475</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03568">3568</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
