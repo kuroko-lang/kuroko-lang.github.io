@@ -95,68 +95,40 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">LoopExit Struct Reference</div>  </div>
+<div class="title">opcode_enum.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Tracks 'break' and 'continue' statements.  
- <a href="structLoopExit.html#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Data Fields</h2></td></tr>
-<tr class="memitem:a6a9d016694056de24f88e36a860ecd21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLoopExit.html#a6a9d016694056de24f88e36a860ecd21">offset</a></td></tr>
-<tr class="separator:a6a9d016694056de24f88e36a860ecd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156184a66886339938e595347c7d95b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLoopExit.html#a156184a66886339938e595347c7d95b8">token</a></td></tr>
-<tr class="separator:a156184a66886339938e595347c7d95b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Tracks 'break' and 'continue' statements. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00188">188</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a6a9d016694056de24f88e36a860ecd21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a9d016694056de24f88e36a860ecd21">&#9670;&nbsp;</a></span>offset</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int LoopExit::offset</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Offset of the jump expression to patch. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00189">189</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="a156184a66886339938e595347c7d95b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a156184a66886339938e595347c7d95b8">&#9670;&nbsp;</a></span>token</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> LoopExit::token</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Token for this exit statement, so its location can be printed in an error message. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00190">190</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
-</ul>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define OPCODE(opc)         opc,</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define SIMPLE(opc)         OPCODE(opc)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define CONSTANT(opc,more)  OPCODE(opc) OPCODE(opc ## _LONG)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define OPERAND(opc,more)   OPCODE(opc) OPCODE(opc ## _LONG)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define JUMP(opc,sign)      OPCODE(opc)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CLOSURE_MORE</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EXPAND_ARGS_MORE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define FORMAT_VALUE_MORE</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define LOCAL_MORE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;opcodes.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#undef SIMPLE</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#undef OPERANDB</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#undef OPERAND</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#undef CONSTANT</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#undef JUMP</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#undef CLOSURE_MORE</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#undef LOCAL_MORE</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#undef EXPAND_ARGS_MORE</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#undef FORMAT_VALUE_MORE</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#undef OPCODE</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} KrkOpCode;</div>
+</div><!-- fragment --></div><!-- contents -->
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

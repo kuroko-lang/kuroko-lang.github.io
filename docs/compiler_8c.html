@@ -129,40 +129,43 @@ $(function() {
 <code>#include &lt;<a class="el" href="vm_8h_source.html">kuroko/vm.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_8h_source.html">kuroko/util.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="private_8h_source.html">private.h</a>&quot;</code><br />
+<code>#include &quot;opcode_enum.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for compiler.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="compiler_8c__incl.png" border="0" usemap="#src_2compiler_8c" alt=""/></div>
 <map name="src_2compiler_8c" id="src_2compiler_8c">
-<area shape="rect" title="Single&#45;pass bytecode compiler." alt="" coords="725,5,838,32"/>
+<area shape="rect" title="Single&#45;pass bytecode compiler." alt="" coords="842,5,955,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,80,107"/>
 <area shape="rect" title=" " alt="" coords="367,453,433,480"/>
 <area shape="rect" title=" " alt="" coords="442,528,513,555"/>
-<area shape="rect" title=" " alt="" coords="1094,453,1165,480"/>
-<area shape="rect" title=" " alt="" coords="1157,229,1253,256"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="682,453,809,480"/>
-<area shape="rect" href="compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="413,155,552,181"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="504,229,579,256"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="577,155,711,181"/>
-<area shape="rect" href="scanner_8h.html" title="Definitions used by the token scanner." alt="" coords="1429,80,1563,107"/>
-<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="789,80,912,107"/>
+<area shape="rect" title=" " alt="" coords="1147,453,1218,480"/>
+<area shape="rect" title=" " alt="" coords="1117,229,1213,256"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="713,453,839,480"/>
+<area shape="rect" href="compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="573,155,712,181"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="515,229,589,256"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="414,155,549,181"/>
+<area shape="rect" href="scanner_8h.html" title="Definitions used by the token scanner." alt="" coords="1504,80,1637,107"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="837,80,960,107"/>
 <area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="889,155,943,181"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="662,80,765,107"/>
-<area shape="rect" href="private_8h.html" title="Internal header." alt="" coords="1137,80,1217,107"/>
-<area shape="rect" title=" " alt="" coords="871,528,942,555"/>
-<area shape="rect" title=" " alt="" coords="569,528,644,555"/>
-<area shape="rect" title=" " alt="" coords="669,528,755,555"/>
-<area shape="rect" title=" " alt="" coords="780,528,847,555"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="637,379,707,405"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="657,304,730,331"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="464,304,531,331"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="659,80,762,107"/>
+<area shape="rect" href="private_8h.html" title="Internal header." alt="" coords="1288,80,1368,107"/>
+<area shape="rect" href="opcode__enum_8h_source.html" title=" " alt="" coords="1661,80,1787,107"/>
+<area shape="rect" title=" " alt="" coords="575,528,646,555"/>
+<area shape="rect" title=" " alt="" coords="671,528,745,555"/>
+<area shape="rect" title=" " alt="" coords="770,528,857,555"/>
+<area shape="rect" title=" " alt="" coords="881,528,948,555"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="741,379,811,405"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="969,304,1042,331"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="519,304,585,331"/>
 <area shape="rect" title=" " alt="" coords="155,453,239,480"/>
 <area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="205,379,288,405"/>
 <area shape="rect" title=" " alt="" coords="264,453,336,480"/>
-<area shape="rect" title=" " alt="" coords="805,229,880,256"/>
-<area shape="rect" title=" " alt="" coords="904,229,968,256"/>
-<area shape="rect" title=" " alt="" coords="992,229,1083,256"/>
-<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="1132,155,1223,181"/>
+<area shape="rect" title=" " alt="" coords="664,229,739,256"/>
+<area shape="rect" title=" " alt="" coords="763,229,827,256"/>
+<area shape="rect" title=" " alt="" coords="851,229,941,256"/>
+<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="1339,155,1429,181"/>
+<area shape="rect" href="opcodes_8h_source.html" title=" " alt="" coords="1680,155,1768,181"/>
 </map>
 </div>
 </div>
@@ -237,7 +240,7 @@ Macros</h2></td></tr>
 <tr class="memitem:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>DO_VARIABLE</b>(opset,  opget,  opdel)</td></tr>
 <tr class="separator:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memItemLeft" align="right" valign="top"><a id="ad6c6834c3abc1f712b7cc21df7a548c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[token] = {# token, a, b, c}</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[TOKEN_ ## token] = {# token, a, b, c}</td></tr>
 <tr class="separator:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -385,7 +388,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01570">1570</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01567">1567</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -442,7 +445,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_OPERAND_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02851">2851</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02848">2848</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -474,7 +477,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00278">278</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00279">279</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -642,7 +645,7 @@ Variables</h2></td></tr>
 <p>Subexpression parser function. </p>
 <p>Used by the parse rule table for infix and prefix expression parser functions. The argument passed is the <a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720">ExpressionType</a> to compile the expression as. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00112">112</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00113">113</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -691,7 +694,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00096">96</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00097">97</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -732,7 +735,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00159">159</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00160">160</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -792,7 +795,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00068">68</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00069">69</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -842,7 +845,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03591">3591</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03588">3588</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -866,7 +869,7 @@ Variables</h2></td></tr>
 <p>Mark objects owned by the compiler as in use.</p>
 <p>Called by the garbage collector during the scan phase to mark references held by the compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03660">3660</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03657">3657</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -886,17 +889,17 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03685">3685</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03682">3682</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00070">compiler.c:70</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00098">compiler.c:98</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f">EXPR_ASSIGN_TARGET</a></div><div class="ttdeci">@ EXPR_ASSIGN_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00099">compiler.c:99</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a></div><div class="ttdeci">@ EXPR_DEL_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00100">compiler.c:100</a></div></div>
+<div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00071">compiler.c:71</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00099">compiler.c:99</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f">EXPR_ASSIGN_TARGET</a></div><div class="ttdeci">@ EXPR_ASSIGN_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00100">compiler.c:100</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a></div><div class="ttdeci">@ EXPR_DEL_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00101">compiler.c:101</a></div></div>
 <div class="ttc" id="astructKrkString_html_afd3c39c1c8d8c9363c767e5038a53b8e"><div class="ttname"><a href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">KrkString::krk_codepointToBytes</a></div><div class="ttdeci">size_t krk_codepointToBytes(krk_integer_type value, unsigned char *out)</div><div class="ttdoc">Convert an integer codepoint to a UTF-8 byte representation.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00035">object.c:35</a></div></div>
-<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7">EXPR_NORMAL</a></div><div class="ttdeci">@ EXPR_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00097">compiler.c:97</a></div></div>
+<div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7">EXPR_NORMAL</a></div><div class="ttdeci">@ EXPR_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00098">compiler.c:98</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

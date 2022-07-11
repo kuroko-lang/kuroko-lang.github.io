@@ -308,18 +308,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ab87a10bf175fe109c2d911e40e8ea304"><td class="memItemLeft" align="right" valign="top"><a id="ab87a10bf175fe109c2d911e40e8ea304"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER_TARGET</b>(value)&#160;&#160;&#160;(AS_HANDLER(value) &amp; 0xFFFF)</td></tr>
 <tr class="separator:ab87a10bf175fe109c2d911e40e8ea304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad208a747f7f50e850bfa7fae7c01e50a"><td class="memItemLeft" align="right" valign="top"><a id="ad208a747f7f50e850bfa7fae7c01e50a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_TRY_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_TRY)</td></tr>
-<tr class="separator:ad208a747f7f50e850bfa7fae7c01e50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ac4f6a0dca0b5584489f11e21b0a38f"><td class="memItemLeft" align="right" valign="top"><a id="a2ac4f6a0dca0b5584489f11e21b0a38f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_WITH_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_PUSH_WITH)</td></tr>
-<tr class="separator:a2ac4f6a0dca0b5584489f11e21b0a38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad49f41e7a0ea22b64b548b52653f0f7a"><td class="memItemLeft" align="right" valign="top"><a id="ad49f41e7a0ea22b64b548b52653f0f7a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_RAISE_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_RAISE)</td></tr>
-<tr class="separator:ad49f41e7a0ea22b64b548b52653f0f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac00d1496619ad0c4adccf3c688aed4be"><td class="memItemLeft" align="right" valign="top"><a id="ac00d1496619ad0c4adccf3c688aed4be"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_EXCEPT_HANDLER</b>(value)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == OP_FILTER_EXCEPT)</td></tr>
-<tr class="separator:ac00d1496619ad0c4adccf3c688aed4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb31d50292119952ab5a6543547f44a"><td class="memItemLeft" align="right" valign="top"><a id="a3fb31d50292119952ab5a6543547f44a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_HANDLER_TYPE</b>(value,  type)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == type)</td></tr>
+<tr class="separator:a3fb31d50292119952ab5a6543547f44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebe4bc41472dec31a249a5f5f807d59f"><td class="memItemLeft" align="right" valign="top"><a id="aebe4bc41472dec31a249a5f5f807d59f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KWARGS_SINGLE</b>&#160;&#160;&#160;(INT32_MAX)</td></tr>
 <tr class="separator:aebe4bc41472dec31a249a5f5f807d59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
