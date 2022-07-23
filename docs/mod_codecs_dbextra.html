@@ -448,6 +448,16 @@ Classes</h2>
 <p>The Unicode mappings are partly changed to be closer to Apple's (as opposed to Microsoft's) correspondences; however, Microsoft's are retained where following Apple's would have required PUA transcoding hints to round-trip. </p>
 <p><a class="anchor" id="XMacChineseTradIncrementalEncoder_encoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#XMacChineseTradIncrementalEncoder_encoding_map">_</a></span><i>property</i> XMacChineseTradIncrementalEncoder.<b>encoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p> </div></div> <a class="anchor" id="XMacKoreanIncrementalDecoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#XMacKoreanIncrementalDecoder">_</a></span><i>class</i> <b>XMacKoreanIncrementalDecoder</b>(AsciiIncrementalDecoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalDecoder implementation for the HangulTalk (MacKorean) encoding.</p>
+<p>HangulTalk is notorious for frequently not corresponding one-to-one to Unicode; the mappings used here are somewhat updated and improved compared to all versions of Apple's mappings and especially the Adobe CID mappings. However, bear in mind that content will not necessarily be decoded to the same Unicode sequences as by other implementations. In particular, decoding to the Apple's Corporate Private Use Area has been avoided for the most part, even where this results in poorly matched and/or convergent decoded forms, since preserving legibility has been afforded greater priority than round tripping. </p>
+<p><a class="anchor" id="XMacKoreanIncrementalDecoder_decoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#XMacKoreanIncrementalDecoder_decoding_map">_</a></span><i>property</i> XMacKoreanIncrementalDecoder.<b>decoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="XMacKoreanIncrementalEncoder"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#XMacKoreanIncrementalEncoder">_</a></span><i>class</i> <b>XMacKoreanIncrementalEncoder</b>(AsciiIncrementalEncoder)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>IncrementalEncoder implementation for the HangulTalk (MacKorean) encoding.</p>
+<p>HangulTalk is notorious for frequently not corresponding one-to-one to Unicode. In places, multiple Unicode representations will be accepted for a given HangulTalk representation. </p>
+<p><a class="anchor" id="XMacKoreanIncrementalEncoder_encoding_map"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#XMacKoreanIncrementalEncoder_encoding_map">_</a></span><i>property</i> XMacKoreanIncrementalEncoder.<b>encoding_map</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p> </div></div></p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Other Members</h2>

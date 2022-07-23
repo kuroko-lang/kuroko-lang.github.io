@@ -102,7 +102,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Useful collection types not found in the core interpreter.</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Classes</h2>
 <p><a class="anchor" id="defaultdict"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#defaultdict">_</a></span><i>class</i> <b>defaultdict</b>(dict)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Extended mapping type that automatically populates missing keys with values from a factory. </p>
@@ -155,7 +155,7 @@ modified.update(overlay)
 for i in modified.keys():
     if i in exclude:
         del modified[i]
-</pre> <p><a class="anchor" id="xraydict___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict___init__">_</a></span>let <i>x</i> = <b>xraydict</b>(<i>base,overlay,exclude=</i>)</h4><div class="memitem"><div class="memproto">xraydict.<b>__init__</b>(<i>base,overlay,exclude=</i>)</div><div class="memdoc"> </p>
+</pre> <p><a class="anchor" id="xraydict___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict___init__">_</a></span>let <i>x</i> = <b>xraydict</b>(<i>base,overlay,exclude=,filter_function=</i>)</h4><div class="memitem"><div class="memproto">xraydict.<b>__init__</b>(<i>base,overlay,exclude=,filter_function=</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="xraydict___contains__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict___contains__">_</a></span><i>thing</i> <b>in</b> xraydict</h4><div class="memitem"><div class="memproto">xraydict.<b>__contains__</b>(<i>thing</i>)</div><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -163,10 +163,14 @@ for i in modified.keys():
 <p> </div></div></p>
 <p><a class="anchor" id="xraydict___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> xraydict:</h4><div class="memitem"><div class="memproto">xraydict.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="xraydict__getitem_internal"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict__getitem_internal">_</a></span>xraydict.<b>_getitem_internal</b>(<i>key</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
+<p><a class="anchor" id="xraydict_items"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict_items">_</a></span>xraydict.<b>items</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="xraydict_keys"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#xraydict_keys">_</a></span>xraydict.<b>keys</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Functions</h2>
 <p><a class="anchor" id="smartrepr"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#smartrepr">_</a></span><b>smartrepr</b>(<i>data</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>repr a large dictionary or list such that line breaks are inserted every 4000 characters or so. </p>
