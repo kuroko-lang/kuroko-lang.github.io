@@ -104,76 +104,16 @@ $(function() {
 <div class="textblock"><p>Provides access to C &lt;stdio&gt; buffered file I/O functions.</p>
 <p>The <code>fileio</code> module provides classes and functions for reading and writing files using the system's buffer I/O interfaces, as well as classes for listing the contents of directories.</p>
 <h2><a class="anchor" id="autotoc_md44"></a>
-Classes</h2>
-<p><a class="anchor" id="BinaryFile"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#BinaryFile">_</a></span><i>class</i> <b>BinaryFile</b>(File)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Equivalent to <a class="el" href="mod_fileio.html#File">File</a> but using <a class="el" href="mod___builtins__.html#bytes">bytes</a> instead of string <a class="el" href="mod___builtins__.html#str">str</a>.</p>
-<p><a class="anchor" id="BinaryFile_read"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_read">_</a></span>BinaryFile.<b>read</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_readline"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_readline">_</a></span>BinaryFile.<b>readline</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_readlines"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_readlines">_</a></span>BinaryFile.<b>readlines</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_write"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_write">_</a></span>BinaryFile.<b>write</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Directory"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Directory">_</a></span><i>class</i> <b>Directory</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Represents an opened file system directory.</p>
-<p><a class="anchor" id="Directory___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___call__">_</a></span>Directory()</h4><div class="memitem"><div class="memproto">Directory.<b>__call__</b>()</div><div class="memdoc"> </p>
-<p>Yields one iteration through the directory.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___enter__">_</a></span>Directory.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___exit__">_</a></span>Directory.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Closes the directory upon exit from a <code>with</code> block.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> Directory:</h4><div class="memitem"><div class="memproto">Directory.<b>__iter__</b>()</div><div class="memdoc"> </p>
-<p>Iterates over the contents of the directory.</p>
-<p>Each iteration returns <a class="el" href="mod___builtins__.html#dict">dict</a> with two entries: <em>"name"</em> and <em>"inode"</em>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory_close"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory_close">_</a></span>Directory.<b>close</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Close the directory.</p>
-<p>Further reads can not be made after the directory has been closed.</p>
-<p> </div></div></p>
-<p> </div></div> <a class="anchor" id="File"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#File">_</a></span><i>class</i> <b>File</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Interface to a buffered file stream.</p>
-<p><a class="anchor" id="File___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___init__">_</a></span>let <i>x</i> = <b>File</b>()</h4><div class="memitem"><div class="memproto">File.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> <div class="alert alert-warning">File objects can not be initialized using this constructor. Use the <a href="#open" class="el">open()</a> function instead. </div></p>
-<p> </div></div></p>
-<p><a class="anchor" id="File___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___enter__">_</a></span>File.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="File___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___exit__">_</a></span>File.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_close"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_close">_</a></span>File.<b>close</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Close the stream and flush any remaining buffered writes.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_flush"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_flush">_</a></span>File.<b>flush</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Flush unbuffered writes to the stream.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_read"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_read">_</a></span>File.<b>read</b>(<i>bytes=-1</i>)</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read from the stream.</p>
-<p>Reads up to <code>bytes</code> bytes from the stream. If <code>bytes</code> is <code>-1</code> then reading will continue until the system returns <em>end of file</em>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_readline"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_readline">_</a></span>File.<b>readline</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read one line from the stream.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_readlines"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_readlines">_</a></span>File.<b>readlines</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read the entire stream and return a list of lines.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_write"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_write">_</a></span>File.<b>write</b>(<i>data</i>)</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Write to the stream.</p>
-<p>Writes the contents of <code>data</code> to the stream.</p>
-<p> </div></div></p>
-<p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md45"></a>
 Functions</h2>
 <p><a class="anchor" id="open"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#open">_</a></span><b>open</b>(<i>path,mode="r"</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Open a file.</p>
-<p>Opens <code>path</code> using the modestring <code>mode</code>. Supported modestring characters depend on the system implementation. If the last character of <code>mode</code> is <code>'b'</code> a <a class="el" href="mod_fileio.html#BinaryFile">BinaryFile</a> will be returned. If the file could not be opened, an <a class="el" href="mod___builtins__.html#IOError">IOError</a> will be raised.</p>
+<p>Opens <code>path</code> using the modestring <code>mode</code>. Supported modestring characters depend on the system implementation. If the last character of <code>mode</code> is <code>'b'</code> a <a class="el" href="mod___builtins__.html#BinaryFile">BinaryFile</a> will be returned. If the file could not be opened, an <a class="el" href="mod___builtins__.html#IOError">IOError</a> will be raised.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="opendir"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#opendir">_</a></span><b>opendir</b>(<i>path</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Open a directory for scanning.</p>
-<p>Opens the directory at <code>path</code> and returns a <a class="el" href="mod_fileio.html#Directory">Directory</a> object. If <code>path</code> could not be opened or is not a directory, <a class="el" href="mod___builtins__.html#IOError">IOError</a> will be raised.</p>
+<p>Opens the directory at <code>path</code> and returns a <a class="el" href="mod___builtins__.html#Directory">Directory</a> object. If <code>path</code> could not be opened or is not a directory, <a class="el" href="mod___builtins__.html#IOError">IOError</a> will be raised.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>stderr</b> = <em><a class="el" href="structFile.html" title="Object for a C FILE* stream.">File</a></em></h3>
 <h3 class="letDef"><em>let</em> <b>stdin</b> = <em><a class="el" href="structFile.html" title="Object for a C FILE* stream.">File</a></em></h3>

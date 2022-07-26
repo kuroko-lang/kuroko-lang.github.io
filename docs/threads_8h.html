@@ -181,23 +181,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a030359eb3b8f1e182ef92cda3c6303cc"><td class="memItemLeft" align="right" valign="top"><a id="a030359eb3b8f1e182ef92cda3c6303cc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_obtain_lock</b>(v)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_obtain_lock</b>(v)&#160;&#160;&#160;_krk_internal_spin_lock(&amp;v);</td></tr>
 <tr class="separator:a030359eb3b8f1e182ef92cda3c6303cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c256dbb85aaa21eede30280b760a702"><td class="memItemLeft" align="right" valign="top"><a id="a1c256dbb85aaa21eede30280b760a702"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_release_lock</b>(v)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_release_lock</b>(v)&#160;&#160;&#160;_krk_internal_spin_unlock(&amp;v);</td></tr>
 <tr class="separator:a1c256dbb85aaa21eede30280b760a702"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af455a85a556d8025d4f486bf078d3b72"><td class="memItemLeft" align="right" valign="top"><a id="af455a85a556d8025d4f486bf078d3b72"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pthread_rwlock_init</b>(a,  b)</td></tr>
-<tr class="separator:af455a85a556d8025d4f486bf078d3b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa60fce0e2d691959edb462056574dcfd"><td class="memItemLeft" align="right" valign="top"><a id="aa60fce0e2d691959edb462056574dcfd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pthread_rwlock_wrlock</b>(a)</td></tr>
-<tr class="separator:aa60fce0e2d691959edb462056574dcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25b03efdfb50a73250e78d39b803df4f"><td class="memItemLeft" align="right" valign="top"><a id="a25b03efdfb50a73250e78d39b803df4f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pthread_rwlock_rdlock</b>(a)</td></tr>
-<tr class="separator:a25b03efdfb50a73250e78d39b803df4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b4245afc3f59e0b87d0a077f3e2bebe"><td class="memItemLeft" align="right" valign="top"><a id="a0b4245afc3f59e0b87d0a077f3e2bebe"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pthread_rwlock_unlock</b>(a)</td></tr>
-<tr class="separator:a0b4245afc3f59e0b87d0a077f3e2bebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Convience header for providing atomic operations to threads. </p>

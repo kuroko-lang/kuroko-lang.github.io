@@ -263,52 +263,31 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa1398ea849b4c998b6a7818661c0c262"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">krk_initScanner</a> (const char *src)</td></tr>
-<tr class="memdesc:aa1398ea849b4c998b6a7818661c0c262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the compiler to scan tokens from 'src'.  <a href="scanner_8h.html#aa1398ea849b4c998b6a7818661c0c262">More...</a><br /></td></tr>
-<tr class="separator:aa1398ea849b4c998b6a7818661c0c262"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a544ecb42a4336ea54f39b2b890cbfe71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">krk_scanToken</a> (void)</td></tr>
-<tr class="memdesc:a544ecb42a4336ea54f39b2b890cbfe71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the next token from the scanner.  <a href="scanner_8h.html#a544ecb42a4336ea54f39b2b890cbfe71">More...</a><br /></td></tr>
-<tr class="separator:a544ecb42a4336ea54f39b2b890cbfe71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e7c2e597f65d2139d7bba3fa7ed417b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">krk_ungetToken</a> (<a class="el" href="structKrkToken.html">KrkToken</a> token)</td></tr>
-<tr class="memdesc:a5e7c2e597f65d2139d7bba3fa7ed417b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push a token back to the scanner to be reprocessed.  <a href="scanner_8h.html#a5e7c2e597f65d2139d7bba3fa7ed417b">More...</a><br /></td></tr>
-<tr class="separator:a5e7c2e597f65d2139d7bba3fa7ed417b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a461824136a9cb4607b9d61b4db0c48da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da">krk_rewindScanner</a> (<a class="el" href="structKrkScanner.html">KrkScanner</a> to)</td></tr>
-<tr class="memdesc:a461824136a9cb4607b9d61b4db0c48da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rewind the scanner to a previous state.  <a href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da">More...</a><br /></td></tr>
-<tr class="separator:a461824136a9cb4607b9d61b4db0c48da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd18f9ba2f222a5d996086484e8bc468"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#afd18f9ba2f222a5d996086484e8bc468">krk_tellScanner</a> (void)</td></tr>
-<tr class="memdesc:afd18f9ba2f222a5d996086484e8bc468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retreive a copy of the current scanner state.  <a href="scanner_8h.html#afd18f9ba2f222a5d996086484e8bc468">More...</a><br /></td></tr>
-<tr class="separator:afd18f9ba2f222a5d996086484e8bc468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f01547ca679cbc2a2a951aa551a66cd"><td class="memItemLeft" align="right" valign="top"><a id="a8f01547ca679cbc2a2a951aa551a66cd"></a>
+<a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a8f01547ca679cbc2a2a951aa551a66cd">krk_initScanner</a> (const char *src)</td></tr>
+<tr class="memdesc:a8f01547ca679cbc2a2a951aa551a66cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the compiler to scan tokens from 'src'. <br /></td></tr>
+<tr class="separator:a8f01547ca679cbc2a2a951aa551a66cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d7aac30864014eb97332ae1af070d35"><td class="memItemLeft" align="right" valign="top"><a id="a8d7aac30864014eb97332ae1af070d35"></a>
+<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a8d7aac30864014eb97332ae1af070d35">krk_scanToken</a> (<a class="el" href="structKrkScanner.html">KrkScanner</a> *)</td></tr>
+<tr class="memdesc:a8d7aac30864014eb97332ae1af070d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the next token from the scanner. <br /></td></tr>
+<tr class="separator:a8d7aac30864014eb97332ae1af070d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b4f42ec61d12d8764a33f64f938153"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#a20b4f42ec61d12d8764a33f64f938153">krk_ungetToken</a> (<a class="el" href="structKrkScanner.html">KrkScanner</a> *, <a class="el" href="structKrkToken.html">KrkToken</a> token)</td></tr>
+<tr class="memdesc:a20b4f42ec61d12d8764a33f64f938153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push a token back to the scanner to be reprocessed.  <a href="scanner_8h.html#a20b4f42ec61d12d8764a33f64f938153">More...</a><br /></td></tr>
+<tr class="separator:a20b4f42ec61d12d8764a33f64f938153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2c7d1003b2ef5767251d784692d74c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#ada2c7d1003b2ef5767251d784692d74c">krk_rewindScanner</a> (<a class="el" href="structKrkScanner.html">KrkScanner</a> *, <a class="el" href="structKrkScanner.html">KrkScanner</a> to)</td></tr>
+<tr class="memdesc:ada2c7d1003b2ef5767251d784692d74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rewind the scanner to a previous state.  <a href="scanner_8h.html#ada2c7d1003b2ef5767251d784692d74c">More...</a><br /></td></tr>
+<tr class="separator:ada2c7d1003b2ef5767251d784692d74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc19f0a1e90a4cd2f30d54fffd76b46f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scanner_8h.html#abc19f0a1e90a4cd2f30d54fffd76b46f">krk_tellScanner</a> (<a class="el" href="structKrkScanner.html">KrkScanner</a> *)</td></tr>
+<tr class="memdesc:abc19f0a1e90a4cd2f30d54fffd76b46f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retreive a copy of the current scanner state.  <a href="scanner_8h.html#abc19f0a1e90a4cd2f30d54fffd76b46f">More...</a><br /></td></tr>
+<tr class="separator:abc19f0a1e90a4cd2f30d54fffd76b46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definitions used by the token scanner. </p>
 
 <p class="definition">Definition in file <a class="el" href="scanner_8h_source.html">scanner.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aa1398ea849b4c998b6a7818661c0c262"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1398ea849b4c998b6a7818661c0c262">&#9670;&nbsp;</a></span>krk_initScanner()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void krk_initScanner </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>src</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the compiler to scan tokens from 'src'. </p>
-<p>FIXME: There is currently only a single static scanner state; along with making the compiler re-entrant, the scanner needs to also be re-entrant; there's really no reason these can't all just take a KrkScanner* argument. </p>
-
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00011">11</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
-
-</div>
-</div>
-<a id="a461824136a9cb4607b9d61b4db0c48da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a461824136a9cb4607b9d61b4db0c48da">&#9670;&nbsp;</a></span>krk_rewindScanner()</h2>
+<a id="ada2c7d1003b2ef5767251d784692d74c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada2c7d1003b2ef5767251d784692d74c">&#9670;&nbsp;</a></span>krk_rewindScanner()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,9 +295,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void krk_rewindScanner </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td>
-          <td class="paramname"><em>to</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structKrkScanner.html">KrkScanner</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -326,35 +315,12 @@ Functions</h2></td></tr>
 <p>Rewind the scanner to a previous state. </p>
 <p>Resets the current scanner to the state in 'to'. Used by the compiler to implement comprehensions, which would otherwise not be possible in a single-pass compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00284">284</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00290">290</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
-<a id="a544ecb42a4336ea54f39b2b890cbfe71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a544ecb42a4336ea54f39b2b890cbfe71">&#9670;&nbsp;</a></span>krk_scanToken()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> krk_scanToken </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read the next token from the scanner. </p>
-<p>FIXME: Or, maybe the scanner shouldn't even be available outside of the compiler, that would make some sense as well, as it's a low-level detail, but we use it for tab completion in the main repl, so I'm not sure that's feasible right now. </p>
-
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00292">292</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
-
-</div>
-</div>
-<a id="afd18f9ba2f222a5d996086484e8bc468"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd18f9ba2f222a5d996086484e8bc468">&#9670;&nbsp;</a></span>krk_tellScanner()</h2>
+<a id="abc19f0a1e90a4cd2f30d54fffd76b46f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc19f0a1e90a4cd2f30d54fffd76b46f">&#9670;&nbsp;</a></span>krk_tellScanner()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -362,7 +328,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structKrkScanner.html">KrkScanner</a> krk_tellScanner </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
+          <td class="paramtype"><a class="el" href="structKrkScanner.html">KrkScanner</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -370,14 +336,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retreive a copy of the current scanner state. </p>
-<p>Used with <a class="el" href="scanner_8h.html#a461824136a9cb4607b9d61b4db0c48da" title="Rewind the scanner to a previous state.">krk_rewindScanner()</a> to implement rescanning for comprehensions. </p>
+<p>Used with <a class="el" href="scanner_8h.html#ada2c7d1003b2ef5767251d784692d74c" title="Rewind the scanner to a previous state.">krk_rewindScanner()</a> to implement rescanning for comprehensions. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00288">288</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00286">286</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
-<a id="a5e7c2e597f65d2139d7bba3fa7ed417b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e7c2e597f65d2139d7bba3fa7ed417b">&#9670;&nbsp;</a></span>krk_ungetToken()</h2>
+<a id="a20b4f42ec61d12d8764a33f64f938153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b4f42ec61d12d8764a33f64f938153">&#9670;&nbsp;</a></span>krk_ungetToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,9 +351,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void krk_ungetToken </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td>
-          <td class="paramname"><em>token</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structKrkScanner.html">KrkScanner</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td>
+          <td class="paramname"><em>token</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -395,7 +371,7 @@ Functions</h2></td></tr>
 <p>Push a token back to the scanner to be reprocessed. </p>
 <p>Pushes a previously-scanned token back to the scanner. Used to implement small backtracking operations at the end of block constructs like 'if' and 'try'. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00276">276</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00278">278</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>

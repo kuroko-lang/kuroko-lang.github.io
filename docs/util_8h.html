@@ -383,6 +383,12 @@ Macros</h2></td></tr>
 <tr class="separator:a358ea7ed70aafc4488f206959450591a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0068dab2c4dbd1ddd568ca3993ecc9d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_SLICER</b>(arg,  count)</td></tr>
 <tr class="separator:a0068dab2c4dbd1ddd568ca3993ecc9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae888411fd3700223808293f848d1ed06"><td class="memItemLeft" align="right" valign="top"><a id="ae888411fd3700223808293f848d1ed06"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_BASE_CLASS</b>(cls)&#160;&#160;&#160;(vm.baseClasses-&gt;cls ## Class)</td></tr>
+<tr class="separator:ae888411fd3700223808293f848d1ed06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a35208b385940493ea57d760d315fe"><td class="memItemLeft" align="right" valign="top"><a id="ad0a35208b385940493ea57d760d315fe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_EXC</b>(exc)&#160;&#160;&#160;(vm.exceptions-&gt;exc)</td></tr>
+<tr class="separator:ad0a35208b385940493ea57d760d315fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -938,17 +944,17 @@ Variables</h2></td></tr>
 <p>If <code>iterable</code> is a list or tuple, <code>callback</code> will be called once with the total size of the container. Otherwise, <code>callback</code> will be called many times with a count of 1, until the iterable is exhausted.</p>
 <p>If <code>iterable</code> is not iterable, an exception is set and 1 is returned. If <code>callback</code> returns non-zero, unpacking stops and 1 is returned, with no additional exception. </p>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00292">292</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00288">288</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00253">object.h:253</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00241">vm.h:241</a></div></div>
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00191">object.h:191</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00281">object.h:281</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00252">object.h:252</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00261">vm.h:261</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00280">object.h:280</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01647">vm.c:1647</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01646">vm.c:1646</a></div></div>
 <div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
