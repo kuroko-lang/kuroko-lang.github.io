@@ -203,7 +203,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An indicator of how the result should be obtained: 1: The VM must be resumed to run managed code. 2: The callable was a native function and result should be popped now. Else: The call failed. An exception may have already been set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01027">1027</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00752">752</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -233,7 +233,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the value's type's class object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00593">593</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00319">319</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -304,7 +304,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if falsey, 0 if truthy </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01260">1260</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00903">903</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -345,7 +345,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if <code>obj</code> is an instance of <code>type</code> or of a subclass of <code>type</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00634">634</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00360">360</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -457,7 +457,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01646">1646</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01060">1060</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -489,6 +489,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Delete a property of an object by name. </p>
 <p>This is a convenience function that works in essentially the same way as the OP_DEL_PROPERTY instruction.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As this function takes a C string, it will not work with </dd>
+<dd>
+attribute names that have nil bytes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">owner</td><td>The owner of the property to delete. </td></tr>
@@ -497,7 +500,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02388">2388</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01878">1878</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -529,6 +532,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Obtain a property of an object by name. </p>
 <p>This is a convenience function that works in essentially the same way as the OP_GET_PROPERTY instruction.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As this function takes a C string, it will not work with </dd>
+<dd>
+attribute names that have nil bytes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>Value to examine. </td></tr>
@@ -538,7 +544,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02341">2341</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01818">1818</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -608,6 +614,9 @@ Public Member Functions</h2></td></tr>
 
 <p><a class="el" href="structSet.html" title="Mutable unordered set of values.">Set</a> a property of an object by name. </p>
 <p>This is a convenience function that works in essentially the same way as the OP_SET_PROPERTY instruction.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As this function takes a C string, it will not work with </dd>
+<dd>
+attribute names that have nil bytes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">owner</td><td>The owner of the property to modify. </td></tr>
@@ -618,7 +627,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l02487">2487</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01953">1953</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -652,7 +661,7 @@ Public Member Functions</h2></td></tr>
 <p>Performs a strict comparison between two values, comparing their identities. For primitive values, this is generally the same as comparing by equality. For objects, this compares pointer values directly.</p>
 <dl class="section return"><dt>Returns</dt><dd>1 if values represent the same object or value, 0 otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="value_8c_source.html#l00147">147</a> of file <a class="el" href="value_8c_source.html">value.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="value_8c_source.html#l00148">148</a> of file <a class="el" href="value_8c_source.html">value.c</a>.</p>
 
 </div>
 </div>

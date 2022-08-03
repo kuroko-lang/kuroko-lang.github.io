@@ -135,14 +135,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__dep__incl.png" border="0" usemap="#src_2private_8hdep" alt=""/></div>
 <map name="src_2private_8hdep" id="src_2private_8hdep">
-<area shape="rect" title="Internal header." alt="" coords="395,5,498,32"/>
+<area shape="rect" title="Internal header." alt="" coords="475,5,578,32"/>
 <area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
 <area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="134,80,247,107"/>
 <area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="272,80,368,107"/>
-<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="392,80,501,107"/>
-<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="525,80,661,107"/>
-<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="686,80,786,107"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="809,80,887,107"/>
+<area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="393,80,519,107"/>
+<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="544,80,653,107"/>
+<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="677,80,813,107"/>
+<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="838,80,938,107"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="961,80,1039,107"/>
 </map>
 </div>
 </div>
@@ -228,19 +229,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_type</
 <tr class="memitem:a51829e52afa027dde8972ed0a2cbd10e"><td class="memItemLeft" align="right" valign="top"><a id="a51829e52afa027dde8972ed0a2cbd10e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_longClass</b> (void)</td></tr>
 <tr class="separator:a51829e52afa027dde8972ed0a2cbd10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5c6397b6e5f3036211db3bce49abdd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="private_8h.html#ae5c6397b6e5f3036211db3bce49abdd5">_createAndBind_gcMod</a> (void)</td></tr>
-<tr class="separator:ae5c6397b6e5f3036211db3bce49abdd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a971644a9784e638179cb4008bc757376"><td class="memItemLeft" align="right" valign="top"><a id="a971644a9784e638179cb4008bc757376"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_timeMod</b> (void)</td></tr>
-<tr class="separator:a971644a9784e638179cb4008bc757376"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf96fc580c46f507c0778a6e047309f"><td class="memItemLeft" align="right" valign="top"><a id="a5cf96fc580c46f507c0778a6e047309f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_osMod</b> (void)</td></tr>
-<tr class="separator:a5cf96fc580c46f507c0778a6e047309f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adab4b068b231962d2a2aeed07bbf993c"><td class="memItemLeft" align="right" valign="top"><a id="adab4b068b231962d2a2aeed07bbf993c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileioMod</b> (void)</td></tr>
-<tr class="separator:adab4b068b231962d2a2aeed07bbf993c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4d645dfe75abb383743ac7a43d93531"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="private_8h.html#ad4d645dfe75abb383743ac7a43d93531">_createAndBind_threadsMod</a> (void)</td></tr>
-<tr class="separator:ad4d645dfe75abb383743ac7a43d93531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal header. </p>
@@ -264,7 +252,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileio
 <p>The VM must look up many methods and members by fixed names. To avoid continuously having to box and unbox these from C strings to the appropriate interned <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code>, we keep an array of the <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code> pointers in the global VM state.</p>
 <p>These values are the offsets into that index for each of the relevant function names (generally with extra underscores removed). For example <code>METHOD_INIT</code> is the offset for the string value for <code>"__init__"</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="private_8h_source.html#l00045">45</a> of file <a class="el" href="private_8h_source.html">private.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="private_8h_source.html#l00037">37</a> of file <a class="el" href="private_8h_source.html">private.h</a>.</p>
 
 </div>
 </div>
@@ -288,51 +276,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_fileio
 <p>Bind native methods and classes for exceptions. </p>
 <p>Called on VM initialization to create the base classes for exception types and bind the native methods for exception objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00181">181</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
-
-</div>
-</div>
-<a id="ae5c6397b6e5f3036211db3bce49abdd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5c6397b6e5f3036211db3bce49abdd5">&#9670;&nbsp;</a></span>_createAndBind_gcMod()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void _createAndBind_gcMod </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>gc = module()</p>
-<p>Namespace for methods for controlling the garbage collector.</p>
-
-<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00585">585</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
-
-</div>
-</div>
-<a id="ad4d645dfe75abb383743ac7a43d93531"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4d645dfe75abb383743ac7a43d93531">&#9670;&nbsp;</a></span>_createAndBind_threadsMod()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void _createAndBind_threadsMod </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>threads = module()</p>
-<p>Methods for dealing with threads.</p>
-
-<p class="definition">Definition at line <a class="el" href="threads_8c_source.html#l00203">203</a> of file <a class="el" href="threads_8c_source.html">threads.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00184">184</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>

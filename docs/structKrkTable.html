@@ -145,6 +145,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b8118a428aea18eb3478f8235a4d2ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, size_t capacity)</td></tr>
 <tr class="memdesc:a2b8118a428aea18eb3478f8235a4d2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preset the size of a table.  <a href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">More...</a><br /></td></tr>
 <tr class="separator:a2b8118a428aea18eb3478f8235a4d2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad54dcec99e536711a3827a1eefe2799b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#ad54dcec99e536711a3827a1eefe2799b">krk_tableSetIfExists</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, <a class="el" href="structKrkValue.html">KrkValue</a> key, <a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
+<tr class="memdesc:ad54dcec99e536711a3827a1eefe2799b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value of a table entry only if it is found.  <a href="structKrkTable.html#ad54dcec99e536711a3827a1eefe2799b">More...</a><br /></td></tr>
+<tr class="separator:ad54dcec99e536711a3827a1eefe2799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6813568942ffbcc21df88e12669ea5b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkNative.html">KrkNative</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, const char *name, NativeFn function)</td></tr>
 <tr class="memdesc:a6813568942ffbcc21df88e12669ea5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a native C function to an attribute table.  <a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">More...</a><br /></td></tr>
 <tr class="separator:a6813568942ffbcc21df88e12669ea5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,6 +213,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 <p>Attach an object to an attribute table. </p>
 <p>Manages the stack shuffling and boxing of the name string when attaching an object to an attribute table. Rather than using <code>krk_tableSet</code>, this is the preferred method of supplying fields to objects from C code.</p>
 <p>This is a convenience wrapper around <code>krk_attachNamedValue</code>.</p>
+<p>Note that since this inserts values directly into tables, it skips any mechanisms like __setattr__ or descriptor __set__. If you need to support these mechanisms, use <code>krk_setAttribute</code>. If you have an instance and would like to emulate the behavior of object.__setattr__, you may also wish to use <code>krk_instanceSetAttribute_wrapper</code>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As this function takes a C string, it does not support setting attributes </dd>
+<dd>
+with names containing nil bytes. Use one of the other mechanisms if you </dd>
+<dd>
+do not have full control over the attribute names you are trying to set.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">table</td><td>Attribute table to attach to, such as <code>&amp;someInstance-&gt;fields</code> </td></tr>
@@ -219,7 +228,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01246">1246</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00890">890</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -257,6 +266,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 
 <p>Attach a value to an attribute table. </p>
 <p>Manages the stack shuffling and boxing of the name string when attaching a value to an attribute table. Rather than using <code>krk_tableSet</code>, this is the preferred method of supplying fields to objects from C code.</p>
+<p>Note that since this inserts values directly into tables, it skips any mechanisms like __setattr__ or descriptor __set__. If you need to support these mechanisms, use <code>krk_setAttribute</code>. If you have an instance and would like to emulate the behavior of object.__setattr__, you may also wish to use <code>krk_instanceSetAttribute_wrapper</code>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As this function takes a C string, it does not support setting attributes </dd>
+<dd>
+with names containing nil bytes. Use one of the other mechanisms if you </dd>
+<dd>
+do not have full control over the attribute names you are trying to set.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">table</td><td>Attribute table to attach to, such as <code>&amp;someInstance-&gt;fields</code> </td></tr>
@@ -266,7 +281,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01232">1232</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00876">876</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -314,7 +329,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the object representing the attached function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00454">454</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00194">194</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -362,7 +377,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the property object created. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00466">466</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l01142">1142</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>
@@ -830,6 +845,55 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was already present and has been overwritten, 1 if the key is new to the table. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00145">145</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<a id="ad54dcec99e536711a3827a1eefe2799b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54dcec99e536711a3827a1eefe2799b">&#9670;&nbsp;</a></span>krk_tableSetIfExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_tableSetIfExists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkTable.html">KrkTable</a> *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the value of a table entry only if it is found. </p>
+<p>Searches the table for <code>key</code> and updates its value to <code>value</code> if found. If <code>key</code> is not found, it is not added to the table.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Note the return value of this function is inverted from krk_tableSet</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Table to assign to. </td></tr>
+    <tr><td class="paramname">key</td><td>Key to assign. </td></tr>
+    <tr><td class="paramname">value</td><td>Value to assign to the key. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the key was not present, 1 if it was found and updated. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00159">159</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>

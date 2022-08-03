@@ -116,34 +116,40 @@ $(function() {
 <code>#include &lt;<a class="el" href="value_8h_source.html">kuroko/value.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="memory_8h_source.html">kuroko/memory.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_8h_source.html">kuroko/util.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="private_8h_source.html">private.h</a>&quot;</code><br />
+<code>#include &quot;opcode_enum.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for exceptions.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="exceptions_8c__incl.png" border="0" usemap="#src_2exceptions_8c" alt=""/></div>
 <map name="src_2exceptions_8c" id="src_2exceptions_8c">
-<area shape="rect" title="Definitions and native method bindings for error types." alt="" coords="414,5,541,32"/>
-<area shape="rect" title=" " alt="" coords="118,453,189,480"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="426,155,529,181"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="359,379,430,405"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="605,155,739,181"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="515,80,618,107"/>
+<area shape="rect" title="Definitions and native method bindings for error types." alt="" coords="550,5,677,32"/>
+<area shape="rect" title=" " alt="" coords="69,453,139,480"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="454,155,557,181"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="259,379,330,405"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="651,155,786,181"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="562,80,665,107"/>
+<area shape="rect" href="private_8h.html" title="Internal header." alt="" coords="840,80,920,107"/>
+<area shape="rect" href="opcode__enum_8h_source.html" title=" " alt="" coords="979,80,1104,107"/>
 <area shape="rect" title=" " alt="" coords="144,229,219,256"/>
 <area shape="rect" title=" " alt="" coords="243,229,307,256"/>
 <area shape="rect" title=" " alt="" coords="331,229,427,256"/>
 <area shape="rect" title=" " alt="" coords="451,229,541,256"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="590,453,669,480"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="725,304,792,331"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="681,453,759,480"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="475,304,541,331"/>
 <area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="616,229,691,256"/>
-<area shape="rect" title=" " alt="" coords="718,528,789,555"/>
-<area shape="rect" title=" " alt="" coords="416,528,491,555"/>
-<area shape="rect" title=" " alt="" coords="873,528,943,555"/>
-<area shape="rect" title=" " alt="" coords="515,528,602,555"/>
-<area shape="rect" title=" " alt="" coords="627,528,693,555"/>
-<area shape="rect" title=" " alt="" coords="403,453,469,480"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="819,379,901,405"/>
-<area shape="rect" title=" " alt="" coords="721,453,805,480"/>
-<area shape="rect" title=" " alt="" coords="829,453,901,480"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="393,304,466,331"/>
+<area shape="rect" title=" " alt="" coords="486,528,557,555"/>
+<area shape="rect" title=" " alt="" coords="581,528,656,555"/>
+<area shape="rect" title=" " alt="" coords="389,528,459,555"/>
+<area shape="rect" title=" " alt="" coords="681,528,767,555"/>
+<area shape="rect" title=" " alt="" coords="792,528,859,555"/>
+<area shape="rect" title=" " alt="" coords="288,453,355,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="456,379,539,405"/>
+<area shape="rect" title=" " alt="" coords="563,453,647,480"/>
+<area shape="rect" title=" " alt="" coords="461,453,533,480"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="566,304,639,331"/>
+<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="917,155,1008,181"/>
+<area shape="rect" href="opcodes_8h_source.html" title=" " alt="" coords="1032,155,1120,181"/>
 </map>
 </div>
 </div>
@@ -198,6 +204,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a18105c62ed1904b013e43f9fd0e6f42a"><td class="memItemLeft" align="right" valign="top">_noexport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a18105c62ed1904b013e43f9fd0e6f42a">_createAndBind_exceptions</a> (void)</td></tr>
 <tr class="memdesc:a18105c62ed1904b013e43f9fd0e6f42a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind native methods and classes for exceptions.  <a href="exceptions_8c.html#a18105c62ed1904b013e43f9fd0e6f42a">More...</a><br /></td></tr>
 <tr class="separator:a18105c62ed1904b013e43f9fd0e6f42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba179e01c3f823141190d3e5d0a1aa46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#aba179e01c3f823141190d3e5d0a1aa46">krk_dumpTraceback</a> (void)</td></tr>
+<tr class="memdesc:aba179e01c3f823141190d3e5d0a1aa46"><td class="mdescLeft">&#160;</td><td class="mdescRight">If there is an active exception, print a traceback to <code>stderr</code>.  <a href="exceptions_8c.html#aba179e01c3f823141190d3e5d0a1aa46">More...</a><br /></td></tr>
+<tr class="separator:aba179e01c3f823141190d3e5d0a1aa46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24137d7b3ae52b096bd4e7243233a8c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a24137d7b3ae52b096bd4e7243233a8c3">krk_attachInnerException</a> (<a class="el" href="structKrkValue.html">KrkValue</a> innerException)</td></tr>
+<tr class="memdesc:a24137d7b3ae52b096bd4e7243233a8c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach an inner exception to the current exception object.  <a href="exceptions_8c.html#a24137d7b3ae52b096bd4e7243233a8c3">More...</a><br /></td></tr>
+<tr class="separator:a24137d7b3ae52b096bd4e7243233a8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75cdd214a75a3f828d4b78379af35c0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a75cdd214a75a3f828d4b78379af35c0c">krk_raiseException</a> (<a class="el" href="structKrkValue.html">KrkValue</a> base, <a class="el" href="structKrkValue.html">KrkValue</a> cause)</td></tr>
+<tr class="memdesc:a75cdd214a75a3f828d4b78379af35c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raise an exception value.  <a href="exceptions_8c.html#a75cdd214a75a3f828d4b78379af35c0c">More...</a><br /></td></tr>
+<tr class="separator:a75cdd214a75a3f828d4b78379af35c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c57f379018d1ce7efca0a406e35431"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *type, const char *fmt,...)</td></tr>
+<tr class="memdesc:a91c57f379018d1ce7efca0a406e35431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce and raise an exception with a formatted message.  <a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">More...</a><br /></td></tr>
+<tr class="separator:a91c57f379018d1ce7efca0a406e35431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definitions and native method bindings for error types. </p>
@@ -243,7 +261,7 @@ Functions</h2></td></tr>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment --><p>Convenience macro for creating exception types. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00016">16</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00019">19</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
@@ -267,7 +285,60 @@ Functions</h2></td></tr>
 <p>Bind native methods and classes for exceptions. </p>
 <p>Called on VM initialization to create the base classes for exception types and bind the native methods for exception objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00181">181</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00184">184</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a24137d7b3ae52b096bd4e7243233a8c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24137d7b3ae52b096bd4e7243233a8c3">&#9670;&nbsp;</a></span>krk_attachInnerException()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void krk_attachInnerException </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>innerException</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attach an inner exception to the current exception object. </p>
+<p>Sets the <code>__context__</code> of the current exception object.</p>
+<p>There must be a current exception, and it must be an instance object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">innerException</td><td>__context__ to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00395">395</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="aba179e01c3f823141190d3e5d0a1aa46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba179e01c3f823141190d3e5d0a1aa46">&#9670;&nbsp;</a></span>krk_dumpTraceback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void krk_dumpTraceback </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If there is an active exception, print a traceback to <code>stderr</code>. </p>
+<p>Display a traceback by scanning up the stack / call frames. The format of the output here is modeled after the output given by CPython, so we display the outermost call first and then move inwards; on each call frame we try to open the source file and print the corresponding line. </p>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00338">338</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
@@ -306,7 +377,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00039">39</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00042">42</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
@@ -340,7 +411,7 @@ Functions</h2></td></tr>
 <p>Native binding for <code>Exception.__repr__</code> </p>
 <p>Generates a string representation of the form <code>"Exception(arg)"</code> . </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00055">55</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00058">58</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
@@ -374,7 +445,7 @@ Functions</h2></td></tr>
 <p>Native binding for <code>Exception.__str__</code> </p>
 <p>For most exceptions, this is the 'arg' value attached at initialization and is printed during a traceback after the name of the exception type. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00082">82</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00085">85</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
@@ -408,12 +479,94 @@ Functions</h2></td></tr>
 <p>Native binding for <code>SyntaxError.__str__</code> </p>
 <p>Syntax errors are handled specially by the traceback generator so that they can print the original source line containing the erroneous input, so instead of printing {Exception.__class__.__name__}: {str(Exception)} we just print {str(Exception)} for syntax errors and they handle the rest. This is a bit of a kludge, but it works for now. </p>
 
-<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00122">122</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00125">125</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a75cdd214a75a3f828d4b78379af35c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75cdd214a75a3f828d4b78379af35c0c">&#9670;&nbsp;</a></span>krk_raiseException()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void krk_raiseException </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>cause</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Raise an exception value. </p>
+<p>Implementation of the <code>OP_RAISE</code> and <code>OP_RAISE_FROM</code> instructions.</p>
+<p>If either of <code>base</code> or <code>cause</code> is a class, the class will be called to produce an instance, so exception classes may be used directly if desired.</p>
+<p>If <code>cause</code> is not <code>None</code> it will be attached as <code>__cause__</code> to the resulting exception object.</p>
+<p>A traceback is automatically attached.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>Exception object or class to raise. </td></tr>
+    <tr><td class="paramname">cause</td><td>Exception cause object or class to attach. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00407">407</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
+
+</div>
+</div>
+<a id="a91c57f379018d1ce7efca0a406e35431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c57f379018d1ce7efca0a406e35431">&#9670;&nbsp;</a></span>krk_runtimeError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkValue.html">KrkValue</a> krk_runtimeError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produce and raise an exception with a formatted message. </p>
+<p>Raise an exception. Creates an exception object of the requested type and formats a message string to attach to it. Exception classes are found in vm.exceptions and are initialized on startup. </p>
+
+<p class="definition">Definition at line <a class="el" href="exceptions_8c_source.html#l00430">430</a> of file <a class="el" href="exceptions_8c_source.html">exceptions.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

@@ -349,7 +349,7 @@ $(function() {
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        int64_t a_digit = (int64_t)(i &lt; awidth ? a-&gt;digits[i] : 0) - carry;</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        int64_t b_digit = i &lt; bwidth ? b-&gt;digits[i] : 0;</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">if</span> (a_digit &lt; b_digit) {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            a_digit += 1 &lt;&lt; DIGIT_SHIFT;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            a_digit += (int64_t)1 &lt;&lt; DIGIT_SHIFT;</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            carry = 1;</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            carry = 0;</div>
@@ -1078,630 +1078,625 @@ $(function() {
 <div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_STRING(argv[1])) {</div>
 <div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;        <span class="comment">/* XXX This should probably work like int(...) does and default to base 10... and take a base at all... */</span></div>
 <div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        <span class="keywordflow">if</span> (krk_long_parse_string(AS_CSTRING(argv[1]),self-&gt;value,0,AS_STRING(argv[1])-&gt;length)) {</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;            <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(argv[1]);</div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;            <a class="code" href="structKrkValue.html">KrkValue</a> repred = <a class="code" href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;strClass-&gt;_reprer, 1);</div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;invalid literal for long() with base &quot;</span> PRIkrk_int <span class="stringliteral">&quot;%s%s&quot;</span>,</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;                (krk_integer_type)0, IS_STRING(repred) ? <span class="stringliteral">&quot;: &quot;</span> : <span class="stringliteral">&quot;&quot;</span>, IS_STRING(repred) ? AS_CSTRING(repred) : <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;        }</div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_long(argv[1])) {</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;        krk_long_init_copy(self-&gt;value,AS_long(argv[1])-&gt;value);</div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() argument must be a string or a number, not &#39;%s&#39;&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[1]));</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;    }</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;    <span class="comment">/* our value should be set */</span></div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;}</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160; </div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;<span class="keyword">static</span> <span class="keywordtype">double</span> krk_long_get_double(<span class="keyword">const</span> <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * value) {</div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    <span class="keywordtype">size_t</span> awidth = value-&gt;width &lt; 0 ? -value-&gt;width : value-&gt;width;</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;    <span class="keywordtype">double</span> out = 0.0;</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; awidth; ++i) {</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;        out *= (double)((uint64_t)DIGIT_MAX + 1);</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;        out += (double)value-&gt;digits[awidth-i-1];</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;    }</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;    <span class="keywordflow">if</span> (value-&gt;width &lt; 0) <span class="keywordflow">return</span> -out;</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;}</div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160; </div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__float__) {</div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(krk_long_get_double(self-&gt;value));</div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;}</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;invalid literal for long() with base 0: %R&quot;</span>, argv[1]);</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;        }</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_long(argv[1])) {</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;        krk_long_init_copy(self-&gt;value,AS_long(argv[1])-&gt;value);</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() argument must be a string or a number, not &#39;%T&#39;&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, argv[1]);</div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;    }</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;    <span class="comment">/* our value should be set */</span></div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;}</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160; </div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;<span class="keyword">static</span> <span class="keywordtype">double</span> krk_long_get_double(<span class="keyword">const</span> <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * value) {</div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;    <span class="keywordtype">size_t</span> awidth = value-&gt;width &lt; 0 ? -value-&gt;width : value-&gt;width;</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;    <span class="keywordtype">double</span> out = 0.0;</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; awidth; ++i) {</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;        out *= (double)((uint64_t)DIGIT_MAX + 1);</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;        out += (double)value-&gt;digits[awidth-i-1];</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;    }</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    <span class="keywordflow">if</span> (value-&gt;width &lt; 0) <span class="keywordflow">return</span> -out;</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;}</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160; </div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__float__) {</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(krk_long_get_double(self-&gt;value));</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;}</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160; </div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _krk_long_truediv(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * top, <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * bottom) {</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;    <span class="keywordflow">if</span> (bottom-&gt;width == 0) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;float division by zero&quot;</span>);</div>
 <div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160; </div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> _krk_long_truediv(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * top, <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * bottom) {</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;    <span class="keywordflow">if</span> (bottom-&gt;width == 0) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;float division by zero&quot;</span>);</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> quot, rem;</div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;    krk_long_init_many(&amp;quot, &amp;rem, NULL);</div>
 <div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160; </div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> quot, rem;</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;    krk_long_init_many(&amp;quot, &amp;rem, NULL);</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;    <span class="comment">/* Perform division */</span></div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;    krk_long_div_rem(&amp;quot, &amp;rem, top, bottom);</div>
 <div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160; </div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;    <span class="comment">/* Perform division */</span></div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;    krk_long_div_rem(&amp;quot, &amp;rem, top, bottom);</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160; </div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;    <span class="comment">/* Convert to floats */</span></div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;    <span class="keywordtype">double</span> quot_float = krk_long_get_double(&amp;quot);</div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;    <span class="keywordtype">double</span> rem_float  = krk_long_get_double(&amp;rem);</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;    <span class="keywordtype">double</span> div_float  = krk_long_get_double(bottom);</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;    <span class="comment">/* Convert to floats */</span></div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;    <span class="keywordtype">double</span> quot_float = krk_long_get_double(&amp;quot);</div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;    <span class="keywordtype">double</span> rem_float  = krk_long_get_double(&amp;rem);</div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;    <span class="keywordtype">double</span> div_float  = krk_long_get_double(bottom);</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160; </div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(quot_float + (rem_float / div_float));</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;}</div>
 <div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160; </div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(quot_float + (rem_float / div_float));</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;}</div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160; </div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> checked_float_div(<span class="keywordtype">double</span> top, <span class="keywordtype">double</span> bottom) {</div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;    <span class="keywordflow">if</span> (unlikely(bottom == 0.0)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;float division by zero&quot;</span>);</div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(top/bottom);</div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;}</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160; </div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__truediv__) {</div>
-<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;    krk_long tmp;</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;    <span class="keywordflow">if</span> (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value);</div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1]));</div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_FLOATING(argv[1])) <span class="keywordflow">return</span> checked_float_div(krk_long_get_double(self-&gt;value), AS_FLOATING(argv[1]));</div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;    <span class="keywordflow">return</span> _krk_long_truediv(self-&gt;value,tmp);</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;}</div>
-<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160; </div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__rtruediv__) {</div>
-<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;    krk_long tmp;</div>
-<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;    <span class="keywordflow">if</span> (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value);</div>
-<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1]));</div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_FLOATING(argv[1])) <span class="keywordflow">return</span> checked_float_div(AS_FLOATING(argv[1]), krk_long_get_double(self-&gt;value));</div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;    <span class="keywordflow">return</span> _krk_long_truediv(tmp,self-&gt;value);</div>
-<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;}</div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160; </div>
-<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;<span class="preprocessor">#define PRINTER(name,base,prefix) \</span></div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
-<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;<span class="preprocessor">        size_t size; \</span></div>
-<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;<span class="preprocessor">        char * rev = krk_long_to_str(self-&gt;value, base, prefix, &amp;size); \</span></div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;<span class="preprocessor">        return OBJECT_VAL(krk_takeString(rev,size)); \</span></div>
-<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160; </div>
-<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;PRINTER(str,10,<span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;PRINTER(hex,16,&quot;x0&quot;)</div>
-<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;PRINTER(oct,8,&quot;o0&quot;)</div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;PRINTER(bin,2,&quot;b0&quot;)</div>
-<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160; </div>
-<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__hash__) {</div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL((uint32_t)(krk_long_medium(self-&gt;value)));</div>
-<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;}</div>
-<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160; </div>
-<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> make_long_obj(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
-<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;    krk_integer_type maybe = 0;</div>
-<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;    <span class="keywordflow">if</span> (val-&gt;width == 0) {</div>
-<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        maybe = 0;</div>
-<div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == 1) {</div>
-<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;        maybe = val-&gt;digits[0];</div>
-<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == -1) {</div>
-<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;        maybe = -(int64_t)val-&gt;digits[0];</div>
-<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == 2 &amp;&amp; (val-&gt;digits[1] &amp; 0xFFFF0000) == 0) {</div>
-<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;        maybe = ((uint64_t)val-&gt;digits[1] &lt;&lt; 31) | val-&gt;digits[0];</div>
-<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == -2 &amp;&amp; (val-&gt;digits[1] &amp; 0xFFFF0000) == 0) {</div>
-<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;        maybe = -(((uint64_t)val-&gt;digits[1] &lt;&lt; 31) | val-&gt;digits[0]);</div>
-<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(KRK_BASE_CLASS(<span class="keywordtype">long</span>))));</div>
-<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;        *AS_long(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;value = *val;</div>
-<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;    }</div>
-<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160; </div>
-<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;    krk_long_clear(val);</div>
-<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(maybe);</div>
-<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;}</div>
-<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160; </div>
-<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> krk_parse_int(<span class="keyword">const</span> <span class="keywordtype">char</span> * start, <span class="keywordtype">size_t</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> base) {</div>
-<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> _value;</div>
-<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;    <span class="keywordflow">if</span> (krk_long_parse_string(start, &amp;_value, base, width)) {</div>
-<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;        <span class="keywordflow">return</span> NONE_VAL();</div>
-<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;    }</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> checked_float_div(<span class="keywordtype">double</span> top, <span class="keywordtype">double</span> bottom) {</div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    <span class="keywordflow">if</span> (unlikely(bottom == 0.0)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;float division by zero&quot;</span>);</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;    <span class="keywordflow">return</span> FLOATING_VAL(top/bottom);</div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;}</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160; </div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__truediv__) {</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;    krk_long tmp;</div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;    <span class="keywordflow">if</span> (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value);</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1]));</div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_FLOATING(argv[1])) <span class="keywordflow">return</span> checked_float_div(krk_long_get_double(self-&gt;value), AS_FLOATING(argv[1]));</div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;    <span class="keywordflow">return</span> _krk_long_truediv(self-&gt;value,tmp);</div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;}</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160; </div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__rtruediv__) {</div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;    krk_long tmp;</div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;    <span class="keywordflow">if</span> (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value);</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1]));</div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_FLOATING(argv[1])) <span class="keywordflow">return</span> checked_float_div(AS_FLOATING(argv[1]), krk_long_get_double(self-&gt;value));</div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;    <span class="keywordflow">return</span> _krk_long_truediv(tmp,self-&gt;value);</div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;}</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160; </div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;<span class="preprocessor">#define PRINTER(name,base,prefix) \</span></div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;<span class="preprocessor">        size_t size; \</span></div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;<span class="preprocessor">        char * rev = krk_long_to_str(self-&gt;value, base, prefix, &amp;size); \</span></div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;<span class="preprocessor">        return OBJECT_VAL(krk_takeString(rev,size)); \</span></div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160; </div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;PRINTER(str,10,<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;PRINTER(hex,16,&quot;x0&quot;)</div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;PRINTER(oct,8,&quot;o0&quot;)</div>
+<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;PRINTER(bin,2,&quot;b0&quot;)</div>
+<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160; </div>
+<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__hash__) {</div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL((uint32_t)(krk_long_medium(self-&gt;value)));</div>
+<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;}</div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160; </div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> make_long_obj(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;    krk_integer_type maybe = 0;</div>
+<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;    <span class="keywordflow">if</span> (val-&gt;width == 0) {</div>
+<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        maybe = 0;</div>
+<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == 1) {</div>
+<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;        maybe = val-&gt;digits[0];</div>
+<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == -1) {</div>
+<div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;        maybe = -(int64_t)val-&gt;digits[0];</div>
+<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == 2 &amp;&amp; (val-&gt;digits[1] &amp; 0xFFFF0000) == 0) {</div>
+<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;        maybe = ((uint64_t)val-&gt;digits[1] &lt;&lt; 31) | val-&gt;digits[0];</div>
+<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val-&gt;width == -2 &amp;&amp; (val-&gt;digits[1] &amp; 0xFFFF0000) == 0) {</div>
+<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;        maybe = -(((uint64_t)val-&gt;digits[1] &lt;&lt; 31) | val-&gt;digits[0]);</div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">krk_newInstance</a>(KRK_BASE_CLASS(<span class="keywordtype">long</span>))));</div>
+<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;        *AS_long(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;value = *val;</div>
+<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;    }</div>
+<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160; </div>
+<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;    krk_long_clear(val);</div>
+<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(maybe);</div>
+<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;}</div>
+<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160; </div>
+<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;<a class="code" href="structKrkValue.html">KrkValue</a> krk_parse_int(<span class="keyword">const</span> <span class="keywordtype">char</span> * start, <span class="keywordtype">size_t</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> base) {</div>
+<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> _value;</div>
+<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;    <span class="keywordflow">if</span> (krk_long_parse_string(start, &amp;_value, base, width)) {</div>
+<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;        <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;    }</div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160; </div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;_value);</div>
+<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;}</div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160; </div>
-<div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;_value);</div>
-<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;}</div>
-<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160; </div>
-<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__int__) {</div>
-<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(krk_long_medium(self-&gt;value));</div>
-<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;}</div>
-<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160; </div>
-<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP_FLOATS(name, long_func, MAYBE_FLOAT, MAYBE_FLOAT_INV) \</span></div>
-<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
-<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
-<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;<span class="preprocessor">        MAYBE_FLOAT \</span></div>
-<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
-<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;<span class="preprocessor">        long_func(tmp,self-&gt;value,tmp); \</span></div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;<span class="preprocessor">        return make_long_obj(tmp); \</span></div>
-<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;<span class="preprocessor">    } \</span></div>
-<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;<span class="preprocessor">    KRK_Method(long,__r ## name ## __) { \</span></div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
-<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
-<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;<span class="preprocessor">        MAYBE_FLOAT_INV \</span></div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
-<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;<span class="preprocessor">        long_func(tmp,tmp,self-&gt;value); \</span></div>
-<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;<span class="preprocessor">        return make_long_obj(tmp); \</span></div>
-<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;<span class="preprocessor">    } \</span></div>
-<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;<span class="preprocessor">    _noexport \</span></div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;<span class="preprocessor">    KrkValue krk_long_coerced_ ## name (krk_integer_type a, krk_integer_type b) { \</span></div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;<span class="preprocessor">        krk_long tmp_res, tmp_a, tmp_b; \</span></div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_res, 0); \</span></div>
-<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_a, a); \</span></div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_b, b); \</span></div>
-<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;<span class="preprocessor">        long_func(tmp_res, tmp_a, tmp_b); \</span></div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;<span class="preprocessor">        krk_long_clear_many(tmp_a, tmp_b, NULL); \</span></div>
-<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;<span class="preprocessor">        return make_long_obj(tmp_res); \</span></div>
-<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160; </div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP(a,b) BASIC_BIN_OP_FLOATS(a,b,,)</span></div>
-<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;<span class="preprocessor">#define FLOAT_A(op) else if (IS_FLOATING(argv[1])) return FLOATING_VAL(krk_long_get_double(self-&gt;value) op AS_FLOATING(argv[1]));</span></div>
-<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;<span class="preprocessor">#define FLOAT_B(op) else if (IS_FLOATING(argv[1])) return FLOATING_VAL(AS_FLOATING(argv[1]) op krk_long_get_double(self-&gt;value));</span></div>
-<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP_FLOAT(a,b,op) BASIC_BIN_OP_FLOATS(a,b,FLOAT_A(op),FLOAT_B(op))</span></div>
-<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160; </div>
-<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;BASIC_BIN_OP_FLOAT(add,krk_long_add,+)</div>
-<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;BASIC_BIN_OP_FLOAT(sub,krk_long_sub,-)</div>
-<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;BASIC_BIN_OP_FLOAT(mul,krk_long_mul,*)</div>
-<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;BASIC_BIN_OP(or, krk_long_or)</div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;BASIC_BIN_OP(xor,krk_long_xor)</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;BASIC_BIN_OP(and,krk_long_and)</div>
-<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160; </div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;static <span class="keywordtype">void</span> _krk_long_lshift(krk_long out, krk_long val, krk_long shift) {</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(shift) &lt; 0) { <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;negative shift count&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;    krk_long multiplier;</div>
-<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;    krk_long_init_si(multiplier,0);</div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;    krk_long_bit_set(multiplier, krk_long_medium(shift));</div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    krk_long_mul(out,val,multiplier);</div>
-<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;    krk_long_clear(multiplier);</div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;}</div>
-<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160; </div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_rshift(krk_long out, krk_long val, krk_long shift) {</div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(shift) &lt; 0) { <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;negative shift count&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;    krk_long multiplier, garbage;</div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    krk_long_init_many(multiplier,garbage,NULL);</div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;    krk_long_bit_set(multiplier, krk_long_medium(shift));</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;    krk_long_div_rem(out,garbage,val,multiplier);</div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;    krk_long_clear_many(multiplier,garbage,NULL);</div>
-<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;}</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160; </div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_mod(krk_long out, krk_long a, krk_long b) {</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) { <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;integer division or modulo by zero&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;    krk_long garbage;</div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;    krk_long_init_si(garbage,0);</div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;    krk_long_div_rem(garbage,out,a,b);</div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;    krk_long_clear(garbage);</div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;}</div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160; </div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_div(krk_long out, krk_long a, krk_long b) {</div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) { <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;integer division or modulo by zero&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;    krk_long garbage;</div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;    krk_long_init_si(garbage,0);</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;    krk_long_div_rem(out,garbage,a,b);</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;    krk_long_clear(garbage);</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;}</div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160; </div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_pow(krk_long out, krk_long a, krk_long b) {</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) {</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;        krk_long_clear(out);</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;        krk_long_init_si(out, 1);</div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;    }</div>
-<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160; </div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) &lt; 0) {</div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;        <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;notImplementedError, <span class="stringliteral">&quot;TODO: negative exponent&quot;</span>);</div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;    }</div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160; </div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;    PREP_OUTPUT(out,a,b);</div>
+<div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__int__) {</div>
+<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(krk_long_medium(self-&gt;value));</div>
+<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;}</div>
+<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160; </div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP_FLOATS(name, long_func, MAYBE_FLOAT, MAYBE_FLOAT_INV) \</span></div>
+<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
+<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;<span class="preprocessor">        MAYBE_FLOAT \</span></div>
+<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
+<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;<span class="preprocessor">        long_func(tmp,self-&gt;value,tmp); \</span></div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;<span class="preprocessor">        return make_long_obj(tmp); \</span></div>
+<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;<span class="preprocessor">    } \</span></div>
+<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;<span class="preprocessor">    KRK_Method(long,__r ## name ## __) { \</span></div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
+<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
+<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;<span class="preprocessor">        MAYBE_FLOAT_INV \</span></div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;<span class="preprocessor">        long_func(tmp,tmp,self-&gt;value); \</span></div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;<span class="preprocessor">        return make_long_obj(tmp); \</span></div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;<span class="preprocessor">    } \</span></div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;<span class="preprocessor">    _noexport \</span></div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;<span class="preprocessor">    KrkValue krk_long_coerced_ ## name (krk_integer_type a, krk_integer_type b) { \</span></div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;<span class="preprocessor">        krk_long tmp_res, tmp_a, tmp_b; \</span></div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_res, 0); \</span></div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_a, a); \</span></div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;<span class="preprocessor">        krk_long_init_si(tmp_b, b); \</span></div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;<span class="preprocessor">        long_func(tmp_res, tmp_a, tmp_b); \</span></div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="preprocessor">        krk_long_clear_many(tmp_a, tmp_b, NULL); \</span></div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;<span class="preprocessor">        return make_long_obj(tmp_res); \</span></div>
+<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160; </div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP(a,b) BASIC_BIN_OP_FLOATS(a,b,,)</span></div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;<span class="preprocessor">#define FLOAT_A(op) else if (IS_FLOATING(argv[1])) return FLOATING_VAL(krk_long_get_double(self-&gt;value) op AS_FLOATING(argv[1]));</span></div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;<span class="preprocessor">#define FLOAT_B(op) else if (IS_FLOATING(argv[1])) return FLOATING_VAL(AS_FLOATING(argv[1]) op krk_long_get_double(self-&gt;value));</span></div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;<span class="preprocessor">#define BASIC_BIN_OP_FLOAT(a,b,op) BASIC_BIN_OP_FLOATS(a,b,FLOAT_A(op),FLOAT_B(op))</span></div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160; </div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;BASIC_BIN_OP_FLOAT(add,krk_long_add,+)</div>
+<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;BASIC_BIN_OP_FLOAT(sub,krk_long_sub,-)</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;BASIC_BIN_OP_FLOAT(mul,krk_long_mul,*)</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;BASIC_BIN_OP(or, krk_long_or)</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;BASIC_BIN_OP(xor,krk_long_xor)</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;BASIC_BIN_OP(and,krk_long_and)</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160; </div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;static <span class="keywordtype">void</span> _krk_long_lshift(krk_long out, krk_long val, krk_long shift) {</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(shift) &lt; 0) { <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;negative shift count&quot;</span>); <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;    krk_long multiplier;</div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;    krk_long_init_si(multiplier,0);</div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;    krk_long_bit_set(multiplier, krk_long_medium(shift));</div>
+<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;    krk_long_mul(out,val,multiplier);</div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;    krk_long_clear(multiplier);</div>
+<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;}</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160; </div>
+<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_rshift(krk_long out, krk_long val, krk_long shift) {</div>
+<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(shift) &lt; 0) { <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;negative shift count&quot;</span>); <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;    krk_long multiplier, garbage;</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;    krk_long_init_many(multiplier,garbage,NULL);</div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    krk_long_bit_set(multiplier, krk_long_medium(shift));</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;    krk_long_div_rem(out,garbage,val,multiplier);</div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    krk_long_clear_many(multiplier,garbage,NULL);</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;}</div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160; </div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_mod(krk_long out, krk_long a, krk_long b) {</div>
+<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) { <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;integer division or modulo by zero&quot;</span>); <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;    krk_long garbage;</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;    krk_long_init_si(garbage,0);</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;    krk_long_div_rem(garbage,out,a,b);</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;    krk_long_clear(garbage);</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;}</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160; </div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_div(krk_long out, krk_long a, krk_long b) {</div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) { <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;integer division or modulo by zero&quot;</span>); <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;    krk_long garbage;</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;    krk_long_init_si(garbage,0);</div>
+<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;    krk_long_div_rem(out,garbage,a,b);</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;    krk_long_clear(garbage);</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;}</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160; </div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> _krk_long_pow(krk_long out, krk_long a, krk_long b) {</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) == 0) {</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;        krk_long_clear(out);</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;        krk_long_init_si(out, 1);</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;    }</div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160; </div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(b) &lt; 0) {</div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;        <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;notImplementedError, <span class="stringliteral">&quot;TODO: negative exponent&quot;</span>);</div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;    }</div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160; </div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;    PREP_OUTPUT(out,a,b);</div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160; </div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;    krk_long_clear(out);</div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;    krk_long_init_si(out, 1);</div>
 <div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160; </div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;    krk_long_clear(out);</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;    krk_long_init_si(out, 1);</div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;    krk_long scratch;</div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;    krk_long_init_si(scratch, 0);</div>
 <div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160; </div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;    krk_long scratch;</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;    krk_long_init_si(scratch, 0);</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;    <span class="keywordflow">for</span> (ssize_t i = b[0].width-1; i &gt;= 0; --i) {</div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;        uint32_t b_i = b[0].digits[i];</div>
 <div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160; </div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;    <span class="keywordflow">for</span> (ssize_t i = b[0].width-1; i &gt;= 0; --i) {</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        uint32_t b_i = b[0].digits[i];</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160; </div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = (uint32_t)1 &lt;&lt; (DIGIT_SHIFT-1); j != 0; j &gt;&gt;= 1) {</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;            krk_long_mul(scratch, out, out);</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;            _swap(out, scratch);</div>
-<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160; </div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;            <span class="keywordflow">if</span> (b_i &amp; j) {</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;                krk_long_mul(out, out, a);</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;            }</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160; </div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;            <span class="comment">/* This can take a long time, especially for values that are likely to</span></div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;<span class="comment">             * run out of memory for storage, so best to bail on signal early. */</span></div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_SIGNALLED) {</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                krk_long_clear_many(scratch, out, NULL);</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                <span class="comment">/* There&#39;s no need to set exception here, the VM will do it on its</span></div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;<span class="comment">                 * own eventually... */</span></div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;            }</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;        }</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;    }</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160; </div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;    krk_long_clear(scratch);</div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    FINISH_OUTPUT(out);</div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;}</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160; </div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;BASIC_BIN_OP(lshift,_krk_long_lshift)</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;BASIC_BIN_OP(rshift,_krk_long_rshift)</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;BASIC_BIN_OP(mod,_krk_long_mod)</div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;BASIC_BIN_OP(floordiv,_krk_long_div)</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;BASIC_BIN_OP(pow,_krk_long_pow)</div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160; </div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;<span class="preprocessor">#define COMPARE_OP(name, comp) \</span></div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;<span class="preprocessor">        else if (IS_FLOATING(argv[1])) return BOOLEAN_VAL(krk_long_get_double(self-&gt;value) comp AS_FLOATING(argv[1])); \</span></div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;<span class="preprocessor">        int cmp = krk_long_compare(self-&gt;value,tmp); \</span></div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;<span class="preprocessor">        krk_long_clear(tmp); \</span></div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;<span class="preprocessor">        return BOOLEAN_VAL(cmp comp 0); \</span></div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160; </div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;COMPARE_OP(lt, &lt;)</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;COMPARE_OP(gt, &gt;)</div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;COMPARE_OP(le, &lt;=)</div>
-<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;COMPARE_OP(ge, &gt;=)</div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;COMPARE_OP(eq, ==)</div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = (uint32_t)1 &lt;&lt; (DIGIT_SHIFT-1); j != 0; j &gt;&gt;= 1) {</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;            krk_long_mul(scratch, out, out);</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;            _swap(out, scratch);</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160; </div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;            <span class="keywordflow">if</span> (b_i &amp; j) {</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;                krk_long_mul(out, out, a);</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;            }</div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160; </div>
+<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;            <span class="comment">/* This can take a long time, especially for values that are likely to</span></div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;<span class="comment">             * run out of memory for storage, so best to bail on signal early. */</span></div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_SIGNALLED) {</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                krk_long_clear_many(scratch, out, NULL);</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;                <span class="comment">/* There&#39;s no need to set exception here, the VM will do it on its</span></div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;<span class="comment">                 * own eventually... */</span></div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;            }</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;        }</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;    }</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160; </div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;    krk_long_clear(scratch);</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;    FINISH_OUTPUT(out);</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;}</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160; </div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;BASIC_BIN_OP(lshift,_krk_long_lshift)</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;BASIC_BIN_OP(rshift,_krk_long_rshift)</div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;BASIC_BIN_OP(mod,_krk_long_mod)</div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;BASIC_BIN_OP(floordiv,_krk_long_div)</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;BASIC_BIN_OP(pow,_krk_long_pow)</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160; </div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;<span class="preprocessor">#define COMPARE_OP(name, comp) \</span></div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;<span class="preprocessor">    KRK_Method(long,__ ## name ## __) { \</span></div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;<span class="preprocessor">        krk_long tmp; \</span></div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;<span class="preprocessor">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</span></div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;<span class="preprocessor">        else if (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</span></div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;<span class="preprocessor">        else if (IS_FLOATING(argv[1])) return BOOLEAN_VAL(krk_long_get_double(self-&gt;value) comp AS_FLOATING(argv[1])); \</span></div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;<span class="preprocessor">        else return NOTIMPL_VAL(); \</span></div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;<span class="preprocessor">        int cmp = krk_long_compare(self-&gt;value,tmp); \</span></div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;<span class="preprocessor">        krk_long_clear(tmp); \</span></div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;<span class="preprocessor">        return BOOLEAN_VAL(cmp comp 0); \</span></div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160; </div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;COMPARE_OP(lt, &lt;)</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;COMPARE_OP(gt, &gt;)</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;COMPARE_OP(le, &lt;=)</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;COMPARE_OP(ge, &gt;=)</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;COMPARE_OP(eq, ==)</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160; </div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;<span class="preprocessor">#undef BASIC_BIN_OP</span></div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;<span class="preprocessor">#undef COMPARE_OP</span></div>
 <div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160; </div>
-<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;<span class="preprocessor">#undef BASIC_BIN_OP</span></div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;<span class="preprocessor">#undef COMPARE_OP</span></div>
-<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160; </div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__len__) {</div>
-<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(krk_long_sign(self-&gt;value));</div>
-<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;}</div>
-<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160; </div>
-<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__invert__) {</div>
-<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp, one;</div>
-<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
-<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;    krk_long_init_si(&amp;one, 1);</div>
-<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;    krk_long_add(&amp;tmp, &amp;tmp, &amp;one);</div>
-<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;    krk_long_set_sign(&amp;tmp, tmp.width &gt; 0 ? -1 : 1);</div>
-<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;    krk_long_clear(&amp;one);</div>
-<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
-<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;}</div>
-<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160; </div>
-<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__neg__) {</div>
-<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
-<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;    krk_long_set_sign(&amp;tmp, tmp.width &gt; 0 ? -1 : 1);</div>
-<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
-<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;}</div>
-<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160; </div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__abs__) {</div>
-<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;    krk_long_set_sign(&amp;tmp, 1);</div>
-<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
-<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;}</div>
-<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160; </div>
-<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__pos__) {</div>
-<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;}</div>
-<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160; </div>
-<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkValue.html">KrkValue</a> krk_doFormatString(<span class="keyword">const</span> <span class="keywordtype">char</span> * typeName, <a class="code" href="structKrkString.html">KrkString</a> * format_spec, <span class="keywordtype">int</span> positive, <span class="keywordtype">void</span>* abs, <span class="keywordtype">int</span> (*callback)(<span class="keywordtype">void</span> *,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>*));</div>
-<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160; </div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> formatLongCallback(<span class="keywordtype">void</span> * a, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> *more) {</div>
-<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;    uint32_t result = _div_inplace((<a class="code" href="structKrkLong__Internal.html">KrkLong</a>*)a, base);</div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;    *more = krk_long_sign(a);</div>
-<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;}</div>
-<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160; </div>
-<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__format__) {</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;    CHECK_ARG(1,str,<a class="code" href="structKrkString.html">KrkString</a>*,format_spec);</div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160; </div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;    krk_long_set_sign(&amp;tmp, 1);</div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160; </div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = krk_doFormatString(<span class="stringliteral">&quot;long&quot;</span>,format_spec,</div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;        krk_long_sign(self-&gt;value) &gt;= 0,</div>
-<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;        &amp;tmp,</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;        formatLongCallback);</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160; </div>
-<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;    krk_long_clear(&amp;tmp);</div>
-<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;}</div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160; </div>
-<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_bit_count(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    <span class="keywordtype">size_t</span> bits = _bits_in(val);</div>
-<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160; </div>
-<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; bits; ++i) {</div>
-<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        count += _bit_is_set(val, i);</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;    }</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160; </div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;    krk_long_init_ui(&amp;tmp, count);</div>
-<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;}</div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160; </div>
-<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,bit_count) {</div>
-<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;    <span class="keywordflow">return</span> long_bit_count(self-&gt;value);</div>
-<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;}</div>
-<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160; </div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_bit_length(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
-<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    <span class="keywordtype">size_t</span> bits = _bits_in(val);</div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;    krk_long_init_ui(&amp;tmp, bits);</div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
-<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;}</div>
-<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160; </div>
-<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,bit_length) {</div>
-<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;    <span class="keywordflow">return</span> long_bit_length(self-&gt;value);</div>
-<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;}</div>
-<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160; </div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_to_bytes(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val, <span class="keywordtype">size_t</span> argc, <span class="keyword">const</span> <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) {</div>
-<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> _method_name[] = <span class="stringliteral">&quot;to_bytes&quot;</span>;</div>
-<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,length);</div>
-<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;    CHECK_ARG(2,str,<a class="code" href="structKrkString.html">KrkString</a>*,byteorder);</div>
-<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;    <span class="keywordtype">int</span> _signed = 0;</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;    <span class="keywordflow">if</span> (hasKw) {</div>
-<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> tmp;</div>
-<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(AS_DICT(argv[argc]), OBJECT_VAL(S(<span class="stringliteral">&quot;signed&quot;</span>)), &amp;tmp)) {</div>
-<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;            _signed = !<a class="code" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a>(tmp);</div>
-<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;        }</div>
-<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;    }</div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160; </div>
-<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;    <span class="keywordflow">if</span> (length &lt; 0) {</div>
-<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;length must be non-negative&quot;</span>);</div>
-<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;    }</div>
-<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160; </div>
-<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;    <span class="keywordtype">int</span> order = 0;</div>
-<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;    <span class="keywordflow">if</span> (!strcmp(byteorder-&gt;chars,<span class="stringliteral">&quot;little&quot;</span>)) {</div>
-<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;        order = 1;</div>
-<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!strcmp(byteorder-&gt;chars,<span class="stringliteral">&quot;big&quot;</span>)) {</div>
-<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;        order = -1;</div>
-<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;byteorder must be either &#39;little&#39; or &#39;big&#39;&quot;</span>);</div>
-<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;    }</div>
-<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160; </div>
-<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0 &amp;&amp; !_signed) {</div>
-<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;notImplementedError, <span class="stringliteral">&quot;can not convert negative value to unsigned&quot;</span>);</div>
-<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;    }</div>
-<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160; </div>
-<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;    <span class="comment">/* We could avoid the copy for a positive value, but whatever... */</span></div>
-<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
-<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;    krk_long_init_ui(&amp;tmp, 0);</div>
-<div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;    krk_long_abs(&amp;tmp, val);</div>
-<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160; </div>
-<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;    <span class="comment">/* Invert negative values; already checked for signed... */</span></div>
-<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0) {</div>
-<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;        <a class="code" href="structKrkLong__Internal.html">KrkLong</a> one;</div>
-<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;        krk_long_init_ui(&amp;one, 1);</div>
-<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;        krk_long_sub(&amp;tmp, &amp;tmp, &amp;one);</div>
-<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;        krk_long_clear(&amp;one);</div>
-<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    }</div>
+<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__len__) {</div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(krk_long_sign(self-&gt;value));</div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;}</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160; </div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__invert__) {</div>
+<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp, one;</div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
+<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;    krk_long_init_si(&amp;one, 1);</div>
+<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;    krk_long_add(&amp;tmp, &amp;tmp, &amp;one);</div>
+<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;    krk_long_set_sign(&amp;tmp, tmp.width &gt; 0 ? -1 : 1);</div>
+<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;    krk_long_clear(&amp;one);</div>
+<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
+<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;}</div>
+<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160; </div>
+<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__neg__) {</div>
+<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
+<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;    krk_long_set_sign(&amp;tmp, tmp.width &gt; 0 ? -1 : 1);</div>
+<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
+<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;}</div>
+<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160; </div>
+<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__abs__) {</div>
+<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;    krk_long_set_sign(&amp;tmp, 1);</div>
+<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;}</div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160; </div>
+<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__pos__) {</div>
+<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;    <span class="keywordflow">return</span> argv[0];</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;}</div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160; </div>
+<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;<span class="keyword">extern</span> <a class="code" href="structKrkValue.html">KrkValue</a> krk_doFormatString(<span class="keyword">const</span> <span class="keywordtype">char</span> * typeName, <a class="code" href="structKrkString.html">KrkString</a> * format_spec, <span class="keywordtype">int</span> positive, <span class="keywordtype">void</span>* abs, <span class="keywordtype">int</span> (*callback)(<span class="keywordtype">void</span> *,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>*));</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160; </div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> formatLongCallback(<span class="keywordtype">void</span> * a, <span class="keywordtype">int</span> base, <span class="keywordtype">int</span> *more) {</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;    uint32_t result = _div_inplace((<a class="code" href="structKrkLong__Internal.html">KrkLong</a>*)a, base);</div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;    *more = krk_long_sign(a);</div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;}</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160; </div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,__format__) {</div>
+<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;    CHECK_ARG(1,str,<a class="code" href="structKrkString.html">KrkString</a>*,format_spec);</div>
+<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160; </div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;    krk_long_init_copy(&amp;tmp, self-&gt;value);</div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;    krk_long_set_sign(&amp;tmp, 1);</div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160; </div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> result = krk_doFormatString(<span class="stringliteral">&quot;long&quot;</span>,format_spec,</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;        krk_long_sign(self-&gt;value) &gt;= 0,</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;        &amp;tmp,</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;        formatLongCallback);</div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160; </div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;    krk_long_clear(&amp;tmp);</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;}</div>
+<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160; </div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_bit_count(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;    <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    <span class="keywordtype">size_t</span> bits = _bits_in(val);</div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160; </div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; bits; ++i) {</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;        count += _bit_is_set(val, i);</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;    }</div>
+<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160; </div>
+<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;    krk_long_init_ui(&amp;tmp, count);</div>
+<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;}</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160; </div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,bit_count) {</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    <span class="keywordflow">return</span> long_bit_count(self-&gt;value);</div>
+<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;}</div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160; </div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_bit_length(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val) {</div>
+<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;    <span class="keywordtype">size_t</span> bits = _bits_in(val);</div>
+<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    krk_long_init_ui(&amp;tmp, bits);</div>
+<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    <span class="keywordflow">return</span> make_long_obj(&amp;tmp);</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;}</div>
+<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160; </div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,bit_length) {</div>
+<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;    <span class="keywordflow">return</span> long_bit_length(self-&gt;value);</div>
+<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;}</div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160; </div>
+<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;<span class="keyword">static</span> <a class="code" href="structKrkValue.html">KrkValue</a> long_to_bytes(<a class="code" href="structKrkLong__Internal.html">KrkLong</a> * val, <span class="keywordtype">size_t</span> argc, <span class="keyword">const</span> <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw) {</div>
+<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> _method_name[] = <span class="stringliteral">&quot;to_bytes&quot;</span>;</div>
+<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;    CHECK_ARG(1,<span class="keywordtype">int</span>,krk_integer_type,length);</div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;    CHECK_ARG(2,str,<a class="code" href="structKrkString.html">KrkString</a>*,byteorder);</div>
+<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;    <span class="keywordtype">int</span> _signed = 0;</div>
+<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;    <span class="keywordflow">if</span> (hasKw) {</div>
+<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;        <a class="code" href="structKrkValue.html">KrkValue</a> tmp;</div>
+<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(AS_DICT(argv[argc]), OBJECT_VAL(S(<span class="stringliteral">&quot;signed&quot;</span>)), &amp;tmp)) {</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;            _signed = !<a class="code" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a>(tmp);</div>
+<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        }</div>
+<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;    }</div>
+<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160; </div>
+<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;    <span class="keywordflow">if</span> (length &lt; 0) {</div>
+<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;length must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;    }</div>
+<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160; </div>
+<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;    <span class="keywordtype">int</span> order = 0;</div>
+<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;    <span class="keywordflow">if</span> (!strcmp(byteorder-&gt;chars,<span class="stringliteral">&quot;little&quot;</span>)) {</div>
+<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;        order = 1;</div>
+<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!strcmp(byteorder-&gt;chars,<span class="stringliteral">&quot;big&quot;</span>)) {</div>
+<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;        order = -1;</div>
+<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;byteorder must be either &#39;little&#39; or &#39;big&#39;&quot;</span>);</div>
+<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;    }</div>
+<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160; </div>
+<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0 &amp;&amp; !_signed) {</div>
+<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;notImplementedError, <span class="stringliteral">&quot;can not convert negative value to unsigned&quot;</span>);</div>
+<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;    }</div>
+<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160; </div>
+<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;    <span class="comment">/* We could avoid the copy for a positive value, but whatever... */</span></div>
+<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> tmp;</div>
+<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;    krk_long_init_ui(&amp;tmp, 0);</div>
+<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;    krk_long_abs(&amp;tmp, val);</div>
+<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160; </div>
+<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;    <span class="comment">/* Invert negative values; already checked for signed... */</span></div>
+<div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0) {</div>
+<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;        <a class="code" href="structKrkLong__Internal.html">KrkLong</a> one;</div>
+<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;        krk_long_init_ui(&amp;one, 1);</div>
+<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;        krk_long_sub(&amp;tmp, &amp;tmp, &amp;one);</div>
+<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;        krk_long_clear(&amp;one);</div>
+<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;    }</div>
+<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160; </div>
+<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;    <span class="comment">/* Use bits from inverted value */</span></div>
+<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    <span class="keywordtype">size_t</span> bitCount = _bits_in(&amp;tmp);</div>
 <div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160; </div>
-<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    <span class="comment">/* Use bits from inverted value */</span></div>
-<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;    <span class="keywordtype">size_t</span> bitCount = _bits_in(&amp;tmp);</div>
-<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160; </div>
-<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;    <span class="comment">/* If it is signed, we need to reserve the top bit for the sign;</span></div>
-<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;<span class="comment">     * eg., (127).to_bytes(1,...,signed=True) is fine, but (128) is not,</span></div>
-<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;<span class="comment">     * and also (-128) should work, which is taken care of by using the</span></div>
-<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;<span class="comment">     * inverted value... Also, as a weird special case, 0 still has no</span></div>
-<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;<span class="comment">     * bits even if &#39;signed&#39;, which allows (0).to_bytes(0,...,signed=True)</span></div>
-<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;<span class="comment">     * even though that makes no sense to me... */</span></div>
-<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;    <span class="keywordflow">if</span> (_signed &amp;&amp; val-&gt;width != 0) bitCount++;</div>
-<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160; </div>
-<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)length * 8 &lt; bitCount) {</div>
-<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;        krk_long_clear(&amp;tmp);</div>
-<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;        <span class="comment">/* Should be OverflowError, but we don&#39;t have that and I don&#39;t care to add it right now */</span></div>
-<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;int too big to convert&quot;</span>);</div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    }</div>
-<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160; </div>
-<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    <span class="comment">/* Allocate bytes for final representation */</span></div>
-<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkBytes.html#af996a6f2dbd8fac6b346589d21322594">krk_newBytes</a>(length, NULL)));</div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    memset(AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes, 0, length);</div>
-<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160; </div>
-<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;    <span class="comment">/* We&#39;ll use a &#39;bit reader&#39;:</span></div>
-<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;<span class="comment">     * - We want 8 bits for each byte.</span></div>
-<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;<span class="comment">     * - We can collect 31 bits from each digit.</span></div>
-<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;<span class="comment">     * - If we run out of digits, we&#39;re done.</span></div>
-<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    ssize_t i = 0;</div>
-<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    ssize_t j = 0;</div>
-<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160; </div>
-<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;    uint64_t accum = 0;</div>
-<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    int32_t remaining = 0;</div>
-<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;    <span class="keywordtype">int</span> break_here = 0;</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160; </div>
-<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;    <span class="keywordflow">while</span> (i &lt; length &amp;&amp; !break_here) {</div>
-<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;        <span class="keywordflow">if</span> (remaining &lt; 8) {</div>
-<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;            <span class="keywordflow">if</span> (j &lt; tmp.width) {</div>
-<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;                accum |= ((uint64_t)tmp.digits[j]) &lt;&lt; remaining;</div>
-<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;                j++;</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;                break_here = 1;</div>
-<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;            }</div>
-<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;            remaining += 31;</div>
-<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;        }</div>
-<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160; </div>
-<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;        uint8_t <span class="keywordtype">byte</span> = accum &amp; 0xFF;</div>
-<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;        accum &gt;&gt;= 8;</div>
-<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;        remaining -= 8;</div>
-<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160; </div>
-<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;        AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes[order == 1 ? i : (length - i - 1)] = <span class="keywordtype">byte</span>;</div>
-<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;        i++;</div>
-<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;    }</div>
-<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160; </div>
-<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;    <span class="comment">/* If input was negative, at this point we&#39;re producing an inverted value;</span></div>
-<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;<span class="comment">     * we already encoded (|n|-1), so now we just need to bit invert. */</span></div>
-<div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0) {</div>
-<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)length; ++i) {</div>
-<div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160;            AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes[i] ^= 0xFF;</div>
-<div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;        }</div>
-<div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160;    }</div>
-<div class="line"><a name="l01679"></a><span class="lineno"> 1679</span>&#160; </div>
-<div class="line"><a name="l01680"></a><span class="lineno"> 1680</span>&#160;    <span class="comment">/* We produced a bytes object, so we no longer need the long. */</span></div>
-<div class="line"><a name="l01681"></a><span class="lineno"> 1681</span>&#160;    krk_long_clear(&amp;tmp);</div>
-<div class="line"><a name="l01682"></a><span class="lineno"> 1682</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l01683"></a><span class="lineno"> 1683</span>&#160;}</div>
-<div class="line"><a name="l01684"></a><span class="lineno"> 1684</span>&#160; </div>
-<div class="line"><a name="l01685"></a><span class="lineno"> 1685</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,to_bytes) {</div>
-<div class="line"><a name="l01686"></a><span class="lineno"> 1686</span>&#160;    METHOD_TAKES_AT_LEAST(2);</div>
-<div class="line"><a name="l01687"></a><span class="lineno"> 1687</span>&#160;    <span class="keywordflow">return</span> long_to_bytes(self-&gt;value, argc, argv, hasKw);</div>
-<div class="line"><a name="l01688"></a><span class="lineno"> 1688</span>&#160;}</div>
-<div class="line"><a name="l01689"></a><span class="lineno"> 1689</span>&#160; </div>
-<div class="line"><a name="l01698"></a><span class="lineno"> 1698</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,_digit_count) {</div>
-<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;    krk_long result; <span class="comment">/* since it&#39;s a ssize_t */</span></div>
-<div class="line"><a name="l01700"></a><span class="lineno"> 1700</span>&#160;    krk_long_init_si(result, self-&gt;value[0].width);</div>
-<div class="line"><a name="l01701"></a><span class="lineno"> 1701</span>&#160;    <span class="keywordflow">return</span> make_long_obj(result);</div>
-<div class="line"><a name="l01702"></a><span class="lineno"> 1702</span>&#160;}</div>
-<div class="line"><a name="l01703"></a><span class="lineno"> 1703</span>&#160; </div>
-<div class="line"><a name="l01714"></a><span class="lineno"> 1714</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,_get_digit) {</div>
-<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l01716"></a><span class="lineno"> 1716</span>&#160; </div>
-<div class="line"><a name="l01717"></a><span class="lineno"> 1717</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * _self = <span class="keyword">self</span>-&gt;value;</div>
+<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    <span class="comment">/* If it is signed, we need to reserve the top bit for the sign;</span></div>
+<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;<span class="comment">     * eg., (127).to_bytes(1,...,signed=True) is fine, but (128) is not,</span></div>
+<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;<span class="comment">     * and also (-128) should work, which is taken care of by using the</span></div>
+<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;<span class="comment">     * inverted value... Also, as a weird special case, 0 still has no</span></div>
+<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;<span class="comment">     * bits even if &#39;signed&#39;, which allows (0).to_bytes(0,...,signed=True)</span></div>
+<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;<span class="comment">     * even though that makes no sense to me... */</span></div>
+<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;    <span class="keywordflow">if</span> (_signed &amp;&amp; val-&gt;width != 0) bitCount++;</div>
+<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160; </div>
+<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)length * 8 &lt; bitCount) {</div>
+<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;        krk_long_clear(&amp;tmp);</div>
+<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;        <span class="comment">/* Should be OverflowError, but we don&#39;t have that and I don&#39;t care to add it right now */</span></div>
+<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;valueError, <span class="stringliteral">&quot;int too big to convert&quot;</span>);</div>
+<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;    }</div>
+<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160; </div>
+<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    <span class="comment">/* Allocate bytes for final representation */</span></div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(OBJECT_VAL(<a class="code" href="structKrkBytes.html#af996a6f2dbd8fac6b346589d21322594">krk_newBytes</a>(length, NULL)));</div>
+<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;    memset(AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes, 0, length);</div>
+<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160; </div>
+<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <span class="comment">/* We&#39;ll use a &#39;bit reader&#39;:</span></div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;<span class="comment">     * - We want 8 bits for each byte.</span></div>
+<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;<span class="comment">     * - We can collect 31 bits from each digit.</span></div>
+<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;<span class="comment">     * - If we run out of digits, we&#39;re done.</span></div>
+<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;    ssize_t i = 0;</div>
+<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    ssize_t j = 0;</div>
+<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160; </div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    uint64_t accum = 0;</div>
+<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    int32_t remaining = 0;</div>
+<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    <span class="keywordtype">int</span> break_here = 0;</div>
+<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160; </div>
+<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    <span class="keywordflow">while</span> (i &lt; length &amp;&amp; !break_here) {</div>
+<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;        <span class="keywordflow">if</span> (remaining &lt; 8) {</div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;            <span class="keywordflow">if</span> (j &lt; tmp.width) {</div>
+<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;                accum |= ((uint64_t)tmp.digits[j]) &lt;&lt; remaining;</div>
+<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;                j++;</div>
+<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;                break_here = 1;</div>
+<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;            }</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;            remaining += 31;</div>
+<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;        }</div>
+<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160; </div>
+<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;        uint8_t <span class="keywordtype">byte</span> = accum &amp; 0xFF;</div>
+<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;        accum &gt;&gt;= 8;</div>
+<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;        remaining -= 8;</div>
+<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160; </div>
+<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;        AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes[order == 1 ? i : (length - i - 1)] = <span class="keywordtype">byte</span>;</div>
+<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;        i++;</div>
+<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;    }</div>
+<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160; </div>
+<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;    <span class="comment">/* If input was negative, at this point we&#39;re producing an inverted value;</span></div>
+<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;<span class="comment">     * we already encoded (|n|-1), so now we just need to bit invert. */</span></div>
+<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160;    <span class="keywordflow">if</span> (krk_long_sign(val) &lt; 0) {</div>
+<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; (size_t)length; ++i) {</div>
+<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;            AS_BYTES(<a class="code" href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a>(0))-&gt;bytes[i] ^= 0xFF;</div>
+<div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;        }</div>
+<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;    }</div>
+<div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160; </div>
+<div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;    <span class="comment">/* We produced a bytes object, so we no longer need the long. */</span></div>
+<div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160;    krk_long_clear(&amp;tmp);</div>
+<div class="line"><a name="l01679"></a><span class="lineno"> 1679</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l01680"></a><span class="lineno"> 1680</span>&#160;}</div>
+<div class="line"><a name="l01681"></a><span class="lineno"> 1681</span>&#160; </div>
+<div class="line"><a name="l01682"></a><span class="lineno"> 1682</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,to_bytes) {</div>
+<div class="line"><a name="l01683"></a><span class="lineno"> 1683</span>&#160;    METHOD_TAKES_AT_LEAST(2);</div>
+<div class="line"><a name="l01684"></a><span class="lineno"> 1684</span>&#160;    <span class="keywordflow">return</span> long_to_bytes(self-&gt;value, argc, argv, hasKw);</div>
+<div class="line"><a name="l01685"></a><span class="lineno"> 1685</span>&#160;}</div>
+<div class="line"><a name="l01686"></a><span class="lineno"> 1686</span>&#160; </div>
+<div class="line"><a name="l01695"></a><span class="lineno"> 1695</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,_digit_count) {</div>
+<div class="line"><a name="l01696"></a><span class="lineno"> 1696</span>&#160;    krk_long result; <span class="comment">/* since it&#39;s a ssize_t */</span></div>
+<div class="line"><a name="l01697"></a><span class="lineno"> 1697</span>&#160;    krk_long_init_si(result, self-&gt;value[0].width);</div>
+<div class="line"><a name="l01698"></a><span class="lineno"> 1698</span>&#160;    <span class="keywordflow">return</span> make_long_obj(result);</div>
+<div class="line"><a name="l01699"></a><span class="lineno"> 1699</span>&#160;}</div>
+<div class="line"><a name="l01700"></a><span class="lineno"> 1700</span>&#160; </div>
+<div class="line"><a name="l01711"></a><span class="lineno"> 1711</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">long</span>,_get_digit) {</div>
+<div class="line"><a name="l01712"></a><span class="lineno"> 1712</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l01713"></a><span class="lineno"> 1713</span>&#160; </div>
+<div class="line"><a name="l01714"></a><span class="lineno"> 1714</span>&#160;    <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * _self = <span class="keyword">self</span>-&gt;value;</div>
+<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160; </div>
+<div class="line"><a name="l01716"></a><span class="lineno"> 1716</span>&#160;    <span class="keywordtype">size_t</span> abs_width = _self-&gt;width &lt; 0 ? -_self-&gt;width : _self-&gt;width;</div>
+<div class="line"><a name="l01717"></a><span class="lineno"> 1717</span>&#160;    <span class="keywordtype">size_t</span> index;</div>
 <div class="line"><a name="l01718"></a><span class="lineno"> 1718</span>&#160; </div>
-<div class="line"><a name="l01719"></a><span class="lineno"> 1719</span>&#160;    <span class="keywordtype">size_t</span> abs_width = _self-&gt;width &lt; 0 ? -_self-&gt;width : _self-&gt;width;</div>
-<div class="line"><a name="l01720"></a><span class="lineno"> 1720</span>&#160;    <span class="keywordtype">size_t</span> index;</div>
-<div class="line"><a name="l01721"></a><span class="lineno"> 1721</span>&#160; </div>
-<div class="line"><a name="l01722"></a><span class="lineno"> 1722</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) {</div>
-<div class="line"><a name="l01723"></a><span class="lineno"> 1723</span>&#160;        index = AS_INTEGER(argv[1]);</div>
-<div class="line"><a name="l01724"></a><span class="lineno"> 1724</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_long(argv[1])) {</div>
-<div class="line"><a name="l01725"></a><span class="lineno"> 1725</span>&#160;        <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * value = AS_long(argv[1])-&gt;value;</div>
-<div class="line"><a name="l01726"></a><span class="lineno"> 1726</span>&#160;        <span class="keywordflow">if</span> (value-&gt;width &lt; 0 || value-&gt;width &gt; 2) {</div>
-<div class="line"><a name="l01727"></a><span class="lineno"> 1727</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;indexError, <span class="stringliteral">&quot;digit index is invalid&quot;</span>);</div>
-<div class="line"><a name="l01728"></a><span class="lineno"> 1728</span>&#160;        }</div>
-<div class="line"><a name="l01729"></a><span class="lineno"> 1729</span>&#160;        index = krk_long_medium(value);</div>
-<div class="line"><a name="l01730"></a><span class="lineno"> 1730</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01731"></a><span class="lineno"> 1731</span>&#160;        <span class="keywordflow">return</span> TYPE_ERROR(<span class="keywordtype">int</span>,argv[1]);</div>
-<div class="line"><a name="l01732"></a><span class="lineno"> 1732</span>&#160;    }</div>
-<div class="line"><a name="l01733"></a><span class="lineno"> 1733</span>&#160; </div>
-<div class="line"><a name="l01734"></a><span class="lineno"> 1734</span>&#160;    <span class="keywordflow">if</span> (index &gt;= abs_width) {</div>
-<div class="line"><a name="l01735"></a><span class="lineno"> 1735</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;indexError, <span class="stringliteral">&quot;digit index out of range&quot;</span>);</div>
-<div class="line"><a name="l01736"></a><span class="lineno"> 1736</span>&#160;    }</div>
+<div class="line"><a name="l01719"></a><span class="lineno"> 1719</span>&#160;    <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) {</div>
+<div class="line"><a name="l01720"></a><span class="lineno"> 1720</span>&#160;        index = AS_INTEGER(argv[1]);</div>
+<div class="line"><a name="l01721"></a><span class="lineno"> 1721</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IS_long(argv[1])) {</div>
+<div class="line"><a name="l01722"></a><span class="lineno"> 1722</span>&#160;        <a class="code" href="structKrkLong__Internal.html">KrkLong</a> * value = AS_long(argv[1])-&gt;value;</div>
+<div class="line"><a name="l01723"></a><span class="lineno"> 1723</span>&#160;        <span class="keywordflow">if</span> (value-&gt;width &lt; 0 || value-&gt;width &gt; 2) {</div>
+<div class="line"><a name="l01724"></a><span class="lineno"> 1724</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;indexError, <span class="stringliteral">&quot;digit index is invalid&quot;</span>);</div>
+<div class="line"><a name="l01725"></a><span class="lineno"> 1725</span>&#160;        }</div>
+<div class="line"><a name="l01726"></a><span class="lineno"> 1726</span>&#160;        index = krk_long_medium(value);</div>
+<div class="line"><a name="l01727"></a><span class="lineno"> 1727</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01728"></a><span class="lineno"> 1728</span>&#160;        <span class="keywordflow">return</span> TYPE_ERROR(<span class="keywordtype">int</span>,argv[1]);</div>
+<div class="line"><a name="l01729"></a><span class="lineno"> 1729</span>&#160;    }</div>
+<div class="line"><a name="l01730"></a><span class="lineno"> 1730</span>&#160; </div>
+<div class="line"><a name="l01731"></a><span class="lineno"> 1731</span>&#160;    <span class="keywordflow">if</span> (index &gt;= abs_width) {</div>
+<div class="line"><a name="l01732"></a><span class="lineno"> 1732</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;indexError, <span class="stringliteral">&quot;digit index out of range&quot;</span>);</div>
+<div class="line"><a name="l01733"></a><span class="lineno"> 1733</span>&#160;    }</div>
+<div class="line"><a name="l01734"></a><span class="lineno"> 1734</span>&#160; </div>
+<div class="line"><a name="l01735"></a><span class="lineno"> 1735</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(_self-&gt;digits[index]);</div>
+<div class="line"><a name="l01736"></a><span class="lineno"> 1736</span>&#160;}</div>
 <div class="line"><a name="l01737"></a><span class="lineno"> 1737</span>&#160; </div>
-<div class="line"><a name="l01738"></a><span class="lineno"> 1738</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(_self-&gt;digits[index]);</div>
-<div class="line"><a name="l01739"></a><span class="lineno"> 1739</span>&#160;}</div>
+<div class="line"><a name="l01738"></a><span class="lineno"> 1738</span>&#160;<span class="preprocessor">#undef CURRENT_CTYPE</span></div>
+<div class="line"><a name="l01739"></a><span class="lineno"> 1739</span>&#160;<span class="preprocessor">#define CURRENT_CTYPE krk_integer_type</span></div>
 <div class="line"><a name="l01740"></a><span class="lineno"> 1740</span>&#160; </div>
-<div class="line"><a name="l01741"></a><span class="lineno"> 1741</span>&#160;<span class="preprocessor">#undef CURRENT_CTYPE</span></div>
-<div class="line"><a name="l01742"></a><span class="lineno"> 1742</span>&#160;<span class="preprocessor">#define CURRENT_CTYPE krk_integer_type</span></div>
-<div class="line"><a name="l01743"></a><span class="lineno"> 1743</span>&#160; </div>
-<div class="line"><a name="l01750"></a><span class="lineno"><a class="line" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577"> 1750</a></span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,bit_count) {</div>
-<div class="line"><a name="l01751"></a><span class="lineno"> 1751</span>&#160;    krk_long value;</div>
-<div class="line"><a name="l01752"></a><span class="lineno"> 1752</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
-<div class="line"><a name="l01753"></a><span class="lineno"> 1753</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_bit_count(value);</div>
-<div class="line"><a name="l01754"></a><span class="lineno"> 1754</span>&#160;    krk_long_clear(value);</div>
-<div class="line"><a name="l01755"></a><span class="lineno"> 1755</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01756"></a><span class="lineno"> 1756</span>&#160;}</div>
-<div class="line"><a name="l01757"></a><span class="lineno"> 1757</span>&#160; </div>
-<div class="line"><a name="l01758"></a><span class="lineno"> 1758</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,bit_length) {</div>
-<div class="line"><a name="l01759"></a><span class="lineno"> 1759</span>&#160;    krk_long value;</div>
-<div class="line"><a name="l01760"></a><span class="lineno"> 1760</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
-<div class="line"><a name="l01761"></a><span class="lineno"> 1761</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_bit_length(value);</div>
-<div class="line"><a name="l01762"></a><span class="lineno"> 1762</span>&#160;    krk_long_clear(value);</div>
-<div class="line"><a name="l01763"></a><span class="lineno"> 1763</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01764"></a><span class="lineno"> 1764</span>&#160;}</div>
-<div class="line"><a name="l01765"></a><span class="lineno"> 1765</span>&#160; </div>
-<div class="line"><a name="l01766"></a><span class="lineno"> 1766</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,to_bytes) {</div>
-<div class="line"><a name="l01767"></a><span class="lineno"> 1767</span>&#160;    krk_long value;</div>
-<div class="line"><a name="l01768"></a><span class="lineno"> 1768</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
-<div class="line"><a name="l01769"></a><span class="lineno"> 1769</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_to_bytes(value, argc, argv, hasKw);</div>
-<div class="line"><a name="l01770"></a><span class="lineno"> 1770</span>&#160;    krk_long_clear(value);</div>
-<div class="line"><a name="l01771"></a><span class="lineno"> 1771</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01772"></a><span class="lineno"> 1772</span>&#160;}</div>
-<div class="line"><a name="l01773"></a><span class="lineno"> 1773</span>&#160; </div>
-<div class="line"><a name="l01774"></a><span class="lineno"> 1774</span>&#160;<span class="preprocessor">#undef BIND_METHOD</span></div>
-<div class="line"><a name="l01775"></a><span class="lineno"> 1775</span>&#160;<span class="comment">/* These class names conflict with C types, so we need to cheat a bit */</span></div>
-<div class="line"><a name="l01776"></a><span class="lineno"> 1776</span>&#160;<span class="preprocessor">#define BIND_METHOD(klass,method) do { krk_defineNative(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
-<div class="line"><a name="l01777"></a><span class="lineno"> 1777</span>&#160;<span class="preprocessor">#define BIND_TRIPLET(klass,name) \</span></div>
-<div class="line"><a name="l01778"></a><span class="lineno"> 1778</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__ ## name ## __); \</span></div>
-<div class="line"><a name="l01779"></a><span class="lineno"> 1779</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__r ## name ## __); \</span></div>
-<div class="line"><a name="l01780"></a><span class="lineno"> 1780</span>&#160;<span class="preprocessor">    krk_defineNative(&amp;_ ## klass-&gt;methods,&quot;__i&quot; #name &quot;__&quot;,_ ## klass ## ___ ## name ## __);</span></div>
-<div class="line"><a name="l01781"></a><span class="lineno"> 1781</span>&#160;_noexport</div>
-<div class="line"><a name="l01782"></a><span class="lineno"> 1782</span>&#160;<span class="keywordtype">void</span> _createAndBind_longClass(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l01783"></a><span class="lineno"> 1783</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _long = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;longClass, <span class="stringliteral">&quot;long&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass);</div>
-<div class="line"><a name="l01784"></a><span class="lineno"> 1784</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l01785"></a><span class="lineno"> 1785</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = <span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code" href="structBigInt.html">BigInt</a>);</div>
-<div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556">_ongcsweep</a> = _long_gcsweep;</div>
-<div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160; </div>
-<div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__init__);</div>
-<div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__str__);</div>
-<div class="line"><a name="l01790"></a><span class="lineno"> 1790</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__eq__);</div>
-<div class="line"><a name="l01791"></a><span class="lineno"> 1791</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__hash__);</div>
-<div class="line"><a name="l01792"></a><span class="lineno"> 1792</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__hex__);</div>
-<div class="line"><a name="l01793"></a><span class="lineno"> 1793</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__oct__);</div>
-<div class="line"><a name="l01794"></a><span class="lineno"> 1794</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__bin__);</div>
-<div class="line"><a name="l01795"></a><span class="lineno"> 1795</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__int__);</div>
-<div class="line"><a name="l01796"></a><span class="lineno"> 1796</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__len__);</div>
-<div class="line"><a name="l01797"></a><span class="lineno"> 1797</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__float__);</div>
-<div class="line"><a name="l01798"></a><span class="lineno"> 1798</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__pos__);</div>
-<div class="line"><a name="l01799"></a><span class="lineno"> 1799</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_long-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>,<span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">long</span>,__str__));</div>
-<div class="line"><a name="l01800"></a><span class="lineno"> 1800</span>&#160; </div>
-<div class="line"><a name="l01801"></a><span class="lineno"> 1801</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,add);</div>
-<div class="line"><a name="l01802"></a><span class="lineno"> 1802</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,sub);</div>
-<div class="line"><a name="l01803"></a><span class="lineno"> 1803</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,mul);</div>
-<div class="line"><a name="l01804"></a><span class="lineno"> 1804</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,or);</div>
-<div class="line"><a name="l01805"></a><span class="lineno"> 1805</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,xor);</div>
-<div class="line"><a name="l01806"></a><span class="lineno"> 1806</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,and);</div>
-<div class="line"><a name="l01807"></a><span class="lineno"> 1807</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,lshift);</div>
-<div class="line"><a name="l01808"></a><span class="lineno"> 1808</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,rshift);</div>
-<div class="line"><a name="l01809"></a><span class="lineno"> 1809</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,mod);</div>
-<div class="line"><a name="l01810"></a><span class="lineno"> 1810</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,truediv);</div>
-<div class="line"><a name="l01811"></a><span class="lineno"> 1811</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,floordiv);</div>
-<div class="line"><a name="l01812"></a><span class="lineno"> 1812</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,pow);</div>
-<div class="line"><a name="l01813"></a><span class="lineno"> 1813</span>&#160; </div>
-<div class="line"><a name="l01814"></a><span class="lineno"> 1814</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__lt__);</div>
-<div class="line"><a name="l01815"></a><span class="lineno"> 1815</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__gt__);</div>
-<div class="line"><a name="l01816"></a><span class="lineno"> 1816</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__le__);</div>
-<div class="line"><a name="l01817"></a><span class="lineno"> 1817</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__ge__);</div>
-<div class="line"><a name="l01818"></a><span class="lineno"> 1818</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__invert__);</div>
-<div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__neg__);</div>
-<div class="line"><a name="l01820"></a><span class="lineno"> 1820</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__abs__);</div>
-<div class="line"><a name="l01821"></a><span class="lineno"> 1821</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__format__);</div>
-<div class="line"><a name="l01822"></a><span class="lineno"> 1822</span>&#160; </div>
-<div class="line"><a name="l01823"></a><span class="lineno"> 1823</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,bit_count);</div>
-<div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,bit_length);</div>
-<div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,to_bytes);</div>
-<div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160; </div>
-<div class="line"><a name="l01827"></a><span class="lineno"> 1827</span>&#160;    <span class="comment">/* Internal methods for inspecting longs. Since these are internal,</span></div>
-<div class="line"><a name="l01828"></a><span class="lineno"> 1828</span>&#160;<span class="comment">     * we don&#39;t bother binding them for ints. */</span></div>
-<div class="line"><a name="l01829"></a><span class="lineno"> 1829</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,_digit_count);</div>
-<div class="line"><a name="l01830"></a><span class="lineno"> 1830</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,_get_digit);</div>
-<div class="line"><a name="l01831"></a><span class="lineno"> 1831</span>&#160; </div>
-<div class="line"><a name="l01832"></a><span class="lineno"> 1832</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_long);</div>
-<div class="line"><a name="l01833"></a><span class="lineno"> 1833</span>&#160; </div>
-<div class="line"><a name="l01834"></a><span class="lineno"> 1834</span>&#160;    <span class="comment">/* Patch in small int versions */</span></div>
-<div class="line"><a name="l01835"></a><span class="lineno"> 1835</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _int = <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass;</div>
-<div class="line"><a name="l01836"></a><span class="lineno"> 1836</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,bit_count);</div>
-<div class="line"><a name="l01837"></a><span class="lineno"> 1837</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,bit_length);</div>
-<div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,to_bytes);</div>
+<div class="line"><a name="l01747"></a><span class="lineno"><a class="line" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577"> 1747</a></span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,bit_count) {</div>
+<div class="line"><a name="l01748"></a><span class="lineno"> 1748</span>&#160;    krk_long value;</div>
+<div class="line"><a name="l01749"></a><span class="lineno"> 1749</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
+<div class="line"><a name="l01750"></a><span class="lineno"> 1750</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_bit_count(value);</div>
+<div class="line"><a name="l01751"></a><span class="lineno"> 1751</span>&#160;    krk_long_clear(value);</div>
+<div class="line"><a name="l01752"></a><span class="lineno"> 1752</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01753"></a><span class="lineno"> 1753</span>&#160;}</div>
+<div class="line"><a name="l01754"></a><span class="lineno"> 1754</span>&#160; </div>
+<div class="line"><a name="l01755"></a><span class="lineno"> 1755</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,bit_length) {</div>
+<div class="line"><a name="l01756"></a><span class="lineno"> 1756</span>&#160;    krk_long value;</div>
+<div class="line"><a name="l01757"></a><span class="lineno"> 1757</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
+<div class="line"><a name="l01758"></a><span class="lineno"> 1758</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_bit_length(value);</div>
+<div class="line"><a name="l01759"></a><span class="lineno"> 1759</span>&#160;    krk_long_clear(value);</div>
+<div class="line"><a name="l01760"></a><span class="lineno"> 1760</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01761"></a><span class="lineno"> 1761</span>&#160;}</div>
+<div class="line"><a name="l01762"></a><span class="lineno"> 1762</span>&#160; </div>
+<div class="line"><a name="l01763"></a><span class="lineno"> 1763</span>&#160;<a class="code" href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a>(<span class="keywordtype">int</span>,to_bytes) {</div>
+<div class="line"><a name="l01764"></a><span class="lineno"> 1764</span>&#160;    krk_long value;</div>
+<div class="line"><a name="l01765"></a><span class="lineno"> 1765</span>&#160;    krk_long_init_si(value, <span class="keyword">self</span>);</div>
+<div class="line"><a name="l01766"></a><span class="lineno"> 1766</span>&#160;    <a class="code" href="structKrkValue.html">KrkValue</a> out = long_to_bytes(value, argc, argv, hasKw);</div>
+<div class="line"><a name="l01767"></a><span class="lineno"> 1767</span>&#160;    krk_long_clear(value);</div>
+<div class="line"><a name="l01768"></a><span class="lineno"> 1768</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01769"></a><span class="lineno"> 1769</span>&#160;}</div>
+<div class="line"><a name="l01770"></a><span class="lineno"> 1770</span>&#160; </div>
+<div class="line"><a name="l01771"></a><span class="lineno"> 1771</span>&#160;<span class="preprocessor">#undef BIND_METHOD</span></div>
+<div class="line"><a name="l01772"></a><span class="lineno"> 1772</span>&#160;<span class="comment">/* These class names conflict with C types, so we need to cheat a bit */</span></div>
+<div class="line"><a name="l01773"></a><span class="lineno"> 1773</span>&#160;<span class="preprocessor">#define BIND_METHOD(klass,method) do { krk_defineNative(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
+<div class="line"><a name="l01774"></a><span class="lineno"> 1774</span>&#160;<span class="preprocessor">#define BIND_TRIPLET(klass,name) \</span></div>
+<div class="line"><a name="l01775"></a><span class="lineno"> 1775</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__ ## name ## __); \</span></div>
+<div class="line"><a name="l01776"></a><span class="lineno"> 1776</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__r ## name ## __); \</span></div>
+<div class="line"><a name="l01777"></a><span class="lineno"> 1777</span>&#160;<span class="preprocessor">    krk_defineNative(&amp;_ ## klass-&gt;methods,&quot;__i&quot; #name &quot;__&quot;,_ ## klass ## ___ ## name ## __);</span></div>
+<div class="line"><a name="l01778"></a><span class="lineno"> 1778</span>&#160;_noexport</div>
+<div class="line"><a name="l01779"></a><span class="lineno"> 1779</span>&#160;<span class="keywordtype">void</span> _createAndBind_longClass(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l01780"></a><span class="lineno"> 1780</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _long = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;longClass, <span class="stringliteral">&quot;long&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass);</div>
+<div class="line"><a name="l01781"></a><span class="lineno"> 1781</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l01782"></a><span class="lineno"> 1782</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = <span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code" href="structBigInt.html">BigInt</a>);</div>
+<div class="line"><a name="l01783"></a><span class="lineno"> 1783</span>&#160;    _long-&gt;<a class="code" href="structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556">_ongcsweep</a> = _long_gcsweep;</div>
+<div class="line"><a name="l01784"></a><span class="lineno"> 1784</span>&#160; </div>
+<div class="line"><a name="l01785"></a><span class="lineno"> 1785</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__init__);</div>
+<div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__str__);</div>
+<div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__eq__);</div>
+<div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__hash__);</div>
+<div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__hex__);</div>
+<div class="line"><a name="l01790"></a><span class="lineno"> 1790</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__oct__);</div>
+<div class="line"><a name="l01791"></a><span class="lineno"> 1791</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__bin__);</div>
+<div class="line"><a name="l01792"></a><span class="lineno"> 1792</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__int__);</div>
+<div class="line"><a name="l01793"></a><span class="lineno"> 1793</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__len__);</div>
+<div class="line"><a name="l01794"></a><span class="lineno"> 1794</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__float__);</div>
+<div class="line"><a name="l01795"></a><span class="lineno"> 1795</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__pos__);</div>
+<div class="line"><a name="l01796"></a><span class="lineno"> 1796</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_long-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>,<span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">long</span>,__str__));</div>
+<div class="line"><a name="l01797"></a><span class="lineno"> 1797</span>&#160; </div>
+<div class="line"><a name="l01798"></a><span class="lineno"> 1798</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,add);</div>
+<div class="line"><a name="l01799"></a><span class="lineno"> 1799</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,sub);</div>
+<div class="line"><a name="l01800"></a><span class="lineno"> 1800</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,mul);</div>
+<div class="line"><a name="l01801"></a><span class="lineno"> 1801</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,or);</div>
+<div class="line"><a name="l01802"></a><span class="lineno"> 1802</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,xor);</div>
+<div class="line"><a name="l01803"></a><span class="lineno"> 1803</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,and);</div>
+<div class="line"><a name="l01804"></a><span class="lineno"> 1804</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,lshift);</div>
+<div class="line"><a name="l01805"></a><span class="lineno"> 1805</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,rshift);</div>
+<div class="line"><a name="l01806"></a><span class="lineno"> 1806</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,mod);</div>
+<div class="line"><a name="l01807"></a><span class="lineno"> 1807</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,truediv);</div>
+<div class="line"><a name="l01808"></a><span class="lineno"> 1808</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,floordiv);</div>
+<div class="line"><a name="l01809"></a><span class="lineno"> 1809</span>&#160;    BIND_TRIPLET(<span class="keywordtype">long</span>,pow);</div>
+<div class="line"><a name="l01810"></a><span class="lineno"> 1810</span>&#160; </div>
+<div class="line"><a name="l01811"></a><span class="lineno"> 1811</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__lt__);</div>
+<div class="line"><a name="l01812"></a><span class="lineno"> 1812</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__gt__);</div>
+<div class="line"><a name="l01813"></a><span class="lineno"> 1813</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__le__);</div>
+<div class="line"><a name="l01814"></a><span class="lineno"> 1814</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__ge__);</div>
+<div class="line"><a name="l01815"></a><span class="lineno"> 1815</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__invert__);</div>
+<div class="line"><a name="l01816"></a><span class="lineno"> 1816</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__neg__);</div>
+<div class="line"><a name="l01817"></a><span class="lineno"> 1817</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__abs__);</div>
+<div class="line"><a name="l01818"></a><span class="lineno"> 1818</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,__format__);</div>
+<div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160; </div>
+<div class="line"><a name="l01820"></a><span class="lineno"> 1820</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,bit_count);</div>
+<div class="line"><a name="l01821"></a><span class="lineno"> 1821</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,bit_length);</div>
+<div class="line"><a name="l01822"></a><span class="lineno"> 1822</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,to_bytes);</div>
+<div class="line"><a name="l01823"></a><span class="lineno"> 1823</span>&#160; </div>
+<div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;    <span class="comment">/* Internal methods for inspecting longs. Since these are internal,</span></div>
+<div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;<span class="comment">     * we don&#39;t bother binding them for ints. */</span></div>
+<div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,_digit_count);</div>
+<div class="line"><a name="l01827"></a><span class="lineno"> 1827</span>&#160;    BIND_METHOD(<span class="keywordtype">long</span>,_get_digit);</div>
+<div class="line"><a name="l01828"></a><span class="lineno"> 1828</span>&#160; </div>
+<div class="line"><a name="l01829"></a><span class="lineno"> 1829</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_long);</div>
+<div class="line"><a name="l01830"></a><span class="lineno"> 1830</span>&#160; </div>
+<div class="line"><a name="l01831"></a><span class="lineno"> 1831</span>&#160;    <span class="comment">/* Patch in small int versions */</span></div>
+<div class="line"><a name="l01832"></a><span class="lineno"> 1832</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _int = <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass;</div>
+<div class="line"><a name="l01833"></a><span class="lineno"> 1833</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,bit_count);</div>
+<div class="line"><a name="l01834"></a><span class="lineno"> 1834</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,bit_length);</div>
+<div class="line"><a name="l01835"></a><span class="lineno"> 1835</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,to_bytes);</div>
+<div class="line"><a name="l01836"></a><span class="lineno"> 1836</span>&#160; </div>
+<div class="line"><a name="l01837"></a><span class="lineno"> 1837</span>&#160;}</div>
+<div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160; </div>
 <div class="line"><a name="l01839"></a><span class="lineno"> 1839</span>&#160; </div>
-<div class="line"><a name="l01840"></a><span class="lineno"> 1840</span>&#160;}</div>
-<div class="line"><a name="l01841"></a><span class="lineno"> 1841</span>&#160; </div>
-<div class="line"><a name="l01842"></a><span class="lineno"> 1842</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructKrkValue_html_ade554b36ef7d3c8789db59062001fa07"><div class="ttname"><a href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">KrkValue::krk_isFalsey</a></div><div class="ttdeci">int krk_isFalsey(KrkValue value)</div><div class="ttdoc">Determine the truth of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01260">vm.c:1260</a></div></div>
+<div class="ttc" id="astructKrkValue_html_ade554b36ef7d3c8789db59062001fa07"><div class="ttname"><a href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">KrkValue::krk_isFalsey</a></div><div class="ttdeci">int krk_isFalsey(KrkValue value)</div><div class="ttdoc">Determine the truth of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00903">vm.c:903</a></div></div>
 <div class="ttc" id="astructKrkLong__Internal_html"><div class="ttname"><a href="structKrkLong__Internal.html">KrkLong_Internal</a></div><div class="ttdef"><b>Definition:</b> <a href="obj__long_8c_source.html#l00029">obj_long.c:29</a></div></div>
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00252">object.h:252</a></div></div>
-<div class="ttc" id="aobj__long_8c_html_a879b9e56260edfe1d9862beed0fe4577"><div class="ttname"><a href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a></div><div class="ttdeci">KRK_Method(int, bit_count)</div><div class="ttdef"><b>Definition:</b> <a href="obj__long_8c_source.html#l01750">obj_long.c:1750</a></div></div>
-<div class="ttc" id="astructKrkClass_html_a179052bf72d30fcec2eddf4b3a1be556"><div class="ttname"><a href="structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556">KrkClass::_ongcsweep</a></div><div class="ttdeci">KrkCleanupCallback _ongcsweep</div><div class="ttdoc">C function to call when the garbage collector is discarding an instance of this class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00199">object.h:199</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00261">vm.h:261</a></div></div>
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
-<div class="ttc" id="astructKrkClass_html_aac66986c41c3af885dcb0555c5de3bb1"><div class="ttname"><a href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">KrkClass::methods</a></div><div class="ttdeci">KrkTable methods</div><div class="ttdoc">General attributes table.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00196">object.h:196</a></div></div>
-<div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00094">object.h:94</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00253">object.h:253</a></div></div>
+<div class="ttc" id="aobj__long_8c_html_a879b9e56260edfe1d9862beed0fe4577"><div class="ttname"><a href="obj__long_8c.html#a879b9e56260edfe1d9862beed0fe4577">KRK_Method</a></div><div class="ttdeci">KRK_Method(int, bit_count)</div><div class="ttdef"><b>Definition:</b> <a href="obj__long_8c_source.html#l01747">obj_long.c:1747</a></div></div>
+<div class="ttc" id="astructKrkClass_html_a179052bf72d30fcec2eddf4b3a1be556"><div class="ttname"><a href="structKrkClass.html#a179052bf72d30fcec2eddf4b3a1be556">KrkClass::_ongcsweep</a></div><div class="ttdeci">KrkCleanupCallback _ongcsweep</div><div class="ttdoc">C function to call when the garbage collector is discarding an instance of this class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00198">object.h:198</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00263">vm.h:263</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
+<div class="ttc" id="astructKrkClass_html_aac66986c41c3af885dcb0555c5de3bb1"><div class="ttname"><a href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">KrkClass::methods</a></div><div class="ttdeci">KrkTable methods</div><div class="ttdoc">General attributes table.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00195">object.h:195</a></div></div>
+<div class="ttc" id="aexceptions_8c_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Produce and raise an exception with a formatted message.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00430">exceptions.c:430</a></div></div>
+<div class="ttc" id="astructKrkString_html"><div class="ttname"><a href="structKrkString.html">KrkString</a></div><div class="ttdoc">Immutable sequence of Unicode codepoints.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00093">object.h:93</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00430">vm.c:430</a></div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00170">vm.c:170</a></div></div>
 <div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00178">table.c:178</a></div></div>
 <div class="ttc" id="astructKrkClass_html_ab4f353ca0085f50bbf498df5116b66ef"><div class="ttname"><a href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">KrkClass::krk_finalizeClass</a></div><div class="ttdeci">void krk_finalizeClass(KrkClass *_class)</div><div class="ttdoc">Finalize a class by collecting pointers to core methods.</div></div>
 <div class="ttc" id="astructBigInt_html"><div class="ttname"><a href="structBigInt.html">BigInt</a></div><div class="ttdef"><b>Definition:</b> <a href="obj__long_8c_source.html#l01163">obj_long.c:1163</a></div></div>
-<div class="ttc" id="astructKrkClass_html_a6d254a1d23874b5bdccad657eba1dd77"><div class="ttname"><a href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">KrkClass::allocSize</a></div><div class="ttdeci">size_t allocSize</div><div class="ttdoc">Size to allocate when creating instances of this class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00197">object.h:197</a></div></div>
+<div class="ttc" id="astructKrkClass_html_a6d254a1d23874b5bdccad657eba1dd77"><div class="ttname"><a href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">KrkClass::allocSize</a></div><div class="ttdeci">size_t allocSize</div><div class="ttdoc">Size to allocate when creating instances of this class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00196">object.h:196</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
 <div class="ttc" id="aobj__long_8c_html_a9fb9a4ba9eacea350f8be7943e081432"><div class="ttname"><a href="obj__long_8c.html#a9fb9a4ba9eacea350f8be7943e081432">krk_long_digits_in_base</a></div><div class="ttdeci">size_t krk_long_digits_in_base(KrkLong *num, int base)</div><div class="ttdoc">Estimate how many digits are needed to convert a long to a base.</div><div class="ttdef"><b>Definition:</b> <a href="obj__long_8c_source.html#l00818">obj_long.c:818</a></div></div>
-<div class="ttc" id="astructKrkClass_html_a822b03386b6897607742e17daa48a7e5"><div class="ttname"><a href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">KrkClass::obj</a></div><div class="ttdeci">KrkObj obj</div><div class="ttdoc">Base.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00191">object.h:191</a></div></div>
+<div class="ttc" id="astructKrkClass_html_a822b03386b6897607742e17daa48a7e5"><div class="ttname"><a href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">KrkClass::obj</a></div><div class="ttdeci">KrkObj obj</div><div class="ttdoc">Base.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
 <div class="ttc" id="astructKrkObj_html_a4a25d0e5c012bbbf4752ac6f76009b86"><div class="ttname"><a href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">KrkObj::flags</a></div><div class="ttdeci">uint16_t flags</div><div class="ttdoc">General object flags, mostly related to garbage collection.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00043">object.h:43</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>
-<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00417">vm.c:417</a></div></div>
-<div class="ttc" id="avm_8h_html_ad297bce3f0c6504569b75d0636aa6365"><div class="ttname"><a href="vm_8h.html#ad297bce3f0c6504569b75d0636aa6365">krk_callDirect</a></div><div class="ttdeci">KrkValue krk_callDirect(KrkObj *callable, int argCount)</div><div class="ttdoc">Call a closure or native function with argCount arguments.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01097">vm.c:1097</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00454">vm.c:454</a></div></div>
-<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01646">vm.c:1646</a></div></div>
-<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00438">vm.c:438</a></div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00157">vm.c:157</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a6813568942ffbcc21df88e12669ea5b1"><div class="ttname"><a href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">KrkTable::krk_defineNative</a></div><div class="ttdeci">KrkNative * krk_defineNative(KrkTable *table, const char *name, NativeFn function)</div><div class="ttdoc">Attach a native C function to an attribute table.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00194">vm.c:194</a></div></div>
+<div class="ttc" id="avm_8h_html_ade14216c05afbcf8d55b95c887c57d84"><div class="ttname"><a href="vm_8h.html#ade14216c05afbcf8d55b95c887c57d84">krk_peek</a></div><div class="ttdeci">KrkValue krk_peek(int distance)</div><div class="ttdoc">Peek down from the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00178">vm.c:178</a></div></div>
 <div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00170">vm.h:170</a></div></div>
 <div class="ttc" id="astructKrkBytes_html_af996a6f2dbd8fac6b346589d21322594"><div class="ttname"><a href="structKrkBytes.html#af996a6f2dbd8fac6b346589d21322594">KrkBytes::krk_newBytes</a></div><div class="ttdeci">KrkBytes * krk_newBytes(size_t length, uint8_t *source)</div><div class="ttdoc">Create a new byte array.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00360">object.c:360</a></div></div>
-<div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
 <div class="ttc" id="avalue_8h_html"><div class="ttname"><a href="value_8h.html">value.h</a></div><div class="ttdoc">Definitions for primitive stack references.</div></div>
 <div class="ttc" id="astructKrkInstance_html_a3d0bf09b92b2d6a02685b143f4438e01"><div class="ttname"><a href="structKrkInstance.html#a3d0bf09b92b2d6a02685b143f4438e01">KrkInstance::krk_newInstance</a></div><div class="ttdeci">KrkInstance * krk_newInstance(KrkClass *_class)</div><div class="ttdoc">Create a new instance of the given class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00336">object.c:336</a></div></div>

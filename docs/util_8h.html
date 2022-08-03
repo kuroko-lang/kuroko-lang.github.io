@@ -150,7 +150,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="util_8h__dep__incl.png" border="0" usemap="#src_2kuroko_2util_8hdep" alt=""/></div>
 <map name="src_2kuroko_2util_8hdep" id="src_2kuroko_2util_8hdep">
-<area shape="rect" title="Utilities for creating native bindings." alt="" coords="2239,5,2366,32"/>
+<area shape="rect" title="Utilities for creating native bindings." alt="" coords="2371,5,2498,32"/>
 <area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,87,109,114"/>
 <area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="134,87,247,114"/>
 <area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="272,87,368,114"/>
@@ -173,18 +173,20 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="obj__tuple_8c_source.html" title=" " alt="" coords="2574,87,2690,114"/>
 <area shape="rect" href="obj__typing_8c_source.html" title=" " alt="" coords="2714,87,2838,114"/>
 <area shape="rect" href="os_8c_source.html" title=" " alt="" coords="2862,87,2933,114"/>
-<area shape="rect" href="table_8c_source.html" title=" " alt="" coords="2957,87,3046,114"/>
-<area shape="rect" href="threads_8c_source.html" title=" " alt="" coords="3070,87,3175,114"/>
-<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="3199,87,3286,114"/>
-<area shape="rect" href="value_8c_source.html" title=" " alt="" coords="3310,87,3402,114"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="3427,87,3504,114"/>
-<area shape="rect" href="compile_8c_source.html" title=" " alt="" coords="3529,87,3650,114"/>
-<area shape="rect" href="sandbox_8c_source.html" title=" " alt="" coords="3674,87,3798,114"/>
-<area shape="rect" href="module__math_8c_source.html" title=" " alt="" coords="3823,80,3977,121"/>
-<area shape="rect" href="module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="4001,80,4156,121"/>
-<area shape="rect" href="module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4180,80,4335,121"/>
-<area shape="rect" href="module__timeit_8c_source.html" title=" " alt="" coords="4359,80,4513,121"/>
-<area shape="rect" href="module__wcwidth_8c_source.html" title=" " alt="" coords="4537,80,4692,121"/>
+<area shape="rect" href="parseargs_8c_source.html" title=" " alt="" coords="2957,87,3077,114"/>
+<area shape="rect" href="sys_8c_source.html" title=" " alt="" coords="3102,87,3181,114"/>
+<area shape="rect" href="table_8c_source.html" title=" " alt="" coords="3205,87,3294,114"/>
+<area shape="rect" href="threads_8c_source.html" title=" " alt="" coords="3318,87,3423,114"/>
+<area shape="rect" href="time_8c_source.html" title=" " alt="" coords="3447,87,3534,114"/>
+<area shape="rect" href="value_8c_source.html" title=" " alt="" coords="3558,87,3650,114"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="3675,87,3752,114"/>
+<area shape="rect" href="compile_8c_source.html" title=" " alt="" coords="3777,87,3898,114"/>
+<area shape="rect" href="sandbox_8c_source.html" title=" " alt="" coords="3922,87,4046,114"/>
+<area shape="rect" href="module__math_8c_source.html" title=" " alt="" coords="4071,80,4225,121"/>
+<area shape="rect" href="module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="4249,80,4404,121"/>
+<area shape="rect" href="module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4428,80,4583,121"/>
+<area shape="rect" href="module__timeit_8c_source.html" title=" " alt="" coords="4607,80,4761,121"/>
+<area shape="rect" href="module__wcwidth_8c_source.html" title=" " alt="" coords="4785,80,4940,121"/>
 </map>
 </div>
 </div>
@@ -234,7 +236,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a005eaac847422c58b218f48539a7f90d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>TYPE_ERROR</b>(expected,  value)</td></tr>
 <tr class="separator:a005eaac847422c58b218f48539a7f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4605a36fd0d04d36870351d13a20c51"><td class="memItemLeft" align="right" valign="top"><a id="ab4605a36fd0d04d36870351d13a20c51"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOT_ENOUGH_ARGS</b>(name)&#160;&#160;&#160;<a class="el" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(vm.exceptions-&gt;argumentError, &quot;Expected more args.&quot;)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOT_ENOUGH_ARGS</b>(name)&#160;&#160;&#160;<a class="el" href="vm_8h.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(vm.exceptions-&gt;argumentError, &quot;Expected more args.&quot;)</td></tr>
 <tr class="separator:ab4605a36fd0d04d36870351d13a20c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c5d7f8a9cb847c6187ab43006d26367"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>CHECK_ARG</b>(i,  type,  ctype,  name)</td></tr>
 <tr class="separator:a5c5d7f8a9cb847c6187ab43006d26367"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -389,6 +391,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ad0a35208b385940493ea57d760d315fe"><td class="memItemLeft" align="right" valign="top"><a id="ad0a35208b385940493ea57d760d315fe"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_EXC</b>(exc)&#160;&#160;&#160;(vm.exceptions-&gt;exc)</td></tr>
 <tr class="separator:ad0a35208b385940493ea57d760d315fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a488eb7dd5fa44ab68639ad6c0d624a3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a488eb7dd5fa44ab68639ad6c0d624a3d">krk_parseArgs</a>(f,  n, ...)&#160;&#160;&#160;<a class="el" href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a>(_method_name,argc,argv,hasKw,f,n,__VA_ARGS__)</td></tr>
+<tr class="memdesc:a488eb7dd5fa44ab68639ad6c0d624a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse arguments to a function while accepting keyword arguments.  <a href="util_8h.html#a488eb7dd5fa44ab68639ad6c0d624a3d">More...</a><br /></td></tr>
+<tr class="separator:a488eb7dd5fa44ab68639ad6c0d624a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -410,6 +415,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>krk_extractSlicer</b> 
 <tr class="memitem:a995f49e86ec5e8efa91f6d0329b9ffe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a995f49e86ec5e8efa91f6d0329b9ffe6">krk_unpackIterable</a> (<a class="el" href="structKrkValue.html">KrkValue</a> iterable, void *context, int callback(void *, const <a class="el" href="structKrkValue.html">KrkValue</a> *, size_t))</td></tr>
 <tr class="memdesc:a995f49e86ec5e8efa91f6d0329b9ffe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack an iterable.  <a href="util_8h.html#a995f49e86ec5e8efa91f6d0329b9ffe6">More...</a><br /></td></tr>
 <tr class="separator:a995f49e86ec5e8efa91f6d0329b9ffe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad50f0e166d71727b156fd8d908b582d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ad50f0e166d71727b156fd8d908b582d7">krk_parseVArgs</a> (const char *_method_name, int argc, const <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw, const char *fmt, const char **names, va_list args)</td></tr>
+<tr class="memdesc:ad50f0e166d71727b156fd8d908b582d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate and parse arguments to a function similar to how managed function arguments are handled.  <a href="util_8h.html#ad50f0e166d71727b156fd8d908b582d7">More...</a><br /></td></tr>
+<tr class="separator:ad50f0e166d71727b156fd8d908b582d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabed7f36c74918631e5117b881104b76"><td class="memItemLeft" align="right" valign="top"><a id="aabed7f36c74918631e5117b881104b76"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a> (const char *_method_name, int argc, const <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw, const char *format, const char **names,...)</td></tr>
+<tr class="memdesc:aabed7f36c74918631e5117b881104b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable argument version of <code>krk_parseVArgs</code>. <br /></td></tr>
+<tr class="separator:aabed7f36c74918631e5117b881104b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -437,8 +449,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%s&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
-<div class="line">    <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(argv[0]), _method_name); } <span class="keywordflow">while</span> (0)</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%T&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
+<div class="line">    argv[0], _method_name); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00028">28</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
@@ -504,7 +516,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; n)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00049">49</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -526,7 +538,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; n)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00052">52</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -548,7 +560,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != n)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != n)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00046">46</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -569,7 +581,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 0)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 0)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00043">43</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -753,6 +765,53 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a488eb7dd5fa44ab68639ad6c0d624a3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488eb7dd5fa44ab68639ad6c0d624a3d">&#9670;&nbsp;</a></span>krk_parseArgs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define krk_parseArgs</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">f, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a>(_method_name,argc,argv,hasKw,f,n,__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parse arguments to a function while accepting keyword arguments. </p>
+<p>Convenience macro for <code>krk_parseArgs_impl</code> to avoid needing to pass all of the implicit arguments normally provided to a KRK_Function or KRK_Method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Format string. </td></tr>
+    <tr><td class="paramname">n</td><td>Names array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, 0 on failure with an exception set. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00339">339</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+
+</div>
+</div>
 <a id="a0068dab2c4dbd1ddd568ca3993ecc9d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0068dab2c4dbd1ddd568ca3993ecc9d8">&#9670;&nbsp;</a></span>KRK_SLICER</h2>
 
@@ -802,7 +861,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &lt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at least&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00037">37</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -824,7 +883,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc &gt; (n+1))) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;at most&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00040">40</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -846,7 +905,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != (n+1))) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != (n+1))) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, <span class="stringliteral">&quot;exactly&quot;</span>, n, (n != 1) ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00034">34</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -867,7 +926,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes no arguments (%d given)&quot;</span>, \</div>
 <div class="line">    _method_name, (argc-1)); } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00031">31</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
@@ -899,14 +958,112 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">        <a class="code" href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() expects %s, not &#39;%s&#39;&quot;</span>, \</div>
-<div class="line">        <span class="comment">/* Function name */</span> _method_name, <span class="comment">/* expected type */</span> #expected, <a class="code" href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">krk_typeName</a>(value))</div>
+<b>Value:</b><div class="fragment"><div class="line">        <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() expects %s, not &#39;%T&#39;&quot;</span>, \</div>
+<div class="line">        <span class="comment">/* Function name */</span> _method_name, <span class="comment">/* expected type */</span> #expected, value)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00055">55</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ad50f0e166d71727b156fd8d908b582d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad50f0e166d71727b156fd8d908b582d7">&#9670;&nbsp;</a></span>krk_parseVArgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_parseVArgs </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_method_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hasKw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Validate and parse arguments to a function similar to how managed function arguments are handled. </p>
+<p>This attempts to emulate CPythons' PyArg_ParseTupleAndKeywords.</p>
+<p>This works like a fancy scanf. We accept the original argument specification (argc,argv,hasKw), a format string, an array of argument names, and then var args that are generally pointers to where to stick results.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Original positional argument count. </td></tr>
+    <tr><td class="paramname">argv</td><td>Original argument list, <code>argv</code>[argc] should be a dict if hasKw is set. </td></tr>
+    <tr><td class="paramname">hasKw</td><td>Whether <code>argv</code>[argc] has a dict of keyword arguments. </td></tr>
+    <tr><td class="paramname">fmt</td><td>String describing formats of expected arguments. </td></tr>
+    <tr><td class="paramname">names</td><td>Array of strings of parameter names. </td></tr>
+    <tr><td class="paramname">args</td><td>var args </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, 0 on error. </dd></dl>
+<p>&lt; Index into positional input arguments</p>
+<p>&lt; Index into names array</p>
+<p>&lt; <a class="el" href="structParser.html" title="Token parser state.">Parser</a> state, whether required arguments are being collected</p>
+<p>&lt; Whether extra keyword args should produce an error (0) or not (1)</p>
+<p>If the format string starts with <code>.</code> then argument processing skips the first argument on the assumption that this is a method and the first argument has already been handled by the method wrapper macros or directly by the function. This makes error messages a bit nicer, as argument counts will exclude the implicit self.</p>
+<p><code></code>| begins optional arguments - eg. default args. Every format option after this point should be preset to usable default value, as it will not be touched if the argument is not found.</p>
+<p><code>*</code> works like <code><em>args</code> would in a Kuroko function signature, collecting all remaining positional arguments into a list. It does this be returning the count of remaining arguments (int) and the pointer to their start in the original argument list (<a class="el" href="structKrkValue.html" title="Stack reference or primative value.">KrkValue</a></em>).</p>
+<p>This also implicitly signals the end of required arguments and all later arguments are automatically optional, without needing to use <code></code>|.</p>
+<p><code>$</code> indicates the end of positional arguments. Everything after this point is only accepted as a keyword argument. <code>$</code> must appear after one of <code></code>| or <code>*</code>.</p>
+<p>If any positional arguments remain when <code>$</code> is encountred, a too-many arguments exception will be raised.</p>
+<p>If <code>~</code> is encountered anywhere in the format string, then extraneous keyword arguments are left as-is and no exception is raised when they are found. As keyword arguments are deleted from the kwargs dict while processing other arguments, this means if <code>hasKw</code> is set then <code>argv</code>[argc] will be left with only the unhandled keyword arguments, same as for a <code>**kwargs</code> argument in a Kuroko function signature.</p>
+<p><code>O</code> Collect an object (with <code>!</code> - of a given type) and place it in in the <code>KrkObj**</code> var arg. The object must be a heap object, so this can not be used to collect boxed value types like <code>int</code> or <code>float</code> - use <code>V</code> for those instead. As an exception to the heap object requirements, <code>None</code> is accepted and will result in <code>NULL</code> (but if a type is requested, the type check will fail before <code>None</code> can be evaluated).</p>
+<p><code>V</code> Accept any value (with <code>!</code> - of a given type) and place a value reference in the <code>KrkValue*</code> var arg. This works with boxed value types as well, so it is safe for use with <code>int</code> and <code>float</code> and so on. The type check is equivalent to <code>instanceof</code>. As a special case - as with <code>O</code> - the type may be <code>NULL</code> in which case type checking is guaranteed to fail but parsing will not. The resulting error message is less informative in this case.</p>
+<p><code>z</code> Collect one string or None and place a pointer to it in a <code>const char **</code>. If <code>#</code> is specified, the size of the string is also placed in a following <code>size_t*</code> var arg. If the argument is <code>None</code> the result is <code>NULL</code> and the size is set to 0.</p>
+<p><code>s</code> Same as <code>z</code> but does not accept None.</p>
+<p><code>i</code> Simple integer. The argument must be a normal <code>int</code>. No conversion is done from other types and <code>long</code> objects are not supported. No overflow checking is done, either. If you want to accept <code>long</code> objects reliably, use <code>V!</code> with a type of <code>int</code> instead.</p>
+<p><code>C</code> Accept a string of length one and convert it to a C int in a similar manner to <code>ord</code>.</p>
+<p><code>f</code> Accept a Kuroko float as C float.</p>
+<p><code>d</code> Accept a Kuroko float as C double.</p>
+<p><code>p</code> Accept any value and examine its truthiness, returning an <code>int</code>. Python's docs call this "predicate", if you were wondering where the <code>p</code> came from. If bool conversion raises an exception, arg parsing ends with failure and that exception remains set.</p>
+<p>If we got through the format string and there are still positional arguments, we got more than we expected and should raise an exception.</p>
+<p>If we don't accept extra keyword arguments and there's still anything left in the dict, raise an exception about unexpected keyword arguments. The remaining key (or keys) should be a string, so we should find at least one thing to complain about by name...</p>
+
+<p class="definition">Definition at line <a class="el" href="parseargs_8c_source.html#l00040">40</a> of file <a class="el" href="parseargs_8c_source.html">parseargs.c</a>.</p>
+
+</div>
+</div>
 <a id="a995f49e86ec5e8efa91f6d0329b9ffe6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a995f49e86ec5e8efa91f6d0329b9ffe6">&#9670;&nbsp;</a></span>krk_unpackIterable()</h2>
 
@@ -944,18 +1101,17 @@ Variables</h2></td></tr>
 <p>If <code>iterable</code> is a list or tuple, <code>callback</code> will be called once with the total size of the container. Otherwise, <code>callback</code> will be called many times with a count of 1, until the iterable is exhausted.</p>
 <p>If <code>iterable</code> is not iterable, an exception is set and 1 is returned. If <code>callback</code> returns non-zero, unpacking stops and 1 is returned, with no additional exception. </p>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00288">288</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00336">336</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00252">object.h:252</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00261">vm.h:261</a></div></div>
-<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00190">object.h:190</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00280">object.h:280</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00253">object.h:253</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00263">vm.h:263</a></div></div>
+<div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
+<div class="ttc" id="aexceptions_8c_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Produce and raise an exception with a formatted message.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00430">exceptions.c:430</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00281">object.h:281</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
-<div class="ttc" id="astructKrkValue_html_a07c5e8c5653bff1b6fc876cc24b0ff15"><div class="ttname"><a href="structKrkValue.html#a07c5e8c5653bff1b6fc876cc24b0ff15">KrkValue::krk_typeName</a></div><div class="ttdeci">const char * krk_typeName(KrkValue value)</div><div class="ttdoc">Get the name of the type of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01646">vm.c:1646</a></div></div>
-<div class="ttc" id="avm_8h_html_a6cb587b1253fdff0419b5adfa1420ae7"><div class="ttname"><a href="vm_8h.html#a6cb587b1253fdff0419b5adfa1420ae7">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...) __attribute__((format(printf</div><div class="ttdoc">Raise an exception.</div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.8.17</p>

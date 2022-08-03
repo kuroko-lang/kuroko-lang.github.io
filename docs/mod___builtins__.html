@@ -106,64 +106,7 @@ $(function() {
 <p>Built-in names may be bound from several sources. Most come from the core interpreter directly, but some may come from loaded C extension modules or the interpreter binary. Kuroko source modules are also free to append new names to the built-in name space by attaching new properties to the <code>__builtins__</code> instance.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Classes</h2>
-<p><a class="anchor" id="BinaryFile"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#BinaryFile">_</a></span><i>class</i> <b>BinaryFile</b>(File)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Equivalent to <a class="el" href="mod___builtins__.html#File">File</a> but using <a class="el" href="mod___builtins__.html#bytes">bytes</a> instead of string <a class="el" href="mod___builtins__.html#str">str</a>.</p>
-<p><a class="anchor" id="BinaryFile_read"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_read">_</a></span>BinaryFile.<b>read</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_readline"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_readline">_</a></span>BinaryFile.<b>readline</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_readlines"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_readlines">_</a></span>BinaryFile.<b>readlines</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="BinaryFile_write"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BinaryFile_write">_</a></span>BinaryFile.<b>write</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Directory"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Directory">_</a></span><i>class</i> <b>Directory</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Represents an opened file system directory.</p>
-<p><a class="anchor" id="Directory___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___call__">_</a></span>Directory()</h4><div class="memitem"><div class="memproto">Directory.<b>__call__</b>()</div><div class="memdoc"> </p>
-<p>Yields one iteration through the directory.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___enter__">_</a></span>Directory.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___exit__">_</a></span>Directory.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Closes the directory upon exit from a <code>with</code> block.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> Directory:</h4><div class="memitem"><div class="memproto">Directory.<b>__iter__</b>()</div><div class="memdoc"> </p>
-<p>Iterates over the contents of the directory.</p>
-<p>Each iteration returns <a class="el" href="mod___builtins__.html#dict">dict</a> with two entries: <em>"name"</em> and <em>"inode"</em>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="Directory_close"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Directory_close">_</a></span>Directory.<b>close</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Close the directory.</p>
-<p>Further reads can not be made after the directory has been closed.</p>
-<p> </div></div></p>
-<p> </div></div> <a class="anchor" id="File"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#File">_</a></span><i>class</i> <b>File</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Interface to a buffered file stream.</p>
-<p><a class="anchor" id="File___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___init__">_</a></span>let <i>x</i> = <b>File</b>()</h4><div class="memitem"><div class="memproto">File.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> <div class="alert alert-warning">File objects can not be initialized using this constructor. Use the <a href="#open" class="el">open()</a> function instead. </div></p>
-<p> </div></div></p>
-<p><a class="anchor" id="File___enter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___enter__">_</a></span>File.<b>__enter__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="File___exit__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File___exit__">_</a></span>File.<b>__exit__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_close"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_close">_</a></span>File.<b>close</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Close the stream and flush any remaining buffered writes.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_flush"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_flush">_</a></span>File.<b>flush</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Flush unbuffered writes to the stream.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_read"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_read">_</a></span>File.<b>read</b>(<i>bytes=-1</i>)</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read from the stream.</p>
-<p>Reads up to <code>bytes</code> bytes from the stream. If <code>bytes</code> is <code>-1</code> then reading will continue until the system returns <em>end of file</em>.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_readline"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_readline">_</a></span>File.<b>readline</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read one line from the stream.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_readlines"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_readlines">_</a></span>File.<b>readlines</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Read the entire stream and return a list of lines.</p>
-<p> </div></div></p>
-<p><a class="anchor" id="File_write"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#File_write">_</a></span>File.<b>write</b>(<i>data</i>)</h4><div class="memitem"><div class="memdoc"> </p>
-<p>Write to the stream.</p>
-<p>Writes the contents of <code>data</code> to the stream.</p>
-<p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p><a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Special object that prints a helpeful message.</p>
 <p>Object that prints help summary when passed to <a class="el" href="mod___builtins__.html#repr">repr</a>.</p>
 <p><a class="anchor" id="Helper___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Helper___call__">_</a></span>Helper(<i>obj=None</i>)</h4><div class="memitem"><div class="memproto">Helper.<b>__call__</b>(<i>obj=None</i>)</div><div class="memdoc"> </p>
@@ -243,8 +186,6 @@ Classes</h2>
 <p><a class="anchor" id="codeobject___constants__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___constants__">_</a></span><i>property</i> codeobject.<b>__constants__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="codeobject___locals__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___locals__">_</a></span><i>property</i> codeobject.<b>__locals__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="codeobject___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___name__">_</a></span><i>property</i> codeobject.<b>__name__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="codeobject_co_argcount"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject_co_argcount">_</a></span><i>property</i> codeobject.<b>co_argcount</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -392,13 +333,7 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="function___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___code__">_</a></span><i>property</i> function.<b>__code__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="function___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___doc__">_</a></span><i>property</i> function.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="function___file__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___file__">_</a></span><i>property</i> function.<b>__file__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="function___globals__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___globals__">_</a></span><i>property</i> function.<b>__globals__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="function___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___name__">_</a></span><i>property</i> function.<b>__name__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="function___qualname__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___qualname__">_</a></span><i>property</i> function.<b>__qualname__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -744,12 +679,6 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="method___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___code__">_</a></span><i>property</i> method.<b>__code__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p><a class="anchor" id="method___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___doc__">_</a></span><i>property</i> method.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="method___file__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___file__">_</a></span><i>property</i> method.<b>__file__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="method___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___name__">_</a></span><i>property</i> method.<b>__name__</b></h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="method___qualname__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___qualname__">_</a></span><i>property</i> method.<b>__qualname__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="method___self__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___self__">_</a></span><i>property</i> method.<b>__self__</b></h4><div class="memitem"><div class="memdoc"> </p>
@@ -757,8 +686,6 @@ Classes</h2>
 <p> </div></div> <a class="anchor" id="object"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#object">_</a></span><i>class</i> <b>object</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Base class for all types.</p>
 <p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod___builtins__.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
-<p><a class="anchor" id="object___class__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___class__">_</a></span>object.<b>__class__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="object___dir__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___dir__">_</a></span>object.<b>__dir__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="object___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___eq__">_</a></span>object == <i>other</i></h4><div class="memitem"><div class="memproto">object.<b>__eq__</b>()</div><div class="memdoc"> </p>
@@ -974,27 +901,11 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="tupleiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tupleiterator___call__">_</a></span>tupleiterator()</h4><div class="memitem"><div class="memproto">tupleiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="type"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#type">_</a></span><i>class</i> <b>type</b>(__base__)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="type___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___init__">_</a></span>let <i>x</i> = <b>type</b>()</h4><div class="memitem"><div class="memproto">type.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___base__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___base__">_</a></span>type.<b>__base__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___class__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___class__">_</a></span>type.<b>__class__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___dir__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___dir__">_</a></span>type.<b>__dir__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___doc__">_</a></span>type.<b>__doc__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___eq__">_</a></span>type == <i>other</i></h4><div class="memitem"><div class="memproto">type.<b>__eq__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___file__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___file__">_</a></span>type.<b>__file__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___format__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___format__">_</a></span>type.<b>__format__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="type"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#type">_</a></span><i>class</i> <b>type</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Obtain the object representation of the class of an object.</p>
+<p><a class="anchor" id="type___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___init__">_</a></span>let <i>x</i> = <b>type</b>()</h4><div class="memitem"><div class="memproto">type.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="type___getitem__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___getitem__">_</a></span>type[<i>key</i>]</h4><div class="memitem"><div class="memproto">type.<b>__getitem__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___hash__">_</a></span>type.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
-<p> </div></div></p>
-<p><a class="anchor" id="type___name__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___name__">_</a></span>type.<b>__name__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="type___subclasses__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___subclasses__">_</a></span>type.<b>__subclasses__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
