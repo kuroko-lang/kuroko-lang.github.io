@@ -1429,7 +1429,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  8033: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
+  8044: function() {window.setTimeout(function () { FS.syncfs(true,function (err) { if (err) { console.log(err); } }); },200);}
 };
 function JsArray_Get(idobj,ind){ let jsobj = Hiwire.get_value(idobj); let result = jsobj[ind]; if (result === undefined && !(ind in jsobj)) return 0; return Hiwire.new_value(result); }
 function JsArray_New(){ return Hiwire.new_value([]); }
