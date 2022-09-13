@@ -102,10 +102,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Provides access to low-level system operations.</p>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 Classes</h2>
 <p><a class="anchor" id="stat_result"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#stat_result">_</a></span><i>class</i> <b>stat_result</b>(object)</h3><div class="memitem"><div class="memdoc">  </div></div></p>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Functions</h2>
 <p><a class="anchor" id="abort"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#abort">_</a></span><b>abort</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Abort the current process.</p>
@@ -117,7 +117,7 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="chdir"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#chdir">_</a></span><b>chdir</b>(<i>newcwd</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Change the current working directory.</p>
-<p>Attempts to change the working directory to <code>newcwd</code>. Raises <a class="el" href="mod_os.html#OSError">OSError</a> on failure.</p>
+<p>Attempts to change the working directory to <code>newcwd</code>. Raises <a class="el" href="mod_builtins.html#OSError">OSError</a> on failure.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="close"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#close">_</a></span><b>close</b>(<i>fd</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Close an open file descriptor.</p>
@@ -132,23 +132,23 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="execl"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#execl">_</a></span><b>execl</b>(<i>path,[args...]</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Replace the current process.</p>
-<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execl</code> takes a <code>path</code> to a binary and an arbitrary number of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable.</p>
+<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execl</code> takes a <code>path</code> to a binary and an arbitrary number of <a class="el" href="mod_builtins.html#str">str</a> arguments to pass to the new executable.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="execle"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#execle">_</a></span><b>execle</b>(<i>path,[args...],env</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Replace the current process.</p>
-<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execle</code> takes a <code>path</code> to a binary, an arbitrary number of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable, and <a class="el" href="mod___builtins__.html#list">list</a> of <code>'KEY=VALUE'</code> pairs to set as the new environment.</p>
+<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execle</code> takes a <code>path</code> to a binary, an arbitrary number of <a class="el" href="mod_builtins.html#str">str</a> arguments to pass to the new executable, and <a class="el" href="mod_builtins.html#list">list</a> of <code>'KEY=VALUE'</code> pairs to set as the new environment.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="execlp"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#execlp">_</a></span><b>execlp</b>(<i>filename,[args...]</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Replace the current process.</p>
-<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execlp</code> takes a <code>filename</code> of a binary and an arbitrary number of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable. <code>filename</code> will be searched for in <code>$PATH</code>.</p>
+<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execlp</code> takes a <code>filename</code> of a binary and an arbitrary number of <a class="el" href="mod_builtins.html#str">str</a> arguments to pass to the new executable. <code>filename</code> will be searched for in <code>$PATH</code>.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="execv"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#execv">_</a></span><b>execv</b>(<i>path,args</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Replace the current process.</p>
-<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execv</code> takes a <code>path</code> to a binary and a <a class="el" href="mod___builtins__.html#list">list</a> <code>args</code> of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable.</p>
+<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execv</code> takes a <code>path</code> to a binary and a <a class="el" href="mod_builtins.html#list">list</a> <code>args</code> of <a class="el" href="mod_builtins.html#str">str</a> arguments to pass to the new executable.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="execvp"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#execvp">_</a></span><b>execvp</b>(<i>filename,args</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Replace the current process.</p>
-<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execvp</code> takes a <code>filename</code> of a binary and a <a class="el" href="mod___builtins__.html#list">list</a> <code>args</code> of <a class="el" href="mod___builtins__.html#str">str</a> arguments to pass to the new executable. <code>filename</code> will be searched for in <code>$PATH</code>.</p>
+<p>The <code>exec*</code> family of functions replaces the calling process's image with a new one. <code>execvp</code> takes a <code>filename</code> of a binary and a <a class="el" href="mod_builtins.html#list">list</a> <code>args</code> of <a class="el" href="mod_builtins.html#str">str</a> arguments to pass to the new executable. <code>filename</code> will be searched for in <code>$PATH</code>.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="exit"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#exit">_</a></span><b>exit</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Exit the current process.</p>
@@ -169,7 +169,7 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="isatty"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#isatty">_</a></span><b>isatty</b>(<i>fd</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Determine if a file descriptor is a terminal.</p>
-<p>Returns a <a class="el" href="mod___builtins__.html#bool">bool</a> indicating whether the open file descriptor <code>fd</code> refers to a terminal.</p>
+<p>Returns a <a class="el" href="mod_builtins.html#bool">bool</a> indicating whether the open file descriptor <code>fd</code> refers to a terminal.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="kill"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#kill">_</a></span><b>kill</b>(<i>pid,signum</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Send a signal to a process.</p>
@@ -230,22 +230,17 @@ Functions</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="ttyname"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#ttyname">_</a></span><b>ttyname</b>(<i>fd</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Get the path to a terminal device.</p>
-<p>Returns a <a class="el" href="mod___builtins__.html#str">str</a> representing the path to the terminal device provided by the file descriptor <code>fd</code>.</p>
+<p>Returns a <a class="el" href="mod_builtins.html#str">str</a> representing the path to the terminal device provided by the file descriptor <code>fd</code>.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="uname"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#uname">_</a></span><b>uname</b>()</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Returns a <a class="el" href="mod___builtins__.html#dict">dict</a> of attributes describing the current platform.</p>
+<p>Returns a <a class="el" href="mod_builtins.html#dict">dict</a> of attributes describing the current platform.</p>
 <p>On POSIX platforms, the result should match the contents and layout of a standard <code>uname()</code> call. On Windows, values are synthesized from available information.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="write"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#write">_</a></span><b>write</b>(<i>fd,data</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Write to an open file descriptor.</p>
-<p>Writes the <a class="el" href="mod___builtins__.html#bytes">bytes</a> object <code>data</code> to the open file descriptor <code>fd</code>.</p>
+<p>Writes the <a class="el" href="mod_builtins.html#bytes">bytes</a> object <code>data</code> to the open file descriptor <code>fd</code>.</p>
 <p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md56"></a>
-Exceptions</h2>
-<p><a class="anchor" id="OSError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#OSError">_</a></span><i>class</i> <b>OSError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
-<p>Raised when system functions return a failure code. <code>Exception.arg</code> will provide a textual description of the error.</p>
-<p> </div></div></p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Constants</h2>
 <h3 class="letDef"><em>let</em> <b>F_OK</b> = <code> 0 </code></h3>
 <h3 class="letDef"><em>let</em> <b>O_APPEND</b> = <code> 1024 </code></h3>
@@ -274,7 +269,7 @@ Constants</h2>
 <h3 class="letDef"><em>let</em> <b>pardir</b> = <code> '..' </code></h3>
 <h3 class="letDef"><em>let</em> <b>pathsep</b> = <code> ':' </code></h3>
 <h3 class="letDef"><em>let</em> <b>sep</b> = <code> '/' </code></h3>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>environ</b> = <em>_Environ</em></h3>
 </div></div><!-- contents -->

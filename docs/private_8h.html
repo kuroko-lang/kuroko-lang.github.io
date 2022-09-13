@@ -135,15 +135,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__dep__incl.png" border="0" usemap="#src_2private_8hdep" alt=""/></div>
 <map name="src_2private_8hdep" id="src_2private_8hdep">
-<area shape="rect" title="Internal header." alt="" coords="475,5,578,32"/>
+<area shape="rect" title="Internal header." alt="" coords="686,5,789,32"/>
 <area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
 <area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="134,80,247,107"/>
 <area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="272,80,368,107"/>
 <area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="393,80,519,107"/>
 <area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="544,80,653,107"/>
-<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="677,80,813,107"/>
-<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="838,80,938,107"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="961,80,1039,107"/>
+<area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="678,80,797,107"/>
+<area shape="rect" href="obj__long_8c.html" title="Big ints, implemented through my own makeshift thing." alt="" coords="821,80,931,107"/>
+<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="956,80,1092,107"/>
+<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="1117,80,1217,107"/>
+<area shape="rect" href="object_8c_source.html" title=" " alt="" coords="1241,80,1337,107"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="1361,80,1439,107"/>
 </map>
 </div>
 </div>
@@ -174,6 +177,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ae9c889144b8d698bbdd2686bbd186000"><td class="memItemLeft" align="right" valign="top"><a id="ae9c889144b8d698bbdd2686bbd186000"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FORMAT_OP_FORMAT</b>&#160;&#160;&#160;(1 &lt;&lt; 3)</td></tr>
 <tr class="separator:ae9c889144b8d698bbdd2686bbd186000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf3043434984573318e45b64e921ab2c"><td class="memItemLeft" align="right" valign="top"><a id="acf3043434984573318e45b64e921ab2c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_hash_advance</b>(hash,  c)&#160;&#160;&#160;do { hash = (int)(c) + (hash &lt;&lt; 6) + (hash &lt;&lt; 16) - hash; } while (0)</td></tr>
+<tr class="separator:acf3043434984573318e45b64e921ab2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -229,6 +235,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_type</
 <tr class="memitem:a51829e52afa027dde8972ed0a2cbd10e"><td class="memItemLeft" align="right" valign="top"><a id="a51829e52afa027dde8972ed0a2cbd10e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_longClass</b> (void)</td></tr>
 <tr class="separator:a51829e52afa027dde8972ed0a2cbd10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f795270441018439f09e8afd5f4eb56"><td class="memItemLeft" align="right" valign="top"><a id="a4f795270441018439f09e8afd5f4eb56"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_compilerClass</b> (void)</td></tr>
+<tr class="separator:a4f795270441018439f09e8afd5f4eb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal header. </p>
@@ -252,7 +261,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_longCl
 <p>The VM must look up many methods and members by fixed names. To avoid continuously having to box and unbox these from C strings to the appropriate interned <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code>, we keep an array of the <code><a class="el" href="structKrkString.html" title="Immutable sequence of Unicode codepoints.">KrkString</a></code> pointers in the global VM state.</p>
 <p>These values are the offsets into that index for each of the relevant function names (generally with extra underscores removed). For example <code>METHOD_INIT</code> is the offset for the string value for <code>"__init__"</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="private_8h_source.html#l00037">37</a> of file <a class="el" href="private_8h_source.html">private.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="private_8h_source.html#l00038">38</a> of file <a class="el" href="private_8h_source.html">private.h</a>.</p>
 
 </div>
 </div>

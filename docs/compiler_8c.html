@@ -211,6 +211,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ae83df8b53541debd6d3c826413a63625"><td class="memItemLeft" align="right" valign="top"><a id="ae83df8b53541debd6d3c826413a63625"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OPTIONS_FLAG_COMPILE_TIME_BUILTINS</b>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
 <tr class="separator:ae83df8b53541debd6d3c826413a63625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03e1e524d11c593c602aa0b34e2677d"><td class="memItemLeft" align="right" valign="top"><a id="af03e1e524d11c593c602aa0b34e2677d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OPTIONS_FLAG_NO_IMPLICIT_SELF</b>&#160;&#160;&#160;(1 &lt;&lt; 1)</td></tr>
+<tr class="separator:af03e1e524d11c593c602aa0b34e2677d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b54f2cabbdfa0d5ed437d3746209e12"><td class="memItemLeft" align="right" valign="top"><a id="a7b54f2cabbdfa0d5ed437d3746209e12"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>currentChunk</b>()&#160;&#160;&#160;(&amp;state-&gt;current-&gt;codeobject-&gt;chunk)</td></tr>
 <tr class="separator:a7b54f2cabbdfa0d5ed437d3746209e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,9 +274,11 @@ Macros</h2></td></tr>
 <tr class="memitem:a1488ae537f662875e728a8a2d96695a6"><td class="memItemLeft" align="right" valign="top"><a id="a1488ae537f662875e728a8a2d96695a6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EXIT_JUMP_MAX</b>&#160;&#160;&#160;32</td></tr>
 <tr class="separator:a1488ae537f662875e728a8a2d96695a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48d1976010ce166b81fa3462583a4e96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>PUSH_CHAR</b>(c)</td></tr>
+<tr class="memitem:a48d1976010ce166b81fa3462583a4e96"><td class="memItemLeft" align="right" valign="top"><a id="a48d1976010ce166b81fa3462583a4e96"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PUSH_CHAR</b>(c)&#160;&#160;&#160;<a class="el" href="util_8h.html#acc0221892b1de865b0a27a67ffc1e6d9">krk_pushStringBuilder</a>(&amp;sb, c)</td></tr>
 <tr class="separator:a48d1976010ce166b81fa3462583a4e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adeef499e230c9bc1f01afbbae216fb32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>PUSH_HEX</b>(n,  type)</td></tr>
+<tr class="memitem:adeef499e230c9bc1f01afbbae216fb32"><td class="memItemLeft" align="right" valign="top"><a id="adeef499e230c9bc1f01afbbae216fb32"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PUSH_HEX</b>(n,  type)&#160;&#160;&#160;_pushHex(state, isBytes, &amp;sb, c, end, n, type)</td></tr>
 <tr class="separator:adeef499e230c9bc1f01afbbae216fb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72b15a0fb5a174e116ebb784f9dfb6d9"><td class="memItemLeft" align="right" valign="top"><a id="a72b15a0fb5a174e116ebb784f9dfb6d9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OP_NONE_LONG</b>&#160;&#160;&#160;-1</td></tr>
@@ -281,7 +286,7 @@ Macros</h2></td></tr>
 <tr class="memitem:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>DO_VARIABLE</b>(opset,  opget,  opdel)</td></tr>
 <tr class="separator:acb7a7a5121f8b0fc5c00cda60f64ea3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memItemLeft" align="right" valign="top"><a id="ad6c6834c3abc1f712b7cc21df7a548c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[TOKEN_ ## token] = {# token, a, b, c}</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RULE</b>(token,  a,  b,  c)&#160;&#160;&#160;[TOKEN_ ## token] = {a, b, c}</td></tr>
 <tr class="separator:ad6c6834c3abc1f712b7cc21df7a548c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -370,6 +375,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab913072d7c77cad706dabc00df9b10fb"><td class="memItemLeft" align="right" valign="top"><a id="ab913072d7c77cad706dabc00df9b10fb"></a>
+_noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndBind_compilerClass</b> (void)</td></tr>
+<tr class="separator:ab913072d7c77cad706dabc00df9b10fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acab3272031ba406c0aa9ce777a50ce77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkCodeObject.html">KrkCodeObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">krk_compile</a> (const char *src, char *fileName)</td></tr>
 <tr class="memdesc:acab3272031ba406c0aa9ce777a50ce77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a source string to bytecode.  <a href="compiler_8c.html#acab3272031ba406c0aa9ce777a50ce77">More...</a><br /></td></tr>
 <tr class="separator:acab3272031ba406c0aa9ce777a50ce77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -429,7 +437,7 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01618">1618</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01593">1593</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -486,7 +494,7 @@ Variables</h2></td></tr>
 <div class="line">        EMIT_OPERAND_OP(opget, arg); \</div>
 <div class="line">    } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02925">2925</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02892">2892</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -518,80 +526,8 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00299">299</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00297">297</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
-</div>
-</div>
-<a id="a48d1976010ce166b81fa3462583a4e96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48d1976010ce166b81fa3462583a4e96">&#9670;&nbsp;</a></span>PUSH_CHAR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PUSH_CHAR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">c</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">        <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (stringCapacity &lt; stringLength + 1) { \</div>
-<div class="line">        size_t old = stringCapacity; stringCapacity = GROW_CAPACITY(old); \</div>
-<div class="line">        stringBytes = GROW_ARRAY(<span class="keywordtype">char</span>, stringBytes, old, stringCapacity); \</div>
-<div class="line">    } stringBytes[stringLength++] = c; } <span class="keywordflow">while</span> (0)</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="adeef499e230c9bc1f01afbbae216fb32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adeef499e230c9bc1f01afbbae216fb32">&#9670;&nbsp;</a></span>PUSH_HEX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PUSH_HEX</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">n, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
-<div class="line">    char tmpbuf[10] = {0}; \</div>
-<div class="line">    for (<span class="keywordtype">size_t</span> i = 0; i &lt; n; ++i) { \</div>
-<div class="line">        if (c + i + 2 == end || !isHex(c[i+2])) { \</div>
-<div class="line">            error(<span class="stringliteral">&quot;truncated \\%c escape&quot;</span>, type); \</div>
-<div class="line">            goto _cleanupError; \</div>
-<div class="line">        } \</div>
-<div class="line">        tmpbuf[i] = c[i+2]; \</div>
-<div class="line">    } \</div>
-<div class="line">    unsigned <span class="keywordtype">long</span> value = strtoul(tmpbuf, NULL, 16); \</div>
-<div class="line">    if (value &gt;= 0x110000) { \</div>
-<div class="line">        error(<span class="stringliteral">&quot;invalid codepoint in \\%c escape&quot;</span>, type); \</div>
-<div class="line">        goto _cleanupError; \</div>
-<div class="line">    } \</div>
-<div class="line">    if (isBytes) { \</div>
-<div class="line">        PUSH_CHAR(value); \</div>
-<div class="line">        break; \</div>
-<div class="line">    } \</div>
-<div class="line">    unsigned <span class="keywordtype">char</span> bytes[5] = {0}; \</div>
-<div class="line">    size_t len = <a class="code" href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">krk_codepointToBytes</a>(value, bytes); \</div>
-<div class="line">    for (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) PUSH_CHAR(bytes[i]); \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a196e029eb2adc9808b1e6928e3e1ce23"></a>
@@ -776,7 +712,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00162">162</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00159">159</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -870,7 +806,7 @@ Variables</h2></td></tr>
 <p>Compile a source string to bytecode. </p>
 <p>Compile a string to a code object.</p>
 <p>Parses source code and compiles it to bytecode.</p>
-<p>Raises <a class="el" href="mod___builtins__.html#SyntaxError">SyntaxError</a> on error and returns NULL if the source failed to compile.</p>
+<p>Raises <a class="el" href="mod_builtins.html#SyntaxError">SyntaxError</a> on error and returns NULL if the source failed to compile.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">src</td><td>Code string to compile. Should be a module body or repl line. </td></tr>
@@ -886,7 +822,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03735">3735</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03712">3712</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -906,7 +842,7 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03811">3811</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03772">3772</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -915,7 +851,6 @@ Variables</h2></td></tr>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00099">compiler.c:99</a></div></div>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a8c13abebc0e8907a4fa991269232889f">EXPR_ASSIGN_TARGET</a></div><div class="ttdeci">@ EXPR_ASSIGN_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00100">compiler.c:100</a></div></div>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a></div><div class="ttdeci">@ EXPR_DEL_TARGET</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00101">compiler.c:101</a></div></div>
-<div class="ttc" id="astructKrkString_html_afd3c39c1c8d8c9363c767e5038a53b8e"><div class="ttname"><a href="structKrkString.html#afd3c39c1c8d8c9363c767e5038a53b8e">KrkString::krk_codepointToBytes</a></div><div class="ttdeci">size_t krk_codepointToBytes(krk_integer_type value, unsigned char *out)</div><div class="ttdoc">Convert an integer codepoint to a UTF-8 byte representation.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00035">object.c:35</a></div></div>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a82c658504c3d40026ccf52f28f03a2d7">EXPR_NORMAL</a></div><div class="ttdeci">@ EXPR_NORMAL</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00098">compiler.c:98</a></div></div>
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>

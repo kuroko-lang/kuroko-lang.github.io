@@ -335,7 +335,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Determine if a class is an instance or subclass of a given type. </p>
-<p>Searches the class hierarchy of the given value to determine if it is a subtype of <code>type</code>. As this chains through the inheritence tree, the more deeply subclassed <code>obj</code> is, the longer it may take to determine if it is a subtype of <code>type</code>. All types should eventually be subtypes of the <a class="el" href="mod___builtins__.html#object">object</a> type, so this condition should not be checked. For some types, convenience macros are available. If you need to check if <code>obj</code> is a specific type, exclusive of subtypes, look at <code><a class="el" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015" title="Get the class representing a value.">krk_getType()</a></code> instead of using this function.</p>
+<p>Searches the class hierarchy of the given value to determine if it is a subtype of <code>type</code>. As this chains through the inheritence tree, the more deeply subclassed <code>obj</code> is, the longer it may take to determine if it is a subtype of <code>type</code>. All types should eventually be subtypes of the <a class="el" href="mod_builtins.html#object">object</a> type, so this condition should not be checked. For some types, convenience macros are available. If you need to check if <code>obj</code> is a specific type, exclusive of subtypes, look at <code><a class="el" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015" title="Get the class representing a value.">krk_getType()</a></code> instead of using this function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>Value to examine. </td></tr>
@@ -457,7 +457,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01060">1060</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01061">1061</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -500,7 +500,7 @@ attribute names that have nil bytes.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01878">1878</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01881">1881</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -542,9 +542,9 @@ attribute names that have nil bytes.</dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod_builtins.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01818">1818</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01821">1821</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -625,9 +625,9 @@ attribute names that have nil bytes.</dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod___builtins__.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod_builtins.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01953">1953</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01956">1956</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

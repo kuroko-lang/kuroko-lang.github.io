@@ -106,7 +106,7 @@ $(function() {
 <p>Most encodings supported by Python are implemented, but not currently <code>idna</code> or <code>punycode</code>. Note however that Python makes <code>x-mac-japanese</code> an alias of <code>shift_jis</code>; this has not been done here. Also note that the behaviour in regards to association of encoding names with variants is somewhat different to Python's, partly due to following WHATWG: this affects most CJK codecs (e.g. Python treats <code>shift_jis</code> and <code>ms-kanji</code> differently, while this package does not), but also e.g. "ISO-8859-1".</p>
 <p>Main entry points for the package are <code>codecs.infrastructure.encode</code>, <code>codecs.infrastructure.decode</code> and <code>codecs.infrastructure.lookup</code>, all three of which are also available as e.g. <code>codecs.encode</code> for convenience.</p>
 <p>The list of codecs (not an exhaustive list of labels, nor close to one) is as follows.</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 Single-byte extended ASCII encodings:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -234,7 +234,7 @@ Single-byte extended ASCII encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>x-user-defined</code> </td><td class="markdownTableBodyNone">8-bit User Defined (ASCII based variant: using U+0000–007F, U+F780–F7FF)  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Single-byte symbol or dingbat font encodings:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -242,7 +242,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>cp042</code> </td><td class="markdownTableBodyNone">8-bit User Defined (variant using U+0000–001F, U+F020–F0FF). Windows uses that mapping for symbol fonts in some contexts.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 8-bit multi-byte Unicode codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -268,7 +268,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>utf-32le</code> </td><td class="markdownTableBodyNone">UTF-32, little endian, no byte order mark  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 8-bit multi-byte legacy CJK codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -302,7 +302,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>x-mac-korean</code> </td><td class="markdownTableBodyNone">Korean HangulTalk (Macintosh encoding, another superset of EUC-KR)  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 7-bit stateful codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -330,7 +330,7 @@ Single-byte symbol or dingbat font encodings:</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>utf-7</code> </td><td class="markdownTableBodyNone">A largely obsolete scheme for mixing ASCII and Base64'd UTF-16BE in e-mail. Included mostly for Python parity.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 EBCDIC codecs:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -352,7 +352,7 @@ EBCDIC codecs:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>cp1140</code> </td><td class="markdownTableBodyNone">EBCDIC with Euro Sign  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 Codecs with unusual behaviour:</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -370,7 +370,7 @@ Codecs with unusual behaviour:</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>undefined</code>, <code>replacement</code> </td><td class="markdownTableBodyNone">Represents data for which encoding/decoding must not be attempted. Following WHATWG (and differing from Python), error handlers are accepted, though only by the decoder: the encoder will ignore them.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Notes on error conditions in the ISO-2022-JP family</h2>
 <p>Like most codecs, the ISO-2022-JP family will generate errors in place of sequences which it cannot interpret. However, they will also generate errors over certain sequences which have no immediate effect on the stream being outputted, so as to prevent them being used for masking syntax that would otherwise be sanitised or escaped (with <code>errors="replace"</code>, this will cause a <code>U+FFFD</code> to be inserted, thus preserving the interruption in any syntax). For this to happen is per WHATWG; the specific circumstances in which this happens, however, deliberately vary somewhat from the WHATWG specification.</p>
 <p>The <code>iso-2022-jp</code> codec is somewhat more pedantic than the WHATWG approach, and is intended to accept a strict subset of what the WHATWG approach accepts (but a superset of what the WHATWG and Python codecs <em>generate</em> for a single non-concatenated stream), excluding cases that are unlikely to occur in reality except as masking sequences. The WHATWG approach follows UTR #36 in forbidding exactly those cases which RFC 1468 does not permit, meaning that it forbids some cases that often occur in reality as a result of concatenation and are usually benign, and also permits some cases that are less likely to occur in reality and less likely to be benign. The <code>jis_encoding</code> codec (which is also used for decoding, but not for encoding, the <code>iso-2022-jp*</code> labels except for <code>iso-2022-jp</code> itself) permits the cases that result from concatenation but otherwise behaves the same as the <code>iso-2022-jp</code> codec in this regard; this, however, means that Shift Out and Shift In, which are not interpreted by the <code>iso-2022-jp</code> codec but are by the <code>jis_encoding</code> codec, are not currently checked for zero-effect use.</p>
@@ -393,7 +393,7 @@ Notes on error conditions in the ISO-2022-JP family</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">End State 2 </td><td class="markdownTableBodyNone">Okay </td><td class="markdownTableBodyNone">No Good </td><td class="markdownTableBodyNone">Only at end or before 5C/7E </td><td class="markdownTableBodyNone">Only at end or <b>before</b> 5C/7E </td><td class="markdownTableBodyNone">Okay </td><td class="markdownTableBodyNone">Only before 5C/7E </td><td class="markdownTableBodyNone">Only before 5C/7E  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Package contents</h2>
 <p> <div class="krk-class-index"><ul>
 

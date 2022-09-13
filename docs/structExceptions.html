@@ -145,6 +145,10 @@ Data Fields</h2></td></tr>
 <tr class="separator:accbf428a0b7fde8046ff7354fc4c5555"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ff306dddf632ffbc5492c266ece07ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structExceptions.html#a0ff306dddf632ffbc5492c266ece07ac">ThreadError</a></td></tr>
 <tr class="separator:a0ff306dddf632ffbc5492c266ece07ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2de7658153d2750f85aeda799fb27b77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structExceptions.html#a2de7658153d2750f85aeda799fb27b77">Exception</a></td></tr>
+<tr class="separator:a2de7658153d2750f85aeda799fb27b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e6d5c2614f99a459c0911d0b7ab3172"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structExceptions.html#a3e6d5c2614f99a459c0911d0b7ab3172">SystemError</a></td></tr>
+<tr class="separator:a3e6d5c2614f99a459c0911d0b7ab3172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Table of basic exception types. </p>
@@ -232,12 +236,34 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">Exception</td><td>The base exception type. </td></tr>
+    <tr><td class="paramname">BaseException</td><td>The base exception type. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00069">69</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+
+</div>
+</div>
+<a id="a2de7658153d2750f85aeda799fb27b77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2de7658153d2750f85aeda799fb27b77">&#9670;&nbsp;</a></span>Exception</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkClass.html">KrkClass</a>* Exceptions::Exception</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td>The main exception type that most other exceptions subclass. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00086">86</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -436,6 +462,28 @@ Data Fields</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00082">82</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+
+</div>
+</div>
+<a id="a3e6d5c2614f99a459c0911d0b7ab3172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e6d5c2614f99a459c0911d0b7ab3172">&#9670;&nbsp;</a></span>SystemError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkClass.html">KrkClass</a>* Exceptions::SystemError</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">SystemError</td><td>Something we can throw when C code is broken. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00087">87</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>

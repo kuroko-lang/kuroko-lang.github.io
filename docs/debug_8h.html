@@ -348,7 +348,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A breakpoint identifier handle on success, or -1 on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00287">287</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00323">323</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -396,7 +396,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A breakpoint identifier handle on success, or -1 on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00313">313</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00349">349</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -427,7 +427,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, 1 if the breakpoint identifier is invalid. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00366">366</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00402">402</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -461,7 +461,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <p>Prints the elements on the stack for the current thread to <code>file</code>, highlighting <code>frame</code> as the activate call point and indicating where its arguments start.</p>
 <p>When tracing is enabled, we will present the elements on the stack with a safe printer; the format of values printed by krk_printValueSafe will look different from those printed by printValue, but they guarantee that the VM will never be called to produce a string, which would result in a nasty infinite recursion if we did it while trying to trace the VM! </p>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00021">21</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00022">22</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -486,7 +486,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <p>Safely dump a traceback to stderr.</p>
 <p>Since traceback printing may involve calling into user code, we clear the debugging bits. Then we make a new exception to attach a traceback to. </p>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00462">462</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00498">498</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -516,7 +516,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, 1 if the breakpoint identifier is invalid. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00353">353</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00389">389</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -578,7 +578,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, -1 on out of range, -2 if the selected slot was removed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00534">534</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00570">570</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -609,7 +609,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the hook was registered; 1 if a hook was already registered, in which case the new hook has not been registered. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00528">528</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00564">564</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -639,7 +639,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, 1 if the breakpoint identifier is invalid. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00383">383</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00419">419</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -662,7 +662,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <p>Called by the VM when a breakpoint is encountered. </p>
 <p>Internal method, should not generally be called. </p>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00548">548</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00584">584</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -686,7 +686,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 <p>Handles calling the registered debugger hook, if one has been set, and performing the requested response action. Also takes care of re-enabling REPEAT breakpoints.</p>
 <p>Internal method, should not generally be called. </p>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00482">482</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00518">518</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -733,7 +733,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00067">67</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00068">68</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -781,7 +781,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debu
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The size of the instruction in bytes. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00214">214</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00249">249</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
