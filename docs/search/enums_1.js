@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['functiontype_1022',['FunctionType',['../compiler_8c.html#a42a11575cc237e37732d560240e04371',1,'compiler.c']]]
+  ['functiontype_1024',['FunctionType',['../compiler_8c.html#a42a11575cc237e37732d560240e04371',1,'compiler.c']]]
 ];

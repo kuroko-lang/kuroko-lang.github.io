@@ -868,6 +868,21 @@ print(f())
 '''
 ]
 
+let newerTutorial = [
+'''
+<h1>What's new in Kuroko 1.3</h1>
+<p>
+    Let's explore some new features in <b>Kuroko 1.3</b>:
+    <ul>
+        <li><code>tutorial13(2)</code> Test</li>
+    </ul>
+</p>
+''','''
+<p>
+
+'''
+]
+
 def tutorial(start=0,content=tutorials):
     '''Displays an interactive tutorial.'''
     let this = content[start]

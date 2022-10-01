@@ -1,6 +1,6 @@
 <map id="src/kuroko/memory.h" name="src/kuroko/memory.h">
 <area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="325,5,483,32"/>
-<area shape="rect" id="node2" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="159,304,238,331"/>
+<area shape="rect" id="node2" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="160,304,237,331"/>
 <area shape="rect" id="node8" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="367,80,441,107"/>
 <area shape="rect" id="node13" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="519,155,585,181"/>
 <area shape="rect" id="node3" title=" " alt="" coords="307,379,378,405"/>

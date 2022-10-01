@@ -1,14 +1,19 @@
 var searchData=
 [
-  ['generator_154',['generator',['../structgenerator.html',1,'']]],
-  ['generatorclass_155',['generatorClass',['../structBaseClasses.html#a597d3df53e958fd91ce8a2097b86ee5a',1,'BaseClasses']]],
-  ['globalflags_156',['globalFlags',['../structKrkVM.html#a72772a2091b6766bd10498cac8a7c693',1,'KrkVM']]],
-  ['globals_157',['globals',['../structKrkCallFrame.html#a730fceb5b7190d7473853b37105d305e',1,'KrkCallFrame']]],
-  ['globalsowner_158',['globalsOwner',['../structKrkClosure.html#a31cd2d628a215b62763a08508f04ef4e',1,'KrkClosure::globalsOwner()'],['../structKrkCallFrame.html#acc7df5828e68e5ff78b8872cd67f6ea2',1,'KrkCallFrame::globalsOwner()']]],
-  ['globalstable_159',['globalsTable',['../structKrkClosure.html#a4b2ca303929d354f9162f9d334d0bbbb',1,'KrkClosure']]],
-  ['globalstate_160',['GlobalState',['../structGlobalState.html',1,'']]],
-  ['graycapacity_161',['grayCapacity',['../structKrkVM.html#a6a4d87a87dc8ef5b26130b79c4d1d30a',1,'KrkVM']]],
-  ['graycount_162',['grayCount',['../structKrkVM.html#ad2e3c99d05b4d4bbbede6f13d4d0cef8',1,'KrkVM']]],
-  ['graystack_163',['grayStack',['../structKrkVM.html#ac100b7758c1e8aedabc1ef60f2987493',1,'KrkVM']]],
-  ['gc_164',['gc',['../mod_gc.html',1,'']]]
+  ['fields_140',['fields',['../structKrkClosure.html#af37bba59b398c8d7e12f03b32238ee3c',1,'KrkClosure::fields()'],['../structKrkInstance.html#ac447550dfd50d193e09f19832001fa56',1,'KrkInstance::fields()']]],
+  ['file_141',['File',['../structFile.html',1,'']]],
+  ['fileclass_142',['FileClass',['../structBaseClasses.html#a3434454a55c33f9f4f193bb366389f63',1,'BaseClasses']]],
+  ['fileio_143',['fileio',['../mod_fileio.html',1,'']]],
+  ['fileio_2ec_144',['fileio.c',['../fileio_8c.html',1,'']]],
+  ['filename_145',['filename',['../structKrkClass.html#a0125dfa58fdca0485bee378e14656976',1,'KrkClass']]],
+  ['filterclass_146',['filterClass',['../structBaseClasses.html#a6e655a39b8f46731639374a1c2201c35',1,'BaseClasses']]],
+  ['flags_147',['flags',['../structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872',1,'KrkThreadState::flags()'],['../structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86',1,'KrkObj::flags()']]],
+  ['floatclass_148',['floatClass',['../structBaseClasses.html#a04953c5198755001d6043b902ce4187c',1,'BaseClasses']]],
+  ['framecount_149',['frameCount',['../structKrkThreadState.html#a5b746e8dd984acb036bb7fc284b8ec0a',1,'KrkThreadState']]],
+  ['frames_150',['frames',['../structKrkThreadState.html#ada4094ade0cd8dd334aaa3029c8dc3e7',1,'KrkThreadState']]],
+  ['function_151',['function',['../structKrkClosure.html#a0feb3cac06b4ff2d9a6cdc05a058f564',1,'KrkClosure::function()'],['../structKrkNative.html#ad279988c44f297be98f961cbe1bea71f',1,'KrkNative::function()']]],
+  ['function_20index_152',['Function Index',['../functionindex.html',1,'']]],
+  ['functionclass_153',['functionClass',['../structBaseClasses.html#a5a9480d69bdee9e2b3be451e38d59122',1,'BaseClasses']]],
+  ['functionheader_154',['FunctionHeader',['../structFunctionHeader.html',1,'']]],
+  ['functiontype_155',['FunctionType',['../compiler_8c.html#a42a11575cc237e37732d560240e04371',1,'compiler.c']]]
 ];

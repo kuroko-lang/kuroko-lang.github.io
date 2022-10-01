@@ -235,6 +235,7 @@ var Module = {
     krk_call("print('Type `tutorial()` for an interactive guide, `license` for copyright information.')\n");
     krk_call("def tutorial(n=0):\n from web import tutorial as actual\n actual(n)\n");
     krk_call("def tutorial11(n=0):\n from web import tutorial as actual, newTutorial\n actual(n,newTutorial)\n");
+    krk_call("def tutorial13(n=0):\n from web import tutorial as actual, newerTutorial\n actual(n,newerTutorial)\n")
 
     /* Start the first repl line editor */
     currentEditor = createEditor(true);

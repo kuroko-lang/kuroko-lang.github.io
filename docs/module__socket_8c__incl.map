@@ -1,6 +1,6 @@
 <map id="src/modules/module_socket.c" name="src/modules/module_socket.c">
 <area shape="rect" id="node1" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="241,5,396,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="183,468,254,495"/>
+<area shape="rect" id="node2" title=" " alt="" coords="185,468,255,495"/>
 <area shape="rect" id="node3" title=" " alt="" coords="55,244,151,271"/>
 <area shape="rect" id="node4" title=" " alt="" coords="94,95,197,121"/>
 <area shape="rect" id="node5" title=" " alt="" coords="221,95,313,121"/>
@@ -20,7 +20,7 @@
 <area shape="rect" id="node15" title=" " alt="" coords="759,543,830,569"/>
 <area shape="rect" id="node16" title=" " alt="" coords="462,543,549,569"/>
 <area shape="rect" id="node17" title=" " alt="" coords="573,543,640,569"/>
-<area shape="rect" id="node19" title=" " alt="" coords="468,468,535,495"/>
+<area shape="rect" id="node19" title=" " alt="" coords="469,468,536,495"/>
 <area shape="rect" id="node21" href="$threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="867,393,949,420"/>
 <area shape="rect" id="node22" title=" " alt="" coords="945,468,1029,495"/>
 <area shape="rect" id="node23" title=" " alt="" coords="848,468,920,495"/>

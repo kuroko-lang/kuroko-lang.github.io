@@ -1,19 +1,10 @@
 var searchData=
 [
-  ['object_20model_428',['Object Model',['../lang_objects.html',1,'']]],
-  ['os_429',['os',['../mod_os.html',1,'']]],
-  ['obj_430',['obj',['../structKrkString.html#a3396fd72d61450c56aab4bd5f5946462',1,'KrkString::obj()'],['../structKrkBytes.html#a3b658d960b00e632c24980054c90aea4',1,'KrkBytes::obj()'],['../structKrkUpvalue.html#a51d5813422abdd24fc77d77d6da720fc',1,'KrkUpvalue::obj()'],['../structKrkCodeObject.html#a94bc11527cf1601587e855504c792590',1,'KrkCodeObject::obj()'],['../structKrkClosure.html#a90279bffde3db801607b9c01e8a0e3c4',1,'KrkClosure::obj()'],['../structKrkClass.html#a822b03386b6897607742e17daa48a7e5',1,'KrkClass::obj()'],['../structKrkInstance.html#a9a92c0b7fc227b6a5b7f1f13599ea242',1,'KrkInstance::obj()'],['../structKrkBoundMethod.html#ad1db79be153430b1aea72c131da2940c',1,'KrkBoundMethod::obj()'],['../structKrkNative.html#acffc2056a5ffc24cfffccc2ba422d8fe',1,'KrkNative::obj()'],['../structKrkTuple.html#a2d3f4da6acd003dddae37af4c9f67a50',1,'KrkTuple::obj()']]],
-  ['obj_5fgen_2ec_431',['obj_gen.c',['../obj__gen_8c.html',1,'']]],
-  ['obj_5flong_2ec_432',['obj_long.c',['../obj__long_8c.html',1,'']]],
-  ['object_2eh_433',['object.h',['../object_8h.html',1,'']]],
-  ['objectclass_434',['objectClass',['../structBaseClasses.html#ac42048780334582a6698aff614c4b61f',1,'BaseClasses']]],
-  ['objects_435',['objects',['../structKrkVM.html#a6aec1bb1196faef7804d11f599f91d82',1,'KrkVM']]],
-  ['offset_436',['offset',['../structLoopExit.html#a6a9d016694056de24f88e36a860ecd21',1,'LoopExit']]],
-  ['oldparser_437',['oldParser',['../structRewindState.html#ab2c320baceaabec57fd209c3808fb445',1,'RewindState']]],
-  ['oldscanner_438',['oldScanner',['../structRewindState.html#ab7eb75d542c32fa174e34ed77f6d7958',1,'RewindState']]],
-  ['openupvalues_439',['openUpvalues',['../structKrkThreadState.html#a988ba4eff15db94992295097cbfbaf50',1,'KrkThreadState']]],
-  ['optionsflags_440',['optionsFlags',['../structCompiler.html#a3d5475895dd0e6bcdecd29a4ec98aa7d',1,'Compiler']]],
-  ['oserror_441',['OSError',['../structExceptions.html#accbf428a0b7fde8046ff7354fc4c5555',1,'Exceptions']]],
-  ['outslots_442',['outSlots',['../structKrkCallFrame.html#a8fc758eb69e9105be894b1c0c08b4d06',1,'KrkCallFrame']]],
-  ['owner_443',['owner',['../structKrkUpvalue.html#a32cb1931345220f023907574ea420d27',1,'KrkUpvalue']]]
+  ['name_423',['name',['../structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265',1,'Local::name()'],['../structClassCompiler.html#a594814f7428c654e5b838129d984aa4e',1,'ClassCompiler::name()'],['../structKrkLocalEntry.html#a58a8d347c468021803933d1554df4b6c',1,'KrkLocalEntry::name()'],['../structKrkCodeObject.html#afce5b20d7c83cbf2c567d091bd331ab9',1,'KrkCodeObject::name()'],['../structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab',1,'KrkClass::name()'],['../structKrkNative.html#ab5e5f858e2f9d89bce2cf7990d5f4183',1,'KrkNative::name()']]],
+  ['nameerror_424',['nameError',['../structExceptions.html#ac6e7bd438734b5afb0774c98359b5d44',1,'Exceptions']]],
+  ['next_425',['next',['../structIndexWithNext.html#a8466d9b80dc0bddeff6cbe304ceaf9d9',1,'IndexWithNext::next()'],['../structKrkObj.html#ae80a8aa4393308cbf7081094de2c52bc',1,'KrkObj::next()'],['../structKrkUpvalue.html#a34426915cbae76a1e09020ecede970d1',1,'KrkUpvalue::next()'],['../structKrkThreadState.html#a4d87533007db9586d37c1d2e5a595677',1,'KrkThreadState::next()']]],
+  ['nextgc_426',['nextGC',['../structKrkVM.html#af7869cd92dfd0ea77e83cebe5d76d6f9',1,'KrkVM']]],
+  ['nonetypeclass_427',['noneTypeClass',['../structBaseClasses.html#a6a15a1b054336d082ba56632eea09815',1,'BaseClasses']]],
+  ['notimplclass_428',['notImplClass',['../structBaseClasses.html#a26f99e94e3de312c98f3a40b349a56ee',1,'BaseClasses']]],
+  ['notimplementederror_429',['notImplementedError',['../structExceptions.html#aff32b97f8ba8d7da53495b5339785c08',1,'Exceptions']]]
 ];
