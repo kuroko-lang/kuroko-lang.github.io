@@ -784,6 +784,12 @@ def stopWorker():
     destroy_worker(currentWorker)
     finishRunning(False)
 
+let static_blacklist = ['__module__','__qualname__']
+
+def isPrivate(name, func):
+    if name.startswith(f'_{func.__name__}__'): return True
+    return False
+
 class CodeObject():
     _opcodeCache = {}
     def __init__(self, real, code):
@@ -811,11 +817,11 @@ class CodeObject():
             offset += i[1]
         return None
 
-    def makeTree(self, func=self.func):
+    def makeTree(self, func=self.func, isClass=False):
         let instructions = dis.examine(func)
         let line = func._ip_to_line(0)
         let description
-        if instructions and instructions[0][0] == dis.OP_CLASS:
+        if isClass:
             description = ('class <b>' + func.__name__ + '</b>()','layers','#33a2e6',func.__name__)
         else if func.__name__ == '<lambda>':
             description = ('lambda (' + str(line) + ')','chevron-up','#e62b7f', None)
@@ -835,13 +841,19 @@ class CodeObject():
             description = ('def <b>' + func.__name__ + '</b>()','box','#e62b7f',func.__name__)
         let children = []
         let offset = 0
+        let nextIsClass = False
         for instruction in dis.examine(func):
             if isinstance(instruction[2],codeobject):
-                children.append(self.makeTree(instruction[2]))
+                children.append(self.makeTree(instruction[2], nextIsClass))
+                nextIsClass = False
             else if instruction[0] in (dis.OP_IMPORT,dis.OP_IMPORT_LONG):
                 children.append( (('import <b>' + instruction[2] + '</b>', 'package', '#48b048', instruction[2]), func._ip_to_line(offset), []) )
             else if instruction[0] in (dis.OP_DEFINE_GLOBAL,dis.OP_DEFINE_GLOBAL_LONG) and (instruction[2] not in ([d[3] for d,l,c in children])):
                 children.append( (('let <b>' + instruction[2] + '</b>', 'square', '#e6ce6e', instruction[2]), func._ip_to_line(offset), []) )
+            else if instruction[0] in (dis.OP_GET_GLOBAL,dis.OP_GET_GLOBAL_LONG) and (instruction[2] == '__build_class__'):
+                nextIsClass = True
+            else if instruction[0] in (dis.OP_SET_NAME, dis.OP_SET_NAME_LONG) and instruction[2] not in static_blacklist and (instruction[2] not in ([d[3] for d,l,c in children])) and not isPrivate(instruction[2],func):
+                children.append( (('<b>' + instruction[2] + '</b>', 'square', '#e6ce6e', instruction[2]), func._ip_to_line(offset), []) )
             offset += instruction[1]
         return (description, line, children)
 
