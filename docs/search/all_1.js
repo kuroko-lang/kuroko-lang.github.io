@@ -6,7 +6,7 @@ var searchData=
   ['_5fbaseexception_5f_5f_5fstr_5f_5f_4',['_BaseException___str__',['../exceptions_8c.html#ac46b4d654d58cbd63b1678364e69299d',1,'exceptions.c']]],
   ['_5fbytes_5fjoin_5fcontext_5',['_bytes_join_context',['../struct__bytes__join__context.html',1,'']]],
   ['_5fcall_6',['_call',['../structKrkClass.html#a5de03c15137c8d717a0d0cfbf3897d0f',1,'KrkClass']]],
-  ['_5fclass_7',['_class',['../structKrkInstance.html#a515c6a6d50b45b02afd4425278116603',1,'KrkInstance']]],
+  ['_5fclass_7',['_class',['../structKrkClass.html#ab9b825b02c712319ff471fffbb49d0aa',1,'KrkClass::_class()'],['../structKrkInstance.html#a515c6a6d50b45b02afd4425278116603',1,'KrkInstance::_class()']]],
   ['_5fclassgetitem_8',['_classgetitem',['../structKrkClass.html#ac5d415103c3aee8ab6558c3c3d79aab8',1,'KrkClass']]],
   ['_5fcontains_9',['_contains',['../structKrkClass.html#abbea9ba6a48feb8e2ea99d0d270936ab',1,'KrkClass']]],
   ['_5fcreateandbind_5fexceptions_10',['_createAndBind_exceptions',['../exceptions_8c.html#a18105c62ed1904b013e43f9fd0e6f42a',1,'_createAndBind_exceptions(void):&#160;exceptions.c'],['../private_8h.html#a0e31397b2d77b1a44a35064c79a8e535',1,'_createAndBind_exceptions(void):&#160;exceptions.c']]],

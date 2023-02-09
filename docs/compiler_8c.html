@@ -351,6 +351,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720ad763e085c380640a55bd5af74630a8b1">EXPR_DEL_TARGET</a>
 , <br />
 &#160;&#160;<a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720a60911b869d3b48352c85316ac72d035d">EXPR_METHOD_CALL</a>
+, <b>EXPR_CLASS_PARAMETERS</b>
 <br />
  }</td></tr>
 <tr class="memdesc:a51ad9989dafb48362f7e9354d68fe720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression type.  <a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720">More...</a><br /></td></tr>
@@ -434,10 +435,11 @@ Variables</h2></td></tr>
 <div class="line">    EMIT_OPERAND_OP(how, val_ind); \</div>
 <div class="line">    KrkToken name_tok = syntheticToken(propName); \</div>
 <div class="line">    size_t name_ind = identifierConstant(state, &amp;name_tok); \</div>
-<div class="line">    EMIT_OPERAND_OP(OP_CLASS_PROPERTY, name_ind); \</div>
+<div class="line">    EMIT_OPERAND_OP(OP_SET_NAME, name_ind); \</div>
+<div class="line">    emitByte(OP_POP); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01631">1631</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01645">1645</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -499,7 +501,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00099">compiler.c:99</a></div></div>
 <div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00071">compiler.c:71</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02930">2930</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02982">2982</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -531,7 +533,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00298">298</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00300">300</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -627,7 +629,7 @@ Variables</h2></td></tr>
 <p>Subexpression parser function. </p>
 <p>Used by the parse rule table for infix and prefix expression parser functions. The argument passed is the <a class="el" href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720">ExpressionType</a> to compile the expression as. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00115">115</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00116">116</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -717,7 +719,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00159">159</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00161">161</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -827,7 +829,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03750">3750</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03809">3809</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -847,7 +849,7 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03810">3810</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03869">3869</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>

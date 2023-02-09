@@ -107,7 +107,10 @@ $(function() {
 <p>Built-in names may be bound from several sources. Most come from the core interpreter directly, but some may come from loaded C extension modules or the interpreter binary. Kuroko source modules are also free to append new names to the built-in name space by attaching new properties to the <code>__builtins__</code> instance.</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Classes</h2>
-<p><a class="anchor" id="CompilerState"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#CompilerState">_</a></span><i>class</i> <b>CompilerState</b>(object)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p><a class="anchor" id="CompilerState"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#CompilerState">_</a></span><i>class</i> <b>CompilerState</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="Helper"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#Helper">_</a></span><i>class</i> <b>Helper</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Special object that prints a helpeful message.</p>
 <p>Object that prints help summary when passed to <a class="el" href="mod_builtins.html#repr">repr</a>.</p>
 <p><a class="anchor" id="Helper___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#Helper___call__">_</a></span>Helper(<i>obj=None</i>)</h4><div class="memitem"><div class="memproto">Helper.<b>__call__</b>(<i>obj=None</i>)</div><div class="memdoc"> </p>
@@ -119,23 +122,32 @@ Classes</h2>
 <p><a class="anchor" id="LicenseReader___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#LicenseReader___call__">_</a></span>LicenseReader()</h4><div class="memitem"><div class="memproto">LicenseReader.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p>Print the full license statement.</p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="NoneType"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#NoneType">_</a></span><i>class</i> <b>NoneType</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="NoneType___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NoneType___init__">_</a></span>let <i>x</i> = <b>NoneType</b>()</h4><div class="memitem"><div class="memproto">NoneType.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="NoneType"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#NoneType">_</a></span><i>class</i> <b>NoneType</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
 <p><a class="anchor" id="NoneType___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NoneType___eq__">_</a></span>NoneType == <i>other</i></h4><div class="memitem"><div class="memproto">NoneType.<b>__eq__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="NoneType___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NoneType___hash__">_</a></span>NoneType.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="NotImplementedType"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#NotImplementedType">_</a></span><i>class</i> <b>NotImplementedType</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="NotImplementedType___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NotImplementedType___init__">_</a></span>let <i>x</i> = <b>NotImplementedType</b>()</h4><div class="memitem"><div class="memproto">NotImplementedType.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p><a class="anchor" id="NoneType___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NoneType___new__">_</a></span>NoneType.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p> </div></div> <a class="anchor" id="NotImplementedType"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#NotImplementedType">_</a></span><i>class</i> <b>NotImplementedType</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
 <p><a class="anchor" id="NotImplementedType___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NotImplementedType___eq__">_</a></span>NotImplementedType == <i>other</i></h4><div class="memitem"><div class="memproto">NotImplementedType.<b>__eq__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="NotImplementedType___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NotImplementedType___hash__">_</a></span>NotImplementedType.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="NotImplementedType___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#NotImplementedType___new__">_</a></span>NotImplementedType.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p> </div></div> <a class="anchor" id="bool"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bool">_</a></span><i>class</i> <b>bool</b>(int)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Returns False if the argument is 'falsey', otherwise True.</p>
-<p><a class="anchor" id="bool___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bool___init__">_</a></span>let <i>x</i> = <b>bool</b>()</h4><div class="memitem"><div class="memproto">bool.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p><a class="anchor" id="bool___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bool___new__">_</a></span>bool.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="bytearray"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytearray">_</a></span><i>class</i> <b>bytearray</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="bytearray___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytearray___init__">_</a></span>let <i>x</i> = <b>bytearray</b>(<i>bytes=None</i>)</h4><div class="memitem"><div class="memproto">bytearray.<b>__init__</b>(<i>bytes=None</i>)</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="bytearray"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytearray">_</a></span><i>class</i> <b>bytearray</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="bytearray___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytearray___init__">_</a></span>let <i>x</i> = <b>bytearray</b>(<i>bytes=None</i>)</h4><div class="memitem"><div class="memproto">bytearray.<b>__init__</b>(<i>bytes=None</i>)</div><div class="memdoc"> </p>
 <p>A mutable array of bytes.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="bytearray___contains__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytearray___contains__">_</a></span><i>needle</i> <b>in</b> bytearray</h4><div class="memitem"><div class="memproto">bytearray.<b>__contains__</b>()</div><div class="memdoc"> </p>
@@ -152,10 +164,9 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="bytearray_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytearray_decode">_</a></span>bytearray.<b>decode</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="bytes"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytes">_</a></span><i>class</i> <b>bytes</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="bytes___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___init__">_</a></span>let <i>x</i> = <b>bytes</b>(<i>iter=None</i>)</h4><div class="memitem"><div class="memproto">bytes.<b>__init__</b>(<i>iter=None</i>)</div><div class="memdoc"> </p>
-<p>An array of bytes.</p>
-<p>Creates a new <a class="el" href="mod_builtins.html#bytes">bytes</a> object. If <code>iter</code> is provided, it should be a <a class="el" href="mod_builtins.html#tuple">tuple</a> or <a class="el" href="mod_builtins.html#list">list</a> of integers within the range <code>0</code> and <code>255</code>.</p>
-<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="bytes"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytes">_</a></span><i>class</i> <b>bytes</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
 <p><a class="anchor" id="bytes___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___add__">_</a></span>bytes + <i>other</i></h4><div class="memitem"><div class="memproto">bytes.<b>__add__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="bytes___contains__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___contains__">_</a></span><i>needle</i> <b>in</b> bytes</h4><div class="memitem"><div class="memproto">bytes.<b>__contains__</b>()</div><div class="memdoc"> </p>
@@ -170,15 +181,25 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="bytes___len__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___len__">_</a></span><b>len</b>(bytes)</h4><div class="memitem"><div class="memproto">bytes.<b>__len__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="bytes___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes___new__">_</a></span>bytes.<b>__new__</b>(<i>iter=None</i>)</h4><div class="memitem"><div class="memdoc"> </p>
+<p>An array of bytes.</p>
+<p>Creates a new <a class="el" href="mod_builtins.html#bytes">bytes</a> object. If <code>iter</code> is provided, it should be a <a class="el" href="mod_builtins.html#tuple">tuple</a> or <a class="el" href="mod_builtins.html#list">list</a> of integers within the range <code>0</code> and <code>255</code>.</p>
+<p> </div></div></p>
 <p><a class="anchor" id="bytes_decode"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes_decode">_</a></span>bytes.<b>decode</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="bytes_join"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytes_join">_</a></span>bytes.<b>join</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="bytesiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytesiterator">_</a></span><i>class</i> <b>bytesiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="bytesiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytesiterator___init__">_</a></span>let <i>x</i> = <b>bytesiterator</b>()</h4><div class="memitem"><div class="memproto">bytesiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="bytesiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#bytesiterator">_</a></span><i>class</i> <b>bytesiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="bytesiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytesiterator___init__">_</a></span>let <i>x</i> = <b>bytesiterator</b>()</h4><div class="memitem"><div class="memproto">bytesiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="bytesiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#bytesiterator___call__">_</a></span>bytesiterator()</h4><div class="memitem"><div class="memproto">bytesiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="codeobject"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#codeobject">_</a></span><i>class</i> <b>codeobject</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="codeobject___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___init__">_</a></span>let <i>x</i> = <b>codeobject</b>()</h4><div class="memitem"><div class="memproto">codeobject.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="codeobject"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#codeobject">_</a></span><i>class</i> <b>codeobject</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="codeobject___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject___new__">_</a></span>codeobject.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="codeobject__ip_to_line"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#codeobject__ip_to_line">_</a></span>codeobject.<b>_ip_to_line</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -238,19 +259,28 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="dict_values"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dict_values">_</a></span>dict.<b>values</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="dictitems"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictitems">_</a></span><i>class</i> <b>dictitems</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="dictitems___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictitems___init__">_</a></span>let <i>x</i> = <b>dictitems</b>()</h4><div class="memitem"><div class="memproto">dictitems.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="dictitems"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictitems">_</a></span><i>class</i> <b>dictitems</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="dictitems___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictitems___init__">_</a></span>let <i>x</i> = <b>dictitems</b>()</h4><div class="memitem"><div class="memproto">dictitems.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="dictitems___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictitems___call__">_</a></span>dictitems()</h4><div class="memitem"><div class="memproto">dictitems.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="dictitems___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictitems___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> dictitems:</h4><div class="memitem"><div class="memproto">dictitems.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="dictkeys"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictkeys">_</a></span><i>class</i> <b>dictkeys</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="dictkeys___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictkeys___init__">_</a></span>let <i>x</i> = <b>dictkeys</b>()</h4><div class="memitem"><div class="memproto">dictkeys.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="dictkeys"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictkeys">_</a></span><i>class</i> <b>dictkeys</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="dictkeys___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictkeys___init__">_</a></span>let <i>x</i> = <b>dictkeys</b>()</h4><div class="memitem"><div class="memproto">dictkeys.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="dictkeys___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictkeys___call__">_</a></span>dictkeys()</h4><div class="memitem"><div class="memproto">dictkeys.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="dictkeys___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictkeys___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> dictkeys:</h4><div class="memitem"><div class="memproto">dictkeys.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="dictvalues"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictvalues">_</a></span><i>class</i> <b>dictvalues</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="dictvalues___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictvalues___init__">_</a></span>let <i>x</i> = <b>dictvalues</b>()</h4><div class="memitem"><div class="memproto">dictvalues.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="dictvalues"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#dictvalues">_</a></span><i>class</i> <b>dictvalues</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="dictvalues___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictvalues___init__">_</a></span>let <i>x</i> = <b>dictvalues</b>()</h4><div class="memitem"><div class="memproto">dictvalues.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="dictvalues___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#dictvalues___call__">_</a></span>dictvalues()</h4><div class="memitem"><div class="memproto">dictvalues.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -274,8 +304,6 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="float"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#float">_</a></span><i>class</i> <b>float</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Convert a number or string type to a float representation.</p>
-<p><a class="anchor" id="float___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___init__">_</a></span>let <i>x</i> = <b>float</b>()</h4><div class="memitem"><div class="memproto">float.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="float___abs__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___abs__">_</a></span>float.<b>__abs__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="float___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___add__">_</a></span>float + <i>other</i></h4><div class="memitem"><div class="memproto">float.<b>__add__</b>()</div><div class="memdoc"> </p>
@@ -312,6 +340,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="float___neg__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___neg__">_</a></span>-float</h4><div class="memitem"><div class="memproto">float.<b>__neg__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="float___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___new__">_</a></span>float.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="float___pos__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___pos__">_</a></span>float.<b>__pos__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="float___radd__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___radd__">_</a></span><i>other</i> + float</h4><div class="memitem"><div class="memproto">float.<b>__radd__</b>()</div><div class="memdoc"> </p>
@@ -328,7 +358,7 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="float___truediv__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#float___truediv__">_</a></span>float / <i>other</i></h4><div class="memitem"><div class="memproto">float.<b>__truediv__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="function"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#function">_</a></span><i>class</i> <b>function</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="function___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___init__">_</a></span>let <i>x</i> = <b>function</b>()</h4><div class="memitem"><div class="memproto">function.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="function"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#function">_</a></span><i>class</i> <b>function</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="function___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___new__">_</a></span>function.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="function__ip_to_line"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function__ip_to_line">_</a></span>function.<b>_ip_to_line</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -338,11 +368,16 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="function___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___code__">_</a></span><i>property</i> function.<b>__code__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="function___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___doc__">_</a></span><i>property</i> function.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="function___globals__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___globals__">_</a></span><i>property</i> function.<b>__globals__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="function___qualname__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#function___qualname__">_</a></span><i>property</i> function.<b>__qualname__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="generator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#generator">_</a></span><i>class</i> <b>generator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="generator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#generator___init__">_</a></span>let <i>x</i> = <b>generator</b>()</h4><div class="memitem"><div class="memproto">generator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="generator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#generator">_</a></span><i>class</i> <b>generator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="generator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#generator___init__">_</a></span>let <i>x</i> = <b>generator</b>()</h4><div class="memitem"><div class="memproto">generator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="generator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#generator___call__">_</a></span>generator()</h4><div class="memitem"><div class="memproto">generator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -356,8 +391,6 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="int"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#int">_</a></span><i>class</i> <b>int</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Convert a number or string type to an integer representation.</p>
-<p><a class="anchor" id="int___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___init__">_</a></span>let <i>x</i> = <b>int</b>()</h4><div class="memitem"><div class="memproto">int.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="int___abs__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___abs__">_</a></span>int.<b>__abs__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="int___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___add__">_</a></span>int + <i>other</i></h4><div class="memitem"><div class="memproto">int.<b>__add__</b>()</div><div class="memdoc"> </p>
@@ -423,6 +456,8 @@ Classes</h2>
 <p><a class="anchor" id="int___mul__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___mul__">_</a></span>int * <i>other</i></h4><div class="memitem"><div class="memproto">int.<b>__mul__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="int___neg__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___neg__">_</a></span>-int</h4><div class="memitem"><div class="memproto">int.<b>__neg__</b>()</div><div class="memdoc"> </p>
+<p> </div></div></p>
+<p><a class="anchor" id="int___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___new__">_</a></span>int.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="int___oct__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#int___oct__">_</a></span>int.<b>__oct__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -544,12 +579,15 @@ Classes</h2>
 <p>Sort the contents of a list.</p>
 <p>Performs an in-place sort of the elements in the list, returning <code>None</code> as a gentle reminder that the sort is in-place. If a sorted copy is desired, use <a class="el" href="mod_builtins.html#sorted">sorted</a> instead.</p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="listiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#listiterator">_</a></span><i>class</i> <b>listiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="listiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#listiterator___init__">_</a></span>let <i>x</i> = <b>listiterator</b>()</h4><div class="memitem"><div class="memproto">listiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="listiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#listiterator">_</a></span><i>class</i> <b>listiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="listiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#listiterator___init__">_</a></span>let <i>x</i> = <b>listiterator</b>()</h4><div class="memitem"><div class="memproto">listiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="listiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#listiterator___call__">_</a></span>listiterator()</h4><div class="memitem"><div class="memproto">listiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="long"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#long">_</a></span><i>class</i> <b>long</b>(int)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="long___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___init__">_</a></span>let <i>x</i> = <b>long</b>()</h4><div class="memitem"><div class="memproto">long.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="long"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#long">_</a></span><i>class</i> <b>long</b>(int)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert a number or string type to an integer representation.</p>
 <p><a class="anchor" id="long___abs__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___abs__">_</a></span>long.<b>__abs__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="long___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___add__">_</a></span>long + <i>other</i></h4><div class="memitem"><div class="memproto">long.<b>__add__</b>()</div><div class="memdoc"> </p>
@@ -616,6 +654,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="long___neg__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___neg__">_</a></span>-long</h4><div class="memitem"><div class="memproto">long.<b>__neg__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="long___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___new__">_</a></span>long.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="long___oct__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___oct__">_</a></span>long.<b>__oct__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="long___or__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#long___or__">_</a></span>long | <i>other</i></h4><div class="memitem"><div class="memproto">long.<b>__or__</b>()</div><div class="memdoc"> </p>
@@ -674,7 +714,7 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="map___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#map___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> map:</h4><div class="memitem"><div class="memproto">map.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="method"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#method">_</a></span><i>class</i> <b>method</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="method___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___init__">_</a></span>let <i>x</i> = <b>method</b>()</h4><div class="memitem"><div class="memproto">method.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="method"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#method">_</a></span><i>class</i> <b>method</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="method___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___new__">_</a></span>method.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="method__ip_to_line"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method__ip_to_line">_</a></span>method.<b>_ip_to_line</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -684,6 +724,8 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="method___code__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___code__">_</a></span><i>property</i> method.<b>__code__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="method___doc__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___doc__">_</a></span><i>property</i> method.<b>__doc__</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="method___qualname__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___qualname__">_</a></span><i>property</i> method.<b>__qualname__</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="method___self__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#method___self__">_</a></span><i>property</i> method.<b>__self__</b></h4><div class="memitem"><div class="memdoc"> </p>
@@ -691,6 +733,8 @@ Classes</h2>
 <p> </div></div> <a class="anchor" id="object"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#object">_</a></span><i>class</i> <b>object</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Base class for all types.</p>
 <p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="object___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___init__">_</a></span>let <i>x</i> = <b>object</b>()</h4><div class="memitem"><div class="memproto">object.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="object___dir__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___dir__">_</a></span>object.<b>__dir__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="object___eq__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___eq__">_</a></span>object == <i>other</i></h4><div class="memitem"><div class="memproto">object.<b>__eq__</b>()</div><div class="memdoc"> </p>
@@ -699,9 +743,14 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="object___hash__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___hash__">_</a></span>object.<b>__hash__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
+<p><a class="anchor" id="object___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___new__">_</a></span>object.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
 <p><a class="anchor" id="object___setattr__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#object___setattr__">_</a></span>object.<b>__setattr__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="property"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#property">_</a></span><i>class</i> <b>property</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="property___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#property___init__">_</a></span>let <i>x</i> = <b>property</b>(<i>fget,[fset]</i>)</h4><div class="memitem"><div class="memproto">property.<b>__init__</b>(<i>fget,[fset]</i>)</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="property"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#property">_</a></span><i>class</i> <b>property</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="property___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#property___init__">_</a></span>let <i>x</i> = <b>property</b>(<i>fget,[fset]</i>)</h4><div class="memitem"><div class="memproto">property.<b>__init__</b>(<i>fget,[fset]</i>)</div><div class="memdoc"> </p>
 <p>Create a property object.</p>
 <p>When a property object is obtained from an instance of the class in which it is defined, the function or method assigned to <code>fget</code> is called with the instance as an argument. If <code>fset</code> is provided, it will be called with the instance and a value when the property object is assigned to through an instance. For legacy compatibility reasons, a property object's <code>fget</code> method may also accept an additional argument to act as a setter if <code>fset</code> is not provided, but this functionality may be removed in the future.</p>
 <p>The typical use for <code>property</code> is as a decorator on methods in a class. See also <a class="el" href="mod_builtins.html#property_setter">property.setter</a> for the newer Python-style approach to decorating a companion setter method.</p>
@@ -730,11 +779,17 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="range___iter__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#range___iter__">_</a></span><b>for</b> <i>x</i> <b>in</b> range:</h4><div class="memitem"><div class="memproto">range.<b>__iter__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="rangeiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#rangeiterator">_</a></span><i>class</i> <b>rangeiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="rangeiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#rangeiterator___init__">_</a></span>let <i>x</i> = <b>rangeiterator</b>()</h4><div class="memitem"><div class="memproto">rangeiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="rangeiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#rangeiterator">_</a></span><i>class</i> <b>rangeiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="rangeiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#rangeiterator___init__">_</a></span>let <i>x</i> = <b>rangeiterator</b>()</h4><div class="memitem"><div class="memproto">rangeiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="rangeiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#rangeiterator___call__">_</a></span>rangeiterator()</h4><div class="memitem"><div class="memproto">rangeiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="set"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#set">_</a></span><i>class</i> <b>set</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="set___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#set___init__">_</a></span>let <i>x</i> = <b>set</b>()</h4><div class="memitem"><div class="memproto">set.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="set"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#set">_</a></span><i>class</i> <b>set</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="set___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#set___init__">_</a></span>let <i>x</i> = <b>set</b>()</h4><div class="memitem"><div class="memproto">set.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="set___and__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#set___and__">_</a></span>set &amp; <i>other</i></h4><div class="memitem"><div class="memproto">set.<b>__and__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -774,11 +829,17 @@ Classes</h2>
 <p>Remove an element from the set.</p>
 <p>Removes <code>value</code> from the set, raising <a class="el" href="mod_builtins.html#KeyError">KeyError</a> if it is not a member of the set.</p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="setiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#setiterator">_</a></span><i>class</i> <b>setiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="setiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#setiterator___init__">_</a></span>let <i>x</i> = <b>setiterator</b>()</h4><div class="memitem"><div class="memproto">setiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="setiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#setiterator">_</a></span><i>class</i> <b>setiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="setiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#setiterator___init__">_</a></span>let <i>x</i> = <b>setiterator</b>()</h4><div class="memitem"><div class="memproto">setiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="setiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#setiterator___call__">_</a></span>setiterator()</h4><div class="memitem"><div class="memproto">setiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="slice"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#slice">_</a></span><i>class</i> <b>slice</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="slice___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#slice___init__">_</a></span>let <i>x</i> = <b>slice</b>()</h4><div class="memitem"><div class="memproto">slice.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="slice"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#slice">_</a></span><i>class</i> <b>slice</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="slice___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#slice___init__">_</a></span>let <i>x</i> = <b>slice</b>()</h4><div class="memitem"><div class="memproto">slice.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="slice_end"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#slice_end">_</a></span><i>property</i> slice.<b>end</b></h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -788,8 +849,6 @@ Classes</h2>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="str"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#str">_</a></span><i>class</i> <b>str</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Obtain a string representation of an object.</p>
-<p><a class="anchor" id="str___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___init__">_</a></span>let <i>x</i> = <b>str</b>()</h4><div class="memitem"><div class="memproto">str.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
 <p><a class="anchor" id="str___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___add__">_</a></span>str + <i>other</i></h4><div class="memitem"><div class="memproto">str.<b>__add__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="str___contains__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___contains__">_</a></span><i>needle</i> <b>in</b> str</h4><div class="memitem"><div class="memproto">str.<b>__contains__</b>()</div><div class="memdoc"> </p>
@@ -821,6 +880,8 @@ Classes</h2>
 <p><a class="anchor" id="str___mod__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___mod__">_</a></span>str % <i>other</i></h4><div class="memitem"><div class="memproto">str.<b>__mod__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="str___mul__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___mul__">_</a></span>str * <i>other</i></h4><div class="memitem"><div class="memproto">str.<b>__mul__</b>()</div><div class="memdoc"> </p>
+<p> </div></div></p>
+<p><a class="anchor" id="str___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___new__">_</a></span>str.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="str___ord__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str___ord__">_</a></span>str.<b>__ord__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -872,12 +933,16 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="str_upper"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#str_upper">_</a></span>str.<b>upper</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="striterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#striterator">_</a></span><i>class</i> <b>striterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="striterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#striterator___init__">_</a></span>let <i>x</i> = <b>striterator</b>()</h4><div class="memitem"><div class="memproto">striterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p> </div></div> <a class="anchor" id="striterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#striterator">_</a></span><i>class</i> <b>striterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="striterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#striterator___init__">_</a></span>let <i>x</i> = <b>striterator</b>()</h4><div class="memitem"><div class="memproto">striterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="striterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#striterator___call__">_</a></span>striterator()</h4><div class="memitem"><div class="memproto">striterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="tuple"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#tuple">_</a></span><i>class</i> <b>tuple</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="tuple___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___init__">_</a></span>let <i>x</i> = <b>tuple</b>()</h4><div class="memitem"><div class="memproto">tuple.<b>__init__</b>()</div><div class="memdoc"> </p>
-<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="tuple"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#tuple">_</a></span><i>class</i> <b>tuple</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
 <p><a class="anchor" id="tuple___add__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___add__">_</a></span>tuple + <i>other</i></h4><div class="memitem"><div class="memproto">tuple.<b>__add__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="tuple___contains__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___contains__">_</a></span><i>needle</i> <b>in</b> tuple</h4><div class="memitem"><div class="memproto">tuple.<b>__contains__</b>()</div><div class="memdoc"> </p>
@@ -902,15 +967,22 @@ Classes</h2>
 <p> </div></div></p>
 <p><a class="anchor" id="tuple___mul__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___mul__">_</a></span>tuple * <i>other</i></h4><div class="memitem"><div class="memproto">tuple.<b>__mul__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="tupleiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#tupleiterator">_</a></span><i>class</i> <b>tupleiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="tupleiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tupleiterator___init__">_</a></span>let <i>x</i> = <b>tupleiterator</b>()</h4><div class="memitem"><div class="memproto">tupleiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p><a class="anchor" id="tuple___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tuple___new__">_</a></span>tuple.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
+<p> </div></div></p>
+<p> </div></div> <a class="anchor" id="tupleiterator"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#tupleiterator">_</a></span><i>class</i> <b>tupleiterator</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="tupleiterator___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tupleiterator___init__">_</a></span>let <i>x</i> = <b>tupleiterator</b>()</h4><div class="memitem"><div class="memproto">tupleiterator.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="tupleiterator___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#tupleiterator___call__">_</a></span>tupleiterator()</h4><div class="memitem"><div class="memproto">tupleiterator.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p> </div></div> <a class="anchor" id="type"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#type">_</a></span><i>class</i> <b>type</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Obtain the object representation of the class of an object.</p>
-<p><a class="anchor" id="type___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___init__">_</a></span>let <i>x</i> = <b>type</b>()</h4><div class="memitem"><div class="memproto">type.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p><a class="anchor" id="type___call__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___call__">_</a></span>type()</h4><div class="memitem"><div class="memproto">type.<b>__call__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="type___getitem__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___getitem__">_</a></span>type[<i>key</i>]</h4><div class="memitem"><div class="memproto">type.<b>__getitem__</b>()</div><div class="memdoc"> </p>
+<p> </div></div></p>
+<p><a class="anchor" id="type___new__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___new__">_</a></span>type.<b>__new__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
 <p><a class="anchor" id="type___subclasses__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#type___subclasses__">_</a></span>type.<b>__subclasses__</b>()</h4><div class="memitem"><div class="memdoc"> </p>
 <p> </div></div></p>
@@ -1047,9 +1119,63 @@ Functions</h2>
 <p> </div></div></p>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Exceptions</h2>
-<p><a class="anchor" id="ArgumentError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ArgumentError">_</a></span><i>class</i> <b>ArgumentError</b>(TypeError)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AssertionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AssertionError">_</a></span><i>class</i> <b>AssertionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="AttributeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AttributeError">_</a></span><i>class</i> <b>AttributeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="BaseException"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#BaseException">_</a></span><i>class</i> <b>BaseException</b>(object)</h3><div class="memitem"><div class="memdoc"> <a class="anchor" id="BaseException___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BaseException___init__">_</a></span>let <i>x</i> = <b>BaseException</b>()</h4><div class="memitem"><div class="memproto">BaseException.<b>__init__</b>()</div><div class="memdoc"> </p>
+<p><a class="anchor" id="ArgumentError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ArgumentError">_</a></span><i>class</i> <b>ArgumentError</b>(TypeError)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="AssertionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AssertionError">_</a></span><i>class</i> <b>AssertionError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="AttributeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#AttributeError">_</a></span><i>class</i> <b>AttributeError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="BaseException"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#BaseException">_</a></span><i>class</i> <b>BaseException</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p><a class="anchor" id="BaseException___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#BaseException___init__">_</a></span>let <i>x</i> = <b>BaseException</b>()</h4><div class="memitem"><div class="memproto">BaseException.<b>__init__</b>()</div><div class="memdoc"> </p>
 <p> </div></div></p>
-<p> </div></div> <a class="anchor" id="Exception"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#Exception">_</a></span><i>class</i> <b>Exception</b>(BaseException)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="IOError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IOError">_</a></span><i>class</i> <b>IOError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ImportError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ImportError">_</a></span><i>class</i> <b>ImportError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="IndexError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IndexError">_</a></span><i>class</i> <b>IndexError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyError">_</a></span><i>class</i> <b>KeyError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="KeyboardInterrupt"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyboardInterrupt">_</a></span><i>class</i> <b>KeyboardInterrupt</b>(BaseException)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NameError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NameError">_</a></span><i>class</i> <b>NameError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="NotImplementedError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NotImplementedError">_</a></span><i>class</i> <b>NotImplementedError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="OSError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#OSError">_</a></span><i>class</i> <b>OSError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="SyntaxError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SyntaxError">_</a></span><i>class</i> <b>SyntaxError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="SystemError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SystemError">_</a></span><i>class</i> <b>SystemError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="TypeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#TypeError">_</a></span><i>class</i> <b>TypeError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ValueError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ValueError">_</a></span><i>class</i> <b>ValueError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div> <a class="anchor" id="ZeroDivisionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ZeroDivisionError">_</a></span><i>class</i> <b>ZeroDivisionError</b>(Exception)</h3><div class="memitem"><div class="memdoc">  </div></div></p>
+<p> </div></div> <a class="anchor" id="Exception"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#Exception">_</a></span><i>class</i> <b>Exception</b>(BaseException)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="IOError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IOError">_</a></span><i>class</i> <b>IOError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="ImportError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ImportError">_</a></span><i>class</i> <b>ImportError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="IndexError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#IndexError">_</a></span><i>class</i> <b>IndexError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="KeyError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyError">_</a></span><i>class</i> <b>KeyError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="KeyboardInterrupt"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#KeyboardInterrupt">_</a></span><i>class</i> <b>KeyboardInterrupt</b>(BaseException)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="NameError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NameError">_</a></span><i>class</i> <b>NameError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="NotImplementedError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#NotImplementedError">_</a></span><i>class</i> <b>NotImplementedError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="OSError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#OSError">_</a></span><i>class</i> <b>OSError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="SyntaxError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SyntaxError">_</a></span><i>class</i> <b>SyntaxError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="SystemError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#SystemError">_</a></span><i>class</i> <b>SystemError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="TypeError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#TypeError">_</a></span><i>class</i> <b>TypeError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="ValueError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ValueError">_</a></span><i>class</i> <b>ValueError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div> <a class="anchor" id="ZeroDivisionError"></a> <h3 class="memtitle exceptionDef"><span class="permalink"><a href="#ZeroDivisionError">_</a></span><i>class</i> <b>ZeroDivisionError</b>(Exception)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Base class for all types.</p>
+<p>The <code>object</code> base class provides the fallback implementations of methods like <a class="el" href="mod_builtins.html#object___dir__">__dir__</a>. All object and primitive types eventually inherit from <code>object</code>.</p>
+<p> </div></div></p>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Other Members</h2>
 <h3 class="letDef"><em>let</em> <b>NotImplemented</b> = <em>NotImplementedType</em></h3>

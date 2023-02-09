@@ -109,13 +109,21 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a563fae856adc8eab7cab040f9a0d393c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a></td></tr>
+<tr class="memitem:a563fae856adc8eab7cab040f9a0d393c"><td class="memItemLeft" align="right" valign="top"><a id="a563fae856adc8eab7cab040f9a0d393c"></a>
+<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a></td></tr>
+<tr class="memdesc:a563fae856adc8eab7cab040f9a0d393c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Token to be parsed. <br /></td></tr>
 <tr class="separator:a563fae856adc8eab7cab040f9a0d393c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33ac40625a534eed6eb427f54b21d781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a></td></tr>
+<tr class="memitem:a33ac40625a534eed6eb427f54b21d781"><td class="memItemLeft" align="right" valign="top"><a id="a33ac40625a534eed6eb427f54b21d781"></a>
+<a class="el" href="structKrkToken.html">KrkToken</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a></td></tr>
+<tr class="memdesc:a33ac40625a534eed6eb427f54b21d781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last token matched, consumed, or advanced over. <br /></td></tr>
 <tr class="separator:a33ac40625a534eed6eb427f54b21d781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af429c51685aacda7761af6084a236f9a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#af429c51685aacda7761af6084a236f9a">hadError</a></td></tr>
+<tr class="memitem:af429c51685aacda7761af6084a236f9a"><td class="memItemLeft" align="right" valign="top"><a id="af429c51685aacda7761af6084a236f9a"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#af429c51685aacda7761af6084a236f9a">hadError</a></td></tr>
+<tr class="memdesc:af429c51685aacda7761af6084a236f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating if the parser encountered an error. <br /></td></tr>
 <tr class="separator:af429c51685aacda7761af6084a236f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92c4de65e315d75aa383dc6819551daf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a92c4de65e315d75aa383dc6819551daf">eatingWhitespace</a></td></tr>
+<tr class="memitem:a92c4de65e315d75aa383dc6819551daf"><td class="memItemLeft" align="right" valign="top"><a id="a92c4de65e315d75aa383dc6819551daf"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser.html#a92c4de65e315d75aa383dc6819551daf">eatingWhitespace</a></td></tr>
+<tr class="memdesc:a92c4de65e315d75aa383dc6819551daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth of whitespace-ignoring parse functions. <br /></td></tr>
 <tr class="separator:a92c4de65e315d75aa383dc6819551daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -123,76 +131,7 @@ Data Fields</h2></td></tr>
 <p>The parser is fairly simplistic, requiring essentially no lookahead. 'previous' is generally the currently-parsed token: whatever was matched by match. 'current' is the token to be parsed, and can be examined with check. </p>
 
 <p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00056">56</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a563fae856adc8eab7cab040f9a0d393c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a563fae856adc8eab7cab040f9a0d393c">&#9670;&nbsp;</a></span>current</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> Parser::current</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Token to be parsed. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00057">57</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="a92c4de65e315d75aa383dc6819551daf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92c4de65e315d75aa383dc6819551daf">&#9670;&nbsp;</a></span>eatingWhitespace</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Parser::eatingWhitespace</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Depth of whitespace-ignoring parse functions. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00060">60</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="af429c51685aacda7761af6084a236f9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af429c51685aacda7761af6084a236f9a">&#9670;&nbsp;</a></span>hadError</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char Parser::hadError</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Flag indicating if the parser encountered an error. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00059">59</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="a33ac40625a534eed6eb427f54b21d781"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33ac40625a534eed6eb427f54b21d781">&#9670;&nbsp;</a></span>previous</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkToken.html">KrkToken</a> Parser::previous</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Last token matched, consumed, or advanced over. </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00058">58</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

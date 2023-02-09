@@ -125,18 +125,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2856a24fd7b3eb3b1d32806b5f373636"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">krk_newClass</a> (<a class="el" href="structKrkString.html">KrkString</a> *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>, <a class="el" href="structKrkClass.html">KrkClass</a> *<a class="el" href="structKrkClass.html#a438ce92f4333eca3ee7bbdd43e950731">base</a>)</td></tr>
 <tr class="memdesc:a2856a24fd7b3eb3b1d32806b5f373636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new class object.  <a href="structKrkClass.html#a2856a24fd7b3eb3b1d32806b5f373636">More...</a><br /></td></tr>
 <tr class="separator:a2856a24fd7b3eb3b1d32806b5f373636"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc655f0e358222165d5165a86017eb5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">krk_bindMethod</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *_class, <a class="el" href="structKrkString.html">KrkString</a> *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>)</td></tr>
+<tr class="memitem:abc655f0e358222165d5165a86017eb5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">krk_bindMethod</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *<a class="el" href="structKrkClass.html#ab9b825b02c712319ff471fffbb49d0aa">_class</a>, <a class="el" href="structKrkString.html">KrkString</a> *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>)</td></tr>
 <tr class="memdesc:abc655f0e358222165d5165a86017eb5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform method binding on the stack.  <a href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">More...</a><br /></td></tr>
 <tr class="separator:abc655f0e358222165d5165a86017eb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86207dac51db021c72473dfa08924e5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a> (<a class="el" href="structKrkInstance.html">KrkInstance</a> *module, <a class="el" href="structKrkClass.html">KrkClass</a> **_class, const char *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>, <a class="el" href="structKrkClass.html">KrkClass</a> *<a class="el" href="structKrkClass.html#a438ce92f4333eca3ee7bbdd43e950731">base</a>)</td></tr>
+<tr class="memitem:ae56cf708a4c73bb6dd89af856c1e46db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#ae56cf708a4c73bb6dd89af856c1e46db">krk_bindMethodSuper</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *baseClass, <a class="el" href="structKrkString.html">KrkString</a> *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>, <a class="el" href="structKrkClass.html">KrkClass</a> *realClass)</td></tr>
+<tr class="memdesc:ae56cf708a4c73bb6dd89af856c1e46db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a method with super() semantics.  <a href="structKrkClass.html#ae56cf708a4c73bb6dd89af856c1e46db">More...</a><br /></td></tr>
+<tr class="separator:ae56cf708a4c73bb6dd89af856c1e46db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86207dac51db021c72473dfa08924e5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">krk_makeClass</a> (<a class="el" href="structKrkInstance.html">KrkInstance</a> *module, <a class="el" href="structKrkClass.html">KrkClass</a> **<a class="el" href="structKrkClass.html#ab9b825b02c712319ff471fffbb49d0aa">_class</a>, const char *<a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a>, <a class="el" href="structKrkClass.html">KrkClass</a> *<a class="el" href="structKrkClass.html#a438ce92f4333eca3ee7bbdd43e950731">base</a>)</td></tr>
 <tr class="memdesc:a86207dac51db021c72473dfa08924e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience function for creating new types.  <a href="structKrkClass.html#a86207dac51db021c72473dfa08924e5f">More...</a><br /></td></tr>
 <tr class="separator:a86207dac51db021c72473dfa08924e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4f353ca0085f50bbf498df5116b66ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *_class)</td></tr>
+<tr class="memitem:ab4f353ca0085f50bbf498df5116b66ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a> (<a class="el" href="structKrkClass.html">KrkClass</a> *<a class="el" href="structKrkClass.html#ab9b825b02c712319ff471fffbb49d0aa">_class</a>)</td></tr>
 <tr class="memdesc:ab4f353ca0085f50bbf498df5116b66ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize a class by collecting pointers to core methods.  <a href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">More...</a><br /></td></tr>
 <tr class="separator:ab4f353ca0085f50bbf498df5116b66ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
+<tr class="memitem:ab9b825b02c712319ff471fffbb49d0aa"><td class="memItemLeft" align="right" valign="top"><a id="ab9b825b02c712319ff471fffbb49d0aa"></a>
+struct <a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#ab9b825b02c712319ff471fffbb49d0aa">_class</a></td></tr>
+<tr class="memdesc:ab9b825b02c712319ff471fffbb49d0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metaclass. <br /></td></tr>
+<tr class="separator:ab9b825b02c712319ff471fffbb49d0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac66986c41c3af885dcb0555c5de3bb1"><td class="memItemLeft" align="right" valign="top"><a id="aac66986c41c3af885dcb0555c5de3bb1"></a>
+<a class="el" href="structKrkTable.html">KrkTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a></td></tr>
+<tr class="memdesc:aac66986c41c3af885dcb0555c5de3bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">General attributes table. <br /></td></tr>
+<tr class="separator:aac66986c41c3af885dcb0555c5de3bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d039672010aa8f95d1633d5e59fe5ab"><td class="memItemLeft" align="right" valign="top"><a id="a3d039672010aa8f95d1633d5e59fe5ab"></a>
 <a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">name</a></td></tr>
 <tr class="memdesc:a3d039672010aa8f95d1633d5e59fe5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the class. <br /></td></tr>
@@ -145,18 +156,10 @@ Data Fields</h2></td></tr>
 <a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a0125dfa58fdca0485bee378e14656976">filename</a></td></tr>
 <tr class="memdesc:a0125dfa58fdca0485bee378e14656976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filename of the original source that defined the codeobject for the class. <br /></td></tr>
 <tr class="separator:a0125dfa58fdca0485bee378e14656976"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb7fde94d73d43c374617f3bc917876"><td class="memItemLeft" align="right" valign="top"><a id="a7eb7fde94d73d43c374617f3bc917876"></a>
-<a class="el" href="structKrkString.html">KrkString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a7eb7fde94d73d43c374617f3bc917876">docstring</a></td></tr>
-<tr class="memdesc:a7eb7fde94d73d43c374617f3bc917876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for the class's docstring. <br /></td></tr>
-<tr class="separator:a7eb7fde94d73d43c374617f3bc917876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a438ce92f4333eca3ee7bbdd43e950731"><td class="memItemLeft" align="right" valign="top"><a id="a438ce92f4333eca3ee7bbdd43e950731"></a>
 struct <a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a438ce92f4333eca3ee7bbdd43e950731">base</a></td></tr>
 <tr class="memdesc:a438ce92f4333eca3ee7bbdd43e950731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to base class implementation. <br /></td></tr>
 <tr class="separator:a438ce92f4333eca3ee7bbdd43e950731"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac66986c41c3af885dcb0555c5de3bb1"><td class="memItemLeft" align="right" valign="top"><a id="aac66986c41c3af885dcb0555c5de3bb1"></a>
-<a class="el" href="structKrkTable.html">KrkTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a></td></tr>
-<tr class="memdesc:aac66986c41c3af885dcb0555c5de3bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">General attributes table. <br /></td></tr>
-<tr class="separator:aac66986c41c3af885dcb0555c5de3bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d254a1d23874b5bdccad657eba1dd77"><td class="memItemLeft" align="right" valign="top"><a id="a6d254a1d23874b5bdccad657eba1dd77"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a></td></tr>
 <tr class="memdesc:a6d254a1d23874b5bdccad657eba1dd77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size to allocate when creating instances of this class. <br /></td></tr>
@@ -396,6 +399,9 @@ KrkCleanupCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <tr class="memitem:a56209050bdc77cf840e98f425c7cf6fc"><td class="memItemLeft" align="right" valign="top"><a id="a56209050bdc77cf840e98f425c7cf6fc"></a>
 <a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_format</b></td></tr>
 <tr class="separator:a56209050bdc77cf840e98f425c7cf6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c54dde707a7d28326d3c33102cc0615"><td class="memItemLeft" align="right" valign="top"><a id="a9c54dde707a7d28326d3c33102cc0615"></a>
+<a class="el" href="structKrkObj.html">KrkObj</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_new</b></td></tr>
+<tr class="separator:a9c54dde707a7d28326d3c33102cc0615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8d5949b12f5a34220f85c7b358f5584"><td class="memItemLeft" align="right" valign="top"><a id="af8d5949b12f5a34220f85c7b358f5584"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>cacheIndex</b></td></tr>
 <tr class="separator:af8d5949b12f5a34220f85c7b358f5584"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -457,7 +463,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform method binding on the stack. </p>
-<p>Performs attribute lookup from the class <code>_class</code> for <code>name</code>. If <code>name</code> is not a valid method, the binding fails. If <code>name</code> is a valid method, the method will be retrieved and bound to the instance on the top of the stack, replacing it with a BoundMethod object.</p>
+<p>Performs attribute lookup from the class <code>_class</code> for <code>name</code>. If <code>name</code> is not a valid member, the binding fails. If <code>name</code> is a valid method, the method will be retrieved and bound to the instance on the top of the stack, replacing it with a BoundMethod object. If <code>name</code> is not a method, the unbound attribute is returned. If <code>name</code> is a descriptor, the <code>__get__</code> method is executed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_class</td><td>Class object to resolve methods from. </td></tr>
@@ -467,7 +473,56 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the method has been bound, 0 if binding failed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01713">1713</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01678">1678</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+
+</div>
+</div>
+<a id="ae56cf708a4c73bb6dd89af856c1e46db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae56cf708a4c73bb6dd89af856c1e46db">&#9670;&nbsp;</a></span>krk_bindMethodSuper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int krk_bindMethodSuper </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td>
+          <td class="paramname"><em>baseClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkString.html">KrkString</a> *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structKrkClass.html">KrkClass</a> *&#160;</td>
+          <td class="paramname"><em>realClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bind a method with super() semantics. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d" title="Perform method binding on the stack.">krk_bindMethod</a></dd></dl>
+<p>Allows binding potential class methods with the correct class object while searching from a base class. Used by the <code>super()</code> mechanism.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseClass</td><td>The superclass to begin searching from. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the member to look up. </td></tr>
+    <tr><td class="paramname">realClass</td><td>The class to bind if a class method is found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if a member has been found, 0 if binding fails. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01649">1649</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

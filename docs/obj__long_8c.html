@@ -214,6 +214,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a89200244d929b4facaaf8093eaaa943f"><td class="memItemLeft" align="right" valign="top"><a id="a89200244d929b4facaaf8093eaaa943f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_METHOD</b>(klass,  method)&#160;&#160;&#160;do { <a class="el" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</td></tr>
 <tr class="separator:a89200244d929b4facaaf8093eaaa943f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1e534dfb014264351f1d18fa70e4fe"><td class="memItemLeft" align="right" valign="top"><a id="afd1e534dfb014264351f1d18fa70e4fe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_STATICMETHOD</b>(klass,  method)&#160;&#160;&#160;do { krk_defineNativeStaticMethod(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</td></tr>
+<tr class="separator:afd1e534dfb014264351f1d18fa70e4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3db86117315eeae66556d6a1b1397062"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_TRIPLET</b>(klass,  name)</td></tr>
 <tr class="separator:a3db86117315eeae66556d6a1b1397062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -237,9 +240,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3a60a4c7f3971869bc8f7cc9b0c6eedd"><td class="memItemLeft" align="right" valign="top"><a id="a3a60a4c7f3971869bc8f7cc9b0c6eedd"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>krk_int_from_float</b> (double val)</td></tr>
 <tr class="separator:a3a60a4c7f3971869bc8f7cc9b0c6eedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d507fe9dbe368c79eccb1dab8eaa7f8"><td class="memItemLeft" align="right" valign="top"><a id="a6d507fe9dbe368c79eccb1dab8eaa7f8"></a>
-<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_long___init__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
-<tr class="separator:a6d507fe9dbe368c79eccb1dab8eaa7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c1b198603d7d0b677b6298a0d4918c"><td class="memItemLeft" align="right" valign="top"><a id="a75c1b198603d7d0b677b6298a0d4918c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_StaticMethod</b> (long, __new__)</td></tr>
+<tr class="separator:a75c1b198603d7d0b677b6298a0d4918c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af243b34434b81aca9954bb770cac898c"><td class="memItemLeft" align="right" valign="top"><a id="af243b34434b81aca9954bb770cac898c"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_long___float__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:af243b34434b81aca9954bb770cac898c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -387,7 +390,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        return make_long_obj(tmp_res); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01434">1434</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01442">1442</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -420,7 +423,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">    BIND_METHOD(klass,__r ## name ## __); \</div>
 <div class="line">    krk_defineNative(&amp;_ ## klass-&gt;methods,<span class="stringliteral">&quot;__i&quot;</span> #name <span class="stringliteral">&quot;__&quot;</span>,_ ## klass ## ___ ## name ## __);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02017">2017</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02027">2027</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -460,7 +463,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        return BOOLEAN_VAL(cmp comp 0); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01575">1575</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01583">1583</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -503,7 +506,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">    }</div>
 <div class="ttc" id="astructKrkString_html_af5eeb810cdf58c0edd2d0280469d6740"><div class="ttname"><a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">KrkString::krk_takeStringVetted</a></div><div class="ttdeci">KrkString * krk_takeStringVetted(char *chars, size_t length, size_t codesLength, KrkStringType type, uint32_t hash)</div><div class="ttdoc">Like krk_takeString but for when the caller has already calculated code lengths, hash,...</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00238">object.c:238</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01382">1382</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01390">1390</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -542,7 +545,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <p><code>int</code> wrapper implementations of the byte conversions.</p>
 <p>Convert to a <code>long</code> and just use those versions... </p>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01990">1990</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01998">1998</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -622,7 +625,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01933">1933</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01941">1941</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>

@@ -149,7 +149,7 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;SIMPLE(OP_UNSET)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;JUMP(OP_LOOP_ITER,-)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;CONSTANT(OP_SET_PROPERTY, NOOP)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;SIMPLE(OP_FINALIZE)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;SIMPLE(OP_TRY_ELSE)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;OPERAND(OP_SET_LOCAL, LOCAL_MORE)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;SIMPLE(OP_INVOKE_DELETE)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;SIMPLE(OP_RAISE_FROM)</div>
@@ -182,12 +182,12 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;OPERAND(OP_CALL, NOOP)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;JUMP(OP_PUSH_WITH,+)</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;SIMPLE(OP_GREATER_EQUAL)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;CONSTANT(OP_CLASS_PROPERTY, NOOP)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;CONSTANT(OP_SET_NAME, NOOP)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;SIMPLE(OP_INPLACE_ADD)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;CONSTANT(OP_GET_METHOD, NOOP)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;CONSTANT(OP_CLASS,NOOP)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;CONSTANT(OP_GET_NAME, NOOP)</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;SIMPLE(OP_LESS_EQUAL)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;SIMPLE(OP_DOCSTRING)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;SIMPLE(OP_END_FINALLY)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;SIMPLE(OP_MATMUL)</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;SIMPLE(OP_MODULO)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;OPERAND(OP_MAKE_DICT, NOOP)</div>
@@ -212,14 +212,11 @@ $(function() {
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;JUMP(OP_YIELD_FROM,+)</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;OPERAND(OP_MAKE_LIST, NOOP)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;OPERAND(OP_GET_LOCAL, LOCAL_MORE)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;SIMPLE(OP_END_FINALLY)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;SIMPLE(OP_INPLACE_MULTIPLY)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;OPERAND(OP_EXPAND_ARGS,EXPAND_ARGS_MORE)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;SIMPLE(OP_INHERIT)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;JUMP(OP_CALL_ITER,+)</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;JUMP(OP_JUMP_IF_TRUE_OR_POP,+)</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;SIMPLE(OP_TRY_ELSE)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;OPERAND(OP_MISSING_KW, NOOP)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;SIMPLE(OP_INPLACE_MULTIPLY)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;OPERAND(OP_EXPAND_ARGS,EXPAND_ARGS_MORE)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;JUMP(OP_CALL_ITER,+)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;JUMP(OP_JUMP_IF_TRUE_OR_POP,+)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;OPERAND(OP_MISSING_KW, NOOP)</div>
 </div><!-- fragment --></div><!-- contents -->
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>

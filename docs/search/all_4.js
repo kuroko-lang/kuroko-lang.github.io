@@ -37,6 +37,7 @@ var searchData=
   ['continues_99',['continues',['../structCompiler.html#a9eba383e6cf4f215506fba215cdab17f',1,'Compiler']]],
   ['continuespace_100',['continueSpace',['../structCompiler.html#a374edd89b4479312529d68a686066c53',1,'Compiler']]],
   ['count_101',['count',['../structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0',1,'KrkValueArray::count()'],['../structChunkRecorder.html#a6c812dd69870063d9b9b220969f13f09',1,'ChunkRecorder::count()']]],
-  ['current_102',['current',['../structParser.html#a563fae856adc8eab7cab040f9a0d393c',1,'Parser']]],
-  ['currentexception_103',['currentException',['../structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13',1,'KrkThreadState']]]
+  ['current_102',['current',['../structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7',1,'GlobalState::current()'],['../structParser.html#a563fae856adc8eab7cab040f9a0d393c',1,'Parser::current()']]],
+  ['currentclass_103',['currentClass',['../structGlobalState.html#a637bf69d3eed0a13aa06f4b4e7981f54',1,'GlobalState']]],
+  ['currentexception_104',['currentException',['../structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13',1,'KrkThreadState']]]
 ];

@@ -109,11 +109,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a6c812dd69870063d9b9b220969f13f09"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a6c812dd69870063d9b9b220969f13f09">count</a></td></tr>
+<tr class="memitem:a6c812dd69870063d9b9b220969f13f09"><td class="memItemLeft" align="right" valign="top"><a id="a6c812dd69870063d9b9b220969f13f09"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a6c812dd69870063d9b9b220969f13f09">count</a></td></tr>
+<tr class="memdesc:a6c812dd69870063d9b9b220969f13f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset into the bytecode. <br /></td></tr>
 <tr class="separator:a6c812dd69870063d9b9b220969f13f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bfea416cb27388258db8f83a4f07633"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a8bfea416cb27388258db8f83a4f07633">lines</a></td></tr>
+<tr class="memitem:a8bfea416cb27388258db8f83a4f07633"><td class="memItemLeft" align="right" valign="top"><a id="a8bfea416cb27388258db8f83a4f07633"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a8bfea416cb27388258db8f83a4f07633">lines</a></td></tr>
+<tr class="memdesc:a8bfea416cb27388258db8f83a4f07633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset into the line map. <br /></td></tr>
 <tr class="separator:a8bfea416cb27388258db8f83a4f07633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74500356130debd69c569438ef21585c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a74500356130debd69c569438ef21585c">constants</a></td></tr>
+<tr class="memitem:a74500356130debd69c569438ef21585c"><td class="memItemLeft" align="right" valign="top"><a id="a74500356130debd69c569438ef21585c"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structChunkRecorder.html#a74500356130debd69c569438ef21585c">constants</a></td></tr>
+<tr class="memdesc:a74500356130debd69c569438ef21585c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of constants in the constants table. <br /></td></tr>
 <tr class="separator:a74500356130debd69c569438ef21585c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -121,60 +127,8 @@ Data Fields</h2></td></tr>
 <p>Records the state of the bytecode emitter so it may be rewound when an expression needs to be re-parsed. Allows us to implement backtracking to compile the inner expression of a comprehension, the left hand side of a ternary, or the targets list of a complex assignment.</p>
 <p>We rewind the bytecode, line mapping, and constants table, so that we don't keep around duplicate constants or debug info. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00257">257</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a74500356130debd69c569438ef21585c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74500356130debd69c569438ef21585c">&#9670;&nbsp;</a></span>constants</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ChunkRecorder::constants</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of constants in the constants table </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00260">260</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="a6c812dd69870063d9b9b220969f13f09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c812dd69870063d9b9b220969f13f09">&#9670;&nbsp;</a></span>count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ChunkRecorder::count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Offset into the bytecode </p>
-
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00258">258</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<a id="a8bfea416cb27388258db8f83a4f07633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bfea416cb27388258db8f83a4f07633">&#9670;&nbsp;</a></span>lines</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ChunkRecorder::lines</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Offset into the line map </p>
-
 <p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00259">259</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
 </div><!-- contents -->

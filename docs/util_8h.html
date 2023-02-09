@@ -269,6 +269,12 @@ Macros</h2></td></tr>
 <tr class="memitem:ac5a15bf1f7042cd11a3779473ce171c4"><td class="memItemLeft" align="right" valign="top"><a id="ac5a15bf1f7042cd11a3779473ce171c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_FUNC</b>(module,  func)&#160;&#160;&#160;<a class="el" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;module-&gt;fields, #func, _krk_ ## func)</td></tr>
 <tr class="separator:ac5a15bf1f7042cd11a3779473ce171c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1e534dfb014264351f1d18fa70e4fe"><td class="memItemLeft" align="right" valign="top"><a id="afd1e534dfb014264351f1d18fa70e4fe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_STATICMETHOD</b>(klass,  method)&#160;&#160;&#160;krk_defineNativeStaticMethod(&amp;klass-&gt;methods, #method, _ ## klass ## _ ## method)</td></tr>
+<tr class="separator:afd1e534dfb014264351f1d18fa70e4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2a1dba0937ced48c334b5f300d4d50"><td class="memItemLeft" align="right" valign="top"><a id="a6a2a1dba0937ced48c334b5f300d4d50"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIND_CLASSMETHOD</b>(klass,  method)&#160;&#160;&#160;krk_defineNativeClassMethod(&amp;klass-&gt;methods, #method, _ ## klass ## _ ## method)</td></tr>
+<tr class="separator:a6a2a1dba0937ced48c334b5f300d4d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a801096d743ff8c3127ec27ff527dd01d"><td class="memItemLeft" align="right" valign="top"><a id="a801096d743ff8c3127ec27ff527dd01d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_Method_internal_name</b>(klass,  name)&#160;&#160;&#160;	_krk_method_ ## klass ## _ ## name</td></tr>
 <tr class="separator:a801096d743ff8c3127ec27ff527dd01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -285,6 +291,11 @@ Macros</h2></td></tr>
 <tr class="separator:abf6b04affb4397f3b71bd18ac2ebee89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9eeed62440a74f6b0a06e720cc9044a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_Function</b>(name)</td></tr>
 <tr class="separator:a9eeed62440a74f6b0a06e720cc9044a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabb9ba3123e150d10ad65a7311f07f57"><td class="memItemLeft" align="right" valign="top"><a id="aabb9ba3123e150d10ad65a7311f07f57"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_StaticMethod_internal_sig</b>(klass,  name)&#160;&#160;&#160;	static inline <a class="el" href="structKrkValue.html">KrkValue</a> KRK_Method_internal_name(klass, name) (const char * _method_name, int argc, const <a class="el" href="structKrkValue.html">KrkValue</a> argv[], int hasKw)</td></tr>
+<tr class="separator:aabb9ba3123e150d10ad65a7311f07f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada8d319104c774b889eb282c3eca78d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_StaticMethod</b>(klass,  name)</td></tr>
+<tr class="separator:ada8d319104c774b889eb282c3eca78d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa06ab975f96fd037cb5d01f106a836ee"><td class="memItemLeft" align="right" valign="top"><a id="aa06ab975f96fd037cb5d01f106a836ee"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>pushStringBuilder</b>&#160;&#160;&#160;<a class="el" href="util_8h.html#acc0221892b1de865b0a27a67ffc1e6d9">krk_pushStringBuilder</a></td></tr>
 <tr class="separator:aa06ab975f96fd037cb5d01f106a836ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -670,14 +681,14 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code" href="structKrkNative.html">KrkNative</a>*: _setDoc_native \</div>
 <div class="line">    )(thing,text,<span class="keyword">sizeof</span>(text)-1)</div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00253">object.h:253</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00281">object.h:281</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00254">object.h:254</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00282">object.h:282</a></div></div>
 </div><!-- fragment -->
 <p>Attach documentation to a thing of various types. </p>
 <p>Classes store their docstrings directly, rather than in their attribute tables. Instances use the attribute table and store strings with the name <code>__doc__</code>. Native functions store direct C string pointers for documentation.</p>
 <p>This macro provides a generic interface for applying documentation strings to any of the above types, and handles not attaching documentation when built with KRK_NO_DOCUMENTATION. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00268">268</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00292">292</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -738,7 +749,7 @@ Variables</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">    KRK_Function_internal_sig(name)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00115">115</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00129">129</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -775,7 +786,7 @@ Variables</h2></td></tr>
 <div class="line">    } \</div>
 <div class="line">    KRK_Method_internal_sig(klass,name)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00101">101</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00115">115</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -863,7 +874,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 on success, 0 on failure with an exception set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00324">324</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00348">348</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +908,43 @@ Variables</h2></td></tr>
 <div class="line">    krk_integer_type step; \</div>
 <div class="line">    if (krk_extractSlicer(_method_name, arg, count, &amp;start, &amp;end, &amp;step))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00279">279</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00303">303</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+
+</div>
+</div>
+<a id="ada8d319104c774b889eb282c3eca78d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada8d319104c774b889eb282c3eca78d5">&#9670;&nbsp;</a></span>KRK_StaticMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define KRK_StaticMethod</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">klass, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    KRK_StaticMethod_internal_sig(klass, name); \</div>
+<div class="line">    FUNC_SIG(klass, name) { \</div>
+<div class="line">        static <span class="keyword">const</span> <span class="keywordtype">char</span> * _method_name = # name; \</div>
+<div class="line">        return KRK_Method_internal_name(klass,name)(_method_name,argc,argv,hasKw); \</div>
+<div class="line">    } \</div>
+<div class="line">    KRK_StaticMethod_internal_sig(klass,name)</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00139">139</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -1047,7 +1094,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None, as a convenience. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01084">1084</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01085">1085</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1124,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A value representing a string object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01072">1072</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01073">1073</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -1107,7 +1154,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A value representing a bytes object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01078">1078</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01079">1079</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -1154,7 +1201,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01933">1933</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01941">1941</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1300,7 @@ Variables</h2></td></tr>
 <p>If we got through the format string and there are still positional arguments, we got more than we expected and should raise an exception.</p>
 <p>If we don't accept extra keyword arguments and there's still anything left in the dict, raise an exception about unexpected keyword arguments. The remaining key (or keys) should be a string, so we should find at least one thing to complain about by name...</p>
 
-<p class="definition">Definition at line <a class="el" href="parseargs_8c_source.html#l00040">40</a> of file <a class="el" href="parseargs_8c_source.html">parseargs.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parseargs_8c_source.html#l00039">39</a> of file <a class="el" href="parseargs_8c_source.html">parseargs.c</a>.</p>
 
 </div>
 </div>
@@ -1292,7 +1339,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01043">1043</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01044">1044</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1385,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01052">1052</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__str_8c_source.html#l01053">1053</a> of file <a class="el" href="obj__str_8c_source.html">obj_str.c</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1426,7 @@ Variables</h2></td></tr>
 <p>If <code>iterable</code> is a list or tuple, <code>callback</code> will be called once with the total size of the container. Otherwise, <code>callback</code> will be called many times with a count of 1, until the iterable is exhausted.</p>
 <p>If <code>iterable</code> is not iterable, an exception is set and 1 is returned. If <code>callback</code> returns non-zero, unpacking stops and 1 is returned, with no additional exception. </p>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00337">337</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00365">365</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>

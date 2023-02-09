@@ -176,8 +176,6 @@ Macros</h2></td></tr>
 <tr class="memitem:ae4cc55b2cd994354ff8af32820425fa8"><td class="memItemLeft" align="right" valign="top"><a id="ae4cc55b2cd994354ff8af32820425fa8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_NAME</b>&#160;&#160;&#160;self</td></tr>
 <tr class="separator:ae4cc55b2cd994354ff8af32820425fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a751d275245610e0ba9f76f23bdfd8d80"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>NAMED_ARG</b>(name,  type,  ctype,  def,  ind)</td></tr>
-<tr class="separator:a751d275245610e0ba9f76f23bdfd8d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ba75c7d72f5872612098cb902d60a6"><td class="memItemLeft" align="right" valign="top"><a id="ab0ba75c7d72f5872612098cb902d60a6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SOCK_CONST</b>(o)&#160;&#160;&#160;<a class="el" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;module-&gt;fields, #o, INTEGER_VAL(o));</td></tr>
 <tr class="separator:ab0ba75c7d72f5872612098cb902d60a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,6 +221,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ae3150b60df543a109232531ac2b95ac1"><td class="memItemLeft" align="right" valign="top"><a id="ae3150b60df543a109232531ac2b95ac1"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_krk_htons</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:ae3150b60df543a109232531ac2b95ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b0726f71d58361575f172932349a961"><td class="memItemLeft" align="right" valign="top"><a id="a6b0726f71d58361575f172932349a961"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_socket_family</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:a6b0726f71d58361575f172932349a961"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec008fbfa95ae526572d14d7e0a0fcb"><td class="memItemLeft" align="right" valign="top"><a id="a0ec008fbfa95ae526572d14d7e0a0fcb"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_socket_type</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:a0ec008fbfa95ae526572d14d7e0a0fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429b02ae58ca2ac8d6553f4d7b26139f"><td class="memItemLeft" align="right" valign="top"><a id="a429b02ae58ca2ac8d6553f4d7b26139f"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_socket_proto</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:a429b02ae58ca2ac8d6553f4d7b26139f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfdefb72377282a1f18b0297679fbfd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module__socket_8c.html#adfdefb72377282a1f18b0297679fbfd5">krk_module_onload_socket</a> (void)</td></tr>
 <tr class="separator:adfdefb72377282a1f18b0297679fbfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -231,69 +238,7 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>K. Lange <a href="#" onclick="location.href='mai'+'lto:'+'kla'+'ng'+'e@t'+'oa'+'ruo'+'s.'+'org'; return false;">klang<span style="display: none;">.nosp@m.</span>e@to<span style="display: none;">.nosp@m.</span>aruos<span style="display: none;">.nosp@m.</span>.org</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="module__socket_8c_source.html">module_socket.c</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a751d275245610e0ba9f76f23bdfd8d80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a751d275245610e0ba9f76f23bdfd8d80">&#9670;&nbsp;</a></span>NAMED_ARG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NAMED_ARG</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">ctype, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">def, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">ind&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    ctype name = def; \</div>
-<div class="line">    if (argc &gt; ind) { \</div>
-<div class="line">        CHECK_ARG(ind,type,ctype,_tmp); \</div>
-<div class="line">        name = _tmp; \</div>
-<div class="line">    } \</div>
-<div class="line">    if (hasKw) { \</div>
-<div class="line">        KrkValue tmp; \</div>
-<div class="line">        if (<a class="code" href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">krk_tableGet</a>(AS_DICT(argv[argc]), OBJECT_VAL(S(#name)), &amp;tmp)) { \</div>
-<div class="line">            if (!IS_ ## type (tmp)) <span class="keywordflow">return</span> TYPE_ERROR(type,tmp); \</div>
-<div class="line">            name = AS_ ## type (tmp); \</div>
-<div class="line">        } \</div>
-<div class="line">    }</div>
-<div class="ttc" id="astructKrkTable_html_a135cfa4368e948739a30d06101df8076"><div class="ttname"><a href="structKrkTable.html#a135cfa4368e948739a30d06101df8076">KrkTable::krk_tableGet</a></div><div class="ttdeci">int krk_tableGet(KrkTable *table, KrkValue key, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00174">table.c:174</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="module__socket_8c_source.html#l00039">39</a> of file <a class="el" href="module__socket_8c_source.html">module_socket.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="adfdefb72377282a1f18b0297679fbfd5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adfdefb72377282a1f18b0297679fbfd5">&#9670;&nbsp;</a></span>krk_module_onload_socket()</h2>
 
@@ -311,7 +256,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>AF_ constants Taken from the manpages for Linux, and all shoved behind ifdefs, so this should build fine on most anything even if most of these aren't widely supported by other platforms.</p>
 
-<p class="definition">Definition at line <a class="el" href="module__socket_8c_source.html#l00407">407</a> of file <a class="el" href="module__socket_8c_source.html">module_socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="module__socket_8c_source.html#l00413">413</a> of file <a class="el" href="module__socket_8c_source.html">module_socket.c</a>.</p>
 
 </div>
 </div>

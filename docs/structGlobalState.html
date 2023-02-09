@@ -98,7 +98,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#pub-attribs">Data Fields</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">GlobalState Struct Reference</div>  </div>
 </div><!--header-->
@@ -106,25 +107,33 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:afe84aa64dda41ded6607afe1c88b7a70"><td class="memItemLeft" align="right" valign="top"><a id="afe84aa64dda41ded6607afe1c88b7a70"></a>
-<a class="el" href="structKrkInstance.html">KrkInstance</a>&#160;</td><td class="memItemRight" valign="bottom"><b>inst</b></td></tr>
-<tr class="separator:afe84aa64dda41ded6607afe1c88b7a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47432363bceeca809dfe2bacbe795cb5"><td class="memItemLeft" align="right" valign="top"><a id="a47432363bceeca809dfe2bacbe795cb5"></a>
-<a class="el" href="structParser.html">Parser</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parser</b></td></tr>
+<a class="el" href="structParser.html">Parser</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a></td></tr>
+<tr class="memdesc:a47432363bceeca809dfe2bacbe795cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structParser.html" title="Token parser state.">Parser</a> state. <br /></td></tr>
 <tr class="separator:a47432363bceeca809dfe2bacbe795cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001be5dbdd7a85259ff9db0d36678d4e"><td class="memItemLeft" align="right" valign="top"><a id="a001be5dbdd7a85259ff9db0d36678d4e"></a>
-<a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scanner</b></td></tr>
+<a class="el" href="structKrkScanner.html">KrkScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGlobalState.html#a001be5dbdd7a85259ff9db0d36678d4e">scanner</a></td></tr>
+<tr class="memdesc:a001be5dbdd7a85259ff9db0d36678d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scanner state. <br /></td></tr>
 <tr class="separator:a001be5dbdd7a85259ff9db0d36678d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a7f16c8968bb60a831798676baf74a7"><td class="memItemLeft" align="right" valign="top"><a id="a9a7f16c8968bb60a831798676baf74a7"></a>
-<a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
+<a class="el" href="structCompiler.html">Compiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a></td></tr>
+<tr class="memdesc:a9a7f16c8968bb60a831798676baf74a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current compiler (in-progress code object) state. <br /></td></tr>
 <tr class="separator:a9a7f16c8968bb60a831798676baf74a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a637bf69d3eed0a13aa06f4b4e7981f54"><td class="memItemLeft" align="right" valign="top"><a id="a637bf69d3eed0a13aa06f4b4e7981f54"></a>
-<a class="el" href="structClassCompiler.html">ClassCompiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>currentClass</b></td></tr>
+<a class="el" href="structClassCompiler.html">ClassCompiler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGlobalState.html#a637bf69d3eed0a13aa06f4b4e7981f54">currentClass</a></td></tr>
+<tr class="memdesc:a637bf69d3eed0a13aa06f4b4e7981f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current in-progress class definition (or NULL) <br /></td></tr>
 <tr class="separator:a637bf69d3eed0a13aa06f4b4e7981f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:afe84aa64dda41ded6607afe1c88b7a70"><td class="memItemLeft" align="right" valign="top"><a id="afe84aa64dda41ded6607afe1c88b7a70"></a>
+<a class="el" href="structKrkInstance.html">KrkInstance</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGlobalState.html#afe84aa64dda41ded6607afe1c88b7a70">inst</a></td></tr>
+<tr class="memdesc:afe84aa64dda41ded6607afe1c88b7a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base instance. <br /></td></tr>
+<tr class="separator:afe84aa64dda41ded6607afe1c88b7a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00274">274</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00276">276</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="compiler_8c_source.html">compiler.c</a></li>
 </ul>
