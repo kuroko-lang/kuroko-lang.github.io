@@ -291,12 +291,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a95953a68c358a626762ccdea48fb9104"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a95953a68c358a626762ccdea48fb9104">ParsePrefixFn</a>) (struct <a class="el" href="structGlobalState.html">GlobalState</a> *, int)</td></tr>
-<tr class="memdesc:a95953a68c358a626762ccdea48fb9104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subexpression parser function.  <a href="compiler_8c.html#a95953a68c358a626762ccdea48fb9104">More...</a><br /></td></tr>
-<tr class="separator:a95953a68c358a626762ccdea48fb9104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50350bbb2b8b40084a4c5c0c97b23732"><td class="memItemLeft" align="right" valign="top"><a id="a50350bbb2b8b40084a4c5c0c97b23732"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>ParseInfixFn</b>) (struct <a class="el" href="structGlobalState.html">GlobalState</a> *, int, struct <a class="el" href="structRewindState.html">RewindState</a> *)</td></tr>
-<tr class="separator:a50350bbb2b8b40084a4c5c0c97b23732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ead4923a2d1c3f70b52302237aa99c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#ad6ead4923a2d1c3f70b52302237aa99c">ParseFn</a>) (struct <a class="el" href="structGlobalState.html">GlobalState</a> *, int, struct <a class="el" href="structRewindState.html">RewindState</a> *)</td></tr>
+<tr class="memdesc:ad6ead4923a2d1c3f70b52302237aa99c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subexpression parser function.  <a href="compiler_8c.html#ad6ead4923a2d1c3f70b52302237aa99c">More...</a><br /></td></tr>
+<tr class="separator:ad6ead4923a2d1c3f70b52302237aa99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59d46fe4edc33c8cc818e3aced56de29"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCompiler.html">Compiler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compiler_8c.html#a59d46fe4edc33c8cc818e3aced56de29">Compiler</a></td></tr>
 <tr class="memdesc:a59d46fe4edc33c8cc818e3aced56de29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subcompiler state.  <a href="compiler_8c.html#a59d46fe4edc33c8cc818e3aced56de29">More...</a><br /></td></tr>
 <tr class="separator:a59d46fe4edc33c8cc818e3aced56de29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -439,7 +436,7 @@ Variables</h2></td></tr>
 <div class="line">    emitByte(OP_POP); \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01645">1645</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l01644">1644</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -501,7 +498,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="acompiler_8c_html_a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d"><div class="ttname"><a href="compiler_8c.html#a51ad9989dafb48362f7e9354d68fe720adfc5865ea12eb08b9bc3bb7e949fe11d">EXPR_CAN_ASSIGN</a></div><div class="ttdeci">@ EXPR_CAN_ASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00099">compiler.c:99</a></div></div>
 <div class="ttc" id="acompiler_8c_html_aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3"><div class="ttname"><a href="compiler_8c.html#aa4e7d1a473d0280792d98ddb184d3006a5576e7223ab7e815dc3f0daefcaf5fe3">PREC_ASSIGNMENT</a></div><div class="ttdeci">@ PREC_ASSIGNMENT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8c_source.html#l00071">compiler.c:71</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02982">2982</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l02981">2981</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -533,7 +530,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (arg &lt; 256) { emitBytes(opc, arg); } \</div>
 <div class="line">    else { emitBytes(opc ## _LONG, arg &gt;&gt; 16); emitBytes(arg &gt;&gt; 8, arg); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00300">300</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00299">299</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -614,14 +611,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a95953a68c358a626762ccdea48fb9104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95953a68c358a626762ccdea48fb9104">&#9670;&nbsp;</a></span>ParsePrefixFn</h2>
+<a id="ad6ead4923a2d1c3f70b52302237aa99c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6ead4923a2d1c3f70b52302237aa99c">&#9670;&nbsp;</a></span>ParseFn</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* ParsePrefixFn) (struct <a class="el" href="structGlobalState.html">GlobalState</a> *, int)</td>
+          <td class="memname">typedef void(* ParseFn) (struct <a class="el" href="structGlobalState.html">GlobalState</a> *, int, struct <a class="el" href="structRewindState.html">RewindState</a> *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -719,7 +716,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00161">161</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l00160">160</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -829,7 +826,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03809">3809</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03982">3982</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>
@@ -849,7 +846,7 @@ Variables</h2></td></tr>
 <p>Parse rules table. </p>
 <p>Each parse rule consists of a token, an prefix rule, an infix rule, and a parse precedence. We also stringify the token name for use in debugging and error messages. The rule table is indexed by token types and is constructed with a designated initializer, so the order in this file is not important; it's probably best to order either visually or syntactically related elements together. </p>
 
-<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l03869">3869</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compiler_8c_source.html#l04042">4042</a> of file <a class="el" href="compiler_8c_source.html">compiler.c</a>.</p>
 
 </div>
 </div>

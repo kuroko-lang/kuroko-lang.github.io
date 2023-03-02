@@ -482,6 +482,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>krk_pushStringBuilderF
 <tr class="memitem:a6ddfd713c08f68c4095652b6365e2435"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a6ddfd713c08f68c4095652b6365e2435">krk_long_to_int</a> (<a class="el" href="structKrkValue.html">KrkValue</a> val, char size, void *out)</td></tr>
 <tr class="memdesc:a6ddfd713c08f68c4095652b6365e2435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an int or long to a C integer.  <a href="util_8h.html#a6ddfd713c08f68c4095652b6365e2435">More...</a><br /></td></tr>
 <tr class="separator:a6ddfd713c08f68c4095652b6365e2435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa704458b129bc4191812d7b062ebf8b7"><td class="memItemLeft" align="right" valign="top"><a id="aa704458b129bc4191812d7b062ebf8b7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>krk_isSubClass</b> (const <a class="el" href="structKrkClass.html">KrkClass</a> *cls, const <a class="el" href="structKrkClass.html">KrkClass</a> *base)</td></tr>
+<tr class="separator:aa704458b129bc4191812d7b062ebf8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -512,7 +515,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { <span class="keywordflow">if</span> (unlikely(argc != 1)) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;attributeError, <span class="stringliteral">&quot;&#39;%T&#39; object has no attribute &#39;%s&#39;&quot;</span>, \</div>
 <div class="line">    argv[0], _method_name); } <span class="keywordflow">while</span> (0)</div>
 <div class="ttc" id="aexceptions_8c_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Produce and raise an exception with a formatted message.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00445">exceptions.c:445</a></div></div>
-<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00266">vm.h:266</a></div></div>
+<div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00267">vm.h:267</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00038">38</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
@@ -681,8 +684,8 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code" href="structKrkNative.html">KrkNative</a>*: _setDoc_native \</div>
 <div class="line">    )(thing,text,<span class="keyword">sizeof</span>(text)-1)</div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
-<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00254">object.h:254</a></div></div>
-<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00282">object.h:282</a></div></div>
+<div class="ttc" id="astructKrkInstance_html"><div class="ttname"><a href="structKrkInstance.html">KrkInstance</a></div><div class="ttdoc">An object of a class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00255">object.h:255</a></div></div>
+<div class="ttc" id="astructKrkNative_html"><div class="ttname"><a href="structKrkNative.html">KrkNative</a></div><div class="ttdoc">Managed binding to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00283">object.h:283</a></div></div>
 </div><!-- fragment -->
 <p>Attach documentation to a thing of various types. </p>
 <p>Classes store their docstrings directly, rather than in their attribute tables. Instances use the attribute table and store strings with the name <code>__doc__</code>. Native functions store direct C string pointers for documentation.</p>
@@ -1201,7 +1204,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01941">1941</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01944">1944</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -1426,7 +1429,7 @@ Variables</h2></td></tr>
 <p>If <code>iterable</code> is a list or tuple, <code>callback</code> will be called once with the total size of the container. Otherwise, <code>callback</code> will be called many times with a count of 1, until the iterable is exhausted.</p>
 <p>If <code>iterable</code> is not iterable, an exception is set and 1 is returned. If <code>callback</code> returns non-zero, unpacking stops and 1 is returned, with no additional exception. </p>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00365">365</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l00380">380</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>

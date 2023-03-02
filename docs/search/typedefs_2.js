@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parseprefixfn_1036',['ParsePrefixFn',['../compiler_8c.html#a95953a68c358a626762ccdea48fb9104',1,'compiler.c']]]
+  ['parsefn_1040',['ParseFn',['../compiler_8c.html#ad6ead4923a2d1c3f70b52302237aa99c',1,'compiler.c']]]
 ];
