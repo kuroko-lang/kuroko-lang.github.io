@@ -274,7 +274,7 @@ print(Foo.bar)</code></p>
 let o = Foo("bar")
 o.printFoo()</code></p>
 ''','''
-<h1>Inheritence</h1>
+<h1>Inheritance</h1>
 <p>Classes may <i>inherit</i> methods and fields from a super class:</p>
 <p><code>class Foo():
     def __init__():
