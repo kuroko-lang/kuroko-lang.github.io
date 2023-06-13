@@ -308,102 +308,124 @@ $(function() {
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;f&#39;</span>: {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <span class="keywordtype">float</span> * out = va_arg(args, <span class="keywordtype">float</span>*);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    <span class="keywordflow">if</span> (!IS_FLOATING(arg)) {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                        TYPE_ERROR(<span class="keywordtype">float</span>,arg);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        <span class="keywordflow">goto</span> _error;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                    }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    *out = AS_FLOATING(arg);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>: {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                <span class="keywordtype">double</span> * out = va_arg(args, <span class="keywordtype">double</span>*);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                    <span class="keywordflow">if</span> (!IS_FLOATING(arg)) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                        TYPE_ERROR(<span class="keywordtype">float</span>,arg);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                        <span class="keywordflow">goto</span> _error;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    *out = AS_FLOATING(arg);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>: {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keywordtype">int</span> * out = va_arg(args, <span class="keywordtype">int</span>*);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    *out = !<a class="code" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a>(arg);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) <span class="keywordflow">goto</span> _error;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            <span class="keywordflow">default</span>: {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;unrecognized directive &#39;%c&#39; in format string&quot;</span>, argtype);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">goto</span> _error;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        oarg++;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (iarg &lt; argc) {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            _method_name, required ? <span class="stringliteral">&quot;exactly&quot;</span> : <span class="stringliteral">&quot;at most&quot;</span>, oarg, oarg == 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;s&quot;</span>, argc);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">if</span> (!acceptextrakws &amp;&amp; hasKw &amp;&amp; AS_DICT(argv[argc])-&gt;count) {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; AS_DICT(argv[argc])-&gt;capacity; ++i) {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;AS_DICT(argv[argc])-&gt;entries[i];</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">if</span> (IS_STRING(entry-&gt;key)) {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() got an unexpected keyword argument &#39;%S&#39;&quot;</span>,</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    _method_name, AS_STRING(entry-&gt;key));</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            }</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#ifndef KRK_NO_FLOAT</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;f&#39;</span>: {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordtype">float</span> * out = va_arg(args, <span class="keywordtype">float</span>*);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                    <span class="keywordflow">if</span> (!IS_FLOATING(arg)) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        <a class="code" href="structKrkClass.html">KrkClass</a> * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(arg);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(arg);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">krk_bindMethod</a>(type, S(<span class="stringliteral">&quot;__float__&quot;</span>))) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                            <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                            TYPE_ERROR(<span class="keywordtype">float</span>,arg);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                            <span class="keywordflow">goto</span> _error;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        arg = <a class="code" href="vm_8h.html#a4849b50bba0bec7bbd17c0892985b338">krk_callStack</a>(0);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    *out = AS_FLOATING(arg);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>: {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                <span class="keywordtype">double</span> * out = va_arg(args, <span class="keywordtype">double</span>*);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <span class="keywordflow">if</span> (!IS_FLOATING(arg)) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        <a class="code" href="structKrkClass.html">KrkClass</a> * type = <a class="code" href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">krk_getType</a>(arg);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <a class="code" href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a>(arg);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">krk_bindMethod</a>(type, S(<span class="stringliteral">&quot;__float__&quot;</span>))) {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                            <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                            TYPE_ERROR(<span class="keywordtype">float</span>,arg);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                            <span class="keywordflow">goto</span> _error;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        arg = <a class="code" href="vm_8h.html#a4849b50bba0bec7bbd17c0892985b338">krk_callStack</a>(0);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    *out = AS_FLOATING(arg);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;f&#39;</span>:</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>:</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;no float support&quot;</span>);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <span class="keywordflow">goto</span> _error;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>: {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordtype">int</span> * out = va_arg(args, <span class="keywordtype">int</span>*);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                <span class="keywordflow">if</span> (arg != KWARGS_VAL(0)) {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    *out = !<a class="code" href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">krk_isFalsey</a>(arg);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a>.<a class="code" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a> &amp; KRK_THREAD_HAS_EXCEPTION) <span class="keywordflow">goto</span> _error;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">default</span>: {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;unrecognized directive &#39;%c&#39; in format string&quot;</span>, argtype);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                <span class="keywordflow">goto</span> _error;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        oarg++;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">if</span> (iarg &lt; argc) {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s() takes %s %d argument%s (%d given)&quot;</span>,</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            _method_name, required ? <span class="stringliteral">&quot;exactly&quot;</span> : <span class="stringliteral">&quot;at most&quot;</span>, oarg, oarg == 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;s&quot;</span>, argc);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;_error:</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>(); <span class="comment">/* name of argument with error */</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno"><a class="line" href="util_8h.html#aabed7f36c74918631e5117b881104b76">  397</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a>(</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * _method_name,</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keywordtype">int</span> argc, <span class="keyword">const</span> <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw,</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * format, <span class="keyword">const</span> <span class="keywordtype">char</span> ** names, ...) {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    va_list args;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    va_start(args, names);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordtype">int</span> result = <a class="code" href="util_8h.html#ad50f0e166d71727b156fd8d908b582d7">krk_parseVArgs</a>(_method_name,argc,argv,hasKw,format,names,args);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    va_end(args);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;}</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">if</span> (!acceptextrakws &amp;&amp; hasKw &amp;&amp; AS_DICT(argv[argc])-&gt;count) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; AS_DICT(argv[argc])-&gt;capacity; ++i) {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <a class="code" href="structKrkTableEntry.html">KrkTableEntry</a> * entry = &amp;AS_DICT(argv[argc])-&gt;entries[i];</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">if</span> (IS_STRING(entry-&gt;key)) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;typeError, <span class="stringliteral">&quot;%s() got an unexpected keyword argument &#39;%S&#39;&quot;</span>,</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    _method_name, AS_STRING(entry-&gt;key));</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        }</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;_error:</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <a class="code" href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a>(); <span class="comment">/* name of argument with error */</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno"><a class="line" href="util_8h.html#aabed7f36c74918631e5117b881104b76">  416</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a>(</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * _method_name,</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordtype">int</span> argc, <span class="keyword">const</span> <a class="code" href="structKrkValue.html">KrkValue</a> argv[], <span class="keywordtype">int</span> hasKw,</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> * format, <span class="keyword">const</span> <span class="keywordtype">char</span> ** names, ...) {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    va_list args;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    va_start(args, names);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordtype">int</span> result = <a class="code" href="util_8h.html#ad50f0e166d71727b156fd8d908b582d7">krk_parseVArgs</a>(_method_name,argc,argv,hasKw,format,names,args);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    va_end(args);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
 <div class="ttc" id="aexceptions_8c_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Produce and raise an exception with a formatted message.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00445">exceptions.c:445</a></div></div>
 <div class="ttc" id="astructKrkClass_html"><div class="ttname"><a href="structKrkClass.html">KrkClass</a></div><div class="ttdoc">Type object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00189">object.h:189</a></div></div>
 <div class="ttc" id="astructKrkClass_html_a3d039672010aa8f95d1633d5e59fe5ab"><div class="ttname"><a href="structKrkClass.html#a3d039672010aa8f95d1633d5e59fe5ab">KrkClass::name</a></div><div class="ttdeci">KrkString * name</div><div class="ttdoc">Name of the class.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00193">object.h:193</a></div></div>
+<div class="ttc" id="astructKrkClass_html_abc655f0e358222165d5165a86017eb5d"><div class="ttname"><a href="structKrkClass.html#abc655f0e358222165d5165a86017eb5d">KrkClass::krk_bindMethod</a></div><div class="ttdeci">int krk_bindMethod(KrkClass *_class, KrkString *name)</div><div class="ttdoc">Perform method binding on the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l01691">vm.c:1691</a></div></div>
 <div class="ttc" id="astructKrkObj_html"><div class="ttname"><a href="structKrkObj.html">KrkObj</a></div><div class="ttdoc">The most basic object type.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00041">object.h:41</a></div></div>
 <div class="ttc" id="astructKrkString_html_a05b1b0c2d0ec8b2f8286c01bdf0c3411"><div class="ttname"><a href="structKrkString.html#a05b1b0c2d0ec8b2f8286c01bdf0c3411">KrkString::krk_unicodeCodepoint</a></div><div class="ttdeci">uint32_t krk_unicodeCodepoint(KrkString *string, size_t index)</div><div class="ttdoc">Obtain the codepoint at a given index in a string.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00161">object.c:161</a></div></div>
 <div class="ttc" id="astructKrkString_html_a5a5d858a11fd8b8216fee7a8861c6920"><div class="ttname"><a href="structKrkString.html#a5a5d858a11fd8b8216fee7a8861c6920">KrkString::krk_copyString</a></div><div class="ttdeci">KrkString * krk_copyString(const char *chars, size_t length)</div><div class="ttdoc">Obtain a string object representation of the given C string.</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00221">object.c:221</a></div></div>
 <div class="ttc" id="astructKrkString_html_a7373911dddad465c12630008b733c9d2"><div class="ttname"><a href="structKrkString.html#a7373911dddad465c12630008b733c9d2">KrkString::chars</a></div><div class="ttdeci">char * chars</div><div class="ttdoc">UTF8 canonical data.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00097">object.h:97</a></div></div>
 <div class="ttc" id="astructKrkTableEntry_html"><div class="ttname"><a href="structKrkTableEntry.html">KrkTableEntry</a></div><div class="ttdoc">One (key,value) pair in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00020">table.h:20</a></div></div>
-<div class="ttc" id="astructKrkTable_html_a1f7587ed816678405664034d259dd3a7"><div class="ttname"><a href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">KrkTable::krk_tableDelete</a></div><div class="ttdeci">int krk_tableDelete(KrkTable *table, KrkValue key)</div><div class="ttdoc">Remove a key from a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00204">table.c:204</a></div></div>
-<div class="ttc" id="astructKrkTable_html_ab88468f1f30e82443ebbfcb97ab00b35"><div class="ttname"><a href="structKrkTable.html#ab88468f1f30e82443ebbfcb97ab00b35">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, struct KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00185">table.c:185</a></div></div>
+<div class="ttc" id="astructKrkTable_html_a1f7587ed816678405664034d259dd3a7"><div class="ttname"><a href="structKrkTable.html#a1f7587ed816678405664034d259dd3a7">KrkTable::krk_tableDelete</a></div><div class="ttdeci">int krk_tableDelete(KrkTable *table, KrkValue key)</div><div class="ttdoc">Remove a key from a hash table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00208">table.c:208</a></div></div>
+<div class="ttc" id="astructKrkTable_html_ab88468f1f30e82443ebbfcb97ab00b35"><div class="ttname"><a href="structKrkTable.html#ab88468f1f30e82443ebbfcb97ab00b35">KrkTable::krk_tableGet_fast</a></div><div class="ttdeci">int krk_tableGet_fast(KrkTable *table, struct KrkString *str, KrkValue *value)</div><div class="ttdoc">Obtain the value associated with a string key in a table.</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00189">table.c:189</a></div></div>
 <div class="ttc" id="astructKrkThreadState_html_adeb763c0da808951512c91a2ed36c872"><div class="ttname"><a href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">KrkThreadState::flags</a></div><div class="ttdeci">int flags</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00174">vm.h:174</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
 <div class="ttc" id="astructKrkValue_html_a2a6b7f88d9471659817208aea72ac548"><div class="ttname"><a href="structKrkValue.html#a2a6b7f88d9471659817208aea72ac548">KrkValue::krk_isInstanceOf</a></div><div class="ttdeci">int krk_isInstanceOf(KrkValue obj, const KrkClass *type)</div><div class="ttdoc">Determine if a class is an instance or subclass of a given type.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00317">vm.c:317</a></div></div>
+<div class="ttc" id="astructKrkValue_html_a90c39750739d3cd3ffd1347f3cb97015"><div class="ttname"><a href="structKrkValue.html#a90c39750739d3cd3ffd1347f3cb97015">KrkValue::krk_getType</a></div><div class="ttdeci">KrkClass * krk_getType(KrkValue value)</div><div class="ttdoc">Get the class representing a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00275">vm.c:275</a></div></div>
 <div class="ttc" id="astructKrkValue_html_ade554b36ef7d3c8789db59062001fa07"><div class="ttname"><a href="structKrkValue.html#ade554b36ef7d3c8789db59062001fa07">KrkValue::krk_isFalsey</a></div><div class="ttdeci">int krk_isFalsey(KrkValue value)</div><div class="ttdoc">Determine the truth of a value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00852">vm.c:852</a></div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Utilities for creating native bindings.</div></div>
-<div class="ttc" id="autil_8h_html_aabed7f36c74918631e5117b881104b76"><div class="ttname"><a href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a></div><div class="ttdeci">int krk_parseArgs_impl(const char *_method_name, int argc, const KrkValue argv[], int hasKw, const char *format, const char **names,...)</div><div class="ttdoc">Variable argument version of krk_parseVArgs.</div><div class="ttdef"><b>Definition:</b> <a href="parseargs_8c_source.html#l00397">parseargs.c:397</a></div></div>
+<div class="ttc" id="autil_8h_html_aabed7f36c74918631e5117b881104b76"><div class="ttname"><a href="util_8h.html#aabed7f36c74918631e5117b881104b76">krk_parseArgs_impl</a></div><div class="ttdeci">int krk_parseArgs_impl(const char *_method_name, int argc, const KrkValue argv[], int hasKw, const char *format, const char **names,...)</div><div class="ttdoc">Variable argument version of krk_parseVArgs.</div><div class="ttdef"><b>Definition:</b> <a href="parseargs_8c_source.html#l00416">parseargs.c:416</a></div></div>
 <div class="ttc" id="autil_8h_html_ad50f0e166d71727b156fd8d908b582d7"><div class="ttname"><a href="util_8h.html#ad50f0e166d71727b156fd8d908b582d7">krk_parseVArgs</a></div><div class="ttdeci">int krk_parseVArgs(const char *_method_name, int argc, const KrkValue argv[], int hasKw, const char *fmt, const char **names, va_list args)</div><div class="ttdoc">Validate and parse arguments to a function similar to how managed function arguments are handled.</div><div class="ttdef"><b>Definition:</b> <a href="parseargs_8c_source.html#l00039">parseargs.c:39</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
+<div class="ttc" id="avm_8h_html_a4849b50bba0bec7bbd17c0892985b338"><div class="ttname"><a href="vm_8h.html#a4849b50bba0bec7bbd17c0892985b338">krk_callStack</a></div><div class="ttdeci">KrkValue krk_callStack(int argCount)</div><div class="ttdoc">Call a callable on the stack with argCount arguments.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00763">vm.c:763</a></div></div>
 <div class="ttc" id="avm_8h_html_a4f431666f8fecd56bd5f4111068f50c0"><div class="ttname"><a href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a></div><div class="ttdeci">#define vm</div><div class="ttdoc">Convenience macro for namespacing.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8h_source.html#l00267">vm.h:267</a></div></div>
 <div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00170">vm.c:170</a></div></div>
 <div class="ttc" id="avm_8h_html_a779017d9bc71ee676356ca7a044eadee"><div class="ttname"><a href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee">krk_currentThread</a></div><div class="ttdeci">threadLocal KrkThreadState krk_currentThread</div><div class="ttdoc">Thread-local VM state.</div></div>

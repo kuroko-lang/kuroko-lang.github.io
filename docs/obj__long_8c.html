@@ -206,6 +206,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a9e96ef53c62af85814411dc5eedb02c0"><td class="memItemLeft" align="right" valign="top"><a id="a9e96ef53c62af85814411dc5eedb02c0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BASIC_BIN_OP_FLOAT</b>(a,  b,  op)&#160;&#160;&#160;BASIC_BIN_OP_FLOATS(a,b,FLOAT_A(op),FLOAT_B(op))</td></tr>
 <tr class="separator:a9e96ef53c62af85814411dc5eedb02c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ade996af47e881bbc13a8770e34476"><td class="memItemLeft" align="right" valign="top"><a id="a44ade996af47e881bbc13a8770e34476"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_FLOAT_COMPARE</b>(comp)&#160;&#160;&#160;else if (IS_FLOATING(argv[1])) return BOOLEAN_VAL(krk_long_get_double(self-&gt;value) comp AS_FLOATING(argv[1]));</td></tr>
+<tr class="separator:a44ade996af47e881bbc13a8770e34476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc41e1e4c9b0db6bd3cfde71e747a322"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>COMPARE_OP</b>(name,  comp)</td></tr>
 <tr class="separator:adc41e1e4c9b0db6bd3cfde71e747a322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374c3875a65d947903e27fc7a47d4e33"><td class="memItemLeft" align="right" valign="top"><a id="a374c3875a65d947903e27fc7a47d4e33"></a>
@@ -390,7 +393,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        return make_long_obj(tmp_res); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01445">1445</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01451">1451</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -423,7 +426,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">    BIND_METHOD(klass,__r ## name ## __); \</div>
 <div class="line">    krk_defineNative(&amp;_ ## klass-&gt;methods,<span class="stringliteral">&quot;__i&quot;</span> #name <span class="stringliteral">&quot;__&quot;</span>,_ ## klass ## ___ ## name ## __);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02030">2030</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02049">2049</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -456,14 +459,14 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        krk_long tmp; \</div>
 <div class="line">        if (IS_long(argv[1])) krk_long_init_copy(tmp, AS_long(argv[1])-&gt;value); \</div>
 <div class="line">        else <span class="keywordflow">if</span> (IS_INTEGER(argv[1])) krk_long_init_si(tmp, AS_INTEGER(argv[1])); \</div>
-<div class="line">        else <span class="keywordflow">if</span> (IS_FLOATING(argv[1])) <span class="keywordflow">return</span> BOOLEAN_VAL(krk_long_get_double(self-&gt;value) comp AS_FLOATING(argv[1])); \</div>
+<div class="line">        KRK_FLOAT_COMPARE(comp) \</div>
 <div class="line">        else <span class="keywordflow">return</span> NOTIMPL_VAL(); \</div>
 <div class="line">        int cmp = krk_long_compare(self-&gt;value,tmp); \</div>
 <div class="line">        krk_long_clear(tmp); \</div>
 <div class="line">        return BOOLEAN_VAL(cmp comp 0); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01586">1586</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01603">1603</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -506,7 +509,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">    }</div>
 <div class="ttc" id="astructKrkString_html_af5eeb810cdf58c0edd2d0280469d6740"><div class="ttname"><a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">KrkString::krk_takeStringVetted</a></div><div class="ttdeci">KrkString * krk_takeStringVetted(char *chars, size_t length, size_t codesLength, KrkStringType type, uint32_t hash)</div><div class="ttdoc">Like krk_takeString but for when the caller has already calculated code lengths, hash,...</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00238">object.c:238</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01393">1393</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01399">1399</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -545,7 +548,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <p><code>int</code> wrapper implementations of the byte conversions.</p>
 <p>Convert to a <code>long</code> and just use those versions... </p>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02001">2001</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02020">2020</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -625,7 +628,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01944">1944</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01963">1963</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
