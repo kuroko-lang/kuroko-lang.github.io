@@ -843,160 +843,172 @@ $(function() {
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL((<span class="keyword">self</span> ? S(<span class="stringliteral">&quot;True&quot;</span>) : S(<span class="stringliteral">&quot;False&quot;</span>)));</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;}</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160; </div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;KRK_StaticMethod(NoneType,__new__) {</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s takes no arguments&quot;</span>, <span class="stringliteral">&quot;NoneType&quot;</span>);</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordflow">return</span> NONE_VAL();</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;}</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;KRK_Method(NoneType,__str__) {</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;None&quot;</span>));</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;}</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160; </div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;KRK_Method(NoneType,__hash__) {</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL((uint32_t)AS_INTEGER(argv[0]));</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;}</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;KRK_Method(NoneType,__eq__) {</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keywordflow">if</span> (IS_NONE(argv[1])) <span class="keywordflow">return</span> BOOLEAN_VAL(1);</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;}</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160; </div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="preprocessor">#define IS_NotImplementedType(o) IS_NOTIMPL(o)</span></div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="preprocessor">#define AS_NotImplementedType(o) (1)</span></div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160; </div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;KRK_StaticMethod(NotImplementedType,__new__) {</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s takes no arguments&quot;</span>, <span class="stringliteral">&quot;NotImplementedType&quot;</span>);</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;}</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;KRK_Method(NotImplementedType,__str__) {</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;NotImplemented&quot;</span>));</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;}</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160; </div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;KRK_Method(NotImplementedType,__hash__) {</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(0);</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;}</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160; </div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;KRK_Method(NotImplementedType,__eq__) {</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">if</span> (IS_NOTIMPL(argv[1])) <span class="keywordflow">return</span> BOOLEAN_VAL(1);</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;}</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160; </div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;<span class="preprocessor">#undef BIND_METHOD</span></div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;<span class="preprocessor">#undef BIND_STATICMETHOD</span></div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;<span class="comment">/* These class names conflict with C types, so we need to cheat a bit */</span></div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;<span class="preprocessor">#define BIND_METHOD(klass,method) do { krk_defineNative(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;<span class="preprocessor">#define BIND_STATICMETHOD(klass,method) do { krk_defineNativeStaticMethod(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;<span class="preprocessor">#define BIND_TRIPLET(klass,name) \</span></div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__ ## name ## __); \</span></div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__r ## name ## __); \</span></div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;<span class="preprocessor">    krk_defineNative(&amp;_ ## klass-&gt;methods,&quot;__i&quot;</span> #name &quot;__&quot;,_ ## klass ## ___ ## name ## __);</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;_noexport</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;<span class="keywordtype">void</span> _createAndBind_numericClasses(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _int = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass, <span class="stringliteral">&quot;int&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    _int-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    _int-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">int</span>,__new__);</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__str__);</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__int__);</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__chr__);</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__eq__);</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__hash__);</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__format__);</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160; </div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,add);</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,sub);</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,mul);</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,or);</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,xor);</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,and);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,lshift);</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,rshift);</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,mod);</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,floordiv);</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,pow);</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160; </div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="preprocessor">#ifndef KRK_NO_FLOAT</span></div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__float__);</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,truediv);</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__lt__);</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__gt__);</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__le__);</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__ge__);</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__hex__);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__oct__);</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__bin__);</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__invert__);</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__neg__);</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__abs__);</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__pos__);</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_int-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">int</span>,__str__));</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_int);</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_int, <span class="stringliteral">&quot;Convert a number or string type to an integer representation.&quot;</span>);</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _float = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;floatClass, <span class="stringliteral">&quot;float&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    _float-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    _float-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="preprocessor">#ifndef KRK_NO_FLOAT</span></div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">float</span>,__new__);</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__int__);</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__float__);</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__str__);</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__eq__);</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__hash__);</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,add);</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,sub);</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,mul);</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,truediv);</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,floordiv);</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__lt__);</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__gt__);</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__le__);</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__ge__);</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__neg__);</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__abs__);</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__pos__);</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_float-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">float</span>,__str__));</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_float);</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_float, <span class="stringliteral">&quot;Convert a number or string type to a float representation.&quot;</span>);</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160; </div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _bool = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;boolClass, <span class="stringliteral">&quot;bool&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass);</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    _bool-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">bool</span>,__new__);</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    BIND_METHOD(<span class="keywordtype">bool</span>,__str__);</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_bool-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">bool</span>,__str__));</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_bool);</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_bool, <span class="stringliteral">&quot;Returns False if the argument is &#39;falsey&#39;, otherwise True.&quot;</span>);</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160; </div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _NoneType = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;noneTypeClass, <span class="stringliteral">&quot;NoneType&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    _NoneType-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    _NoneType-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    BIND_STATICMETHOD(NoneType, __new__);</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    BIND_METHOD(NoneType, __str__);</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    BIND_METHOD(NoneType, __hash__);</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    BIND_METHOD(NoneType, __eq__);</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_NoneType-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(NoneType,__str__));</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_NoneType);</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160; </div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _NotImplementedType = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;notImplClass, <span class="stringliteral">&quot;NotImplementedType&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    _NotImplementedType-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    _NotImplementedType-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    BIND_STATICMETHOD(NotImplementedType, __new__);</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    BIND_METHOD(NotImplementedType, __str__);</div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    BIND_METHOD(NotImplementedType, __hash__);</div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    BIND_METHOD(NotImplementedType, __eq__);</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_NotImplementedType-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(NotImplementedType,__str__));</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_NotImplementedType);</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160; </div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins-&gt;fields, <span class="stringliteral">&quot;NotImplemented&quot;</span>, NOTIMPL_VAL());</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;}</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;KRK_Method(<span class="keywordtype">bool</span>,__format__) {</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    CHECK_ARG(1,str,<a class="code" href="structKrkString.html">KrkString</a>*,format_spec);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    <span class="keywordflow">if</span> (!format_spec-&gt;<a class="code" href="structKrkString.html#ae8fc2ddac29d69f44ff0b1db5922d12d">length</a>) {</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        <span class="keywordflow">return</span> FUNC_NAME(<span class="keywordtype">bool</span>,__str__)(argc,argv,hasKw);</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;        <span class="keywordflow">return</span> FUNC_NAME(<span class="keywordtype">int</span>,__format__)(argc,argv,hasKw);</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    }</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;}</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160; </div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;KRK_StaticMethod(NoneType,__new__) {</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s takes no arguments&quot;</span>, <span class="stringliteral">&quot;NoneType&quot;</span>);</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keywordflow">return</span> NONE_VAL();</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;}</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160; </div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;KRK_Method(NoneType,__str__) {</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;None&quot;</span>));</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;}</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160; </div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;KRK_Method(NoneType,__hash__) {</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL((uint32_t)AS_INTEGER(argv[0]));</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;}</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160; </div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;KRK_Method(NoneType,__eq__) {</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <span class="keywordflow">if</span> (IS_NONE(argv[1])) <span class="keywordflow">return</span> BOOLEAN_VAL(1);</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;}</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160; </div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor">#define IS_NotImplementedType(o) IS_NOTIMPL(o)</span></div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor">#define AS_NotImplementedType(o) (1)</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160; </div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;KRK_StaticMethod(NotImplementedType,__new__) {</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) <span class="keywordflow">return</span> <a class="code" href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a>(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.exceptions-&gt;argumentError, <span class="stringliteral">&quot;%s takes no arguments&quot;</span>, <span class="stringliteral">&quot;NotImplementedType&quot;</span>);</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;}</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160; </div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;KRK_Method(NotImplementedType,__str__) {</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    <span class="keywordflow">return</span> OBJECT_VAL(S(<span class="stringliteral">&quot;NotImplemented&quot;</span>));</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;}</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160; </div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;KRK_Method(NotImplementedType,__hash__) {</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    <span class="keywordflow">return</span> INTEGER_VAL(0);</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;}</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160; </div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;KRK_Method(NotImplementedType,__eq__) {</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    METHOD_TAKES_EXACTLY(1);</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    <span class="keywordflow">if</span> (IS_NOTIMPL(argv[1])) <span class="keywordflow">return</span> BOOLEAN_VAL(1);</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;    <span class="keywordflow">return</span> NOTIMPL_VAL();</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;}</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="preprocessor">#undef BIND_METHOD</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;<span class="preprocessor">#undef BIND_STATICMETHOD</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;<span class="comment">/* These class names conflict with C types, so we need to cheat a bit */</span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;<span class="preprocessor">#define BIND_METHOD(klass,method) do { krk_defineNative(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;<span class="preprocessor">#define BIND_STATICMETHOD(klass,method) do { krk_defineNativeStaticMethod(&amp; _ ## klass-&gt;methods, #method, _ ## klass ## _ ## method); } while (0)</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="preprocessor">#define BIND_TRIPLET(klass,name) \</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__ ## name ## __); \</span></div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="preprocessor">    BIND_METHOD(klass,__r ## name ## __); \</span></div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="preprocessor">    krk_defineNative(&amp;_ ## klass-&gt;methods,&quot;__i&quot;</span> #name &quot;__&quot;,_ ## klass ## ___ ## name ## __);</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;_noexport</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;<span class="keywordtype">void</span> _createAndBind_numericClasses(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _int = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass, <span class="stringliteral">&quot;int&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    _int-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    _int-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">int</span>,__new__);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__str__);</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__int__);</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__chr__);</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__eq__);</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__hash__);</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__format__);</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160; </div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,add);</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,sub);</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,mul);</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,or);</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,xor);</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,and);</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,lshift);</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,rshift);</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,mod);</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,floordiv);</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,pow);</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="preprocessor">#ifndef KRK_NO_FLOAT</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__float__);</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    BIND_TRIPLET(<span class="keywordtype">int</span>,truediv);</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__lt__);</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__gt__);</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__le__);</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__ge__);</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160; </div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__hex__);</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__oct__);</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__bin__);</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__invert__);</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__neg__);</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__abs__);</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    BIND_METHOD(<span class="keywordtype">int</span>,__pos__);</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160; </div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_int-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">int</span>,__str__));</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_int);</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_int, <span class="stringliteral">&quot;Convert a number or string type to an integer representation.&quot;</span>);</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160; </div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _float = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;floatClass, <span class="stringliteral">&quot;float&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    _float-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    _float-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#ifndef KRK_NO_FLOAT</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">float</span>,__new__);</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__int__);</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__float__);</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__str__);</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__eq__);</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__hash__);</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,add);</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,sub);</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,mul);</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,truediv);</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    BIND_TRIPLET(<span class="keywordtype">float</span>,floordiv);</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__lt__);</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__gt__);</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__le__);</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__ge__);</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__neg__);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__abs__);</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    BIND_METHOD(<span class="keywordtype">float</span>,__pos__);</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_float-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">float</span>,__str__));</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_float);</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_float, <span class="stringliteral">&quot;Convert a number or string type to a float representation.&quot;</span>);</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160; </div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _bool = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;boolClass, <span class="stringliteral">&quot;bool&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;intClass);</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    _bool-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    BIND_STATICMETHOD(<span class="keywordtype">bool</span>,__new__);</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    BIND_METHOD(<span class="keywordtype">bool</span>,__str__);</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    BIND_METHOD(<span class="keywordtype">bool</span>,__format__);</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_bool-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(<span class="keywordtype">bool</span>,__str__));</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_bool);</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <a class="code" href="util_8h.html#afb7457099cbbd1db968f9d592f193c89">KRK_DOC</a>(_bool, <span class="stringliteral">&quot;Returns False if the argument is &#39;falsey&#39;, otherwise True.&quot;</span>);</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160; </div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _NoneType = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;noneTypeClass, <span class="stringliteral">&quot;NoneType&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    _NoneType-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    _NoneType-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    BIND_STATICMETHOD(NoneType, __new__);</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    BIND_METHOD(NoneType, __str__);</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;    BIND_METHOD(NoneType, __hash__);</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;    BIND_METHOD(NoneType, __eq__);</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_NoneType-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(NoneType,__str__));</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_NoneType);</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160; </div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;    <a class="code" href="structKrkClass.html">KrkClass</a> * _NotImplementedType = ADD_BASE_CLASS(<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;notImplClass, <span class="stringliteral">&quot;NotImplementedType&quot;</span>, <a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.baseClasses-&gt;objectClass);</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    _NotImplementedType-&gt;<a class="code" href="structKrkClass.html#a822b03386b6897607742e17daa48a7e5">obj</a>.<a class="code" href="structKrkObj.html#a4a25d0e5c012bbbf4752ac6f76009b86">flags</a> |= KRK_OBJ_FLAGS_NO_INHERIT;</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;    _NotImplementedType-&gt;<a class="code" href="structKrkClass.html#a6d254a1d23874b5bdccad657eba1dd77">allocSize</a> = 0;</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;    BIND_STATICMETHOD(NotImplementedType, __new__);</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;    BIND_METHOD(NotImplementedType, __str__);</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;    BIND_METHOD(NotImplementedType, __hash__);</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    BIND_METHOD(NotImplementedType, __eq__);</div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    <a class="code" href="structKrkTable.html#a6813568942ffbcc21df88e12669ea5b1">krk_defineNative</a>(&amp;_NotImplementedType-&gt;<a class="code" href="structKrkClass.html#aac66986c41c3af885dcb0555c5de3bb1">methods</a>, <span class="stringliteral">&quot;__repr__&quot;</span>, FUNC_NAME(NotImplementedType,__str__));</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    <a class="code" href="structKrkClass.html#ab4f353ca0085f50bbf498df5116b66ef">krk_finalizeClass</a>(_NotImplementedType);</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160; </div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;    <a class="code" href="structKrkTable.html#a77daf4c9266b6440bcbd2dc0c95dd45a">krk_attachNamedValue</a>(&amp;<a class="code" href="vm_8h.html#a4f431666f8fecd56bd5f4111068f50c0">vm</a>.builtins-&gt;fields, <span class="stringliteral">&quot;NotImplemented&quot;</span>, NOTIMPL_VAL());</div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;}</div>
 <div class="ttc" id="aexceptions_8c_html_a91c57f379018d1ce7efca0a406e35431"><div class="ttname"><a href="exceptions_8c.html#a91c57f379018d1ce7efca0a406e35431">krk_runtimeError</a></div><div class="ttdeci">KrkValue krk_runtimeError(KrkClass *type, const char *fmt,...)</div><div class="ttdoc">Produce and raise an exception with a formatted message.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00445">exceptions.c:445</a></div></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
 <div class="ttc" id="aprivate_8h_html"><div class="ttname"><a href="private_8h.html">private.h</a></div><div class="ttdoc">Internal header.</div></div>
