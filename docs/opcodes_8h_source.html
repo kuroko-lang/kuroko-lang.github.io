@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;SIMPLE(OP_SHIFTLEFT)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;JUMP(OP_POP_JUMP_IF_FALSE,+)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;SIMPLE(OP_ANNOTATE)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;SIMPLE(OP_FILTER_EXCEPT)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;JUMP(OP_FILTER_EXCEPT,+)</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;SIMPLE(OP_BITAND)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;SIMPLE(OP_NONE)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;SIMPLE(OP_POP)</div>
@@ -227,6 +227,7 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;SIMPLE(OP_TUPLE_FROM_LIST)</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;OPERAND(OP_UNPACK_EX,NOOP)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;JUMP(OP_ENTER_EXCEPT,+)</div>
 </div><!-- fragment --></div><!-- contents -->
       <footer class="container text-center mb-3">
         <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>

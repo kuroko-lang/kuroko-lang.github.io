@@ -2238,118 +2238,118 @@ $(function() {
 <div class="line"><a name="l02254"></a><span class="lineno"> 2254</span>&#160; </div>
 <div class="line"><a name="l02255"></a><span class="lineno"> 2255</span>&#160;    <span class="keywordflow">if</span> (state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#af429c51685aacda7761af6084a236f9a">hadError</a>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l02256"></a><span class="lineno"> 2256</span>&#160; </div>
-<div class="line"><a name="l02257"></a><span class="lineno"> 2257</span>&#160;<span class="preprocessor">#define EXIT_JUMP_MAX 32</span></div>
-<div class="line"><a name="l02258"></a><span class="lineno"> 2258</span>&#160;    <span class="keywordtype">int</span> exitJumps = 1;</div>
+<div class="line"><a name="l02257"></a><span class="lineno"> 2257</span>&#160;<span class="preprocessor">#define EXIT_JUMP_MAX 64</span></div>
+<div class="line"><a name="l02258"></a><span class="lineno"> 2258</span>&#160;    <span class="keywordtype">int</span> exitJumps = 2;</div>
 <div class="line"><a name="l02259"></a><span class="lineno"> 2259</span>&#160;    <span class="keywordtype">int</span> exitJumpOffsets[EXIT_JUMP_MAX] = {0};</div>
 <div class="line"><a name="l02260"></a><span class="lineno"> 2260</span>&#160; </div>
-<div class="line"><a name="l02261"></a><span class="lineno"> 2261</span>&#160;    exitJumpOffsets[0] = emitJump(OP_JUMP);</div>
-<div class="line"><a name="l02262"></a><span class="lineno"> 2262</span>&#160;    patchJump(tryJump);</div>
+<div class="line"><a name="l02261"></a><span class="lineno"> 2261</span>&#160;    <span class="comment">/* Jump possibly to `else` */</span></div>
+<div class="line"><a name="l02262"></a><span class="lineno"> 2262</span>&#160;    exitJumpOffsets[0] = emitJump(OP_JUMP);</div>
 <div class="line"><a name="l02263"></a><span class="lineno"> 2263</span>&#160; </div>
-<div class="line"><a name="l02264"></a><span class="lineno"> 2264</span>&#160;    <span class="keywordtype">int</span> firstJump = 0;</div>
-<div class="line"><a name="l02265"></a><span class="lineno"> 2265</span>&#160;    <span class="keywordtype">int</span> nextJump = -1;</div>
-<div class="line"><a name="l02266"></a><span class="lineno"> 2266</span>&#160; </div>
-<div class="line"><a name="l02267"></a><span class="lineno"> 2267</span>&#160;_anotherExcept:</div>
-<div class="line"><a name="l02268"></a><span class="lineno"> 2268</span>&#160;    <span class="keywordflow">if</span> (state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#af429c51685aacda7761af6084a236f9a">hadError</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02269"></a><span class="lineno"> 2269</span>&#160;    <span class="keywordflow">if</span> (blockWidth == 0 || (check(TOKEN_INDENTATION) &amp;&amp; (state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a>.length == blockWidth))) {</div>
-<div class="line"><a name="l02270"></a><span class="lineno"> 2270</span>&#160;        <a class="code" href="structKrkToken.html">KrkToken</a> previous;</div>
-<div class="line"><a name="l02271"></a><span class="lineno"> 2271</span>&#160;        <span class="keywordflow">if</span> (blockWidth) {</div>
-<div class="line"><a name="l02272"></a><span class="lineno"> 2272</span>&#160;            previous = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
-<div class="line"><a name="l02273"></a><span class="lineno"> 2273</span>&#160;            advance();</div>
-<div class="line"><a name="l02274"></a><span class="lineno"> 2274</span>&#160;        }</div>
-<div class="line"><a name="l02275"></a><span class="lineno"> 2275</span>&#160;        <span class="keywordflow">if</span> (exitJumps &amp;&amp; !firstJump &amp;&amp; match(TOKEN_EXCEPT)) {</div>
-<div class="line"><a name="l02276"></a><span class="lineno"> 2276</span>&#160;            <span class="keywordflow">if</span> (nextJump != -1) {</div>
-<div class="line"><a name="l02277"></a><span class="lineno"> 2277</span>&#160;                patchJump(nextJump);</div>
-<div class="line"><a name="l02278"></a><span class="lineno"> 2278</span>&#160;                emitByte(OP_POP);</div>
-<div class="line"><a name="l02279"></a><span class="lineno"> 2279</span>&#160;            }</div>
-<div class="line"><a name="l02280"></a><span class="lineno"> 2280</span>&#160;            <span class="comment">/* Match filter expression (should be class or tuple) */</span></div>
-<div class="line"><a name="l02281"></a><span class="lineno"> 2281</span>&#160;            <span class="keywordflow">if</span> (!check(TOKEN_COLON) &amp;&amp; !check(TOKEN_AS)) {</div>
-<div class="line"><a name="l02282"></a><span class="lineno"> 2282</span>&#160;                expression(state);</div>
-<div class="line"><a name="l02283"></a><span class="lineno"> 2283</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l02284"></a><span class="lineno"> 2284</span>&#160;                emitByte(OP_NONE);</div>
-<div class="line"><a name="l02285"></a><span class="lineno"> 2285</span>&#160;            }</div>
-<div class="line"><a name="l02286"></a><span class="lineno"> 2286</span>&#160;            emitByte(OP_FILTER_EXCEPT);</div>
-<div class="line"><a name="l02287"></a><span class="lineno"> 2287</span>&#160;            nextJump = emitJump(OP_JUMP_IF_FALSE_OR_POP);</div>
-<div class="line"><a name="l02288"></a><span class="lineno"> 2288</span>&#160; </div>
-<div class="line"><a name="l02289"></a><span class="lineno"> 2289</span>&#160;            <span class="comment">/* Match &#39;as&#39; to rename exception */</span></div>
-<div class="line"><a name="l02290"></a><span class="lineno"> 2290</span>&#160;            <span class="keywordflow">if</span> (match(TOKEN_AS)) {</div>
-<div class="line"><a name="l02291"></a><span class="lineno"> 2291</span>&#160;                consume(TOKEN_IDENTIFIER, <span class="stringliteral">&quot;Expected identifier after &#39;as&#39;.&quot;</span>);</div>
-<div class="line"><a name="l02292"></a><span class="lineno"> 2292</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
-<div class="line"><a name="l02293"></a><span class="lineno"> 2293</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l02294"></a><span class="lineno"> 2294</span>&#160;                <span class="comment">/* XXX Should we remove this now? */</span></div>
-<div class="line"><a name="l02295"></a><span class="lineno"> 2295</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = syntheticToken(<span class="stringliteral">&quot;exception&quot;</span>);</div>
-<div class="line"><a name="l02296"></a><span class="lineno"> 2296</span>&#160;            }</div>
-<div class="line"><a name="l02297"></a><span class="lineno"> 2297</span>&#160; </div>
-<div class="line"><a name="l02298"></a><span class="lineno"> 2298</span>&#160;            <span class="keywordtype">size_t</span> nameInd = renameLocal(state, exceptionObject, state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a>);</div>
-<div class="line"><a name="l02299"></a><span class="lineno"> 2299</span>&#160; </div>
-<div class="line"><a name="l02300"></a><span class="lineno"> 2300</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;except&#39;.&quot;</span>);</div>
-<div class="line"><a name="l02301"></a><span class="lineno"> 2301</span>&#160;            beginScope(state);</div>
-<div class="line"><a name="l02302"></a><span class="lineno"> 2302</span>&#160;            block(state,blockWidth,<span class="stringliteral">&quot;except&quot;</span>);</div>
-<div class="line"><a name="l02303"></a><span class="lineno"> 2303</span>&#160;            endScope(state);</div>
-<div class="line"><a name="l02304"></a><span class="lineno"> 2304</span>&#160; </div>
-<div class="line"><a name="l02305"></a><span class="lineno"> 2305</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#abba48344e599659ecfb8c3da27ab1768">codeobject</a>-&gt;<a class="code" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a>[nameInd].<a class="code" href="structKrkLocalEntry.html#ae1d3ace67499fd2b1738df0280246fe6">deathday</a> = (size_t)currentChunk()-&gt;count;</div>
-<div class="line"><a name="l02306"></a><span class="lineno"> 2306</span>&#160; </div>
-<div class="line"><a name="l02307"></a><span class="lineno"> 2307</span>&#160;            <span class="keywordflow">if</span> (exitJumps &lt; EXIT_JUMP_MAX) {</div>
-<div class="line"><a name="l02308"></a><span class="lineno"> 2308</span>&#160;                exitJumpOffsets[exitJumps++] = emitJump(OP_JUMP);</div>
-<div class="line"><a name="l02309"></a><span class="lineno"> 2309</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l02310"></a><span class="lineno"> 2310</span>&#160;                error(<span class="stringliteral">&quot;Too many &#39;except&#39; clauses.&quot;</span>);</div>
-<div class="line"><a name="l02311"></a><span class="lineno"> 2311</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02312"></a><span class="lineno"> 2312</span>&#160;            }</div>
-<div class="line"><a name="l02313"></a><span class="lineno"> 2313</span>&#160; </div>
-<div class="line"><a name="l02314"></a><span class="lineno"> 2314</span>&#160;            <span class="keywordflow">goto</span> _anotherExcept;</div>
-<div class="line"><a name="l02315"></a><span class="lineno"> 2315</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (firstJump != 1 &amp;&amp; match(TOKEN_ELSE)) {</div>
-<div class="line"><a name="l02316"></a><span class="lineno"> 2316</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;else&#39;.&quot;</span>);</div>
-<div class="line"><a name="l02317"></a><span class="lineno"> 2317</span>&#160;            patchJump(exitJumpOffsets[0]);</div>
-<div class="line"><a name="l02318"></a><span class="lineno"> 2318</span>&#160;            firstJump = 1;</div>
-<div class="line"><a name="l02319"></a><span class="lineno"> 2319</span>&#160;            emitByte(OP_TRY_ELSE);</div>
-<div class="line"><a name="l02320"></a><span class="lineno"> 2320</span>&#160;            beginScope(state);</div>
-<div class="line"><a name="l02321"></a><span class="lineno"> 2321</span>&#160;            block(state, blockWidth, <span class="stringliteral">&quot;else&quot;</span>);</div>
-<div class="line"><a name="l02322"></a><span class="lineno"> 2322</span>&#160;            endScope(state);</div>
-<div class="line"><a name="l02323"></a><span class="lineno"> 2323</span>&#160;            <span class="keywordflow">if</span> (nextJump == -1) {</div>
-<div class="line"><a name="l02324"></a><span class="lineno"> 2324</span>&#160;                <span class="comment">/* If there were no except: blocks, we need to make sure that the</span></div>
-<div class="line"><a name="l02325"></a><span class="lineno"> 2325</span>&#160;<span class="comment">                 * &#39;try&#39; handler goes directly to the finally, so that &#39;break&#39;/&#39;continue&#39;</span></div>
-<div class="line"><a name="l02326"></a><span class="lineno"> 2326</span>&#160;<span class="comment">                 * within the &#39;try&#39; does not run this &#39;else&#39; step. */</span></div>
-<div class="line"><a name="l02327"></a><span class="lineno"> 2327</span>&#160;                patchJump(tryJump);</div>
-<div class="line"><a name="l02328"></a><span class="lineno"> 2328</span>&#160;            }</div>
-<div class="line"><a name="l02329"></a><span class="lineno"> 2329</span>&#160;            <span class="keywordflow">goto</span> _anotherExcept;</div>
-<div class="line"><a name="l02330"></a><span class="lineno"> 2330</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (match(TOKEN_FINALLY)) {</div>
-<div class="line"><a name="l02331"></a><span class="lineno"> 2331</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;finally&#39;.&quot;</span>);</div>
-<div class="line"><a name="l02332"></a><span class="lineno"> 2332</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = firstJump; i &lt; exitJumps; ++i) {</div>
-<div class="line"><a name="l02333"></a><span class="lineno"> 2333</span>&#160;                patchJump(exitJumpOffsets[i]);</div>
-<div class="line"><a name="l02334"></a><span class="lineno"> 2334</span>&#160;            }</div>
-<div class="line"><a name="l02335"></a><span class="lineno"> 2335</span>&#160;            <span class="keywordtype">size_t</span> nameInd = renameLocal(state, exceptionObject, syntheticToken(<span class="stringliteral">&quot;__tmp&quot;</span>));</div>
-<div class="line"><a name="l02336"></a><span class="lineno"> 2336</span>&#160;            emitByte(OP_BEGIN_FINALLY);</div>
-<div class="line"><a name="l02337"></a><span class="lineno"> 2337</span>&#160;            exitJumps = 0;</div>
-<div class="line"><a name="l02338"></a><span class="lineno"> 2338</span>&#160;            <span class="keywordflow">if</span> (nextJump != -1) {</div>
-<div class="line"><a name="l02339"></a><span class="lineno"> 2339</span>&#160;                emitByte(OP_NONE);</div>
-<div class="line"><a name="l02340"></a><span class="lineno"> 2340</span>&#160;                patchJump(nextJump);</div>
-<div class="line"><a name="l02341"></a><span class="lineno"> 2341</span>&#160;                emitByte(OP_POP);</div>
+<div class="line"><a name="l02264"></a><span class="lineno"> 2264</span>&#160;    <span class="comment">/* Except entry point; ENTER_EXCEPT jumps to `finally` or continues to</span></div>
+<div class="line"><a name="l02265"></a><span class="lineno"> 2265</span>&#160;<span class="comment">     * first `except` expression test; may end up redundant if there is only an &#39;else&#39;. */</span></div>
+<div class="line"><a name="l02266"></a><span class="lineno"> 2266</span>&#160;    patchJump(tryJump);</div>
+<div class="line"><a name="l02267"></a><span class="lineno"> 2267</span>&#160;    exitJumpOffsets[1] = emitJump(OP_ENTER_EXCEPT);</div>
+<div class="line"><a name="l02268"></a><span class="lineno"> 2268</span>&#160; </div>
+<div class="line"><a name="l02269"></a><span class="lineno"> 2269</span>&#160;    <span class="keywordtype">int</span> firstJump = 0;</div>
+<div class="line"><a name="l02270"></a><span class="lineno"> 2270</span>&#160;    <span class="keywordtype">int</span> nextJump = -1;</div>
+<div class="line"><a name="l02271"></a><span class="lineno"> 2271</span>&#160; </div>
+<div class="line"><a name="l02272"></a><span class="lineno"> 2272</span>&#160;_anotherExcept:</div>
+<div class="line"><a name="l02273"></a><span class="lineno"> 2273</span>&#160;    <span class="keywordflow">if</span> (state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#af429c51685aacda7761af6084a236f9a">hadError</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l02274"></a><span class="lineno"> 2274</span>&#160;    <span class="keywordflow">if</span> (blockWidth == 0 || (check(TOKEN_INDENTATION) &amp;&amp; (state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a>.length == blockWidth))) {</div>
+<div class="line"><a name="l02275"></a><span class="lineno"> 2275</span>&#160;        <a class="code" href="structKrkToken.html">KrkToken</a> previous;</div>
+<div class="line"><a name="l02276"></a><span class="lineno"> 2276</span>&#160;        <span class="keywordflow">if</span> (blockWidth) {</div>
+<div class="line"><a name="l02277"></a><span class="lineno"> 2277</span>&#160;            previous = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
+<div class="line"><a name="l02278"></a><span class="lineno"> 2278</span>&#160;            advance();</div>
+<div class="line"><a name="l02279"></a><span class="lineno"> 2279</span>&#160;        }</div>
+<div class="line"><a name="l02280"></a><span class="lineno"> 2280</span>&#160;        <span class="keywordflow">if</span> (exitJumps &amp;&amp; !firstJump &amp;&amp; match(TOKEN_EXCEPT)) {</div>
+<div class="line"><a name="l02281"></a><span class="lineno"> 2281</span>&#160;            <span class="keywordflow">if</span> (nextJump != -1) {</div>
+<div class="line"><a name="l02282"></a><span class="lineno"> 2282</span>&#160;                patchJump(nextJump);</div>
+<div class="line"><a name="l02283"></a><span class="lineno"> 2283</span>&#160;            }</div>
+<div class="line"><a name="l02284"></a><span class="lineno"> 2284</span>&#160;            <span class="comment">/* Match filter expression (should be class or tuple) */</span></div>
+<div class="line"><a name="l02285"></a><span class="lineno"> 2285</span>&#160;            <span class="keywordflow">if</span> (!check(TOKEN_COLON) &amp;&amp; !check(TOKEN_AS)) {</div>
+<div class="line"><a name="l02286"></a><span class="lineno"> 2286</span>&#160;                expression(state);</div>
+<div class="line"><a name="l02287"></a><span class="lineno"> 2287</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l02288"></a><span class="lineno"> 2288</span>&#160;                emitByte(OP_NONE);</div>
+<div class="line"><a name="l02289"></a><span class="lineno"> 2289</span>&#160;            }</div>
+<div class="line"><a name="l02290"></a><span class="lineno"> 2290</span>&#160;            nextJump = emitJump(OP_FILTER_EXCEPT);</div>
+<div class="line"><a name="l02291"></a><span class="lineno"> 2291</span>&#160; </div>
+<div class="line"><a name="l02292"></a><span class="lineno"> 2292</span>&#160;            <span class="comment">/* Match &#39;as&#39; to rename exception */</span></div>
+<div class="line"><a name="l02293"></a><span class="lineno"> 2293</span>&#160;            <span class="keywordtype">size_t</span> nameInd = 0;</div>
+<div class="line"><a name="l02294"></a><span class="lineno"> 2294</span>&#160;            <span class="keywordflow">if</span> (match(TOKEN_AS)) {</div>
+<div class="line"><a name="l02295"></a><span class="lineno"> 2295</span>&#160;                consume(TOKEN_IDENTIFIER, <span class="stringliteral">&quot;Expected identifier after &#39;as&#39;.&quot;</span>);</div>
+<div class="line"><a name="l02296"></a><span class="lineno"> 2296</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
+<div class="line"><a name="l02297"></a><span class="lineno"> 2297</span>&#160;                <span class="comment">/* `renameLocal` only introduces names for scoped debugging */</span></div>
+<div class="line"><a name="l02298"></a><span class="lineno"> 2298</span>&#160;                nameInd = renameLocal(state, exceptionObject, state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>);</div>
+<div class="line"><a name="l02299"></a><span class="lineno"> 2299</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l02300"></a><span class="lineno"> 2300</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = syntheticToken(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l02301"></a><span class="lineno"> 2301</span>&#160;            }</div>
+<div class="line"><a name="l02302"></a><span class="lineno"> 2302</span>&#160; </div>
+<div class="line"><a name="l02303"></a><span class="lineno"> 2303</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;except&#39;.&quot;</span>);</div>
+<div class="line"><a name="l02304"></a><span class="lineno"> 2304</span>&#160;            beginScope(state);</div>
+<div class="line"><a name="l02305"></a><span class="lineno"> 2305</span>&#160;            block(state,blockWidth,<span class="stringliteral">&quot;except&quot;</span>);</div>
+<div class="line"><a name="l02306"></a><span class="lineno"> 2306</span>&#160;            endScope(state);</div>
+<div class="line"><a name="l02307"></a><span class="lineno"> 2307</span>&#160; </div>
+<div class="line"><a name="l02308"></a><span class="lineno"> 2308</span>&#160;            <span class="comment">/* Remove scoped name */</span></div>
+<div class="line"><a name="l02309"></a><span class="lineno"> 2309</span>&#160;            <span class="keywordflow">if</span> (nameInd) state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#abba48344e599659ecfb8c3da27ab1768">codeobject</a>-&gt;<a class="code" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a>[nameInd].<a class="code" href="structKrkLocalEntry.html#ae1d3ace67499fd2b1738df0280246fe6">deathday</a> = (size_t)currentChunk()-&gt;count;</div>
+<div class="line"><a name="l02310"></a><span class="lineno"> 2310</span>&#160; </div>
+<div class="line"><a name="l02311"></a><span class="lineno"> 2311</span>&#160;            <span class="keywordflow">if</span> (exitJumps &lt; EXIT_JUMP_MAX) {</div>
+<div class="line"><a name="l02312"></a><span class="lineno"> 2312</span>&#160;                exitJumpOffsets[exitJumps++] = emitJump(OP_JUMP);</div>
+<div class="line"><a name="l02313"></a><span class="lineno"> 2313</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l02314"></a><span class="lineno"> 2314</span>&#160;                error(<span class="stringliteral">&quot;Too many &#39;except&#39; clauses.&quot;</span>);</div>
+<div class="line"><a name="l02315"></a><span class="lineno"> 2315</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l02316"></a><span class="lineno"> 2316</span>&#160;            }</div>
+<div class="line"><a name="l02317"></a><span class="lineno"> 2317</span>&#160; </div>
+<div class="line"><a name="l02318"></a><span class="lineno"> 2318</span>&#160;            <span class="keywordflow">goto</span> _anotherExcept;</div>
+<div class="line"><a name="l02319"></a><span class="lineno"> 2319</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (firstJump != 1 &amp;&amp; match(TOKEN_ELSE)) {</div>
+<div class="line"><a name="l02320"></a><span class="lineno"> 2320</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;else&#39;.&quot;</span>);</div>
+<div class="line"><a name="l02321"></a><span class="lineno"> 2321</span>&#160;            patchJump(exitJumpOffsets[0]);</div>
+<div class="line"><a name="l02322"></a><span class="lineno"> 2322</span>&#160;            firstJump = 1;</div>
+<div class="line"><a name="l02323"></a><span class="lineno"> 2323</span>&#160;            emitByte(OP_TRY_ELSE);</div>
+<div class="line"><a name="l02324"></a><span class="lineno"> 2324</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = syntheticToken(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l02325"></a><span class="lineno"> 2325</span>&#160;            beginScope(state);</div>
+<div class="line"><a name="l02326"></a><span class="lineno"> 2326</span>&#160;            block(state, blockWidth, <span class="stringliteral">&quot;else&quot;</span>);</div>
+<div class="line"><a name="l02327"></a><span class="lineno"> 2327</span>&#160;            endScope(state);</div>
+<div class="line"><a name="l02328"></a><span class="lineno"> 2328</span>&#160;            <span class="keywordflow">if</span> (nextJump == -1) {</div>
+<div class="line"><a name="l02329"></a><span class="lineno"> 2329</span>&#160;                <span class="comment">/* If there were no except: blocks, we need to make sure that the</span></div>
+<div class="line"><a name="l02330"></a><span class="lineno"> 2330</span>&#160;<span class="comment">                 * &#39;try&#39; handler goes directly to the finally, so that &#39;break&#39;/&#39;continue&#39;</span></div>
+<div class="line"><a name="l02331"></a><span class="lineno"> 2331</span>&#160;<span class="comment">                 * within the &#39;try&#39; does not run this &#39;else&#39; step. */</span></div>
+<div class="line"><a name="l02332"></a><span class="lineno"> 2332</span>&#160;                patchJump(tryJump);</div>
+<div class="line"><a name="l02333"></a><span class="lineno"> 2333</span>&#160;            }</div>
+<div class="line"><a name="l02334"></a><span class="lineno"> 2334</span>&#160;            <span class="keywordflow">goto</span> _anotherExcept;</div>
+<div class="line"><a name="l02335"></a><span class="lineno"> 2335</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (match(TOKEN_FINALLY)) {</div>
+<div class="line"><a name="l02336"></a><span class="lineno"> 2336</span>&#160;            consume(TOKEN_COLON, <span class="stringliteral">&quot;Expected &#39;:&#39; after &#39;finally&#39;.&quot;</span>);</div>
+<div class="line"><a name="l02337"></a><span class="lineno"> 2337</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = firstJump; i &lt; exitJumps; ++i) {</div>
+<div class="line"><a name="l02338"></a><span class="lineno"> 2338</span>&#160;                patchJump(exitJumpOffsets[i]);</div>
+<div class="line"><a name="l02339"></a><span class="lineno"> 2339</span>&#160;            }</div>
+<div class="line"><a name="l02340"></a><span class="lineno"> 2340</span>&#160;            <span class="keywordflow">if</span> (nextJump != -1) {</div>
+<div class="line"><a name="l02341"></a><span class="lineno"> 2341</span>&#160;                patchJump(nextJump);</div>
 <div class="line"><a name="l02342"></a><span class="lineno"> 2342</span>&#160;            }</div>
-<div class="line"><a name="l02343"></a><span class="lineno"> 2343</span>&#160;            beginScope(state);</div>
-<div class="line"><a name="l02344"></a><span class="lineno"> 2344</span>&#160;            block(state,blockWidth,<span class="stringliteral">&quot;finally&quot;</span>);</div>
-<div class="line"><a name="l02345"></a><span class="lineno"> 2345</span>&#160;            endScope(state);</div>
-<div class="line"><a name="l02346"></a><span class="lineno"> 2346</span>&#160;            nextJump = -2;</div>
-<div class="line"><a name="l02347"></a><span class="lineno"> 2347</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#abba48344e599659ecfb8c3da27ab1768">codeobject</a>-&gt;<a class="code" href="structKrkCodeObject.html#a55bb80d7fa00fb25369e502c8d7d11b8">localNames</a>[nameInd].<a class="code" href="structKrkLocalEntry.html#ae1d3ace67499fd2b1738df0280246fe6">deathday</a> = (size_t)currentChunk()-&gt;count;</div>
-<div class="line"><a name="l02348"></a><span class="lineno"> 2348</span>&#160;            emitByte(OP_END_FINALLY);</div>
-<div class="line"><a name="l02349"></a><span class="lineno"> 2349</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!check(TOKEN_EOL) &amp;&amp; !check(TOKEN_EOF)) {</div>
-<div class="line"><a name="l02350"></a><span class="lineno"> 2350</span>&#160;            <a class="code" href="scanner_8h.html#a20b4f42ec61d12d8764a33f64f938153">krk_ungetToken</a>(&amp;state-&gt;<a class="code" href="structGlobalState.html#a001be5dbdd7a85259ff9db0d36678d4e">scanner</a>, state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a>);</div>
-<div class="line"><a name="l02351"></a><span class="lineno"> 2351</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a> = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
-<div class="line"><a name="l02352"></a><span class="lineno"> 2352</span>&#160;            <span class="keywordflow">if</span> (blockWidth) {</div>
-<div class="line"><a name="l02353"></a><span class="lineno"> 2353</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a> = previous;</div>
-<div class="line"><a name="l02354"></a><span class="lineno"> 2354</span>&#160;            }</div>
-<div class="line"><a name="l02355"></a><span class="lineno"> 2355</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l02356"></a><span class="lineno"> 2356</span>&#160;            advance(); <span class="comment">/* Ignore this blank indentation line */</span></div>
-<div class="line"><a name="l02357"></a><span class="lineno"> 2357</span>&#160;        }</div>
-<div class="line"><a name="l02358"></a><span class="lineno"> 2358</span>&#160;    }</div>
-<div class="line"><a name="l02359"></a><span class="lineno"> 2359</span>&#160; </div>
-<div class="line"><a name="l02360"></a><span class="lineno"> 2360</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = firstJump; i &lt; exitJumps; ++i) {</div>
-<div class="line"><a name="l02361"></a><span class="lineno"> 2361</span>&#160;        patchJump(exitJumpOffsets[i]);</div>
-<div class="line"><a name="l02362"></a><span class="lineno"> 2362</span>&#160;    }</div>
-<div class="line"><a name="l02363"></a><span class="lineno"> 2363</span>&#160; </div>
-<div class="line"><a name="l02364"></a><span class="lineno"> 2364</span>&#160;    <span class="keywordflow">if</span> (nextJump &gt;= 0) {</div>
-<div class="line"><a name="l02365"></a><span class="lineno"> 2365</span>&#160;        emitByte(OP_BEGIN_FINALLY);</div>
-<div class="line"><a name="l02366"></a><span class="lineno"> 2366</span>&#160;        emitByte(OP_NONE);</div>
+<div class="line"><a name="l02343"></a><span class="lineno"> 2343</span>&#160;            emitByte(OP_BEGIN_FINALLY);</div>
+<div class="line"><a name="l02344"></a><span class="lineno"> 2344</span>&#160;            exitJumps = 0;</div>
+<div class="line"><a name="l02345"></a><span class="lineno"> 2345</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7">current</a>-&gt;<a class="code" href="structCompiler.html#a8f5c9e57c7e6390994b4ff84b898af73">locals</a>[exceptionObject].<a class="code" href="structLocal.html#a42ab7447ce0c91bfff3fc146b94f2265">name</a> = syntheticToken(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l02346"></a><span class="lineno"> 2346</span>&#160;            beginScope(state);</div>
+<div class="line"><a name="l02347"></a><span class="lineno"> 2347</span>&#160;            block(state,blockWidth,<span class="stringliteral">&quot;finally&quot;</span>);</div>
+<div class="line"><a name="l02348"></a><span class="lineno"> 2348</span>&#160;            endScope(state);</div>
+<div class="line"><a name="l02349"></a><span class="lineno"> 2349</span>&#160;            nextJump = -2;</div>
+<div class="line"><a name="l02350"></a><span class="lineno"> 2350</span>&#160;            emitByte(OP_END_FINALLY);</div>
+<div class="line"><a name="l02351"></a><span class="lineno"> 2351</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!check(TOKEN_EOL) &amp;&amp; !check(TOKEN_EOF)) {</div>
+<div class="line"><a name="l02352"></a><span class="lineno"> 2352</span>&#160;            <a class="code" href="scanner_8h.html#a20b4f42ec61d12d8764a33f64f938153">krk_ungetToken</a>(&amp;state-&gt;<a class="code" href="structGlobalState.html#a001be5dbdd7a85259ff9db0d36678d4e">scanner</a>, state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a>);</div>
+<div class="line"><a name="l02353"></a><span class="lineno"> 2353</span>&#160;            state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a563fae856adc8eab7cab040f9a0d393c">current</a> = state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a>;</div>
+<div class="line"><a name="l02354"></a><span class="lineno"> 2354</span>&#160;            <span class="keywordflow">if</span> (blockWidth) {</div>
+<div class="line"><a name="l02355"></a><span class="lineno"> 2355</span>&#160;                state-&gt;<a class="code" href="structGlobalState.html#a47432363bceeca809dfe2bacbe795cb5">parser</a>.<a class="code" href="structParser.html#a33ac40625a534eed6eb427f54b21d781">previous</a> = previous;</div>
+<div class="line"><a name="l02356"></a><span class="lineno"> 2356</span>&#160;            }</div>
+<div class="line"><a name="l02357"></a><span class="lineno"> 2357</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l02358"></a><span class="lineno"> 2358</span>&#160;            advance(); <span class="comment">/* Ignore this blank indentation line */</span></div>
+<div class="line"><a name="l02359"></a><span class="lineno"> 2359</span>&#160;        }</div>
+<div class="line"><a name="l02360"></a><span class="lineno"> 2360</span>&#160;    }</div>
+<div class="line"><a name="l02361"></a><span class="lineno"> 2361</span>&#160; </div>
+<div class="line"><a name="l02362"></a><span class="lineno"> 2362</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = firstJump; i &lt; exitJumps; ++i) {</div>
+<div class="line"><a name="l02363"></a><span class="lineno"> 2363</span>&#160;        patchJump(exitJumpOffsets[i]);</div>
+<div class="line"><a name="l02364"></a><span class="lineno"> 2364</span>&#160;    }</div>
+<div class="line"><a name="l02365"></a><span class="lineno"> 2365</span>&#160; </div>
+<div class="line"><a name="l02366"></a><span class="lineno"> 2366</span>&#160;    <span class="keywordflow">if</span> (nextJump &gt;= 0) {</div>
 <div class="line"><a name="l02367"></a><span class="lineno"> 2367</span>&#160;        patchJump(nextJump);</div>
-<div class="line"><a name="l02368"></a><span class="lineno"> 2368</span>&#160;        emitByte(OP_POP);</div>
+<div class="line"><a name="l02368"></a><span class="lineno"> 2368</span>&#160;        emitByte(OP_BEGIN_FINALLY);</div>
 <div class="line"><a name="l02369"></a><span class="lineno"> 2369</span>&#160;        emitByte(OP_END_FINALLY);</div>
 <div class="line"><a name="l02370"></a><span class="lineno"> 2370</span>&#160;    }</div>
 <div class="line"><a name="l02371"></a><span class="lineno"> 2371</span>&#160; </div>

@@ -689,7 +689,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the attribute was found and can be deleted, 0 otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01859">1859</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01861">1861</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -758,7 +758,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the module was loaded, 0 if an <a class="el" href="mod_builtins.html#ImportError">ImportError</a> occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01608">1608</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01610">1610</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -812,7 +812,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the attribute was found, 0 otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01799">1799</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01801">1801</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -885,7 +885,7 @@ Variables</h2></td></tr>
 <li>import foo/bar/baz as foo.bar.baz</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01414">1414</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01416">1416</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -934,7 +934,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value set, which is likely <code>to</code> but may be the returned value of a descriptor __set__ method. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01896">1896</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01898">1898</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -976,7 +976,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the executed code, which is either the value of an explicit 'return' statement, or the last expression value from an executed statement. If an uncaught exception occurred, this will be <code>None</code> and <code>krk_currentThread.flags</code> should indicate <code>KRK_THREAD_HAS_EXCEPTION</code> and <code>krk_currentThread.currentException</code> should contain the raised exception value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03190">3190</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03229">3229</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1033,7 @@ Variables</h2></td></tr>
 <p>Load a module.</p>
 <p>The module search path is stored in <b>builtins</b>.module_paths and should be a list of directories (with trailing forward-slash) to look at, in order, to resolve module names. krk source files will always take priority, so if a later search path has a krk source and an earlier search path has a shared object module, the later search path will still win. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01183">1183</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01185">1185</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1470,7 +1470,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As with <code>krk_interpret</code>, an object representing the newly created module, or the final return value of the VM execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03207">3207</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03246">3246</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1495,7 +1495,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Value returned by the exit trigger, generally the value returned by the inner function before the VM returned to the exit frame.</dd></dl>
 <p>Run the VM until it returns from the current call frame; used by native methods to call into managed methods. Returns the value returned by the RETURN instruction that exited the call frame. Should be nestable so a managed method can call a native method can call a managed can call a native and so on (hopefully). </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03172">3172</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03211">3211</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1579,7 +1579,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the attribute could be set, 0 otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01934">1934</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01936">1936</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -1632,7 +1632,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The instance object representing the module. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03180">3180</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l03219">3219</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

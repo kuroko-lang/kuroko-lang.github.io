@@ -254,7 +254,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECT_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((_krk_sanitize((uintptr_t)(value)) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_OBJECT))</td></tr>
 <tr class="separator:a566325f786e8ec8c870a56b23badf593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a53dfd462802b4d896373fcdab9ef38"><td class="memItemLeft" align="right" valign="top"><a id="a8a53dfd462802b4d896373fcdab9ef38"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint32_t)((((uint16_t)ty) &lt;&lt; 16) | ((uint16_t)ta)) | KRK_VAL_MASK_HANDLER))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLER_VAL</b>(ty,  ta)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)((uint64_t)((((uint64_t)ty) &lt;&lt; 32) | ((uint32_t)ta)) | KRK_VAL_MASK_HANDLER))</td></tr>
 <tr class="separator:a8a53dfd462802b4d896373fcdab9ef38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b09c283fd7f718813c08c5fa37e1306"><td class="memItemLeft" align="right" valign="top"><a id="a7b09c283fd7f718813c08c5fa37e1306"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FLOATING_VAL</b>(value)&#160;&#160;&#160;(((<a class="el" href="unionKrkValueDbl.html">KrkValueDbl</a>){.dbl = (value)}).val)</td></tr>
@@ -278,7 +278,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_NOTIMPL</b>(value)&#160;&#160;&#160;((krk_integer_type)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
 <tr class="separator:af9d1322036f1e2fcb90c16a95cbf89af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0c65ea91698bb036657a795d4d0c7b"><td class="memItemLeft" align="right" valign="top"><a id="a0c0c65ea91698bb036657a795d4d0c7b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER</b>(value)&#160;&#160;&#160;((uint32_t)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER</b>(value)&#160;&#160;&#160;((uint64_t)((value) &amp; KRK_VAL_MASK_LOW))</td></tr>
 <tr class="separator:a0c0c65ea91698bb036657a795d4d0c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49a02b3cde1cc17ed9060e3cdcf976e6"><td class="memItemLeft" align="right" valign="top"><a id="a49a02b3cde1cc17ed9060e3cdcf976e6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_OBJECT</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkObj.html">KrkObj</a>*)(uintptr_t)(((value) &amp; KRK_VAL_MASK_LOW) | <a class="el" href="value_8h.html#a745f1029ba4a1a029108cb0b1f4b0732">KRK_HEAP_TAG</a>))</td></tr>
@@ -311,10 +311,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_FLOATING</b>(value)&#160;&#160;&#160;(((value) &amp; KRK_VAL_MASK_NAN) != KRK_VAL_MASK_NAN)</td></tr>
 <tr class="separator:a3edfeb33fc8fca4d6cef57c5e71df73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60ef2b68a0edc7a90fb2c8c13033e8b6"><td class="memItemLeft" align="right" valign="top"><a id="a60ef2b68a0edc7a90fb2c8c13033e8b6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER_TYPE</b>(value)&#160;&#160;&#160;(AS_HANDLER(value) &gt;&gt; 16)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER_TYPE</b>(value)&#160;&#160;&#160;(AS_HANDLER(value) &gt;&gt; 32)</td></tr>
 <tr class="separator:a60ef2b68a0edc7a90fb2c8c13033e8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab87a10bf175fe109c2d911e40e8ea304"><td class="memItemLeft" align="right" valign="top"><a id="ab87a10bf175fe109c2d911e40e8ea304"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER_TARGET</b>(value)&#160;&#160;&#160;(AS_HANDLER(value) &amp; 0xFFFF)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AS_HANDLER_TARGET</b>(value)&#160;&#160;&#160;(AS_HANDLER(value) &amp; 0xFFFFFFFF)</td></tr>
 <tr class="separator:ab87a10bf175fe109c2d911e40e8ea304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fb31d50292119952ab5a6543547f44a"><td class="memItemLeft" align="right" valign="top"><a id="a3fb31d50292119952ab5a6543547f44a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_HANDLER_TYPE</b>(value,  type)&#160;&#160;&#160;(IS_HANDLER(value) &amp;&amp; AS_HANDLER_TYPE(value) == type)</td></tr>
