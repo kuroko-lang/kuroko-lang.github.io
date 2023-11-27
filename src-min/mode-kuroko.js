@@ -6,7 +6,7 @@ define("ace/mode/kuroko_highlight_rules",["require","exports","module","ace/lib/
     /* special constants */
     var t="True|False|None";
     /* builtins */
-    var n="getattr|setattr|bin|min|max|sum|hash|id|oct|self|super|len|str|int|float|dir|repr|list|dict|range|object|bytes|exception|isinstance|type|print|set|any|all|bool|ord|chr|hex|tuple|NotImplemented";
+    var n="getattr|setattr|bin|min|max|sum|hash|id|oct|self|super|len|str|int|float|dir|repr|list|dict|range|object|bytes|isinstance|type|print|set|any|all|bool|ord|chr|hex|tuple|NotImplemented";
     var r=this.createKeywordMapper({"variable.language":ex,"support.function":n,"constant.language":t,keyword:e},"identifier");
     var i="[uU]?",s="[rR]",o="[fF]",u="(?:[rR][fF]|[fF][rR])",a="(?:(?:[1-9]\\d*)|(?:0))",f="(?:0[oO]?[0-7]+)",l="(?:0[xX][\\dA-Fa-f]+)",c="(?:0[bB][01]+)";
     var h="(?:"+a+"|"+f+"|"+l+"|"+c+")",p="(?:[eE][+-]?\\d+)",d="(?:\\.\\d+)",v="(?:\\d+)",m="(?:(?:"+v+"?"+d+")|(?:"+v+"\\.))",g="(?:(?:"+m+"|"+v+")"+p+")";
