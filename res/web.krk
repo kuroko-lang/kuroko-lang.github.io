@@ -369,12 +369,12 @@ try:
 except:
     print("oh no!")</code></p>
 ''','''
-<p>Runtime exceptions are passed to the except block as a special variable <code>exception</code>.</p>
+<p>Runtime exceptions can be assigned to name within an <code>except</code> block.</p>
 <p><code>def foo(bar):
     print("I expect an argument! " + bar)
 try:
     foo() # I didn't provide one!
-except:
+except as exception:
     print("oh no, there was an exception:", repr(exception))</code></p>
 ''','''
 <p>Exceptions can be generated with the <code>raise</code> statement. When raising an exception, the value can be anything, but subclasses of <code>__builtins__.Exception</code> are recommended.</p>
@@ -407,7 +407,7 @@ try:
     try:
         print("Level two")
         raise ValueError("Thrown exception")
-    except:
+    except as exception:
         print("Caught in level two")
         raise exception
 except:
@@ -455,7 +455,7 @@ print(foo.bar.baz)</code></p>
 print(baz)
 try:
     print(foo) # NameError
-except:
+except as exception:
     print(repr(exception))</code></p>
 <p>Note that only module names can be specified as the first argument to <code>import</code> or <code>from</code>, and that if a module within a package has never been imported it will not be available from its package.</p>
 ''','''
