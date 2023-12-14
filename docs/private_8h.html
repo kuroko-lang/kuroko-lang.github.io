@@ -115,19 +115,35 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="kuroko_8h_source.html">kuroko/kuroko.h</a>&quot;</code><br />
 <code>#include &quot;methods.h&quot;</code><br />
+<code>#include &lt;<a class="el" href="debug_8h_source.html">kuroko/debug.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for private.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__incl.png" border="0" usemap="#asrc_2private_8h" alt=""/></div>
 <map name="asrc_2private_8h" id="asrc_2private_8h">
-<area shape="rect" title="Internal header." alt="" coords="249,5,352,32"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="173,80,297,107"/>
-<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="322,80,413,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,76,181"/>
-<area shape="rect" title=" " alt="" coords="101,155,175,181"/>
-<area shape="rect" title=" " alt="" coords="200,155,271,181"/>
-<area shape="rect" title=" " alt="" coords="295,155,381,181"/>
-<area shape="rect" title=" " alt="" coords="406,155,473,181"/>
+<area shape="rect" title="Internal header." alt="" coords="326,5,429,32"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="243,453,367,480"/>
+<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="463,80,553,107"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="317,80,438,107"/>
+<area shape="rect" title=" " alt="" coords="277,528,347,555"/>
+<area shape="rect" title=" " alt="" coords="372,528,447,555"/>
+<area shape="rect" title=" " alt="" coords="497,528,567,555"/>
+<area shape="rect" title=" " alt="" coords="74,528,161,555"/>
+<area shape="rect" title=" " alt="" coords="185,528,252,555"/>
+<area shape="rect" title=" " alt="" coords="581,453,648,480"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="350,155,405,181"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="616,229,691,256"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="145,304,218,331"/>
+<area shape="rect" title=" " alt="" coords="195,229,269,256"/>
+<area shape="rect" title=" " alt="" coords="293,229,357,256"/>
+<area shape="rect" title=" " alt="" coords="381,229,477,256"/>
+<area shape="rect" title=" " alt="" coords="501,229,592,256"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="385,379,455,405"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="511,304,577,331"/>
+<area shape="rect" title=" " alt="" coords="391,453,462,480"/>
+<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="703,379,785,405"/>
+<area shape="rect" title=" " alt="" coords="781,453,865,480"/>
+<area shape="rect" title=" " alt="" coords="684,453,756,480"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -135,18 +151,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="private_8h__dep__incl.png" border="0" usemap="#asrc_2private_8hdep" alt=""/></div>
 <map name="asrc_2private_8hdep" id="asrc_2private_8hdep">
-<area shape="rect" title="Internal header." alt="" coords="683,5,786,32"/>
-<area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,80,109,107"/>
-<area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="133,80,245,107"/>
-<area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="269,80,365,107"/>
-<area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="390,80,517,107"/>
-<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="541,80,651,107"/>
-<area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="675,80,794,107"/>
-<area shape="rect" href="obj__long_8c.html" title="Big ints, implemented through my own makeshift thing." alt="" coords="818,80,929,107"/>
-<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="953,80,1089,107"/>
-<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="1113,80,1212,107"/>
-<area shape="rect" href="object_8c_source.html" title=" " alt="" coords="1236,80,1332,107"/>
-<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="1356,80,1433,107"/>
+<area shape="rect" title="Internal header." alt="" coords="753,5,855,32"/>
+<area shape="rect" href="builtins_8c_source.html" title=" " alt="" coords="5,87,109,114"/>
+<area shape="rect" href="compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="133,87,245,114"/>
+<area shape="rect" href="debug_8c_source.html" title=" " alt="" coords="269,87,365,114"/>
+<area shape="rect" href="exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="390,87,517,114"/>
+<area shape="rect" href="memory_8c_source.html" title=" " alt="" coords="541,87,651,114"/>
+<area shape="rect" href="obj__bytes_8c_source.html" title=" " alt="" coords="675,87,794,114"/>
+<area shape="rect" href="obj__long_8c.html" title="Big ints, implemented through my own makeshift thing." alt="" coords="818,87,929,114"/>
+<area shape="rect" href="obj__numeric_8c_source.html" title=" " alt="" coords="953,87,1089,114"/>
+<area shape="rect" href="obj__str_8c_source.html" title=" " alt="" coords="1113,87,1212,114"/>
+<area shape="rect" href="object_8c_source.html" title=" " alt="" coords="1236,87,1332,114"/>
+<area shape="rect" href="vm_8c_source.html" title=" " alt="" coords="1356,87,1433,114"/>
+<area shape="rect" href="module__dis_8c_source.html" title=" " alt="" coords="1457,80,1612,121"/>
 </map>
 </div>
 </div>
@@ -155,6 +172,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParsedFormatSpec.html">ParsedFormatSpec</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBreakpointEntry.html">BreakpointEntry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDebuggerState.html">DebuggerState</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -180,6 +201,9 @@ Macros</h2></td></tr>
 <tr class="memitem:acf3043434984573318e45b64e921ab2c"><td class="memItemLeft" align="right" valign="top"><a id="acf3043434984573318e45b64e921ab2c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>krk_hash_advance</b>(hash,  c)&#160;&#160;&#160;do { hash = (int)(c) + (hash &lt;&lt; 6) + (hash &lt;&lt; 16) - hash; } while (0)</td></tr>
 <tr class="separator:acf3043434984573318e45b64e921ab2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996fc495c80dc29ca7641d887ae4a462"><td class="memItemLeft" align="right" valign="top"><a id="a996fc495c80dc29ca7641d887ae4a462"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_BREAKPOINTS</b>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:a996fc495c80dc29ca7641d887ae4a462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>

@@ -376,6 +376,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Print a string representation of a value. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Will be removed soon.</dd></dl>
 <p>Print a string representation of 'value' to the stream 'f'. For primitives, performs appropriate formatting. For objects, this will call <b>str</b> on the object's representative type. If the type does not have a <b>str</b> method, <b>repr</b> will be tried before falling back to krk_typeName to directly print the name of the class with no information on the value.</p>
 <p>This function provides the backend for the print() built-in.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -457,7 +458,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nul-terminated C string of the type of <code>value</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01023">1023</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01020">1020</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -500,7 +501,7 @@ attribute names that have nil bytes.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01865">1865</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01862">1862</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -544,7 +545,7 @@ attribute names that have nil bytes.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The requested property, or None with an <a class="el" href="mod_builtins.html#AttributeError">AttributeError</a> exception set in the current thread if the attribute was not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01805">1805</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01802">1802</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -627,7 +628,7 @@ attribute names that have nil bytes.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The set value, or None with an <a class="el" href="mod_builtins.html#AttributeError">AttributeError</a> exception set in the current thread if the object can not have a property set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01940">1940</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l01937">1937</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>

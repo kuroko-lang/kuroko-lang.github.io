@@ -157,9 +157,39 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> * This is the &quot;sdbm&quot; hash. I&#39;ve been using it in various places for many years,</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> * and this specific version apparently traces to gawk. */</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define krk_hash_advance(hash,c) do { hash = (int)(c) + (hash &lt;&lt; 6) + (hash &lt;&lt; 16) - hash; } while (0)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#ifndef KRK_DISABLE_DEBUG</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">kuroko/debug.h</a>&gt;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structBreakpointEntry.html">   73</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structBreakpointEntry.html">BreakpointEntry</a> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="structKrkCodeObject.html">KrkCodeObject</a> * inFunction;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">size_t</span> offset;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> flags;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    uint8_t originalOpcode;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define MAX_BREAKPOINTS 32</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structDebuggerState.html">   81</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDebuggerState.html">DebuggerState</a> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">int</span> breakpointsCount;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="debug_8h.html#a6ae6dfd498ed75727f118daaf004b5c7">KrkDebugCallback</a> debuggerHook;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* XXX This was previously thread-local; it probably should still be</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     *     specific to an individual thread... but we don&#39;t really do</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     *     much thread debugging, so... */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span> repeatStack_top;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> repeatStack_bottom;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> thisWasForced;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">struct </span><a class="code" href="structBreakpointEntry.html">BreakpointEntry</a> breakpoints[MAX_BREAKPOINTS];</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Functions for debugging bytecode execution.</div></div>
+<div class="ttc" id="adebug_8h_html_a6ae6dfd498ed75727f118daaf004b5c7"><div class="ttname"><a href="debug_8h.html#a6ae6dfd498ed75727f118daaf004b5c7">KrkDebugCallback</a></div><div class="ttdeci">int(* KrkDebugCallback)(KrkCallFrame *frame)</div><div class="ttdoc">Function pointer for a debugger hook. krk_debug_registerCallback()</div><div class="ttdef"><b>Definition:</b> <a href="debug_8h_source.html#l00073">debug.h:73</a></div></div>
 <div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
 <div class="ttc" id="aprivate_8h_html_a0e31397b2d77b1a44a35064c79a8e535"><div class="ttname"><a href="private_8h.html#a0e31397b2d77b1a44a35064c79a8e535">_createAndBind_exceptions</a></div><div class="ttdeci">void _createAndBind_exceptions(void)</div><div class="ttdoc">Bind native methods and classes for exceptions.</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8c_source.html#l00184">exceptions.c:184</a></div></div>
 <div class="ttc" id="aprivate_8h_html_a62180e29e93500068869ad4a459be927"><div class="ttname"><a href="private_8h.html#a62180e29e93500068869ad4a459be927">KrkSpecialMethods</a></div><div class="ttdeci">KrkSpecialMethods</div><div class="ttdoc">Index numbers for always-available interned strings representing important method and member names.</div><div class="ttdef"><b>Definition:</b> <a href="private_8h_source.html#l00038">private.h:38</a></div></div>
+<div class="ttc" id="astructBreakpointEntry_html"><div class="ttname"><a href="structBreakpointEntry.html">BreakpointEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="private_8h_source.html#l00073">private.h:73</a></div></div>
+<div class="ttc" id="astructDebuggerState_html"><div class="ttname"><a href="structDebuggerState.html">DebuggerState</a></div><div class="ttdef"><b>Definition:</b> <a href="private_8h_source.html#l00081">private.h:81</a></div></div>
+<div class="ttc" id="astructKrkCodeObject_html"><div class="ttname"><a href="structKrkCodeObject.html">KrkCodeObject</a></div><div class="ttdoc">Code object.</div><div class="ttdef"><b>Definition:</b> <a href="object_8h_source.html#l00144">object.h:144</a></div></div>
 <div class="ttc" id="astructParsedFormatSpec_html"><div class="ttname"><a href="structParsedFormatSpec.html">ParsedFormatSpec</a></div><div class="ttdef"><b>Definition:</b> <a href="private_8h_source.html#l00053">private.h:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
       <footer class="container text-center mb-3">
