@@ -122,32 +122,29 @@ Include dependency graph for obj_long.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__long_8c__incl.png" border="0" usemap="#asrc_2obj__long_8c" alt=""/></div>
 <map name="asrc_2obj__long_8c" id="asrc_2obj__long_8c">
-<area shape="rect" title="Big ints, implemented through my own makeshift thing." alt="" coords="521,5,632,32"/>
-<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="455,229,557,256"/>
-<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="703,453,773,480"/>
-<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="316,155,419,181"/>
-<area shape="rect" href="private_8h.html" title="Internal header." alt="" coords="635,80,715,107"/>
-<area shape="rect" title=" " alt="" coords="575,304,650,331"/>
-<area shape="rect" title=" " alt="" coords="253,304,317,331"/>
-<area shape="rect" title=" " alt="" coords="341,304,437,331"/>
-<area shape="rect" title=" " alt="" coords="461,304,551,331"/>
-<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="485,528,562,555"/>
-<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="158,379,225,405"/>
-<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="154,304,229,331"/>
-<area shape="rect" title=" " alt="" coords="669,603,740,629"/>
-<area shape="rect" title=" " alt="" coords="367,603,442,629"/>
-<area shape="rect" title=" " alt="" coords="244,603,315,629"/>
-<area shape="rect" title=" " alt="" coords="467,603,553,629"/>
-<area shape="rect" title=" " alt="" coords="578,603,645,629"/>
-<area shape="rect" title=" " alt="" coords="857,528,923,555"/>
-<area shape="rect" title=" " alt="" coords="703,528,773,555"/>
-<area shape="rect" href="threads_8h.html" title="Convience header for providing atomic operations to threads." alt="" coords="103,453,186,480"/>
-<area shape="rect" title=" " alt="" coords="5,528,89,555"/>
-<area shape="rect" title=" " alt="" coords="114,528,186,555"/>
-<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="627,379,700,405"/>
-<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="85,229,172,256"/>
-<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="762,155,853,181"/>
-<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="565,155,687,181"/>
+<area shape="rect" title="Big ints, implemented through my own makeshift thing." alt="" coords="577,5,687,32"/>
+<area shape="rect" href="vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="334,229,437,256"/>
+<area shape="rect" href="value_8h.html" title="Definitions for primitive stack references." alt="" coords="777,453,847,480"/>
+<area shape="rect" href="util_8h.html" title="Utilities for creating native bindings." alt="" coords="459,155,562,181"/>
+<area shape="rect" href="private_8h.html" title="Internal header." alt="" coords="656,80,736,107"/>
+<area shape="rect" title=" " alt="" coords="264,304,339,331"/>
+<area shape="rect" title=" " alt="" coords="5,304,69,331"/>
+<area shape="rect" title=" " alt="" coords="93,304,189,331"/>
+<area shape="rect" href="kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="623,528,700,555"/>
+<area shape="rect" href="table_8h.html" title="Implementation of a generic hash table." alt="" coords="373,379,440,405"/>
+<area shape="rect" href="object_8h.html" title="Struct definitions for core object types." alt="" coords="591,304,665,331"/>
+<area shape="rect" title=" " alt="" coords="477,603,547,629"/>
+<area shape="rect" title=" " alt="" coords="572,603,647,629"/>
+<area shape="rect" title=" " alt="" coords="277,603,347,629"/>
+<area shape="rect" title=" " alt="" coords="671,603,758,629"/>
+<area shape="rect" title=" " alt="" coords="783,603,849,629"/>
+<area shape="rect" title=" " alt="" coords="956,528,1023,555"/>
+<area shape="rect" title=" " alt="" coords="777,528,847,555"/>
+<area shape="rect" href="chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="726,379,799,405"/>
+<area shape="rect" title=" " alt="" coords="566,379,650,405"/>
+<area shape="rect" href="memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="469,229,555,256"/>
+<area shape="rect" href="methods_8h_source.html" title=" " alt="" coords="783,155,873,181"/>
+<area shape="rect" href="debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="586,155,707,181"/>
 </map>
 </div>
 </div>
@@ -212,6 +209,15 @@ Macros</h2></td></tr>
 <tr class="separator:a44ade996af47e881bbc13a8770e34476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc41e1e4c9b0db6bd3cfde71e747a322"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>COMPARE_OP</b>(name,  comp)</td></tr>
 <tr class="separator:adc41e1e4c9b0db6bd3cfde71e747a322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cec58f8e810484afe4b88d4f6cf2d1e"><td class="memItemLeft" align="right" valign="top"><a id="a8cec58f8e810484afe4b88d4f6cf2d1e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEC_DIGIT_SIZE</b>&#160;&#160;&#160;sizeof(<a class="el" href="obj__long_8c.html#a918fd2d7b4fcfb6452272f1477745a53">digit_t</a>)</td></tr>
+<tr class="separator:a8cec58f8e810484afe4b88d4f6cf2d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8538eda0e56618fb6db7de7ef36a66"><td class="memItemLeft" align="right" valign="top"><a id="a8c8538eda0e56618fb6db7de7ef36a66"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEC_DIGIT_CNT</b>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a8c8538eda0e56618fb6db7de7ef36a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1923f73d5fd8a7d3683518704799414"><td class="memItemLeft" align="right" valign="top"><a id="af1923f73d5fd8a7d3683518704799414"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEC_DIGIT_MAX</b>&#160;&#160;&#160;1000000000</td></tr>
+<tr class="separator:af1923f73d5fd8a7d3683518704799414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374c3875a65d947903e27fc7a47d4e33"><td class="memItemLeft" align="right" valign="top"><a id="a374c3875a65d947903e27fc7a47d4e33"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_CTYPE</b>&#160;&#160;&#160;krk_integer_type</td></tr>
 <tr class="separator:a374c3875a65d947903e27fc7a47d4e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,6 +241,8 @@ typedef <a class="el" href="structKrkLong__Internal.html">KrkLong</a>&#160;</td>
 <tr class="memitem:ad08fed3419486d99c61d385ebfa62c8b"><td class="memItemLeft" align="right" valign="top"><a id="ad08fed3419486d99c61d385ebfa62c8b"></a>
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>fmtCallback</b>) (void *, int, int *)</td></tr>
 <tr class="separator:ad08fed3419486d99c61d385ebfa62c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918fd2d7b4fcfb6452272f1477745a53"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__long_8c.html#a918fd2d7b4fcfb6452272f1477745a53">digit_t</a></td></tr>
+<tr class="separator:a918fd2d7b4fcfb6452272f1477745a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -301,6 +309,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad97b044ea6dd2b0102a16dc89cb6c9e6"><td class="memItemLeft" align="right" valign="top"><a id="ad97b044ea6dd2b0102a16dc89cb6c9e6"></a>
 <a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_long__get_digit</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
 <tr class="separator:ad97b044ea6dd2b0102a16dc89cb6c9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a7a5a032521074a0dac2895f2f86b3"><td class="memItemLeft" align="right" valign="top"><a id="ab5a7a5a032521074a0dac2895f2f86b3"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_long___repr__</b> (int, <a class="el" href="structKrkValue.html">KrkValue</a> *, int)</td></tr>
+<tr class="separator:ab5a7a5a032521074a0dac2895f2f86b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9750267704044a34029db4d0751b86da"><td class="memItemLeft" align="right" valign="top">_protected int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__long_8c.html#a9750267704044a34029db4d0751b86da">krk_long_to_int</a> (<a class="el" href="structKrkValue.html">KrkValue</a> val, char size, void *out)</td></tr>
 <tr class="memdesc:a9750267704044a34029db4d0751b86da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an int or long to a C integer.  <a href="obj__long_8c.html#a9750267704044a34029db4d0751b86da">More...</a><br /></td></tr>
 <tr class="separator:a9750267704044a34029db4d0751b86da"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -394,7 +405,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        return make_long_obj(tmp_res); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01451">1451</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01450">1450</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -427,7 +438,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">    BIND_METHOD(klass,__r ## name ## __); \</div>
 <div class="line">    krk_defineNative(&amp;_ ## klass-&gt;methods,<span class="stringliteral">&quot;__i&quot;</span> #name <span class="stringliteral">&quot;__&quot;</span>,_ ## klass ## ___ ## name ## __);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02049">2049</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02442">2442</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -467,7 +478,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        return BOOLEAN_VAL(cmp comp 0); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01603">1603</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01637">1637</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -508,9 +519,28 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <div class="line">        char * rev = krk_long_to_str(self-&gt;value, base, prefix, &amp;size, &amp;hash); \</div>
 <div class="line">        return OBJECT_VAL(<a class="code" href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">krk_takeStringVetted</a>(rev,size,size,KRK_OBJ_FLAGS_STRING_ASCII,hash)); \</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructKrkString_html_af5eeb810cdf58c0edd2d0280469d6740"><div class="ttname"><a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">KrkString::krk_takeStringVetted</a></div><div class="ttdeci">KrkString * krk_takeStringVetted(char *chars, size_t length, size_t codesLength, KrkStringType type, uint32_t hash)</div><div class="ttdoc">Like krk_takeString but for when the caller has already calculated code lengths, hash,...</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00238">object.c:238</a></div></div>
+<div class="ttc" id="astructKrkString_html_af5eeb810cdf58c0edd2d0280469d6740"><div class="ttname"><a href="structKrkString.html#af5eeb810cdf58c0edd2d0280469d6740">KrkString::krk_takeStringVetted</a></div><div class="ttdeci">KrkString * krk_takeStringVetted(char *chars, size_t length, size_t codesLength, KrkStringType type, uint32_t hash)</div><div class="ttdoc">Like krk_takeString but for when the caller has already calculated code lengths, hash,...</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00239">object.c:239</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01399">1399</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a918fd2d7b4fcfb6452272f1477745a53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a918fd2d7b4fcfb6452272f1477745a53">&#9670;&nbsp;</a></span>digit_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t <a class="el" href="obj__long_8c.html#a918fd2d7b4fcfb6452272f1477745a53">digit_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Huge decimals for fast conversion.</p>
+<p>This is a lightweight implementation of decimal-based bigints that only supports addition, inplace subtraction, and multiplication (via Karatsuba). With this, we can much more quickly produce decimal conversions of (binary) longs. </p>
+
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01961">1961</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -549,7 +579,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
 <p><code>int</code> wrapper implementations of the byte conversions.</p>
 <p>Convert to a <code>long</code> and just use those versions... </p>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02020">2020</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02413">2413</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>
@@ -629,7 +659,7 @@ _noexport void&#160;</td><td class="memItemRight" valign="bottom"><b>_createAndB
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l01963">1963</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="obj__long_8c_source.html#l02356">2356</a> of file <a class="el" href="obj__long_8c_source.html">obj_long.c</a>.</p>
 
 </div>
 </div>

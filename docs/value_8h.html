@@ -183,9 +183,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="parseargs_8c_source.html" title=" " alt="" coords="2912,386,3032,413"/>
 <area shape="rect" href="args_8c.html" title="Embedding demo showing how to use krk_parseArgs." alt="" coords="3057,386,3154,413"/>
 <area shape="rect" href="sandbox_8c_source.html" title=" " alt="" coords="3178,386,3302,413"/>
-<area shape="rect" href="module__gc_8c_source.html" title=" " alt="" coords="3327,386,3513,413"/>
-<area shape="rect" href="module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3537,379,3692,420"/>
-<area shape="rect" href="module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="3716,379,3871,420"/>
+<area shape="rect" href="module____pheap_8c.html" title="Pairing heap." alt="" coords="3327,379,3481,420"/>
+<area shape="rect" href="module__gc_8c_source.html" title=" " alt="" coords="3505,386,3692,413"/>
+<area shape="rect" href="module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3716,379,3871,420"/>
 <area shape="rect" href="debug-stats_8c_source.html" title=" " alt="" coords="3675,304,3821,331"/>
 <area shape="rect" href="demo_8c_source.html" title=" " alt="" coords="3845,304,3952,331"/>
 </map>
@@ -203,6 +203,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a4508f603fbbc35a0e5826964c5b4449b"><td class="memItemLeft" align="right" valign="top"><a id="a4508f603fbbc35a0e5826964c5b4449b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_krk_valuesSame</b>(a,  b)&#160;&#160;&#160;(a == b)</td></tr>
+<tr class="separator:a4508f603fbbc35a0e5826964c5b4449b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2732111a2fdea1debd3f481d340f091a"><td class="memItemLeft" align="right" valign="top"><a id="a2732111a2fdea1debd3f481d340f091a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>KRK_VAL_MASK_BOOLEAN</b>&#160;&#160;&#160;((uint64_t)0xFFFC000000000000) /* 1..1100 */</td></tr>
 <tr class="separator:a2732111a2fdea1debd3f481d340f091a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,12 +238,12 @@ Macros</h2></td></tr>
 <tr class="separator:aa29e4fba29e7ae5c313fb7b4bf2a8107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a745f1029ba4a1a029108cb0b1f4b0732"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="value_8h.html#a745f1029ba4a1a029108cb0b1f4b0732">KRK_HEAP_TAG</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a745f1029ba4a1a029108cb0b1f4b0732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5913f21fe154a0025f21df73ecba9b85"><td class="memItemLeft" align="right" valign="top"><a id="a5913f21fe154a0025f21df73ecba9b85"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</td></tr>
-<tr class="separator:a5913f21fe154a0025f21df73ecba9b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dedf04b6dbc4f024ed257a802f59435"><td class="memItemLeft" align="right" valign="top"><a id="a3dedf04b6dbc4f024ed257a802f59435"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOTIMPL_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</td></tr>
-<tr class="separator:a3dedf04b6dbc4f024ed257a802f59435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7992b9dfc3d471aadeab1534819a42"><td class="memItemLeft" align="right" valign="top"><a id="a6d7992b9dfc3d471aadeab1534819a42"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NONE_VAL</b>()&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NONE))</td></tr>
+<tr class="separator:a6d7992b9dfc3d471aadeab1534819a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7da3c1c46829a9cb30784a7dd970be39"><td class="memItemLeft" align="right" valign="top"><a id="a7da3c1c46829a9cb30784a7dd970be39"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOTIMPL_VAL</b>()&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(KRK_VAL_MASK_LOW | KRK_VAL_MASK_NOTIMPL))</td></tr>
+<tr class="separator:a7da3c1c46829a9cb30784a7dd970be39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c26ea89b359606a2eaac967c834803d"><td class="memItemLeft" align="right" valign="top"><a id="a5c26ea89b359606a2eaac967c834803d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BOOLEAN_VAL</b>(value)&#160;&#160;&#160;((<a class="el" href="structKrkValue.html">KrkValue</a>)(((uint64_t)(value) &amp; KRK_VAL_MASK_LOW) | KRK_VAL_MASK_BOOLEAN))</td></tr>
 <tr class="separator:a5c26ea89b359606a2eaac967c834803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -387,7 +390,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>On platforms where heap pointers are tagged, we can try to force the tag bytes back into our truncated object pointers. On arm64 Android, you can try setting this to 0xb4 to fix issues with MTE. </p>
 
-<p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00214">214</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00206">206</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
 
 </div>
 </div>
@@ -407,7 +410,7 @@ Functions</h2></td></tr>
 <p>Tag enum for basic value types. </p>
 <p>These are the values stored in the upper NaN bits of the boxed NaN values. </p>
 
-<p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00016">16</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="value_8h_source.html#l00017">17</a> of file <a class="el" href="value_8h_source.html">value.h</a>.</p>
 
 </div>
 </div>

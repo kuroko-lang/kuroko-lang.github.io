@@ -133,6 +133,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3e1c5c6a26f58def1f898dfb168dfa13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeb763c0da808951512c91a2ed36c872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#adeb763c0da808951512c91a2ed36c872">flags</a></td></tr>
 <tr class="separator:adeb763c0da808951512c91a2ed36c872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751d048cb773abc71f859fc57c3f76a4"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#a751d048cb773abc71f859fc57c3f76a4">maximumCallDepth</a></td></tr>
+<tr class="separator:a751d048cb773abc71f859fc57c3f76a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92914511a3320da896a06b2d53e3bb63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#a92914511a3320da896a06b2d53e3bb63">stackMax</a></td></tr>
 <tr class="separator:a92914511a3320da896a06b2d53e3bb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeea61d72564ae8c9c992fb0a1ea65a0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkThreadState.html#aeea61d72564ae8c9c992fb0a1ea65a0c">scratchSpace</a> [<a class="el" href="vm_8h.html#a953d72106f209857d287c39553d49b25">KRK_THREAD_SCRATCH_SIZE</a>]</td></tr>
@@ -141,7 +143,7 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Execution state of a VM thread. </p>
 <p>Each thread in the VM has its own local thread state, which contains the thread's stack, stack pointer, call frame stack, a thread-specific VM flags bitarray, and an exception state.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="vm_8h.html#a779017d9bc71ee676356ca7a044eadee" title="Thread-local VM state.">krk_currentThread</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="vm_8h.html#a05616acf67b9416b7c768b3de1339711" title="Thread-local VM state.">krk_currentThread</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00156">156</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
@@ -230,6 +232,23 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a751d048cb773abc71f859fc57c3f76a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751d048cb773abc71f859fc57c3f76a4">&#9670;&nbsp;</a></span>maximumCallDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int KrkThreadState::maximumCallDepth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Maximum recursive call depth. </p>
+
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00170">170</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+
+</div>
+</div>
 <a id="af4ccc362db656f5de1ab9d9f1be205e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4ccc362db656f5de1ab9d9f1be205e9">&#9670;&nbsp;</a></span>module</h2>
 
@@ -294,7 +313,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>A place to store a few values to keep them from being prematurely GC'd. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00172">172</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00173">173</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +347,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>End of allocated stack space. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00170">170</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00171">171</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>

@@ -26,11 +26,11 @@
 <area shape="rect" id="node25" href="$compiler_8h.html" title="Exported methods for the source compiler." alt="" coords="1423,229,1583,256"/>
 <area shape="rect" id="node27" href="$memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="933,155,1091,181"/>
 <area shape="rect" id="node34" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="2899,229,3024,256"/>
-<area shape="rect" id="node40" href="$module__fileio_8c_source.html" title=" " alt="" coords="1919,304,2073,345"/>
-<area shape="rect" id="node42" href="$module__math_8c_source.html" title=" " alt="" coords="5136,304,5291,345"/>
-<area shape="rect" id="node43" href="$module__os_8c_source.html" title=" " alt="" coords="5315,311,5501,338"/>
-<area shape="rect" id="node47" href="$module__time_8c_source.html" title=" " alt="" coords="5525,304,5680,345"/>
-<area shape="rect" id="node48" href="$module__timeit_8c_source.html" title=" " alt="" coords="5995,304,6149,345"/>
+<area shape="rect" id="node41" href="$module__fileio_8c_source.html" title=" " alt="" coords="1919,304,2073,345"/>
+<area shape="rect" id="node43" href="$module__math_8c_source.html" title=" " alt="" coords="5136,304,5291,345"/>
+<area shape="rect" id="node44" href="$module__os_8c_source.html" title=" " alt="" coords="5315,311,5501,338"/>
+<area shape="rect" id="node48" href="$module__time_8c_source.html" title=" " alt="" coords="5525,304,5680,345"/>
+<area shape="rect" id="node49" href="$module__timeit_8c_source.html" title=" " alt="" coords="5995,304,6149,345"/>
 <area shape="rect" id="node50" href="$vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="4224,155,4349,181"/>
 <area shape="rect" id="node26" href="$compile_8c_source.html" title=" " alt="" coords="1634,311,1755,338"/>
 <area shape="rect" id="node28" href="$obj__base_8c_source.html" title=" " alt="" coords="1780,311,1895,338"/>
@@ -44,9 +44,9 @@
 <area shape="rect" id="node37" href="$threads_8c_source.html" title=" " alt="" coords="2909,311,3014,338"/>
 <area shape="rect" id="node38" href="$args_8c.html" title="Embedding demo showing how to use krk_parseArgs." alt="" coords="3586,311,3683,338"/>
 <area shape="rect" id="node39" href="$sandbox_8c_source.html" title=" " alt="" coords="3707,311,3831,338"/>
-<area shape="rect" id="node41" href="$module__gc_8c_source.html" title=" " alt="" coords="3856,311,4043,338"/>
-<area shape="rect" id="node44" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="4067,304,4221,345"/>
-<area shape="rect" id="node45" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4245,304,4400,345"/>
-<area shape="rect" id="node46" href="$module__stat_8c_source.html" title=" " alt="" coords="4424,304,4579,345"/>
-<area shape="rect" id="node49" href="$module__wcwidth_8c_source.html" title=" " alt="" coords="4603,304,4757,345"/>
+<area shape="rect" id="node40" href="$module____pheap_8c.html" title="Pairing heap." alt="" coords="3856,304,4011,345"/>
+<area shape="rect" id="node42" href="$module__gc_8c_source.html" title=" " alt="" coords="4035,311,4221,338"/>
+<area shape="rect" id="node45" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="4245,304,4400,345"/>
+<area shape="rect" id="node46" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4424,304,4579,345"/>
+<area shape="rect" id="node47" href="$module__stat_8c_source.html" title=" " alt="" coords="4603,304,4757,345"/>
 </map>

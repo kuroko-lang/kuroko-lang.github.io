@@ -257,6 +257,8 @@ Enumerations</h2></td></tr>
 , <b>TOKEN_RETRY</b>
 , <b>TOKEN_ERROR</b>
 , <b>TOKEN_EOF</b>
+, <br />
+&#160;&#160;<b>TOKEN_ELLIPSIS</b>
 <br />
  }</td></tr>
 <tr class="separator:af22694fe233b65a2d2dd4a2be973fba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -315,7 +317,7 @@ Functions</h2></td></tr>
 <p>Rewind the scanner to a previous state. </p>
 <p>Resets the current scanner to the state in 'to'. Used by the compiler to implement comprehensions, which would otherwise not be possible in a single-pass compiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00290">290</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00291">291</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
@@ -338,7 +340,7 @@ Functions</h2></td></tr>
 <p>Retreive a copy of the current scanner state. </p>
 <p>Used with <a class="el" href="scanner_8h.html#ada2c7d1003b2ef5767251d784692d74c" title="Rewind the scanner to a previous state.">krk_rewindScanner()</a> to implement rescanning for comprehensions. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00286">286</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00287">287</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>
@@ -371,7 +373,7 @@ Functions</h2></td></tr>
 <p>Push a token back to the scanner to be reprocessed. </p>
 <p>Pushes a previously-scanned token back to the scanner. Used to implement small backtracking operations at the end of block constructs like 'if' and 'try'. </p>
 
-<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00278">278</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="scanner_8c_source.html#l00279">279</a> of file <a class="el" href="scanner_8c_source.html">scanner.c</a>.</p>
 
 </div>
 </div>

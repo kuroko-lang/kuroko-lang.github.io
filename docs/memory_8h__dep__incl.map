@@ -1,7 +1,7 @@
 <map id="src/kuroko/memory.h" name="src/kuroko/memory.h">
 <area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="1593,5,1751,32"/>
 <area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,162,109,189"/>
-<area shape="rect" id="node3" href="$chunk_8c_source.html" title=" " alt="" coords="2639,80,2734,107"/>
+<area shape="rect" id="node3" href="$chunk_8c_source.html" title=" " alt="" coords="2677,80,2771,107"/>
 <area shape="rect" id="node4" href="$compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="133,162,245,189"/>
 <area shape="rect" id="node5" href="$exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="270,162,397,189"/>
 <area shape="rect" id="node6" href="$kuroko_8c_source.html" title=" " alt="" coords="421,162,520,189"/>
@@ -18,29 +18,30 @@
 <area shape="rect" id="node17" href="$obj__slice_8c_source.html" title=" " alt="" coords="1941,162,2054,189"/>
 <area shape="rect" id="node18" href="$obj__str_8c_source.html" title=" " alt="" coords="2079,162,2177,189"/>
 <area shape="rect" id="node19" href="$obj__tuple_8c_source.html" title=" " alt="" coords="2202,162,2318,189"/>
-<area shape="rect" id="node20" href="$object_8c_source.html" title=" " alt="" coords="2759,80,2855,107"/>
+<area shape="rect" id="node20" href="$object_8c_source.html" title=" " alt="" coords="2796,80,2892,107"/>
 <area shape="rect" id="node21" href="$table_8c_source.html" title=" " alt="" coords="2342,162,2431,189"/>
 <area shape="rect" id="node22" href="$value_8c_source.html" title=" " alt="" coords="2455,162,2547,189"/>
 <area shape="rect" id="node23" href="$vm_8c_source.html" title=" " alt="" coords="2572,162,2649,189"/>
-<area shape="rect" id="node24" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="2439,80,2564,107"/>
-<area shape="rect" id="node35" href="$module__fileio_8c_source.html" title=" " alt="" coords="5720,155,5875,196"/>
-<area shape="rect" id="node25" href="$debug_8c_source.html" title=" " alt="" coords="4940,162,5036,189"/>
-<area shape="rect" id="node26" href="$obj__long_8c.html" title="Big ints, implemented through my own makeshift thing." alt="" coords="5061,162,5171,189"/>
-<area shape="rect" id="node27" href="$obj__typing_8c_source.html" title=" " alt="" coords="5195,162,5319,189"/>
-<area shape="rect" id="node28" href="$parseargs_8c_source.html" title=" " alt="" coords="5344,162,5464,189"/>
-<area shape="rect" id="node29" href="$sys_8c_source.html" title=" " alt="" coords="5489,162,5567,189"/>
-<area shape="rect" id="node30" href="$threads_8c_source.html" title=" " alt="" coords="5591,162,5697,189"/>
-<area shape="rect" id="node31" href="$args_8c.html" title="Embedding demo showing how to use krk_parseArgs." alt="" coords="2674,162,2771,189"/>
-<area shape="rect" id="node32" href="$compile_8c_source.html" title=" " alt="" coords="2795,162,2917,189"/>
-<area shape="rect" id="node33" href="$sandbox_8c_source.html" title=" " alt="" coords="2941,162,3065,189"/>
-<area shape="rect" id="node34" href="$module__dis_8c_source.html" title=" " alt="" coords="3089,155,3244,196"/>
-<area shape="rect" id="node36" href="$module__gc_8c_source.html" title=" " alt="" coords="3268,162,3455,189"/>
-<area shape="rect" id="node37" href="$module__math_8c_source.html" title=" " alt="" coords="3479,155,3633,196"/>
-<area shape="rect" id="node38" href="$module__os_8c_source.html" title=" " alt="" coords="3657,162,3844,189"/>
-<area shape="rect" id="node39" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="3868,155,4023,196"/>
-<area shape="rect" id="node40" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4047,155,4201,196"/>
-<area shape="rect" id="node41" href="$module__stat_8c_source.html" title=" " alt="" coords="4225,155,4380,196"/>
-<area shape="rect" id="node42" href="$module__time_8c_source.html" title=" " alt="" coords="4404,155,4559,196"/>
-<area shape="rect" id="node43" href="$module__timeit_8c_source.html" title=" " alt="" coords="4583,155,4737,196"/>
-<area shape="rect" id="node44" href="$module__wcwidth_8c_source.html" title=" " alt="" coords="4761,155,4916,196"/>
+<area shape="rect" id="node24" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="2476,80,2601,107"/>
+<area shape="rect" id="node36" href="$module__fileio_8c_source.html" title=" " alt="" coords="5899,155,6053,196"/>
+<area shape="rect" id="node25" href="$debug_8c_source.html" title=" " alt="" coords="5495,162,5591,189"/>
+<area shape="rect" id="node26" href="$obj__long_8c.html" title="Big ints, implemented through my own makeshift thing." alt="" coords="5615,162,5726,189"/>
+<area shape="rect" id="node27" href="$obj__typing_8c_source.html" title=" " alt="" coords="5750,162,5874,189"/>
+<area shape="rect" id="node28" href="$parseargs_8c_source.html" title=" " alt="" coords="2673,162,2793,189"/>
+<area shape="rect" id="node29" href="$sys_8c_source.html" title=" " alt="" coords="2818,162,2897,189"/>
+<area shape="rect" id="node30" href="$threads_8c_source.html" title=" " alt="" coords="2921,162,3026,189"/>
+<area shape="rect" id="node31" href="$args_8c.html" title="Embedding demo showing how to use krk_parseArgs." alt="" coords="3050,162,3147,189"/>
+<area shape="rect" id="node32" href="$compile_8c_source.html" title=" " alt="" coords="3171,162,3293,189"/>
+<area shape="rect" id="node33" href="$sandbox_8c_source.html" title=" " alt="" coords="3317,162,3441,189"/>
+<area shape="rect" id="node34" href="$module____pheap_8c.html" title="Pairing heap." alt="" coords="3465,155,3620,196"/>
+<area shape="rect" id="node35" href="$module__dis_8c_source.html" title=" " alt="" coords="3644,155,3799,196"/>
+<area shape="rect" id="node37" href="$module__gc_8c_source.html" title=" " alt="" coords="3823,162,4009,189"/>
+<area shape="rect" id="node38" href="$module__math_8c_source.html" title=" " alt="" coords="4033,155,4188,196"/>
+<area shape="rect" id="node39" href="$module__os_8c_source.html" title=" " alt="" coords="4212,162,4399,189"/>
+<area shape="rect" id="node40" href="$module__random_8c.html" title="Functions for generating pseudo&#45;random numbers." alt="" coords="4423,155,4577,196"/>
+<area shape="rect" id="node41" href="$module__socket_8c.html" title="Lightweight, low&#45;level wrapper around the standard Berkley sockets API." alt="" coords="4601,155,4756,196"/>
+<area shape="rect" id="node42" href="$module__stat_8c_source.html" title=" " alt="" coords="4780,155,4935,196"/>
+<area shape="rect" id="node43" href="$module__time_8c_source.html" title=" " alt="" coords="4959,155,5113,196"/>
+<area shape="rect" id="node44" href="$module__timeit_8c_source.html" title=" " alt="" coords="5137,155,5292,196"/>
+<area shape="rect" id="node45" href="$module__wcwidth_8c_source.html" title=" " alt="" coords="5316,155,5471,196"/>
 </map>

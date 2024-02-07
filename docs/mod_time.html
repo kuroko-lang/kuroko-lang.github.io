@@ -103,11 +103,70 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>Provides timekeeping functions.</p>
 <p><a class="anchor" id="md_docs_mod_time"></a></p>
-<h2><a class="anchor" id="autotoc_md70"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
+Classes</h2>
+<p><a class="anchor" id="struct_time"></a> <h3 class="memtitle classDef"><span class="permalink"><a href="#struct_time">_</a></span><i>class</i> <b>struct_time</b>(object)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Time value returned by various functions.</p>
+<p><a class="anchor" id="struct_time___init__"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time___init__">_</a></span>let <i>x</i> = <b>struct_time</b>(<i>iterable: tuple</i>)</h4><div class="memitem"><div class="memproto">struct_time.<b>__init__</b>(<i>iterable: tuple</i>)</div><div class="memdoc"> </p>
+<p>Create a <a class="el" href="mod_time.html#struct_time">struct_time</a> from a 9-tuple of <a class="el" href="mod_builtins.html#int">int</a> values. The format of <code>iterable</code> is <code>(tm_year,tm_mon,tm_mday,tm_hour,tm_min,tm_sec,tm_wday,tm_yday,tm_isdst)</code>.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_hour"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_hour">_</a></span><i>property</i> struct_time.<b>tm_hour</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Clock hour, [0, 23]</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_isdst"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_isdst">_</a></span><i>property</i> struct_time.<b>tm_isdst</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>0, 1, -1 for unknown</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_mday"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_mday">_</a></span><i>property</i> struct_time.<b>tm_mday</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Day of the month, [1, 31]</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_min"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_min">_</a></span><i>property</i> struct_time.<b>tm_min</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Clock minute, [0, 59]</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_mon"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_mon">_</a></span><i>property</i> struct_time.<b>tm_mon</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Month, [1, 12]</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_sec"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_sec">_</a></span><i>property</i> struct_time.<b>tm_sec</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Clock seconds, [0, 61] (maybe, due to leap seconds, depends on platform)</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_wday"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_wday">_</a></span><i>property</i> struct_time.<b>tm_wday</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Day of week, [0, 6], 0 is Monday.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_yday"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_yday">_</a></span><i>property</i> struct_time.<b>tm_yday</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Day of year [1, 366]</p>
+<p> </div></div></p>
+<p><a class="anchor" id="struct_time_tm_year"></a> <h4 class="memtitle methodDef"><span class="permalink"><a href="#struct_time_tm_year">_</a></span><i>property</i> struct_time.<b>tm_year</b></h4><div class="memitem"><div class="memdoc"> </p>
+<p>Calendar year</p>
+<p> </div></div></p>
+<p> </div></div></p>
+<h2><a class="anchor" id="autotoc_md75"></a>
 Functions</h2>
+<p><a class="anchor" id="asctime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#asctime">_</a></span><b>asctime</b>(<i>t=time.localtime()</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert time to string.</p>
+<p>If <code>t</code> is not provided, the current <a class="el" href="mod_time.html#localtime">localtime</a> is used.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="ctime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#ctime">_</a></span><b>ctime</b>(<i>secs=time.time()</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert seconds since epoch to string.</p>
+<p>If <code>secs</code> is not provided, the current <a class="el" href="mod_time.html#time">time</a> is used.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="gmtime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#gmtime">_</a></span><b>gmtime</b>(<i>secs=time.time()</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert seconds since epoch to UTC time.</p>
+<p>If <code>secs</code> is not provided, the current <a class="el" href="mod_time.html#time">time</a> is used.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="localtime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#localtime">_</a></span><b>localtime</b>(<i>seconds=time.time()</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert seconds since epoch to local time.</p>
+<p>If <code>seconds</code> is not provided, the current <a class="el" href="mod_time.html#time">time</a> is used.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="mktime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#mktime">_</a></span><b>mktime</b>(<i>t</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Convert from local time to seconds since epoch.</p>
+<p>For compatibility with <a class="el" href="mod_time.html#time">time</a> a <a class="el" href="mod_builtins.html#float">float</a> is returned.</p>
+<p> </div></div></p>
 <p><a class="anchor" id="sleep"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#sleep">_</a></span><b>sleep</b>(<i>secs</i>)</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Pause execution of the current thread.</p>
 <p>Uses the system <code>usleep()</code> function to sleep for <code>secs</code> seconds, which may be a <a class="el" href="mod_builtins.html#float">float</a> or <a class="el" href="mod_builtins.html#int">int</a>. The available precision is platform-dependent.</p>
+<p> </div></div></p>
+<p><a class="anchor" id="strftime"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#strftime">_</a></span><b>strftime</b>(<i>format,t=time.localtime()</i>)</h3><div class="memitem"><div class="memdoc"> </p>
+<p>Format time string with system function.</p>
+<p>Uses the system <code>strftime</code> C function to convert a <a class="el" href="mod_time.html#struct_time">struct_time</a> to a string. If <code>t</code> is not provided, the current <a class="el" href="mod_time.html#localtime">localtime</a> is used.</p>
 <p> </div></div></p>
 <p><a class="anchor" id="time"></a> <h3 class="memtitle functionDef"><span class="permalink"><a href="#time">_</a></span><b>time</b>()</h3><div class="memitem"><div class="memdoc"> </p>
 <p>Return the elapsed seconds since the system epoch.</p>
