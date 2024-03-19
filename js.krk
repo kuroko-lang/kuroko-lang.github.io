@@ -1,4 +1,0 @@
-# Fake js to test stuff
-
-def exec(s):
-    print(">>> Called exec(" + repr(s) + ")")
