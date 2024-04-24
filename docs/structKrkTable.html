@@ -139,10 +139,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">krk_tableDeleteExact</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, <a class="el" href="structKrkValue.html">KrkValue</a> key)</td></tr>
 <tr class="memdesc:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key from a hash table, with identity lookup.  <a href="structKrkTable.html#a179aecaca4e8fc7e7a7e1c7445196d97">More...</a><br /></td></tr>
 <tr class="separator:a179aecaca4e8fc7e7a7e1c7445196d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca9e99099ff2f9dddcbae02583d3da56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">krk_findEntry</a> (<a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *entries, size_t capacity, <a class="el" href="structKrkValue.html">KrkValue</a> key)</td></tr>
-<tr class="memdesc:aca9e99099ff2f9dddcbae02583d3da56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal table scan function.  <a href="structKrkTable.html#aca9e99099ff2f9dddcbae02583d3da56">More...</a><br /></td></tr>
-<tr class="separator:aca9e99099ff2f9dddcbae02583d3da56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b8118a428aea18eb3478f8235a4d2ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, size_t capacity)</td></tr>
+<tr class="memitem:a2b8118a428aea18eb3478f8235a4d2ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">krk_tableAdjustCapacity</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, size_t <a class="el" href="structKrkTable.html#ac4dc768cdc1764b9b749b5f2916bcb65">capacity</a>)</td></tr>
 <tr class="memdesc:a2b8118a428aea18eb3478f8235a4d2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preset the size of a table.  <a href="structKrkTable.html#a2b8118a428aea18eb3478f8235a4d2ca">More...</a><br /></td></tr>
 <tr class="separator:a2b8118a428aea18eb3478f8235a4d2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad54dcec99e536711a3827a1eefe2799b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#ad54dcec99e536711a3827a1eefe2799b">krk_tableSetIfExists</a> (<a class="el" href="structKrkTable.html">KrkTable</a> *table, <a class="el" href="structKrkValue.html">KrkValue</a> key, <a class="el" href="structKrkValue.html">KrkValue</a> value)</td></tr>
@@ -163,20 +160,21 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ac46853c8b38e550204478fc435017843"><td class="memItemLeft" align="right" valign="top"><a id="ac46853c8b38e550204478fc435017843"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
+<tr class="memitem:ac46853c8b38e550204478fc435017843"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#ac46853c8b38e550204478fc435017843">count</a></td></tr>
 <tr class="separator:ac46853c8b38e550204478fc435017843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4dc768cdc1764b9b749b5f2916bcb65"><td class="memItemLeft" align="right" valign="top"><a id="ac4dc768cdc1764b9b749b5f2916bcb65"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></tr>
+<tr class="memitem:ac4dc768cdc1764b9b749b5f2916bcb65"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#ac4dc768cdc1764b9b749b5f2916bcb65">capacity</a></td></tr>
 <tr class="separator:ac4dc768cdc1764b9b749b5f2916bcb65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3557a9587cdd75c0bde29915e269264c"><td class="memItemLeft" align="right" valign="top"><a id="a3557a9587cdd75c0bde29915e269264c"></a>
-<a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>entries</b></td></tr>
+<tr class="memitem:af125396790d5d58bbda8fd84c98a85fa"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#af125396790d5d58bbda8fd84c98a85fa">used</a></td></tr>
+<tr class="separator:af125396790d5d58bbda8fd84c98a85fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3557a9587cdd75c0bde29915e269264c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#a3557a9587cdd75c0bde29915e269264c">entries</a></td></tr>
 <tr class="separator:a3557a9587cdd75c0bde29915e269264c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae117c6c9a3a55d62157e5ed0247677b2"><td class="memItemLeft" align="right" valign="top">ssize_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkTable.html#ae117c6c9a3a55d62157e5ed0247677b2">indexes</a></td></tr>
+<tr class="separator:ae117c6c9a3a55d62157e5ed0247677b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple hash table of arbitrary keys to values. </p>
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00027">27</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00028">28</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2f761feab82c4a97d29bf2ff4b4a1671"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f761feab82c4a97d29bf2ff4b4a1671">&#9670;&nbsp;</a></span>krk_attachNamedObject()</h2>
@@ -228,7 +226,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00847">847</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00808">808</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -281,7 +279,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00833">833</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00794">794</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -329,7 +327,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the object representing the attached function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00193">193</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8c_source.html#l00155">155</a> of file <a class="el" href="vm_8c_source.html">vm.c</a>.</p>
 
 </div>
 </div>
@@ -377,55 +375,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the property object created. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l01229">1229</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
-
-</div>
-</div>
-<a id="aca9e99099ff2f9dddcbae02583d3da56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca9e99099ff2f9dddcbae02583d3da56">&#9670;&nbsp;</a></span>krk_findEntry()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> * krk_findEntry </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a> *&#160;</td>
-          <td class="paramname"><em>entries</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>capacity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Internal table scan function. </p>
-<p>Scans through the the entry array 'entries' to find the appropriate entry for 'key', return a pointer to the entry, which may be or may not have an associated pair.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entries</td><td>Table entry array to scan. </td></tr>
-    <tr><td class="paramname">capacity</td><td>Size of the table entry array, in entries. </td></tr>
-    <tr><td class="paramname">key</td><td>Key to locate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the entry for 'key'. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00066">66</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builtins_8c_source.html#l01227">1227</a> of file <a class="el" href="builtins_8c_source.html">builtins.c</a>.</p>
 
 </div>
 </div>
@@ -454,7 +404,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00020">20</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00041">41</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -483,7 +433,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00014">14</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00033">33</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -523,7 +473,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00169">169</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00202">202</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -563,7 +513,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00116">116</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00115">115</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -604,7 +554,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the value was found and deleted, 0 if it was not present. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00208">208</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00238">238</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -645,7 +595,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the value was found and deleted, 0 if it was not present. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00220">220</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00249">249</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -700,7 +650,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the string was found, the string object representation, else NULL. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00232">232</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00260">260</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -748,7 +698,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was not found, 1 if it was. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00178">178</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00211">211</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -796,7 +746,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was not found, 1 if it was. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00189">189</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00219">219</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -844,7 +794,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was already present and has been overwritten, 1 if the key is new to the table. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00145">145</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00148">148</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -893,7 +843,93 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if the key was not present, 1 if it was found and updated. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00159">159</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00194">194</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="ac4dc768cdc1764b9b749b5f2916bcb65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4dc768cdc1764b9b749b5f2916bcb65">&#9670;&nbsp;</a></span>capacity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t KrkTable::capacity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Size (in items) of each of the entries/indexes arrays </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00030">30</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="ac46853c8b38e550204478fc435017843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46853c8b38e550204478fc435017843">&#9670;&nbsp;</a></span>count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t KrkTable::count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of actual items in the dict. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00029">29</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="a3557a9587cdd75c0bde29915e269264c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3557a9587cdd75c0bde29915e269264c">&#9670;&nbsp;</a></span>entries</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structKrkTableEntry.html">KrkTableEntry</a>* KrkTable::entries</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Key-value pairs, in insertion order (with KWARGS_VAL(0) gaps) </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00032">32</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="ae117c6c9a3a55d62157e5ed0247677b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae117c6c9a3a55d62157e5ed0247677b2">&#9670;&nbsp;</a></span>indexes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t* KrkTable::indexes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Actual hash map: indexes into the key-value pairs. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00033">33</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="af125396790d5d58bbda8fd84c98a85fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af125396790d5d58bbda8fd84c98a85fa">&#9670;&nbsp;</a></span>used</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t KrkTable::used</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Next insertion index in the entries array </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00031">31</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 
 </div>
 </div>
@@ -903,7 +939,7 @@ do not have full control over the attribute names you are trying to set.</dd></d
 </ul>
 </div><!-- contents -->
       <footer class="container text-center mb-3">
-        <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
+        <p class="mb-0">Copyright 2020-2024 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.9.1</p>
       </footer>
     </main>

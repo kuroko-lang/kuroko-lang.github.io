@@ -123,16 +123,13 @@ Data Fields</h2></td></tr>
 <tr class="separator:a730fceb5b7190d7473853b37105d305e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc7df5828e68e5ff78b8872cd67f6ea2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCallFrame.html#acc7df5828e68e5ff78b8872cd67f6ea2">globalsOwner</a></td></tr>
 <tr class="separator:acc7df5828e68e5ff78b8872cd67f6ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa03f82132d8ff47a91a3e1e377560ddb"><td class="memItemLeft" align="right" valign="top"><a id="aa03f82132d8ff47a91a3e1e377560ddb"></a>
-struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b></td></tr>
-<tr class="separator:aa03f82132d8ff47a91a3e1e377560ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a managed call state in a VM thread. </p>
 <p>For every managed function call, including the top-level module, a call frame is added to the stack to track the running function, the current opcode instruction, the offset into the stack, and the valid globals table.</p>
 <p>Call frames are used directly by the VM as the source of opcodes and operands during execution, and are used by the exception handler to roll back execution to the appropriate environment. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00045">45</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00044">44</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="ace740807c5d26f838b641c0e3a8d184f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace740807c5d26f838b641c0e3a8d184f">&#9670;&nbsp;</a></span>closure</h2>
@@ -147,7 +144,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Pointer to the function object containing the code object for this frame </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00046">46</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00045">45</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +161,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Pointer to the attribute table containing valud global vairables for this call </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00050">50</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00049">49</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -181,7 +178,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Owner of the current globals context, to give to new closures. </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00051">51</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00050">50</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -198,7 +195,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Instruction pointer within the code object's bytecode data </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00047">47</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00046">46</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +212,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Offset into the stack at which stackTop will be reset upon return </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00049">49</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00048">48</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +229,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </div><div class="memdoc">
 <p>Offset into the stack at which this function call's arguments begin </p>
 
-<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00048">48</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vm_8h_source.html#l00047">47</a> of file <a class="el" href="vm_8h_source.html">vm.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +238,7 @@ struct timespec&#160;</td><td class="memItemRight" valign="bottom"><b>in_time</b
 </ul>
 </div><!-- contents -->
       <footer class="container text-center mb-3">
-        <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
+        <p class="mb-0">Copyright 2020-2024 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.9.1</p>
       </footer>
     </main>

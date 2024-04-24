@@ -1,16 +1,17 @@
 <map id="src/kuroko/memory.h" name="src/kuroko/memory.h">
-<area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="323,5,480,32"/>
-<area shape="rect" id="node2" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="267,304,344,331"/>
-<area shape="rect" id="node8" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="213,80,288,107"/>
-<area shape="rect" id="node13" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="368,155,435,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="333,379,403,405"/>
-<area shape="rect" id="node4" title=" " alt="" coords="31,379,105,405"/>
-<area shape="rect" id="node5" title=" " alt="" coords="427,379,498,405"/>
-<area shape="rect" id="node6" title=" " alt="" coords="130,379,217,405"/>
-<area shape="rect" id="node7" title=" " alt="" coords="241,379,308,405"/>
-<area shape="rect" id="node9" title=" " alt="" coords="5,304,72,331"/>
-<area shape="rect" id="node10" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="113,229,183,256"/>
-<area shape="rect" id="node12" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="111,155,185,181"/>
-<area shape="rect" id="node14" title=" " alt="" coords="209,155,293,181"/>
-<area shape="rect" id="node11" title=" " alt="" coords="113,304,183,331"/>
+<area shape="rect" id="node1" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="277,5,434,32"/>
+<area shape="rect" id="node2" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="254,304,332,331"/>
+<area shape="rect" id="node8" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="193,80,268,107"/>
+<area shape="rect" id="node13" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="393,155,460,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="243,379,314,405"/>
+<area shape="rect" id="node4" title=" " alt="" coords="338,379,413,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="438,379,508,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="40,379,127,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="152,379,218,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="9,304,76,331"/>
+<area shape="rect" id="node10" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="146,229,216,256"/>
+<area shape="rect" id="node12" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="194,155,267,181"/>
+<area shape="rect" id="node15" title=" " alt="" coords="34,155,118,181"/>
+<area shape="rect" id="node11" title=" " alt="" coords="146,304,216,331"/>
+<area shape="rect" id="node14" title=" " alt="" coords="494,229,590,256"/>
 </map>

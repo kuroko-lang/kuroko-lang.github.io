@@ -180,14 +180,32 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structKrkChunk.html#a8c7342da1d6f87b9e7d100126d9c0026">   75</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="structKrkChunk.html#a8c7342da1d6f87b9e7d100126d9c0026">krk_lineNumber</a>(<a class="code" href="structKrkChunk.html">KrkChunk</a> * chunk, <span class="keywordtype">size_t</span> offset) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">size_t</span> line = 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; chunk-&gt;linesCount; ++i) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (chunk-&gt;lines[i].startOffset &gt; offset) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        line = chunk-&gt;lines[i].line;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> line;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">size_t</span> lo = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">size_t</span> hi = chunk-&gt;linesCount;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">while</span> (lo != hi) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">if</span> (hi - lo &lt; 10) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordtype">size_t</span> line = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = lo; i &lt; hi; ++i) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> (chunk-&gt;lines[i].startOffset &gt; offset) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                line = chunk-&gt;lines[i].line;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> line;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">size_t</span> mp = lo + (hi - lo) / 2;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (chunk-&gt;lines[mp].startOffset &gt; offset) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            hi = mp;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            lo = mp;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="ttc" id="achunk_8h_html"><div class="ttname"><a href="chunk_8h.html">chunk.h</a></div><div class="ttdoc">Structures and enums for bytecode chunks.</div></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Functions for dealing with garbage collection and memory allocation.</div></div>
 <div class="ttc" id="astructKrkChunk_html"><div class="ttname"><a href="structKrkChunk.html">KrkChunk</a></div><div class="ttdoc">Opcode chunk of a code object.</div><div class="ttdef"><b>Definition:</b> <a href="chunk_8h_source.html#l00036">chunk.h:36</a></div></div>
@@ -205,11 +223,11 @@ $(function() {
 <div class="ttc" id="astructKrkValueArray_html_af670cc703df0511d53c6f742aacbf3b0"><div class="ttname"><a href="structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0">KrkValueArray::count</a></div><div class="ttdeci">size_t count</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00077">value.h:77</a></div></div>
 <div class="ttc" id="astructKrkValue_html"><div class="ttname"><a href="structKrkValue.html">KrkValue</a></div><div class="ttdoc">Stack reference or primative value.</div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00169">vm.c:169</a></div></div>
-<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00156">vm.c:156</a></div></div>
+<div class="ttc" id="avm_8h_html_a73b6ac1f260ba70761fd2e6d757ec233"><div class="ttname"><a href="vm_8h.html#a73b6ac1f260ba70761fd2e6d757ec233">krk_pop</a></div><div class="ttdeci">KrkValue krk_pop(void)</div><div class="ttdoc">Pop the top of the stack.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00131">vm.c:131</a></div></div>
+<div class="ttc" id="avm_8h_html_acbad085e3268a31810c61b4eba9c5e13"><div class="ttname"><a href="vm_8h.html#acbad085e3268a31810c61b4eba9c5e13">krk_push</a></div><div class="ttdeci">void krk_push(KrkValue value)</div><div class="ttdoc">Push a stack value.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00118">vm.c:118</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
       <footer class="container text-center mb-3">
-        <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
+        <p class="mb-0">Copyright 2020-2024 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.9.1</p>
       </footer>
     </main>

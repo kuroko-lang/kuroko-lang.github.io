@@ -1,8 +1,8 @@
 var searchData=
 [
   ['callgrind_65',['callgrind',['../mod_callgrind.html',1,'']]],
-  ['callgrindfile_66',['callgrindFile',['../structKrkVM.html#a9860a073b74e2e8adaba1e03b227b212',1,'KrkVM']]],
-  ['capacity_67',['capacity',['../structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b',1,'KrkValueArray']]],
+  ['callgrind_2ec_66',['callgrind.c',['../callgrind_8c.html',1,'']]],
+  ['capacity_67',['capacity',['../structKrkTable.html#ac4dc768cdc1764b9b749b5f2916bcb65',1,'KrkTable::capacity()'],['../structKrkValueArray.html#a205e2953ccc34dfb5da424c06d6c836b',1,'KrkValueArray::capacity()']]],
   ['cellclass_68',['CellClass',['../structBaseClasses.html#abe21ee1105b917041ac3ae9cc92f5d55',1,'BaseClasses']]],
   ['chars_69',['chars',['../structKrkString.html#a7373911dddad465c12630008b733c9d2',1,'KrkString']]],
   ['chunk_70',['chunk',['../structKrkCodeObject.html#a2a31d0b0262fe43a11e33d5c619f0b43',1,'KrkCodeObject']]],
@@ -37,7 +37,7 @@ var searchData=
   ['continuecount_99',['continueCount',['../structCompiler.html#a016e498be71ac3dadd9ae8e2a43f5d09',1,'Compiler']]],
   ['continues_100',['continues',['../structCompiler.html#a9eba383e6cf4f215506fba215cdab17f',1,'Compiler']]],
   ['continuespace_101',['continueSpace',['../structCompiler.html#a374edd89b4479312529d68a686066c53',1,'Compiler']]],
-  ['count_102',['count',['../structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0',1,'KrkValueArray::count()'],['../structChunkRecorder.html#a6c812dd69870063d9b9b220969f13f09',1,'ChunkRecorder::count()']]],
+  ['count_102',['count',['../structKrkValueArray.html#af670cc703df0511d53c6f742aacbf3b0',1,'KrkValueArray::count()'],['../structKrkTable.html#ac46853c8b38e550204478fc435017843',1,'KrkTable::count()'],['../structChunkRecorder.html#a6c812dd69870063d9b9b220969f13f09',1,'ChunkRecorder::count()']]],
   ['current_103',['current',['../structGlobalState.html#a9a7f16c8968bb60a831798676baf74a7',1,'GlobalState::current()'],['../structParser.html#a563fae856adc8eab7cab040f9a0d393c',1,'Parser::current()']]],
   ['currentclass_104',['currentClass',['../structGlobalState.html#a637bf69d3eed0a13aa06f4b4e7981f54',1,'GlobalState']]],
   ['currentexception_105',['currentException',['../structKrkThreadState.html#a3e1c5c6a26f58def1f898dfb168dfa13',1,'KrkThreadState']]]

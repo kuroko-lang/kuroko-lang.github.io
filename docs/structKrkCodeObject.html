@@ -202,6 +202,22 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <a class="el" href="structKrkExpressionsMap.html">KrkExpressionsMap</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a7e48fc920748cd6a91ff4aa89e9676a7">expressions</a></td></tr>
 <tr class="memdesc:a7e48fc920748cd6a91ff4aa89e9676a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping of bytecode offsets to expression spans for debugging. <br /></td></tr>
 <tr class="separator:a7e48fc920748cd6a91ff4aa89e9676a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a832f9104b1e33b410412d99d411c5"><td class="memItemLeft" align="right" valign="top"><a id="a40a832f9104b1e33b410412d99d411c5"></a>
+<a class="el" href="structKrkValue.html">KrkValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a40a832f9104b1e33b410412d99d411c5">jumpTargets</a></td></tr>
+<tr class="memdesc:a40a832f9104b1e33b410412d99d411c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possibly a set of jump targets... <br /></td></tr>
+<tr class="separator:a40a832f9104b1e33b410412d99d411c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66015dcb63c74002405cd4ee4e474061"><td class="memItemLeft" align="right" valign="top"><a id="a66015dcb63c74002405cd4ee4e474061"></a>
+<a class="el" href="structKrkOverlongJump.html">KrkOverlongJump</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a66015dcb63c74002405cd4ee4e474061">overlongJumps</a></td></tr>
+<tr class="memdesc:a66015dcb63c74002405cd4ee4e474061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pessimal overlong jump container. <br /></td></tr>
+<tr class="separator:a66015dcb63c74002405cd4ee4e474061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfe6c10c0e52ccce5e5d251149e416c"><td class="memItemLeft" align="right" valign="top"><a id="afdfe6c10c0e52ccce5e5d251149e416c"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#afdfe6c10c0e52ccce5e5d251149e416c">overlongJumpsCapacity</a></td></tr>
+<tr class="memdesc:afdfe6c10c0e52ccce5e5d251149e416c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of possible entries in pessimal jump table. <br /></td></tr>
+<tr class="separator:afdfe6c10c0e52ccce5e5d251149e416c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c4fc58f5909023a097507d326d670f"><td class="memItemLeft" align="right" valign="top"><a id="a22c4fc58f5909023a097507d326d670f"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkCodeObject.html#a22c4fc58f5909023a097507d326d670f">overlongJumpsCount</a></td></tr>
+<tr class="memdesc:a22c4fc58f5909023a097507d326d670f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in pessimal jump table. <br /></td></tr>
+<tr class="separator:a22c4fc58f5909023a097507d326d670f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structKrkObj"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structKrkObj')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="structKrkObj.html">KrkObj</a></td></tr>
 <tr class="memitem:a848914a5a5311144820f2a793bea644a inherit pub_attribs_structKrkObj"><td class="memItemLeft" align="right" valign="top"><a id="a848914a5a5311144820f2a793bea644a"></a>
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKrkObj.html#a848914a5a5311144820f2a793bea644a">type</a></td></tr>
@@ -231,7 +247,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Code object. </p>
 <p>Contains the static data associated with a chunk of bytecode. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00157">157</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8h_source.html#l00163">163</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a48feb151a4cf3d7f2d6b82af80ddecc6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48feb151a4cf3d7f2d6b82af80ddecc6">&#9670;&nbsp;</a></span>krk_debug_addExpression()</h2>
@@ -290,7 +306,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00639">639</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00705">705</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -359,7 +375,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Non-zero if a mapping was found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00660">660</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug_8c_source.html#l00726">726</a> of file <a class="el" href="debug_8c_source.html">debug.c</a>.</p>
 
 </div>
 </div>
@@ -382,7 +398,7 @@ Protected Attributes</h2></td></tr>
 <p>Create a new, uninitialized code object. </p>
 <p>The code object will have an empty bytecode chunk and no assigned names or docstrings. This is intended only to be used by a compiler directly. </p>
 
-<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00262">262</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="object_8c_source.html#l00264">264</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>
@@ -392,7 +408,7 @@ Protected Attributes</h2></td></tr>
 </ul>
 </div><!-- contents -->
       <footer class="container text-center mb-3">
-        <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
+        <p class="mb-0">Copyright 2020-2024 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.9.1</p>
       </footer>
     </main>

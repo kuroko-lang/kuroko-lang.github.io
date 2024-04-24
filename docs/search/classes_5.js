@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['file_589',['File',['../structFile.html',1,'']]],
-  ['functionheader_590',['FunctionHeader',['../structFunctionHeader.html',1,'']]]
+  ['file_606',['File',['../structFile.html',1,'']]],
+  ['framemetadata_607',['FrameMetadata',['../structFrameMetadata.html',1,'']]],
+  ['functionheader_608',['FunctionHeader',['../structFunctionHeader.html',1,'']]]
 ];

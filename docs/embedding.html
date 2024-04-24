@@ -116,11 +116,11 @@ Getting Started</h2>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="akuroko_8h_html"><div class="ttname"><a href="kuroko_8h.html">kuroko.h</a></div><div class="ttdoc">Top-level header with configuration macros.</div></div>
-<div class="ttc" id="astructKrkVM_html_a3dced9904f6a128032a729078ba16555"><div class="ttname"><a href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">KrkVM::krk_freeVM</a></div><div class="ttdeci">void krk_freeVM(void)</div><div class="ttdoc">Release resources from the VM.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00992">vm.c:992</a></div></div>
-<div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00907">vm.c:907</a></div></div>
+<div class="ttc" id="astructKrkVM_html_a3dced9904f6a128032a729078ba16555"><div class="ttname"><a href="structKrkVM.html#a3dced9904f6a128032a729078ba16555">KrkVM::krk_freeVM</a></div><div class="ttdeci">void krk_freeVM(void)</div><div class="ttdoc">Release resources from the VM.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00953">vm.c:953</a></div></div>
+<div class="ttc" id="astructKrkVM_html_aad803e3fc1d5b7e2ea409cf5046bb5e8"><div class="ttname"><a href="structKrkVM.html#aad803e3fc1d5b7e2ea409cf5046bb5e8">KrkVM::krk_initVM</a></div><div class="ttdeci">void krk_initVM(int flags)</div><div class="ttdoc">Initialize the VM at program startup.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l00868">vm.c:868</a></div></div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div><div class="ttdoc">Core API for the bytecode virtual machine.</div></div>
-<div class="ttc" id="avm_8h_html_a94ce2dd3dce460af69a0f55ca431fa29"><div class="ttname"><a href="vm_8h.html#a94ce2dd3dce460af69a0f55ca431fa29">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, const char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03231">vm.c:3231</a></div></div>
-<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03221">vm.c:3221</a></div></div>
+<div class="ttc" id="avm_8h_html_a94ce2dd3dce460af69a0f55ca431fa29"><div class="ttname"><a href="vm_8h.html#a94ce2dd3dce460af69a0f55ca431fa29">krk_interpret</a></div><div class="ttdeci">KrkValue krk_interpret(const char *src, const char *fromFile)</div><div class="ttdoc">Compile and execute a source code input.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03219">vm.c:3219</a></div></div>
+<div class="ttc" id="avm_8h_html_ad067a4963efa7c2e48afd53fe2269c72"><div class="ttname"><a href="vm_8h.html#ad067a4963efa7c2e48afd53fe2269c72">krk_startModule</a></div><div class="ttdeci">KrkInstance * krk_startModule(const char *name)</div><div class="ttdoc">Set up a new module object in the current thread.</div><div class="ttdef"><b>Definition:</b> <a href="vm_8c_source.html#l03209">vm.c:3209</a></div></div>
 </div><!-- fragment --><p>Let's start by looking at the example code above.</p>
 <h3><a class="anchor" id="autotoc_md2"></a>
 Headers</h3>
@@ -142,8 +142,6 @@ Initializing the VM</h3>
  Prints a message each time the garbage collector is run.</li>
 <li><code>KRK_GLOBAL_ENABLE_STRESS_GC</code> <br  />
  Causes the garbage collector to be called on every allocation (from the main thread).</li>
-<li><code>KRK_GLOBAL_CALLGRIND</code> <br  />
- Generate tracing data. <code>vm.callgrindFile</code> must be set to a writable stream to store the intermediate data collected by the VM.</li>
 <li><code>KRK_GLOBAL_CLEAN_OUTPUT</code> <br  />
  Disables automatic printing of uncaught exception tracebacks. Use <code><a class="el" href="exceptions_8c.html#aba179e01c3f823141190d3e5d0a1aa46" title="If there is an active exception, print a traceback to stderr.">krk_dumpTraceback()</a></code> to print a traceback from the exception in the current thread to <code>stderr</code>.</li>
 </ul>
@@ -158,7 +156,7 @@ Calling the Interpreter</h3>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
       <footer class="container text-center mb-3">
-        <p class="mb-0">Copyright 2020-2022 <a href="https://github.com/klange">K. Lange</a></p>
+        <p class="mb-0">Copyright 2020-2024 <a href="https://github.com/klange">K. Lange</a></p>
         <p class="mb-0">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" style="height: 20px;" src="doxygen.png" alt="doxygen"/></a> 1.9.1</p>
       </footer>
     </main>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wcwidth_1153',['wcwidth',['../mod_wcwidth.html',1,'']]]
+  ['wcwidth_1187',['wcwidth',['../mod_wcwidth.html',1,'']]]
 ];

@@ -1,13 +1,22 @@
 var searchData=
 [
-  ['threadclass_1019',['ThreadClass',['../structBaseClasses.html#afb69498f488e06fc8e104e15975e5917',1,'BaseClasses']]],
-  ['threaderror_1020',['ThreadError',['../structExceptions.html#a0ff306dddf632ffbc5492c266ece07ac',1,'Exceptions']]],
-  ['threads_1021',['threads',['../structKrkVM.html#a3d11d3f68fdef079c201f447eb7df4a8',1,'KrkVM']]],
-  ['token_1022',['token',['../structLoopExit.html#a156184a66886339938e595347c7d95b8',1,'LoopExit']]],
-  ['totalarguments_1023',['totalArguments',['../structKrkCodeObject.html#aff36cf4215f639cbdd6b28ebb956291a',1,'KrkCodeObject']]],
-  ['tupleclass_1024',['tupleClass',['../structBaseClasses.html#a835a48d30cb8696086de6e96d5dabfa3',1,'BaseClasses']]],
-  ['tupleiteratorclass_1025',['tupleiteratorClass',['../structBaseClasses.html#a9f82e91110a110a6133c82f7303d9f13',1,'BaseClasses']]],
-  ['type_1026',['type',['../structCompiler.html#a216c01909473b506ea321815e378ee6f',1,'Compiler::type()'],['../structKrkObj.html#a848914a5a5311144820f2a793bea644a',1,'KrkObj::type()']]],
-  ['typeclass_1027',['typeClass',['../structBaseClasses.html#a6b9bac910c9a0b246809784df2201546',1,'BaseClasses']]],
-  ['typeerror_1028',['typeError',['../structExceptions.html#a10b8b8c7b0ae879c754374941e97d05b',1,'Exceptions']]]
+  ['scanner_1033',['scanner',['../structGlobalState.html#a001be5dbdd7a85259ff9db0d36678d4e',1,'GlobalState']]],
+  ['scopedepth_1034',['scopeDepth',['../structCompiler.html#a62bfb06bd032481f51da54e2f3f26655',1,'Compiler']]],
+  ['scratchspace_1035',['scratchSpace',['../structKrkThreadState.html#aeea61d72564ae8c9c992fb0a1ea65a0c',1,'KrkThreadState']]],
+  ['setclass_1036',['setClass',['../structBaseClasses.html#aa8daa8be0e7317c0d1a77a20638385ef',1,'BaseClasses']]],
+  ['setiteratorclass_1037',['setiteratorClass',['../structBaseClasses.html#a56b02b135f1ce0486e6c812c034f8745',1,'BaseClasses']]],
+  ['sliceclass_1038',['sliceClass',['../structBaseClasses.html#af2c758788c6274bc19c5a37556d07017',1,'BaseClasses']]],
+  ['slots_1039',['slots',['../structKrkCallFrame.html#a3cc7860ec6a998fdefa39af7325b7afb',1,'KrkCallFrame']]],
+  ['specialmethodnames_1040',['specialMethodNames',['../structKrkVM.html#a4795f738845ec3b97afe5f1e376a0750',1,'KrkVM']]],
+  ['stack_1041',['stack',['../structKrkThreadState.html#a5eb8266e561d8f0b2fc576cdfd68f6f0',1,'KrkThreadState']]],
+  ['stackmax_1042',['stackMax',['../structKrkThreadState.html#a92914511a3320da896a06b2d53e3bb63',1,'KrkThreadState']]],
+  ['stacksize_1043',['stackSize',['../structKrkThreadState.html#a53337b6e6a5c2efb2709b833c33c7e07',1,'KrkThreadState']]],
+  ['stacktop_1044',['stackTop',['../structKrkThreadState.html#aa24f3f60c02bfdb677b57fb9fb6acc99',1,'KrkThreadState']]],
+  ['strclass_1045',['strClass',['../structBaseClasses.html#afd27a0893081ae3fad829836071a6472',1,'BaseClasses']]],
+  ['strings_1046',['strings',['../structKrkVM.html#a1b6fd5bfd1074dea35f084a3e89d1f9d',1,'KrkVM']]],
+  ['striteratorclass_1047',['striteratorClass',['../structBaseClasses.html#a2110e243d3496aa18cd04219ee889488',1,'BaseClasses']]],
+  ['subclasses_1048',['subclasses',['../structKrkClass.html#a4bfb7fb953d81ecbed71549c948abf16',1,'KrkClass']]],
+  ['syntaxerror_1049',['syntaxError',['../structExceptions.html#ada8bb5fea1676a52102d51d6fad7a033',1,'Exceptions']]],
+  ['system_1050',['system',['../structKrkVM.html#ab40c4db7513a82bb3badf1d6d47cc500',1,'KrkVM']]],
+  ['systemerror_1051',['SystemError',['../structExceptions.html#a3e6d5c2614f99a459c0911d0b7ab3172',1,'Exceptions']]]
 ];

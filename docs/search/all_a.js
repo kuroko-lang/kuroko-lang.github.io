@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['id_175',['id',['../structKrkLocalEntry.html#aac2d41da4518e82773abff8c2e2dc39e',1,'KrkLocalEntry']]],
-  ['importerror_176',['importError',['../structExceptions.html#a11098c4b4f2168e92de39abfee64f7c3',1,'Exceptions']]],
-  ['ind_177',['ind',['../structIndexWithNext.html#a31919411bc202fa6fa722ac773a78232',1,'IndexWithNext']]],
-  ['index_178',['index',['../structUpvalue.html#af67a3830ae534db0cfa916ba622d84d6',1,'Upvalue']]],
-  ['indexerror_179',['indexError',['../structExceptions.html#a0a4efa5ca8af1269ff9d4389df8894be',1,'Exceptions']]],
-  ['indexwithnext_180',['IndexWithNext',['../structIndexWithNext.html',1,'']]],
-  ['infix_181',['infix',['../structParseRule.html#a6c5366d6fadafc2c45f7bb90b181f88e',1,'ParseRule']]],
-  ['inst_182',['inst',['../structGlobalState.html#afe84aa64dda41ded6607afe1c88b7a70',1,'GlobalState::inst()'],['../structKrkList.html#ac2c5a75ed2344c87ece401bd4c19ac25',1,'KrkList::inst()'],['../structKrkDict.html#ad25ae9ffe13f281cf2c888c4e8f2c2c3',1,'KrkDict::inst()']]],
-  ['intclass_183',['intClass',['../structBaseClasses.html#a6a05517015c5fa3bc8e83a2d780f276a',1,'BaseClasses']]],
-  ['ioerror_184',['ioError',['../structExceptions.html#ab2f051d39c51d7fe6e1c7ecbce17313d',1,'Exceptions']]],
-  ['ip_185',['ip',['../structKrkCallFrame.html#ae25ed875e0124bd726956509b7788e98',1,'KrkCallFrame']]],
-  ['iscaptured_186',['isCaptured',['../structLocal.html#ad61d6a0961e89059bb834e0f078912c6',1,'Local']]],
-  ['islocal_187',['isLocal',['../structUpvalue.html#a048685eb993ddc4bce28014e516ef724',1,'Upvalue']]]
+  ['id_176',['id',['../structKrkLocalEntry.html#aac2d41da4518e82773abff8c2e2dc39e',1,'KrkLocalEntry']]],
+  ['importerror_177',['importError',['../structExceptions.html#a11098c4b4f2168e92de39abfee64f7c3',1,'Exceptions']]],
+  ['ind_178',['ind',['../structIndexWithNext.html#a31919411bc202fa6fa722ac773a78232',1,'IndexWithNext']]],
+  ['index_179',['index',['../structUpvalue.html#af67a3830ae534db0cfa916ba622d84d6',1,'Upvalue']]],
+  ['indexerror_180',['indexError',['../structExceptions.html#a0a4efa5ca8af1269ff9d4389df8894be',1,'Exceptions']]],
+  ['indexes_181',['indexes',['../structKrkTable.html#ae117c6c9a3a55d62157e5ed0247677b2',1,'KrkTable']]],
+  ['indexwithnext_182',['IndexWithNext',['../structIndexWithNext.html',1,'']]],
+  ['infix_183',['infix',['../structParseRule.html#a6c5366d6fadafc2c45f7bb90b181f88e',1,'ParseRule']]],
+  ['inst_184',['inst',['../structKrkList.html#ac2c5a75ed2344c87ece401bd4c19ac25',1,'KrkList::inst()'],['../structKrkDict.html#ad25ae9ffe13f281cf2c888c4e8f2c2c3',1,'KrkDict::inst()'],['../structGlobalState.html#afe84aa64dda41ded6607afe1c88b7a70',1,'GlobalState::inst()']]],
+  ['instructionoffset_185',['instructionOffset',['../structKrkOverlongJump.html#ab124ff98f281116fde7d967ca13b1ce8',1,'KrkOverlongJump']]],
+  ['intclass_186',['intClass',['../structBaseClasses.html#a6a05517015c5fa3bc8e83a2d780f276a',1,'BaseClasses']]],
+  ['intendedtarget_187',['intendedTarget',['../structKrkOverlongJump.html#a1f966bd2572040607c0d246f9b97c0fd',1,'KrkOverlongJump']]],
+  ['ioerror_188',['ioError',['../structExceptions.html#ab2f051d39c51d7fe6e1c7ecbce17313d',1,'Exceptions']]],
+  ['ip_189',['ip',['../structKrkCallFrame.html#ae25ed875e0124bd726956509b7788e98',1,'KrkCallFrame']]],
+  ['iscaptured_190',['isCaptured',['../structLocal.html#ad61d6a0961e89059bb834e0f078912c6',1,'Local']]],
+  ['islocal_191',['isLocal',['../structUpvalue.html#a048685eb993ddc4bce28014e516ef724',1,'Upvalue']]]
 ];

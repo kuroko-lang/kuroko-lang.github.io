@@ -1,5 +1,5 @@
 <map id="src/kuroko/debug.h" name="src/kuroko/debug.h">
-<area shape="rect" id="node1" title="Functions for debugging bytecode execution." alt="" coords="739,5,883,32"/>
+<area shape="rect" id="node1" title="Functions for debugging bytecode execution." alt="" coords="789,5,933,32"/>
 <area shape="rect" id="node2" href="$builtins_8c_source.html" title=" " alt="" coords="5,162,109,189"/>
 <area shape="rect" id="node3" href="$compiler_8c.html" title="Single&#45;pass bytecode compiler." alt="" coords="133,162,245,189"/>
 <area shape="rect" id="node4" href="$debug_8c_source.html" title=" " alt="" coords="269,162,365,189"/>
@@ -9,6 +9,8 @@
 <area shape="rect" id="node8" href="$private_8h.html" title="Internal header." alt="" coords="670,80,773,107"/>
 <area shape="rect" id="node16" href="$vm_8c_source.html" title=" " alt="" coords="1356,162,1433,189"/>
 <area shape="rect" id="node17" href="$module__dis_8c_source.html" title=" " alt="" coords="1457,155,1612,196"/>
+<area shape="rect" id="node18" href="$callgrind_8c.html" title="Function call tracing tool." alt="" coords="1312,80,1437,107"/>
+<area shape="rect" id="node19" href="$watchdog_8c_source.html" title=" " alt="" coords="1462,80,1594,107"/>
 <area shape="rect" id="node9" href="$exceptions_8c.html" title="Definitions and native method bindings for error types." alt="" coords="1205,162,1331,189"/>
 <area shape="rect" id="node10" href="$memory_8c_source.html" title=" " alt="" coords="389,162,499,189"/>
 <area shape="rect" id="node11" href="$obj__bytes_8c_source.html" title=" " alt="" coords="523,162,642,189"/>

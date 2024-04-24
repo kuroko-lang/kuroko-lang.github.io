@@ -4,7 +4,7 @@ var searchData=
   ['ellipsisclass_125',['ellipsisClass',['../structBaseClasses.html#a68164ceb269b661073f9fac339dc2785',1,'BaseClasses']]],
   ['enclosed_126',['enclosed',['../structCompiler.html#a5120857a9057b7ebdf939a4f99ffd0ef',1,'Compiler']]],
   ['enclosing_127',['enclosing',['../structCompiler.html#ae1fe27bd7001120f0a8518c1a62debc6',1,'Compiler::enclosing()'],['../structClassCompiler.html#a37081d9415b4a68e3ecb48b4c6e1bc32',1,'ClassCompiler::enclosing()']]],
-  ['entries_128',['entries',['../structKrkDict.html#a636af73c2ab0c907003102116c5736db',1,'KrkDict']]],
+  ['entries_128',['entries',['../structKrkDict.html#a636af73c2ab0c907003102116c5736db',1,'KrkDict::entries()'],['../structKrkTable.html#a3557a9587cdd75c0bde29915e269264c',1,'KrkTable::entries()']]],
   ['enumerateclass_129',['enumerateClass',['../structBaseClasses.html#a8d85d464a339e264a704ad9822dc731e',1,'BaseClasses']]],
   ['ex_5funpack_130',['ex_unpack',['../structex__unpack.html',1,'']]],
   ['exception_131',['Exception',['../structExceptions.html#a2de7658153d2750f85aeda799fb27b77',1,'Exceptions']]],
