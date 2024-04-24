@@ -1,0 +1,23 @@
+<map id="src/obj_gen.c" name="src/obj_gen.c">
+<area shape="rect" id="node1" title="Generator objects." alt="" coords="248,5,355,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="110,453,181,480"/>
+<area shape="rect" id="node3" href="$vm_8h.html" title="Core API for the bytecode virtual machine." alt="" coords="382,155,485,181"/>
+<area shape="rect" id="node13" href="$value_8h.html" title="Definitions for primitive stack references." alt="" coords="393,379,463,405"/>
+<area shape="rect" id="node19" href="$memory_8h.html" title="Functions for dealing with garbage collection and memory allocation." alt="" coords="85,155,219,181"/>
+<area shape="rect" id="node20" href="$util_8h.html" title="Utilities for creating native bindings." alt="" coords="206,80,309,107"/>
+<area shape="rect" id="node21" href="$debug_8h.html" title="Functions for debugging bytecode execution." alt="" coords="385,80,506,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="516,229,591,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="308,229,372,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="396,229,492,256"/>
+<area shape="rect" id="node7" href="$kuroko_8h.html" title="Top&#45;level header with configuration macros." alt="" coords="220,453,297,480"/>
+<area shape="rect" id="node15" href="$table_8h.html" title="Implementation of a generic hash table." alt="" coords="139,304,205,331"/>
+<area shape="rect" id="node16" href="$object_8h.html" title="Struct definitions for core object types." alt="" coords="209,229,284,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="418,528,489,555"/>
+<area shape="rect" id="node9" title=" " alt="" coords="116,528,191,555"/>
+<area shape="rect" id="node10" title=" " alt="" coords="21,528,91,555"/>
+<area shape="rect" id="node11" title=" " alt="" coords="215,528,302,555"/>
+<area shape="rect" id="node12" title=" " alt="" coords="327,528,393,555"/>
+<area shape="rect" id="node14" title=" " alt="" coords="569,453,636,480"/>
+<area shape="rect" id="node17" href="$chunk_8h.html" title="Structures and enums for bytecode chunks." alt="" coords="491,304,565,331"/>
+<area shape="rect" id="node18" title=" " alt="" coords="281,304,365,331"/>
+</map>
