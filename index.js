@@ -4980,6 +4980,16 @@ function obj_setitem(idobj,idkey,idval){ let jsobj = Hiwire.get_value(idobj); le
   }
   }
 
+  function ___sys_fstat64(fd, buf) {try {
+  
+      var stream = SYSCALLS.getStreamFromFD(fd);
+      return SYSCALLS.doStat(FS.stat, stream.path, buf);
+    } catch (e) {
+    if (typeof FS === 'undefined' || !(e instanceof FS.ErrnoError)) abort(e);
+    return -e.errno;
+  }
+  }
+
   function ___sys_getcwd(buf, size) {try {
   
       if (size === 0) return -28;
@@ -5090,6 +5100,16 @@ function obj_setitem(idobj,idkey,idval){ let jsobj = Hiwire.get_value(idobj); le
         }
         default: abort('bad ioctl syscall ' + op);
       }
+    } catch (e) {
+    if (typeof FS === 'undefined' || !(e instanceof FS.ErrnoError)) abort(e);
+    return -e.errno;
+  }
+  }
+
+  function ___sys_lstat64(path, buf) {try {
+  
+      path = SYSCALLS.getStr(path);
+      return SYSCALLS.doStat(FS.lstat, path, buf);
     } catch (e) {
     if (typeof FS === 'undefined' || !(e instanceof FS.ErrnoError)) abort(e);
     return -e.errno;
@@ -6439,10 +6459,12 @@ var asmLibraryArg = {
   "__sys_dup": ___sys_dup,
   "__sys_dup2": ___sys_dup2,
   "__sys_fcntl64": ___sys_fcntl64,
+  "__sys_fstat64": ___sys_fstat64,
   "__sys_getcwd": ___sys_getcwd,
   "__sys_getdents64": ___sys_getdents64,
   "__sys_getpid": ___sys_getpid,
   "__sys_ioctl": ___sys_ioctl,
+  "__sys_lstat64": ___sys_lstat64,
   "__sys_mkdir": ___sys_mkdir,
   "__sys_open": ___sys_open,
   "__sys_pipe": ___sys_pipe,
